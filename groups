@@ -1,0 +1,4 @@
+# UUID                                  	Group Name
+#
+global:Registered-Users                 	Registered Users
+ldap:cn=opnfv-gerrit-doctor-submitters,ou=Groups,dc=freestandards,dc=org	ldap/opnfv-gerrit-doctor-submitters
