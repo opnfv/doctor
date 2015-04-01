@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a045101_516edeca",
+        "filename": "designdocs/update-server-state-immediately.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 346
+      },
+      "writtenOn": "2015-04-01T20:28:11Z",
+      "side": 1,
+      "message": "API impact -\u003e REST API impact \n\nJenkins build failed in OpenStack\n\n2015-04-01 18:22:14.150 | AssertionError: While checking \u0027specs/liberty/approved/report-host-fault-to-update-server-state-immediately.rst\u0027:\n\n2015-04-01 18:22:14.150 |   Section \u0027Proposed change\u0027 is missing subsections: [u\u0027REST API impact\u0027]",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 10
+      },
+      "revId": "0ea727f3305a0ddce1fc1254c9643be69169a237",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
