@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3a045101_e619af23",
+        "filename": "designdocs/notification-alarm-evaluator.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2015-04-09T10:07:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a045101_a65e07e8",
+      "range": {
+        "startLine": 24,
+        "startChar": 68,
+        "endLine": 24,
+        "endChar": 69
+      },
+      "revId": "b6dda7873c4bade4b36e8792c2a7eaca37d3b7f1",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a045101_86630bb1",
         "filename": "designdocs/notification-alarm-evaluator.rst",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-04-09T09:15:04Z",
       "side": 1,
       "message": "could be receive -\u003e could receive",
+      "range": {
+        "startLine": 49,
+        "startChar": 28,
+        "endLine": 49,
+        "endChar": 30
+      },
+      "revId": "b6dda7873c4bade4b36e8792c2a7eaca37d3b7f1",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_c616b3f1",
+        "filename": "designdocs/notification-alarm-evaluator.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2015-04-09T10:07:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a045101_86630bb1",
       "range": {
         "startLine": 49,
         "startChar": 28,
