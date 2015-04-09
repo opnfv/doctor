@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a045101_066ffb93",
+        "filename": "INFO",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2015-04-09T09:38:24Z",
+      "side": 1,
+      "message": "Why we use mail address only?\nThe wiki template page shows \"Name (Company name, email)\" format.\n\nhttps://wiki.opnfv.org/developers/project_page_template",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "cd8dc864f80fd55c6aa09c00f7295d4982f0a503",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
