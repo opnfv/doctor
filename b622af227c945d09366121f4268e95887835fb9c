@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a045101_a62607b9",
+        "filename": "LICENSE",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2015-04-09T06:53:02Z",
+      "side": 1,
+      "message": "nit: could you delete trailing whitespaces?",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 1
+      },
+      "revId": "b622af227c945d09366121f4268e95887835fb9c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
