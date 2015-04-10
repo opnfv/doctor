@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "3a045101_f99f104f",
+        "filename": "designdocs/notification-alarm-evaluator.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 722
+      },
+      "writtenOn": "2015-04-10T10:54:20Z",
+      "side": 1,
+      "message": "The event support in Ceilometer has evolved much during the Kilo cycle. Currently it stores events as samples too, which will be deprecated in the next cycle and then it will be removed. This means that the alarm functionality on top of events has a higher priority as it needs to be addressed before removing the \"event type\" samples. The summit preparation will soon reach the session proposal stage, I suggest you to follow the discussions in order to be up to date with the planned changes so that you can get involved in the activities from the starting point.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 6
+      },
+      "revId": "b6dda7873c4bade4b36e8792c2a7eaca37d3b7f1",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_399e9857",
+        "filename": "designdocs/notification-alarm-evaluator.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 722
+      },
+      "writtenOn": "2015-04-10T10:54:20Z",
+      "side": 1,
+      "message": "As a general comment, reflecting on the Doctor use cases and requirements, I would like to mention here that Ceilometer is not intended to be a monitoring solution. It captures events and polls the infrastructure for usage data, which can then be used for mostly billing purposes or analyzing usage trends in the system.\n\nThis module consumes events that were emitted by other projects in OpenStack and uses the underlying message queue for this. Ceilometer does not deal with delays on AMQP and also does not verify the state of the system in any sense. Which means, if an update event is lost, for exapmle if an instance went to error state, you will not get notified about this, as Ceilometer does not maintain this state information.\n\nAlso using the term immadiate can be misleading here, as you will not get alarm immediately, as the event occured, but only when Ceilometer gets informed about it, which completely depends on the other services and the message queue system.",
+      "range": {
+        "startLine": 16,
+        "startChar": 55,
+        "endLine": 16,
+        "endChar": 64
+      },
+      "revId": "b6dda7873c4bade4b36e8792c2a7eaca37d3b7f1",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a045101_a65e07e8",
         "filename": "designdocs/notification-alarm-evaluator.rst",
         "patchSetId": 1
@@ -89,6 +135,52 @@
         "startChar": 28,
         "endLine": 49,
         "endChar": 30
+      },
+      "revId": "b6dda7873c4bade4b36e8792c2a7eaca37d3b7f1",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_b972a847",
+        "filename": "designdocs/notification-alarm-evaluator.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 722
+      },
+      "writtenOn": "2015-04-10T10:54:20Z",
+      "side": 1,
+      "message": "If resource_id is a mandatory field it means that new alarm definitions have to be created for each resource. If alarm definitions are not maintained according to the resource lifecycle, then it can mean a large amount alarm definitions especially in a public cloud. Have you considered this aspect?",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 12
+      },
+      "revId": "b6dda7873c4bade4b36e8792c2a7eaca37d3b7f1",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_b9a9887d",
+        "filename": "designdocs/notification-alarm-evaluator.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 722
+      },
+      "writtenOn": "2015-04-10T10:54:20Z",
+      "side": 1,
+      "message": "How will checking the database in each time when a new notification is received affect the performance?",
+      "range": {
+        "startLine": 163,
+        "startChar": 28,
+        "endLine": 163,
+        "endChar": 33
       },
       "revId": "b6dda7873c4bade4b36e8792c2a7eaca37d3b7f1",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
