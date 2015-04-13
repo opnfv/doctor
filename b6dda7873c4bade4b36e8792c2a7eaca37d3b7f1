@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3a045101_1c206a48",
+        "filename": "designdocs/notification-alarm-evaluator.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2015-04-13T09:41:31Z",
+      "side": 1,
+      "message": "Yes, agree. I will try to get in the loop by sending email once I put this BP spec to OpenStack.",
+      "parentUuid": "3a045101_f99f104f",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 6
+      },
+      "revId": "b6dda7873c4bade4b36e8792c2a7eaca37d3b7f1",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a045101_399e9857",
         "filename": "designdocs/notification-alarm-evaluator.rst",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-04-10T10:54:20Z",
       "side": 1,
       "message": "As a general comment, reflecting on the Doctor use cases and requirements, I would like to mention here that Ceilometer is not intended to be a monitoring solution. It captures events and polls the infrastructure for usage data, which can then be used for mostly billing purposes or analyzing usage trends in the system.\n\nThis module consumes events that were emitted by other projects in OpenStack and uses the underlying message queue for this. Ceilometer does not deal with delays on AMQP and also does not verify the state of the system in any sense. Which means, if an update event is lost, for exapmle if an instance went to error state, you will not get notified about this, as Ceilometer does not maintain this state information.\n\nAlso using the term immadiate can be misleading here, as you will not get alarm immediately, as the event occured, but only when Ceilometer gets informed about it, which completely depends on the other services and the message queue system.",
+      "range": {
+        "startLine": 16,
+        "startChar": 55,
+        "endLine": 16,
+        "endChar": 64
+      },
+      "revId": "b6dda7873c4bade4b36e8792c2a7eaca37d3b7f1",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_fc1c9e15",
+        "filename": "designdocs/notification-alarm-evaluator.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2015-04-13T09:41:31Z",
+      "side": 1,
+      "message": "In Doctor implementation plan, we\u0027d like to use Ceilometer as \"Notifier\" facing to end users, and not intended to use it as \"Monitor\" (Monitoring will be done by other modules).\n\nRegarding \"immediate\", I understand more clarification are required. I\u0027d like to note that \"no periodic task in alarming sequence\" while notification process in which monitoring is not included.",
+      "parentUuid": "3a045101_399e9857",
       "range": {
         "startLine": 16,
         "startChar": 55,
@@ -165,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "3a045101_dc19e223",
+        "filename": "designdocs/notification-alarm-evaluator.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2015-04-13T09:41:31Z",
+      "side": 1,
+      "message": "I don\u0027t have great solution for huge public cloud deployment, but I list some:\n\n* Set quota on the number of alarms to each tenant/project\n\n* Find alarms by stack ID (this can be realize by adding function of extract related resource ID from event message to new evaluator; e.g. extract stack ID from metadata of instance/server)\n\nAnyway, this topic should be discussed in OpenStack community.",
+      "parentUuid": "3a045101_b972a847",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 12
+      },
+      "revId": "b6dda7873c4bade4b36e8792c2a7eaca37d3b7f1",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a045101_b9a9887d",
         "filename": "designdocs/notification-alarm-evaluator.rst",
         "patchSetId": 1
@@ -176,6 +248,30 @@
       "writtenOn": "2015-04-10T10:54:20Z",
       "side": 1,
       "message": "How will checking the database in each time when a new notification is received affect the performance?",
+      "range": {
+        "startLine": 163,
+        "startChar": 28,
+        "endLine": 163,
+        "endChar": 33
+      },
+      "revId": "b6dda7873c4bade4b36e8792c2a7eaca37d3b7f1",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_bc1616f0",
+        "filename": "designdocs/notification-alarm-evaluator.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2015-04-13T09:41:31Z",
+      "side": 1,
+      "message": "Ah, yes that may impact to performance. I will add note in the next patch set.",
+      "parentUuid": "3a045101_b9a9887d",
       "range": {
         "startLine": 163,
         "startChar": 28,
