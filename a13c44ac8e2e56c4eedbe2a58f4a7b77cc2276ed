@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a045101_5c9f1204",
+        "filename": "requirements/d1_doctor_fault_management_and_maintenance.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2015-04-14T12:27:38Z",
+      "side": 1,
+      "message": "Whitespaces will be deleted in the next patchset.",
+      "revId": "a13c44ac8e2e56c4eedbe2a58f4a7b77cc2276ed",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
