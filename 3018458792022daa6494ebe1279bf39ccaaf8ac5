@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a045101_f2bde503",
+        "filename": "requirements/d1_doctor_fault_management_and_maintenance.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 385
+      },
+      "writtenOn": "2015-04-15T16:41:11Z",
+      "side": 1,
+      "message": "Suggest to re-word as:\n",
+      "revId": "3018458792022daa6494ebe1279bf39ccaaf8ac5",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_d2bae909",
+        "filename": "requirements/d1_doctor_fault_management_and_maintenance.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 385
+      },
+      "writtenOn": "2015-04-15T16:41:11Z",
+      "side": 1,
+      "message": "Comment:  This seems to be a stateless recovery, is that correct? Or, is Doctor agnostic to the sort of recovery the Consumer arranges?",
+      "revId": "3018458792022daa6494ebe1279bf39ccaaf8ac5",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_923c6195",
+        "filename": "requirements/d1_doctor_fault_management_and_maintenance.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 385
+      },
+      "writtenOn": "2015-04-15T16:41:11Z",
+      "side": 1,
+      "message": "The wording of this requirement is slightly vague.  Suggest: The time interval between the instant that an event is detected by the monitoring system and the Consumer notification of unavailable resources shall be \u003c 1 second (e.g., Step 1 to Step 4 in Figures 4 and 5).",
+      "revId": "3018458792022daa6494ebe1279bf39ccaaf8ac5",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
