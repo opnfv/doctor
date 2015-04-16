@@ -1,0 +1,9 @@
+This is directory to store design documents which may includes draft version
+of blueprints written before proposing upstream OSS communities such as
+OpenStack, in order to keep the original blueprint as reviewed in OPNFV.
+That means there could be out-of-dated blueprints as result of further
+refinements in the upstream OSS coummunity. So please refer the link in each
+document to find current version of blueprint and status of development in the
+relevant OSS community.
+
+See also https://wiki.opnfv.org/community/openstack .
