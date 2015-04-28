@@ -2,6 +2,121 @@
   "comments": [
     {
       "key": {
+        "uuid": "3a045101_d7d3f436",
+        "filename": "requirements/02-use_cases.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 722
+      },
+      "writtenOn": "2015-04-28T21:00:41Z",
+      "side": 1,
+      "message": "I would call this one as Preventive actions as opposed to Recovery would describe this use case better.",
+      "range": {
+        "startLine": 37,
+        "startChar": 3,
+        "endLine": 37,
+        "endChar": 11
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_b794e837",
+        "filename": "requirements/02-use_cases.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 722
+      },
+      "writtenOn": "2015-04-28T21:00:41Z",
+      "side": 1,
+      "message": "Does this mean a synchronization between the VIM and the Consumer or more that VNFM/NFVO instructs VIM how to proceed within the given circumstances?",
+      "range": {
+        "startLine": 91,
+        "startChar": 53,
+        "endLine": 92,
+        "endChar": 34
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_d78f7422",
+        "filename": "requirements/02-use_cases.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 722
+      },
+      "writtenOn": "2015-04-28T21:00:41Z",
+      "side": 1,
+      "message": "It seems to be contradicting with the aims of the HA project. Are these two synchronized on use case level?",
+      "range": {
+        "startLine": 96,
+        "startChar": 41,
+        "endLine": 97,
+        "endChar": 43
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_9799ec70",
+        "filename": "requirements/02-use_cases.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 722
+      },
+      "writtenOn": "2015-04-28T21:00:41Z",
+      "side": 1,
+      "message": "I have two questions in general to this use case regarding to the level of synchronization it describes between the VIM and the Consumers. Shouldn\u0027t this use case consider more the added values of using a cloud infrastructure as opposed to a simple virtualized environment? Also would that make sense to note that in medium or long term the VNFs and VNFM/NFVO should be adapted too to run on top of a cloud infrastructure?",
+      "range": {
+        "startLine": 108,
+        "startChar": 57,
+        "endLine": 108,
+        "endChar": 61
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_779e6058",
+        "filename": "requirements/02-use_cases.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 722
+      },
+      "writtenOn": "2015-04-28T21:00:41Z",
+      "side": 1,
+      "message": "Please see my comment above regarding the naming.",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 8
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a045101_37c1f880",
         "filename": "requirements/02-use_cases.rst",
         "patchSetId": 4
@@ -117,6 +232,52 @@
     },
     {
       "key": {
+        "uuid": "3a045101_57a3649e",
+        "filename": "requirements/02-use_cases.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 722
+      },
+      "writtenOn": "2015-04-28T21:00:41Z",
+      "side": 1,
+      "message": "In my opinion this scenario is not necessarily the same as the fault recovery, because of the nature of the use case. In the former case there are actions like fencing, that is needed to keep the infrastructure and the VNFs healthy. This scenario is more a reconfiguration from the VIM\u0027s perspective, which means that there can be overlapping steps, but I would handle it more separately from the former use case because of the details that are not described here.",
+      "range": {
+        "startLine": 127,
+        "startChar": 78,
+        "endLine": 127,
+        "endChar": 79
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_37a0d88f",
+        "filename": "requirements/02-use_cases.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 722
+      },
+      "writtenOn": "2015-04-28T21:00:41Z",
+      "side": 1,
+      "message": "Is there any overlapping here with the HA project?",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 54
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a045101_9741ec0d",
         "filename": "requirements/02-use_cases.rst",
         "patchSetId": 4
@@ -133,6 +294,52 @@
         "startChar": 48,
         "endLine": 156,
         "endChar": 57
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_37c7b847",
+        "filename": "requirements/02-use_cases.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 722
+      },
+      "writtenOn": "2015-04-28T21:00:41Z",
+      "side": 1,
+      "message": "Is there any alternative for this handshake, which could enable automated actions in order to put a host into maintenance mode?",
+      "range": {
+        "startLine": 172,
+        "startChar": 5,
+        "endLine": 172,
+        "endChar": 13
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_17addc88",
+        "filename": "requirements/02-use_cases.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 722
+      },
+      "writtenOn": "2015-04-28T21:00:41Z",
+      "side": 1,
+      "message": "Is the scenario the same if we consider that the maintenance actions are scheduled in advance?",
+      "range": {
+        "startLine": 176,
+        "startChar": 57,
+        "endLine": 176,
+        "endChar": 58
       },
       "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
