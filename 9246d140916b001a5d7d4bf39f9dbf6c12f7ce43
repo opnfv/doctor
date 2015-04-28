@@ -1,0 +1,659 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a045101_37c1f880",
+        "filename": "requirements/02-use_cases.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-04-28T16:12:13Z",
+      "side": 1,
+      "message": "Clause 2.1.1 is hard to find in rst or in the generate html as chapters are not numbered. I propose to either number the chapters in rst or reference the chapters in a more readable way",
+      "range": {
+        "startLine": 113,
+        "startChar": 43,
+        "endLine": 113,
+        "endChar": 55
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_17befcff",
+        "filename": "requirements/02-use_cases.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-04-28T16:12:13Z",
+      "side": 1,
+      "message": "I guess you mean imminent instead of eminent",
+      "range": {
+        "startLine": 116,
+        "startChar": 3,
+        "endLine": 116,
+        "endChar": 10
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_b73ce894",
+        "filename": "requirements/02-use_cases.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-04-28T16:12:13Z",
+      "side": 1,
+      "message": "I tried to investigate the requirements of the prediction project on doctor but it seems that prediction project hasn\u0027t been published use cases or requirements yet. Is it safe to assume that the fault prediction module can be made compatible with doctor without changes in the doctor side?",
+      "range": {
+        "startLine": 118,
+        "startChar": 8,
+        "endLine": 119,
+        "endChar": 63
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_f7ba7009",
+        "filename": "requirements/02-use_cases.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-04-28T16:12:13Z",
+      "side": 1,
+      "message": "Chapter numbering",
+      "range": {
+        "startLine": 122,
+        "startChar": 3,
+        "endLine": 122,
+        "endChar": 16
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_d73774af",
+        "filename": "requirements/02-use_cases.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-04-28T16:12:13Z",
+      "side": 1,
+      "message": "imminent",
+      "range": {
+        "startLine": 124,
+        "startChar": 53,
+        "endLine": 124,
+        "endChar": 60
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_9741ec0d",
+        "filename": "requirements/02-use_cases.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-04-28T16:12:13Z",
+      "side": 1,
+      "message": "Does doctor require this \"maintenance\" marking of a host from the VIM as a new feature? \nDoes the Maintenance request coming from the Administrator to doctor needs to be answered by doctor to the Administrator after the VIM marked the host with \"maintenance\" state? I guess the Administrator wants to know when the host really reach maintenance state after it calls the Maintenance action of doctor.",
+      "range": {
+        "startLine": 152,
+        "startChar": 48,
+        "endLine": 156,
+        "endChar": 57
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_f75150d9",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-04-28T16:12:13Z",
+      "side": 1,
+      "message": "Is it really just an option for the VIM to aggregate failures even if the user of the VIM enabled the Failure Selection and Aggregation function in the configuration?",
+      "range": {
+        "startLine": 107,
+        "startChar": 22,
+        "endLine": 107,
+        "endChar": 25
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_b7d86854",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-04-28T16:12:13Z",
+      "side": 1,
+      "message": "The relation of physical resource to virtualized resource are created by VIM and in some cases the process that selects physical resource for a virtual resource request are not 100% configurable. For example during VM scheduling in nova if multiple hosts can fulfill the request and the hosts has the same weight then nova simply select the first from the list which can be considered as a random choice.",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 12
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_97dd6c45",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-04-28T16:12:13Z",
+      "side": 1,
+      "message": "I think this sentence is incomplete. User does not request failures as failures happen randomly in the system.",
+      "range": {
+        "startLine": 130,
+        "startChar": 60,
+        "endLine": 131,
+        "endChar": 37
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_57e7e412",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-04-28T16:12:13Z",
+      "side": 1,
+      "message": "What does \u0027individual\u0027 means here? Does it mean that a single resource can only notify a single subscriber? If yes, why do we have this limitation?",
+      "range": {
+        "startLine": 155,
+        "startChar": 15,
+        "endLine": 155,
+        "endChar": 43
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_77e2e004",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-04-28T16:12:13Z",
+      "side": 1,
+      "message": "I think having notification URL is an implementation detail.",
+      "range": {
+        "startLine": 155,
+        "startChar": 44,
+        "endLine": 155,
+        "endChar": 60
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_37e4580c",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-04-28T16:12:13Z",
+      "side": 1,
+      "message": "This requirement needs to be defined more precisely as the subscription API cannot be developed without knowing what level of flexibility needs to be supported towards the consumer of the API",
+      "range": {
+        "startLine": 160,
+        "startChar": 61,
+        "endLine": 163,
+        "endChar": 66
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_17f15ccd",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-04-28T16:12:13Z",
+      "side": 1,
+      "message": "We need to define more precisely what is the supported actions to be able to define the API. \nDo we want to differentiate between offline and live migration?\nDo we want to support an action that redefines (e.g. reboots) the resource in the same place (e.g. same compute host) after the fault is ceased?",
+      "range": {
+        "startLine": 170,
+        "startChar": 47,
+        "endLine": 172,
+        "endChar": 45
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_f7edd0f0",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-04-28T16:12:13Z",
+      "side": 1,
+      "message": "This seems a bit contradicting with the above paragraph where we require that the VIM acts according to a pre-defined action.",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 63
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_97b44cf3",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-04-28T16:12:13Z",
+      "side": 1,
+      "message": "I think one aspect is missing here. Who will make sure that the affected virtual and physical resource are fenced before we allow to do recovery action in VIM. Does VIM needs to fence automatically or it is part of the instruction coming from the User/Client and/or the Administrator.\n\nWithout fencing the recovery action can lead to double allocation and usage of a physical resource that can lead to corruption",
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_d7bad4e0",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-04-28T16:12:13Z",
+      "side": 1,
+      "message": "I think this depends on the implementation of the Consumer and we don\u0027t have influence over that.",
+      "range": {
+        "startLine": 186,
+        "startChar": 10,
+        "endLine": 187,
+        "endChar": 53
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_b7bf48d0",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-04-28T16:12:13Z",
+      "side": 1,
+      "message": "This image is very hard to read. Can we have a higher resolution copy of this?",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 30
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_77b9c0e8",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-04-28T16:12:13Z",
+      "side": 1,
+      "message": "Do we have a high level definition about this NFVI - VIM monitoring interface? If not at the moment then I thin it is less confusing to say that in step 1 VIM monitors the physical and virtual resource as described in the Monitoring chapter",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 5
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_57cec484",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-04-28T16:12:13Z",
+      "side": 1,
+      "message": "I think aggregation and correlation might also happen after the affected virtual resource are looked up",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 80
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_d7a1b4aa",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-04-28T16:12:13Z",
+      "side": 1,
+      "message": "Should the VIM have to wait for a confirmation from the consumer that the maintenance request is allowed and accepted for that specific virtual resource? Can the consumer deny the maintenance request (e.g. due to a missing / non operational STB)? Can the consumer delay the maintenance request?",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 220,
+        "endChar": 33
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_37cb3874",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-04-28T16:12:13Z",
+      "side": 1,
+      "message": "This step is missing from the figure2 in the use cases chapter.",
+      "range": {
+        "startLine": 222,
+        "startChar": 13,
+        "endLine": 223,
+        "endChar": 14
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_17c83c73",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-04-28T16:12:13Z",
+      "side": 1,
+      "message": "Do we have a requirement on how much time can it take to go from \u0027normal\u0027 to \u0027maintenance\u0027 state from the Administrator point of view?",
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_f7c4b060",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-04-28T16:12:13Z",
+      "side": 1,
+      "message": "figure5 is really hard to read.",
+      "range": {
+        "startLine": 225,
+        "startChar": 12,
+        "endLine": 225,
+        "endChar": 30
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_b7a628c0",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-04-28T16:12:13Z",
+      "side": 1,
+      "message": "We might need two state \u0027going to maintenance\u0027 and \u0027in maintenance\u0027 to differentiate between the situation when the maintenance state is requested but haven\u0027t been fulfilled yet and the state when the physical resource is ready for the maintenance action (e.g. replacement)",
+      "range": {
+        "startLine": 233,
+        "startChar": 48,
+        "endLine": 233,
+        "endChar": 59
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_97ab2c89",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-04-28T16:12:13Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we need to send the result of the actions to the Consumer?",
+      "range": {
+        "startLine": 243,
+        "startChar": 3,
+        "endLine": 245,
+        "endChar": 60
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_77b0a0f4",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-04-28T16:12:13Z",
+      "side": 1,
+      "message": "Does VNFM is the \u0027Consumer\u0027 in the above description? I think we shall keep a consistent terminology",
+      "range": {
+        "startLine": 254,
+        "startChar": 69,
+        "endLine": 254,
+        "endChar": 73
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_5795a43e",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-04-28T16:12:13Z",
+      "side": 1,
+      "message": "Who is responsible to issue the maintenance actions?",
+      "range": {
+        "startLine": 256,
+        "startChar": 31,
+        "endLine": 256,
+        "endChar": 42
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_37921858",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-04-28T16:12:13Z",
+      "side": 1,
+      "message": "I don\u0027t think maintenance is a valid severity of a fault it is more like indication of the necessary action.",
+      "range": {
+        "startLine": 259,
+        "startChar": 61,
+        "endLine": 259,
+        "endChar": 72
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_179f1c61",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-04-28T16:12:13Z",
+      "side": 1,
+      "message": "OAM? Should it be VIM or Administrator?",
+      "range": {
+        "startLine": 270,
+        "startChar": 77,
+        "endLine": 270,
+        "endChar": 80
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
