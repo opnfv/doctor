@@ -957,6 +957,30 @@
     },
     {
       "key": {
+        "uuid": "3a045101_35b9ed2e",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2015-05-11T10:41:00Z",
+      "side": 1,
+      "message": "If compute host is rebooted, most probably that takes longer than already evacuating/migrating (action depends if already rebooting or needs to be rebooted soon) the instances to other compute host. Assuming there is free compute capacity.",
+      "parentUuid": "3a045101_57db64ed",
+      "range": {
+        "startLine": 170,
+        "startChar": 47,
+        "endLine": 172,
+        "endChar": 45
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a045101_f7edd0f0",
         "filename": "requirements/03-architecture.rst",
         "patchSetId": 4
@@ -1033,6 +1057,24 @@
       "side": 1,
       "message": "Once a failure is detected, one of the first actions to be taken is fencing the faulty resources beforehand notifying the Consumer. The Doctor team is working with Nova in this area: https://review.openstack.org//#/c/169836/",
       "parentUuid": "3a045101_97b44cf3",
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_b5a5fd05",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2015-05-11T10:41:00Z",
+      "side": 1,
+      "message": "IMHO. Doctor should make sure of fencing in case reboot will not be the action (IPMI...). Current BP is part of fulfilling the gap of having state information in VIM inline with real system, so recovery action can be taken safely and fast. Also that the state information is correct in VIM, unlike it is now. To me it should be configured for example in metadata of instance what action should be done/supported for certain instance, so that Doctor could automatically make the actions if needed (fastest fault correlation). Otherwise there is messaging to be implemented to NB IF, so actions could come from VNFM (slower fault correlation). Sometimes also no action, so VNFM can for example delete, create or scale instances later if like (as compute host is failed). Any automatic correlation should be configurable for instance (or its \"type\") and could be triggered by specific failure type. Also confirmation from NB IF can be asked if configured so. I guess this can be discussed next week in summit to have common understanding.",
+      "parentUuid": "3a045101_e37d12b3",
       "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
