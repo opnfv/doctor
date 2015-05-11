@@ -1021,6 +1021,24 @@
     },
     {
       "key": {
+        "uuid": "3a045101_e37d12b3",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2015-05-11T09:26:51Z",
+      "side": 1,
+      "message": "Once a failure is detected, one of the first actions to be taken is fencing the faulty resources beforehand notifying the Consumer. The Doctor team is working with Nova in this area: https://review.openstack.org//#/c/169836/",
+      "parentUuid": "3a045101_97b44cf3",
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a045101_d7bad4e0",
         "filename": "requirements/03-architecture.rst",
         "patchSetId": 4
@@ -1314,6 +1332,24 @@
       "writtenOn": "2015-04-28T16:12:13Z",
       "side": 1,
       "message": "Do we have a requirement on how much time can it take to go from \u0027normal\u0027 to \u0027maintenance\u0027 state from the Administrator point of view?",
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_b5205d9c",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2015-05-11T09:26:51Z",
+      "side": 1,
+      "message": "Not that I know of. Do you think it is relevant to set a max time here? Under which specific(s) circumstance(s)?",
+      "parentUuid": "3a045101_17c83c73",
       "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
