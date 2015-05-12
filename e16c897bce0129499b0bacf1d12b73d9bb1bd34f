@@ -204,6 +204,30 @@
     },
     {
       "key": {
+        "uuid": "3a045101_b53bbdea",
+        "filename": "requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2015-05-12T11:57:12Z",
+      "side": 1,
+      "message": "When it comes to the implementation, we do not plan to create a new mapping, but use the existing modules as far as possible. As this is a requirement document, and we are specifying things more from an architectural point of view, I believe writing the description in a more general way is preferrable. However, a (foot-)note might be useful to address your question.",
+      "parentUuid": "3a045101_f51265b3",
+      "range": {
+        "startLine": 57,
+        "startChar": 35,
+        "endLine": 58,
+        "endChar": 44
+      },
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a045101_d51769a2",
         "filename": "requirements/05-implementation.rst",
         "patchSetId": 6
@@ -238,6 +262,30 @@
       "writtenOn": "2015-05-12T11:36:11Z",
       "side": 1,
       "message": "With the current numbering there is no Section 5.5",
+      "range": {
+        "startLine": 91,
+        "startChar": 12,
+        "endLine": 91,
+        "endChar": 25
+      },
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_9540c157",
+        "filename": "requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2015-05-12T11:57:12Z",
+      "side": 1,
+      "message": "Section 4.4 according to new numbering.",
+      "parentUuid": "3a045101_b50cdd95",
       "range": {
         "startLine": 91,
         "startChar": 12,
