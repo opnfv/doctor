@@ -1,0 +1,715 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a045101_e302b20a",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-05-12T11:36:11Z",
+      "side": 1,
+      "message": "I suggest to reword or delete this sentence based on the comments in patchset 4",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 53
+      },
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_151a716e",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-05-12T11:36:11Z",
+      "side": 1,
+      "message": "I still have the same question and comment as in patch set 4",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 79
+      },
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_f526e5b9",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-05-12T11:36:11Z",
+      "side": 1,
+      "message": "I still have the same comment as in patch set 4",
+      "range": {
+        "startLine": 165,
+        "startChar": 61,
+        "endLine": 168,
+        "endChar": 66
+      },
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_d5876960",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-05-12T11:36:11Z",
+      "side": 1,
+      "message": "I still have the question regarding fencing as I stated in patch set 4",
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_d5ee4922",
+        "filename": "requirements/04-gaps.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-05-12T11:36:11Z",
+      "side": 1,
+      "message": "It think this is not just a simple state change. \nFirst the physical resource needs to go to a state like \u0027going to maintenance\u0027 this state should not allow new virtual resources to be allocated to the given physical resource. At the same time VIM shall notify the owner of the affected virtual resources. Then those owners should execute some actions (e.g. switching to STBY and or migrating VMs) then when all the affected owners are confirmed the maintenance notification (probably after all the actions are performed successfully) then the physical resource shall go to \u0027in maintenance\u0027 state.\nThis is the happy case but then we have to consider some edge cases. What if an affected virtual resource owner want to reject the maintenance notification (he cannot take the maintenance now) or want to delay it. Do we need to support that?\nWhat if an affected virtual resource owner takes too long to confirm the maintenance notification? Do we have a timeout and the VIM shall put the resource back to \u0027enabled\u0027 from \u0027going to maintenance\u0027 after such a timeout? What if the Administrator change his mind while the resource is still in \u0027going to maintenance\u0027 state, can he cancel the maintenance mode and issue a command that puts the resource back to \u0027enabled\u0027 state?",
+      "range": {
+        "startLine": 73,
+        "startChar": 8,
+        "endLine": 74,
+        "endChar": 43
+      },
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_95468122",
+        "filename": "requirements/04-gaps.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-05-12T11:36:11Z",
+      "side": 1,
+      "message": "It seems like it is a dead bp as it was last touched more than a year ago. Also this bp has relationship to the bp proposed by Tommy https://review.openstack.org/#/c/169836/17/specs/liberty/approved/mark-host-down.rst \nHowever from the spec it seems that Tommy\u0027s bp would put the fencing action outside of nova and only notify nova via API that the host is not fenced and it is safe to assume that the host is down.",
+      "range": {
+        "startLine": 233,
+        "startChar": 4,
+        "endLine": 233,
+        "endChar": 55
+      },
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_b5585dfb",
+        "filename": "requirements/04-gaps.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-05-12T11:36:11Z",
+      "side": 1,
+      "message": "This contradicts with the requirements where your state that VIM shouldn\u0027t do automatic recovery action but should notify the owner of the virtual resource and the owner will issue actions.\n\nAlso if a host is put to maintenance VMs on that host still can be migrated instead of evacuated.",
+      "range": {
+        "startLine": 244,
+        "startChar": 5,
+        "endLine": 245,
+        "endChar": 76
+      },
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_f51265b3",
+        "filename": "requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-05-12T11:36:11Z",
+      "side": 1,
+      "message": "This mapping already exists in multiple modules in OpenStack. Do you suggest to create a yet another mapping and duplicate the data or you suggest to have a unified interface and use Nova\u0027s, Neutron\u0027s etc. mapping?",
+      "range": {
+        "startLine": 57,
+        "startChar": 35,
+        "endLine": 58,
+        "endChar": 44
+      },
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_d51769a2",
+        "filename": "requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-05-12T11:36:11Z",
+      "side": 1,
+      "message": "What does \u0027poisoning\u0027 mean here?",
+      "range": {
+        "startLine": 60,
+        "startChar": 61,
+        "endLine": 62,
+        "endChar": 67
+      },
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_b50cdd95",
+        "filename": "requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-05-12T11:36:11Z",
+      "side": 1,
+      "message": "With the current numbering there is no Section 5.5",
+      "range": {
+        "startLine": 91,
+        "startChar": 12,
+        "endLine": 91,
+        "endChar": 25
+      },
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_75265518",
+        "filename": "requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-05-12T11:36:11Z",
+      "side": 1,
+      "message": "I think the time between 3 and 7-8 is only one part of the time need to be considered for fast reaction. To really have fast reaction the time between the failure and failure notification (3) needs to be small as well.",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 28
+      },
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_55235905",
+        "filename": "requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-05-12T11:36:11Z",
+      "side": 1,
+      "message": "Hm, I think I the problem with chapter numbering is that you refer to the number in the file name but we have a file with number 00 and the html document will number the chapters from 1 instead of 0 and it makes the numbering wrong in the html.",
+      "range": {
+        "startLine": 147,
+        "startChar": 36,
+        "endLine": 147,
+        "endChar": 47
+      },
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_3520cdf6",
+        "filename": "requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-05-12T11:36:11Z",
+      "side": 1,
+      "message": "If the resource map is owned by the controller then this update can be done but if the resource map owned by another component then proper interfaces are needed. See my related comment in L58",
+      "range": {
+        "startLine": 157,
+        "startChar": 6,
+        "endLine": 158,
+        "endChar": 16
+      },
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_151dd1bd",
+        "filename": "requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-05-12T11:36:11Z",
+      "side": 1,
+      "message": "This means VIM needs to wait for the Consumers\u0027 recovery actions to be finished. How does VIM knows that what are the actions it needs to wait for?\nHow long does it take? Do we need a timeout? Do we want to allow the consumer to delay a maintenance request? Do we want to allow that the Administrator cancels a maintenance request if it takes too long?",
+      "range": {
+        "startLine": 188,
+        "startChar": 3,
+        "endLine": 189,
+        "endChar": 76
+      },
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_f57945fd",
+        "filename": "requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-05-12T11:36:11Z",
+      "side": 1,
+      "message": "This contradicts with the requirement that VIM should not take automatic recovery action but ask the consumer instead.",
+      "range": {
+        "startLine": 302,
+        "startChar": 42,
+        "endLine": 304,
+        "endChar": 43
+      },
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_b583bdcb",
+        "filename": "requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-05-12T11:36:11Z",
+      "side": 1,
+      "message": "I think we need to differentiate between \u0027going to maintenance\u0027 and \u0027in maintenance\u0027 state to be able to express that the maintenance mode has already been requested but hasn\u0027t been confirmed yet as Consumers still execute actions to empty the resource",
+      "range": {
+        "startLine": 330,
+        "startChar": 2,
+        "endLine": 331,
+        "endChar": 33
+      },
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_9588c1e8",
+        "filename": "requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-05-12T11:36:11Z",
+      "side": 1,
+      "message": "Does zone maps to Nova\u0027s availability zone concept?",
+      "range": {
+        "startLine": 361,
+        "startChar": 2,
+        "endLine": 363,
+        "endChar": 68
+      },
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_756d3532",
+        "filename": "requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-05-12T11:36:11Z",
+      "side": 1,
+      "message": "These are too specific information for a generic PhysicalResourceInfoClass. HypervisorVersion only valid for a compute host and not for any other type of physical resource so I think HypervisorVersion should be in a compute host specific class instead of this generic class. Also FirmwareVersion is quite specific for some physical resource and not valid for others.",
+      "range": {
+        "startLine": 419,
+        "startChar": 0,
+        "endLine": 420,
+        "endChar": 37
+      },
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_556a391b",
+        "filename": "requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-05-12T11:36:11Z",
+      "side": 1,
+      "message": "Do we want to represent physical containment of the resources. E.g a cpu is always contained by a compute host. This would allow better fault aggregation, e.g. if we know that the compute host is unavailable we know that all the cpus are unavailable. Also this makes querying possible not only on zone level but on other hierarchy level, e.g. I\u0027d like to see all the faults related to a given compute host.",
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_3577ad04",
+        "filename": "requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-05-12T11:36:11Z",
+      "side": 1,
+      "message": "Will a Consumer can subscribe to resources he owns?",
+      "range": {
+        "startLine": 443,
+        "startChar": 4,
+        "endLine": 443,
+        "endChar": 30
+      },
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_d5652946",
+        "filename": "requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-05-12T11:36:11Z",
+      "side": 1,
+      "message": "Don\u0027t we need some information, a clientId, a notification endpoint or anything similar to identify the Consumer and also to know where the VIM should send the notification message for this subscription?",
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_1574b1fb",
+        "filename": "requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-05-12T11:36:11Z",
+      "side": 1,
+      "message": "Where are the delete and update operations specified?",
+      "range": {
+        "startLine": 486,
+        "startChar": 75,
+        "endLine": 487,
+        "endChar": 50
+      },
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_f5602537",
+        "filename": "requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-05-12T11:36:11Z",
+      "side": 1,
+      "message": "Does it mean if I send a subscription to all faults with MinSeverity\u003d2 then in the SubscribeResponse I will get back all the existing resources that has a fault with severity \u003e\u003d 2? Or I got back all the existing resource that _can have_ fault with severity \u003e\u003d 2 in the future?",
+      "range": {
+        "startLine": 489,
+        "startChar": 52,
+        "endLine": 490,
+        "endChar": 48
+      },
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_955fa172",
+        "filename": "requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-05-12T11:36:11Z",
+      "side": 1,
+      "message": "I guess we need to handle error cases. E.g. the SubscribeFilter VIM received contains invalid information or the Consumer wants to subscribe for resources she doesn\u0027t own.",
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_b55a9d81",
+        "filename": "requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-05-12T11:36:11Z",
+      "side": 1,
+      "message": "It would be good to include the SubscriptionID as well so that the Consumer will know why he gets this notification",
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_55511961",
+        "filename": "requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-05-12T11:36:11Z",
+      "side": 1,
+      "message": "Can Consumer query every resources or only her own resources?",
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_5586b9ba",
+        "filename": "requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-05-12T11:36:11Z",
+      "side": 1,
+      "message": "Most probably we need a parameter that describes where to send the notification. See similar comment above",
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_35932dfc",
+        "filename": "requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-05-12T11:36:11Z",
+      "side": 1,
+      "message": "We might need some confirmation from the Consumer where the Consumer can tell the VIM that the necessary action has been done successfully / unsuccessfully",
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_159031eb",
+        "filename": "requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-05-12T11:36:11Z",
+      "side": 1,
+      "message": "This seems over-specific if we talk about a generic physical resource",
+      "range": {
+        "startLine": 624,
+        "startChar": 65,
+        "endLine": 625,
+        "endChar": 74
+      },
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_f5bca56e",
+        "filename": "requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-05-12T11:36:11Z",
+      "side": 1,
+      "message": "OpenStack uses Notification as a terminology here",
+      "range": {
+        "startLine": 656,
+        "startChar": 3,
+        "endLine": 656,
+        "endChar": 8
+      },
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_d5c1a9e5",
+        "filename": "requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-05-12T11:36:11Z",
+      "side": 1,
+      "message": "Where is this BP defined? \nNova already has events (notifications) regarding instance creation deletion, and periodic audit events (notifications) about the existing instances. See instance_usage_audit and notify_on_state_change config options in nova.conf",
+      "range": {
+        "startLine": 672,
+        "startChar": 1,
+        "endLine": 676,
+        "endChar": 46
+      },
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_b5b61d89",
+        "filename": "requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-05-12T11:36:11Z",
+      "side": 1,
+      "message": "What is the difference between this and the bp above I see a lot of overlapping.",
+      "range": {
+        "startLine": 735,
+        "startChar": 0,
+        "endLine": 735,
+        "endChar": 53
+      },
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_95bb2172",
+        "filename": "requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 822,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-05-12T11:36:11Z",
+      "side": 1,
+      "message": "Is this BP superseded by hte spec https://review.openstack.org/#/c/169836/ and the bp https://blueprints.launchpad.net/nova/+spec/mark-host-down\n?",
+      "range": {
+        "startLine": 822,
+        "startChar": 0,
+        "endLine": 822,
+        "endChar": 82
+      },
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
