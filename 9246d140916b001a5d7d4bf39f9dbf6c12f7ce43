@@ -887,6 +887,54 @@
     },
     {
       "key": {
+        "uuid": "3a045101_1546f1bf",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2015-05-12T12:19:31Z",
+      "side": 1,
+      "message": "Agree, \"Endpoint\" is better.\nAlso, we can move this note to line 164, since it related to the \"flexibility\".",
+      "parentUuid": "3a045101_77e2e004",
+      "range": {
+        "startLine": 155,
+        "startChar": 44,
+        "endLine": 155,
+        "endChar": 60
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_3549edd0",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2015-05-12T12:19:31Z",
+      "side": 1,
+      "message": "We should delete \"individual\" that leads mis-understanding.\n\nThis is just intended to make sure that VIM accept subscribe request from the owner of the resource, and not intended to limit the number of notification URLs to be registered.",
+      "parentUuid": "3a045101_57e7e412",
+      "range": {
+        "startLine": 155,
+        "startChar": 15,
+        "endLine": 155,
+        "endChar": 43
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a045101_37e4580c",
         "filename": "requirements/03-architecture.rst",
         "patchSetId": 4
@@ -898,6 +946,30 @@
       "writtenOn": "2015-04-28T16:12:13Z",
       "side": 1,
       "message": "This requirement needs to be defined more precisely as the subscription API cannot be developed without knowing what level of flexibility needs to be supported towards the consumer of the API",
+      "range": {
+        "startLine": 160,
+        "startChar": 61,
+        "endLine": 163,
+        "endChar": 66
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_b5129d60",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2015-05-12T12:19:31Z",
+      "side": 1,
+      "message": "OK.\n\nHere is the new description:\n\nNotifications will be send out along with the configuration by the consumer. The configuration includes endpoint(s) information of how and where (e.g. URL), so that various and multiple receiver functions can consume the notification message. Also, the configuration have conditions of notification, so that consumer can set policies like whether it need to receive fault notification or not depends on the constraints.",
+      "parentUuid": "3a045101_37e4580c",
       "range": {
         "startLine": 160,
         "startChar": 61,
