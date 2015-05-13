@@ -95,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "3a045101_4b105c4e",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1113
+      },
+      "writtenOn": "2015-05-13T07:46:14Z",
+      "side": 1,
+      "message": "IMO the notifications must have a common format/schema and the consumer shall be able to define a filter for the notifications it wants to receive. \nI suggest to change to \nNotifications will be sent according to filter settings defined by each consumer. The settings include e.g. resource identity, alarm severity and fault type.",
+      "parentUuid": "3a045101_f526e5b9",
+      "range": {
+        "startLine": 165,
+        "startChar": 61,
+        "endLine": 168,
+        "endChar": 66
+      },
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a045101_d5876960",
         "filename": "requirements/03-architecture.rst",
         "patchSetId": 6
