@@ -830,6 +830,30 @@
       "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_2bf190cd",
+        "filename": "requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 822,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2015-05-13T11:21:03Z",
+      "side": 1,
+      "message": "yes, this whole \"Report host fault to update server state immediately\" should be replaced from latest version of https://review.openstack.org/#/c/169836/",
+      "parentUuid": "3a045101_95bb2172",
+      "range": {
+        "startLine": 822,
+        "startChar": 0,
+        "endLine": 822,
+        "endChar": 82
+      },
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
