@@ -158,6 +158,30 @@
     },
     {
       "key": {
+        "uuid": "3a045101_b83bb4ea",
+        "filename": "requirements/04-gaps.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2015-05-13T06:48:56Z",
+      "side": 1,
+      "message": "Yes, this section is outdated, need to work it out. Gap is real, but implementation will not be in Nova, so should be removed from here. Might be a case where \"fencing\" can be done with Nova API to put host down, but mostly this fencing means that Doctor will have the capability of fencing by other means.\n\nReal gaps in Nova being worked are for having external system like Doctor the capability of marking nova-compute down and perhaps power_State of VMs to corresponding state (and maybe APIs to change states of all VMs belonging to certain host by one API call). Otherwise there is API to reset state of single VM. Work will have Nova states correctly and also enables faster correlative actions. I will write these gaps.",
+      "parentUuid": "3a045101_95468122",
+      "range": {
+        "startLine": 233,
+        "startChar": 4,
+        "endLine": 233,
+        "endChar": 55
+      },
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a045101_b5585dfb",
         "filename": "requirements/04-gaps.rst",
         "patchSetId": 6
