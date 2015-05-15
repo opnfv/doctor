@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a045101_8e1432f6",
+        "filename": "Makefile",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2015-05-15T07:52:29Z",
+      "side": 1,
+      "message": "Oops! It should have been just \u0027rst2html\u0027 -- in my environment it\u0027s \u0027rst2html.py\u0027. It will be fixed in a next pathset once https://gerrit.opnfv.org/gerrit/#/c/551/ gets merged.",
+      "revId": "b54dcf062b9447fb7b89c3613a65cc47fdcd54fc",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
