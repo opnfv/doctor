@@ -30,5 +30,5 @@ latex_elements = {
 
 project = u'Doctor: Fault Management and Maintenance'
 copyright = u'%s, OPNFV' % datetime.date.today().year
-version = u'1.0.0'
-release = u'1.0.0'
+version = u'0.9.0'
+release = u'0.9.0'
