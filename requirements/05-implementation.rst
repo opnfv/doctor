@@ -1,5 +1,5 @@
-Detailed implementation plan
-============================
+Detailed architecture and interface specification
+=================================================
 
 This section describes a detailed implementation plan, which is based on the
 high level architecture introduced in Section 3. Section 5.1 describes the
