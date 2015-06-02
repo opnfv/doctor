@@ -18,4 +18,4 @@ pdf:
 	sphinx-build -b latex -c etc -d $(BUILDDIR)/doctrees \
 	    requirements $(BUILDDIR)/requirements/latex
 	$(MAKE) -C $(BUILDDIR)/requirements/latex \
-	    LATEXOPTS='--interaction=nonstopmode' all-pdf
+	    LATEXOPTS='--interaction=batchmode' all-pdf
