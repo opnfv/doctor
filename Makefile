@@ -1,21 +1,26 @@
-BUILDDIR = build
+BUILDDIR := build
 DESIGN_DOCS = $(wildcard design_docs/*.rst)
 
-.PHONY: clean html pdf all
+.PHONY: clean html pdf bps all
 
-all: html pdf
+all: bps html pdf
 
 clean:
 	rm -rf $(BUILDDIR)/*
 
-html: $(DESIGN_DOCS)
-	mkdir -p build/design_docs
-	rst2html.py $^ $(BUILDDIR)/$(^:.rst=.html)
+bps: $(DESIGN_DOCS) | $(BUILDDIR)
+	mkdir -p $(BUILDDIR)/design_docs
+	$(foreach f,$(DESIGN_DOCS),rst2html.py $(f) $(BUILDDIR)/$(f:.rst=.html);)
+
+html: | $(BUILDDIR)
 	sphinx-build -b html -c etc -d $(BUILDDIR)/doctrees \
 	    requirements $(BUILDDIR)/requirements/html
 
-pdf:
+pdf: | $(BUILDDIR)
 	sphinx-build -b latex -c etc -d $(BUILDDIR)/doctrees \
 	    requirements $(BUILDDIR)/requirements/latex
 	$(MAKE) -C $(BUILDDIR)/requirements/latex \
 	    LATEXOPTS='--interaction=nonstopmode' all-pdf
+
+$(BUILDDIR):
+	mkdir -p $(BUILDDIR)
