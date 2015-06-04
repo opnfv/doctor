@@ -24,12 +24,12 @@ Doctor: Fault Management and Maintenance
            platform.
 
            This deliverable is introducing the use cases and operational
-           scenarios for Fault Management considered in the Doctor project. From
-           the general features, a high level architecture describing logical
-           building blocks and interfaces is derived. Finally, a detailed
-           implementation is introduced, based on available open source
-           components, and a related gap analysis is done as part of this
-           project. The implementation plan finally discusses an initial
+           scenarios for Fault Management considered in the Doctor project.
+           From the general features, a high level architecture describing
+           logical building blocks and interfaces is derived. Finally,
+           a detailed implementation is introduced, based on available open
+           source components, and a related gap analysis is done as part of
+           this project. The implementation plan finally discusses an initial
            realization for a NFVI fault management and maintenance solution in
            open source software.
 
