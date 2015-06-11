@@ -11,16 +11,15 @@ IRC: Server:freenode.net Channel:#opnfv-doctor
 Repository: doctor
 
 Committers:
-khan@nttdocomo.com
-Carlos.Goncalves@neclab.eu
-hephaex@gmail.com
-plee@clearpathnet.com
-r-mibu@cq.jp.nec.com
-Serge.Manning@sprint.com
-tomi.juvonen@nsn.com
-tommy.lindgren@ericsson.com
-ulrich.kleber@huawei.com
-
+Ashiq Khan (NTT DOCOMO, khan@nttdocomo.com)
+Carlos Goncalves (NEC, Carlos.Goncalves@neclab.eu)
+Mario Cho (hephaex@gmail.com)
+Peter Lee (ClearPath Networks, plee@clearpathnet.com)
+Ryota Mibu (NEC, r-mibu@cq.jp.nec.com)
+Serge Manning (Sprint, Serge.Manning@sprint.com)
+Tomi Juvonen (Nokia, tomi.juvonen@nokia.com)
+Tommy Lindgren (Ericsson, tommy.lindgren@ericsson.com)
+Uli Kleber (Huawei, ulrich.kleber@huawei.com)
 
 Link to TSC approval of the project: http://meetbot.opnfv.org/meetings/opnfv-meeting/2014/opnfv-meeting.2014-12-02-14.58.html
 Link(s) to approval of committer update:
