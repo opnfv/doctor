@@ -127,9 +127,12 @@ affected by failures on the physical resources under them. Unavailability of a
 virtualized resource is determined by referring to the mapping of physical and
 virtualized resources.
 
-The relation from physical resources to virtualized resources shall be
-configurable, as the cause of unavailability of virtualized resources can be
-different in technologies and policies of deployment.
+VIM shall allow configuration of fault correlation between physical and
+virtual resources. VIM shall support correlating faults:
+
+* between a physical resource and another physical resource
+* between a physical resource and a virtual resource
+* between a virtual resource and another virtual resource
 
 Failure aggregation is also required in this feature, e.g., a user may request
 to be only notified if failures on more than two standby VMs in an (N+M)
