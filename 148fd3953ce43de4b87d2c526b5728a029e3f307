@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a014df3_1eaaa9d4",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-06-16T13:56:24Z",
+      "side": 1,
+      "message": "I copied the suggested new content from Ryota from the original requirement review, so that we can discuss it.",
+      "range": {
+        "startLine": 167,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 47
+      },
+      "revId": "148fd3953ce43de4b87d2c526b5728a029e3f307",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
