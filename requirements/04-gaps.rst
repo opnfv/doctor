@@ -95,6 +95,10 @@ Maintenance Notification
 
     - VIM user cannot receive maintenance notifications.
 
+* Related blueprints
+
+  + https://blueprints.launchpad.net/nova/+spec/service-status-notification
+
 VIM Southbound interface
 ------------------------
 
