@@ -16,6 +16,24 @@
       "revId": "b54dcf062b9447fb7b89c3613a65cc47fdcd54fc",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a014df3_bef055ca",
+        "filename": "Makefile",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2015-06-17T08:03:35Z",
+      "side": 1,
+      "message": "We change to use sphinx-build command instead of rst2html in later change.\nNote Makefile has been moved to doctor/ dir.",
+      "parentUuid": "3a045101_8e1432f6",
+      "revId": "b54dcf062b9447fb7b89c3613a65cc47fdcd54fc",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
