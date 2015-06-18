@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5a202591_95a9047e",
+        "filename": "requirements/02-use_cases.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2015-06-18T12:08:16Z",
+      "side": 1,
+      "message": "Done in Patch set 6",
+      "parentUuid": "3a045101_17203cf6",
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a045101_d7d3f436",
         "filename": "requirements/02-use_cases.rst",
         "patchSetId": 4
@@ -183,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "5a202591_55bb6cc4",
+        "filename": "requirements/02-use_cases.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2015-06-18T12:08:16Z",
+      "side": 1,
+      "message": "I agree in the generic point, but I\u0027m not sure we should add such sentences expressly. (The first section might be good to add such lines.)",
+      "parentUuid": "3a045101_9799ec70",
+      "range": {
+        "startLine": 108,
+        "startChar": 57,
+        "endLine": 108,
+        "endChar": 61
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a045101_779e6058",
         "filename": "requirements/02-use_cases.rst",
         "patchSetId": 4
@@ -265,6 +307,30 @@
       "side": 1,
       "message": "Done. Section number will be actived throughout the whole document.",
       "parentUuid": "3a045101_37c1f880",
+      "range": {
+        "startLine": 113,
+        "startChar": 43,
+        "endLine": 113,
+        "endChar": 55
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a202591_b54880cd",
+        "filename": "requirements/02-use_cases.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2015-06-18T12:08:16Z",
+      "side": 1,
+      "message": "https://gerrit.opnfv.org/gerrit/863",
+      "parentUuid": "3a045101_773ae037",
       "range": {
         "startLine": 113,
         "startChar": 43,
@@ -406,6 +472,30 @@
       "side": 1,
       "message": "Will be added",
       "parentUuid": "3a045101_f7ba7009",
+      "range": {
+        "startLine": 122,
+        "startChar": 3,
+        "endLine": 122,
+        "endChar": 16
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a202591_f525d80a",
+        "filename": "requirements/02-use_cases.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2015-06-18T12:08:16Z",
+      "side": 1,
+      "message": "https://gerrit.opnfv.org/gerrit/863",
+      "parentUuid": "3a045101_f7d710ec",
       "range": {
         "startLine": 122,
         "startChar": 3,
@@ -1460,6 +1550,30 @@
     },
     {
       "key": {
+        "uuid": "5a202591_d5509c60",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2015-06-18T12:08:16Z",
+      "side": 1,
+      "message": "Open?",
+      "parentUuid": "3a045101_b7c188e6",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 220,
+        "endChar": 33
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a045101_37cb3874",
         "filename": "requirements/03-architecture.rst",
         "patchSetId": 4
@@ -1536,6 +1650,24 @@
       "side": 1,
       "message": "Not that I know of. Do you think it is relevant to set a max time here? Under which specific(s) circumstance(s)?",
       "parentUuid": "3a045101_17c83c73",
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a202591_f553986a",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2015-06-18T12:08:16Z",
+      "side": 1,
+      "message": "Open?",
+      "parentUuid": "3a045101_b5205d9c",
       "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
@@ -1624,6 +1756,30 @@
       "side": 1,
       "message": "Good point. What about \"maintenance\" and \"empty\"?",
       "parentUuid": "3a045101_b7a628c0",
+      "range": {
+        "startLine": 233,
+        "startChar": 48,
+        "endLine": 233,
+        "endChar": 59
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a202591_155f3474",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2015-06-18T12:08:16Z",
+      "side": 1,
+      "message": "Open?",
+      "parentUuid": "3a045101_17aa7c19",
       "range": {
         "startLine": 233,
         "startChar": 48,
