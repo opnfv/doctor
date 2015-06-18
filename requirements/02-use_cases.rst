@@ -43,6 +43,8 @@ operation.
 Faults
 ------
 
+.. _uc-fault1:
+
 Fault management using ACT-STBY configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -115,22 +117,22 @@ ACT-STBY case), or if more active instances are needed as well.
 Preventive actions based on fault prediction
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The fault management scenario explained in Clause 2.1.1 can also be performed
-based on fault prediction. In such cases, in VIM, there is an intelligent fault
-prediction module which, based on its NFVI monitoring information, can predict
-an imminent fault in the elements of NFVI. A simple example is raising
-temperature of a Hardware Server which might trigger a pre-emptive recovery
-action. The requirements of such fault prediction in the VIM are investigated in
-the OPNFV project "Data Collection for Failure Prediction" [PRED]_.
+The fault management scenario explained in :ref:`uc-fault1` can also be
+performed based on fault prediction. In such cases, in VIM, there is an
+intelligent fault prediction module which, based on its NFVI monitoring
+information, can predict an imminent fault in the elements of NFVI.
+A simple example is raising temperature of a Hardware Server which might
+trigger a pre-emptive recovery action. The requirements of such fault
+prediction in the VIM are investigated in the OPNFV project "Data Collection
+for Failure Prediction" [PRED]_.
 
-This use case is very similar to "Fault management using ACT-STBY configuration"
-in Clause 2.1.1. Instead of a fault detection (Step 1 "Fault Notification in"
-:num:`Figure #figure1`), the trigger comes from a fault prediction module in the
-VIM, or from a third party module which notifies the VIM about an imminent
-fault. From Step 2~5, the work flow is the same as in the "Fault management
-using ACT-STBY configuration" use case, except in this case, the Consumer of a
-VM/VNF switches to STBY configuration based on a predicted fault, rather than an
-occurred fault.
+This use case is very similar to :ref:`uc-fault1`. Instead of a fault
+detection (Step 1 "Fault Notification in" :num:`Figure #figure1`), the trigger
+comes from a fault prediction module in the VIM, or from a third party module
+which notifies the VIM about an imminent fault. From Step 2~5, the work flow is
+the same as in the "Fault management using ACT-STBY configuration" use case,
+except in this case, the Consumer of a VM/VNF switches to STBY configuration
+based on a predicted fault, rather than an occurred fault.
 
 NVFI Maintenance
 ----------------
