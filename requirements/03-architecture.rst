@@ -170,9 +170,9 @@ consumer-side implementation could have different schema, location, and policies
 Recovery Action
 ^^^^^^^^^^^^^^^
 
-In the basic "Fault management using ACT-STBY configuration" use case, no
-automatic actions will be taken by the VIM, but all recovery actions executed by
-the VIM and the NFVI will be instructed and coordinated by the Consumer.
+In the basic :ref:`uc-fault1` use case, no automatic actions will be taken by
+the VIM, but all recovery actions executed by the VIM and the NFVI will be
+instructed and coordinated by the Consumer.
 
 In a more advanced use case, the VIM shall be able to recover the failed virtual 
 resources according to a pre-defined behavior for that resource. In principle

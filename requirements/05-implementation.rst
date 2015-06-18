@@ -12,6 +12,8 @@ the related northbound interface and the related information elements. Finally,
 Section 5.6 provides a first set of blueprints to address selected gaps required
 for the realization functionalities of the Doctor project.
 
+.. _impl_fb:
+
 Functional Blocks
 -----------------
 
@@ -88,7 +90,7 @@ to users with relevant ownership, whereas the latter is related to raw devices
 or small entities which should be handled with an administrator privilege.
 
 The northbound interface between the Notifier and the Consumer/Administrator is
-specified in Section 5.5.
+specified in :ref:`impl_nbi`.
 
 Sequence
 --------
@@ -144,7 +146,7 @@ shall be less than 1 second.
    Fault management scenario
 
 :num:`Figure #figure8` shows a more detailed message flow (Steps 4 to 6) between
-the 4 building blocks introduced in Section 5.1.
+the 4 building blocks introduced in :ref:`impl_fb`.
 
 4. The Monitor observed a fault in the NFVI and reports the raw fault to the
    Inspector.
@@ -427,6 +429,8 @@ and :num:`Figure #figure14`):
   - PhysicalResourceID [1] (Identifier)
   - PhysicalResourceState [1] (String)
   - ZoneID [0..1] (Identifier)
+
+.. _impl_nbi:
 
 Detailed northbound interface specification
 -------------------------------------------
