@@ -794,6 +794,30 @@
     },
     {
       "key": {
+        "uuid": "5a202591_f56718e9",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2015-06-18T10:01:31Z",
+      "side": 1,
+      "message": "https://gerrit.opnfv.org/gerrit/#/c/842",
+      "parentUuid": "3a045101_174efcc1",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 12
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a045101_97dd6c45",
         "filename": "requirements/03-architecture.rst",
         "patchSetId": 4
@@ -935,6 +959,30 @@
     },
     {
       "key": {
+        "uuid": "5a202591_b561a0d5",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2015-06-18T10:01:31Z",
+      "side": 1,
+      "message": "https://gerrit.opnfv.org/gerrit/#/c/841",
+      "parentUuid": "3a045101_3549edd0",
+      "range": {
+        "startLine": 155,
+        "startChar": 15,
+        "endLine": 155,
+        "endChar": 43
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a045101_37e4580c",
         "filename": "requirements/03-architecture.rst",
         "patchSetId": 4
@@ -970,6 +1018,30 @@
       "side": 1,
       "message": "OK.\n\nHere is the new description:\n\nNotifications will be send out along with the configuration by the consumer. The configuration includes endpoint(s) information of how and where (e.g. URL), so that various and multiple receiver functions can consume the notification message. Also, the configuration have conditions of notification, so that consumer can set policies like whether it need to receive fault notification or not depends on the constraints.",
       "parentUuid": "3a045101_37e4580c",
+      "range": {
+        "startLine": 160,
+        "startChar": 61,
+        "endLine": 163,
+        "endChar": 66
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a202591_955ea411",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2015-06-18T10:01:31Z",
+      "side": 1,
+      "message": "https://gerrit.opnfv.org/gerrit/#/c/841",
+      "parentUuid": "3a045101_b5129d60",
       "range": {
         "startLine": 160,
         "startChar": 61,
