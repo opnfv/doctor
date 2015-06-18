@@ -437,6 +437,30 @@
     },
     {
       "key": {
+        "uuid": "3a045101_a31dca75",
+        "filename": "requirements/02-use_cases.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-06-18T13:33:43Z",
+      "side": 1,
+      "message": "OK. Thanks.",
+      "parentUuid": "3a045101_f745d0b3",
+      "range": {
+        "startLine": 118,
+        "startChar": 8,
+        "endLine": 119,
+        "endChar": 63
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a045101_f7ba7009",
         "filename": "requirements/02-use_cases.rst",
         "patchSetId": 4
@@ -1574,6 +1598,30 @@
     },
     {
       "key": {
+        "uuid": "5a202591_55680cf5",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-06-18T13:33:43Z",
+      "side": 1,
+      "message": "I will propose this as an Improvement in JIRA",
+      "parentUuid": "5a202591_d5509c60",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 220,
+        "endChar": 33
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a045101_37cb3874",
         "filename": "requirements/03-architecture.rst",
         "patchSetId": 4
@@ -1667,6 +1715,42 @@
       "writtenOn": "2015-06-18T12:08:16Z",
       "side": 1,
       "message": "Open?",
+      "parentUuid": "3a045101_b5205d9c",
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a202591_356d9005",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-06-18T13:33:43Z",
+      "side": 1,
+      "message": "I will propose an improvement in JIRA for it.",
+      "parentUuid": "5a202591_f553986a",
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_757775d5",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-06-18T13:33:43Z",
+      "side": 1,
+      "message": "As far as I understand VIM should wait for all the affected Consumers to take recovery actions before the resource can go to maintenance. This means VIM waits for an external entity (consumer) to do actions. Therefore it seems logical to prepare for the case when the consumer does not respond or the response take too much time.",
       "parentUuid": "3a045101_b5205d9c",
       "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
@@ -1780,6 +1864,54 @@
       "side": 1,
       "message": "Open?",
       "parentUuid": "3a045101_17aa7c19",
+      "range": {
+        "startLine": 233,
+        "startChar": 48,
+        "endLine": 233,
+        "endChar": 59
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_b57cdd73",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-06-18T13:33:43Z",
+      "side": 1,
+      "message": "I think \"empty\" is misleading as 1) it does not suggest that the resource is ready for maintenance action (something can be empty just by not having virtual resource allocated to it) 2) a resource that is ready to maintenance action might not be empty as VMs with no-action policy might still running there. \nTherefore I suggest to use something like \"going to maintenance\" \"in maintenance\".",
+      "parentUuid": "3a045101_17aa7c19",
+      "range": {
+        "startLine": 233,
+        "startChar": 48,
+        "endLine": 233,
+        "endChar": 59
+      },
+      "revId": "9246d140916b001a5d7d4bf39f9dbf6c12f7ce43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a202591_f576f8d7",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-06-18T13:33:43Z",
+      "side": 1,
+      "message": "I will propose an improvement in JIRA for it",
+      "parentUuid": "5a202591_155f3474",
       "range": {
         "startLine": 233,
         "startChar": 48,
