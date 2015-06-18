@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5a202591_1573b4b2",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2015-06-18T10:03:16Z",
+      "side": 1,
+      "message": "https://gerrit.opnfv.org/gerrit/#/c/842",
+      "parentUuid": "3a045101_d54f6991",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 53
+      },
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a045101_151a716e",
         "filename": "requirements/03-architecture.rst",
         "patchSetId": 6
@@ -60,6 +84,30 @@
       "writtenOn": "2015-05-12T11:36:11Z",
       "side": 1,
       "message": "I still have the same question and comment as in patch set 4",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 79
+      },
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a202591_759b08ca",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2015-06-18T10:03:16Z",
+      "side": 1,
+      "message": "https://gerrit.opnfv.org/gerrit/#/c/841",
+      "parentUuid": "3a045101_151a716e",
       "range": {
         "startLine": 160,
         "startChar": 0,
@@ -107,6 +155,30 @@
       "side": 1,
       "message": "IMO the notifications must have a common format/schema and the consumer shall be able to define a filter for the notifications it wants to receive. \nI suggest to change to \nNotifications will be sent according to filter settings defined by each consumer. The settings include e.g. resource identity, alarm severity and fault type.",
       "parentUuid": "3a045101_f526e5b9",
+      "range": {
+        "startLine": 165,
+        "startChar": 61,
+        "endLine": 168,
+        "endChar": 66
+      },
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a202591_55a00cf4",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2015-06-18T10:03:16Z",
+      "side": 1,
+      "message": "https://gerrit.opnfv.org/gerrit/#/c/841",
+      "parentUuid": "3a045101_4b105c4e",
       "range": {
         "startLine": 165,
         "startChar": 61,
