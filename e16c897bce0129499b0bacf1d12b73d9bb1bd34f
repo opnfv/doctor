@@ -208,6 +208,24 @@
     },
     {
       "key": {
+        "uuid": "5a202591_35d110ce",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2015-06-18T12:47:53Z",
+      "side": 1,
+      "message": "Open.",
+      "parentUuid": "3a045101_d5876960",
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a045101_d5ee4922",
         "filename": "requirements/04-gaps.rst",
         "patchSetId": 6
@@ -418,6 +436,30 @@
     },
     {
       "key": {
+        "uuid": "5a202591_55f36c73",
+        "filename": "requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2015-06-18T12:47:53Z",
+      "side": 1,
+      "message": "https://gerrit.opnfv.org/gerrit/863",
+      "parentUuid": "3a045101_9540c157",
+      "range": {
+        "startLine": 91,
+        "startChar": 12,
+        "endLine": 91,
+        "endChar": 25
+      },
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a045101_75265518",
         "filename": "requirements/05-implementation.rst",
         "patchSetId": 6
@@ -452,6 +494,30 @@
       "writtenOn": "2015-05-12T11:36:11Z",
       "side": 1,
       "message": "Hm, I think I the problem with chapter numbering is that you refer to the number in the file name but we have a file with number 00 and the html document will number the chapters from 1 instead of 0 and it makes the numbering wrong in the html.",
+      "range": {
+        "startLine": 147,
+        "startChar": 36,
+        "endLine": 147,
+        "endChar": 47
+      },
+      "revId": "e16c897bce0129499b0bacf1d12b73d9bb1bd34f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a202591_15a4d455",
+        "filename": "requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2015-06-18T12:47:53Z",
+      "side": 1,
+      "message": "https://gerrit.opnfv.org/gerrit/863",
+      "parentUuid": "3a045101_55235905",
       "range": {
         "startLine": 147,
         "startChar": 36,
