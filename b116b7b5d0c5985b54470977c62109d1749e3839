@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a202591_f5da78e8",
+        "filename": "requirements/02-use_cases.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-06-18T12:28:07Z",
+      "side": 1,
+      "message": "this should be also replaced with :ref: `uc-fault1`",
+      "range": {
+        "startLine": 133,
+        "startChar": 19,
+        "endLine": 133,
+        "endChar": 66
+      },
+      "revId": "b116b7b5d0c5985b54470977c62109d1749e3839",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
