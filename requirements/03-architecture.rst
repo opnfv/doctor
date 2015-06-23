@@ -69,12 +69,13 @@ General Features and Requirements
 The following features are required for the VIM to achieve high availability of
 applications (e.g., MME, S/P-GW) and the Network Services:
 
-* Monitoring: Monitor physical and virtual resources.
-* Detection: Detect unavailability of physical resources.
-* Correlation and Cognition: Correlate faults and identify affected virtual
-  resources.
-* Notification: Notify unavailable virtual resources to their Consumer(s).
-* Recovery action: Execute actions to process fault recovery and maintenance.
+1. Monitoring: Monitor physical and virtual resources.
+2. Detection: Detect unavailability of physical resources.
+3. Correlation and Cognition: Correlate faults and identify affected virtual
+   resources.
+4. Notification: Notify unavailable virtual resources to their Consumer(s).
+5. Fencing: Shut down or isolate a faulty resource
+6. Recovery action: Execute actions to process fault recovery and maintenance.
 
 The time interval between the instant that an event is detected by the
 monitoring system and the Consumer notification of unavailable resources shall
@@ -167,6 +168,20 @@ notifications is important. For example, the receiver function in the
 consumer-side implementation could have different schema, location, and policies
 (e.g. receive or not, aggregate events with the same cause, etc.).
 
+.. _fencing:
+
+Fencing
+^^^^^^^
+Recovery actions, e.g. safe VM evacuation, have to be preceded by fencing the
+failed host. Fencing hereby means to isolate or shut down a faulty resource.
+Without fencing -- when the perceived disconnection is due to some transient
+or partial failure -- the evacuation might lead into two identical instances
+running together and having a dangerous conflict.
+
+There is a cross-project effort in OpenStack ongoing to implement fencing. A
+general description of fencing in OpenStack is available here:
+https://wiki.openstack.org/wiki/Fencing_Instances_of_an_Unreachable_Host .
+
 Recovery Action
 ^^^^^^^^^^^^^^^
 
@@ -174,7 +189,7 @@ In the basic "Fault management using ACT-STBY configuration" use case, no
 automatic actions will be taken by the VIM, but all recovery actions executed by
 the VIM and the NFVI will be instructed and coordinated by the Consumer.
 
-In a more advanced use case, the VIM shall be able to recover the failed virtual 
+In a more advanced use case, the VIM shall be able to recover the failed virtual
 resources according to a pre-defined behavior for that resource. In principle
 this means that the owner of the resource (i.e., its consumer or administrator)
 can define which recovery actions shall be taken by the VIM. Examples are a
