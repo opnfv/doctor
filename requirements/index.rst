@@ -15,8 +15,6 @@ Doctor: Fault Management and Maintenance
 :Editors: Ashiq Khan (NTT DOCOMO), Gerald Kunzmann (NTT DOCOMO)
 :Authors: Ryota Mibu (NEC), Carlos Goncalves (NEC), Tomi Juvonen (Nokia),
           Tommy Lindgren (Ericsson)
-:Project creation date: 2014-12-02
-:Submission date: 2015-03-XX
 
 :Abstract: Doctor is an OPNFV requirement project [DOCT]_. Its scope is NFVI
            fault management, and maintenance and it aims at developing and
@@ -32,6 +30,16 @@ Doctor: Fault Management and Maintenance
            this project. The implementation plan finally discusses an initial
            realization for a NFVI fault management and maintenance solution in
            open source software.
+
+:History:
+
+          ========== =====================================================
+          Date       Description
+          ========== =====================================================
+          02.12.2014 Project creation
+          14.04.2015 Initial version of the deliverable uploaded to Gerrit
+          18.05.2015 Stable version of the Doctor deliverable
+          ========== =====================================================
 
 
 .. raw:: latex
