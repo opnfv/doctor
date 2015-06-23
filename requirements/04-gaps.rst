@@ -208,6 +208,37 @@ Nova has proven throughout these past years to be highly available and
 fault-tolerant. Featuring its own API, it also provides a compatibility API with
 Amazon EC2 APIs.
 
+Fencing instances of an unreachable host
+________________________________________
+
+* Type: 'missing'
+* Description
+
+  + To-be:
+
+    - Safe VM evacuation has to be preceded by fencing (isolate/shut down - see
+      :ref:`fencing`) the failed host. Failing to do so -- when the perceived
+      disconnection is due to some transient or partial failure -- the
+      evacuation might lead into two identical instances running together and
+      having a dangerous conflict.
+    - Fencing Instances of an unreachable host:
+      https://wiki.openstack.org/wiki/Fencing_Instances_of_an_Unreachable_Host
+
+  + As-is:
+
+    - When a VM goes down due to a host HW, host OS or hypervisor failure,
+      nothing happens in OpenStack. The VMs of a crashed host/hypervisor are
+      reported to be live and OK through the OpenStack API.
+
+  + Gap:
+
+    - OpenStack does not fence instances of an unreachable host.
+
+* Related blueprints
+
+  + https://blueprints.launchpad.net/nova/+spec/fencing
+
+
 Correct states when compute host is down
 ________________________________________
 
