@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a1a2d67_536824f5",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2015-06-24T08:41:08Z",
+      "side": 1,
+      "message": "agreement from call to add this feature in this chapter",
+      "revId": "9636c043dec1db24562975ea34b168ba8407f82b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1a2d67_7363201b",
+        "filename": "requirements/04-gaps.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2015-06-24T08:41:08Z",
+      "side": 1,
+      "message": "not to be added due to agreement in call not to have this gap.",
+      "revId": "9636c043dec1db24562975ea34b168ba8407f82b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
