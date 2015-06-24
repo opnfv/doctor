@@ -33,6 +33,24 @@
       "revId": "9636c043dec1db24562975ea34b168ba8407f82b",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1a2d67_d37314e6",
+        "filename": "requirements/04-gaps.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2015-06-24T08:44:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a1a2d67_7363201b",
+      "revId": "9636c043dec1db24562975ea34b168ba8407f82b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
