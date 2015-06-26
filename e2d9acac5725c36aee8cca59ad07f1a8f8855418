@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a1a2d67_999b7b72",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2015-06-26T12:55:16Z",
+      "side": 1,
+      "message": "Hurray! \\o/\n\nPlease always insert a single blank line between commit subject and commit message text to comply with Git best practices.",
+      "revId": "e2d9acac5725c36aee8cca59ad07f1a8f8855418",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
