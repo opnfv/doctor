@@ -2,6 +2,16 @@
 Report host fault to update server state immediately
 ====================================================
 
+.. NOTE::
+   This is a specification draft of a blueprint proposed for OpenStack Nova
+   Liberty. It was written by project member(s) and agreed within the project
+   before submitting it upstream. No further changes to its content will be
+   made here anymore; please follow it upstream:
+
+   * Current version upstream: https://review.openstack.org/#/c/169836/
+   * Development activity:
+     https://blueprints.launchpad.net/nova/+spec/mark-host-down
+
 https://blueprints.launchpad.net/nova/+spec/update-server-state-immediately
 
 A new API is needed to report a host fault to change the state of the
