@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "1a1a2d67_5965e343",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2015-06-29T05:16:02Z",
+      "side": 1,
+      "message": "Agree to merge those paragraphs, but moving L160-165 after L172 might be good.",
+      "parentUuid": "1a1a2d67_53870462",
+      "revId": "148fd3953ce43de4b87d2c526b5728a029e3f307",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a1a2d67_d3ab14d5",
         "filename": "requirements/03-architecture.rst",
         "patchSetId": 1
@@ -65,6 +83,30 @@
     },
     {
       "key": {
+        "uuid": "1a1a2d67_395a2784",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2015-06-29T05:16:02Z",
+      "side": 1,
+      "message": "where --\u003e e.g. hostname and path in URL\nhow --\u003e e.g. schema in URL\n\nWe can add more description e.g.:\n\ns/endpoint(s) information of how and where (e.g. URL)/endpoint(s) in which the consumers can specify multiple targets for the notification with hostname and schema (e.g. URL)/\n\nIt would be nice to have abstracted description here. How about just saying \"endpoint(s) in which the consumers can specify multiple targets for the notification subscription\"?",
+      "parentUuid": "1a1a2d67_d3ab14d5",
+      "range": {
+        "startLine": 168,
+        "startChar": 39,
+        "endLine": 168,
+        "endChar": 67
+      },
+      "revId": "148fd3953ce43de4b87d2c526b5728a029e3f307",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a1a2d67_73820054",
         "filename": "requirements/03-architecture.rst",
         "patchSetId": 1
@@ -76,6 +118,30 @@
       "writtenOn": "2015-06-22T12:54:36Z",
       "side": 1,
       "message": "proposal to reword: \"Also, the conditions for notifications shall be configurable, such that the consumer can set according policies, e.g. whether it wants to receive fault notifications or not.\"",
+      "range": {
+        "startLine": 170,
+        "startChar": 22,
+        "endLine": 170,
+        "endChar": 77
+      },
+      "revId": "148fd3953ce43de4b87d2c526b5728a029e3f307",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1a2d67_195f6b74",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2015-06-29T05:16:02Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "1a1a2d67_73820054",
       "range": {
         "startLine": 170,
         "startChar": 22,
