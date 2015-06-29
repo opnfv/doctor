@@ -60,6 +60,24 @@
     },
     {
       "key": {
+        "uuid": "1a1a2d67_59ccc335",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2015-06-29T07:07:30Z",
+      "side": 1,
+      "message": "Okay to move L160-165.",
+      "parentUuid": "1a1a2d67_53870462",
+      "revId": "148fd3953ce43de4b87d2c526b5728a029e3f307",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a1a2d67_d3ab14d5",
         "filename": "requirements/03-architecture.rst",
         "patchSetId": 1
@@ -95,6 +113,30 @@
       "side": 1,
       "message": "where --\u003e e.g. hostname and path in URL\nhow --\u003e e.g. schema in URL\n\nWe can add more description e.g.:\n\ns/endpoint(s) information of how and where (e.g. URL)/endpoint(s) in which the consumers can specify multiple targets for the notification with hostname and schema (e.g. URL)/\n\nIt would be nice to have abstracted description here. How about just saying \"endpoint(s) in which the consumers can specify multiple targets for the notification subscription\"?",
       "parentUuid": "1a1a2d67_d3ab14d5",
+      "range": {
+        "startLine": 168,
+        "startChar": 39,
+        "endLine": 168,
+        "endChar": 67
+      },
+      "revId": "148fd3953ce43de4b87d2c526b5728a029e3f307",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1a2d67_39d107ce",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2015-06-29T07:07:30Z",
+      "side": 1,
+      "message": "okay for your proposals.",
+      "parentUuid": "1a1a2d67_395a2784",
       "range": {
         "startLine": 168,
         "startChar": 39,
