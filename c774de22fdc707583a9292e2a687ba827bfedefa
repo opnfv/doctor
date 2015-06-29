@@ -22,6 +22,30 @@
       "revId": "c774de22fdc707583a9292e2a687ba827bfedefa",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1a2d67_d950d360",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2015-06-29T05:33:55Z",
+      "side": 1,
+      "message": "I think this paragraph should describe fault correlation, so using \"between\" in the list seems good.\n\nI\u0027m not sure how people understand \"propagate\" in this context, but using \"correlate\" might be safe if there is a space that other people may take \"propagate\" as turning other resources red (fault) in the same kind of resource (e.g. propagating fault in VM A to fault in VM B) which is not our intention.",
+      "parentUuid": "1a1a2d67_53a024f4",
+      "range": {
+        "startLine": 131,
+        "startChar": 37,
+        "endLine": 131,
+        "endChar": 48
+      },
+      "revId": "c774de22fdc707583a9292e2a687ba827bfedefa",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
