@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a1a2d67_d908d32f",
+        "filename": "design_docs/report-host-fault-to-update-server-state-immediately.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2015-06-29T09:57:49Z",
+      "side": 1,
+      "message": "I propose to add another note (or extend the note above) clarifying that the draft below is the one agreed within the project before submitting it to upstream. Even so you write this in the README, I think it would be better to state it here as well.",
+      "revId": "298348fe959f31712482ec7b4a996f2d02adc452",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
