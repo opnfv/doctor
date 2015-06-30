@@ -58,6 +58,24 @@
       "revId": "22b64559eb7103af9d87d35957c273043170ecbb",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1a2d67_7c79adfb",
+        "filename": "design_docs/report-host-fault-to-update-server-state-immediately.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 722
+      },
+      "writtenOn": "2015-06-30T12:31:06Z",
+      "side": 1,
+      "message": "Most probably the URL was changed for this Launchpad blueprint to match the title in the spec or some other administrative reasons. As this link does not point to anywhere, I don\u0027t think there is a point in keeping it. It might be better to keep only a reference to the merged spec, which contains a link to the Launchpad blueprint too.",
+      "parentUuid": "1a1a2d67_fcc93d5b",
+      "revId": "22b64559eb7103af9d87d35957c273043170ecbb",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
