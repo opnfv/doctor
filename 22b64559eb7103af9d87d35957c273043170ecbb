@@ -22,6 +22,24 @@
       "revId": "22b64559eb7103af9d87d35957c273043170ecbb",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1a2d67_5cbb91c4",
+        "filename": "design_docs/report-host-fault-to-update-server-state-immediately.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2015-06-30T08:31:43Z",
+      "side": 1,
+      "message": "I\u0027m not so keen in removing it. I get your point and I thought the same too. However in my opinion either we keep the original version as proposed to OpenStack or the one merged upstream. Removing the URL would fail to comply with Nova\u0027s spec template where an URL to blueprints.launchpad.net should exist. Again, if Doctor members think it\u0027s best to remove it, I will do it.",
+      "parentUuid": "1a1a2d67_9c724948",
+      "revId": "22b64559eb7103af9d87d35957c273043170ecbb",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
