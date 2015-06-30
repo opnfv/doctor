@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a1a2d67_9c724948",
+        "filename": "design_docs/report-host-fault-to-update-server-state-immediately.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2015-06-30T07:28:02Z",
+      "side": 1,
+      "message": "this URL seems not to exist anymore. proposal to remove it.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 74
+      },
+      "revId": "22b64559eb7103af9d87d35957c273043170ecbb",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
