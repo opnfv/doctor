@@ -1,5 +1,4 @@
-# UUID                                  	Group Name
-#
 fc3a6d1b01ee1ef316ae2be5c62bb4c54d3f22c0	Non-Interactive Users
-global:Registered-Users                 	Registered Users
+global:Registered-Users	Registered Users
 ldap:cn=opnfv-gerrit-doctor-submitters,ou=Groups,dc=freestandards,dc=org	ldap/opnfv-gerrit-doctor-submitters
+ldap:cn=opnfv-gerrit-doctor-contributors,ou=Groups,dc=freestandards,dc=org	ldap/opnfv-gerrit-doctor-contributors
