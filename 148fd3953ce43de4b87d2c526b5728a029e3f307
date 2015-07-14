@@ -78,6 +78,24 @@
     },
     {
       "key": {
+        "uuid": "fa3479d7_9b9b5772",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-07-14T09:02:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a1a2d67_59ccc335",
+      "revId": "148fd3953ce43de4b87d2c526b5728a029e3f307",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a1a2d67_d3ab14d5",
         "filename": "requirements/03-architecture.rst",
         "patchSetId": 1
@@ -149,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "fa3479d7_7b88b322",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-07-14T09:02:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a1a2d67_39d107ce",
+      "range": {
+        "startLine": 168,
+        "startChar": 39,
+        "endLine": 168,
+        "endChar": 67
+      },
+      "revId": "148fd3953ce43de4b87d2c526b5728a029e3f307",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a1a2d67_73820054",
         "filename": "requirements/03-architecture.rst",
         "patchSetId": 1
@@ -183,6 +225,30 @@
       "writtenOn": "2015-06-29T05:16:02Z",
       "side": 1,
       "message": "+1",
+      "parentUuid": "1a1a2d67_73820054",
+      "range": {
+        "startLine": 170,
+        "startChar": 22,
+        "endLine": 170,
+        "endChar": 77
+      },
+      "revId": "148fd3953ce43de4b87d2c526b5728a029e3f307",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa3479d7_5b8def30",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-07-14T09:02:34Z",
+      "side": 1,
+      "message": "Done",
       "parentUuid": "1a1a2d67_73820054",
       "range": {
         "startLine": 170,
