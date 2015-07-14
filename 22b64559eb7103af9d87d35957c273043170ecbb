@@ -76,6 +76,24 @@
       "revId": "22b64559eb7103af9d87d35957c273043170ecbb",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa3479d7_3bb0ebdc",
+        "filename": "design_docs/report-host-fault-to-update-server-state-immediately.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-07-14T09:15:27Z",
+      "side": 1,
+      "message": "I agree with Ildiko. I don\u0027t see the reason to duplicate the spec here. We just simply need to refer to it by its URL. The history of the spec is maintained in upstream anyhow.",
+      "parentUuid": "1a1a2d67_7c79adfb",
+      "revId": "22b64559eb7103af9d87d35957c273043170ecbb",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
