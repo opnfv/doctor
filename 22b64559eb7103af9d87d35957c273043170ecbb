@@ -94,6 +94,24 @@
       "revId": "22b64559eb7103af9d87d35957c273043170ecbb",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa3479d7_86741a9d",
+        "filename": "design_docs/report-host-fault-to-update-server-state-immediately.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2015-07-15T06:00:49Z",
+      "side": 1,
+      "message": "We should keep this dead link since this is still part of BP spec which approved in OPNFV.\n\nWe should do change only in the Note section.\n\nPlease, check how we should work on BP proposal.\n\nhttps://wiki.opnfv.org/community/openstack",
+      "parentUuid": "fa3479d7_3bb0ebdc",
+      "revId": "22b64559eb7103af9d87d35957c273043170ecbb",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
