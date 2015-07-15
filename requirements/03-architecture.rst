@@ -158,15 +158,19 @@ would lead to heavy signaling traffic. Thus, a publication/subscription
 messaging model is better suited for these notifications, as notifications are
 only sent to subscribed consumers.
 
-Note: the VIM should only accept individual notification URLs for each resource
-by its owner or administrator.
+Notifications will be send out along with the configuration by the consumer.
+The configuration includes endpoint(s) in which the consumers can specify
+multiple targets for the notification subscription, so that various and
+multiple receiver functions can consume the notification message.
+Also, the conditions for notifications shall be configurable, such that
+the consumer can set according policies, e.g. whether it wants to receive
+fault notifications or not.
 
+Note: the VIM should only accept notification subscriptions for each resource
+by its owner or administrator.
 Notifications to the Consumer about the unavailability of virtualized
 resources will include a description of the fault, preferably with sufficient
-abstraction rather than detailed physical fault information. Flexibility in
-notifications is important. For example, the receiver function in the
-consumer-side implementation could have different schema, location, and policies
-(e.g. receive or not, aggregate events with the same cause, etc.).
+abstraction rather than detailed physical fault information.
 
 .. _fencing:
 
