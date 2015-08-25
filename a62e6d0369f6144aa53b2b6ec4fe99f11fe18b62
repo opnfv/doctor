@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a288981_7d9b03ca",
+        "filename": "requirements/05-implementation.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 713
+      },
+      "writtenOn": "2015-08-25T13:23:46Z",
+      "side": 1,
+      "message": "Does this mean the following?\n... the Controller has the ability to force the state of a given physical resource to down in the resource mapping when it receives failure notifications from the Inspector for that given physical resource.",
+      "range": {
+        "startLine": 62,
+        "startChar": 57,
+        "endLine": 64,
+        "endChar": 77
+      },
+      "revId": "a62e6d0369f6144aa53b2b6ec4fe99f11fe18b62",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
