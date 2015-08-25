@@ -60,10 +60,10 @@ The Controller is responsible for maintaining the resource map (i.e. the mapping
 from physical resources to virtual resources), accepting update requests for the
 resource state(s) (exposing as provider API), and sending all failure events
 regarding virtual resources to the Notifier. Optionally, the Controller has the
-ability to poison the state of virtual resources mapping to physical resources
-for which it has received failure notifications from the Inspector. The
-Controller also re-calculates the capacity of the NVFI when receiving a failure
-notification for a physical resource.
+ability to mark down the state of virtual resources mapping in order to physical
+resources for which it has received failure notifications from the Inspector.
+The Controller also re-calculates the capacity of the NVFI when receiving a
+failure notification for a physical resource.
 
 In a real-world deployment, the VIM may have several controllers, one for each
 resource type, such as Nova, Neutron and Cinder in OpenStack. Each controller
