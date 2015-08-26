@@ -48,7 +48,7 @@ Faults
 Fault management using ACT-STBY configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In :num:`Figure #figure1`, a system-wide view of relevant functional blocks is
+In :numref:`figure1`, a system-wide view of relevant functional blocks is
 presented. OpenStack is considered as the VIM implementation (aka Controller)
 which has interfaces with the NFVI and the Consumers. The VNF implementation is
 represented as different virtual resources marked by different colors. Consumers
@@ -56,7 +56,7 @@ represented as different virtual resources marked by different colors. Consumers
 resources (VMs in this example) shown with the same colors.
 
 The first requirement in this use case is that the Controller needs to detect
-faults in the NVFI ("1. Fault Notification" in :num:`Figure #figure1`) affecting
+faults in the NVFI ("1. Fault Notification" in :numref:`figure1`) affecting
 the proper functioning of the virtual resources (labelled as VM-x) running on
 top of it. It should be possible to configure which relevant fault items should
 be detected. The VIM (e.g. OpenStack) itself could be extended to detect such
@@ -66,21 +66,20 @@ element can be considered as a component of VIM from an architectural point of
 view.
 
 Once such fault is detected, the VIM shall find out which virtual resources are
-affected by this fault. In the example in :num:`Figure #figure1`, VM-4 is
+affected by this fault. In the example in :numref:`figure1`, VM-4 is
 affected by a fault in the Hardware Server-3. Such mapping shall be maintained
 in the VIM, depicted as the "Server-VM info" table inside the VIM.
 
 Once the VIM has identified which virtual resources are affected by the fault,
 it needs to find out who is the Consumer (i.e. the owner/manager) of the
-affected virtual resources (Step 2). In the example shown in :num:`Figure
-#figure1`, the VIM knows that for the red VM-4, the manager is the red Consumer
+affected virtual resources (Step 2). In the example shown in :numref:`figure1`,
+the VIM knows that for the red VM-4, the manager is the red Consumer
 through an Ownership info table. The VIM then notifies (Step 3 "Fault
 Notification") the red Consumer about this fault, preferably with sufficient
 abstraction rather than detailed physical fault information.
 
-.. _figure1:
-
 .. figure:: images/figure1.png
+   :name: figure1
    :width: 100%
 
    Fault management/recovery use case
@@ -96,7 +95,7 @@ components, minimizing Doctor's reaction time is a necessary basic ingredient to
 fast failover times in general.
 
 Once the Consumer has switched to STBY configuration, it notifies (Step 5
-"Instruction" in :num:`Figure #figure1`) the VIM. The VIM can then take
+"Instruction" in :numref:`figure1`) the VIM. The VIM can then take
 necessary (e.g. pre-determined by the involved network operator) actions on how
 to clean up the fault affected VMs (Step 6 "Execute Instruction").
 
@@ -127,7 +126,7 @@ prediction in the VIM are investigated in the OPNFV project "Data Collection
 for Failure Prediction" [PRED]_.
 
 This use case is very similar to :ref:`uc-fault1`. Instead of a fault
-detection (Step 1 "Fault Notification in" :num:`Figure #figure1`), the trigger
+detection (Step 1 "Fault Notification in" :numref:`figure1`), the trigger
 comes from a fault prediction module in the VIM, or from a third party module
 which notifies the VIM about an imminent fault. From Step 2~5, the work flow is
 the same as in the "Fault management using ACT-STBY configuration" use case,
@@ -163,11 +162,11 @@ mark them with an appropriate flag (i.e. "maintenance" state) such that these
 servers are not considered for hosting of virtual machines until the maintenance
 flag is cleared (i.e. nodes are back in "normal" status).
 
-A high-level view of the maintenance procedure is presented in :num:`Figure
-#figure2`. VIM/OpenStack, through its northbound interface, receives a
-maintenance notification (Step 1 "Maintenance Request") from the Administrator
-(e.g. a network operator) including information about which hardware is subject
-to maintenance. Maintenance operations include replacement/upgrade of hardware,
+A high-level view of the maintenance procedure is presented in :numref:`figure2`. 
+VIM/OpenStack, through its northbound interface, receives a maintenance notification
+(Step 1 "Maintenance Request") from the Administrator (e.g. a network operator)
+including information about which hardware is subject to maintenance.
+Maintenance operations include replacement/upgrade of hardware,
 update/upgrade of the hypervisor/host OS, etc.
 
 The consequent steps to enable the Consumer to perform ACT-STBY switching are
@@ -183,9 +182,8 @@ Hardware Servers so that consequent maintenance operations could be performed.
 Due to the similarity for Steps 2~6, the maintenance procedure and the fault
 management procedure are investigated in the same project.
 
-.. _figure2:
-
 .. figure:: images/figure2.png
+   :name: figure2
    :width: 100%
 
    Maintenance use case
