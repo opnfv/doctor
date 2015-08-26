@@ -19,11 +19,10 @@ Functional Blocks
 
 This section introduces the functional blocks to form the VIM. OpenStack was
 selected as the candidate for implementation. Inside the VIM, 4 different
-building blocks are defined (see :num:`Figure #figure6`).
-
-.. _figure6:
+building blocks are defined (see :numref:`figure6`).
 
 .. figure:: images/figure6.png
+   :name: figure6
    :width: 100%
 
    Functional blocks
@@ -98,8 +97,7 @@ Sequence
 Fault Management
 ^^^^^^^^^^^^^^^^
 
-The detailed work flow for fault management is as follows (see also :num:`Figure
-#figure7`):
+The detailed work flow for fault management is as follows (see also :numref:`figure7`):
 
 1. Request to subscribe to monitor specific virtual resources. A query filter
    can be used to narrow down the alarms the Consumer wants to be informed
@@ -130,22 +128,19 @@ In order to allow for quick reaction to failures, the time interval between
 fault detection in step 3 and the corresponding recovery actions in step 7 and 8
 shall be less than 1 second.
 
-.. _figure7:
-
 .. figure:: images/figure7.png
+   :name: figure7
    :width: 100%
 
    Fault management work flow
 
-
-.. _figure8:
-
 .. figure:: images/figure8.png
+   :name: figure8
    :width: 100%
 
    Fault management scenario
 
-:num:`Figure #figure8` shows a more detailed message flow (Steps 4 to 6) between
+:numref:`figure8` shows a more detailed message flow (Steps 4 to 6) between
 the 4 building blocks introduced in :ref:`impl_fb`.
 
 4. The Monitor observed a fault in the NFVI and reports the raw fault to the
@@ -169,7 +164,7 @@ the 4 building blocks introduced in :ref:`impl_fb`.
 NFVI Maintenance
 ^^^^^^^^^^^^^^^^
 
-The detailed work flow for NFVI maintenance is shown in :num:`Figure #figure9`
+The detailed work flow for NFVI maintenance is shown in :numref:`figure9`
 and has the following steps. Note that steps 1, 2, and 5 to 8a in the NFVI
 maintenance work flow are very similar to the steps in the fault management work
 flow and share a similar implementation plan in Release 1.
@@ -198,22 +193,19 @@ flow and share a similar implementation plan in Release 1.
     the queried resource(s). In case the resource is in "maintenance" state,
     information about the related maintenance operation is returned.
 
-.. _figure9:
-
 .. figure:: images/figure9.png
+   :name: figure9
    :width: 100%
 
    NFVI maintenance work flow
 
-
-.. _figure10:
-
 .. figure:: images/figure10.png
+   :name: figure10
    :width: 100%
 
    NFVI Maintenance implementation plan
 
-:num:`Figure #figure10` shows a more detailed message flow (Steps 4 to 6)
+:numref:`figure10` shows a more detailed message flow (Steps 4 to 6)
 between the 4 building blocks introduced in Section 5.1..
 
 3. The Administrator is sending a StateChange request to the Controller residing
@@ -243,7 +235,7 @@ Implementation plan for OPNFV Release 1
 Fault management
 ^^^^^^^^^^^^^^^^
 
-:num:`Figure #figure11` shows the implementation plan based on OpenStack and
+:numref:`figure11` shows the implementation plan based on OpenStack and
 related components as planned for Release 1. Hereby, the Monitor can be realized
 by Zabbix. The Controller is realized by OpenStack Nova [NOVA]_, Neutron
 [NEUT]_, and Cinder [CIND]_ for compute, network, and storage,
@@ -252,7 +244,7 @@ script querying Nova in order to map between physical and virtual resources. The
 Notifier will be realized by Ceilometer [CEIL]_ receiving failure events
 on its notification bus.
 
-:num:`Figure #figure12` shows the inner-workings of Ceilometer. After receiving
+:numref:`figure12` shows the inner-workings of Ceilometer. After receiving
 an "event" on its notification bus, first a notification agent will grab the
 event and send a "notification" to the Collector. The collector writes the
 notifications received to the Ceilometer databases.
@@ -261,8 +253,8 @@ In the existing Ceilometer implementation, an alarm evaluator is periodically
 polling those databases through the APIs provided. If it finds new alarms, it
 will evaluate them based on the pre-defined alarm configuration, and depending
 on the configuration, it will hand a message to the Alarm Notifier, which in
-turn will send the alarm message northbound to the Consumer. :num:`Figure
-#figure12` also shows an optimized work flow for Ceilometer with the goal to
+turn will send the alarm message northbound to the Consumer. :numref:`figure12`
+also shows an optimized work flow for Ceilometer with the goal to
 reduce the delay for fault notifications to the Consumer. The approach is to
 implement a new notification agent (called "publisher" in Ceilometer
 terminology) which is directly sending the alarm through the "Notification Bus"
@@ -276,17 +268,15 @@ data", and "fired". It is representing a persistent alarm database. In order to
 realize the Doctor requirements, we need to define new "meters" in the database
 (see Section 5.6.1).
 
-.. _figure11:
-
 .. figure:: images/figure11.png
+   :name: figure11
    :width: 100%
 
    Implementation plan in OpenStack (OPNFV Release 1 ”Arno”)
 
 
-.. _figure12:
-
 .. figure:: images/figure12.png
+   :name: figure12
    :width: 100%
 
    Implementation plan in Ceilometer architecture
@@ -366,8 +356,8 @@ Simple information elements:
 * Metadata (Key-Value-Pairs): provides additional information of a physical
   resource in maintenance/error state.
 
-Complex information elements (see also UML diagrams in :num:`Figure #figure13`
-and :num:`Figure #figure14`):
+Complex information elements (see also UML diagrams in :numref:`figure13`
+and :numref:`figure14`):
 
 * VirtualResourceInfoClass:
 
@@ -452,15 +442,14 @@ Fault management interface
 This interface allows the VIM to notify the Consumer about a virtual resource
 that is affected by a fault, either within the virtual resource itself or by the
 underlying virtualization infrastructure. The messages on this interface are
-shown in :num:`Figure #figure13` and explained in detail in the following
+shown in :numref:`figure13` and explained in detail in the following
 subsections.
 
 Note: The information elements used in this section are described in detail in
 Section 5.4.
 
-.. _figure13:
-
 .. figure:: images/figure13.png
+   :name: figure13
    :width: 100%
 
    Fault management NB I/F messages
@@ -550,12 +539,11 @@ also allows the Administrator to query the state of physical machines, e.g., in
 order to get details in the current status of the maintenance operation like a
 firmware update.
 
-The messages defined in these northbound interfaces are shown in :num:`Figure
-#figure14` and described in detail in the following subsections.
-
-.. _figure14:
+The messages defined in these northbound interfaces are shown in :numref:`figure14`
+and described in detail in the following subsections.
 
 .. figure:: images/figure14.png
+   :name: figure14
    :width: 100%
 
    NFVI maintenance NB I/F messages
@@ -690,7 +678,7 @@ Event Publisher for Alarm  (Ceilometer) [*]_
   send to the Consumer, whereas one requirement of Doctor is to react on faults
   as fast as possible.
 
-  The existing message flow is shown in :num:`Figure #figure12`: after receiving
+  The existing message flow is shown in :numref:`figure12`: after receiving
   an "event", a "notification agent" (i.e. "event publisher") will send a
   "notification" to a "Collector". The "collector" is collecting the
   notifications and is updating the Ceilometer "Meter" database that is storing
