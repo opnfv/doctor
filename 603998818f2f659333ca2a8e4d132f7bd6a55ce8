@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a288981_63bb60c5",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2015-08-27T08:36:56Z",
+      "side": 1,
+      "message": "nit:trailing whitespace",
+      "revId": "603998818f2f659333ca2a8e4d132f7bd6a55ce8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a288981_a3a9487d",
+        "filename": "requirements/07-annex.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2015-08-27T08:36:56Z",
+      "side": 1,
+      "message": "nit:trailing whitespace",
+      "revId": "603998818f2f659333ca2a8e4d132f7bd6a55ce8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a288981_83b64cdb",
+        "filename": "requirements/07-annex.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2015-08-27T08:36:56Z",
+      "side": 1,
+      "message": "nit:trailing whitespace",
+      "revId": "603998818f2f659333ca2a8e4d132f7bd6a55ce8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
