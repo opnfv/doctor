@@ -47,7 +47,7 @@ Architecture Overview
 ---------------------
 
 NFV and the Cloud platform provide virtual resources and related control
-functionality to users and administrators. :num:`Figure #figure3` shows the high
+functionality to users and administrators. :numref:`figure3` shows the high
 level architecture of NFV focusing on the NFVI, i.e., the virtualized
 infrastructure. The NFVI provides virtual resources, such as virtual machines
 (VM) and virtual networks. Those virtual resources are used to run applications,
@@ -79,12 +79,10 @@ applications (e.g., MME, S/P-GW) and the Network Services:
 
 The time interval between the instant that an event is detected by the
 monitoring system and the Consumer notification of unavailable resources shall
-be < 1 second (e.g., Step 1 to Step 4 in :num:`Figure #figure4` and :num:`Figure
-#figure5`).
-
-.. _figure3:
+be < 1 second (e.g., Step 1 to Step 4 in :numref:`figure4` and :numref:`figure5`).
 
 .. figure:: images/figure3.png
+   :name: figure3
    :width: 100%
 
    High level architecture
@@ -218,15 +216,14 @@ request/response message exchange allows the Consumer to find out about active
 alarms at the VIM. A filter can be used to narrow down the alarms returned in
 the response message.
 
-.. _figure4:
-
 .. figure:: images/figure4.png
+   :name: figure4
    :width: 100%
 
    High-level message flow for fault management
 
 The high level message flow for the fault management use case is shown in
-:num:`Figure #figure4`.
+:numref:`figure4`.
 It consists of the following steps:
 
 1. The VIM monitors the physical and virtual resources and the fault management
@@ -256,15 +253,14 @@ maintenance action to be executed. After the request was executed successfully
 error state, the VIM sends a MaintenanceResponse message back to the
 Administrator.
 
-.. _figure5:
-
 .. figure:: images/figure5.png
+   :name: figure5
    :width: 100%
 
    High-level message flow for NFVI maintenance
 
 The high level message flow for the NFVI maintenance use case is shown in
-:num:`Figure #figure5`.
+:numref:`figure5`.
 It consists of the following steps:
 
 1. Maintenance trigger received from administrator.
