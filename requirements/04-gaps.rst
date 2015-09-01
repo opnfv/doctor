@@ -176,7 +176,7 @@ ___________________________________
       handle faults on them by Ceilometer.
     - OpenStack may have monitoring functionality in itself and can be
       integrated with third party monitoring tools.
-    - OpenStack need to be able to detect the faults listed in Section 3.5.
+    - OpenStack need to be able to detect the faults listed in the Annex.
 
   + As-is
 
@@ -188,8 +188,7 @@ ___________________________________
 
    + Gap
 
-     - Ceilometer is not able to detect and handle all faults listed in Section
-       3.5.
+     - Ceilometer is not able to detect and handle all faults listed in the Annex.
 
 * Related blueprints / workarounds
 

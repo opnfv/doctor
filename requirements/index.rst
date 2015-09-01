@@ -59,6 +59,7 @@ Doctor: Fault Management and Maintenance
     04-gaps.rst
     05-implementation.rst
     06-summary.rst
+    07-annex.rst
 
 .. include::
     99-references.rst

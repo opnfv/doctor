@@ -284,65 +284,6 @@ It consists of the following steps:
 8. The Administrator is coordinating and executing the maintenance
    operation/work on the NFVI. Note: this step is out of scope of Doctor.
 
-Faults
-------
-
-Faults in the listed elements need to be immediately notified to the Consumer in
-order to perform an immediate action like live migration or switch to a hot
-standby entity. In addition, the Administrator of the host should trigger a
-maintenance action to, e.g., reboot the server or replace a defective hardware
-element.
-
-Faults can be of different severity, i.e., critical, warning, or
-info. Critical faults require immediate action as a severe degradation of the
-system has happened or is expected. Warnings indicate that the system
-performance is going down: related actions include closer (e.g. more frequent)
-monitoring of that part of the system or preparation for a cold migration to a
-backup VM. Info messages do not require any action. We also consider a type
-"maintenance", which is no real fault, but may trigger maintenance actions
-like a re-boot of the server or replacement of a faulty, but redundant HW.
-
-Faults can be gathered by, e.g., enabling SNMP and installing some open source
-tools to catch and poll SNMP. When using for example Zabbix one can also put an
-agent running on the hosts to catch any other fault. In any case of failure, the
-Administrator should be notified. Table 1 provides a list of high level faults
-that are considered within the scope of the Doctor project requiring immediate
-action by the Consumer.
-
-
-+------------------+---------------------------------------------------------------------------------------------------------------------------+------------------+-------------------+------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
-| Service          | Fault                                                                                                                     | Severity         | How to detect?    | Comment                                                                                  | Action to recover                                                    |
-+------------------+---------------------------------------------------------------------------------------------------------------------------+------------------+-------------------+------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
-| Compute Hardware | Processor/CPU failure, CPU condition not ok                                                                               | Critical         | Zabbix            |                                                                                          | Switch to hot standby                                                |
-+                  +---------------------------------------------------------------------------------------------------------------------------+------------------+-------------------+------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
-|                  | Memory failure/Memory condition not ok                                                                                    | Critical         | Zabbix (IPMI)     |                                                                                          | Switch to hot standby                                                |
-+                  +---------------------------------------------------------------------------------------------------------------------------+------------------+-------------------+------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
-|                  | Network card failure, e.g. network adapter connectivity lost                                                              | Critical         | Zabbix/Ceilometer |                                                                                          | Switch to hot standby                                                |
-+                  +---------------------------------------------------------------------------------------------------------------------------+------------------+-------------------+------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
-|                  | Disk crash                                                                                                                | Info             | RAID monitoring   | Network storage is very redundant (e.g. RAID system) and can guarantee high availability | Inform OAM                                                           |
-+                  +---------------------------------------------------------------------------------------------------------------------------+------------------+-------------------+------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
-|                  | Storage controller                                                                                                        | Critical         | Zabbix (IPMI)     |                                                                                          | Live migration if storage is still accessible; otherwise hot standby |
-+                  +---------------------------------------------------------------------------------------------------------------------------+------------------+-------------------+------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
-|                  | PDU/power failure, power off, server reset                                                                                | Critical         | Zabbix/Ceilometer |                                                                                          | Switch to hot standby                                                |
-+                  +---------------------------------------------------------------------------------------------------------------------------+------------------+-------------------+------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
-|                  | Power degradation, power redundancy lost, power threshold exceeded                                                        | Warning          | SNMP              |                                                                                          | Live migration                                                       |
-+                  +---------------------------------------------------------------------------------------------------------------------------+------------------+-------------------+------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
-|                  | Chassis problem (.e.g fan degraded/failed, chassis power degraded), CPU fan problem, temperature/thermal condition not ok | Warning          | SNMP              |                                                                                          | Live migration                                                       |
-+                  +---------------------------------------------------------------------------------------------------------------------------+------------------+-------------------+------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
-|                  | Mainboard failure                                                                                                         | Critical         | Zabbix (IPMI)     |                                                                                          | Switch to hot standby                                                |
-+                  +---------------------------------------------------------------------------------------------------------------------------+------------------+-------------------+------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
-|                  | OS crash (e.g. kernel panic)                                                                                              | Critical         | Zabbix            |                                                                                          | Switch to hot standby                                                |
-+------------------+---------------------------------------------------------------------------------------------------------------------------+------------------+-------------------+------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
-| Hypervisor       | System has restarted                                                                                                      | Critical         | Zabbix            |                                                                                          | Switch to hot standby                                                |
-+                  +---------------------------------------------------------------------------------------------------------------------------+------------------+-------------------+------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
-|                  | Hypervisor failure                                                                                                        | Warning/Critical | Zabbix/Ceilometer |                                                                                          | Evacuation/switch to hot standby                                     |
-+                  +---------------------------------------------------------------------------------------------------------------------------+------------------+-------------------+------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
-|                  | Zabbix/Ceilometer is unreachable                                                                                          | Warning          | ?                 |                                                                                          | Live migration                                                       |
-+------------------+---------------------------------------------------------------------------------------------------------------------------+------------------+-------------------+------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
-| Network          | SDN/OpenFlow switch, controller degraded/failed                                                                           | Critical         | ?                 |                                                                                          | Switch to hot standby or reconfigure virtual network topology        |
-+                  +---------------------------------------------------------------------------------------------------------------------------+------------------+-------------------+------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
-|                  | Hardware failure of physical switch/router                                                                                | Warning          | SNMP              | Redundancy of physical infrastructure is reduced or no longer available                  | Live migration if possible, otherwise evacuation                     |
-+------------------+---------------------------------------------------------------------------------------------------------------------------+------------------+-------------------+------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
-
 ..
  vim: set tabstop=4 expandtab textwidth=80:
+
