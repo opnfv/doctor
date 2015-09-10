@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a2585a7_968fb2cc",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2015-09-10T09:23:00Z",
+      "side": 1,
+      "message": "Manual cannot be part of BP. SO, it should be better to have new item \u0027man\u0027 and add it to all.",
+      "revId": "65dbd47586c7bde44048bc1f0a1217c0c1f83691",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a2585a7_f6af162a",
+        "filename": "manuals/mark-host-down_manual.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2015-09-10T09:23:00Z",
+      "side": 1,
+      "message": "How about adding some note regarding fencing, like \"A system administrator has responsibility for disabling downed host\", if it\u0027s relevant?",
+      "revId": "65dbd47586c7bde44048bc1f0a1217c0c1f83691",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a2585a7_76bc466d",
+        "filename": "manuals/mark-host-down_manual.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2015-09-10T09:23:00Z",
+      "side": 1,
+      "message": "I\u0027m not sure, but we need space here?",
+      "revId": "65dbd47586c7bde44048bc1f0a1217c0c1f83691",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
