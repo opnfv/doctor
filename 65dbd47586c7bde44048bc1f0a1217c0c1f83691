@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "5a2585a7_b6806e8c",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2015-09-10T09:53:49Z",
+      "side": 1,
+      "message": "+1\n\nAnd add the new target name to the \u0027all\u0027 target list",
+      "parentUuid": "5a2585a7_968fb2cc",
+      "revId": "65dbd47586c7bde44048bc1f0a1217c0c1f83691",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a2585a7_f6af162a",
         "filename": "manuals/mark-host-down_manual.rst",
         "patchSetId": 1
@@ -101,6 +119,41 @@
       "side": 1,
       "message": "yes, indent is not necessary, but empty line needed.",
       "parentUuid": "5a2585a7_76bc466d",
+      "revId": "65dbd47586c7bde44048bc1f0a1217c0c1f83691",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a2585a7_d673fae5",
+        "filename": "manuals/mark-host-down_manual.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2015-09-10T09:53:49Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "5a2585a7_76bc466d",
+      "revId": "65dbd47586c7bde44048bc1f0a1217c0c1f83691",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a2585a7_1672a2e5",
+        "filename": "manuals/mark-host-down_manual.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2015-09-10T09:53:49Z",
+      "side": 1,
+      "message": "--unset",
       "revId": "65dbd47586c7bde44048bc1f0a1217c0c1f83691",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
