@@ -1,5 +1,6 @@
 BUILDDIR := build
 DESIGN_DOCS = $(wildcard design_docs/*.rst)
+MANUALS = $(wildcard manuals/*.rst)
 
 .PHONY: clean html pdf bps all
 
@@ -11,6 +12,8 @@ clean:
 bps: $(DESIGN_DOCS) | $(BUILDDIR)
 	mkdir -p $(BUILDDIR)/design_docs
 	$(foreach f,$(DESIGN_DOCS),rst2html.py $(f) $(BUILDDIR)/$(f:.rst=.html);)
+	mkdir -p $(BUILDDIR)/manuals
+	$(foreach f,$(MANUALS),rst2html.py $(f) $(BUILDDIR)/$(f:.rst=.html);)
 
 html: | $(BUILDDIR)
 	sphinx-build -b html -c etc -d $(BUILDDIR)/doctrees \
