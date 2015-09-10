@@ -1,12 +1,17 @@
 BUILDDIR := build
 DESIGN_DOCS = $(wildcard design_docs/*.rst)
+MANUALS = $(wildcard manuals/*.rst)
 
-.PHONY: clean html pdf bps all
+.PHONY: clean html pdf bps man all
 
-all: bps html pdf
+all: man bps html pdf
 
 clean:
 	rm -rf $(BUILDDIR)/*
+
+man: | $(BUILDDIR)
+	mkdir -p $(BUILDDIR)/manuals
+	$(foreach f,$(MANUALS),rst2html.py $(f) $(BUILDDIR)/$(f:.rst=.html);)
 
 bps: $(DESIGN_DOCS) | $(BUILDDIR)
 	mkdir -p $(BUILDDIR)/design_docs
