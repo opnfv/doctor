@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5a2585a7_e1362ee7",
+        "filename": "manuals/mark-host-down_manual.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 346
+      },
+      "writtenOn": "2015-09-10T11:45:28Z",
+      "side": 1,
+      "message": "OK. You could also replace the actual values in your real env by parameters and add short description for each parameter e.g.\n\ncurl -g -i -X PUT http://{host_ip}:8774/v2.1/{tenant_id}/os-services/force-down -H \"Content-Type: application/json\" ... -H \"X-Auth-Token: {token}\" -d \u0027{\"binary\": \"nova-compute\", \"host\": \"{host_name}, \"forced_down\": true}\u0027\n\nhost_ip: IP address of the host\ntenant_id: Identifier of the tenant\ntoken: Token received after successful authentication\nhost_name: Name of the host",
+      "parentUuid": "5a2585a7_4109822b",
+      "range": {
+        "startLine": 55,
+        "startChar": 11,
+        "endLine": 55,
+        "endChar": 29
+      },
+      "revId": "3d4d58d1fe0685b04d06ded177f1ce9dbddbb2de",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a2585a7_561dca72",
         "filename": "manuals/mark-host-down_manual.rst",
         "patchSetId": 2
