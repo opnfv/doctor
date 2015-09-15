@@ -29,6 +29,14 @@ What this API does
 
 REST API for forcing down:
 
+  Parameter explanations:
+  tenant_id:       Identifier of the tenant.
+  binary:          Compute service binary name.
+  host:            Compute host name.
+  forced_down:     Compute service forced down flag.
+  token:           Token received after successful authentication.
+  service_host_ip: Serving controller node ip.
+  
   request:
   PUT /v2.1/{tenant_id}/os-services/force-down
   {
@@ -48,22 +56,28 @@ REST API for forcing down:
   }
 
   Example:
-  curl -g -i -X PUT http://10.11.12.2:8774/v2.1/fd1e31d52912495d9136977f46a2dd
-  67/os-services/force-down -H "Content-Type: application/json" -H "Accept: ap
-  plication/json" -H "X-OpenStack-Nova-API-Version: 2.11" -H "X-Auth-Token: {S
-  HA1}5521c2c0d456f142d8745921362a50d97c2269d6" -d '{"binary": "nova-compute",
-  "host": "compute1", "forced_down": true}'
+  curl -g -i -X PUT http://{service_host_ip}:8774/v2.1/{tenant_id}/os-services
+  /force-down -H "Content-Type: application/json" -H "Accept: application/json
+  " -H "X-OpenStack-Nova-API-Version: 2.11" -H "X-Auth-Token: {token}" -d '{"b
+  inary": "nova-compute", "host": "compute1", "forced_down": true}'
 
 CLI for forcing down:
 
   nova service-force-down <hostname> nova-compute
 
   Example:
-  nova --service-type "computev21" service-force-down compute1 \
-  nova-compute
+  nova service-force-down compute1 nova-compute
 
 REST API for disabling forced down:
 
+  Parameter explanations:
+  tenant_id:       Identifier of the tenant.
+  binary:          Compute service binary name.
+  host:            Compute host name.
+  forced_down:     Compute service forced down flag.
+  token:           Token received after successful authentication.
+  service_host_ip: Serving controller node ip.
+  
   request:
   PUT /v2.1/{tenant_id}/os-services/force-down
   {
@@ -83,14 +97,13 @@ REST API for disabling forced down:
   }
 
   Example:
-  curl -g -i -X PUT http://10.11.12.2:8774/v2.1/fd1e31d52912495d9136977f46a2dd
-  67/os-services/force-down -H "Content-Type: application/json" -H "Accept: ap
-  plication/json" -H "X-OpenStack-Nova-API-Version: 2.11" -H "X-Auth-Token: {S
-  HA1}5521c2c0d456f142d8745921362a50d97c2269d6" -d '{"binary": "nova-compute",
-  "host": "compute1", "forced_down": false}'
+  curl -g -i -X PUT http://{service_host_ip}:8774/v2.1/{tenant_id}/os-services
+  /force-down -H "Content-Type: application/json" -H "Accept: application/json
+  " -H "X-OpenStack-Nova-API-Version: 2.11" -H "X-Auth-Token: {token}" -d '{"b
+  inary": "nova-compute", "host": "compute1", "forced_down": false}'
 
 CLI for disabling forced down:
   nova service-force-down --unset <hostname> nova-compute
 
   Example:
-  nova --service-type "computev21" service-force-down --unset compute1 nova-compute
+  nova service-force-down --unset compute1 nova-compute
