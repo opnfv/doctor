@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a2f8d8d_da3679e7",
+        "filename": "Makefile",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2015-09-18T07:52:01Z",
+      "side": 1,
+      "message": "nit, but there are trailing spaces",
+      "range": {
+        "startLine": 12,
+        "startChar": 18,
+        "endLine": 12,
+        "endChar": 19
+      },
+      "revId": "f47c343f03bffcc580bc3d36c60b2f384d3a9c43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
