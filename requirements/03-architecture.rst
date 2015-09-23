@@ -183,9 +183,16 @@ Without fencing -- when the perceived disconnection is due to some transient
 or partial failure -- the evacuation might lead into two identical instances
 running together and having a dangerous conflict.
 
-There is a cross-project effort in OpenStack ongoing to implement fencing. A
-general description of fencing in OpenStack is available here:
-https://wiki.openstack.org/wiki/Fencing_Instances_of_an_Unreachable_Host .
+There is a cross-project definition in OpenStack of how to implement
+fencing, but there has not been any progress. The general description is
+available here:
+https://wiki.openstack.org/wiki/Fencing_Instances_of_an_Unreachable_Host
+
+As OpenStack do not cover fencing it is responsibility of Doctor project
+to make sure fencing is done by using tools like pacemaker. Only after fencing
+is done can OpenStack resources be marked as down. In case there are gaps in
+OpenStack projects to have all relevant resources marked as down those gaps
+need to be identified and fixed.
 
 Recovery Action
 ^^^^^^^^^^^^^^^
