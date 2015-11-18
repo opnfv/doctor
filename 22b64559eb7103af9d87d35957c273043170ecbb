@@ -130,6 +130,24 @@
       "revId": "22b64559eb7103af9d87d35957c273043170ecbb",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_3c4b3b2d",
+        "filename": "design_docs/report-host-fault-to-update-server-state-immediately.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2015-11-18T16:38:52Z",
+      "side": 1,
+      "message": "If adding such additional section header we would need to shift all (sub)sections in one level. Otherwise we would have 2 main headers (\"Report host fault to update server state immediately\" and \"Original draft\") making it even weirder to read.\n\nI think it would be better if moving the note as it is before the main heading/title. The node is visible enough not to miss and understand what follows is what was originally approved in OPNFV and submitted to OpenStack.\n\nOpen to more views, +1 and -1 :-)",
+      "parentUuid": "fa3479d7_26aa0ed5",
+      "revId": "22b64559eb7103af9d87d35957c273043170ecbb",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
