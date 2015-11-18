@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a5c5d37_595f2173",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2015-11-18T09:31:39Z",
+      "side": 1,
+      "message": "As OpenStack *does* not cover fencing it is *in the* responsibility of *the* Doctor project to make sure fencing is done by using tools like pacemaker. Only after fencing\nis done -c-a-n-(remove)- OpenStack resources *can* be marked as down. In case there are gaps in\nOpenStack projects to have all relevant resources marked as down*,* those gaps\nneed to be identified and fixed.",
+      "range": {
+        "startLine": 191,
+        "startChar": 13,
+        "endLine": 191,
+        "endChar": 15
+      },
+      "revId": "4e3bed812d856cafd3d0c84d13b8b6722d4e4ca0",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
