@@ -40,6 +40,40 @@
       "revId": "4e3bed812d856cafd3d0c84d13b8b6722d4e4ca0",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_7c6e53cb",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 402
+      },
+      "writtenOn": "2015-11-18T14:22:14Z",
+      "side": 1,
+      "message": "Suggest: OpenStack shall mark resources as down only after fencing was done.",
+      "revId": "4e3bed812d856cafd3d0c84d13b8b6722d4e4ca0",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_3c68dbb9",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 402
+      },
+      "writtenOn": "2015-11-18T14:22:14Z",
+      "side": 1,
+      "message": "Suggest: In case there are gaps in OpenStack, those need to be identified and fixed in a way that OpenStack will mark all relevant resources as down.",
+      "revId": "4e3bed812d856cafd3d0c84d13b8b6722d4e4ca0",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
