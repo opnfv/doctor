@@ -148,6 +148,24 @@
       "revId": "22b64559eb7103af9d87d35957c273043170ecbb",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_bc04cb7e",
+        "filename": "design_docs/report-host-fault-to-update-server-state-immediately.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2015-11-19T03:32:24Z",
+      "side": 1,
+      "message": "+1 to have \"Original Draft\" prefix/suffix in section header.\n\nTo express \"Original Draft\", we can also have index page for those BP drafts, so that everyone can understand that this page is old one before reaching this page.\n\nI\u0027m adopting new doc build script in releng repo that requires us to have index.rst anyhow.",
+      "parentUuid": "9a5c5d37_3c4b3b2d",
+      "revId": "22b64559eb7103af9d87d35957c273043170ecbb",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
