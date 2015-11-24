@@ -43,6 +43,30 @@
     },
     {
       "key": {
+        "uuid": "9a5c5d37_d319aa7a",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2015-11-24T04:30:40Z",
+      "side": 1,
+      "message": "Yes, will rephrase a bit :)",
+      "parentUuid": "9a5c5d37_595f2173",
+      "range": {
+        "startLine": 191,
+        "startChar": 13,
+        "endLine": 191,
+        "endChar": 15
+      },
+      "revId": "4e3bed812d856cafd3d0c84d13b8b6722d4e4ca0",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a5c5d37_7c6e53cb",
         "filename": "requirements/03-architecture.rst",
         "patchSetId": 2
@@ -60,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "9a5c5d37_530eda35",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2015-11-24T04:30:40Z",
+      "side": 1,
+      "message": "This level of activity is for Doctor / external system currently. Meaning OpenStack do not mark things down itself. Surely yes at the end when Doctor (Inspector part) will be in OpenStack. I can add something to clear this point.",
+      "parentUuid": "9a5c5d37_7c6e53cb",
+      "revId": "4e3bed812d856cafd3d0c84d13b8b6722d4e4ca0",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a5c5d37_3c68dbb9",
         "filename": "requirements/03-architecture.rst",
         "patchSetId": 2
@@ -71,6 +113,24 @@
       "writtenOn": "2015-11-18T14:22:14Z",
       "side": 1,
       "message": "Suggest: In case there are gaps in OpenStack, those need to be identified and fixed in a way that OpenStack will mark all relevant resources as down.",
+      "revId": "4e3bed812d856cafd3d0c84d13b8b6722d4e4ca0",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_f31cae6c",
+        "filename": "requirements/03-architecture.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2015-11-24T04:30:40Z",
+      "side": 1,
+      "message": "It is responsibility of Doctor to call OpenTsack APIs to mark things down and that is the point of view in writing this. I see your point that at the end all the implementation should reside in the OpenStack.",
+      "parentUuid": "9a5c5d37_3c68dbb9",
       "revId": "4e3bed812d856cafd3d0c84d13b8b6722d4e4ca0",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
