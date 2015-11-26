@@ -1,12 +1,3 @@
-..
- This work is licensed under a Creative Commons Attribution 3.0 Unported
- License.
-
- http://creativecommons.org/licenses/by/3.0/legalcode
-
-.. title::
-    Doctor
-
 ****************************************
 Doctor: Fault Management and Maintenance
 ****************************************
@@ -41,7 +32,6 @@ Doctor: Fault Management and Maintenance
           18.05.2015 Stable version of the Doctor deliverable
           ========== =====================================================
 
-
 .. raw:: latex
 
     \newpage
@@ -63,7 +53,3 @@ Doctor: Fault Management and Maintenance
 
 .. include::
     99-references.rst
-
-
-..
- vim: set tabstop=4 expandtab textwidth=80:
