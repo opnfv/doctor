@@ -1,11 +1,15 @@
+=========================================
 OpenStack NOVA API for marking host down.
+=========================================
 
 Related Blueprints:
+===================
 
   https://blueprints.launchpad.net/nova/+spec/mark-host-down
   https://blueprints.launchpad.net/python-novaclient/+spec/support-force-down-service
 
 What the API is for
+===================
 
   This API will give external fault monitoring system a possibility of telling
   OpenStack Nova fast that compute host is down. This will immediately enable
@@ -13,6 +17,7 @@ What the API is for
   actions.
 
 What this API does
+==================
 
   In OpenStack the nova-compute service state can represent the compute host
   state and this new API is used to force this service down. It is assumed
@@ -28,6 +33,7 @@ What this API does
   https://blueprints.launchpad.net/nova/+spec/robustify-evacuate
 
 REST API for forcing down:
+==========================
 
   Parameter explanations:
   tenant_id:       Identifier of the tenant.
@@ -62,6 +68,7 @@ REST API for forcing down:
   inary": "nova-compute", "host": "compute1", "forced_down": true}'
 
 CLI for forcing down:
+=====================
 
   nova service-force-down <hostname> nova-compute
 
@@ -69,6 +76,7 @@ CLI for forcing down:
   nova service-force-down compute1 nova-compute
 
 REST API for disabling forced down:
+===================================
 
   Parameter explanations:
   tenant_id:       Identifier of the tenant.
@@ -103,6 +111,8 @@ REST API for disabling forced down:
   inary": "nova-compute", "host": "compute1", "forced_down": false}'
 
 CLI for disabling forced down:
+==============================
+
   nova service-force-down --unset <hostname> nova-compute
 
   Example:
