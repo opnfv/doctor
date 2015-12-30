@@ -296,7 +296,9 @@ described in the previous section applies. In addition, the Controller(s) will
 take appropriate actions to evacuate the physical machines in order to prepare
 them for the planned maintenance operation. After the physical machines are
 emptied, the Controller will inform the Administrator that it can initiate the
-maintenance.
+maintenance. Alternatively the VMs can just be shut down and boot up on the
+same host after maintenance is over. There needs to be policy for administrator
+to know the plan for VMs in maintenance.
 
 Information elements
 --------------------
@@ -492,10 +494,12 @@ After reception of this request, the Consumer will decide on the optimal
 action to resolve the fault. This includes actions like switching to a hot
 standby virtual resource, migration of the fault virtual resource to another
 physical machine, termination of the faulty virtual resource and instantiation
-of a new virtual resource in order to provide a new hot standby resource.
-Existing resource management interfaces and messages between the Consumer and
-the VIM can be used for those actions, and there is no need to define additional
-actions on the Fault Management Interface.
+of a new virtual resource in order to provide a new hot standby resource. On
+non HA use case Consumer can leave virtual resources on failed host to be
+booted up again after fault is recovered. Existing resource management
+interfaces and messages between the Consumer and the VIM can be used for those
+actions, and there is no need to define additional actions on the Fault
+Management Interface.
 
 Parameters:
 
