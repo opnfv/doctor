@@ -74,12 +74,12 @@ applications (e.g., MME, S/P-GW) and the Network Services:
 3. Correlation and Cognition: Correlate faults and identify affected virtual
    resources.
 4. Notification: Notify unavailable virtual resources to their Consumer(s).
-5. Fencing: Shut down or isolate a faulty resource
+5. Fencing: Shut down or isolate a faulty resource.
 6. Recovery action: Execute actions to process fault recovery and maintenance.
 
 The time interval between the instant that an event is detected by the
 monitoring system and the Consumer notification of unavailable resources shall
-be < 1 second (e.g., Step 1 to Step 4 in :numref:`figure4` and :numref:`figure5`).
+be < 1 second (e.g., Step 1 to Step 4 in :numref:`figure4`).
 
 .. figure:: images/figure3.png
    :name: figure3
@@ -241,7 +241,7 @@ It consists of the following steps:
    also happen after Step 3.
 3. Database lookup to find the virtual resources affected by the detected fault.
 4. Fault notification to Consumer.
-5. The Consumer switches to standby configuration (STBY)
+5. The Consumer switches to standby configuration (STBY).
 6. Instructions to VIM requesting certain actions to be performed on the
    affected resources, for example migrate/update/terminate specific
    resource(s). After reception of such instructions, the VIM is executing the
@@ -254,44 +254,76 @@ The NFVI maintenance interface allows the Administrator to notify the VIM about
 a planned maintenance operation on the NFVI. A maintenance operation may for
 example be an update of the server firmware or the hypervisor. The
 MaintenanceRequest message contains instructions to change the state of the
-resource from 'normal' to 'maintenance'. After receiving the MaintenanceRequest,
-the VIM will notify the Consumer about the planned maintenance operation,
-whereupon the Consumer will switch to standby (STBY) configuration to allow the
-maintenance action to be executed. After the request was executed successfully
-(i.e., the physical resources have been emptied) or the operation resulted in an
-error state, the VIM sends a MaintenanceResponse message back to the
-Administrator.
+physical resource from 'enabled' to 'going-to-maintenance' and a timeout [#timeout]_.
+After receiving the MaintenanceRequest,the VIM notifies the affected Consumer(s)
+about the planned maintenance operation.
 
-.. figure:: images/figure5.png
-   :name: figure5
+.. [#timeout] Timeout is set by the Administrator and corresponds to the maximum time to empty the physical resources.
+
+.. figure:: images/figure5a.png
+   :name: figure5a
    :width: 100%
 
-   High-level message flow for NFVI maintenance
+   High-level message flow for NFVI maintenance notification
 
-The high level message flow for the NFVI maintenance use case is shown in
-:numref:`figure5`.
+The high level message flow for the NFVI maintenance notification is shown in :numref:`figure5a`.
 It consists of the following steps:
 
 1. Maintenance trigger received from administrator.
-2. VIM switches the affected NFVI resources to "maintenance" state, i.e., the
-   NFVI resources are prepared for the maintenance operation. For example, the
-   virtual resources should not be used for further allocation/migration
-   requests and the VIM will coordinate with the Consumer on how to best empty
-   the physical resources.
-3. Database lookup to find the virtual resources affected by the detected
-   maintenance operation.
-4. StateChange notification to inform Consumer about planned maintenance
+2. VIM switches the affected physical resources to "going-to-maintenance" state e.g. so that no new
+   VM will be scheduled on the physical servers.
+3. Database lookup to find the Consumer(s) and virtual resources affected by the maintenance
    operation.
-5. The Consumer switches to standby configuration (STBY)
-6. Instructions from Consumer to VIM requesting certain actions to be performed
-   (step 6a). After receiving such instructions, the VIM executes the requested
-   action in order to empty the physical resources (step 6b) and informs the
-   Consumer is about the result of the actions. Note: this step is out of scope
-   of Doctor.
-7. Maintenance response from VIM to inform the Administrator that the physical
-   machines have been emptied (or the operation resulted in an error state).
-8. The Administrator is coordinating and executing the maintenance
-   operation/work on the NFVI. Note: this step is out of scope of Doctor.
+4. StateChange notification to inform the Consumer(s) about planned maintenance
+   operation.
+
+
+Once the affected Consumer(s) have been notified, they take specific actions (e.g. switch to standby
+(STBY) configuration, request to terminate the virtual resource(s)) to allow the maintenance
+action to be executed. After the physical resources have been emptied, the VIM puts the physical
+resources in "in-maintenance" state and sends a MaintenanceResponse back to the Administrator.
+
+.. figure:: images/figure5b.png
+   :name: figure5b
+   :width: 100%
+
+   Successful NFVI maintenance
+
+The high level message flow for a successful NFVI maintenance is show in :numref:`figure5b`.
+It consists of the following steps:
+
+5. The Consumer C3 switches to standby configuration (STBY).
+6. Instructions from Consumers C2/C3 are shared to VIM requesting certain actions to be performed
+   (steps 6a, 6b). After receiving such instructions, the VIM executes the requested
+   action in order to empty the physical resources (step 6c) and informs the
+   Consumer about the result of the actions (steps 6d, 6e).
+7. The VIM switches the physical resources to "in-maintenance" state
+8. Maintenance response is sent from VIM to inform the Administrator that the physical
+   servers have been emptied.
+9. The Administrator is coordinating and executing the maintenance
+   operation/work on the NFVI. Note: this step is out of scope of Doctor project.
+
+The requested actions to empty the physical resources may not be successful (e.g. migration fails
+or takes too long) and in such a case, the VIM puts the physical resources back to 'enabled' and
+informs the Administrator about the problem.
+
+.. figure:: images/figure5c.png
+   :name: figure5c
+   :width: 100%
+
+   Example of failed NFVI maintenance
+
+An example of a high level message flow to cover the failed NFVI maintenance case is
+shown in :numref:`figure5c`.
+It consists of the following steps:
+
+5. The Consumer C3 switches to standby configuration (STDBY).
+6. Instructions from Consumers C2/C3 are shared to VIM requesting certain actions to be performed (steps 6a, 6b).
+   The VIM executes the requested actions and sends back a NACK to consumer C2 (step 6e) as the
+   migration of the virtual resource(s) is not completed by a given timeout.
+7. The VIM switches the physical resources to "enabled" state.
+8. MaintenanceResponse is sent from VIM to inform the Administrator that the maintenance action cannot start.
+
 
 ..
  vim: set tabstop=4 expandtab textwidth=80:
