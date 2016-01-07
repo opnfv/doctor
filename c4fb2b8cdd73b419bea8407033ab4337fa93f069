@@ -1,0 +1,251 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a5c5d37_95463a4e",
+        "filename": "docs/platformoverview/doctor.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-01-07T13:53:40Z",
+      "side": 1,
+      "message": "typo: features",
+      "range": {
+        "startLine": 15,
+        "startChar": 6,
+        "endLine": 15,
+        "endChar": 14
+      },
+      "revId": "c4fb2b8cdd73b419bea8407033ab4337fa93f069",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_5578c28e",
+        "filename": "docs/platformoverview/doctor.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-01-07T13:53:40Z",
+      "side": 1,
+      "message": "VNF managers (VNFM)",
+      "range": {
+        "startLine": 16,
+        "startChar": 58,
+        "endLine": 16,
+        "endChar": 70
+      },
+      "revId": "c4fb2b8cdd73b419bea8407033ab4337fa93f069",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_75750697",
+        "filename": "docs/platformoverview/doctor.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-01-07T13:53:40Z",
+      "side": 1,
+      "message": "*the* virtualized",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 11
+      },
+      "revId": "c4fb2b8cdd73b419bea8407033ab4337fa93f069",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_356f8ec7",
+        "filename": "docs/platformoverview/doctor.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-01-07T13:53:40Z",
+      "side": 1,
+      "message": "*a* failure *has* occurred.",
+      "range": {
+        "startLine": 17,
+        "startChar": 42,
+        "endLine": 17,
+        "endChar": 58
+      },
+      "revId": "c4fb2b8cdd73b419bea8407033ab4337fa93f069",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_15724aad",
+        "filename": "docs/platformoverview/doctor.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-01-07T13:53:40Z",
+      "side": 1,
+      "message": "necessary to *properly* execute recovery actions in *the* VIM.",
+      "range": {
+        "startLine": 18,
+        "startChar": 33,
+        "endLine": 19,
+        "endChar": 15
+      },
+      "revId": "c4fb2b8cdd73b419bea8407033ab4337fa93f069",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_f568d6bb",
+        "filename": "docs/platformoverview/doctor.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-01-07T13:53:40Z",
+      "side": 1,
+      "message": "following components:",
+      "range": {
+        "startLine": 24,
+        "startChar": 60,
+        "endLine": 24,
+        "endChar": 70
+      },
+      "revId": "c4fb2b8cdd73b419bea8407033ab4337fa93f069",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_d56392db",
+        "filename": "docs/platformoverview/doctor.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-01-07T13:53:40Z",
+      "side": 1,
+      "message": "*an* overview of *the* Doctor *platform* and how components *interact* in",
+      "range": {
+        "startLine": 35,
+        "startChar": 12,
+        "endLine": 35,
+        "endChar": 40
+      },
+      "revId": "c4fb2b8cdd73b419bea8407033ab4337fa93f069",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_b5625ed6",
+        "filename": "docs/platformoverview/doctor.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-01-07T13:53:40Z",
+      "side": 1,
+      "message": "Doctor platform and typical sequence (Brahmaputra)",
+      "range": {
+        "startLine": 42,
+        "startChar": 3,
+        "endLine": 42,
+        "endChar": 39
+      },
+      "revId": "c4fb2b8cdd73b419bea8407033ab4337fa93f069",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_955d1a18",
+        "filename": "docs/platformoverview/doctor.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-01-07T13:53:40Z",
+      "side": 1,
+      "message": "Detailed *information on the* Doctor *architecture* can be found in the *Doctor requirements documentation*:",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 40
+      },
+      "revId": "c4fb2b8cdd73b419bea8407033ab4337fa93f069",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_759ce6c0",
+        "filename": "docs/platformoverview/doctor.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-01-07T13:53:40Z",
+      "side": 1,
+      "message": "proposal to remove \".\"",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 1
+      },
+      "revId": "c4fb2b8cdd73b419bea8407033ab4337fa93f069",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_559fa2b4",
+        "filename": "docs/platformoverview/images/figure-p1.png",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-01-07T13:53:40Z",
+      "side": 1,
+      "message": "typo in \"6. Action\"",
+      "revId": "c4fb2b8cdd73b419bea8407033ab4337fa93f069",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
