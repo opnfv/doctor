@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a5c5d37_c0cd005f",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-01-14T09:30:27Z",
+      "side": 1,
+      "message": "for someone external to OPNFV it will not be clear what is a \"non HA use case\". please rephrase, e.g. to \"In some use cases the Consumer...\"",
+      "range": {
+        "startLine": 498,
+        "startChar": 0,
+        "endLine": 498,
+        "endChar": 15
+      },
+      "revId": "e94d4e71dbbdcfe809c66834c9f57a61b2a86a45",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
