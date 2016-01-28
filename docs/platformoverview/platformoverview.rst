@@ -1,16 +1,18 @@
-===============
-Doctor Platform
-===============
+Doctor platform components and features
+=======================================
+
+..
+    This section will be compiled into OPNFV composite document.
 
 https://wiki.opnfv.org/doctor
 
 Features
-========
+--------
 
 Doctor platform, as of Brahmaputra release, provides the two features:
 
 * Immediate Notification
-* Consistent resource state awareness (Compute)
+* Consistent resource state awareness (Compute/host-down)
 
 These features enable high availability of Network Services on top of
 the virtualized infrastructure. Immediate notification allows VNF managers
@@ -19,7 +21,7 @@ Consistency of resource state is necessary to properly execute recovery
 actions properly in the VIM.
 
 Components
-==========
+----------
 
 Doctor platform, as of Brahmaputra release, consists of the following
 components:
