@@ -14,19 +14,20 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-#branch=$(git rev-parse --abbrev-ref HEAD)
-BRANCH=master
-
 IMAGE_URL=https://launchpad.net/cirros/trunk/0.3.0/+download/cirros-0.3.0-x86_64-disk.img
 IMAGE_NAME=cirros
 IMAGE_FILE="${IMAGE_NAME}.img"
 IMAGE_FORMAT=qcow2
 VM_NAME=doctor_vm1
 VM_FLAVOR=m1.tiny
-COMPUTE_HOST='s142'
 ALARM_NAME=doctor_alarm1
 INSPECTOR_PORT=12345
 CONSUMER_PORT=12346
+
+# NOTE: You have to be changed these paramas depends on your machine,
+#       installer and configs.
+COMPUTE_HOST='192.0.2.8'
+SSH_TO_COMPUTE_HOST="ssh heat-admin@$COMPUTE_HOST"
 
 
 download_image() {
@@ -109,8 +110,19 @@ wait_for_vm_launch() {
 }
 
 inject_failure() {
-    #FIXME
-    echo ssh $COMPUTE_HOST "ip link set eno1 down"
+    echo "disabling network of comupte host [$COMPUTE_HOST] for 3 mins..."
+    $SSH_TO_COMPUTE_HOST "
+cat > disable_network.sh << 'END_TXT'
+#!/bin/bash
+dev=\$(/usr/sbin/ip route | awk '/^default/{print \$5}')
+sleep 1
+echo sudo ip link set \$dev down
+sleep 180
+echo sudo ip link set \$dev up
+sleep 1
+END_TXT
+chmod +x disable_network.sh
+nohup ./disable_network.sh > c 2>&1 &"
 }
 
 calculate_notification_time() {
