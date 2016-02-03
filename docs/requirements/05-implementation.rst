@@ -118,10 +118,9 @@ The detailed work flow for fault management is as follows (see also :numref:`fig
    affected resources, for example migrate/update/terminate specific
    resource(s). After reception of such instructions, the VIM is executing the
    requested action, e.g. it will migrate or terminate a virtual resource.
-
-   a. Query request from Consumer to VIM to get information about the current
+a. Query request from Consumer to VIM to get information about the current
    status of a resource.
-   b. Response to the query request with information about the current status of
+b. Response to the query request with information about the current status of
    the queried resource. In case the resource is in "fault" state, information
    about the related fault(s) is returned.
 
@@ -164,6 +163,11 @@ the 4 building blocks introduced in :ref:`impl_fb`.
 
 NFVI Maintenance
 ^^^^^^^^^^^^^^^^
+.. figure:: images/figure9.png
+   :name: figure9
+   :width: 100%
+
+   NFVI maintenance work flow
 
 The detailed work flow for NFVI maintenance is shown in :numref:`figure9`
 and has the following steps. Note that steps 1, 2, and 5 to 8a in the NFVI
@@ -180,25 +184,18 @@ flow and share a similar implementation plan in Release 1.
 6. Maintenance notification to Consumer.
 7. The Consumer switches to standby configuration (STBY)
 8. Instructions from Consumer to VIM requesting certain recovery actions to be
-   performed (step 7a). After reception of such instructions, the VIM is
+   performed (step 8a). After reception of such instructions, the VIM is
    executing the requested action in order to empty the physical resources (step
-   7b).
+   8b).
 9. Maintenance response from VIM to inform the Administrator that the physical
    machines have been emptied (or the operation resulted in an error state).
 10. Administrator is coordinating and executing the maintenance operation/work
     on the NFVI.
-
-    A) Query request from Administrator to VIM to get information about the
-    current state of a resource.
-    B) Response to the query request with information about the current state of
-    the queried resource(s). In case the resource is in "maintenance" state,
-    information about the related maintenance operation is returned.
-
-.. figure:: images/figure9.png
-   :name: figure9
-   :width: 100%
-
-   NFVI maintenance work flow
+a) Query request from Administrator to VIM to get information about the
+   current state of a resource.
+b) Response to the query request with information about the current state of
+   the queried resource(s). In case the resource is in "maintenance" state,
+   information about the related maintenance operation is returned.
 
 .. figure:: images/figure10.png
    :name: figure10
@@ -206,7 +203,7 @@ flow and share a similar implementation plan in Release 1.
 
    NFVI Maintenance implementation plan
 
-:numref:`figure10` shows a more detailed message flow (Steps 4 to 6)
+:numref:`figure10` shows a more detailed message flow (Steps 3 to 6 and 9)
 between the 4 building blocks introduced in Section 5.1..
 
 3. The Administrator is sending a StateChange request to the Controller residing
