@@ -1,3 +1,6 @@
+.. This work is licensed under a Creative Commons Attribution 4.0 International License.
+.. http://creativecommons.org/licenses/by/4.0
+
 .. NOTE::
    This is a specification draft of a blueprint proposed for OpenStack Nova
    Liberty. It was written by project member(s) and agreed within the project
