@@ -1,3 +1,6 @@
+.. This work is licensed under a Creative Commons Attribution 4.0 International License.
+.. http://creativecommons.org/licenses/by/4.0
+
 ****************************************
 Doctor: Fault Management and Maintenance
 ****************************************
@@ -5,7 +8,8 @@ Doctor: Fault Management and Maintenance
 :Project: Doctor, https://wiki.opnfv.org/doctor
 :Editors: Ashiq Khan (NTT DOCOMO), Gerald Kunzmann (NTT DOCOMO)
 :Authors: Ryota Mibu (NEC), Carlos Goncalves (NEC), Tomi Juvonen (Nokia),
-          Tommy Lindgren (Ericsson)
+          Tommy Lindgren (Ericsson), Bertrand Souville (NTT DOCOMO),
+          Balazs Gibizer (Ericsson), Ildiko Vancsa (Ericsson) and others.
 
 :Abstract: Doctor is an OPNFV requirement project [DOCT]_. Its scope is NFVI
            fault management, and maintenance and it aims at developing and
