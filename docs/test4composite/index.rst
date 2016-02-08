@@ -14,5 +14,5 @@ Doctor contents in composite docs
     :numbered:
 
     ../platformoverview/platformoverview.rst
-    ../configguide/configguide.rst
+    ../configguide/featureconfig.rst
     ../userguide/userguide.rst
