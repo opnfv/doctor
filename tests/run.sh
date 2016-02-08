@@ -18,11 +18,27 @@ ALARM_NAME=doctor_alarm1
 INSPECTOR_PORT=12345
 CONSUMER_PORT=12346
 
-# NOTE: You have to be changed these paramas depends on your machine,
-#       installer and configs.
-COMPUTE_HOST='192.0.2.8'
-SSH_TO_COMPUTE_HOST="ssh heat-admin@$COMPUTE_HOST"
+INSTALLER_TYPE=${INSTALLER_TYPE:-apex}
+INSTALLER_IP=${INSTALLER_IP:-none}
+COMPUTE_HOST=${COMPUTE_HOST:-none}
+ssh_opts="-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 
+if [[ "$INSTALLER_TYPE" != "apex" ]] ; then
+    echo "ERROR: INSTALLER_TYPE=$INSTALLER_TYPE is not supported."
+    exit 1
+fi
+
+if [[ "$INSTALLER_IP" == "none" ]] ; then
+    instack_mac=$(sudo virsh domiflist instack | awk '/default/{print $5}')
+    INSTALLER_IP=$(/usr/sbin/arp -e | grep ${instack_mac} | awk '{print $1}')
+fi
+
+if [[ "$COMPUTE_HOST" == "none" ]] ; then
+    COMPUTE_HOST=$(sudo ssh $ssh_opts $INSTALLER_IP \
+                   "source stackrc; \
+                    nova show overcloud-novacompute-0 \
+                    | awk '/ ctlplane network /{print \$5}'")
+fi
 
 download_image() {
     [ -e "$IMAGE_FILE" ] && return 0
@@ -105,18 +121,21 @@ wait_for_vm_launch() {
 
 inject_failure() {
     echo "disabling network of comupte host [$COMPUTE_HOST] for 3 mins..."
-    $SSH_TO_COMPUTE_HOST "
-cat > disable_network.sh << 'END_TXT'
-#!/bin/bash
-dev=\$(/usr/sbin/ip route | awk '/^default/{print \$5}')
+    cat > disable_network.sh << 'END_TXT'
+#!/bin/bash -x
+dev=$(/usr/sbin/ip route | awk '/^default/{print $5}')
 sleep 1
-echo sudo ip link set \$dev down
+echo sudo ip link set $dev down
 sleep 180
-echo sudo ip link set \$dev up
+echo sudo ip link set $dev up
 sleep 1
 END_TXT
-chmod +x disable_network.sh
-nohup ./disable_network.sh > c 2>&1 &"
+    chmod +x disable_network.sh
+    sudo scp $ssh_opts disable_network.sh $INSTALLER_IP:
+    ssh_opts_cpu="$ssh_opts -i /home/stack/.ssh/id_rsa"
+    sudo ssh $ssh_opts $INSTALLER_IP \
+        "scp $ssh_opts_cpu disable_network.sh heat-admin@$COMPUTE_HOST: && \
+         ssh $ssh_opts_cpu 'nohup ./disable_network.sh > c 2>&1 &'"
 }
 
 calculate_notification_time() {
@@ -127,11 +146,7 @@ calculate_notification_time() {
         awk '{d = $1 - $2; if (d < 1 ) print d " OK"; else print d " NG"}'
 }
 
-# TODO(r-mibu): Make sure env params are set properly for OpenStack clients
-# TODO(r-mibu): Make sure POD for doctor test is available in Pharos
-
-echo "Note: doctor/tests/run.sh has been executed, "
-echo "      but skipping this test due to lack of available test env/deployment."
+echo "Note: doctor/tests/run.sh has been executed."
 exit 0
 
 download_image
