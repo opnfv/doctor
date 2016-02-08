@@ -41,7 +41,7 @@ components:
 You can see an overview of the Doctor platform and how components interact in
 :numref:`figure-p1`.
 
-.. figure:: images/figure-p1.png
+.. figure:: ./images/figure-p1.png
     :name: figure-p1
     :width: 100%
 

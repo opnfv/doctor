@@ -13,6 +13,8 @@ Doctor contents in composite docs
     :maxdepth: 2
     :numbered:
 
-    ../platformoverview/platformoverview.rst
-    ../configguide/configguide.rst
-    ../userguide/userguide.rst
+    *
+
+.. include:: ../platformoverview/platformoverview.rst
+.. include:: ../configguide/featureconfig.rst
+.. include:: ../userguide/userguide.rst
