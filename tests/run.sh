@@ -20,7 +20,8 @@ CONSUMER_PORT=12346
 
 INSTALLER_TYPE=${INSTALLER_TYPE:-apex}
 INSTALLER_IP=${INSTALLER_IP:-none}
-COMPUTE_HOST=${COMPUTE_HOST:-none}
+COMPUTE_HOST=${COMPUTE_HOST:-overcloud-novacompute-0}
+COMPUTE_IP=${COMPUTE_IP:-none}
 ssh_opts="-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 
 if [[ "$INSTALLER_TYPE" != "apex" ]] ; then
@@ -33,11 +34,11 @@ if [[ "$INSTALLER_IP" == "none" ]] ; then
     INSTALLER_IP=$(/usr/sbin/arp -e | grep ${instack_mac} | awk '{print $1}')
 fi
 
-if [[ "$COMPUTE_HOST" == "none" ]] ; then
-    COMPUTE_HOST=$(sudo ssh $ssh_opts $INSTALLER_IP \
-                   "source stackrc; \
-                    nova show overcloud-novacompute-0 \
-                    | awk '/ ctlplane network /{print \$5}'")
+if [[ "$COMPUTE_IP" == "none" ]] ; then
+    COMPUTE_IP=$(sudo ssh $ssh_opts $INSTALLER_IP \
+                 "source stackrc; \
+                  nova show $COMPUTE_HOST \
+                  | awk '/ ctlplane network /{print \$5}'")
 fi
 
 download_image() {
@@ -77,8 +78,8 @@ create_alarm() {
 
 start_monitor() {
     pgrep -f "python monitor.py" && return 0
-    sudo python monitor.py "$COMPUTE_HOST" "http://127.0.0.1:$INSPECTOR_PORT/events" > monitor.log 2>&1 &
-    MONITOR_PID=$!
+    sudo python monitor.py "$COMPUTE_HOST" "$COMPUTE_IP" \
+        "http://127.0.0.1:$INSPECTOR_PORT/events" > monitor.log 2>&1 &
 }
 
 stop_monitor() {
@@ -126,7 +127,7 @@ inject_failure() {
 dev=$(/usr/sbin/ip route | awk '/^default/{print $5}')
 sleep 1
 echo sudo ip link set $dev down
-sleep 180
+sleep 120
 echo sudo ip link set $dev up
 sleep 1
 END_TXT
@@ -146,24 +147,57 @@ calculate_notification_time() {
         awk '{d = $1 - $2; if (d < 1 ) print d " OK"; else print d " NG"}'
 }
 
-echo "Note: doctor/tests/run.sh has been executed."
-exit 0
+cleanup() {
+    set +e
+    echo "cleanup..."
+    stop_monitor
+    stop_inspector
+    stop_consumer
 
+    nova service-force-down --unset "$COMPUTE_HOST" nova-compute
+    sleep 1
+    nova delete "$VM_NAME"
+    sleep 1
+    alarm_id=$(ceilometer alarm-list | grep " $ALARM_NAME " | awk '{print $2}')
+    sleep 1
+    [ -n "$alarm_id" ] && ceilometer alarm-delete "$alarm_id"
+    sleep 1
+    image_id=$(glance image-list | grep " $IMAGE_NAME " | awk '{print $2}')
+    sleep 1
+    [ -n "$image_id" ] && glance image-delete "$image_id"
+    #TODO: add host status check via nova admin api
+    echo "waiting disabled compute host back to be enabled..."
+    sleep 180
+}
+
+
+echo "Note: doctor/tests/run.sh has been executed."
+
+ping -c 1 "$COMPUTE_IP"
+
+trap cleanup ERR
+
+echo "preparing VM image..."
 download_image
 register_image
 
+echo "starting doctor sample components..."
 start_monitor
 start_inspector
 start_consumer
 
+echo "creating VM and alarm..."
 boot_vm
 create_alarm
 wait_for_vm_launch
 
 sleep 60
+echo "injecting host failure..."
 inject_failure
 sleep 10
 
 calculate_notification_time
+
+cleanup
 
 echo "done"
