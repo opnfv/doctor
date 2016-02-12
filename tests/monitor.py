@@ -28,10 +28,11 @@ class DoctorMonitorSample(object):
     def __init__(self, args):
         self.hostname = args.hostname
         self.inspector = args.inspector
-        self.ip_addr = socket.gethostbyname(self.hostname)
+        self.ip_addr = args.ip or socket.gethostbyname(self.hostname)
 
     def start_loop(self):
-        print "start ping to host %s" % self.hostname
+        print "start ping to host %(h)s (ip=$(i)s)" % {'h': self.hostname,
+                                                       'i': self.ip_addr}
         sock = socket.socket(socket.AF_INET, socket.SOCK_RAW,
                              socket.IPPROTO_ICMP)
         sock.settimeout(self.timeout)
@@ -57,6 +58,8 @@ def get_args():
     parser = argparse.ArgumentParser(description='Doctor Sample Monitor')
     parser.add_argument('hostname', metavar='HOSTNAME', type=str, nargs='?',
                         help='a hostname to monitor connectivity')
+    parser.add_argument('ip', metavar='IP', type=str, nargs='?',
+                        help='an IP address to monitor connectivity')
     parser.add_argument('inspector', metavar='INSPECTOR', type=str, nargs='?',
                         help='inspector url to report error',
                         default='http://127.0.0.1:12345/events')
