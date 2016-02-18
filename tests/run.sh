@@ -41,6 +41,18 @@ if [[ "$COMPUTE_IP" == "none" ]] ; then
                   | awk '/ ctlplane network /{print \$5}'")
 fi
 
+prepare_compute_ssh() {
+    ping -c 1 "$COMPUTE_IP"
+
+    # get ssh key from installer node
+    sudo scp $ssh_opts /home/stack/.ssh/id_rsa instack_key
+    if [ ! -r instack_key ];
+        sudo chown $(whoami):$(whoami) instack_key
+    fi
+    chmod 400 instack_key
+    ssh_opts_cpu="$ssh_opts -i instack_key -l heat-admin"
+}
+
 download_image() {
     [ -e "$IMAGE_FILE" ] && return 0
     wget "$IMAGE_URL" -o "$IMAGE_FILE"
@@ -132,11 +144,8 @@ echo sudo ip link set $dev up
 sleep 1
 END_TXT
     chmod +x disable_network.sh
-    sudo scp $ssh_opts disable_network.sh $INSTALLER_IP:
-    ssh_opts_cpu="$ssh_opts -i /home/stack/.ssh/id_rsa"
-    sudo ssh $ssh_opts $INSTALLER_IP \
-        "scp $ssh_opts_cpu disable_network.sh heat-admin@$COMPUTE_HOST: && \
-         ssh $ssh_opts_cpu 'nohup ./disable_network.sh > c 2>&1 &'"
+    scp $ssh_opts_cpu disable_network.sh "$COMPUTE_IP:"
+    ssh $ssh_opts_cpu "$COMPUTE_IP:" 'nohup ./disable_network.sh > disable_network.log 2>&1 &'
 }
 
 calculate_notification_time() {
@@ -153,6 +162,8 @@ cleanup() {
     stop_monitor
     stop_inspector
     stop_consumer
+    ssh $ssh_opts_cpu $COMPUTE_IP \
+        "[ -e disable_network.log ] && cat disable_network.log"
 
     nova service-force-down --unset "$COMPUTE_HOST" nova-compute
     sleep 1
@@ -173,7 +184,7 @@ cleanup() {
 
 echo "Note: doctor/tests/run.sh has been executed."
 
-ping -c 1 "$COMPUTE_IP"
+prepare_compute_ssh
 
 trap cleanup ERR
 
