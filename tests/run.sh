@@ -47,11 +47,9 @@ prepare_compute_ssh() {
 
     # get ssh key from installer node
     sudo scp $ssh_opts root@"$INSTALLER_IP":/home/stack/.ssh/id_rsa instack_key
-    if [ ! -r instack_key ]; then
-        sudo chown $(whoami):$(whoami) instack_key
-    fi
+    sudo chown $(whoami):$(whoami) instack_key
     chmod 400 instack_key
-    ssh_opts_cpu="$ssh_opts -i instack_key -l heat-admin"
+    ssh_opts_cpu="$ssh_opts -i instack_key"
 }
 
 download_image() {
@@ -140,13 +138,13 @@ inject_failure() {
 dev=$(/usr/sbin/ip route | awk '/^default/{print $5}')
 sleep 1
 echo sudo ip link set $dev down
-sleep 120
+sleep 180
 echo sudo ip link set $dev up
 sleep 1
 END_TXT
     chmod +x disable_network.sh
-    scp $ssh_opts_cpu disable_network.sh "$COMPUTE_IP:"
-    ssh $ssh_opts_cpu "$COMPUTE_IP:" 'nohup ./disable_network.sh > disable_network.log 2>&1 &'
+    scp $ssh_opts_cpu disable_network.sh "heat-admin@$COMPUTE_IP:"
+    ssh $ssh_opts_cpu "heat-admin@$COMPUTE_IP:" 'nohup ./disable_network.sh > disable_network.log 2>&1 &'
 }
 
 calculate_notification_time() {
@@ -163,7 +161,7 @@ cleanup() {
     stop_monitor
     stop_inspector
     stop_consumer
-    ssh $ssh_opts_cpu $COMPUTE_IP \
+    ssh $ssh_opts_cpu "heat-admin@$COMPUTE_IP" \
         "[ -e disable_network.log ] && cat disable_network.log"
 
     nova service-force-down --unset "$COMPUTE_HOST" nova-compute
@@ -187,7 +185,7 @@ echo "Note: doctor/tests/run.sh has been executed."
 
 prepare_compute_ssh
 
-trap cleanup ERR
+trap cleanup EXIT
 
 echo "preparing VM image..."
 download_image
@@ -209,7 +207,5 @@ inject_failure
 sleep 10
 
 calculate_notification_time
-
-cleanup
 
 echo "done"
