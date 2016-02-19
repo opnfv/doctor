@@ -42,10 +42,11 @@ if [[ "$COMPUTE_IP" == "none" ]] ; then
 fi
 
 prepare_compute_ssh() {
+    # verify connectivity to target compute host
     ping -c 1 "$COMPUTE_IP"
 
     # get ssh key from installer node
-    sudo scp $ssh_opts /home/stack/.ssh/id_rsa instack_key
+    sudo scp $ssh_opts root@"$INSTALLER_IP":/home/stack/.ssh/id_rsa instack_key
     if [ ! -r instack_key ]; then
         sudo chown $(whoami):$(whoami) instack_key
     fi
