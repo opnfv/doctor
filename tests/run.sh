@@ -144,7 +144,7 @@ sleep 1
 END_TXT
     chmod +x disable_network.sh
     scp $ssh_opts_cpu disable_network.sh "heat-admin@$COMPUTE_IP:"
-    ssh $ssh_opts_cpu "heat-admin@$COMPUTE_IP:" 'nohup ./disable_network.sh > disable_network.log 2>&1 &'
+    ssh $ssh_opts_cpu "heat-admin@$COMPUTE_IP" 'nohup ./disable_network.sh > disable_network.log 2>&1 &'
 }
 
 calculate_notification_time() {
@@ -164,7 +164,7 @@ cleanup() {
     ssh $ssh_opts_cpu "heat-admin@$COMPUTE_IP" \
         "[ -e disable_network.log ] && cat disable_network.log"
 
-    nova service-force-down --unset "$COMPUTE_HOST" nova-compute
+    python ./clean.py
     sleep 1
     nova delete "$VM_NAME"
     sleep 1
