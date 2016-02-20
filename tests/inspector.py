@@ -15,6 +15,8 @@ import os
 
 import novaclient.client as novaclient
 
+import nova_force_down
+
 
 class DoctorInspectorSample(object):
 
@@ -34,7 +36,15 @@ class DoctorInspectorSample(object):
         opts = {'all_tenants': True, 'host': hostname}
         for server in self.nova.servers.list(detailed=False, search_opts=opts):
             self.nova.servers.reset_state(server, 'error')
-        self.nova.services.force_down(hostname, 'nova-compute', True)
+
+        # NOTE: We use our own client here instead of this novaclient for a
+        #       workaround.  Once keystone provides v2.1 nova api endpoint
+        #       in the service catalog which is configured by OpenStack
+        #       installer, we can use this:
+        #
+        # self.nova.services.force_down(hostname, 'nova-compute', True)
+        #
+        nova_force_down.force_down(hostname)
 
 
 app = Flask(__name__)
