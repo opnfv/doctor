@@ -164,7 +164,7 @@ cleanup() {
     ssh $ssh_opts_cpu "heat-admin@$COMPUTE_IP" \
         "[ -e disable_network.log ] && cat disable_network.log"
 
-    python ./clean.py
+    python ./nova_force_down.py "$COMPUTE_HOST" --unset
     sleep 1
     nova delete "$VM_NAME"
     sleep 1
