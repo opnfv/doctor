@@ -148,14 +148,14 @@ wait_for_vm_launch() {
 }
 
 inject_failure() {
-    echo "disabling network of comupte host [$COMPUTE_HOST] for 3 mins..."
+    echo "disabling network of compute host [$COMPUTE_HOST] for 3 mins..."
     cat > disable_network.sh << 'END_TXT'
 #!/bin/bash -x
-dev=$(/usr/sbin/ip route | awk '/^default/{print $5}')
+dev=$(ip route | awk '/^default/{print $5}')
 sleep 1
-echo sudo ip link set $dev down
+sudo ip link set $dev down
 sleep 180
-echo sudo ip link set $dev up
+sudo ip link set $dev up
 sleep 1
 END_TXT
     chmod +x disable_network.sh
