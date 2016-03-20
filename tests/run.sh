@@ -18,38 +18,54 @@ ALARM_NAME=doctor_alarm1
 INSPECTOR_PORT=12345
 CONSUMER_PORT=12346
 
+SUPPORTED_INSTALLER_TYPES="apex local"
 INSTALLER_TYPE=${INSTALLER_TYPE:-apex}
 INSTALLER_IP=${INSTALLER_IP:-none}
 COMPUTE_HOST=${COMPUTE_HOST:-overcloud-novacompute-0}
 COMPUTE_IP=${COMPUTE_IP:-none}
+COMPUTE_USER=${COMPUTE_USER:-heat-admin}
 ssh_opts="-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 
-if [[ "$INSTALLER_TYPE" != "apex" ]] ; then
+if [[ ! "$SUPPORTED_INSTALLER_TYPES" =~ "$INSTALLER_TYPE" ]] ; then
     echo "ERROR: INSTALLER_TYPE=$INSTALLER_TYPE is not supported."
     exit 1
 fi
 
-if [[ "$INSTALLER_IP" == "none" ]] ; then
-    instack_mac=$(sudo virsh domiflist instack | awk '/default/{print $5}')
-    INSTALLER_IP=$(/usr/sbin/arp -e | grep ${instack_mac} | awk '{print $1}')
-fi
-
-if [[ "$COMPUTE_IP" == "none" ]] ; then
-    COMPUTE_IP=$(sudo ssh $ssh_opts $INSTALLER_IP \
-                 "source stackrc; \
-                  nova show $COMPUTE_HOST \
-                  | awk '/ ctlplane network /{print \$5}'")
-fi
-
 prepare_compute_ssh() {
+    ssh_opts_cpu="$ssh_opts"
+
+    if [[ "$INSTALLER_TYPE" == "apex" ]] ; then
+        if [[ "$INSTALLER_IP" == "none" ]] ; then
+            instack_mac=$(sudo virsh domiflist instack | awk '/default/{print $5}')
+            INSTALLER_IP=$(/usr/sbin/arp -e | grep ${instack_mac} | awk '{print $1}')
+        fi
+
+        if [[ "$COMPUTE_IP" == "none" ]] ; then
+            COMPUTE_IP=$(sudo ssh $ssh_opts $INSTALLER_IP \
+                         "source stackrc; \
+                          nova show $COMPUTE_HOST \
+                          | awk '/ ctlplane network /{print \$5}'")
+        fi
+
+        # get ssh key from installer node
+        sudo scp $ssh_opts root@"$INSTALLER_IP":/home/stack/.ssh/id_rsa instack_key
+        sudo chown $(whoami):$(whoami) instack_key
+        chmod 400 instack_key
+        ssh_opts_cpu+=" -i instack_key"
+    elif [[ "$INSTALLER_TYPE" == "local" ]] ; then
+        if [[ "$COMPUTE_IP" == "none" ]] ; then
+            COMPUTE_IP=$(getent hosts "$COMPUTE_HOST" | awk '{ print $1 }')
+            if [[ -z "$COMPUTE_IP" ]]; then
+                echo "ERROR: Could not resolve $COMPUTE_HOST. Either manually set COMPUTE_IP or enable DNS resolution."
+                exit 1
+            fi
+        fi
+
+        echo "INSTALLER_TYPE set to 'local'. Assuming SSH keys already exchanged with $COMPUTE_HOST"
+    fi
+
     # verify connectivity to target compute host
     ping -c 1 "$COMPUTE_IP"
-
-    # get ssh key from installer node
-    sudo scp $ssh_opts root@"$INSTALLER_IP":/home/stack/.ssh/id_rsa instack_key
-    sudo chown $(whoami):$(whoami) instack_key
-    chmod 400 instack_key
-    ssh_opts_cpu="$ssh_opts -i instack_key"
 }
 
 download_image() {
@@ -143,8 +159,8 @@ echo sudo ip link set $dev up
 sleep 1
 END_TXT
     chmod +x disable_network.sh
-    scp $ssh_opts_cpu disable_network.sh "heat-admin@$COMPUTE_IP:"
-    ssh $ssh_opts_cpu "heat-admin@$COMPUTE_IP" 'nohup ./disable_network.sh > disable_network.log 2>&1 &'
+    scp $ssh_opts_cpu disable_network.sh "$COMPUTE_USER@$COMPUTE_IP:"
+    ssh $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP" 'nohup ./disable_network.sh > disable_network.log 2>&1 &'
 }
 
 calculate_notification_time() {
@@ -176,7 +192,7 @@ cleanup() {
     #TODO: add host status check via nova admin api
     echo "waiting disabled compute host back to be enabled..."
     sleep 180
-    ssh $ssh_opts_cpu "heat-admin@$COMPUTE_IP" \
+    ssh $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP" \
         "[ -e disable_network.log ] && cat disable_network.log"
 }
 
