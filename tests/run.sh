@@ -148,14 +148,14 @@ wait_for_vm_launch() {
 }
 
 inject_failure() {
-    echo "disabling network of comupte host [$COMPUTE_HOST] for 3 mins..."
+    echo "disabling network of compute host [$COMPUTE_HOST] for 3 mins..."
     cat > disable_network.sh << 'END_TXT'
 #!/bin/bash -x
-dev=$(/usr/sbin/ip route | awk '/^default/{print $5}')
+dev=$(ip route | awk '/^default/{print $5}')
 sleep 1
-echo sudo ip link set $dev down
+sudo ip link set $dev down
 sleep 180
-echo sudo ip link set $dev up
+sudo ip link set $dev up
 sleep 1
 END_TXT
     chmod +x disable_network.sh
@@ -164,11 +164,10 @@ END_TXT
 }
 
 calculate_notification_time() {
-    detect=$(grep "doctor monitor detected at" monitor.log | awk '{print $5}')
+    detected=$(grep "doctor monitor detected at" monitor.log | awk '{print $5}')
     notified=$(grep "doctor consumer notified at" consumer.log | awk '{print $5}')
-    duration=$(echo "$notified $detect" | awk '{print $1 - $2 }')
-    echo "$notified $detect" | \
-        awk '{d = $1 - $2; if (d < 1 ) print d " OK"; else print d " NG"}'
+    echo "$notified $detected" | \
+        awk '{d = $1 - $2; if (d < 1 && d > 0) print d " OK"; else print d " NG"}'
 }
 
 cleanup() {
