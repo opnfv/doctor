@@ -65,9 +65,9 @@ def event_posted():
 
 
 def get_args():
-    parser = argparse.ArgumentParser(description='Doctor Sample Monitor')
+    parser = argparse.ArgumentParser(description='Doctor Sample Inspector')
     parser.add_argument('port', metavar='PORT', type=int, nargs='?',
-                        help='a port for inspectpr')
+                        help='a port for inspector')
     return parser.parse_args()
 
 
