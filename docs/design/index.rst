@@ -21,3 +21,4 @@ See also https://wiki.opnfv.org/requirements_projects .
 
    report-host-fault-to-update-server-state-immediately.rst
    notification-alarm-evaluator.rst
+   maintenance-period.rst
