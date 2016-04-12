@@ -644,6 +644,63 @@ Parameters:
   resources. For each resource, information about the current state, the
   firmware version, etc. is provided.
 
+
+Detailed southbound interface specification
+-------------------------------------------
+
+This section is specifying the southbound interfaces for fault management
+between the Monitors and the Inspector.
+Although southbound interfaces should be flexible to handle various events from
+different types of Monitors, we define unified event API in order to improve
+interoperability between the Monitors and the Inspector.
+This is not limiting implementation of Monitor and Inspector as these could be
+extended in order to support failures from intelligent inspection like prediction.
+
+Note: The interface definition will be aligned with current work in ETSI NFV IFA
+working group.
+
+Fault event interface
+^^^^^^^^^^^^^^^^^^^^^
+
+This interface allows the Monitors to notify the Inspector about an event which
+was captured by the Monitor and may effect resources managed in the VIM.
+
+EventNotification
+_________________
+
+
+Event notification including fault description.
+The entity of this notification is event, and not fault or error specifically.
+This allows us to use generic event format or framework build out of Doctor project.
+The parameters below shall be mandatory, but keys in 'Details' can be optional.
+
+Parameters:
+
+* Time [1]: Datetime when the fault was observed in the Monitor.
+* Type [1]: Type of event that will be used to process correlation in Inspector.
+* Details [0..1]: Details containing additional information with Key-value pair style.
+  Keys shall be defined depending on the Type of the event.
+
+E.g.:
+
+.. code-block:: bash
+
+    {
+        'event': {
+            'time': '2016-04-12T08:00:00',
+            'type': 'compute.host.down',
+            'details': {
+                'hostname': 'compute-1',
+                'source': 'sample_monitor',
+                'monitor_event_id': '123',
+                'monitor_id': 'monitor-1',
+                'severity': 'critical',
+                'status': 'down',
+            }
+        }
+    }
+
+
 Blueprints
 ----------
 
@@ -838,6 +895,3 @@ as Doctor will be doing. Also this BP might need enhancement to change server
 and service states correctly.
 
 .. [*] https://blueprints.launchpad.net/nova/+spec/pacemaker-servicegroup-driver
-
-..
- vim: set tabstop=4 expandtab textwidth=80:
