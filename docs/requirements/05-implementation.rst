@@ -837,5 +837,49 @@ and service states correctly.
 
 .. [*] https://blueprints.launchpad.net/nova/+spec/pacemaker-servicegroup-driver
 
-..
- vim: set tabstop=4 expandtab textwidth=80:
+
+Detailed southbound interface specification
+-------------------------------------------
+
+This section is specifying the southbound interfaces for fault management
+between the Monitors and the Inspector.
+Although southbound interfaces should be flexible to handle various events from
+different types of Monitors, we define unified event API in order to improve
+interoperability between the monitors and the Inspector.
+This is not limiting implementation of Monitor and Inspector as these could be
+extended in order to support failures from intelligent inspection like prediction.
+
+Note: The interface definition will be aligned with current work in ETSI NFV IFA
+working group.
+
+Fault event interface
+^^^^^^^^^^^^^^^^^^^^^
+
+This interface allows the Monitors to notify the Inspector about an event which
+captured by Monitor and may effect resources managed in VIM.
+The entity of this interface is event.
+It has the following parameters:
+
+* EventClass
+
+  - ID [1]: Unique identifier for the event.
+  - Time [1]: Datetime when the fault was observed in the Monitor.
+  - Type [1]: Type of event that will be used to process correlation in Inspector.
+  - Details [0..1]: Key-value pair containing optional parameters depends on types.
+
+E.g.:
+
+.. code-block:: json
+    {
+        'event': {
+            'id': '1e8e73e4-d656-4221-b984-aeefbefaacb5',
+            'time': '2016-04-12T08:00:00',
+            'type': 'compute.host.down',
+            'details': {
+                'hostname': 'compute-1',
+                'status': 'down',
+                'monitor_id': 'monitor-1',
+                'monitor_event_id': '123',
+            }
+        }
+    }
