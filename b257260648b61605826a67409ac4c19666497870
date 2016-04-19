@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "1a486d77_bf86d9b7",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2016-04-19T09:27:39Z",
+      "side": 1,
+      "message": "Some general questions about the flow: \n* is an event fired once? \n* is it possible for the inspector to query the list of \"active\" events? \n* what if the inspector was down, how will it be notified of the updated system state when it goes up again?",
+      "range": {
+        "startLine": 855,
+        "startChar": 0,
+        "endLine": 855,
+        "endChar": 21
+      },
+      "revId": "b257260648b61605826a67409ac4c19666497870",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a486d77_9fec42c9",
         "filename": "docs/requirements/05-implementation.rst",
         "patchSetId": 1
@@ -140,6 +163,30 @@
     },
     {
       "key": {
+        "uuid": "1a486d77_5f96c5f1",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2016-04-19T09:27:39Z",
+      "side": 1,
+      "message": "Good question. \nI don\u0027t think that an enum is the right approach. We would like to let every monitor define its own types without the need to change the code.\n\nIn Vitrage we realized the need to correlate the same event coming from different sources (e.g. aodh and monasca). We thought of a \"correlator\" that is based on configuration files for mapping e.g. aodh.alarm1 to monasca.alarmXYZ, but we didn\u0027t really design it yet.",
+      "parentUuid": "1a486d77_df099a96",
+      "range": {
+        "startLine": 867,
+        "startChar": 4,
+        "endLine": 867,
+        "endChar": 8
+      },
+      "revId": "b257260648b61605826a67409ac4c19666497870",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a486d77_3fdb0e1d",
         "filename": "docs/requirements/05-implementation.rst",
         "patchSetId": 1
@@ -202,6 +249,29 @@
         "startChar": 66,
         "endLine": 868,
         "endChar": 82
+      },
+      "revId": "b257260648b61605826a67409ac4c19666497870",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_3fc2e9e9",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2016-04-19T09:27:39Z",
+      "side": 1,
+      "message": "Regarding the event properties:\n\n1. Depending on the answer to my flow questions - maybe there should be \"active\" property in the event. Or are you assuming there will always be \"X.down\" and then \"X.up\"?\n\n2. What about severity? at least Aodh and Nagios have it, and I believe it may be common to all monitors (and useful by the inspector)\n\n3. How about adding a \"source\" property, like \"Zabbix\"? is it what you meant by \"monitor_id\"? if so, I think it should be a common property and not part of the metadata\n\n4. What is the difference between id and monitor_event_id?",
+      "range": {
+        "startLine": 885,
+        "startChar": 0,
+        "endLine": 885,
+        "endChar": 4
       },
       "revId": "b257260648b61605826a67409ac4c19666497870",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
