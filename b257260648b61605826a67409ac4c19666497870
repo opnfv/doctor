@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "1a486d77_9f2f9da1",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-04-19T11:51:25Z",
+      "side": 1,
+      "message": "Inspector is trigger based - as long as there is no new incoming event it will not act. Therefore, the query API may not be needed.",
+      "parentUuid": "1a486d77_bf86d9b7",
+      "range": {
+        "startLine": 855,
+        "startChar": 0,
+        "endLine": 855,
+        "endChar": 21
+      },
+      "revId": "b257260648b61605826a67409ac4c19666497870",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a486d77_9fec42c9",
         "filename": "docs/requirements/05-implementation.rst",
         "patchSetId": 1
@@ -187,6 +211,30 @@
     },
     {
       "key": {
+        "uuid": "1a486d77_bf2259b7",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-04-19T11:51:25Z",
+      "side": 1,
+      "message": "From a standardization point of view, it would be preferable to enforce the mapping to common types to be done in the monitors. Letting each monitor use its own values, this would mean additional integration effort in the Inspector for each monitor. In addition, the mapping might be a complex tasks if the monitor events diverge too much between different monitors.",
+      "parentUuid": "1a486d77_5f96c5f1",
+      "range": {
+        "startLine": 867,
+        "startChar": 4,
+        "endLine": 867,
+        "endChar": 8
+      },
+      "revId": "b257260648b61605826a67409ac4c19666497870",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a486d77_3fdb0e1d",
         "filename": "docs/requirements/05-implementation.rst",
         "patchSetId": 1
@@ -267,6 +315,30 @@
       "writtenOn": "2016-04-19T09:27:39Z",
       "side": 1,
       "message": "Regarding the event properties:\n\n1. Depending on the answer to my flow questions - maybe there should be \"active\" property in the event. Or are you assuming there will always be \"X.down\" and then \"X.up\"?\n\n2. What about severity? at least Aodh and Nagios have it, and I believe it may be common to all monitors (and useful by the inspector)\n\n3. How about adding a \"source\" property, like \"Zabbix\"? is it what you meant by \"monitor_id\"? if so, I think it should be a common property and not part of the metadata\n\n4. What is the difference between id and monitor_event_id?",
+      "range": {
+        "startLine": 885,
+        "startChar": 0,
+        "endLine": 885,
+        "endChar": 4
+      },
+      "revId": "b257260648b61605826a67409ac4c19666497870",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_df2515c3",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-04-19T11:51:25Z",
+      "side": 1,
+      "message": "on 1) if we consider to have multiple notifications for one event, then we should also have an \"event raised time\" to indicate when this event was reported for the first time.\n\non 2) +1 to have severity.\n\non 3) +1 to make it a common parameter\n\non 4) do we want/need to distinguish between an event id (created at the time the event is raised) and additional notification ids for the follow up notifications on this event?\n\n5) what about the probable (root) \"cause\" of the event; would this be in \"details\" or should it be a common type?",
+      "parentUuid": "1a486d77_3fc2e9e9",
       "range": {
         "startLine": 885,
         "startChar": 0,
