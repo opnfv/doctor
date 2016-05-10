@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9a91bd0f_92dd5d17",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2016-05-10T11:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a91bd0f_372243ba",
+      "range": {
+        "startLine": 16,
+        "startChar": 66,
+        "endLine": 16,
+        "endChar": 72
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a91bd0f_f72b7b92",
         "filename": "docs/manuals/get-valid-server-state.rst",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-05-10T08:25:33Z",
       "side": 1,
       "message": "..in the VIM.",
+      "range": {
+        "startLine": 17,
+        "startChar": 26,
+        "endLine": 17,
+        "endChar": 61
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_b2e2e1d3",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2016-05-10T11:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a91bd0f_f72b7b92",
       "range": {
         "startLine": 17,
         "startChar": 26,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9a91bd0f_52e7d5e4",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2016-05-10T11:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a91bd0f_77176b52",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 10
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a91bd0f_92ff9d01",
         "filename": "docs/manuals/get-valid-server-state.rst",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2016-05-10T08:25:33Z",
       "side": 1,
       "message": "A typical case is that, in case of a fault of a host, the user of a high availability service running on top of that host, needs to make an immeditate switchover from the faulty host to an active standy host.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 52
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_72ec59c8",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2016-05-10T11:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a91bd0f_92ff9d01",
       "range": {
         "startLine": 21,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "9a91bd0f_12d14dfb",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2016-05-10T11:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a91bd0f_5209152b",
+      "range": {
+        "startLine": 22,
+        "startChar": 53,
+        "endLine": 24,
+        "endChar": 16
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a91bd0f_720e9936",
         "filename": "docs/manuals/get-valid-server-state.rst",
         "patchSetId": 1
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "9a91bd0f_32ced15b",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2016-05-10T11:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a91bd0f_720e9936",
+      "range": {
+        "startLine": 32,
+        "startChar": 13,
+        "endLine": 32,
+        "endChar": 66
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a91bd0f_d261a5d4",
         "filename": "docs/manuals/get-valid-server-state.rst",
         "patchSetId": 1
@@ -151,6 +295,30 @@
       "writtenOn": "2016-05-10T08:25:33Z",
       "side": 1,
       "message": "what is meant by this? Any newer value should override the previous value? can you rephrase or remove this part?",
+      "range": {
+        "startLine": 35,
+        "startChar": 32,
+        "endLine": 36,
+        "endChar": 8
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_d2da0517",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2016-05-10T11:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a91bd0f_d261a5d4",
       "range": {
         "startLine": 35,
         "startChar": 32,
@@ -209,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "9a91bd0f_f2d709ec",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2016-05-10T11:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a91bd0f_f25e2912",
+      "range": {
+        "startLine": 39,
+        "startChar": 13,
+        "endLine": 39,
+        "endChar": 38
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a91bd0f_929b1dc9",
         "filename": "docs/manuals/get-valid-server-state.rst",
         "patchSetId": 1
@@ -232,6 +424,30 @@
     },
     {
       "key": {
+        "uuid": "9a91bd0f_92047d7f",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2016-05-10T11:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a91bd0f_929b1dc9",
+      "range": {
+        "startLine": 40,
+        "startChar": 7,
+        "endLine": 40,
+        "endChar": 34
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a91bd0f_52a59502",
         "filename": "docs/manuals/get-valid-server-state.rst",
         "patchSetId": 1
@@ -243,6 +459,30 @@
       "writtenOn": "2016-05-10T08:25:33Z",
       "side": 1,
       "message": "disabled, (e.g.) for maintenance.",
+      "range": {
+        "startLine": 41,
+        "startChar": 14,
+        "endLine": 41,
+        "endChar": 41
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_b2098197",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2016-05-10T11:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a91bd0f_52a59502",
       "range": {
         "startLine": 41,
         "startChar": 14,
@@ -301,6 +541,30 @@
     },
     {
       "key": {
+        "uuid": "9a91bd0f_52fef56c",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2016-05-10T11:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a91bd0f_d2b8c52c",
+      "range": {
+        "startLine": 44,
+        "startChar": 16,
+        "endLine": 44,
+        "endChar": 23
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a91bd0f_92823d51",
         "filename": "docs/manuals/get-valid-server-state.rst",
         "patchSetId": 1
@@ -318,6 +582,24 @@
     },
     {
       "key": {
+        "uuid": "9a91bd0f_7203f973",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2016-05-10T11:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a91bd0f_92823d51",
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a91bd0f_527cb572",
         "filename": "docs/manuals/get-valid-server-state.rst",
         "patchSetId": 1
@@ -329,6 +611,30 @@
       "writtenOn": "2016-05-10T08:25:33Z",
       "side": 1,
       "message": "is enabled",
+      "range": {
+        "startLine": 56,
+        "startChar": 23,
+        "endLine": 56,
+        "endChar": 24
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_12f86d7b",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2016-05-10T11:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a91bd0f_527cb572",
       "range": {
         "startLine": 56,
         "startChar": 23,
@@ -364,6 +670,30 @@
     },
     {
       "key": {
+        "uuid": "9a91bd0f_32f57183",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2016-05-10T11:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a91bd0f_7281b949",
+      "range": {
+        "startLine": 68,
+        "startChar": 24,
+        "endLine": 68,
+        "endChar": 31
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a91bd0f_12962d95",
         "filename": "docs/manuals/get-valid-server-state.rst",
         "patchSetId": 1
@@ -375,6 +705,30 @@
       "writtenOn": "2016-05-10T08:25:33Z",
       "side": 1,
       "message": "is enabled",
+      "range": {
+        "startLine": 80,
+        "startChar": 24,
+        "endLine": 80,
+        "endChar": 31
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_d2f1a596",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2016-05-10T11:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a91bd0f_12962d95",
       "range": {
         "startLine": 80,
         "startChar": 24,
@@ -410,6 +764,30 @@
     },
     {
       "key": {
+        "uuid": "9a91bd0f_f2ee29b4",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2016-05-10T11:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a91bd0f_329331a5",
+      "range": {
+        "startLine": 92,
+        "startChar": 24,
+        "endLine": 92,
+        "endChar": 32
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a91bd0f_d28f6574",
         "filename": "docs/manuals/get-valid-server-state.rst",
         "patchSetId": 1
@@ -421,6 +799,30 @@
       "writtenOn": "2016-05-10T08:25:33Z",
       "side": 1,
       "message": "please rephrase",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 41
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_922b1deb",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2016-05-10T11:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a91bd0f_d28f6574",
       "range": {
         "startLine": 104,
         "startChar": 0,
@@ -456,6 +858,30 @@
     },
     {
       "key": {
+        "uuid": "9a91bd0f_b230a157",
+        "filename": "docs/userguide/featureusage.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2016-05-10T11:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a91bd0f_f28ce981",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 77
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a91bd0f_32da5179",
         "filename": "docs/userguide/featureusage.rst",
         "patchSetId": 1
@@ -467,6 +893,30 @@
       "writtenOn": "2016-05-10T08:25:33Z",
       "side": 1,
       "message": "changed/updated according to a trigger",
+      "range": {
+        "startLine": 32,
+        "startChar": 38,
+        "endLine": 32,
+        "endChar": 65
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_52359544",
+        "filename": "docs/userguide/featureusage.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2016-05-10T11:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a91bd0f_32da5179",
       "range": {
         "startLine": 32,
         "startChar": 38,
@@ -502,6 +952,30 @@
     },
     {
       "key": {
+        "uuid": "9a91bd0f_723a1938",
+        "filename": "docs/userguide/featureusage.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2016-05-10T11:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a91bd0f_72f8d9e5",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 16
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a91bd0f_d2e68544",
         "filename": "docs/userguide/featureusage.rst",
         "patchSetId": 1
@@ -513,6 +987,24 @@
       "writtenOn": "2016-05-10T08:25:33Z",
       "side": 1,
       "message": "The resource state of a compute host can be retrieved by a user with the OpenStack Compute (Nova) servers API.",
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_123f0d27",
+        "filename": "docs/userguide/featureusage.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2016-05-10T11:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a91bd0f_d2e68544",
       "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
