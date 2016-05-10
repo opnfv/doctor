@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "9a91bd0f_92955de6",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 304
+      },
+      "writtenOn": "2016-05-10T13:25:59Z",
+      "side": 1,
+      "message": "typo immeditate --\u003e immediate",
+      "revId": "91f207a5c404e62425427e3dce984520b61c0bf2",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a91bd0f_520cb594",
         "filename": "docs/manuals/get-valid-server-state.rst",
         "patchSetId": 2
@@ -13,6 +30,30 @@
       "writtenOn": "2016-05-10T11:56:07Z",
       "side": 1,
       "message": "standby",
+      "range": {
+        "startLine": 23,
+        "startChar": 45,
+        "endLine": 23,
+        "endChar": 51
+      },
+      "revId": "91f207a5c404e62425427e3dce984520b61c0bf2",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_b29ae112",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 304
+      },
+      "writtenOn": "2016-05-10T13:25:59Z",
+      "side": 1,
+      "message": "switch over",
+      "parentUuid": "9a91bd0f_520cb594",
       "range": {
         "startLine": 23,
         "startChar": 45,
