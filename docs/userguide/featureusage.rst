@@ -26,12 +26,19 @@ It can be executed as follows:
     CONSUMER_PORT=12346
     python consumer.py "$CONSUMER_PORT" > consumer.log 2>&1 &
 
-Consistent resource state awareness (Compute/host-down)
--------------------------------------------------------
+Consistent resource state awareness
+-----------------------------------
 
 Resource state of compute host can be fixed according to an input from a monitor
 sitting out side of OpenStack Compute (Nova) by using force-down API.
 
 See
 http://artifacts.opnfv.org/doctor/brahmaputra/docs/manuals/mark-host-down_manual.html
+for more detail.
+
+Resource state of compute host is shown to user with OpenStack Compute (Nova)
+servers API.
+
+See
+http://artifacts.opnfv.org/doctor/colorado/docs/manuals/get-valid-server-state.html
 for more detail.
