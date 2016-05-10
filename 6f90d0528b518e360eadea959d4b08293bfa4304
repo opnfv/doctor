@@ -1,0 +1,521 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a91bd0f_372243ba",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-05-10T08:25:33Z",
+      "side": 1,
+      "message": "s/gotten/received/",
+      "range": {
+        "startLine": 16,
+        "startChar": 66,
+        "endLine": 16,
+        "endChar": 72
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_f72b7b92",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-05-10T08:25:33Z",
+      "side": 1,
+      "message": "..in the VIM.",
+      "range": {
+        "startLine": 17,
+        "startChar": 26,
+        "endLine": 17,
+        "endChar": 61
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_77176b52",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-05-10T08:25:33Z",
+      "side": 1,
+      "message": "s/fullfilled/fulfilled",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 10
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_92ff9d01",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-05-10T08:25:33Z",
+      "side": 1,
+      "message": "A typical case is that, in case of a fault of a host, the user of a high availability service running on top of that host, needs to make an immeditate switchover from the faulty host to an active standy host.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 52
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_5209152b",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-05-10T08:25:33Z",
+      "side": 1,
+      "message": "Now, if the compute host is forced down [add a reference to your other patch or the manual of that feature] as a result of that fault, the user has to be notified about this state change such that the user can react accordingly. Similarily, a change of the host state to \"maintenance\" should also be notified to the users.",
+      "range": {
+        "startLine": 22,
+        "startChar": 53,
+        "endLine": 24,
+        "endChar": 16
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_720e9936",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-05-10T08:25:33Z",
+      "side": 1,
+      "message": "... additional state information about a host in case other existing ...",
+      "range": {
+        "startLine": 32,
+        "startChar": 13,
+        "endLine": 32,
+        "endChar": 66
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_d261a5d4",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-05-10T08:25:33Z",
+      "side": 1,
+      "message": "what is meant by this? Any newer value should override the previous value? can you rephrase or remove this part?",
+      "range": {
+        "startLine": 35,
+        "startChar": 32,
+        "endLine": 36,
+        "endChar": 8
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_b2a0a1f5",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-05-10T08:25:33Z",
+      "side": 1,
+      "message": "is up",
+      "range": {
+        "startLine": 38,
+        "startChar": 5,
+        "endLine": 38,
+        "endChar": 23
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_f25e2912",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-05-10T08:25:33Z",
+      "side": 1,
+      "message": "if nova-compute status was not reported by servicegroup driver (withing ... time window)",
+      "range": {
+        "startLine": 39,
+        "startChar": 13,
+        "endLine": 39,
+        "endChar": 38
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_929b1dc9",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-05-10T08:25:33Z",
+      "side": 1,
+      "message": "if nova-compute was forced down",
+      "range": {
+        "startLine": 40,
+        "startChar": 7,
+        "endLine": 40,
+        "endChar": 34
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_52a59502",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-05-10T08:25:33Z",
+      "side": 1,
+      "message": "disabled, (e.g.) for maintenance.",
+      "range": {
+        "startLine": 41,
+        "startChar": 14,
+        "endLine": 41,
+        "endChar": 41
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_d2b8c52c",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-05-10T08:25:33Z",
+      "side": 1,
+      "message": "is returned",
+      "range": {
+        "startLine": 44,
+        "startChar": 16,
+        "endLine": 44,
+        "endChar": 23
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_f2b5c931",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-05-10T08:25:33Z",
+      "side": 1,
+      "message": "in case",
+      "range": {
+        "startLine": 44,
+        "startChar": 40,
+        "endLine": 44,
+        "endChar": 47
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_92823d51",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-05-10T08:25:33Z",
+      "side": 1,
+      "message": "For an NFV use case this has also to be enabled for the owner of the VM::",
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_527cb572",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-05-10T08:25:33Z",
+      "side": 1,
+      "message": "is enabled",
+      "range": {
+        "startLine": 56,
+        "startChar": 23,
+        "endLine": 56,
+        "endChar": 24
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_7281b949",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-05-10T08:25:33Z",
+      "side": 1,
+      "message": "is enabled",
+      "range": {
+        "startLine": 68,
+        "startChar": 24,
+        "endLine": 68,
+        "endChar": 31
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_12962d95",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-05-10T08:25:33Z",
+      "side": 1,
+      "message": "is enabled",
+      "range": {
+        "startLine": 80,
+        "startChar": 24,
+        "endLine": 80,
+        "endChar": 31
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_329331a5",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-05-10T08:25:33Z",
+      "side": 1,
+      "message": "is disbaled",
+      "range": {
+        "startLine": 92,
+        "startChar": 24,
+        "endLine": 92,
+        "endChar": 32
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_d28f6574",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-05-10T08:25:33Z",
+      "side": 1,
+      "message": "please rephrase",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 41
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_f28ce981",
+        "filename": "docs/userguide/featureusage.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-05-10T08:25:33Z",
+      "side": 1,
+      "message": "An example of a consumer of this notification can be found in the Doctor repository.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 77
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_32da5179",
+        "filename": "docs/userguide/featureusage.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-05-10T08:25:33Z",
+      "side": 1,
+      "message": "changed/updated according to a trigger",
+      "range": {
+        "startLine": 32,
+        "startChar": 38,
+        "endLine": 32,
+        "endChar": 65
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_72f8d9e5",
+        "filename": "docs/userguide/featureusage.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-05-10T08:25:33Z",
+      "side": 1,
+      "message": "running outside",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 16
+      },
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_d2e68544",
+        "filename": "docs/userguide/featureusage.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-05-10T08:25:33Z",
+      "side": 1,
+      "message": "The resource state of a compute host can be retrieved by a user with the OpenStack Compute (Nova) servers API.",
+      "revId": "6f90d0528b518e360eadea959d4b08293bfa4304",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
