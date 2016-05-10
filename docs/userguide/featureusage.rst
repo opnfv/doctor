@@ -16,8 +16,8 @@ OpenStack Alarming (Aodh) API with relevant internal components support.
 See, upstream spec document:
 http://specs.openstack.org/openstack/ceilometer-specs/specs/liberty/event-alarm-evaluator.html
 
-You can find an example of consumer of this notification in doctor repository.
-It can be executed as follows:
+An example of a consumer of this notification can be found in the Doctor
+repository. It can be executed as follows:
 
 .. code-block:: bash
 
@@ -26,12 +26,20 @@ It can be executed as follows:
     CONSUMER_PORT=12346
     python consumer.py "$CONSUMER_PORT" > consumer.log 2>&1 &
 
-Consistent resource state awareness (Compute/host-down)
--------------------------------------------------------
+Consistent resource state awareness
+-----------------------------------
 
-Resource state of compute host can be fixed according to an input from a monitor
-sitting out side of OpenStack Compute (Nova) by using force-down API.
+Resource state of compute host can be changed/updated according to a trigger
+from a monitor running outside of OpenStack Compute (Nova) by using
+force-down API.
 
 See
 http://artifacts.opnfv.org/doctor/brahmaputra/docs/manuals/mark-host-down_manual.html
+for more detail.
+
+The resource state of a compute host can be retrieved by a user with the
+OpenStack Compute (Nova) servers API.
+
+See
+http://artifacts.opnfv.org/doctor/colorado/docs/manuals/get-valid-server-state.html
 for more detail.

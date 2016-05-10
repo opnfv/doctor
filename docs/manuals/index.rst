@@ -10,3 +10,4 @@ Manuals
    :maxdepth: 2
 
 .. include:: mark-host-down_manual.rst
+.. include:: get-valid-server-state.rst
