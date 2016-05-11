@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a91bd0f_34131c5e",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 346
+      },
+      "writtenOn": "2016-05-11T13:08:19Z",
+      "side": 1,
+      "message": "filled?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 9
+      },
+      "revId": "0fee9b2bbe95c90eaef31c6d3caa605e1c96496a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_54c1007f",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 346
+      },
+      "writtenOn": "2016-05-11T13:08:19Z",
+      "side": 1,
+      "message": "You are referring here to \"CONF.service_down_time\" in Nova right?",
+      "range": {
+        "startLine": 41,
+        "startChar": 9,
+        "endLine": 41,
+        "endChar": 31
+      },
+      "revId": "0fee9b2bbe95c90eaef31c6d3caa605e1c96496a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_942548ad",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 346
+      },
+      "writtenOn": "2016-05-11T13:08:19Z",
+      "side": 1,
+      "message": "DISABLED?",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 13
+      },
+      "revId": "0fee9b2bbe95c90eaef31c6d3caa605e1c96496a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_b4e96c1c",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 346
+      },
+      "writtenOn": "2016-05-11T13:08:19Z",
+      "side": 1,
+      "message": "Doctor project",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 19
+      },
+      "revId": "0fee9b2bbe95c90eaef31c6d3caa605e1c96496a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
