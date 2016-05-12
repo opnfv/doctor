@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9a91bd0f_9aaa4fd3",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-05-12T11:50:05Z",
+      "side": 1,
+      "message": "what about a compromise: \"closed\" ?",
+      "parentUuid": "9a91bd0f_97b54acf",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 9
+      },
+      "revId": "0fee9b2bbe95c90eaef31c6d3caa605e1c96496a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a91bd0f_54c1007f",
         "filename": "docs/manuals/get-valid-server-state.rst",
         "patchSetId": 3
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "9a91bd0f_3aaf83e5",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-05-12T11:50:05Z",
+      "side": 1,
+      "message": "my preference would be to add more detail.",
+      "parentUuid": "9a91bd0f_b7b64edb",
+      "range": {
+        "startLine": 41,
+        "startChar": 9,
+        "endLine": 41,
+        "endChar": 31
+      },
+      "revId": "0fee9b2bbe95c90eaef31c6d3caa605e1c96496a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a91bd0f_942548ad",
         "filename": "docs/manuals/get-valid-server-state.rst",
         "patchSetId": 3
@@ -131,6 +179,30 @@
       "side": 1,
       "message": "This is how it is in API. nova-compute disabled is shown as MAINTENANCE",
       "parentUuid": "9a91bd0f_942548ad",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 13
+      },
+      "revId": "0fee9b2bbe95c90eaef31c6d3caa605e1c96496a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_5aacc7ed",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-05-12T11:50:05Z",
+      "side": 1,
+      "message": "should we add a note explaining this?",
+      "parentUuid": "9a91bd0f_d7bbd2c2",
       "range": {
         "startLine": 43,
         "startChar": 2,
