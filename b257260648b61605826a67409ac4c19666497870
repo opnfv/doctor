@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9a91bd0f_abe9071c",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-05-16T06:05:58Z",
+      "side": 1,
+      "message": "good suggestion, thanks!",
+      "parentUuid": "1a486d77_7ff8667c",
+      "range": {
+        "startLine": 841,
+        "startChar": 0,
+        "endLine": 841,
+        "endChar": 43
+      },
+      "revId": "b257260648b61605826a67409ac4c19666497870",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a486d77_bfe7fee3",
         "filename": "docs/requirements/05-implementation.rst",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-04-12T07:28:08Z",
       "side": 1,
       "message": "s/monitors/Monitors",
+      "range": {
+        "startLine": 848,
+        "startChar": 29,
+        "endLine": 848,
+        "endChar": 30
+      },
+      "revId": "b257260648b61605826a67409ac4c19666497870",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_ab9b47c8",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 848,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-05-16T06:05:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a486d77_bfe7fee3",
       "range": {
         "startLine": 848,
         "startChar": 29,
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "9a91bd0f_cbeecb22",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-05-16T06:05:58Z",
+      "side": 1,
+      "message": "is an event fired once? - yes\n\nis it possible for the inspector to query the list of \"active\" events? - no, event should not have state whereas resource or other entities may have state, since is event is just container to transport information asap.\n\nwhat if the inspector was down, how will it be notified of the updated system state when it goes up again? - 1) ha for MANO services should be discussed separately, 2) we can use common HA techniques for web services e.g. load balancer, 3) so newly booted inspector don\u0027t need to check \"unprocessed\" event.",
+      "parentUuid": "1a486d77_9f2f9da1",
+      "range": {
+        "startLine": 855,
+        "startChar": 0,
+        "endLine": 855,
+        "endChar": 21
+      },
+      "revId": "b257260648b61605826a67409ac4c19666497870",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a486d77_9fec42c9",
         "filename": "docs/requirements/05-implementation.rst",
         "patchSetId": 1
@@ -106,6 +178,30 @@
       "writtenOn": "2016-04-12T07:28:08Z",
       "side": 1,
       "message": "s/which/which was/",
+      "range": {
+        "startLine": 858,
+        "startChar": 74,
+        "endLine": 858,
+        "endChar": 79
+      },
+      "revId": "b257260648b61605826a67409ac4c19666497870",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_6bf3ff0a",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 858,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-05-16T06:05:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a486d77_9fec42c9",
       "range": {
         "startLine": 858,
         "startChar": 74,
@@ -157,6 +253,54 @@
         "startChar": 12,
         "endLine": 859,
         "endChar": 20
+      },
+      "revId": "b257260648b61605826a67409ac4c19666497870",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_2bddf770",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 859,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-05-16T06:05:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a486d77_7fd186fa",
+      "range": {
+        "startLine": 859,
+        "startChar": 12,
+        "endLine": 859,
+        "endChar": 20
+      },
+      "revId": "b257260648b61605826a67409ac4c19666497870",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_8bf8c3e6",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 859,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-05-16T06:05:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a486d77_5fceca5b",
+      "range": {
+        "startLine": 859,
+        "startChar": 53,
+        "endLine": 859,
+        "endChar": 59
       },
       "revId": "b257260648b61605826a67409ac4c19666497870",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
@@ -223,6 +367,30 @@
       "side": 1,
       "message": "From a standardization point of view, it would be preferable to enforce the mapping to common types to be done in the monitors. Letting each monitor use its own values, this would mean additional integration effort in the Inspector for each monitor. In addition, the mapping might be a complex tasks if the monitor events diverge too much between different monitors.",
       "parentUuid": "1a486d77_5f96c5f1",
+      "range": {
+        "startLine": 867,
+        "startChar": 4,
+        "endLine": 867,
+        "endChar": 8
+      },
+      "revId": "b257260648b61605826a67409ac4c19666497870",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_4bdabb79",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-05-16T06:05:58Z",
+      "side": 1,
+      "message": "I prefer single type per event.\nIf the Monitor can combine two events as quick correlation, then it can notify as a single event saying merged title name. E.g. (a1) \"fan1 down\", (a2) \"fan2 down\" --\u003e (b) \"fan down\"; when the Monitor found (a1) and (a2) and realized it is critical situation, it can notify (b) to the Inspector.\n\nWe can also have bucket API for notification of multiple events in a single HTTP message.",
+      "parentUuid": "1a486d77_bf2259b7",
       "range": {
         "startLine": 867,
         "startChar": 4,
@@ -304,6 +472,54 @@
     },
     {
       "key": {
+        "uuid": "9a91bd0f_abd02754",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 868,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-05-16T06:05:58Z",
+      "side": 1,
+      "message": "ok, will use \"additional information\".",
+      "parentUuid": "1a486d77_1fd8521c",
+      "range": {
+        "startLine": 868,
+        "startChar": 55,
+        "endLine": 868,
+        "endChar": 65
+      },
+      "revId": "b257260648b61605826a67409ac4c19666497870",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_cbd56b44",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 868,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-05-16T06:05:58Z",
+      "side": 1,
+      "message": "right, I\u0027ll improve description.",
+      "parentUuid": "1a486d77_3fdb0e1d",
+      "range": {
+        "startLine": 868,
+        "startChar": 13,
+        "endLine": 868,
+        "endChar": 17
+      },
+      "revId": "b257260648b61605826a67409ac4c19666497870",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a486d77_3fc2e9e9",
         "filename": "docs/requirements/05-implementation.rst",
         "patchSetId": 1
@@ -339,6 +555,30 @@
       "side": 1,
       "message": "on 1) if we consider to have multiple notifications for one event, then we should also have an \"event raised time\" to indicate when this event was reported for the first time.\n\non 2) +1 to have severity.\n\non 3) +1 to make it a common parameter\n\non 4) do we want/need to distinguish between an event id (created at the time the event is raised) and additional notification ids for the follow up notifications on this event?\n\n5) what about the probable (root) \"cause\" of the event; would this be in \"details\" or should it be a common type?",
       "parentUuid": "1a486d77_3fc2e9e9",
+      "range": {
+        "startLine": 885,
+        "startChar": 0,
+        "endLine": 885,
+        "endChar": 4
+      },
+      "revId": "b257260648b61605826a67409ac4c19666497870",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_8bb9a3eb",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-05-16T06:05:58Z",
+      "side": 1,
+      "message": "\u003e 1. Depending on the answer to my flow questions - maybe there should be \"active\" property in the event. Or are you assuming there will always be \"X.down\" and then \"X.up\"?\n\nNo, as I wrote above, I prefer to have single event per notification and \"X.down/up\" in an event type.\n\n\n\u003e 2. What about severity? at least Aodh and Nagios have it, and I believe it may be common to all monitors (and useful by the inspector)\n\nI don\u0027t have strong objection to add \u0027severity\u0027 here. But, I believe that \u0027severity\u0027 makes sense when the information read by human. The information passed in this API is read by Inspector module.\n\n\n\u003e 3. How about adding a \"source\" property, like \"Zabbix\"? is it what you meant by \"monitor_id\"? if so, I think it should be a common property and not part of the metadata\n\nSeems good idea. Yes, \"monitor_id\" is to tell the data source coming from. Are you proposing to put \u0027source\u0027 in the same level of \u0027details\u0027?\n\nMy concern is there might be diversity in source description. A distributed service might have different layer for identification e.g. logical id\u003e host id\u003e event id. To allow flexible description, I proposed to put this into details field.\n\n\n4. What is the difference between id and monitor_event_id?\n\n\u0027id\u0027 is event ID in inspector, which could be aligned with existing rules in OpenStack (e.g. ID of server/VM). Monitors can specify ID of event, but the inspector has responsibility to mange IDs, so it can overwrite this \u0027id\u0027 to avoid a conflict.\n\n\"monitor_event_id\" is the original ID managed by the Monitor, that could be used with \"monitor_id\" in order to trace the root cause (e.g. by checking logs of the Monitor).\n\n\n\u003e 5) what about the probable (root) \"cause\" of the event; would this be in \"details\" or should it be a common type?\n\nYes, it can be in \"details\".",
+      "parentUuid": "1a486d77_df2515c3",
       "range": {
         "startLine": 885,
         "startChar": 0,
