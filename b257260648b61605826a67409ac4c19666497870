@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "9a91bd0f_ab04a77e",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2016-05-16T14:16:27Z",
+      "side": 1,
+      "message": "I understand your motivation. But what will happen if the inspector is launched for the first time when there is already a problem in the system? it will not know about it and report the wrong status.",
+      "parentUuid": "9a91bd0f_cbeecb22",
+      "range": {
+        "startLine": 855,
+        "startChar": 0,
+        "endLine": 855,
+        "endChar": 21
+      },
+      "revId": "b257260648b61605826a67409ac4c19666497870",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a486d77_9fec42c9",
         "filename": "docs/requirements/05-implementation.rst",
         "patchSetId": 1
@@ -403,6 +427,30 @@
     },
     {
       "key": {
+        "uuid": "9a91bd0f_4bf5db81",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2016-05-16T14:16:27Z",
+      "side": 1,
+      "message": "Creating pre-defined enum of event types will help on one hand, but will also limit the monitor from reporting on other events.\nIn addition, how can you force the monitor to report a specific event type? doesn\u0027t each monitor have its own event types? will we need an adaptor per monitor? \nI don\u0027t know Zabbix so well, maybe you can configure the types of events that it sends; but in Nagios it is harder/impossible.",
+      "parentUuid": "9a91bd0f_4bdabb79",
+      "range": {
+        "startLine": 867,
+        "startChar": 4,
+        "endLine": 867,
+        "endChar": 8
+      },
+      "revId": "b257260648b61605826a67409ac4c19666497870",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a486d77_3fdb0e1d",
         "filename": "docs/requirements/05-implementation.rst",
         "patchSetId": 1
@@ -579,6 +627,30 @@
       "side": 1,
       "message": "\u003e 1. Depending on the answer to my flow questions - maybe there should be \"active\" property in the event. Or are you assuming there will always be \"X.down\" and then \"X.up\"?\n\nNo, as I wrote above, I prefer to have single event per notification and \"X.down/up\" in an event type.\n\n\n\u003e 2. What about severity? at least Aodh and Nagios have it, and I believe it may be common to all monitors (and useful by the inspector)\n\nI don\u0027t have strong objection to add \u0027severity\u0027 here. But, I believe that \u0027severity\u0027 makes sense when the information read by human. The information passed in this API is read by Inspector module.\n\n\n\u003e 3. How about adding a \"source\" property, like \"Zabbix\"? is it what you meant by \"monitor_id\"? if so, I think it should be a common property and not part of the metadata\n\nSeems good idea. Yes, \"monitor_id\" is to tell the data source coming from. Are you proposing to put \u0027source\u0027 in the same level of \u0027details\u0027?\n\nMy concern is there might be diversity in source description. A distributed service might have different layer for identification e.g. logical id\u003e host id\u003e event id. To allow flexible description, I proposed to put this into details field.\n\n\n4. What is the difference between id and monitor_event_id?\n\n\u0027id\u0027 is event ID in inspector, which could be aligned with existing rules in OpenStack (e.g. ID of server/VM). Monitors can specify ID of event, but the inspector has responsibility to mange IDs, so it can overwrite this \u0027id\u0027 to avoid a conflict.\n\n\"monitor_event_id\" is the original ID managed by the Monitor, that could be used with \"monitor_id\" in order to trace the root cause (e.g. by checking logs of the Monitor).\n\n\n\u003e 5) what about the probable (root) \"cause\" of the event; would this be in \"details\" or should it be a common type?\n\nYes, it can be in \"details\".",
       "parentUuid": "1a486d77_df2515c3",
+      "range": {
+        "startLine": 885,
+        "startChar": 0,
+        "endLine": 885,
+        "endChar": 4
+      },
+      "revId": "b257260648b61605826a67409ac4c19666497870",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_ebf14f96",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2016-05-16T14:16:27Z",
+      "side": 1,
+      "message": "1. Ok\n2. Severity may also be meaningful to the inspector. For example, you may set a different state to the host based on the severity of the alarm that was raised on it.\n3. I\u0027m not sure I understand. monitor_id can be \"Zabbix\"? if so, then I suggest to put it in the same level as \"details\". And why are you concerned about the diversity of the information? Can you give a concrete example?\n4. Ok, makes sense. I guess in the API for addEvent that is called by the monitor, there will be only monitor_event_id and no id? (as you said the id is managed by the inspector)\n5. Ok. But if you want the inspector to use this information, we should define how it would look like",
+      "parentUuid": "9a91bd0f_8bb9a3eb",
       "range": {
         "startLine": 885,
         "startChar": 0,
