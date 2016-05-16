@@ -17,6 +17,9 @@ VM_FLAVOR=m1.tiny
 ALARM_NAME=doctor_alarm1
 INSPECTOR_PORT=12345
 CONSUMER_PORT=12346
+TEST_USER=demo
+TEST_PW=demo
+TEST_TENANT=demo
 
 SUPPORTED_INSTALLER_TYPES="apex local"
 INSTALLER_TYPE=${INSTALLER_TYPE:-apex}
@@ -82,12 +85,32 @@ register_image() {
                         --file "$IMAGE_FILE"
 }
 
+create_test_user() {
+    keystone user-list | grep -q "$TEST_USER" || {
+        keystone user-create --name "$TEST_USER" --pass "$TEST_PW"
+    }
+    keystone tenant-list | grep -q "$TEST_TENANT" || {
+        keystone tenant-create --name "$TEST_TENANT"
+    }
+    keystone user-role-list --user "$TEST_USER" --tenant "$TEST_TENANT" \
+    | grep -q "_member_" || {
+        keystone user-role-add --user "$TEST_USER" --role _member_  \
+                           --tenant "$TEST_TENANT"
+    }
+}
+
 boot_vm() {
     nova list | grep -q " $VM_NAME " && return 0
+    # test VM done with test user, so can test non-admin
+    export OS_USERNAME="$TEST_USER"
+    export OS_PASSWORD="$TEST_PW"
+    export OS_TENANT_NAME="$TEST_TENANT"
     nova boot --flavor "$VM_FLAVOR" \
               --image "$IMAGE_NAME" \
               "$VM_NAME"
     sleep 1
+    # back to admin user
+    source stackrc
 }
 
 create_alarm() {
@@ -170,6 +193,26 @@ calculate_notification_time() {
         awk '{d = $1 - $2; if (d < 1 && d > 0) print d " OK"; else print d " NG"}'
 }
 
+check_host_status_down() {
+    # Switching to test user
+    export OS_USERNAME="$TEST_USER"
+    export OS_PASSWORD="$TEST_PW"
+    export OS_TENANT_NAME="$TEST_TENANT"
+    
+    host_status_line=$(nova show $VM_NAME | grep "host_status")
+    [[ $? -ne 0 ]] && {
+        echo "ERROR: host_status not configured for owner in Nova policy.json"
+    }
+    # back to admin user
+    source stackrc
+    host_status=$(echo $host_status_line | awk '{print $4}')
+    [[ "$host_status" == "DOWN" ]] && {
+        echo "$VM_NAME showing host_status: $host_status"
+        return 0
+    }
+    echo "ERROR: host_status not reported by: nova show $VM_NAME"
+}
+
 cleanup() {
     set +e
     echo "cleanup..."
@@ -188,6 +231,11 @@ cleanup() {
     image_id=$(glance image-list | grep " $IMAGE_NAME " | awk '{print $2}')
     sleep 1
     [ -n "$image_id" ] && glance image-delete "$image_id"
+    keystone user-role-remove --user "$TEST_USER" --role _member_ \
+                              --tenant "$TEST_TENANT"
+    keystone tenant-remove --name "$TEST_TENANT"
+    keystone user-delete "$TEST_USER"
+
     #TODO: add host status check via nova admin api
     echo "waiting disabled compute host back to be enabled..."
     sleep 180
@@ -211,6 +259,9 @@ start_monitor
 start_inspector
 start_consumer
 
+echo "creating test user..."
+create_test_user
+
 echo "creating VM and alarm..."
 boot_vm
 create_alarm
@@ -221,6 +272,7 @@ echo "injecting host failure..."
 inject_failure
 sleep 10
 
+check_host_status_down
 calculate_notification_time
 
 echo "done"
