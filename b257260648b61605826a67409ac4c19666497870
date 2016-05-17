@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "9a91bd0f_66d1f6cc",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-05-17T16:15:07Z",
+      "side": 1,
+      "message": "Well, we can leave it as an operator task (checking system after deployment process).\n\nHaving state or pool mechanism to hold events, could be the solution, but it may create new delay and function. Thinking of OpenStack custom, I\u0027d like to select HTTP/REST for this interface in order to connect various external OSS modules. If monitor implementation can be in OpenStack, maybe we can use messaging queue which can pool events and transport them promptly.",
+      "parentUuid": "9a91bd0f_ab04a77e",
+      "range": {
+        "startLine": 855,
+        "startChar": 0,
+        "endLine": 855,
+        "endChar": 21
+      },
+      "revId": "b257260648b61605826a67409ac4c19666497870",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a486d77_9fec42c9",
         "filename": "docs/requirements/05-implementation.rst",
         "patchSetId": 1
@@ -451,6 +475,30 @@
     },
     {
       "key": {
+        "uuid": "9a91bd0f_da821252",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-05-17T16:15:07Z",
+      "side": 1,
+      "message": "\u003e In addition, how can you force the monitor to report a specific event type? doesn\u0027t each monitor have its own event types? will we need an adaptor per monitor?\n\nYes, we should have adapter per monitor type as Vitrage and Congress already have \u0027driver\u0027 framework.\n\nI\u0027m not fun of such strict enforcement, but maybe we can use version to check the message format and params, so that monitor and inspector can find format/params understandable in the both sides.\n\n\n\u003e I don\u0027t know Zabbix so well, maybe you can configure the types of events that it sends; but in Nagios it is harder/impossible.\n\nUnderstood. Do you have a sample or link to know Nagios event.",
+      "parentUuid": "9a91bd0f_4bf5db81",
+      "range": {
+        "startLine": 867,
+        "startChar": 4,
+        "endLine": 867,
+        "endChar": 8
+      },
+      "revId": "b257260648b61605826a67409ac4c19666497870",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a486d77_3fdb0e1d",
         "filename": "docs/requirements/05-implementation.rst",
         "patchSetId": 1
@@ -651,6 +699,30 @@
       "side": 1,
       "message": "1. Ok\n2. Severity may also be meaningful to the inspector. For example, you may set a different state to the host based on the severity of the alarm that was raised on it.\n3. I\u0027m not sure I understand. monitor_id can be \"Zabbix\"? if so, then I suggest to put it in the same level as \"details\". And why are you concerned about the diversity of the information? Can you give a concrete example?\n4. Ok, makes sense. I guess in the API for addEvent that is called by the monitor, there will be only monitor_event_id and no id? (as you said the id is managed by the inspector)\n5. Ok. But if you want the inspector to use this information, we should define how it would look like",
       "parentUuid": "9a91bd0f_8bb9a3eb",
+      "range": {
+        "startLine": 885,
+        "startChar": 0,
+        "endLine": 885,
+        "endChar": 4
+      },
+      "revId": "b257260648b61605826a67409ac4c19666497870",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_3a8d3e7c",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-05-17T16:15:07Z",
+      "side": 1,
+      "message": "2. maybe, yes - \u0027severity\u0027 could be useful, but I\u0027m not sure whether we need it as mandatory option.\n\n3. OK. Imagine we have monitors in each compute host as the same as an agent. In this case, \u0027monitor_id\u0027 could be hostname and \u0027monitor_event_id\u0027 could be event sequence number in the monitor. E.g. monitor_id\u003dhost123 and monitor_event_id\u003d111 . With these information, operator can check log in monitor by greping monitor_event_id at the host. Note: these params are just examples, and should be informative specification.\n\n4. Right. Monitors shall post addEvent without id.\n\n5. It seems we should add specification of key/params in \u0027details\u0027, I\u0027ll gather params in this review.",
+      "parentUuid": "9a91bd0f_ebf14f96",
       "range": {
         "startLine": 885,
         "startChar": 0,
