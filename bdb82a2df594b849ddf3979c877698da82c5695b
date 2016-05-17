@@ -117,6 +117,30 @@
       "revId": "bdb82a2df594b849ddf3979c877698da82c5695b",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_668336cd",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2016-05-17T10:05:03Z",
+      "side": 1,
+      "message": "ok, let\u0027s make it so :)",
+      "parentUuid": "9a91bd0f_a6793efe",
+      "range": {
+        "startLine": 44,
+        "startChar": 14,
+        "endLine": 46,
+        "endChar": 50
+      },
+      "revId": "bdb82a2df594b849ddf3979c877698da82c5695b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
