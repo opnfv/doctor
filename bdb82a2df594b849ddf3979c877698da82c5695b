@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a91bd0f_c6300259",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-05-17T08:53:16Z",
+      "side": 1,
+      "message": "isn\u0027t \"check-in\" something different? \"..within a timeout period.\"",
+      "range": {
+        "startLine": 41,
+        "startChar": 44,
+        "endLine": 41,
+        "endChar": 52
+      },
+      "revId": "bdb82a2df594b849ddf3979c877698da82c5695b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_e648a6ce",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-05-17T08:53:16Z",
+      "side": 1,
+      "message": "text is not clear, even controversial: \"if nova-compute was disabled\", but \"the whole host is anyhow not disabled\" ?\n\nIf nova-compute is DISABLED, this will not always be shown as MAINTENTANCE in the API, right? so what is the criteria for maintenance?",
+      "range": {
+        "startLine": 44,
+        "startChar": 14,
+        "endLine": 46,
+        "endChar": 50
+      },
+      "revId": "bdb82a2df594b849ddf3979c877698da82c5695b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
