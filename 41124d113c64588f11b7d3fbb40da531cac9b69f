@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a91bd0f_fad83655",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-05-17T19:58:10Z",
+      "side": 1,
+      "message": "Different wording is used to avoid the impression that the whole host is down, as ...",
+      "range": {
+        "startLine": 45,
+        "startChar": 42,
+        "endLine": 46,
+        "endChar": 44
+      },
+      "revId": "41124d113c64588f11b7d3fbb40da531cac9b69f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
