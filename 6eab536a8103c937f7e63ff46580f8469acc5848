@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9a91bd0f_50cee384",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-05-19T06:28:42Z",
+      "side": 1,
+      "message": "Ah, good point. We can remove ID from this parameter. I intended to list key parameter as an entity not for notification. I mean this format can be shown in response and show-event (HTTP GET) in consistent format.\n\nRegarding datetime, this Time (datetime when this event observed by the Monitor) is different from received time in Inspector. And I believe we should have observed time of event here rather than the time when this message received by Inspector, as this is event information. No one has interest in the time that this message transported in particular point/module except few number of the people in developers and operators who is going to improve the message processing.",
+      "parentUuid": "9a91bd0f_d074339e",
+      "revId": "6eab536a8103c937f7e63ff46580f8469acc5848",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a91bd0f_506823ba",
         "filename": "docs/requirements/05-implementation.rst",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "9a91bd0f_70cbe772",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-05-19T06:28:42Z",
+      "side": 1,
+      "message": "Yes, that\u0027s the discussion in patch set 2.\n\nChecking missed message is a new idea. Format of IDs are various, so it can be used in limited cases/monitors. But, it\u0027s still interesting.",
+      "parentUuid": "9a91bd0f_506823ba",
+      "revId": "6eab536a8103c937f7e63ff46580f8469acc5848",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a91bd0f_f0a057f6",
         "filename": "docs/requirements/05-implementation.rst",
         "patchSetId": 3
@@ -47,6 +83,24 @@
       "writtenOn": "2016-05-19T02:54:20Z",
       "side": 1,
       "message": "The \u0027severity\u0027 is a mandatory option in NB API, i\u0027m not sure it is useful in SB. How does the inspector to handle the \u0027severity\u0027?",
+      "revId": "6eab536a8103c937f7e63ff46580f8469acc5848",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_b0b08ff5",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-05-19T06:28:42Z",
+      "side": 1,
+      "message": "Agree. So, my proposal is to specify parameters right under \u0027event\u0027 as mandatory options, and other parameters under \u0027details\u0027 shall be optional.",
+      "parentUuid": "9a91bd0f_f0a057f6",
       "revId": "6eab536a8103c937f7e63ff46580f8469acc5848",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
