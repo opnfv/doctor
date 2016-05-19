@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "9a91bd0f_b0116fae",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-05-19T10:03:56Z",
+      "side": 1,
+      "message": "Yes for ID - I\u0027ll remove ID from this list.\n\nNo for datetime/Time - it should be added but have to be set with the time when the event occurred.",
+      "parentUuid": "9a91bd0f_50f8237c",
+      "revId": "6eab536a8103c937f7e63ff46580f8469acc5848",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a91bd0f_506823ba",
         "filename": "docs/requirements/05-implementation.rst",
         "patchSetId": 3
