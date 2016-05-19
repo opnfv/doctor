@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a91bd0f_d074339e",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-05-19T02:54:20Z",
+      "side": 1,
+      "message": "The event_id will be added by inspector. The monitor can not seen the id. Does it be needed in the SB API? When the inspector handle the event, it will be added. And maybe the inspector can also add a datatime about when the inspector received the fault.",
+      "revId": "6eab536a8103c937f7e63ff46580f8469acc5848",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_506823ba",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-05-19T02:54:20Z",
+      "side": 1,
+      "message": "Can we add a fault cause in the details? So we don\u0027t need to query the cause according to the \u0027monitot_event_id\u0027.\nIf the \u0027monitor_event_id\u0027 is consistent in the monitor, maybe we can judge whether we have lose some event according to the id.",
+      "revId": "6eab536a8103c937f7e63ff46580f8469acc5848",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_f0a057f6",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-05-19T02:54:20Z",
+      "side": 1,
+      "message": "The \u0027severity\u0027 is a mandatory option in NB API, i\u0027m not sure it is useful in SB. How does the inspector to handle the \u0027severity\u0027?",
+      "revId": "6eab536a8103c937f7e63ff46580f8469acc5848",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
