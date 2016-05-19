@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "9a91bd0f_50f8237c",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-05-19T08:49:39Z",
+      "side": 1,
+      "message": "Yes, so the ID and datatime about when the inspector received the fault will be added in the inspectors not in the SB API. :)",
+      "parentUuid": "9a91bd0f_50cee384",
+      "revId": "6eab536a8103c937f7e63ff46580f8469acc5848",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a91bd0f_506823ba",
         "filename": "docs/requirements/05-implementation.rst",
         "patchSetId": 3
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "Agree. So, my proposal is to specify parameters right under \u0027event\u0027 as mandatory options, and other parameters under \u0027details\u0027 shall be optional.",
       "parentUuid": "9a91bd0f_f0a057f6",
+      "revId": "6eab536a8103c937f7e63ff46580f8469acc5848",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_30ef9fb2",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-05-19T08:49:39Z",
+      "side": 1,
+      "message": "OK,thanks.",
+      "parentUuid": "9a91bd0f_b0b08ff5",
       "revId": "6eab536a8103c937f7e63ff46580f8469acc5848",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
