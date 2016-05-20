@@ -12,7 +12,7 @@ Notification Alarm Evaluator
 ============================
 
 .. NOTE::
-   This is spec draft of brlueprint for OpenStack Ceilomter Liberty.
+   This is spec draft of blueprint for OpenStack Ceilomter Liberty.
    To see current version: https://review.openstack.org/172893
    To track development activity:
    https://blueprints.launchpad.net/ceilometer/+spec/notification-alarm-evaluator
