@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "9a91bd0f_b372d9e3",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2016-05-20T03:57:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a91bd0f_90830bcc",
+      "range": {
+        "startLine": 96,
+        "startChar": 15,
+        "endLine": 96,
+        "endChar": 23
+      },
+      "revId": "dc53b0c0e212bb92543cd4ff3955e0df5284e25d",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a91bd0f_506d8331",
         "filename": "tests/run.sh",
         "patchSetId": 1
@@ -59,6 +83,30 @@
       "writtenOn": "2016-05-19T10:19:19Z",
       "side": 1,
       "message": "these are overwriting env valuables, and won\u0027t back with line 113 if this script was used in functest.\n\ncan you wrap 103-113 with \u0027()\u0027, so that this block run in another bash and won\u0027t override valuables in main part of this script?",
+      "range": {
+        "startLine": 105,
+        "startChar": 4,
+        "endLine": 107,
+        "endChar": 40
+      },
+      "revId": "dc53b0c0e212bb92543cd4ff3955e0df5284e25d",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_5377cdd4",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2016-05-20T03:57:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a91bd0f_506d8331",
       "range": {
         "startLine": 105,
         "startChar": 4,
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "9a91bd0f_737451cf",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2016-05-20T03:57:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a91bd0f_f07e17e4",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 4
+      },
+      "revId": "dc53b0c0e212bb92543cd4ff3955e0df5284e25d",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a91bd0f_706a071c",
         "filename": "tests/run.sh",
         "patchSetId": 1
@@ -105,6 +177,30 @@
       "writtenOn": "2016-05-19T10:19:19Z",
       "side": 1,
       "message": "this won\u0027t work as I wrote above, please fix this function in the same way I described above.",
+      "range": {
+        "startLine": 206,
+        "startChar": 4,
+        "endLine": 207,
+        "endChar": 18
+      },
+      "revId": "dc53b0c0e212bb92543cd4ff3955e0df5284e25d",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_1381458f",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2016-05-20T03:57:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a91bd0f_706a071c",
       "range": {
         "startLine": 206,
         "startChar": 4,
