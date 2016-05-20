@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a91bd0f_6e79c82e",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-05-20T14:05:08Z",
+      "side": 1,
+      "message": "I would keep plural \"pairs\" as we can have multiple key-value pairs in the metadata.",
+      "range": {
+        "startLine": 359,
+        "startChar": 22,
+        "endLine": 359,
+        "endChar": 26
+      },
+      "revId": "14ebcaad3ab92521b7c4647360cc63869b8a5385",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
