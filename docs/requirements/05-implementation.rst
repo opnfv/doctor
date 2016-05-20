@@ -313,9 +313,9 @@ working group.
 
 Simple information elements:
 
-* SubscriptionID: identifies a subscription to receive fault or maintenance
+* SubscriptionID (Identifier): identifies a subscription to receive fault or maintenance
   notifications.
-* NotificationID: identifies a fault or maintenance notification.
+* NotificationID (Identifier): identifies a fault or maintenance notification.
 * VirtualResourceID (Identifier): identifies a virtual resource affected by a
   fault or a maintenance action of the underlying physical resource.
 * PhysicalResourceID (Identifier): identifies a physical resource affected by a
@@ -342,7 +342,7 @@ Simple information elements:
 * EventTime (Datetime): Time when the fault was observed.
 * EventStartTime and EventEndTime (Datetime): Datetime range that can be used in
   a FaultQueryFilter to narrow down the faults to be queried.
-* ProbableCause: information about the probable cause of the fault.
+* ProbableCause (String): information about the probable cause of the fault.
 * CorrelatedFaultID (Integer): list of other faults correlated to this fault.
 * isRootCause (Boolean): Parameter indicating if this fault is the root for
   other correlated faults. If TRUE, then the faults listed in the parameter
@@ -356,7 +356,7 @@ Simple information elements:
 * ZoneID (Identifier): Identifier of the resource zone. A resource zone is the
   logical separation of physical and software resources in an NFVI deployment
   for physical isolation, redundancy, or administrative designation.
-* Metadata (Key-Value-Pairs): provides additional information of a physical
+* Metadata (Key-value pair): provides additional information of a physical
   resource in maintenance/error state.
 
 Complex information elements (see also UML diagrams in :numref:`figure13`
@@ -374,10 +374,10 @@ and :numref:`figure14`):
   particular describing the information elements used for alarm notifications.
 
   - FaultID [1] (Identifier)
-  - FaultType [1]
+  - FaultType [1] (String)
   - Severity [1] (Integer)
   - EventTime [1] (Datetime)
-  - ProbableCause [1]
+  - ProbableCause [1] (String)
   - CorrelatedFaultID [0..*] (Identifier)
   - FaultDetails [0..*] (Key-value pair)
 
