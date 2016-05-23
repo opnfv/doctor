@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a91bd0f_89120661",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-05-23T07:56:57Z",
+      "side": 1,
+      "message": "okay to change to plural here",
+      "range": {
+        "startLine": 350,
+        "startChar": 30,
+        "endLine": 350,
+        "endChar": 31
+      },
+      "revId": "17ecb3cd857331e9e6f3c43022c921f65c2f39cf",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_041d7d66",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-05-23T07:56:57Z",
+      "side": 1,
+      "message": "This information elements is not used below. From the description, it should go to the \"PhysicalResourceStateClass\" or the \"PhysicalResourceInfoClass\".",
+      "range": {
+        "startLine": 359,
+        "startChar": 2,
+        "endLine": 360,
+        "endChar": 38
+      },
+      "revId": "17ecb3cd857331e9e6f3c43022c921f65c2f39cf",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_0906f620",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-05-23T07:56:57Z",
+      "side": 1,
+      "message": "here, I would keep singular \"key-value pair\", as we have the extra information on cardinality [0..*]. If we change to plural here, we would also need to change \"Identifier\" to \"Idenfitiers\" above, which I would not do.",
+      "range": {
+        "startLine": 382,
+        "startChar": 39,
+        "endLine": 382,
+        "endChar": 40
+      },
+      "revId": "17ecb3cd857331e9e6f3c43022c921f65c2f39cf",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
