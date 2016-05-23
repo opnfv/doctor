@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "9a91bd0f_a42b712f",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-05-23T10:07:40Z",
+      "side": 1,
+      "message": "typo: s/nortification/notification",
+      "range": {
+        "startLine": 671,
+        "startChar": 19,
+        "endLine": 671,
+        "endChar": 32
+      },
+      "revId": "6eab536a8103c937f7e63ff46580f8469acc5848",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a91bd0f_d074339e",
         "filename": "docs/requirements/05-implementation.rst",
         "patchSetId": 3
@@ -85,6 +108,29 @@
       "side": 1,
       "message": "OK,thanks.",
       "parentUuid": "9a91bd0f_b0116fae",
+      "revId": "6eab536a8103c937f7e63ff46580f8469acc5848",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_44206549",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-05-23T10:07:40Z",
+      "side": 1,
+      "message": "Reminder: when deleting ID parameter, delete it also here.",
+      "range": {
+        "startLine": 688,
+        "startChar": 12,
+        "endLine": 688,
+        "endChar": 56
+      },
       "revId": "6eab536a8103c937f7e63ff46580f8469acc5848",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
