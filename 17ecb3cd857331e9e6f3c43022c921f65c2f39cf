@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "9a91bd0f_24bbe10f",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-05-23T09:04:58Z",
+      "side": 1,
+      "message": "Agreed. I\u0027ll add it.",
+      "parentUuid": "9a91bd0f_041d7d66",
+      "range": {
+        "startLine": 359,
+        "startChar": 2,
+        "endLine": 360,
+        "endChar": 38
+      },
+      "revId": "17ecb3cd857331e9e6f3c43022c921f65c2f39cf",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a91bd0f_0906f620",
         "filename": "docs/requirements/05-implementation.rst",
         "patchSetId": 3
@@ -59,6 +83,30 @@
       "writtenOn": "2016-05-23T07:56:57Z",
       "side": 1,
       "message": "here, I would keep singular \"key-value pair\", as we have the extra information on cardinality [0..*]. If we change to plural here, we would also need to change \"Identifier\" to \"Idenfitiers\" above, which I would not do.",
+      "range": {
+        "startLine": 382,
+        "startChar": 39,
+        "endLine": 382,
+        "endChar": 40
+      },
+      "revId": "17ecb3cd857331e9e6f3c43022c921f65c2f39cf",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_04beddff",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-05-23T09:04:58Z",
+      "side": 1,
+      "message": "Good point. \n\nBut should FaultDetails be an array or hash? I think we only make an array if the order of fault details matters. Otherwise, I think we should use hash, e.g. FaultDetails (Key-value pairs)\n\nWhat do yo think @Gerald",
+      "parentUuid": "9a91bd0f_0906f620",
       "range": {
         "startLine": 382,
         "startChar": 39,
