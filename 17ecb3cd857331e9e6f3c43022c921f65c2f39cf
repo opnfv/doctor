@@ -116,6 +116,30 @@
       "revId": "17ecb3cd857331e9e6f3c43022c921f65c2f39cf",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_6448092e",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-05-23T09:10:03Z",
+      "side": 1,
+      "message": "I don\u0027t think the syntax [0..*] was meant for \"array\" in a strict sense, but just to indicate that this attribute can have 0 to N entries. I further don\u0027t think for any of the attributes listed here the order matters.",
+      "parentUuid": "9a91bd0f_04beddff",
+      "range": {
+        "startLine": 382,
+        "startChar": 39,
+        "endLine": 382,
+        "endChar": 40
+      },
+      "revId": "17ecb3cd857331e9e6f3c43022c921f65c2f39cf",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
