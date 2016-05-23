@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a91bd0f_c4ba35e1",
+        "filename": "tests/run.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-05-23T11:44:50Z",
+      "side": 1,
+      "message": "nit: remote whitespaces",
+      "revId": "faf5ed75d8f32e038d4c22e81b4469acaeec706f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_e4bf39cf",
+        "filename": "tests/run.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-05-23T11:44:50Z",
+      "side": 1,
+      "message": "nit: remote whitespaces",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 4
+      },
+      "revId": "faf5ed75d8f32e038d4c22e81b4469acaeec706f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
