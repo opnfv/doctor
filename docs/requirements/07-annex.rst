@@ -26,101 +26,129 @@ Administrator should be notified. The following tables provide a list of high
 level faults that are considered within the scope of the Doctor project
 requiring immediate action by the Consumer.
 
-**Compute Hardware**
+Compute
+-------
+- CPU
+  - detect: Zabbix
+  - fault
+    - fail: critical
+  - action: switch to hot standby
+- RAM
+  - detect: Zabbix
+  - fault
+    - fail: critical
+  - action: switch to hot standby
+- NIC
+  - detect: Zabbix / Ceilometer
+  - fault
+    - fail: critical
+    - connection lost: critical
+  - action: switch to hot standby
+- PCIe
+  - detect: SNMP
+  - fault
+    - fail: Critical
+  - action: switch to hot standby
+- hard drive
+  - detect: RAID monitoring / S.M.A.R.T / Zabbix
+  - fault
+    - crash: info
+    - aging: info
+    - controller fail: critical
+  - action: inform OAM
+- Power
+  - detect: SNMP
+  - fault
+    - off: critical
+    - degraded: warning
+    - redundancy lost: warning
+    - threshold exceeded: warning
+  - action: switch to hot standby
 
-+-------------------+----------+------------+-----------------+----------------+
-| Fault             | Severity | How to     | Comment         | Action to      |
-|                   |          | detect?    |                 | recover        |
-+===================+==========+============+=================+================+
-| Processor/CPU     | Critical | Zabbix     |                 | Switch to      |
-| failure, CPU      |          |            |                 | hot standby    |
-| condition not ok  |          |            |                 |                |
-+-------------------+----------+------------+-----------------+----------------+
-| Memory failure/   | Critical | Zabbix     |                 | Switch to      |
-| Memory condition  |          | (IPMI)     |                 | hot standby    |
-| not ok            |          |            |                 |                |
-+-------------------+----------+------------+-----------------+----------------+
-| Network card      | Critical | Zabbix/    |                 | Switch to      |
-| failure, e.g.     |          | Ceilometer |                 | hot standby    |
-| network adapter   |          |            |                 |                |
-| connectivity lost |          |            |                 |                |
-+-------------------+----------+------------+-----------------+----------------+
-| Disk crash        | Info     | RAID       | Network storage | Inform OAM     |
-|                   |          | monitoring | is very         |                |
-|                   |          |            | redundant (e.g. |                |
-|                   |          |            | RAID system)    |                |
-|                   |          |            | and can         |                |
-|                   |          |            | guarantee high  |                |
-|                   |          |            | availability    |                |
-+-------------------+----------+------------+-----------------+----------------+
-| Storage           | Critical | Zabbix     |                 | Live migration |
-| controller        |          | (IPMI)     |                 | if storage     |
-|                   |          |            |                 | is still       |
-|                   |          |            |                 | accessible;    |
-|                   |          |            |                 | otherwise hot  |
-|                   |          |            |                 | standby        |
-+-------------------+----------+------------+-----------------+----------------+
-| PDU/power         | Critical | Zabbix/    |                 | Switch to      |
-| failure, power    |          | Ceilometer |                 | hot standby    |
-| off, server reset |          |            |                 |                |
-+-------------------+----------+------------+-----------------+----------------+
-| Power             | Warning  | SNMP       |                 | Live migration |
-| degration, power  |          |            |                 |                |
-| redundancy lost,  |          |            |                 |                |
-| power threshold   |          |            |                 |                |
-| exceeded          |          |            |                 |                |
-+-------------------+----------+------------+-----------------+----------------+
-| Chassis problem   | Warning  | SNMP       |                 | Live migration |
-| (e.g. fan         |          |            |                 |                |
-| degraded/failed,  |          |            |                 |                |
-| chassis power     |          |            |                 |                |
-| degraded), CPU    |          |            |                 |                |
-| fan problem,      |          |            |                 |                |
-| temperature/      |          |            |                 |                |
-| thermal condition |          |            |                 |                |
-| not ok            |          |            |                 |                |
-+-------------------+----------+------------+-----------------+----------------+
-| Mainboard failure | Critical | Zabbix     |                 | Switch to      |
-|                   |          | (IPMI)     |                 | hot standby    |
-+-------------------+----------+------------+-----------------+----------------+
-| OS crash (e.g.    | Critical | Zabbix     |                 | Switch to      |
-| kernel panic)     |          |            |                 | hot standby    |
-+-------------------+----------+------------+-----------------+----------------+
+Storage
+-------
+- controller
+  - detect: SNMP
+  - fault
+    - fail: critical
+  - action: switch to hot standby
+- temperature
+  - detect: SNMP
+  - fault
+    - too high: warning
+  - action: live migration
+- fan
+  - detect: SNMP
+  - fault
+    - fail: warning
+  - action: live migration
+- SAS link
+  - detect: SNMP
+  - fault
+    - fail: critical
+  - action: switch to hot standby
+- NIC
+  - detect :SNMP
+  - fault
+    - fail: warning
+  - action: live migration
 
-**Hypervisor**
+Network
+-------
+- external switch interface
+  - detect: SNMP
+  - fault
+    - fail: critical
+    - degraded: warning
+  - action: live migration
+- SDN/OpenFlow switch
+  - detect: ?
+  - fault
+    - fail: critical
+    - degraded: warning
+  - action: live migration
+- Physical switch
+  - detect: SNMP
+  - fault
+    - fail: warning
+  - action: live migration
+- Physical router
+  - detect: SNMP
+  - fault
+    - fail: warning
+  - action: live migration
 
-+----------------+----------+------------+---------+-------------------+
-| Fault          | Severity | How to     | Comment | Action to         |
-|                |          | detect?    |         | recover           |
-+================+==========+============+=========+===================+
-| System has     | Critical | Zabbix     |         | Switch to         |
-| restarted      |          |            |         | hot standby       |
-+----------------+----------+------------+---------+-------------------+
-| Hypervisor     | Warning/ | Zabbix/    |         | Evacuation/switch |
-| failure        | Critical | Ceilometer |         | to hot standby    |
-+----------------+----------+------------+---------+-------------------+
-| Zabbix/        | Warning  | ?          |         | Live migration    |
-| Ceilometer     |          |            |         |                   |
-| is unreachable |          |            |         |                   |
-+----------------+----------+------------+---------+-------------------+
+Chassis
+-------
+- fan
+  - detect: SNMP
+  - fault
+    - degraded: warning
+  - action: live migration
+- power supply
+  - detect: SNMP
+  - fault
+    - input error: critical
+    - redundant lost: warning
+  - action: live migration
 
-**Network**
+Hypervisor
+----------
+- system
+  - detect: Zabbix
+  - fault
+    - restarted
+  - action: switch to hot standby
+- hypervisor
+  - detect: Zabbix / Ceilometer
+  - fault
+    - failure: critical
+  - action: switch to hot standby
 
-
-+------------------+----------+---------+----------------+---------------------+
-| Fault            | Severity | How to  | Comment        | Action to           |
-|                  |          | detect? |                | recover             |
-+==================+==========+=========+================+=====================+
-| SDN/OpenFlow     | Critical | ?       |                | Switch to           |
-| switch,          |          |         |                | hot standby         |
-| controller       |          |         |                | or reconfigure      |
-| degraded/failed  |          |         |                | virtual network     |
-|                  |          |         |                | topology            |
-+------------------+----------+---------+----------------+---------------------+
-| Hardware failure | Warning  | SNMP    | Redundancy of  | Live migration if   |
-| of physical      |          |         | physical       | possible  otherwise |
-| switch/router    |          |         | infrastructure | evacuation          |
-|                  |          |         | is reduced or  |                     |
-|                  |          |         | no longer      |                     |
-|                  |          |         | available      |                     |
-+------------------+----------+---------+----------------+---------------------+
+Monitor
+-------
+- Zabbix/Ceilometer
+  - detect: ?
+  - fault
+    - unreachable: warning
+  - action: live migration
