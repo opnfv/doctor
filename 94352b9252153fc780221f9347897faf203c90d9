@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9a91bd0f_3eaa091a",
+        "filename": "docs/requirements/07-annex.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-05-25T09:16:22Z",
+      "side": 1,
+      "message": "Yes, we can extend it to more levels. Comments are welcome.",
+      "parentUuid": "9a91bd0f_7edbb1ed",
+      "range": {
+        "startLine": 34,
+        "startChar": 6,
+        "endLine": 34,
+        "endChar": 10
+      },
+      "revId": "94352b9252153fc780221f9347897faf203c90d9",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a91bd0f_be8379cb",
         "filename": "docs/requirements/07-annex.rst",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-05-25T08:01:03Z",
       "side": 1,
       "message": "Initial Doctor focus was NFVI. Are you proposing to extend Doctor scope? Or saying that we have function in NFVI for fault detection?",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 7
+      },
+      "revId": "94352b9252153fc780221f9347897faf203c90d9",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_9ead5534",
+        "filename": "docs/requirements/07-annex.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-05-25T09:16:22Z",
+      "side": 1,
+      "message": "Not my intention.\n\nI just keep the original content. Please check L104 of existing table.\n\nI was also wondering why we include this.",
+      "parentUuid": "9a91bd0f_be8379cb",
       "range": {
         "startLine": 148,
         "startChar": 0,
