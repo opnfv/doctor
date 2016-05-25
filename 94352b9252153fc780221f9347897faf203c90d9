@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "9a91bd0f_7edbb1ed",
+        "filename": "docs/requirements/07-annex.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-05-25T08:29:22Z",
+      "side": 1,
+      "message": "it is not only about a \"fail\", but also performance loss or some other indication that the performance/condition is not ok. This is true for most of the items in this list, e.g. there could be increased number of read errors for RAM/storage, etc.",
+      "range": {
+        "startLine": 34,
+        "startChar": 6,
+        "endLine": 34,
+        "endChar": 10
+      },
+      "revId": "94352b9252153fc780221f9347897faf203c90d9",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a91bd0f_be8379cb",
         "filename": "docs/requirements/07-annex.rst",
         "patchSetId": 1
