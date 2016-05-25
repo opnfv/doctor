@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a91bd0f_be8379cb",
+        "filename": "docs/requirements/07-annex.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-05-25T08:01:03Z",
+      "side": 1,
+      "message": "Initial Doctor focus was NFVI. Are you proposing to extend Doctor scope? Or saying that we have function in NFVI for fault detection?",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 7
+      },
+      "revId": "94352b9252153fc780221f9347897faf203c90d9",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
