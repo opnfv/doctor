@@ -26,7 +26,7 @@ Administrator should be notified. The following tables provide a list of high
 level faults that are considered within the scope of the Doctor project
 requiring immediate action by the Consumer.
 
-**Compute Hardware**
+**Compute/Storage**
 
 +-------------------+----------+------------+-----------------+----------------+
 | Fault             | Severity | How to     | Comment         | Action to      |
@@ -80,8 +80,8 @@ requiring immediate action by the Consumer.
 | thermal condition |          |            |                 |                |
 | not ok            |          |            |                 |                |
 +-------------------+----------+------------+-----------------+----------------+
-| Mainboard failure | Critical | Zabbix     |                 | Switch to      |
-|                   |          | (IPMI)     |                 | hot standby    |
+| Mainboard failure | Critical | Zabbix     | e.g. PCIe, SAS  | Switch to      |
+|                   |          | (IPMI)     | link failure    | hot standby    |
 +-------------------+----------+------------+-----------------+----------------+
 | OS crash (e.g.    | Critical | Zabbix     |                 | Switch to      |
 | kernel panic)     |          |            |                 | hot standby    |
@@ -106,7 +106,6 @@ requiring immediate action by the Consumer.
 
 **Network**
 
-
 +------------------+----------+---------+----------------+---------------------+
 | Fault            | Severity | How to  | Comment        | Action to           |
 |                  |          | detect? |                | recover             |
@@ -118,7 +117,7 @@ requiring immediate action by the Consumer.
 |                  |          |         |                | topology            |
 +------------------+----------+---------+----------------+---------------------+
 | Hardware failure | Warning  | SNMP    | Redundancy of  | Live migration if   |
-| of physical      |          |         | physical       | possible  otherwise |
+| of physical      |          |         | physical       | possible otherwise  |
 | switch/router    |          |         | infrastructure | evacuation          |
 |                  |          |         | is reduced or  |                     |
 |                  |          |         | no longer      |                     |
