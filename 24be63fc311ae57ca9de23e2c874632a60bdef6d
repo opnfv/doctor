@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a91bd0f_4ac86774",
+        "filename": "docs/requirements/07-annex.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-05-27T07:17:06Z",
+      "side": 0,
+      "message": "can we remove all the \u0027?\u0027 this time and give the solutions here.\nFor example, using ping/heartbeat/API can determine Zabbix/Ceilometer is reachable or not",
+      "range": {
+        "startLine": 102,
+        "startChar": 30,
+        "endLine": 102,
+        "endChar": 31
+      },
+      "revId": "24be63fc311ae57ca9de23e2c874632a60bdef6d",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}

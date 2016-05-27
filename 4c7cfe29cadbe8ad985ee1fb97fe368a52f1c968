@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a91bd0f_6ac52b5a",
+        "filename": "docs/requirements/07-annex.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-05-27T07:17:06Z",
+      "side": 1,
+      "message": "does storage have some dedicated faults while Compute does not have?",
+      "range": {
+        "startLine": 29,
+        "startChar": 10,
+        "endLine": 29,
+        "endChar": 17
+      },
+      "revId": "4c7cfe29cadbe8ad985ee1fb97fe368a52f1c968",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
