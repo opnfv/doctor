@@ -46,6 +46,30 @@
       "revId": "24be63fc311ae57ca9de23e2c874632a60bdef6d",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_6aaa0b72",
+        "filename": "docs/requirements/07-annex.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-05-27T07:46:23Z",
+      "side": 0,
+      "message": "sorry, julien. the question was raised by Yujin.",
+      "parentUuid": "9a91bd0f_8a7c2f22",
+      "range": {
+        "startLine": 102,
+        "startChar": 30,
+        "endLine": 102,
+        "endChar": 31
+      },
+      "revId": "24be63fc311ae57ca9de23e2c874632a60bdef6d",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
