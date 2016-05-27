@@ -1,4 +1,4 @@
-#!/bin/bash -ex
+#!/bin/bash -e
 ##############################################################################
 # Copyright (c) 2016 NEC Corporation and others.
 #
@@ -7,6 +7,8 @@
 # which accompanies this distribution, and is available at
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
+
+[[ "${CI_DEBUG:-true}" == "true" ]] && set -x
 
 IMAGE_URL=https://launchpad.net/cirros/trunk/0.3.0/+download/cirros-0.3.0-x86_64-disk.img
 IMAGE_NAME=cirros
