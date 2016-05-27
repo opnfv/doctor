@@ -22,6 +22,30 @@
       "revId": "24be63fc311ae57ca9de23e2c874632a60bdef6d",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_8a7c2f22",
+        "filename": "docs/requirements/07-annex.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-05-27T07:44:15Z",
+      "side": 0,
+      "message": "+1\n\nI have the same question you asked in https://gerrit.opnfv.org/gerrit/#/c/14635 \"why we have monitor case here?\". I suppose this is saying that VIM cannot get stats of hypervisor or cannot connect to hypervisor. Does anyone remember our discussion more than year ago...?",
+      "parentUuid": "9a91bd0f_4ac86774",
+      "range": {
+        "startLine": 102,
+        "startChar": 30,
+        "endLine": 102,
+        "endChar": 31
+      },
+      "revId": "24be63fc311ae57ca9de23e2c874632a60bdef6d",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
