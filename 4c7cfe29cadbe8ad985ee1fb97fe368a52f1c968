@@ -46,6 +46,30 @@
       "revId": "4c7cfe29cadbe8ad985ee1fb97fe368a52f1c968",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_355d70ea",
+        "filename": "docs/requirements/07-annex.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-05-30T07:10:34Z",
+      "side": 1,
+      "message": "network hardware is not included, right? so better not use \"hardware\"",
+      "parentUuid": "9a91bd0f_aa79f330",
+      "range": {
+        "startLine": 29,
+        "startChar": 10,
+        "endLine": 29,
+        "endChar": 17
+      },
+      "revId": "4c7cfe29cadbe8ad985ee1fb97fe368a52f1c968",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
