@@ -118,6 +118,30 @@
       "revId": "24be63fc311ae57ca9de23e2c874632a60bdef6d",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_35b9f0e9",
+        "filename": "docs/requirements/07-annex.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-05-30T08:21:32Z",
+      "side": 0,
+      "message": "+1. also remove the \"?\" and name solution(s) \"how to detect\"",
+      "parentUuid": "5a7ca5a3_9561e4d5",
+      "range": {
+        "startLine": 102,
+        "startChar": 30,
+        "endLine": 102,
+        "endChar": 31
+      },
+      "revId": "24be63fc311ae57ca9de23e2c874632a60bdef6d",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
