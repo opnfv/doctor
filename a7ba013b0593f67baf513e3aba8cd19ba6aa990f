@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_954a4454",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-05-30T04:37:46Z",
+      "side": 1,
+      "message": "need to add the fault cause of the event.",
+      "revId": "a7ba013b0593f67baf513e3aba8cd19ba6aa990f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
