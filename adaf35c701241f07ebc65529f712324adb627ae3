@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_b88f35cc",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2016-05-31T11:09:42Z",
+      "side": 1,
+      "message": "I still have a few questions. \n1. type - did we decide on whether it will be an enum or not? (I think that an enum is very limiting)\n2. monitor_id - Ryota, you previously gave an example that monitor_id\u003dhost123 and monitor_event_id\u003d111. So what is the difference between monitor_id and hostname? in any case, I would change the example to monitor_id\u003dhost123, to make it more clear \n3. what is expected in the \u0027cause\u0027 field? a description? or maybe monitor_event_id of another event?",
+      "range": {
+        "startLine": 703,
+        "startChar": 0,
+        "endLine": 703,
+        "endChar": 0
+      },
+      "revId": "adaf35c701241f07ebc65529f712324adb627ae3",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
