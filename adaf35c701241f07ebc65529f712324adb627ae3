@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_fe5a754f",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2016-06-01T07:03:03Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "5a7ca5a3_3e722de6",
+      "range": {
+        "startLine": 681,
+        "startChar": 2,
+        "endLine": 682,
+        "endChar": 59
+      },
+      "revId": "adaf35c701241f07ebc65529f712324adb627ae3",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_b88f35cc",
         "filename": "docs/requirements/05-implementation.rst",
         "patchSetId": 5
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "1. type - I prefer a single type for each event rather than enumerated list. I cannot see the benefits of enum. We can use \u0027events\u0027 and writing relation to others in \u0027details\u0027 field. And, single type of event can simplify implementation of inspector by handling an event with specific driver which can be found by the type. Correct me if I\u0027m wrong. \n\n2. monitor_id - this could be different from host. I can imagine we can have multiple monitors even in a host for vswitch, for hypervisor, and so on. Sometimes monitor can be run on multiple hosts but recognized as one virtual service, like zabbix.\n\n3. cause - yes, that would be description of the cause of this fault event which could be different from the type of this event. Yes, you can set monitor_event_id or event_id (in inspector) of another event.",
       "parentUuid": "5a7ca5a3_b88f35cc",
+      "range": {
+        "startLine": 703,
+        "startChar": 0,
+        "endLine": 703,
+        "endChar": 0
+      },
+      "revId": "adaf35c701241f07ebc65529f712324adb627ae3",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_9e57c126",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2016-06-01T07:03:03Z",
+      "side": 1,
+      "message": "1. Let me make sure I understand - you say that \u0027type\u0027 can be any string, depending on the monitor. Right?\n2. I get your point. I think that monitor_id might be a confusing name, as it can be understood as the id of the monitor itself. How about monitored_resource_id or something similar?\n3. OK",
+      "parentUuid": "5a7ca5a3_1eb091dc",
       "range": {
         "startLine": 703,
         "startChar": 0,
