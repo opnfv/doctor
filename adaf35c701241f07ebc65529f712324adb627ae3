@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5a7ca5a3_3e722de6",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-06-01T06:42:36Z",
+      "side": 1,
+      "message": "I propose to introduce a complex information element \"FaultDetails\" (IMHO preferred solution) listing the MUST HAVE keys for fauls (see below example). Then, we can add here \"Details shall be defined depending on the Type of the event, e.g. FaultDetails for events of type \u0027fault\u0027.\"",
+      "range": {
+        "startLine": 681,
+        "startChar": 2,
+        "endLine": 682,
+        "endChar": 59
+      },
+      "revId": "adaf35c701241f07ebc65529f712324adb627ae3",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_b88f35cc",
         "filename": "docs/requirements/05-implementation.rst",
         "patchSetId": 5
