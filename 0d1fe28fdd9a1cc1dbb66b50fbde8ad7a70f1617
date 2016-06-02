@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_eaf86bc6",
+        "filename": "docs/requirements/07-annex.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-06-02T15:40:31Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "5a7ca5a3_5e63691a",
+      "range": {
+        "startLine": 32,
+        "startChar": 64,
+        "endLine": 32,
+        "endChar": 70
+      },
+      "revId": "0d1fe28fdd9a1cc1dbb66b50fbde8ad7a70f1617",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_7ea665c3",
         "filename": "docs/requirements/07-annex.rst",
         "patchSetId": 4
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "see my above comment. we are so far focusing on the *immediate\" actions to be performed, but not some followup actions \"after certain period passed\". does is make sense?",
       "parentUuid": "5a7ca5a3_7ea665c3",
+      "range": {
+        "startLine": 102,
+        "startChar": 57,
+        "endLine": 102,
+        "endChar": 71
+      },
+      "revId": "0d1fe28fdd9a1cc1dbb66b50fbde8ad7a70f1617",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_caffafa9",
+        "filename": "docs/requirements/07-annex.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-06-02T15:40:31Z",
+      "side": 1,
+      "message": "I would propose modify the fault as \"Hypervisor status not retrievable for certain period\". In such condition, we may judge it as a non-recoverable, permanent fault which requires \"immediate\" action.",
+      "parentUuid": "5a7ca5a3_7e68a5f5",
       "range": {
         "startLine": 102,
         "startChar": 57,
