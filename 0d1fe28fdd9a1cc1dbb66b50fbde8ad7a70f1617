@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5a7ca5a3_5e63691a",
+        "filename": "docs/requirements/07-annex.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-06-02T06:10:16Z",
+      "side": 1,
+      "message": "Proposal to use \"Immediate action to recover\" for all tables as we are only looking at the immediate actions like switch to hot standby, but omit following up actions like instantiate a new standby instance.",
+      "range": {
+        "startLine": 32,
+        "startChar": 64,
+        "endLine": 32,
+        "endChar": 70
+      },
+      "revId": "0d1fe28fdd9a1cc1dbb66b50fbde8ad7a70f1617",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_7ea665c3",
         "filename": "docs/requirements/07-annex.rst",
         "patchSetId": 4
@@ -36,6 +59,30 @@
       "writtenOn": "2016-06-01T04:02:02Z",
       "side": 1,
       "message": "Make sense +1",
+      "parentUuid": "5a7ca5a3_7ea665c3",
+      "range": {
+        "startLine": 102,
+        "startChar": 57,
+        "endLine": 102,
+        "endChar": 71
+      },
+      "revId": "0d1fe28fdd9a1cc1dbb66b50fbde8ad7a70f1617",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_7e68a5f5",
+        "filename": "docs/requirements/07-annex.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-06-02T06:10:16Z",
+      "side": 1,
+      "message": "see my above comment. we are so far focusing on the *immediate\" actions to be performed, but not some followup actions \"after certain period passed\". does is make sense?",
       "parentUuid": "5a7ca5a3_7ea665c3",
       "range": {
         "startLine": 102,
