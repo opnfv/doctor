@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5a7ca5a3_b405f915",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-06-07T06:27:04Z",
+      "side": 1,
+      "message": "typo?",
+      "range": {
+        "startLine": 49,
+        "startChar": 41,
+        "endLine": 49,
+        "endChar": 45
+      },
+      "revId": "c8574018d94a66b9cdddb48e427aed577087f40f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_34124963",
         "filename": "docs/userguide/doctor_scenario_in_functest.rst",
         "patchSetId": 3
@@ -13,6 +36,115 @@
       "writtenOn": "2016-06-07T06:04:52Z",
       "side": 1,
       "message": "What does this mean? Controller or Monitor?",
+      "revId": "c8574018d94a66b9cdddb48e427aed577087f40f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_d402f50a",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-06-07T06:27:04Z",
+      "side": 1,
+      "message": "check out \u003d\u003e check ?",
+      "range": {
+        "startLine": 53,
+        "startChar": 25,
+        "endLine": 53,
+        "endChar": 34
+      },
+      "revId": "c8574018d94a66b9cdddb48e427aed577087f40f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_77ff6302",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-06-07T06:27:04Z",
+      "side": 1,
+      "message": "\u003d\u003e notify the Consumer of the faults?\n\nSee http://english.stackexchange.com/questions/231861/what-is-the-difference-between-to-notify-something-to-someone-and-to-notify-some",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 37
+      },
+      "revId": "c8574018d94a66b9cdddb48e427aed577087f40f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_570ee735",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-06-07T06:27:04Z",
+      "side": 1,
+      "message": "It\u0027s not \"test case\" who call the script. Functest is a test framework or test service. Suggest deleting \"The test case in\"",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 17
+      },
+      "revId": "c8574018d94a66b9cdddb48e427aed577087f40f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_f7129357",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-06-07T06:27:04Z",
+      "side": 1,
+      "message": "Please keep a consistent form when using `::` unless it is done for purpose.",
+      "range": {
+        "startLine": 127,
+        "startChar": 13,
+        "endLine": 127,
+        "endChar": 15
+      },
+      "revId": "c8574018d94a66b9cdddb48e427aed577087f40f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_14094d31",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-06-07T06:27:04Z",
+      "side": 1,
+      "message": "Just include authors in commit message as described in https://wiki.openstack.org/wiki/GitCommitMessages\n\n```\nWe encourage the use of Co-Authored-By: name \u003cname@example.com\u003e in commit messages to indicate people who worked on a particular patch. It\u0027s a convention for recognizing multiple authors, and our projects would encourage the stats tools to observe it when collecting statistics.\n```",
       "revId": "c8574018d94a66b9cdddb48e427aed577087f40f",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
