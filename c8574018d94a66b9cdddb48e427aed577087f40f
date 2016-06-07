@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_34124963",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-06-07T06:04:52Z",
+      "side": 1,
+      "message": "What does this mean? Controller or Monitor?",
+      "revId": "c8574018d94a66b9cdddb48e427aed577087f40f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
