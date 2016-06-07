@@ -248,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_773763b1",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1482
+      },
+      "writtenOn": "2016-06-07T08:30:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a7ca5a3_f7129357",
+      "range": {
+        "startLine": 127,
+        "startChar": 13,
+        "endLine": 127,
+        "endChar": 15
+      },
+      "revId": "c8574018d94a66b9cdddb48e427aed577087f40f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_14094d31",
         "filename": "docs/userguide/doctor_scenario_in_functest.rst",
         "patchSetId": 3
@@ -259,6 +283,24 @@
       "writtenOn": "2016-06-07T06:27:04Z",
       "side": 1,
       "message": "Just include authors in commit message as described in https://wiki.openstack.org/wiki/GitCommitMessages\n\n```\nWe encourage the use of Co-Authored-By: name \u003cname@example.com\u003e in commit messages to indicate people who worked on a particular patch. It\u0027s a convention for recognizing multiple authors, and our projects would encourage the stats tools to observe it when collecting statistics.\n```",
+      "revId": "c8574018d94a66b9cdddb48e427aed577087f40f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_973c7f95",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1482
+      },
+      "writtenOn": "2016-06-07T08:30:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a7ca5a3_14094d31",
       "revId": "c8574018d94a66b9cdddb48e427aed577087f40f",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
