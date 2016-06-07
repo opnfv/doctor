@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_f7405337",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1482
+      },
+      "writtenOn": "2016-06-07T07:39:08Z",
+      "side": 1,
+      "message": "should be \"NFVI\", fix it.",
+      "parentUuid": "5a7ca5a3_b405f915",
+      "range": {
+        "startLine": 49,
+        "startChar": 41,
+        "endLine": 49,
+        "endChar": 45
+      },
+      "revId": "c8574018d94a66b9cdddb48e427aed577087f40f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_34124963",
         "filename": "docs/userguide/doctor_scenario_in_functest.rst",
         "patchSetId": 3
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_f767f3e8",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1482
+      },
+      "writtenOn": "2016-06-07T07:39:08Z",
+      "side": 1,
+      "message": "I think it\u0027s Controller, but this use case need to be modified, I will fix it.",
+      "parentUuid": "5a7ca5a3_34124963",
+      "revId": "c8574018d94a66b9cdddb48e427aed577087f40f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_d402f50a",
         "filename": "docs/userguide/doctor_scenario_in_functest.rst",
         "patchSetId": 3
@@ -53,6 +95,30 @@
       "writtenOn": "2016-06-07T06:27:04Z",
       "side": 1,
       "message": "check out \u003d\u003e check ?",
+      "range": {
+        "startLine": 53,
+        "startChar": 25,
+        "endLine": 53,
+        "endChar": 34
+      },
+      "revId": "c8574018d94a66b9cdddb48e427aed577087f40f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_d730b7ea",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1482
+      },
+      "writtenOn": "2016-06-07T07:39:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a7ca5a3_d402f50a",
       "range": {
         "startLine": 53,
         "startChar": 25,
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_774d2372",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1482
+      },
+      "writtenOn": "2016-06-07T07:39:08Z",
+      "side": 1,
+      "message": "done, thk you",
+      "parentUuid": "5a7ca5a3_77ff6302",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 37
+      },
+      "revId": "c8574018d94a66b9cdddb48e427aed577087f40f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_570ee735",
         "filename": "docs/userguide/doctor_scenario_in_functest.rst",
         "patchSetId": 3
@@ -99,6 +189,30 @@
       "writtenOn": "2016-06-07T06:27:04Z",
       "side": 1,
       "message": "It\u0027s not \"test case\" who call the script. Functest is a test framework or test service. Suggest deleting \"The test case in\"",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 17
+      },
+      "revId": "c8574018d94a66b9cdddb48e427aed577087f40f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_b733bbf5",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1482
+      },
+      "writtenOn": "2016-06-07T07:39:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a7ca5a3_570ee735",
       "range": {
         "startLine": 84,
         "startChar": 0,
