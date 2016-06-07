@@ -59,7 +59,7 @@ represented as different virtual resources marked by different colors. Consumers
 resources (VMs in this example) shown with the same colors.
 
 The first requirement in this use case is that the Controller needs to detect
-faults in the NVFI ("1. Fault Notification" in :numref:`figure1`) affecting
+faults in the NFVI ("1. Fault Notification" in :numref:`figure1`) affecting
 the proper functioning of the virtual resources (labelled as VM-x) running on
 top of it. It should be possible to configure which relevant fault items should
 be detected. The VIM (e.g. OpenStack) itself could be extended to detect such
