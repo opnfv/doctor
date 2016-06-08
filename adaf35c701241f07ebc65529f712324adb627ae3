@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_92e9ed1c",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-06-08T08:34:46Z",
+      "side": 1,
+      "message": "Hmm, I\u0027m proposing to have the common param not only for fault event but also other events such as resource usage. if we have \"FaultDetails\", we many need API and DB schema for this parameter (and for others as well). That is not good way in implementation perspective.",
+      "parentUuid": "5a7ca5a3_fe5a754f",
+      "range": {
+        "startLine": 681,
+        "startChar": 2,
+        "endLine": 682,
+        "endChar": 59
+      },
+      "revId": "adaf35c701241f07ebc65529f712324adb627ae3",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_b88f35cc",
         "filename": "docs/requirements/05-implementation.rst",
         "patchSetId": 5
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "1. Let me make sure I understand - you say that \u0027type\u0027 can be any string, depending on the monitor. Right?\n2. I get your point. I think that monitor_id might be a confusing name, as it can be understood as the id of the monitor itself. How about monitored_resource_id or something similar?\n3. OK",
       "parentUuid": "5a7ca5a3_1eb091dc",
+      "range": {
+        "startLine": 703,
+        "startChar": 0,
+        "endLine": 703,
+        "endChar": 0
+      },
+      "revId": "adaf35c701241f07ebc65529f712324adb627ae3",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_b2ee6921",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-06-08T08:34:46Z",
+      "side": 1,
+      "message": "1. yes\n\n2. ah, you mean \u0027monitor_id\u0027 can be taken as ID of monitor service and ID of target object to be monitored?",
+      "parentUuid": "5a7ca5a3_9e57c126",
       "range": {
         "startLine": 703,
         "startChar": 0,
