@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "5a7ca5a3_63bb2173",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-06-12T13:06:26Z",
+      "side": 1,
+      "message": "If we consider a RESTful API, the key `event` is normally part of the URI to indicate the resource. e.g. POST http://inspector/event . It is not necessary to include it in the payload.",
+      "revId": "6a385af26abcaec9611a852a25019443fef1ea00",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_729e9158",
         "filename": "docs/requirements/05-implementation.rst",
         "patchSetId": 6
@@ -19,6 +36,47 @@
         "endLine": 704,
         "endChar": 32
       },
+      "revId": "6a385af26abcaec9611a852a25019443fef1ea00",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_43b6258c",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-06-12T13:06:26Z",
+      "side": 1,
+      "message": "I think it is difficult to determine which fields will be mandatory/optional before we collect enough examples.",
+      "parentUuid": "5a7ca5a3_729e9158",
+      "range": {
+        "startLine": 704,
+        "startChar": 0,
+        "endLine": 704,
+        "endChar": 32
+      },
+      "revId": "6a385af26abcaec9611a852a25019443fef1ea00",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_03b02d8a",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-06-12T13:06:26Z",
+      "side": 1,
+      "message": "Continued with comment in L689, I would suggest include only the bare content in payload, e.g.\n\n```\n[ {\n    \u0027time\u0027: \u00272016-04-12T08:00:00\u0027,\n    \u0027type\u0027: \u0027compute.host.nic.error\u0027,\n    \u0027details\u0027: {},\n}, {...}\n...\n]\n```",
       "revId": "6a385af26abcaec9611a852a25019443fef1ea00",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
