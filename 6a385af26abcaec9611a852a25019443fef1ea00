@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_835d1cec",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-06-13T07:44:08Z",
+      "side": 1,
+      "message": "We can start from a small set of mandatory fields and extend later when needed. We know mandatory fields (like hostname) as we need this information for further actions in Doctor.\nAlso, as Doctor\u0027s objective is to align with ETSI NFV IFA specs, we should be able to notify from Doctor to the Consumer about the information specified in IFA005 Clause 8.6.4 Alarm information element (http://www.etsi.org/deliver/etsi_gs/NFV-IFA/001_099/005/02.01.01_60/gs_NFV-IFA005v020101p.pdf). Thus, we need to collect certain information from the monitors.",
+      "parentUuid": "5a7ca5a3_43b6258c",
+      "range": {
+        "startLine": 704,
+        "startChar": 0,
+        "endLine": 704,
+        "endChar": 32
+      },
+      "revId": "6a385af26abcaec9611a852a25019443fef1ea00",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_03b02d8a",
         "filename": "docs/requirements/05-implementation.rst",
         "patchSetId": 6
