@@ -121,6 +121,54 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_f7a92a7c",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1482
+      },
+      "writtenOn": "2016-06-15T12:32:08Z",
+      "side": 1,
+      "message": "@Ulrich \u0026 @Yujun, I agree too. To keep consistent format? how about \"Valid compute host status given to VM owner\"?",
+      "parentUuid": "5a7ca5a3_775d1ae9",
+      "range": {
+        "startLine": 14,
+        "startChar": 2,
+        "endLine": 14,
+        "endChar": 7
+      },
+      "revId": "8c6228104f7420b9d4dcbb616b0dab1328608e95",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_37cec25b",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1482
+      },
+      "writtenOn": "2016-06-15T12:32:08Z",
+      "side": 1,
+      "message": "@Yujun, IMHO, \"host status\" includes \u0027UP\u0027, \u0027UNKNOWN\u0027,\u0027MAINTENANCE\u0027,\u0027EXTERNALLY_DEFINED_TO_BE_DOWN\u0027. While, \"resource state\" refer to virtual and physical resource state, so the second bullet means, when the state of physical resource, such as nova-compute host, is down ,the state of VMs, running on it, is down too.",
+      "parentUuid": "5a7ca5a3_f7684a89",
+      "range": {
+        "startLine": 14,
+        "startChar": 2,
+        "endLine": 14,
+        "endChar": 7
+      },
+      "revId": "8c6228104f7420b9d4dcbb616b0dab1328608e95",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_17ddc670",
         "filename": "docs/userguide/doctor_scenario_in_functest.rst",
         "patchSetId": 5
@@ -132,6 +180,30 @@
       "writtenOn": "2016-06-15T09:04:14Z",
       "side": 1,
       "message": "properly twice",
+      "range": {
+        "startLine": 20,
+        "startChar": 46,
+        "endLine": 20,
+        "endChar": 54
+      },
+      "revId": "8c6228104f7420b9d4dcbb616b0dab1328608e95",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_37a00290",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1482
+      },
+      "writtenOn": "2016-06-15T12:32:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a7ca5a3_17ddc670",
       "range": {
         "startLine": 20,
         "startChar": 46,
