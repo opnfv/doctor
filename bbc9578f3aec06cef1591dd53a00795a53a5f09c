@@ -49,6 +49,54 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_2cb0b58a",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1482
+      },
+      "writtenOn": "2016-06-15T08:52:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a7ca5a3_2c8995ca",
+      "range": {
+        "startLine": 10,
+        "startChar": 23,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "bbc9578f3aec06cef1591dd53a00795a53a5f09c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_4cadf130",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1482
+      },
+      "writtenOn": "2016-06-15T08:52:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a7ca5a3_09736b4e",
+      "range": {
+        "startLine": 10,
+        "startChar": 23,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "bbc9578f3aec06cef1591dd53a00795a53a5f09c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_6c9f8d04",
         "filename": "docs/userguide/doctor_scenario_in_functest.rst",
         "patchSetId": 4
@@ -60,6 +108,24 @@
       "writtenOn": "2016-06-15T06:36:11Z",
       "side": 1,
       "message": "* Valid compute host status to VM owner",
+      "revId": "bbc9578f3aec06cef1591dd53a00795a53a5f09c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_8cbb0972",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1482
+      },
+      "writtenOn": "2016-06-15T08:52:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a7ca5a3_6c9f8d04",
       "revId": "bbc9578f3aec06cef1591dd53a00795a53a5f09c",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
@@ -83,6 +149,24 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_eca95d25",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1482
+      },
+      "writtenOn": "2016-06-15T08:52:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a7ca5a3_8ca46958",
+      "revId": "bbc9578f3aec06cef1591dd53a00795a53a5f09c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_4c8651bb",
         "filename": "docs/userguide/doctor_scenario_in_functest.rst",
         "patchSetId": 4
@@ -100,6 +184,24 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_0ca7f950",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1482
+      },
+      "writtenOn": "2016-06-15T08:52:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a7ca5a3_4c8651bb",
+      "revId": "bbc9578f3aec06cef1591dd53a00795a53a5f09c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_acbcc56d",
         "filename": "docs/userguide/doctor_scenario_in_functest.rst",
         "patchSetId": 4
@@ -111,6 +213,24 @@
       "writtenOn": "2016-06-15T06:36:11Z",
       "side": 1,
       "message": "Please look the latest version of run.sh and include using of a test user to test host_status is properly working and enabled for other than admin user (that is not currently the case as JIRA GENESIS-86 is not done)",
+      "revId": "bbc9578f3aec06cef1591dd53a00795a53a5f09c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_ac636519",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1482
+      },
+      "writtenOn": "2016-06-15T08:52:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a7ca5a3_acbcc56d",
       "revId": "bbc9578f3aec06cef1591dd53a00795a53a5f09c",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
