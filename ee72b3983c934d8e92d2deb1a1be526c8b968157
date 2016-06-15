@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_b73c1295",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-06-15T09:10:57Z",
+      "side": 1,
+      "message": "\"Colorado release\" with a link to https://wiki.opnfv.org/display/SWREL/Colorado would be more clear.",
+      "revId": "ee72b3983c934d8e92d2deb1a1be526c8b968157",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_5741fe09",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 8
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-06-15T09:10:57Z",
+      "side": 1,
+      "message": "\u003d\u003e supported",
+      "range": {
+        "startLine": 122,
+        "startChar": 22,
+        "endLine": 122,
+        "endChar": 30
+      },
+      "revId": "ee72b3983c934d8e92d2deb1a1be526c8b968157",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_174b862c",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 8
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-06-15T09:10:57Z",
+      "side": 1,
+      "message": "According to the test script, doctor components are started before test user is created.",
+      "revId": "ee72b3983c934d8e92d2deb1a1be526c8b968157",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
