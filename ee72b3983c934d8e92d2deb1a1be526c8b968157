@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_57357e44",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1482
+      },
+      "writtenOn": "2016-06-15T12:37:26Z",
+      "side": 1,
+      "message": "fix it in the next patch.",
+      "parentUuid": "5a7ca5a3_b73c1295",
+      "revId": "ee72b3983c934d8e92d2deb1a1be526c8b968157",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_5741fe09",
         "filename": "docs/userguide/doctor_scenario_in_functest.rst",
         "patchSetId": 8
