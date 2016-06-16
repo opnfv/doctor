@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_9874a39d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-06-16T10:11:17Z",
+      "side": 1,
+      "message": "\u003d\u003e deleting",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "602061dc9b3b177b7e8f7e86355274912a8a8080",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_785c2726",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-06-16T10:11:17Z",
+      "side": 1,
+      "message": "errs is not a common abbr. for errors...",
+      "range": {
+        "startLine": 9,
+        "startChar": 18,
+        "endLine": 9,
+        "endChar": 22
+      },
+      "revId": "602061dc9b3b177b7e8f7e86355274912a8a8080",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_f847d749",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-06-16T10:11:17Z",
+      "side": 1,
+      "message": "It should be \"creating\" or we can say \"the instance may not exist if it failed to create, ...\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 30,
+        "endLine": 9,
+        "endChar": 36
+      },
+      "revId": "602061dc9b3b177b7e8f7e86355274912a8a8080",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_b8795f95",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-06-16T10:11:17Z",
+      "side": 1,
+      "message": "\u003d\u003e error",
+      "range": {
+        "startLine": 10,
+        "startChar": 30,
+        "endLine": 10,
+        "endChar": 33
+      },
+      "revId": "602061dc9b3b177b7e8f7e86355274912a8a8080",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
