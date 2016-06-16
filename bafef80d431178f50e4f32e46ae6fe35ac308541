@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_3d230107",
+        "filename": "tests/run.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-06-16T08:53:31Z",
+      "side": 1,
+      "message": "Use `project` instead of `tenant` in OpenStack, so i also change it here.",
+      "parentUuid": "5a7ca5a3_7dec19c8",
+      "revId": "bafef80d431178f50e4f32e46ae6fe35ac308541",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_5de7dde4",
         "filename": "tests/run.sh",
         "patchSetId": 2
