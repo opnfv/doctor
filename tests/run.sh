@@ -21,7 +21,7 @@ INSPECTOR_PORT=12345
 CONSUMER_PORT=12346
 TEST_USER=demo
 TEST_PW=demo
-TEST_TENANT=demo
+TEST_PROJECT=demo
 TEST_ROLE=_member_
 
 SUPPORTED_INSTALLER_TYPES="apex local"
@@ -89,16 +89,16 @@ register_image() {
 }
 
 create_test_user() {
-    keystone user-list | grep -q "$TEST_USER" || {
-        keystone user-create --name "$TEST_USER" --pass "$TEST_PW"
+    openstack user list | grep -q "$TEST_USER" || {
+        openstack user create "$TEST_USER" --password "$TEST_PW"
     }
-    keystone tenant-list | grep -q "$TEST_TENANT" || {
-        keystone tenant-create --name "$TEST_TENANT"
+    openstack project list | grep -q "$TEST_PROJECT" || {
+        openstack project create "$TEST_PROJECT"
     }
-    keystone user-role-list --user "$TEST_USER" --tenant "$TEST_TENANT" \
+    openstack user role list "$TEST_USER" --project "$TEST_PROJECT" \
     | grep -q "$TEST_ROLE" || {
-        keystone user-role-add --user "$TEST_USER" --role "$TEST_ROLE" \
-                           --tenant "$TEST_TENANT"
+        openstack role add "$TEST_ROLE" --user "$TEST_USER" \
+                           --project "$TEST_PROJECT"
     }
 }
 
@@ -108,7 +108,7 @@ boot_vm() {
         # test VM done with test user, so can test non-admin
         export OS_USERNAME="$TEST_USER"
         export OS_PASSWORD="$TEST_PW"
-        export OS_TENANT_NAME="$TEST_TENANT"
+        export OS_TENANT_NAME="$TEST_PROJECT"
         nova boot --flavor "$VM_FLAVOR" \
                   --image "$IMAGE_NAME" \
                   "$VM_NAME"
@@ -166,12 +166,16 @@ stop_consumer() {
 
 wait_for_vm_launch() {
     echo "waiting for vm launch..."
-    while true
+    count=0
+    while [[ ${count} -lt 60 ]]
     do
         state=$(nova list | grep " $VM_NAME " | awk '{print $6}')
         [[ "$state" == "ACTIVE" ]] && return 0
+        count=`expr $count + 1`
         sleep 1
     done
+    echo "ERROR: time out while waiting for vm launch"
+    exit 1
 }
 
 inject_failure() {
@@ -202,7 +206,7 @@ check_host_status_down() {
         # Switching to test user
         export OS_USERNAME="$TEST_USER"
         export OS_PASSWORD="$TEST_PW"
-        export OS_TENANT_NAME="$TEST_TENANT"
+        export OS_TENANT_NAME="$TEST_PROJECT"
 
         host_status_line=$(nova show $VM_NAME | grep "host_status")
         [[ $? -ne 0 ]] && {
@@ -226,7 +230,7 @@ cleanup() {
 
     python ./nova_force_down.py "$COMPUTE_HOST" --unset
     sleep 1
-    nova delete "$VM_NAME"
+    nova list | grep -q " $VM_NAME " && nova delete "$VM_NAME"
     sleep 1
     alarm_id=$(ceilometer alarm-list | grep " $ALARM_NAME " | awk '{print $2}')
     sleep 1
@@ -235,10 +239,10 @@ cleanup() {
     image_id=$(glance image-list | grep " $IMAGE_NAME " | awk '{print $2}')
     sleep 1
     [ -n "$image_id" ] && glance image-delete "$image_id"
-    keystone user-role-remove --user "$TEST_USER" --role "$TEST_ROLE" \
-                              --tenant "$TEST_TENANT"
-    keystone tenant-remove --name "$TEST_TENANT"
-    keystone user-delete "$TEST_USER"
+    openstack role remove "$TEST_ROLE" --user "$TEST_USER" \
+                              --project "$TEST_PROJECT"
+    openstack project delete "$TEST_PROJECT"
+    openstack user delete "$TEST_USER"
 
     #TODO: add host status check via nova admin api
     echo "waiting disabled compute host back to be enabled..."
