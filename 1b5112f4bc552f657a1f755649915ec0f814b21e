@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_bdf39172",
+        "filename": "tests/run.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-06-16T09:05:35Z",
+      "side": 1,
+      "message": "It is kind of ambiguous whether we are still `waiting for time out` or  `the waiting action is time out`\n\nWhat about `ERROR: time out while waiting for vm launch`",
+      "revId": "1b5112f4bc552f657a1f755649915ec0f814b21e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
