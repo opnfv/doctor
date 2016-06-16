@@ -103,12 +103,12 @@ create_test_user() {
 }
 
 boot_vm() {
-    nova list | grep -q " $VM_NAME " && return 0
     (
         # test VM done with test user, so can test non-admin
         export OS_USERNAME="$TEST_USER"
         export OS_PASSWORD="$TEST_PW"
-        export OS_TENANT_NAME="$TEST_PROJECT"
+        export OS_PROJECT_NAME="$TEST_PROJECT"
+        nova list | grep -q " $VM_NAME " && return 0
         nova boot --flavor "$VM_FLAVOR" \
                   --image "$IMAGE_NAME" \
                   "$VM_NAME"
@@ -166,12 +166,17 @@ stop_consumer() {
 
 wait_for_vm_launch() {
     echo "waiting for vm launch..."
-    while true
+    count=0
+    while [[ ${count} -lt 60 ]]
     do
         state=$(nova list | grep " $VM_NAME " | awk '{print $6}')
         [[ "$state" == "ACTIVE" ]] && return 0
+        [[ "$state" == "ERROR" ]] && echo "vm state is ERROR" && exit 1
+        count=$(($count+1))
         sleep 1
     done
+    echo "ERROR: time out while waiting for vm launch"
+    exit 1
 }
 
 inject_failure() {
@@ -202,7 +207,7 @@ check_host_status_down() {
         # Switching to test user
         export OS_USERNAME="$TEST_USER"
         export OS_PASSWORD="$TEST_PW"
-        export OS_TENANT_NAME="$TEST_PROJECT"
+        export OS_PROJECT_NAME="$TEST_PROJECT"
 
         host_status_line=$(nova show $VM_NAME | grep "host_status")
         [[ $? -ne 0 ]] && {
