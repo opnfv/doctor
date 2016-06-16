@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_3dac61ed",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-06-16T02:07:15Z",
+      "side": 1,
+      "message": "What I meant is using the link grammar in rst. See http://docutils.sourceforge.net/docs/user/rst/quickref.html#hyperlink-targets",
+      "revId": "60cb9304452b23cf3be54d92da606be1261fa719",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
