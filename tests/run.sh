@@ -226,7 +226,7 @@ cleanup() {
 
     python ./nova_force_down.py "$COMPUTE_HOST" --unset
     sleep 1
-    nova delete "$VM_NAME"
+    nova list | grep -q " $VM_NAME " && nova delete "$VM_NAME"
     sleep 1
     alarm_id=$(ceilometer alarm-list | grep " $ALARM_NAME " | awk '{print $2}')
     sleep 1
