@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_fb058c14",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-06-27T14:35:05Z",
+      "side": 1,
+      "message": "When i posted the change, change 15687 was not merged yet.\nI\u0027ll rebase the change. Thanks for your comments.",
+      "parentUuid": "5a7ca5a3_5b512061",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 11
+      },
+      "revId": "9748581ac73e21fa8a2645cfca50b7469cf5fb27",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_fb4d8cc5",
         "filename": "tests/run.sh",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-06-27T11:51:09Z",
       "side": 1,
       "message": "Same as above (Please use OpenStack CLI instead of Keystone CLI).",
+      "range": {
+        "startLine": 92,
+        "startChar": 4,
+        "endLine": 102,
+        "endChar": 5
+      },
+      "revId": "9748581ac73e21fa8a2645cfca50b7469cf5fb27",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_960eaf33",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-06-27T14:35:05Z",
+      "side": 1,
+      "message": "Same as above.",
+      "parentUuid": "5a7ca5a3_fb4d8cc5",
       "range": {
         "startLine": 92,
         "startChar": 4,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_36131b5e",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-06-27T14:35:05Z",
+      "side": 1,
+      "message": "Ok, i\u0027ll fix it.",
+      "parentUuid": "5a7ca5a3_1b4ba8b1",
+      "range": {
+        "startLine": 106,
+        "startChar": 4,
+        "endLine": 106,
+        "endChar": 48
+      },
+      "revId": "9748581ac73e21fa8a2645cfca50b7469cf5fb27",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_9bd6d8c4",
         "filename": "tests/run.sh",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_f61cc36c",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-06-27T14:35:05Z",
+      "side": 1,
+      "message": "Ok, i\u0027ll fix it.",
+      "parentUuid": "5a7ca5a3_9bd6d8c4",
+      "range": {
+        "startLine": 111,
+        "startChar": 8,
+        "endLine": 111,
+        "endChar": 44
+      },
+      "revId": "9748581ac73e21fa8a2645cfca50b7469cf5fb27",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_7bd17ccc",
         "filename": "tests/run.sh",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2016-06-27T11:51:09Z",
       "side": 1,
       "message": "What about if VM state \u003d\u003d \"ERROR\" Probably no need to wait for time out...",
+      "range": {
+        "startLine": 173,
+        "startChar": 8,
+        "endLine": 173,
+        "endChar": 46
+      },
+      "revId": "9748581ac73e21fa8a2645cfca50b7469cf5fb27",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_161a9f6e",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-06-27T14:35:05Z",
+      "side": 1,
+      "message": "Good point. I\u0027ll fix it.",
+      "parentUuid": "5a7ca5a3_7bd17ccc",
       "range": {
         "startLine": 173,
         "startChar": 8,
