@@ -273,7 +273,7 @@ realize the Doctor requirements, we need to define new "meters" in the database
    :name: figure11
    :width: 100%
 
-   Implementation plan in OpenStack (OPNFV Release 1 ”Arno”)
+   Implementation plan in OpenStack (OPNFV Release 1 "Arno")
 
 
 .. figure:: images/figure12.png
@@ -643,6 +643,95 @@ Parameters:
 * PhysicalResourceInfo [0..*] (PhysicalResourceInfoClass): List of physical
   resources. For each resource, information about the current state, the
   firmware version, etc. is provided.
+
+NFV IFA, OPNFV Doctor and AODH alarms
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This section compares the alarm interfaces of ETSI NFV IFA with the specifications
+of this document and the alarm class of AODH.
+
+ETSI NFV specifies an interface for alarms from virtualised resources in ETSI GS
+NFV-IFA 005 [ENFV]_. The interface specifies an Alarm class and two notifications plus
+operations to query alarm instances and to subscribe to the alarm notifications.
+
+The specification in this document has a structure that is very similar to the
+ETSI NFV specifications. The notifications differ in that an alarm notification
+in the NFV interface defines a single fault for a single resource while the
+notification specified in this document can contain multiple faults for
+multiple resources. The Doctor specification is lacking the detailed time stamps
+of the NFV specification essential for synchronizaion of the alarm list
+using the query operation. The detailed time stamps are also of value in the event
+and alarm history DBs.
+
+AODH defines a base class for alarms, not the notifications. This means that
+some of the dynamic attributes of the ETSI NFV alarm type, like alarmRaisedTime,
+are not applicable to the AODH alarm class but are attributes of in the actual
+notifications. (Description of these attributes will be added later.)  The AODH alarm
+class is lacking some attributes present in the NFV specification, fault details
+and correlated alarms. Instead the AODH alarm class has attributes for actions,
+rules and user and project id.
+
+.. table::
+    :class: longtable
+
++------------------------+------------------------+------------------------+
+| ETSI NFV Alarm Type    | OPNFV Doctor Req Spec  | AODH Alarm Type        |
++========================+========================+========================+
+| AlarmId                | FaultId                | Alarm Id               |
++------------------------+------------------------+------------------------+
+| managedObjectId        | virtualResourceId      | (N/A)                  |
++------------------------+------------------------+------------------------+
+| -                      | -                      | User_Id, Project_Id    |
++------------------------+------------------------+------------------------+
+| alarmRaisedTime        | -                      | (N/A)                  |
++------------------------+------------------------+------------------------+
+| alarmChangedTime       | -                      | (N/A)                  |
++------------------------+------------------------+------------------------+
+| alarmClearedTime       | -                      | (N/A)                  |
++------------------------+------------------------+------------------------+
+| alarmState:            | virtualResourceState   | State: ok, alarm,      |
+| New, Updated, Cleared  | (e.g. normal”,         | insufficient data      |
+|                        | “maintenance”, “down”, |                        |
+|                        | “error”)               |                        |
++------------------------+------------------------+------------------------+
+| vrPerceivedSeverity:   | Severity (Integer)     | Severity: low,         |
+| Critical, Major, Minor,|                        | moderate, critical     |
+| Warning, Indeterminate,|                        |                        |
+| Cleared                |                        |                        |
++------------------------+------------------------+------------------------+
+| eventTime (unclear?)   | EventTime              | (N/A)                  |
++------------------------+------------------------+------------------------+
+| faultType              | FaultType              | type                   |
++------------------------+------------------------+------------------------+
+| probableCause          | ProbableCause          | description            |
++------------------------+------------------------+------------------------+
+| isRootCause            | IsRootCause            | -                      |
++------------------------+------------------------+------------------------+
+| correlatedAlarmId      | CorrelatedFaultId      | -                      |
++------------------------+------------------------+------------------------+
+| faultDetails           | FaultDetails           | -                      |
++------------------------+------------------------+------------------------+
+| -                      | -                      | actions, rule, time    |
+|                        |                        | constraints            |
++------------------------+------------------------+------------------------+
+
+
+   Table: Comparison of alarm attributes
+
+
+The primary area of improvement should be alignment of the perceived severity. This
+is important for a quick and accurate evaluation of the alarm. AODH thus should
+support also the X.733 values Critical, Major, Minor, Warning and Indeterminate.
+
+The detailed time stamps (raised, changed, cleared) which are essential for
+synchronizing the alarm list using a query operation should be added to the
+Doctor specification.
+
+Other areas that need alignment is the so called alarm state in NFV. Here we must
+however consider what can be attributes of the notification vs. what should be a
+property of the alarm instance. This will be analyzed later.
+
+
 
 Blueprints
 ----------
