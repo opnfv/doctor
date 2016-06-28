@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_b6040b7f",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-06-28T08:52:48Z",
+      "side": 1,
+      "message": "Good question. I followed OpenStack API guideline [1]. It is common in OpenStack APIs. I believe this ease the client to parse and enables to perform bulk operations.\n\n[1] https://specs.openstack.org/openstack/api-wg/guidelines/representation_structure.html",
+      "parentUuid": "5a7ca5a3_63bb2173",
+      "revId": "6a385af26abcaec9611a852a25019443fef1ea00",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_729e9158",
         "filename": "docs/requirements/05-implementation.rst",
         "patchSetId": 6
@@ -90,6 +108,30 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_56f57781",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-06-28T08:52:48Z",
+      "side": 1,
+      "message": "I\u0027d like to avoid such specifications here, as these would be depend on event type. And referring IFA spec should be nice. How about creating annex to collect examples (from our PoC demo and CI tests) first?",
+      "parentUuid": "5a7ca5a3_835d1cec",
+      "range": {
+        "startLine": 704,
+        "startChar": 0,
+        "endLine": 704,
+        "endChar": 32
+      },
+      "revId": "6a385af26abcaec9611a852a25019443fef1ea00",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_03b02d8a",
         "filename": "docs/requirements/05-implementation.rst",
         "patchSetId": 6
@@ -101,6 +143,24 @@
       "writtenOn": "2016-06-12T13:06:26Z",
       "side": 1,
       "message": "Continued with comment in L689, I would suggest include only the bare content in payload, e.g.\n\n```\n[ {\n    \u0027time\u0027: \u00272016-04-12T08:00:00\u0027,\n    \u0027type\u0027: \u0027compute.host.nic.error\u0027,\n    \u0027details\u0027: {},\n}, {...}\n...\n]\n```",
+      "revId": "6a385af26abcaec9611a852a25019443fef1ea00",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_f6f12396",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-06-28T08:52:48Z",
+      "side": 1,
+      "message": "i prefer to keep \u0027events\u0027, but remove \u0027event\u0027 in the array based on my comment above.",
+      "parentUuid": "5a7ca5a3_03b02d8a",
       "revId": "6a385af26abcaec9611a852a25019443fef1ea00",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
