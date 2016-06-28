@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_11ee29ed",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-06-28T15:24:19Z",
+      "side": 1,
+      "message": "issue with EOL",
+      "range": {
+        "startLine": 647,
+        "startChar": 37,
+        "endLine": 647,
+        "endChar": 38
+      },
+      "revId": "d1e964845b1670b77b40e1935851489e35419142",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_b1bad5df",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-06-28T15:24:19Z",
+      "side": 1,
+      "message": "specifications in this",
+      "range": {
+        "startLine": 651,
+        "startChar": 68,
+        "endLine": 652,
+        "endChar": 7
+      },
+      "revId": "d1e964845b1670b77b40e1935851489e35419142",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_d1bf51cf",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-06-28T15:24:19Z",
+      "side": 1,
+      "message": "add a link",
+      "range": {
+        "startLine": 655,
+        "startChar": 1,
+        "endLine": 655,
+        "endChar": 11
+      },
+      "revId": "d1e964845b1670b77b40e1935851489e35419142",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_71b43df2",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-06-28T15:24:19Z",
+      "side": 1,
+      "message": "notifications about ...",
+      "range": {
+        "startLine": 656,
+        "startChar": 56,
+        "endLine": 656,
+        "endChar": 69
+      },
+      "revId": "d1e964845b1670b77b40e1935851489e35419142",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_51926158",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-06-28T15:24:19Z",
+      "side": 1,
+      "message": "what is your assessment: is this something important that we should add to Doctor specs?",
+      "range": {
+        "startLine": 662,
+        "startChar": 48,
+        "endLine": 663,
+        "endChar": 24
+      },
+      "revId": "d1e964845b1670b77b40e1935851489e35419142",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_d1a671c1",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-06-28T15:24:19Z",
+      "side": 1,
+      "message": "class and it",
+      "range": {
+        "startLine": 667,
+        "startChar": 36,
+        "endLine": 667,
+        "endChar": 46
+      },
+      "revId": "d1e964845b1670b77b40e1935851489e35419142",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_71abdd89",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-06-28T15:24:19Z",
+      "side": 1,
+      "message": "in the actual notifications.",
+      "range": {
+        "startLine": 667,
+        "startChar": 64,
+        "endLine": 667,
+        "endChar": 80
+      },
+      "revId": "d1e964845b1670b77b40e1935851489e35419142",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_91b0f9f5",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-06-28T15:24:19Z",
+      "side": 1,
+      "message": "What do you mean here?",
+      "range": {
+        "startLine": 668,
+        "startChar": 0,
+        "endLine": 668,
+        "endChar": 65
+      },
+      "revId": "d1e964845b1670b77b40e1935851489e35419142",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_31956540",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-06-28T15:24:19Z",
+      "side": 1,
+      "message": "can you give a recommendation?",
+      "range": {
+        "startLine": 685,
+        "startChar": 69,
+        "endLine": 687,
+        "endChar": 31
+      },
+      "revId": "d1e964845b1670b77b40e1935851489e35419142",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
