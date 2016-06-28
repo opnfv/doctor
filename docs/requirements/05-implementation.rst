@@ -644,6 +644,50 @@ Parameters:
   resources. For each resource, information about the current state, the
   firmware version, etc. is provided.
 
+NFV IFA, OPNFV Doctor and AODH alarms 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+This section compares the alarm interfaces of ETSI NFV IFA with the specification 
+of this document and the alarm class of AODH.
+
+ETSI NFV specifies an interface for alarms from virtualised resources in ETSI GS 
+NFV-IFA 005. The interface specifies an Alarm class and two notifications plus 
+operations to query alarm instances and to subscribe to notifications.
+ 
+The specification in this document has a structure that is very similar to the 
+ETSI NFV specifications. The notifications differ in that an alarm notification 
+in the NFV interface defines a single fault for a single resource while the 
+notification specified in this document can contain multiple faults for 
+multiple resources. The Doctor specification is lacking the detailed time stamps 
+of the NFV specification.
+
+AODH defines a base class for alarms, not the notifications. This means that 
+some of the dynamic attributes of the ETSI NFV alarm type, like alarmRaisedTime, 
+is not applicable to the AODH alarm class – it will be added in the notification. 
+Description of the subscribe/notify operation will be added later.  The AODH alarm 
+class is lacking some attributes present in the NFV specification, fault details 
+and correlated alarms. Instead the AODH alarm class has attributes for actions, 
+rules and user and project id. 
+
+
+.. figure:: images/figure15.png
+   :name: figure15
+   :width: 100%
+
+   Comparison of alarm attributes
+
+
+The primary area of improvement should be alignment of the perceived severity. This 
+is important for a quick and accurate evaluation of the alarm. AODH thus should 
+support also the X.733 values Critical, Major, Minor, Warning and Indeterminate. 
+
+Other areas that need alignment is the so called alarm state in NFV. Here we must 
+however consider what can be attributes of the notification vs. what should be a 
+property of the alarm instance.
+
+
+
 Blueprints
 ----------
 
