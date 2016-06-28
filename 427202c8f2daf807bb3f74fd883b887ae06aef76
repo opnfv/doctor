@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_36d1dbfb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-06-28T08:19:43Z",
+      "side": 1,
+      "message": "shorten this commit title less than 52 chars.\n\nyou can also add comment regarding OS_TENANT_NAME replacement.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 12
+      },
+      "revId": "427202c8f2daf807bb3f74fd883b887ae06aef76",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_96ec6fc9",
+        "filename": "tests/run.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-06-28T08:19:43Z",
+      "side": 1,
+      "message": "nit: you can use $() instead of ``",
+      "range": {
+        "startLine": 175,
+        "startChar": 14,
+        "endLine": 175,
+        "endChar": 15
+      },
+      "revId": "427202c8f2daf807bb3f74fd883b887ae06aef76",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
