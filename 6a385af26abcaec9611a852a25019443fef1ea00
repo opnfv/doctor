@@ -132,6 +132,30 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_31e7a514",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-06-28T15:12:18Z",
+      "side": 1,
+      "message": "okay. Let\u0027s start with a generic event specification. referring to IFA specs would be nice to have. Okay to have Annex with examples.",
+      "parentUuid": "5a7ca5a3_56f57781",
+      "range": {
+        "startLine": 704,
+        "startChar": 0,
+        "endLine": 704,
+        "endChar": 32
+      },
+      "revId": "6a385af26abcaec9611a852a25019443fef1ea00",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_03b02d8a",
         "filename": "docs/requirements/05-implementation.rst",
         "patchSetId": 6
@@ -161,6 +185,24 @@
       "side": 1,
       "message": "i prefer to keep \u0027events\u0027, but remove \u0027event\u0027 in the array based on my comment above.",
       "parentUuid": "5a7ca5a3_03b02d8a",
+      "revId": "6a385af26abcaec9611a852a25019443fef1ea00",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_51e4a10c",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-06-28T15:12:18Z",
+      "side": 1,
+      "message": "keeping \"events\" and \"event\" at least would make it more readable, but no strong preference from my side.",
+      "parentUuid": "5a7ca5a3_f6f12396",
       "revId": "6a385af26abcaec9611a852a25019443fef1ea00",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
