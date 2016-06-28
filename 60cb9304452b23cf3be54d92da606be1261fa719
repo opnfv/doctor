@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_16461fc0",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 9
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1482
+      },
+      "writtenOn": "2016-06-28T14:52:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a7ca5a3_5637b7e3",
+      "range": {
+        "startLine": 13,
+        "startChar": 39,
+        "endLine": 13,
+        "endChar": 51
+      },
+      "revId": "60cb9304452b23cf3be54d92da606be1261fa719",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_3dac61ed",
         "filename": "docs/userguide/doctor_scenario_in_functest.rst",
         "patchSetId": 9
@@ -65,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_760c3395",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 9
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1482
+      },
+      "writtenOn": "2016-06-28T14:52:38Z",
+      "side": 1,
+      "message": "Get it. :)",
+      "parentUuid": "5a7ca5a3_f63363f4",
+      "range": {
+        "startLine": 58,
+        "startChar": 17,
+        "endLine": 58,
+        "endChar": 20
+      },
+      "revId": "60cb9304452b23cf3be54d92da606be1261fa719",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_965c6f27",
         "filename": "docs/userguide/doctor_scenario_in_functest.rst",
         "patchSetId": 9
@@ -76,6 +124,30 @@
       "writtenOn": "2016-06-27T14:54:47Z",
       "side": 1,
       "message": "The faults to be monitored (and at which detection rate) will be configured by the consumer. Once a fault is detected, the Inspector in the Doctor architecture will check the resource map maintained by the Controller, ...\"",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 10
+      },
+      "revId": "60cb9304452b23cf3be54d92da606be1261fa719",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_31dd6571",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 9
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1482
+      },
+      "writtenOn": "2016-06-28T14:52:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a7ca5a3_965c6f27",
       "range": {
         "startLine": 63,
         "startChar": 0,
@@ -111,6 +183,30 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_51da6179",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 9
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1482
+      },
+      "writtenOn": "2016-06-28T14:52:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a7ca5a3_3641db39",
+      "range": {
+        "startLine": 66,
+        "startChar": 7,
+        "endLine": 67,
+        "endChar": 71
+      },
+      "revId": "60cb9304452b23cf3be54d92da606be1261fa719",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_563ed7b9",
         "filename": "docs/userguide/doctor_scenario_in_functest.rst",
         "patchSetId": 9
@@ -122,6 +218,30 @@
       "writtenOn": "2016-06-27T14:54:47Z",
       "side": 1,
       "message": "typo: \"information\"",
+      "range": {
+        "startLine": 69,
+        "startChar": 18,
+        "endLine": 69,
+        "endChar": 29
+      },
+      "revId": "60cb9304452b23cf3be54d92da606be1261fa719",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_f1028db3",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 9
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1482
+      },
+      "writtenOn": "2016-06-28T14:52:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a7ca5a3_563ed7b9",
       "range": {
         "startLine": 69,
         "startChar": 18,
@@ -157,6 +277,30 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_91cf99b0",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 9
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1482
+      },
+      "writtenOn": "2016-06-28T14:52:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a7ca5a3_f64a8354",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 16
+      },
+      "revId": "60cb9304452b23cf3be54d92da606be1261fa719",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_16485f5a",
         "filename": "docs/userguide/doctor_scenario_in_functest.rst",
         "patchSetId": 9
@@ -168,6 +312,30 @@
       "writtenOn": "2016-06-27T14:54:47Z",
       "side": 1,
       "message": "why only nic failures? shouldn\u0027t we keep the use case more generic?",
+      "range": {
+        "startLine": 74,
+        "startChar": 20,
+        "endLine": 75,
+        "endChar": 7
+      },
+      "revId": "60cb9304452b23cf3be54d92da606be1261fa719",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_51c1017f",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 9
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1482
+      },
+      "writtenOn": "2016-06-28T14:52:38Z",
+      "side": 1,
+      "message": "I agree, and will modify it",
+      "parentUuid": "5a7ca5a3_16485f5a",
       "range": {
         "startLine": 74,
         "startChar": 20,
@@ -203,6 +371,30 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_f1bdad03",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 9
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1482
+      },
+      "writtenOn": "2016-06-28T14:52:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a7ca5a3_b6740b9d",
+      "range": {
+        "startLine": 75,
+        "startChar": 52,
+        "endLine": 76,
+        "endChar": 11
+      },
+      "revId": "60cb9304452b23cf3be54d92da606be1261fa719",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_766e73cb",
         "filename": "docs/userguide/doctor_scenario_in_functest.rst",
         "patchSetId": 9
@@ -214,6 +406,30 @@
       "writtenOn": "2016-06-27T14:54:47Z",
       "side": 1,
       "message": "Aodh (step 7). Aodh will evaluate the event ...",
+      "range": {
+        "startLine": 84,
+        "startChar": 68,
+        "endLine": 84,
+        "endChar": 72
+      },
+      "revId": "60cb9304452b23cf3be54d92da606be1261fa719",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_11bb890f",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 9
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1482
+      },
+      "writtenOn": "2016-06-28T14:52:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a7ca5a3_766e73cb",
       "range": {
         "startLine": 84,
         "startChar": 68,
@@ -249,6 +465,30 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_b13735b0",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 9
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1482
+      },
+      "writtenOn": "2016-06-28T14:52:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a7ca5a3_d6798794",
+      "range": {
+        "startLine": 89,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 16
+      },
+      "revId": "60cb9304452b23cf3be54d92da606be1261fa719",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_96730fb1",
         "filename": "docs/userguide/doctor_scenario_in_functest.rst",
         "patchSetId": 9
@@ -272,6 +512,30 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_9146b922",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 9
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1482
+      },
+      "writtenOn": "2016-06-28T14:52:38Z",
+      "side": 1,
+      "message": "yes, that\u0027s what I want to present?thk you and get it.",
+      "parentUuid": "5a7ca5a3_96730fb1",
+      "range": {
+        "startLine": 127,
+        "startChar": 48,
+        "endLine": 128,
+        "endChar": 67
+      },
+      "revId": "60cb9304452b23cf3be54d92da606be1261fa719",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_3668fbb9",
         "filename": "docs/userguide/doctor_scenario_in_functest.rst",
         "patchSetId": 9
@@ -283,6 +547,30 @@
       "writtenOn": "2016-06-27T14:54:47Z",
       "side": 1,
       "message": "of the host",
+      "range": {
+        "startLine": 150,
+        "startChar": 39,
+        "endLine": 150,
+        "endChar": 46
+      },
+      "revId": "60cb9304452b23cf3be54d92da606be1261fa719",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_d13c3196",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 9
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1482
+      },
+      "writtenOn": "2016-06-28T14:52:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a7ca5a3_3668fbb9",
       "range": {
         "startLine": 150,
         "startChar": 39,
