@@ -22,6 +22,30 @@
       "revId": "ed747b755c422df5814f7fc68a4aa7da5ac85754",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_713bddeb",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 11
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1482
+      },
+      "writtenOn": "2016-06-29T06:35:57Z",
+      "side": 1,
+      "message": "That\u0027s OK, it\u0027s my carelessness. Destroy it. :)",
+      "parentUuid": "5a7ca5a3_f1192d23",
+      "range": {
+        "startLine": 55,
+        "startChar": 25,
+        "endLine": 55,
+        "endChar": 38
+      },
+      "revId": "ed747b755c422df5814f7fc68a4aa7da5ac85754",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
