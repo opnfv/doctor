@@ -22,6 +22,30 @@
       "revId": "84a31d6c1a0ad2d20a095e840d4f5875ffa6c795",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_197acf88",
+        "filename": "tests/run.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-06-29T06:01:02Z",
+      "side": 1,
+      "message": "syntax :)",
+      "parentUuid": "5a7ca5a3_f926f3b9",
+      "range": {
+        "startLine": 175,
+        "startChar": 25,
+        "endLine": 175,
+        "endChar": 27
+      },
+      "revId": "84a31d6c1a0ad2d20a095e840d4f5875ffa6c795",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
