@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_f926f3b9",
+        "filename": "tests/run.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-06-29T03:21:08Z",
+      "side": 1,
+      "message": "why double parentheses?",
+      "range": {
+        "startLine": 175,
+        "startChar": 25,
+        "endLine": 175,
+        "endChar": 27
+      },
+      "revId": "84a31d6c1a0ad2d20a095e840d4f5875ffa6c795",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
