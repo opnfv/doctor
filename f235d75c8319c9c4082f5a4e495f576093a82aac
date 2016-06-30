@@ -34,6 +34,24 @@
       "revId": "f235d75c8319c9c4082f5a4e495f576093a82aac",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_bf413b0d",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 12
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-06-30T03:56:49Z",
+      "side": 1,
+      "message": "Maybe it comes from my laziness, but we already have suffcient description now, so we don\u0027t need such function names here.",
+      "parentUuid": "5a7ca5a3_bc6dc906",
+      "revId": "f235d75c8319c9c4082f5a4e495f576093a82aac",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
