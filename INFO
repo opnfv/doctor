@@ -13,6 +13,7 @@ Repository: doctor
 Committers:
 Ashiq Khan (NTT DOCOMO, khan@nttdocomo.com)
 Carlos Goncalves (NEC, Carlos.Goncalves@neclab.eu)
+Dong Wenjuan (ZTE, dong.wenjuan@zte.com.cn)
 Gerald Kunzmann (NTT DOCOMO, kunzmann@docomolab-euro.com)
 Mario Cho (hephaex@gmail.com)
 Peter Lee (ClearPath Networks, plee@clearpathnet.com)
@@ -26,3 +27,4 @@ Link to TSC approval of the project: http://meetbot.opnfv.org/meetings/opnfv-mee
 Link(s) to approval of committer update:
 http://lists.opnfv.org/pipermail/opnfv-tsc/2015-June/000905.html
 http://lists.opnfv.org/pipermail/opnfv-tech-discuss/2015-June/003165.html
+http://lists.opnfv.org/pipermail/opnfv-tech-discuss/2016-June/011245.html
