@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_3fe76b42",
+        "filename": "tests/run.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-06-30T03:28:04Z",
+      "side": 1,
+      "message": "Not a good idea to copy and paste code of same purpose. Please wrap them in a function if possible.",
+      "revId": "acb074e86f45078fce730aae2a58063acbf9e4db",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
