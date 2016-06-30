@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_7fc40392",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-06-30T03:44:25Z",
+      "side": 1,
+      "message": "In this case, we should also fire a bug on JIRA to follow up.",
+      "parentUuid": "5a7ca5a3_ffe9f31a",
+      "range": {
+        "startLine": 25,
+        "startChar": 10,
+        "endLine": 25,
+        "endChar": 15
+      },
+      "revId": "afa1bec4a43a50d3ed9c2bb8c01c37350cc9811a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_dff8b7e7",
         "filename": "tests/run.sh",
         "patchSetId": 1
