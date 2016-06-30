@@ -166,12 +166,17 @@ stop_consumer() {
 
 wait_for_vm_launch() {
     echo "waiting for vm launch..."
-    while true
+    count=0
+    while [[ ${count} -lt 60 ]]
     do
         state=$(nova list | grep " $VM_NAME " | awk '{print $6}')
         [[ "$state" == "ACTIVE" ]] && return 0
+        [[ "$state" == "ERROR" ]] && echo "vm state is ERROR" && exit 1
+        count=$(($count+1))
         sleep 1
     done
+    echo "ERROR: time out while waiting for vm launch"
+    exit 1
 }
 
 inject_failure() {
