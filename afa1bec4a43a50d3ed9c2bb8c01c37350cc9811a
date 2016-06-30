@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_dfe2f702",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2016-06-30T05:11:02Z",
+      "side": 1,
+      "message": "There is JIRA DOCTOR-55 that links to GENESIS-86 that says all installers should have change to have: \"os_compute_api:servers:show:host_status\": \"rule:admin_or_owner\"\nAs this is not done, there can be temporary fix now as admin and DOCTOR-55 should finally change run.sh back (added comment there). I am heading for holiday now, so would appreciate help on getting DOCTOR-55 done.",
+      "parentUuid": "5a7ca5a3_3f552bc6",
+      "range": {
+        "startLine": 25,
+        "startChar": 10,
+        "endLine": 25,
+        "endChar": 15
+      },
+      "revId": "afa1bec4a43a50d3ed9c2bb8c01c37350cc9811a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_dff8b7e7",
         "filename": "tests/run.sh",
         "patchSetId": 1
