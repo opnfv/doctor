@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_df5c3728",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1641
+      },
+      "writtenOn": "2016-06-30T02:53:43Z",
+      "side": 1,
+      "message": "The statement will be always executed, but shall only be performed on condition of failure?",
+      "range": {
+        "startLine": 217,
+        "startChar": 7,
+        "endLine": 217,
+        "endChar": 69
+      },
+      "revId": "afa1bec4a43a50d3ed9c2bb8c01c37350cc9811a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
