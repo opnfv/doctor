@@ -103,12 +103,12 @@ create_test_user() {
 }
 
 boot_vm() {
-    nova list | grep -q " $VM_NAME " && return 0
     (
         # test VM done with test user, so can test non-admin
         export OS_USERNAME="$TEST_USER"
         export OS_PASSWORD="$TEST_PW"
-        export OS_TENANT_NAME="$TEST_PROJECT"
+        export OS_PROJECT_NAME="$TEST_PROJECT"
+        nova list | grep -q " $VM_NAME " && return 0
         nova boot --flavor "$VM_FLAVOR" \
                   --image "$IMAGE_NAME" \
                   "$VM_NAME"
@@ -202,7 +202,7 @@ check_host_status_down() {
         # Switching to test user
         export OS_USERNAME="$TEST_USER"
         export OS_PASSWORD="$TEST_PW"
-        export OS_TENANT_NAME="$TEST_PROJECT"
+        export OS_PROJECT_NAME="$TEST_PROJECT"
 
         host_status_line=$(nova show $VM_NAME | grep "host_status")
         [[ $? -ne 0 ]] && {
