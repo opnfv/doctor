@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_bf6dbb06",
+        "filename": "tests/run.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-06-30T08:55:10Z",
+      "side": 1,
+      "message": "This comments is not necessary since you have given a descriptive function name.",
+      "revId": "227868cef0d445229b729a24661da07c56fc782a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
