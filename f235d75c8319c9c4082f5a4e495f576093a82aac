@@ -106,6 +106,24 @@
       "revId": "f235d75c8319c9c4082f5a4e495f576093a82aac",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_5f55871b",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 12
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1482
+      },
+      "writtenOn": "2016-06-30T09:13:53Z",
+      "side": 1,
+      "message": "In general, the run.sh script is completed according to the description of scenario, so I think adding a link in here may be unreasonable. What do you think?",
+      "parentUuid": "5a7ca5a3_ffc7b310",
+      "revId": "f235d75c8319c9c4082f5a4e495f576093a82aac",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
