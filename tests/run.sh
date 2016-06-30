@@ -22,7 +22,8 @@ CONSUMER_PORT=12346
 DOCTOR_USER=doctor
 DOCTOR_PW=doctor
 DOCTOR_PROJECT=doctor
-DOCTOR_ROLE=_member_
+#TODO: change back to `_member_` when JIRA DOCTOR-55 is done
+DOCTOR_ROLE=admin
 
 SUPPORTED_INSTALLER_TYPES="apex local"
 INSTALLER_TYPE=${INSTALLER_TYPE:-apex}
@@ -218,20 +219,27 @@ calculate_notification_time() {
         awk '{d = $1 - $2; if (d < 1 && d > 0) print d " OK"; else print d " NG"}'
 }
 
-check_host_status_down() {
+check_host_status() {
+    expect_state=$1
     (
         change_to_doctor_user
 
         host_status_line=$(nova show $VM_NAME | grep "host_status")
-        [[ $? -ne 0 ]] && {
+        if [[ $? -ne 0 ]] ; then
             echo "ERROR: host_status not configured for owner in Nova policy.json"
-        }
+            exit 1
+        fi
 
         host_status=$(echo $host_status_line | awk '{print $4}')
-        [[ "$host_status" == "DOWN" ]] && {
+        if [ -z "$host_status" ] ; then
+            echo "ERROR: host_status not reported by: nova show $VM_NAME"
+            exit 1
+        elif [[ "$host_status" != "$expect_state" ]] ; then
+            echo "ERROR: host_status:$host_status not equal to expect_state: $expect_state"
+            exit 1
+        else
             echo "$VM_NAME showing host_status: $host_status"
-        }
-        echo "ERROR: host_status not reported by: nova show $VM_NAME"
+        fi
     )
 }
 
@@ -261,9 +269,9 @@ cleanup() {
     openstack project delete "$DOCTOR_PROJECT"
     openstack user delete "$DOCTOR_USER"
 
-    #TODO: add host status check via nova admin api
     echo "waiting disabled compute host back to be enabled..."
     sleep 180
+    check_host_status "UP"
     ssh $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP" \
         "[ -e disable_network.log ] && cat disable_network.log"
 }
@@ -297,7 +305,7 @@ echo "injecting host failure..."
 inject_failure
 sleep 10
 
-check_host_status_down
+check_host_status "DOWN"
 calculate_notification_time
 
 echo "done"
