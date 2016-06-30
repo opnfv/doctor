@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_e2407858",
+        "filename": "docs/design/port-status-update.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-06-30T15:56:31Z",
+      "side": 1,
+      "message": "nit: \u0027ACTIVE\u0027, \u0027DOWN\u0027, \u0027BUILD\u0027, and",
+      "range": {
+        "startLine": 14,
+        "startChar": 22,
+        "endLine": 14,
+        "endChar": 50
+      },
+      "revId": "a60aa23b33e21d06135d7f058ea73b03464da65a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_622c68ac",
+        "filename": "docs/design/port-status-update.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-06-30T15:56:31Z",
+      "side": 1,
+      "message": "\"When\"?",
+      "range": {
+        "startLine": 18,
+        "startChar": 35,
+        "endLine": 18,
+        "endChar": 39
+      },
+      "revId": "a60aa23b33e21d06135d7f058ea73b03464da65a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_e2171850",
+        "filename": "docs/design/port-status-update.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-06-30T15:56:31Z",
+      "side": 1,
+      "message": "\"are looking up ... etc.) they will wrongly see everything looks fine.\"",
+      "range": {
+        "startLine": 18,
+        "startChar": 69,
+        "endLine": 18,
+        "endChar": 79
+      },
+      "revId": "a60aa23b33e21d06135d7f058ea73b03464da65a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_820c2444",
+        "filename": "docs/design/port-status-update.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-06-30T15:56:31Z",
+      "side": 1,
+      "message": "\"Controllers\u0027\" ?",
+      "range": {
+        "startLine": 23,
+        "startChar": 16,
+        "endLine": 23,
+        "endChar": 28
+      },
+      "revId": "a60aa23b33e21d06135d7f058ea73b03464da65a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_a2092033",
+        "filename": "docs/design/port-status-update.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-06-30T15:56:31Z",
+      "side": 1,
+      "message": "as well as",
+      "range": {
+        "startLine": 28,
+        "startChar": 73,
+        "endLine": 28,
+        "endChar": 84
+      },
+      "revId": "a60aa23b33e21d06135d7f058ea73b03464da65a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
