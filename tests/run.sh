@@ -118,17 +118,24 @@ boot_vm() {
 }
 
 create_alarm() {
-    ceilometer alarm-list | grep -q " $ALARM_NAME " && return 0
-    vm_id=$(nova list | grep " $VM_NAME " | awk '{print $2}')
-    ceilometer alarm-event-create --name "$ALARM_NAME" \
-        --alarm-action "http://localhost:$CONSUMER_PORT/failure" \
-        --description "VM failure" \
-        --enabled True \
-        --repeat-actions False \
-        --severity "moderate" \
-        --event-type compute.instance.update \
-        -q "traits.state=string::error; traits.instance_id=string::$vm_id"
+    (
+        # get vm_id with test user
+        export OS_USERNAME="$TEST_USER"
+        export OS_PASSWORD="$TEST_PW"
+        export OS_PROJECT_NAME="$TEST_PROJECT"
+        ceilometer alarm-list | grep -q " $ALARM_NAME " && return 0
+        vm_id=$(nova list | grep " $VM_NAME " | awk '{print $2}')
+        ceilometer alarm-event-create --name "$ALARM_NAME" \
+            --alarm-action "http://localhost:$CONSUMER_PORT/failure" \
+            --description "VM failure" \
+            --enabled True \
+            --repeat-actions False \
+            --severity "moderate" \
+            --event-type compute.instance.update \
+            -q "traits.state=string::error; traits.instance_id=string::$vm_id"
+    )
 }
+
 
 start_monitor() {
     pgrep -f "python monitor.py" && return 0
@@ -166,12 +173,20 @@ stop_consumer() {
 
 wait_for_vm_launch() {
     echo "waiting for vm launch..."
-    while true
-    do
-        state=$(nova list | grep " $VM_NAME " | awk '{print $6}')
-        [[ "$state" == "ACTIVE" ]] && return 0
-        sleep 1
-    done
+
+    (
+        # get VM state with test user
+        export OS_USERNAME="$TEST_USER"
+        export OS_PASSWORD="$TEST_PW"
+        export OS_PROJECT_NAME="$TEST_PROJECT"
+
+        while true
+        do
+            state=$(nova list | grep " $VM_NAME " | awk '{print $6}')
+            [[ "$state" == "ACTIVE" ]] && return 0
+            sleep 1
+        done
+    )
 }
 
 inject_failure() {
@@ -226,12 +241,18 @@ cleanup() {
 
     python ./nova_force_down.py "$COMPUTE_HOST" --unset
     sleep 1
-    nova list | grep -q " $VM_NAME " && nova delete "$VM_NAME"
-    sleep 1
-    alarm_id=$(ceilometer alarm-list | grep " $ALARM_NAME " | awk '{print $2}')
-    sleep 1
-    [ -n "$alarm_id" ] && ceilometer alarm-delete "$alarm_id"
-    sleep 1
+    (
+        export OS_USERNAME="$TEST_USER"
+        export OS_PASSWORD="$TEST_PW"
+        export OS_PROJECT_NAME="$TEST_PROJECT"
+
+	    nova list | grep -q " $VM_NAME " && nova delete "$VM_NAME"
+	    sleep 1
+	    alarm_id=$(ceilometer alarm-list | grep " $ALARM_NAME " | awk '{print $2}')
+	    sleep 1
+	    [ -n "$alarm_id" ] && ceilometer alarm-delete "$alarm_id"
+	    sleep 1
+	)
     image_id=$(glance image-list | grep " $IMAGE_NAME " | awk '{print $2}')
     sleep 1
     [ -n "$image_id" ] && glance image-delete "$image_id"
