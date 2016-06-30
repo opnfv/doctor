@@ -102,13 +102,17 @@ create_test_user() {
     }
 }
 
+change_to_test_user() {
+    export OS_USERNAME="$TEST_USER"
+    export OS_PASSWORD="$TEST_PW"
+    export OS_PROJECT_NAME="$TEST_PROJECT"
+}
+
 boot_vm() {
-    nova list | grep -q " $VM_NAME " && return 0
     (
         # test VM done with test user, so can test non-admin
-        export OS_USERNAME="$TEST_USER"
-        export OS_PASSWORD="$TEST_PW"
-        export OS_TENANT_NAME="$TEST_PROJECT"
+        change_to_test_user
+        nova list | grep -q " $VM_NAME " && return 0
         nova boot --flavor "$VM_FLAVOR" \
                   --image "$IMAGE_NAME" \
                   "$VM_NAME"
@@ -118,17 +122,22 @@ boot_vm() {
 }
 
 create_alarm() {
-    ceilometer alarm-list | grep -q " $ALARM_NAME " && return 0
-    vm_id=$(nova list | grep " $VM_NAME " | awk '{print $2}')
-    ceilometer alarm-event-create --name "$ALARM_NAME" \
-        --alarm-action "http://localhost:$CONSUMER_PORT/failure" \
-        --description "VM failure" \
-        --enabled True \
-        --repeat-actions False \
-        --severity "moderate" \
-        --event-type compute.instance.update \
-        -q "traits.state=string::error; traits.instance_id=string::$vm_id"
+    (
+        # get vm_id as test user
+        change_to_test_user
+        ceilometer alarm-list | grep -q " $ALARM_NAME " && return 0
+        vm_id=$(nova list | grep " $VM_NAME " | awk '{print $2}')
+        ceilometer alarm-event-create --name "$ALARM_NAME" \
+            --alarm-action "http://localhost:$CONSUMER_PORT/failure" \
+            --description "VM failure" \
+            --enabled True \
+            --repeat-actions False \
+            --severity "moderate" \
+            --event-type compute.instance.update \
+            -q "traits.state=string::error; traits.instance_id=string::$vm_id"
+    )
 }
+
 
 start_monitor() {
     pgrep -f "python monitor.py" && return 0
@@ -166,17 +175,23 @@ stop_consumer() {
 
 wait_for_vm_launch() {
     echo "waiting for vm launch..."
-    count=0
-    while [[ ${count} -lt 60 ]]
-    do
-        state=$(nova list | grep " $VM_NAME " | awk '{print $6}')
-        [[ "$state" == "ACTIVE" ]] && return 0
-        [[ "$state" == "ERROR" ]] && echo "vm state is ERROR" && exit 1
-        count=$(($count+1))
-        sleep 1
-    done
-    echo "ERROR: time out while waiting for vm launch"
-    exit 1
+
+    (
+        # get VM state as test user
+        change_to_test_user
+
+        count=0
+        while [[ ${count} -lt 60 ]]
+        do
+            state=$(nova list | grep " $VM_NAME " | awk '{print $6}')
+            [[ "$state" == "ACTIVE" ]] && return 0
+            [[ "$state" == "ERROR" ]] && echo "vm state is ERROR" && exit 1
+            count=$(($count+1))
+            sleep 1
+        done
+        echo "ERROR: time out while waiting for vm launch"
+        exit 1
+    )
 }
 
 inject_failure() {
@@ -204,10 +219,7 @@ calculate_notification_time() {
 
 check_host_status_down() {
     (
-        # Switching to test user
-        export OS_USERNAME="$TEST_USER"
-        export OS_PASSWORD="$TEST_PW"
-        export OS_TENANT_NAME="$TEST_PROJECT"
+        change_to_test_user
 
         host_status_line=$(nova show $VM_NAME | grep "host_status")
         [[ $? -ne 0 ]] && {
@@ -231,12 +243,15 @@ cleanup() {
 
     python ./nova_force_down.py "$COMPUTE_HOST" --unset
     sleep 1
-    nova list | grep -q " $VM_NAME " && nova delete "$VM_NAME"
-    sleep 1
-    alarm_id=$(ceilometer alarm-list | grep " $ALARM_NAME " | awk '{print $2}')
-    sleep 1
-    [ -n "$alarm_id" ] && ceilometer alarm-delete "$alarm_id"
-    sleep 1
+    (
+        change_to_test_user
+        nova list | grep -q " $VM_NAME " && nova delete "$VM_NAME"
+        sleep 1
+        alarm_id=$(ceilometer alarm-list | grep " $ALARM_NAME " | awk '{print $2}')
+        sleep 1
+        [ -n "$alarm_id" ] && ceilometer alarm-delete "$alarm_id"
+        sleep 1
+    )
     image_id=$(glance image-list | grep " $IMAGE_NAME " | awk '{print $2}')
     sleep 1
     [ -n "$image_id" ] && glance image-delete "$image_id"
