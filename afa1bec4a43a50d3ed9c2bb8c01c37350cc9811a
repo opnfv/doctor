@@ -22,6 +22,30 @@
       "revId": "afa1bec4a43a50d3ed9c2bb8c01c37350cc9811a",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_1fef0f20",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-06-30T03:25:46Z",
+      "side": 1,
+      "message": "Same question from my side",
+      "parentUuid": "5a7ca5a3_df5c3728",
+      "range": {
+        "startLine": 217,
+        "startChar": 7,
+        "endLine": 217,
+        "endChar": 69
+      },
+      "revId": "afa1bec4a43a50d3ed9c2bb8c01c37350cc9811a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
