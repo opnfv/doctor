@@ -52,6 +52,42 @@
       "revId": "f235d75c8319c9c4082f5a4e495f576093a82aac",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_7f208349",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 12
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1482
+      },
+      "writtenOn": "2016-06-30T05:01:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a7ca5a3_39aa2b1a",
+      "revId": "f235d75c8319c9c4082f5a4e495f576093a82aac",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_9f1d5f12",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 12
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1482
+      },
+      "writtenOn": "2016-06-30T05:01:17Z",
+      "side": 1,
+      "message": "I agree with the run.sh script should logically depend on this \"scenario description\", not reversed. and U will remove these codes.",
+      "parentUuid": "5a7ca5a3_bf413b0d",
+      "revId": "f235d75c8319c9c4082f5a4e495f576093a82aac",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
