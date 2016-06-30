@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_3f552bc6",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-06-30T04:34:21Z",
+      "side": 1,
+      "message": "In nova policy,\"os_compute_api:servers:show:host_status\": \"rule:admin_api\", host_status only can be read by admin. You mean it will be configurated to be readed by the vm owner?",
+      "parentUuid": "5a7ca5a3_ffe9f31a",
+      "range": {
+        "startLine": 25,
+        "startChar": 10,
+        "endLine": 25,
+        "endChar": 15
+      },
+      "revId": "afa1bec4a43a50d3ed9c2bb8c01c37350cc9811a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_dff8b7e7",
         "filename": "tests/run.sh",
         "patchSetId": 1
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "agree, also we should check whether the value is empty or not.",
       "parentUuid": "5a7ca5a3_df5c3728",
+      "range": {
+        "startLine": 217,
+        "startChar": 7,
+        "endLine": 217,
+        "endChar": 69
+      },
+      "revId": "afa1bec4a43a50d3ed9c2bb8c01c37350cc9811a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_5f5267de",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-06-30T04:34:21Z",
+      "side": 1,
+      "message": "OK,I\u0027ll fix it. Thanks~",
+      "parentUuid": "5a7ca5a3_3f90cb94",
       "range": {
         "startLine": 217,
         "startChar": 7,
