@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_02325410",
+        "filename": "tests/run.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 346
+      },
+      "writtenOn": "2016-06-30T15:59:56Z",
+      "side": 1,
+      "message": "Shall we rename test_user to e.g. doctor_user\nSee e.g. https://build.opnfv.org/ci/job/functest-compass-baremetal-daily-master/93/console (Includes list of default \"users\" and \"projects/tenants\" for Compass)",
+      "range": {
+        "startLine": 22,
+        "startChar": 10,
+        "endLine": 22,
+        "endChar": 14
+      },
+      "revId": "c880a1cf60714ce3bcbe79620985c29d849f1c9f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_42060c22",
+        "filename": "tests/run.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 346
+      },
+      "writtenOn": "2016-06-30T15:59:56Z",
+      "side": 1,
+      "message": "Shall we also rename test_project to e.g. doctor_project",
+      "range": {
+        "startLine": 24,
+        "startChar": 13,
+        "endLine": 24,
+        "endChar": 17
+      },
+      "revId": "c880a1cf60714ce3bcbe79620985c29d849f1c9f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_822504c4",
+        "filename": "tests/run.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 346
+      },
+      "writtenOn": "2016-06-30T15:59:56Z",
+      "side": 1,
+      "message": "\" $TEST_USER \"!?",
+      "range": {
+        "startLine": 92,
+        "startChar": 34,
+        "endLine": 92,
+        "endChar": 46
+      },
+      "revId": "c880a1cf60714ce3bcbe79620985c29d849f1c9f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_a22280b7",
+        "filename": "tests/run.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 346
+      },
+      "writtenOn": "2016-06-30T15:59:56Z",
+      "side": 1,
+      "message": "Same as above",
+      "range": {
+        "startLine": 93,
+        "startChar": 31,
+        "endLine": 93,
+        "endChar": 41
+      },
+      "revId": "c880a1cf60714ce3bcbe79620985c29d849f1c9f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_422feca1",
+        "filename": "tests/run.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 346
+      },
+      "writtenOn": "2016-06-30T15:59:56Z",
+      "side": 1,
+      "message": "\" $TEST_PROJECT \"!?",
+      "range": {
+        "startLine": 95,
+        "startChar": 38,
+        "endLine": 95,
+        "endChar": 51
+      },
+      "revId": "c880a1cf60714ce3bcbe79620985c29d849f1c9f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_0219f487",
+        "filename": "tests/run.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 346
+      },
+      "writtenOn": "2016-06-30T15:59:56Z",
+      "side": 1,
+      "message": "Same as above",
+      "range": {
+        "startLine": 96,
+        "startChar": 34,
+        "endLine": 96,
+        "endChar": 47
+      },
+      "revId": "c880a1cf60714ce3bcbe79620985c29d849f1c9f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_c2121c62",
+        "filename": "tests/run.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 346
+      },
+      "writtenOn": "2016-06-30T15:59:56Z",
+      "side": 1,
+      "message": "export OS_TENANT_NAME missing?",
+      "range": {
+        "startLine": 128,
+        "startChar": 8,
+        "endLine": 128,
+        "endChar": 18
+      },
+      "revId": "c880a1cf60714ce3bcbe79620985c29d849f1c9f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
