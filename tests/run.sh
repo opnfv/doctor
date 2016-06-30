@@ -22,7 +22,8 @@ CONSUMER_PORT=12346
 TEST_USER=demo
 TEST_PW=demo
 TEST_PROJECT=demo
-TEST_ROLE=_member_
+#TODO: change back to `Member` when JIRA DOCTOR-55 is done
+TEST_ROLE=admin
 
 SUPPORTED_INSTALLER_TYPES="apex local"
 INSTALLER_TYPE=${INSTALLER_TYPE:-apex}
@@ -197,7 +198,8 @@ calculate_notification_time() {
         awk '{d = $1 - $2; if (d < 1 && d > 0) print d " OK"; else print d " NG"}'
 }
 
-check_host_status_down() {
+check_host_status() {
+    expect_state=$1
     (
         # Switching to test user
         export OS_USERNAME="$TEST_USER"
@@ -207,13 +209,18 @@ check_host_status_down() {
         host_status_line=$(nova show $VM_NAME | grep "host_status")
         [[ $? -ne 0 ]] && {
             echo "ERROR: host_status not configured for owner in Nova policy.json"
-        }
+        } && exit 1
 
         host_status=$(echo $host_status_line | awk '{print $4}')
-        [[ "$host_status" == "DOWN" ]] && {
-            echo "$VM_NAME showing host_status: $host_status"
-        }
-        echo "ERROR: host_status not reported by: nova show $VM_NAME"
+        [ -n "$host_status" ] && {
+            echo "ERROR: host_status not reported by: nova show $VM_NAME"
+        } && exit 1
+
+        [[ "$host_status" != "$expect_state" ]] && {
+            echo "ERROR: host_status:$host_status not equal to expect_state: $expect_state"
+        } && exit 1
+
+        echo "$VM_NAME showing host_status: $host_status"
     )
 }
 
@@ -243,6 +250,7 @@ cleanup() {
     #TODO: add host status check via nova admin api
     echo "waiting disabled compute host back to be enabled..."
     sleep 180
+    check_host_status "UP"
     ssh $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP" \
         "[ -e disable_network.log ] && cat disable_network.log"
 }
@@ -276,7 +284,7 @@ echo "injecting host failure..."
 inject_failure
 sleep 10
 
-check_host_status_down
+check_host_status "DOWN"
 calculate_notification_time
 
 echo "done"
