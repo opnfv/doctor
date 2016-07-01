@@ -6,9 +6,11 @@ Neutron Port Status Update
 ==========================
 
 .. NOTE::
-   This document represents a Neutron RFE to be reviewed in the Doctor project first before submitting upstream to
-   Launchpad Neutron space. The document is not intended to follow a blueprint format or to be an extensive document.
+   This document represents a Neutron RFE reviewed in the Doctor project before submitting upstream to Launchpad Neutron
+   space. The document is not intended to follow a blueprint format or to be an extensive document.
    For more information, please visit http://docs.openstack.org/developer/neutron/policies/blueprints.html
+
+   The RFE was submitted to Neutron. You can follow the discussions in https://bugs.launchpad.net/neutron/+bug/1598081
 
 Neutron port status field represents the current status of a port in the cloud infrastructure. The field can take one of
 the following values: 'ACTIVE', 'DOWN', 'BUILD' and 'ERROR'.
