@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_e8b5b7cd",
+        "filename": "tests/run.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-07-01T06:01:31Z",
+      "side": 1,
+      "message": "you should add spaces, as Bertrand pointed. ie, grep -q \" $DOCTOR_USER \" ||\n\nand i prefer if-then-fi for these multiple lines.",
+      "range": {
+        "startLine": 92,
+        "startChar": 35,
+        "endLine": 92,
+        "endChar": 46
+      },
+      "revId": "7ca959ab2b994d42b544ff904e5554950bf362f1",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
