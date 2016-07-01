@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_e814d7f6",
+        "filename": "tests/run.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-07-01T02:06:10Z",
+      "side": 1,
+      "message": "Ok,i\u0027ll fix it. In order to avoid existed `demo` user with no `demo` password,I also modify the value `demo` to `doctor`. \nBecause there is default user `demo` of many installers, but the password may be not `demo`, e.g. `stack` as password in devstack.",
+      "parentUuid": "5a7ca5a3_02325410",
+      "range": {
+        "startLine": 22,
+        "startChar": 10,
+        "endLine": 22,
+        "endChar": 14
+      },
+      "revId": "c880a1cf60714ce3bcbe79620985c29d849f1c9f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_42060c22",
         "filename": "tests/run.sh",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2016-06-30T15:59:56Z",
       "side": 1,
       "message": "Shall we also rename test_project to e.g. doctor_project",
+      "range": {
+        "startLine": 24,
+        "startChar": 13,
+        "endLine": 24,
+        "endChar": 17
+      },
+      "revId": "c880a1cf60714ce3bcbe79620985c29d849f1c9f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_88f9a3ca",
+        "filename": "tests/run.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-07-01T02:06:10Z",
+      "side": 1,
+      "message": "OK, fix it.",
+      "parentUuid": "5a7ca5a3_42060c22",
       "range": {
         "startLine": 24,
         "startChar": 13,
@@ -151,6 +199,30 @@
       "writtenOn": "2016-06-30T15:59:56Z",
       "side": 1,
       "message": "export OS_TENANT_NAME missing?",
+      "range": {
+        "startLine": 128,
+        "startChar": 8,
+        "endLine": 128,
+        "endChar": 18
+      },
+      "revId": "c880a1cf60714ce3bcbe79620985c29d849f1c9f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_6869a78a",
+        "filename": "tests/run.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-07-01T02:06:10Z",
+      "side": 1,
+      "message": "NO, all the environment variables are in the `change_to_test_user` function. see line 105. :)",
+      "parentUuid": "5a7ca5a3_c2121c62",
       "range": {
         "startLine": 128,
         "startChar": 8,
