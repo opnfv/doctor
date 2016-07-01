@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_9368f8bb",
+        "filename": "tests/run.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-07-01T08:41:21Z",
+      "side": 1,
+      "message": "Is it still required when you already have `-w` ?",
+      "range": {
+        "startLine": 92,
+        "startChar": 37,
+        "endLine": 92,
+        "endChar": 38
+      },
+      "revId": "49d98100e734b58e95ec9ffd740a59082c6b9bb1",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
