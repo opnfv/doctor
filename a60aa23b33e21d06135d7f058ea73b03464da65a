@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_9396b893",
+        "filename": "docs/design/port-status-update.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-07-01T08:54:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a7ca5a3_e2407858",
+      "range": {
+        "startLine": 14,
+        "startChar": 22,
+        "endLine": 14,
+        "endChar": 50
+      },
+      "revId": "a60aa23b33e21d06135d7f058ea73b03464da65a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_622c68ac",
         "filename": "docs/design/port-status-update.rst",
         "patchSetId": 2
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_53902095",
+        "filename": "docs/design/port-status-update.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-07-01T08:54:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a7ca5a3_622c68ac",
+      "range": {
+        "startLine": 18,
+        "startChar": 35,
+        "endLine": 18,
+        "endChar": 39
+      },
+      "revId": "a60aa23b33e21d06135d7f058ea73b03464da65a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_738d1c7b",
+        "filename": "docs/design/port-status-update.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-07-01T08:54:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a7ca5a3_e2171850",
+      "range": {
+        "startLine": 18,
+        "startChar": 69,
+        "endLine": 18,
+        "endChar": 79
+      },
+      "revId": "a60aa23b33e21d06135d7f058ea73b03464da65a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_820c2444",
         "filename": "docs/design/port-status-update.rst",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_13eaa80f",
+        "filename": "docs/design/port-status-update.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-07-01T08:54:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a7ca5a3_820c2444",
+      "range": {
+        "startLine": 23,
+        "startChar": 16,
+        "endLine": 23,
+        "endChar": 28
+      },
+      "revId": "a60aa23b33e21d06135d7f058ea73b03464da65a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_a2092033",
         "filename": "docs/design/port-status-update.rst",
         "patchSetId": 2
@@ -105,6 +201,30 @@
       "writtenOn": "2016-06-30T15:56:31Z",
       "side": 1,
       "message": "as well as",
+      "range": {
+        "startLine": 28,
+        "startChar": 73,
+        "endLine": 28,
+        "endChar": 84
+      },
+      "revId": "a60aa23b33e21d06135d7f058ea73b03464da65a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_d3f3d008",
+        "filename": "docs/design/port-status-update.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-07-01T08:54:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a7ca5a3_a2092033",
       "range": {
         "startLine": 28,
         "startChar": 73,
