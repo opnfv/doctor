@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_28d96f57",
+        "filename": "tests/run.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-07-01T02:39:15Z",
+      "side": 1,
+      "message": "We may consider changing this to xxx_doctor_xxx also.",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 16
+      },
+      "revId": "705663a9277de3f862aba49ae3fa2934f22dd4f1",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
