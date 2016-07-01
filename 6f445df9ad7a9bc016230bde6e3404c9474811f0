@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_7352fcde",
+        "filename": "tests/run.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-07-01T09:21:53Z",
+      "side": 1,
+      "message": "oh, i didn\u0027t know this option, cool!\n\nbut, it\u0027s still not good for here, since it recognize \u0027.\u0027 as word separator which often used in names of VMs.\n\n    $ echo \u0027| doctor.dummy |\u0027 | grep -ow \u0027doctor\u0027\n    doctor",
+      "range": {
+        "startLine": 92,
+        "startChar": 32,
+        "endLine": 92,
+        "endChar": 34
+      },
+      "revId": "6f445df9ad7a9bc016230bde6e3404c9474811f0",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
