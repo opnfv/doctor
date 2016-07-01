@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_28696ff9",
+        "filename": "tests/run.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1641
+      },
+      "writtenOn": "2016-07-01T08:29:07Z",
+      "side": 1,
+      "message": "\"grep -owq\" +1",
+      "parentUuid": "5a7ca5a3_88544355",
+      "range": {
+        "startLine": 92,
+        "startChar": 34,
+        "endLine": 92,
+        "endChar": 46
+      },
+      "revId": "c880a1cf60714ce3bcbe79620985c29d849f1c9f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_a22280b7",
         "filename": "tests/run.sh",
         "patchSetId": 5
@@ -178,6 +202,30 @@
       "side": 1,
       "message": "Is it necessary?",
       "parentUuid": "5a7ca5a3_a22280b7",
+      "range": {
+        "startLine": 93,
+        "startChar": 31,
+        "endLine": 93,
+        "endChar": 41
+      },
+      "revId": "c880a1cf60714ce3bcbe79620985c29d849f1c9f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_c86d5b06",
+        "filename": "tests/run.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1641
+      },
+      "writtenOn": "2016-07-01T08:29:07Z",
+      "side": 1,
+      "message": "not necessary",
+      "parentUuid": "5a7ca5a3_484e2bc3",
       "range": {
         "startLine": 93,
         "startChar": 31,
@@ -260,6 +308,30 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_e87297e4",
+        "filename": "tests/run.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1641
+      },
+      "writtenOn": "2016-07-01T08:29:07Z",
+      "side": 1,
+      "message": "not necessary",
+      "parentUuid": "5a7ca5a3_0219f487",
+      "range": {
+        "startLine": 96,
+        "startChar": 34,
+        "endLine": 96,
+        "endChar": 47
+      },
+      "revId": "c880a1cf60714ce3bcbe79620985c29d849f1c9f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_c2121c62",
         "filename": "tests/run.sh",
         "patchSetId": 5
@@ -295,6 +367,30 @@
       "side": 1,
       "message": "NO, all the environment variables are in the `change_to_test_user` function. see line 105. :)",
       "parentUuid": "5a7ca5a3_c2121c62",
+      "range": {
+        "startLine": 128,
+        "startChar": 8,
+        "endLine": 128,
+        "endChar": 18
+      },
+      "revId": "c880a1cf60714ce3bcbe79620985c29d849f1c9f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_084b5388",
+        "filename": "tests/run.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1641
+      },
+      "writtenOn": "2016-07-01T08:29:07Z",
+      "side": 1,
+      "message": "Another solution is to assign values of --os_username --os-password --os-auth-url and --os-tenant-name behide ceilometer directly.",
+      "parentUuid": "5a7ca5a3_6869a78a",
       "range": {
         "startLine": 128,
         "startChar": 8,
