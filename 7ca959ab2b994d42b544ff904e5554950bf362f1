@@ -22,6 +22,29 @@
       "revId": "7ca959ab2b994d42b544ff904e5554950bf362f1",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_681d27bd",
+        "filename": "tests/run.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 346
+      },
+      "writtenOn": "2016-07-01T07:21:51Z",
+      "side": 1,
+      "message": "Let me elaborate. According to http://docs.openstack.org/developer/python-ceilometerclient/shell.html, we have to set OS_TENANT_NAME if we use Ceilometer shell utility (Tested in my local environment (stable/mitaka)). Fine of course for me to add export OS_TENANT_NAME\u003d\"$DOCTOR_PROJECT\" at Line 108",
+      "range": {
+        "startLine": 128,
+        "startChar": 8,
+        "endLine": 128,
+        "endChar": 18
+      },
+      "revId": "7ca959ab2b994d42b544ff904e5554950bf362f1",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
