@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_2503d5b9",
+        "filename": "tests/run.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-07-04T13:51:58Z",
+      "side": 1,
+      "message": "adding exit here is good, but it can be like this:\n\n    if [[ $? -ne 0 ]]; then\n        echo \"ERROR...\n        exit 1\n    fi",
+      "range": {
+        "startLine": 212,
+        "startChar": 10,
+        "endLine": 212,
+        "endChar": 19
+      },
+      "revId": "d7fec62cf376948e9609e4db616dd628a001e084",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
