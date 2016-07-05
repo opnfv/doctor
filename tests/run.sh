@@ -50,7 +50,7 @@ prepare_compute_ssh() {
         if [[ "$COMPUTE_IP" == "none" ]] ; then
             COMPUTE_IP=$(sudo ssh $ssh_opts $INSTALLER_IP \
                          "source stackrc; \
-                          nova show $COMPUTE_HOST \
+                          openstack server show $COMPUTE_HOST \
                           | awk '/ ctlplane network /{print \$5}'")
         fi
 
@@ -81,12 +81,12 @@ download_image() {
 }
 
 register_image() {
-    glance image-list | grep -q " $IMAGE_NAME " && return 0
-    glance image-create --name "$IMAGE_NAME" \
-                        --visibility public \
-                        --disk-format "$IMAGE_FORMAT" \
-                        --container-format bare \
-                        --file "$IMAGE_FILE"
+    openstack image list | grep -q " $IMAGE_NAME " && return 0
+    openstack image create "$IMAGE_NAME" \
+                           --public \
+                           --disk-format "$IMAGE_FORMAT" \
+                           --container-format bare \
+                           --file "$IMAGE_FILE"
 }
 
 create_test_user() {
@@ -114,10 +114,10 @@ boot_vm() {
     (
         # test VM done with test user, so can test non-admin
         change_to_doctor_user
-        nova list | grep -q " $VM_NAME " && return 0
-        nova boot --flavor "$VM_FLAVOR" \
-                  --image "$IMAGE_NAME" \
-                  "$VM_NAME"
+        openstack server list | grep -q " $VM_NAME " && return 0
+        openstack server create --flavor "$VM_FLAVOR" \
+                                --image "$IMAGE_NAME" \
+                                "$VM_NAME"
         sleep 1
     )
 
@@ -128,7 +128,7 @@ create_alarm() {
         # get vm_id as test user
         change_to_doctor_user
         ceilometer alarm-list | grep -q " $ALARM_NAME " && return 0
-        vm_id=$(nova list | grep " $VM_NAME " | awk '{print $2}')
+        vm_id=$(openstack server list | grep " $VM_NAME " | awk '{print $2}')
         ceilometer alarm-event-create --name "$ALARM_NAME" \
             --alarm-action "http://localhost:$CONSUMER_PORT/failure" \
             --description "VM failure" \
@@ -185,7 +185,7 @@ wait_for_vm_launch() {
         count=0
         while [[ ${count} -lt 60 ]]
         do
-            state=$(nova list | grep " $VM_NAME " | awk '{print $6}')
+            state=$(openstack server list | grep " $VM_NAME " | awk '{print $6}')
             [[ "$state" == "ACTIVE" ]] && return 0
             [[ "$state" == "ERROR" ]] && echo "vm state is ERROR" && exit 1
             count=$(($count+1))
@@ -224,7 +224,7 @@ check_host_status() {
     (
         change_to_doctor_user
 
-        host_status_line=$(nova show $VM_NAME | grep "host_status")
+        host_status_line=$(openstack server show $VM_NAME | grep "host_status")
         if [[ $? -ne 0 ]] ; then
             echo "ERROR: host_status not configured for owner in Nova policy.json"
             exit 1
@@ -254,16 +254,16 @@ cleanup() {
     sleep 1
     (
         change_to_doctor_user
-        nova list | grep -q " $VM_NAME " && nova delete "$VM_NAME"
+        openstack server list | grep -q " $VM_NAME " && openstack server delete "$VM_NAME"
         sleep 1
         alarm_id=$(ceilometer alarm-list | grep " $ALARM_NAME " | awk '{print $2}')
         sleep 1
         [ -n "$alarm_id" ] && ceilometer alarm-delete "$alarm_id"
         sleep 1
     )
-    image_id=$(glance image-list | grep " $IMAGE_NAME " | awk '{print $2}')
+    image_id=$(openstack image list | grep " $IMAGE_NAME " | awk '{print $2}')
     sleep 1
-    [ -n "$image_id" ] && glance image-delete "$image_id"
+    [ -n "$image_id" ] && openstack image delete "$image_id"
     openstack role remove "$DOCTOR_ROLE" --user "$DOCTOR_USER" \
                               --project "$DOCTOR_PROJECT"
     openstack project delete "$DOCTOR_PROJECT"
