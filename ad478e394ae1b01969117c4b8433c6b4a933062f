@@ -94,6 +94,30 @@
       "revId": "ad478e394ae1b01969117c4b8433c6b4a933062f",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_f8a024f6",
+        "filename": "tests/run.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-07-05T07:11:52Z",
+      "side": 1,
+      "message": "It seems to be a rebase issue.",
+      "parentUuid": "5a7ca5a3_f8526412",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 9
+      },
+      "revId": "ad478e394ae1b01969117c4b8433c6b4a933062f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
