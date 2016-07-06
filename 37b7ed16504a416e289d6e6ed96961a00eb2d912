@@ -284,6 +284,24 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_166931f9",
+        "filename": "tests/run.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-07-06T09:30:22Z",
+      "side": 1,
+      "message": "YES. That command is executed in the undercloud to the overcloud. A compute node (in the overcloud) is a VM in the undercloud.",
+      "parentUuid": "5a7ca5a3_36aa2d1a",
+      "revId": "37b7ed16504a416e289d6e6ed96961a00eb2d912",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_56c56959",
         "filename": "tests/run.sh",
         "patchSetId": 4
