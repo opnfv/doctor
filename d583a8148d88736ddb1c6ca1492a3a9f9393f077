@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_d65df9ea",
+        "filename": "tests/run.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-07-06T07:15:13Z",
+      "side": 1,
+      "message": "I\u0027m not familiar with `apex`, need some help here.\nLogin to `install` to get `computer_ip` according to the `compute_host`.",
+      "revId": "d583a8148d88736ddb1c6ca1492a3a9f9393f077",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
