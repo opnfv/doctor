@@ -224,7 +224,7 @@ check_host_status() {
     (
         change_to_doctor_user
 
-        host_status_line=$(openstack server show $VM_NAME | grep "host_status")
+        host_status_line=$(nova show $VM_NAME | grep "host_status")
         if [[ $? -ne 0 ]] ; then
             echo "ERROR: host_status not configured for owner in Nova policy.json"
             exit 1
