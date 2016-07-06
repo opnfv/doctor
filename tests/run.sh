@@ -28,9 +28,7 @@ DOCTOR_ROLE=admin
 SUPPORTED_INSTALLER_TYPES="apex local"
 INSTALLER_TYPE=${INSTALLER_TYPE:-apex}
 INSTALLER_IP=${INSTALLER_IP:-none}
-COMPUTE_HOST=${COMPUTE_HOST:-overcloud-novacompute-0}
-COMPUTE_IP=${COMPUTE_IP:-none}
-COMPUTE_USER=${COMPUTE_USER:-heat-admin}
+COMPUTE_USER=${COMPUTE_USER:-none}
 ssh_opts="-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 
 if [[ ! "$SUPPORTED_INSTALLER_TYPES" =~ "$INSTALLER_TYPE" ]] ; then
@@ -38,41 +36,67 @@ if [[ ! "$SUPPORTED_INSTALLER_TYPES" =~ "$INSTALLER_TYPE" ]] ; then
     exit 1
 fi
 
-prepare_compute_ssh() {
-    ssh_opts_cpu="$ssh_opts"
-
+get_install_info() {
     if [[ "$INSTALLER_TYPE" == "apex" ]] ; then
         if [[ "$INSTALLER_IP" == "none" ]] ; then
             instack_mac=$(sudo virsh domiflist instack | awk '/default/{print $5}')
             INSTALLER_IP=$(/usr/sbin/arp -e | grep ${instack_mac} | awk '{print $1}')
         fi
+    fi
+}
 
-        if [[ "$COMPUTE_IP" == "none" ]] ; then
-            COMPUTE_IP=$(sudo ssh $ssh_opts $INSTALLER_IP \
-                         "source stackrc; \
-                          openstack server show $COMPUTE_HOST \
-                          | awk '/ ctlplane network /{print \$5}'")
-        fi
+get_compute_host_info() {
+    (
+        change_to_doctor_user
 
-        # get ssh key from installer node
-        sudo scp $ssh_opts root@"$INSTALLER_IP":/home/stack/.ssh/id_rsa instack_key
-        sudo chown $(whoami):$(whoami) instack_key
-        chmod 400 instack_key
-        ssh_opts_cpu+=" -i instack_key"
+        # get computer host info which VM boot in
+        export COMPUTE_HOST=$(openstack server show $VM_NAME | \
+                grep "OS-EXT-SRV-ATTR:host" | awk '{ print $4 }' |
+                awk -F '.' '{print $1}')
+    )
+    if [[ "$INSTALLER_TYPE" == "apex" ]] ; then
+        COMPUTE_USER=${COMPUTE_USER:-heat-admin}
+        COMPUTE_IP=$(sudo ssh $ssh_opts $INSTALLER_IP \
+             "source stackrc; \
+             openstack server show $COMPUTE_HOST \
+             | awk '/ ctlplane network /{print \$5}'")
     elif [[ "$INSTALLER_TYPE" == "local" ]] ; then
-        if [[ "$COMPUTE_IP" == "none" ]] ; then
-            COMPUTE_IP=$(getent hosts "$COMPUTE_HOST" | awk '{ print $1 }')
-            if [[ -z "$COMPUTE_IP" ]]; then
-                echo "ERROR: Could not resolve $COMPUTE_HOST. Either manually set COMPUTE_IP or enable DNS resolution."
-                exit 1
-            fi
+        COMPUTE_USER=${COMPUTE_USER:-$(whoami)}
+        COMPUTE_IP=$(getent hosts "$COMPUTE_HOST" | awk '{ print $1 }')
+        if [[ -z "$COMPUTE_IP" ]]; then
+            echo "ERROR: Could not resolve $COMPUTE_HOST. Either manually set COMPUTE_IP or enable DNS resolution."
+            exit 1
         fi
-
-        echo "INSTALLER_TYPE set to 'local'. Assuming SSH keys already exchanged with $COMPUTE_HOST"
     fi
 
     # verify connectivity to target compute host
     ping -c 1 "$COMPUTE_IP"
+    if [[ $? -ne 0 ]] ; then
+        echo "ERROR: can not ping to computer host"
+	exit 1
+    fi
+}
+
+prepare_compute_ssh() {
+    ssh_opts_cpu="$ssh_opts"
+
+    # get ssh key from installer node
+    if [[ "$INSTALLER_TYPE" == "apex" ]] ; then
+        sudo scp $ssh_opts root@"$INSTALLER_IP":/home/stack/.ssh/id_rsa instack_key
+    elif [[ "$INSTALLER_TYPE" == "local" ]] ; then
+        echo "INSTALLER_TYPE set to 'local'. Assuming SSH keys already exchanged with $COMPUTE_HOST"
+    fi
+
+    sudo chown $(whoami):$(whoami) instack_key
+    chmod 400 instack_key
+    ssh_opts_cpu+=" -i instack_key"
+
+    # verify ssh to target compute host
+    ssh $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP" 'exit'
+    if [[ $? -ne 0 ]] ; then
+        echo "ERROR: can not ssh to computer host"
+        exit 1
+    fi
 }
 
 download_image() {
@@ -279,26 +303,31 @@ cleanup() {
 
 echo "Note: doctor/tests/run.sh has been executed."
 
-prepare_compute_ssh
-
 trap cleanup EXIT
+
+echo "get installer info..."
+get_install_info
 
 echo "preparing VM image..."
 download_image
 register_image
-
-echo "starting doctor sample components..."
-start_monitor
-start_inspector
-start_consumer
 
 echo "creating test user..."
 create_test_user
 
 echo "creating VM and alarm..."
 boot_vm
-create_alarm
 wait_for_vm_launch
+create_alarm
+
+echo "get computer host info and prepare to ssh..."
+get_compute_host_info
+prepare_compute_ssh
+
+echo "starting doctor sample components..."
+start_monitor
+start_inspector
+start_consumer
 
 sleep 60
 echo "injecting host failure..."
