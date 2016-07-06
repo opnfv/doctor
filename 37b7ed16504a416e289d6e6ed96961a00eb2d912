@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_96a0e191",
+        "filename": "tests/run.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-07-06T08:24:27Z",
+      "side": 1,
+      "message": "I think even if we have the env `COMPUTE_HOST`, the vm may not be scheduled to the specified compute host, we still need to get it.",
+      "parentUuid": "5a7ca5a3_96e4610e",
+      "revId": "37b7ed16504a416e289d6e6ed96961a00eb2d912",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_36f1cdcd",
         "filename": "tests/run.sh",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2016-07-06T08:14:56Z",
       "side": 1,
       "message": "COMPUTE_IP\u003d${COMPUTE_IP:-none}",
+      "revId": "37b7ed16504a416e289d6e6ed96961a00eb2d912",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_36ad4d89",
+        "filename": "tests/run.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-07-06T08:24:27Z",
+      "side": 1,
+      "message": "same as above",
+      "parentUuid": "5a7ca5a3_36f1cdcd",
       "revId": "37b7ed16504a416e289d6e6ed96961a00eb2d912",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_56aa4971",
+        "filename": "tests/run.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-07-06T08:24:27Z",
+      "side": 1,
+      "message": "This can be fixed.",
+      "parentUuid": "5a7ca5a3_56eec9ed",
+      "revId": "37b7ed16504a416e289d6e6ed96961a00eb2d912",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_f6ba75e0",
         "filename": "tests/run.sh",
         "patchSetId": 4
@@ -64,6 +118,24 @@
       "writtenOn": "2016-07-06T08:14:56Z",
       "side": 1,
       "message": "COMPUTE_USER\u003d${COMPUTE_USER:-heat-admin}",
+      "revId": "37b7ed16504a416e289d6e6ed96961a00eb2d912",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_f6b6f5db",
+        "filename": "tests/run.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-07-06T08:24:27Z",
+      "side": 1,
+      "message": "I\u0027ll fix it.",
+      "parentUuid": "5a7ca5a3_f6ba75e0",
       "revId": "37b7ed16504a416e289d6e6ed96961a00eb2d912",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
@@ -87,6 +159,41 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_76cae550",
+        "filename": "tests/run.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-07-06T08:24:27Z",
+      "side": 1,
+      "message": "VM may not be scheduled to the given compute host, so we need to get it.",
+      "parentUuid": "5a7ca5a3_9679c131",
+      "revId": "37b7ed16504a416e289d6e6ed96961a00eb2d912",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_36c46d3f",
+        "filename": "tests/run.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-07-06T08:24:27Z",
+      "side": 1,
+      "message": "I\u0027m not familiar with `apex`, need some help here.\nLogin to `install` to get `computer_ip` according to the `compute_host`.",
+      "revId": "37b7ed16504a416e289d6e6ed96961a00eb2d912",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_56c56959",
         "filename": "tests/run.sh",
         "patchSetId": 4
@@ -104,6 +211,24 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_16bcd1ba",
+        "filename": "tests/run.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-07-06T08:24:27Z",
+      "side": 1,
+      "message": "I\u0027ll fix it.",
+      "parentUuid": "5a7ca5a3_56c56959",
+      "revId": "37b7ed16504a416e289d6e6ed96961a00eb2d912",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_16a7f1be",
         "filename": "tests/run.sh",
         "patchSetId": 4
@@ -115,6 +240,24 @@
       "writtenOn": "2016-07-06T08:14:56Z",
       "side": 1,
       "message": "A local environment may have multi-nodes. remove this line",
+      "revId": "37b7ed16504a416e289d6e6ed96961a00eb2d912",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_d6b5f9cd",
+        "filename": "tests/run.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-07-06T08:24:27Z",
+      "side": 1,
+      "message": "OK.",
+      "parentUuid": "5a7ca5a3_16a7f1be",
       "revId": "37b7ed16504a416e289d6e6ed96961a00eb2d912",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
