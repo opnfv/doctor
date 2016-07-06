@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_16e371da",
+        "filename": "tests/run.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-07-06T09:19:19Z",
+      "side": 1,
+      "message": "Ok, so we should not need this line anymore.",
+      "parentUuid": "5a7ca5a3_96a0e191",
+      "revId": "37b7ed16504a416e289d6e6ed96961a00eb2d912",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_36f1cdcd",
         "filename": "tests/run.sh",
         "patchSetId": 4
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "same as above",
       "parentUuid": "5a7ca5a3_36f1cdcd",
+      "revId": "37b7ed16504a416e289d6e6ed96961a00eb2d912",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_b6e71de4",
+        "filename": "tests/run.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-07-06T09:19:19Z",
+      "side": 1,
+      "message": "Same comment as above -- we can remove this line.",
+      "parentUuid": "5a7ca5a3_36ad4d89",
       "revId": "37b7ed16504a416e289d6e6ed96961a00eb2d912",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
@@ -188,6 +224,24 @@
       "writtenOn": "2016-07-06T08:24:27Z",
       "side": 1,
       "message": "I\u0027m not familiar with `apex`, need some help here.\nLogin to `install` to get `computer_ip` according to the `compute_host`.",
+      "revId": "37b7ed16504a416e289d6e6ed96961a00eb2d912",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_36930dfc",
+        "filename": "tests/run.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-07-06T09:19:19Z",
+      "side": 1,
+      "message": "Leave COMPUTE_IP as it was before your patch:\n\n\nCOMPUTE_IP\u003d$(sudo ssh $ssh_opts $INSTALLER_IP \\\n             \"source stackrc; \\\n             openstack server show $COMPUTE_HOST \\\n             | awk \u0027/ ctlplane network /{print \\$5}\u0027\")",
+      "parentUuid": "5a7ca5a3_36c46d3f",
       "revId": "37b7ed16504a416e289d6e6ed96961a00eb2d912",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
