@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_5117b3ed",
+        "filename": "tests/run.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-07-06T13:10:31Z",
+      "side": 1,
+      "message": "You\u0027ve yet to address the comment I made in patch set #3 (multi-node environment).",
+      "revId": "7524d2231ce127e3d661292d552cc1d7438f249d",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
