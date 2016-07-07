@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_47a7f14f",
+        "filename": "tests/run.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-07-07T12:07:23Z",
+      "side": 1,
+      "message": "I\u0027m also working on supporting the fuel installer. So i hope that it is flexible to add other installers.",
+      "parentUuid": "5a7ca5a3_a75a8581",
+      "revId": "12374bf2dd090ab9c562bcda0b4482c85e35a669",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_47c1312d",
         "filename": "tests/run.sh",
         "patchSetId": 8
@@ -30,6 +48,24 @@
       "writtenOn": "2016-07-07T11:34:14Z",
       "side": 1,
       "message": "replace tab with whitespaces",
+      "revId": "12374bf2dd090ab9c562bcda0b4482c85e35a669",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_0769f9f8",
+        "filename": "tests/run.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-07-07T12:07:23Z",
+      "side": 1,
+      "message": "Oh,fix it. Thanks.",
+      "parentUuid": "5a7ca5a3_47c1312d",
       "revId": "12374bf2dd090ab9c562bcda0b4482c85e35a669",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
