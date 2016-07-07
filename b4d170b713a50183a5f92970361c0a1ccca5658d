@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_cc87a60e",
+        "filename": "tests/run.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-07-07T02:21:29Z",
+      "side": 1,
+      "message": "Sorry,i\u0027m still confused here.\nHow to get `ctlplane network`? The `openstack server show` cli has no `ctlplane network`.\n\nstack@cloud:~$ openstack server show test\n+--------------------------------------+----------------------------------------------------------+\n| Field                                | Value                                                    |\n+--------------------------------------+----------------------------------------------------------+\n| OS-DCF:diskConfig                    | AUTO                                                     |\n| OS-EXT-AZ:availability_zone          | nova                                                     |\n| OS-EXT-SRV-ATTR:host                 | cloud                                                    |\n| OS-EXT-SRV-ATTR:hypervisor_hostname  | cloud                                                    |\n| OS-EXT-SRV-ATTR:instance_name        | instance-00000009                                        |\n| OS-EXT-STS:power_state               | Running                                                  |\n| OS-EXT-STS:task_state                | None                                                     |\n| OS-EXT-STS:vm_state                  | active                                                   |\n| OS-SRV-USG:launched_at               | 2016-06-29T08:19:47.000000                               |\n| OS-SRV-USG:terminated_at             | None                                                     |\n| accessIPv4                           |                                                          |\n| accessIPv6                           |                                                          |\n| addresses                            | private\u003d10.0.0.10                                        |\n| config_drive                         | True                                                     |\n| created                              | 2016-06-29T08:19:28Z                                     |\n| flavor                               | m1.tiny (1)                                              |\n| hostId                               | 4612321900a59ef35d799aa009ad5417f2149f2c18727239dcb3d670 |\n| id                                   | 39701cbd-b1e5-4cb6-b4e7-69ae5337bd29                     |\n| image                                |                                                          |\n| key_name                             | None                                                     |\n| name                                 | test                                                     |\n| os-extended-volumes:volumes_attached | [{u\u0027id\u0027: u\u002791b0f477-971d-4a28-bf57-fbbeb0024789\u0027}]       |\n| progress                             | 0                                                        |\n| project_id                           | b74cd02826634918860d4335de2ba6df                         |\n| properties                           |                                                          |\n| security_groups                      | [{u\u0027name\u0027: u\u0027default\u0027}]                                  |\n| status                               | ACTIVE                                                   |\n| updated                              | 2016-06-29T08:19:47Z                                     |\n| user_id                              | 81c47b03db4a4d36b84464228eca4c35                         |\n+--------------------------------------+----------------------------------------------------------+",
+      "revId": "b4d170b713a50183a5f92970361c0a1ccca5658d",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
