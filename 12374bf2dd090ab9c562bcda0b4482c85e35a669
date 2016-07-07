@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_a75a8581",
+        "filename": "tests/run.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-07-07T11:34:14Z",
+      "side": 1,
+      "message": "I think we could merge the code in this function with the one in the get_compute_host_info() because for now it\u0027s only specific to Apex. Mmmm...",
+      "revId": "12374bf2dd090ab9c562bcda0b4482c85e35a669",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_47c1312d",
+        "filename": "tests/run.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-07-07T11:34:14Z",
+      "side": 1,
+      "message": "replace tab with whitespaces",
+      "revId": "12374bf2dd090ab9c562bcda0b4482c85e35a669",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
