@@ -16,6 +16,24 @@
       "revId": "b4d170b713a50183a5f92970361c0a1ccca5658d",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_0c691ef9",
+        "filename": "tests/run.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-07-07T11:34:05Z",
+      "side": 1,
+      "message": "\u0027ctlplane\u0027 is a Neutron network that TripleO (Apex uses TripleO) creates for the OpenStack management network in the undercloud. \u0027Undercloud\u0027 refers to an OpenStack cloud and \u0027overcloud\u0027 to an OpenStack cloud running on top of an \u0027undercloud\u0027.\n\nYou don\u0027t see it in \u0027openstack server show\u0027 under a \u0027local\u0027 environment unless you test on an Apex/TripleO environment.\n\nThe command in COMPUTE_IP logs in to the undercloud and gets the compute node IP.",
+      "parentUuid": "5a7ca5a3_cc87a60e",
+      "revId": "b4d170b713a50183a5f92970361c0a1ccca5658d",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
