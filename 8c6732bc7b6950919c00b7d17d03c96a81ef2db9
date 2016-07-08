@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_cd4b1f2a",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-07-08T13:12:58Z",
+      "side": 1,
+      "message": "please rollback",
+      "revId": "8c6732bc7b6950919c00b7d17d03c96a81ef2db9",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_ed485b2f",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-07-08T13:12:58Z",
+      "side": 1,
+      "message": "figure file name is figure015.png but here points to figure15.png",
+      "revId": "8c6732bc7b6950919c00b7d17d03c96a81ef2db9",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_8d5527c8",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-07-08T13:12:58Z",
+      "side": 1,
+      "message": "whitespace missing (\"instance. This\") and whitespace extra (\"analyzed  later\")",
+      "revId": "8c6732bc7b6950919c00b7d17d03c96a81ef2db9",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
