@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_30478c21",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-07-11T07:32:38Z",
+      "side": 1,
+      "message": "Why do you change here? This change causes error in pdf build.",
+      "range": {
+        "startLine": 276,
+        "startChar": 52,
+        "endLine": 276,
+        "endChar": 61
+      },
+      "revId": "f3ffb7ac178d033b4a244d2962826f1ba40902ac",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_d04bb829",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-07-11T07:32:38Z",
+      "side": 1,
+      "message": "delete one line, we don\u0027t need two blank lines here.",
+      "range": {
+        "startLine": 649,
+        "startChar": 0,
+        "endLine": 649,
+        "endChar": 0
+      },
+      "revId": "f3ffb7ac178d033b4a244d2962826f1ba40902ac",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_5006c8cf",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-07-11T07:32:38Z",
+      "side": 1,
+      "message": "good point - I think we should know the word \u0027alarm\u0027 is used in different meaning. In Aodh/Doctor, \u0027alarm\u0027 can be considered as \u0027alarm definition\u0027 which enables users to configure alarm rule and endpoint to notify alarming situation, since event and alarm histories will be stored in DB and exposed as other entities. I suppose we can mention \u0027event\u0027 and \u0027alarm history\u0027 here.",
+      "range": {
+        "startLine": 662,
+        "startChar": 20,
+        "endLine": 664,
+        "endChar": 25
+      },
+      "revId": "f3ffb7ac178d033b4a244d2962826f1ba40902ac",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_b0695c8d",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-07-11T07:32:38Z",
+      "side": 1,
+      "message": "You should use \u0027table\u0027 of RST format, so that we can edit modify easily later on.\n\nhttp://artifacts.opnfv.org/opnfvdocs/docs/how-to-use-docs/documentation-example.html#writing-rst-markdown",
+      "range": {
+        "startLine": 675,
+        "startChar": 0,
+        "endLine": 677,
+        "endChar": 15
+      },
+      "revId": "f3ffb7ac178d033b4a244d2962826f1ba40902ac",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_700bc4d6",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-07-11T07:32:38Z",
+      "side": 1,
+      "message": "agree",
+      "range": {
+        "startLine": 690,
+        "startChar": 69,
+        "endLine": 692,
+        "endChar": 31
+      },
+      "revId": "f3ffb7ac178d033b4a244d2962826f1ba40902ac",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
