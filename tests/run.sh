@@ -29,6 +29,9 @@ SUPPORTED_INSTALLER_TYPES="apex local"
 INSTALLER_TYPE=${INSTALLER_TYPE:-apex}
 INSTALLER_IP=${INSTALLER_IP:-none}
 COMPUTE_USER=${COMPUTE_USER:-none}
+LOCAL_IP=$(ifconfig | grep "inet addr" | grep -v 127.0.0.1 | \
+         awk '{print $2}' | awk -F ':' '{print $2}') |head -1
+
 ssh_opts="-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 
 if [[ ! "$SUPPORTED_INSTALLER_TYPES" =~ "$INSTALLER_TYPE" ]] ; then
@@ -149,7 +152,7 @@ create_alarm() {
         ceilometer alarm-list | grep -q " $ALARM_NAME " && return 0
         vm_id=$(openstack server list | grep " $VM_NAME " | awk '{print $2}')
         ceilometer alarm-event-create --name "$ALARM_NAME" \
-            --alarm-action "http://localhost:$CONSUMER_PORT/failure" \
+            --alarm-action "http://$LOCAL_IP:$CONSUMER_PORT/failure" \
             --description "VM failure" \
             --enabled True \
             --repeat-actions False \
@@ -185,7 +188,7 @@ stop_inspector() {
 
 start_consumer() {
     pgrep -f "python consumer.py" && return 0
-    python consumer.py "$CONSUMER_PORT" > consumer.log 2>&1 &
+    python consumer.py "$LOCAL_IP" "$CONSUMER_PORT" > consumer.log 2>&1 &
 }
 
 stop_consumer() {
