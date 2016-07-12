@@ -49,6 +49,54 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_d6a09092",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-07-12T13:59:45Z",
+      "side": 1,
+      "message": "OK,fix it.",
+      "parentUuid": "5a7ca5a3_968d387e",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 8
+      },
+      "revId": "bcc51f6a3e3a506009e3ccc5a71868b642f7b932",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_76adfc87",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-07-12T13:59:45Z",
+      "side": 1,
+      "message": "OK, fix it. Thanks.",
+      "parentUuid": "5a7ca5a3_b695d441",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 8
+      },
+      "revId": "bcc51f6a3e3a506009e3ccc5a71868b642f7b932",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_d692d056",
         "filename": "tests/run.sh",
         "patchSetId": 1
@@ -60,6 +108,30 @@
       "writtenOn": "2016-07-12T12:56:55Z",
       "side": 1,
       "message": "syntax error. move closing parenthesis to the end of the line.",
+      "range": {
+        "startLine": 33,
+        "startChar": 51,
+        "endLine": 33,
+        "endChar": 52
+      },
+      "revId": "bcc51f6a3e3a506009e3ccc5a71868b642f7b932",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_96aa186f",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-07-12T13:59:45Z",
+      "side": 1,
+      "message": "use `ip a` to fix it.",
+      "parentUuid": "5a7ca5a3_d692d056",
       "range": {
         "startLine": 33,
         "startChar": 51,
