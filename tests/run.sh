@@ -269,8 +269,14 @@ cleanup() {
     stop_inspector
     stop_consumer
 
+    echo "waiting disabled compute host back to be enabled..."
     python ./nova_force_down.py "$COMPUTE_HOST" --unset
+    sleep 180
+    check_host_status "UP"
+    ssh $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP" \
+        "[ -e disable_network.log ] && cat disable_network.log"
     sleep 1
+
     (
         change_to_doctor_user
         openstack server list | grep -q " $VM_NAME " && openstack server delete "$VM_NAME"
@@ -287,12 +293,6 @@ cleanup() {
                               --project "$DOCTOR_PROJECT"
     openstack project delete "$DOCTOR_PROJECT"
     openstack user delete "$DOCTOR_USER"
-
-    echo "waiting disabled compute host back to be enabled..."
-    sleep 180
-    check_host_status "UP"
-    ssh $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP" \
-        "[ -e disable_network.log ] && cat disable_network.log"
 }
 
 
