@@ -29,6 +29,7 @@ SUPPORTED_INSTALLER_TYPES="apex local"
 INSTALLER_TYPE=${INSTALLER_TYPE:-apex}
 INSTALLER_IP=${INSTALLER_IP:-none}
 COMPUTE_USER=${COMPUTE_USER:-none}
+
 ssh_opts="-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 
 if [[ ! "$SUPPORTED_INSTALLER_TYPES" =~ "$INSTALLER_TYPE" ]] ; then
@@ -94,6 +95,20 @@ prepare_compute_ssh() {
     fi
 }
 
+get_consumer_ip() {
+    #get network of the compute_ip address
+    network_pre=${COMPUTE_IP%.*}
+    network=${network_pre}.0/24
+
+    #if there is a dedicated route, use it
+    dev=$(ip route |grep $network | awk '{print $3}' |head -n 1)
+
+    #if there is no route, use default route
+    [[ -z $dev ]] && dev=$(ip route |grep ^default | awk '{print $3}' |head -n 1)
+
+    CONSUMER_IP=$(ip addr show $dev |grep inet | grep $network_pre | awk '{print $2}' | cut -d'/' -f1)
+}
+
 download_image() {
     [ -e "$IMAGE_FILE" ] && return 0
     wget "$IMAGE_URL" -o "$IMAGE_FILE"
@@ -149,7 +164,7 @@ create_alarm() {
         ceilometer alarm-list | grep -q " $ALARM_NAME " && return 0
         vm_id=$(openstack server list | grep " $VM_NAME " | awk '{print $2}')
         ceilometer alarm-event-create --name "$ALARM_NAME" \
-            --alarm-action "http://localhost:$CONSUMER_PORT/failure" \
+            --alarm-action "http://$CONSUMER_IP:$CONSUMER_PORT/failure" \
             --description "VM failure" \
             --enabled True \
             --repeat-actions False \
@@ -275,7 +290,6 @@ cleanup() {
     check_host_status "UP"
     ssh $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP" \
         "[ -e disable_network.log ] && cat disable_network.log"
-    sleep 1
 
     (
         change_to_doctor_user
@@ -307,14 +321,17 @@ register_image
 echo "creating test user..."
 create_test_user
 
-echo "creating VM and alarm..."
+echo "creating VM..."
 boot_vm
 wait_for_vm_launch
-create_alarm
 
 echo "get computer host info and prepare to ssh..."
 get_compute_host_info
 prepare_compute_ssh
+
+echo "creating alarm..."
+get_consumer_ip
+create_alarm
 
 echo "starting doctor sample components..."
 start_monitor

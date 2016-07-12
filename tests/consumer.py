@@ -29,13 +29,13 @@ def event_posted():
 def get_args():
     parser = argparse.ArgumentParser(description='Doctor Sample Consumer')
     parser.add_argument('port', metavar='PORT', type=int, nargs='?',
-                        help='a port for consumer')
+                        help='the port for consumer')
     return parser.parse_args()
 
 
 def main():
     args = get_args()
-    app.run(port=args.port, debug=True)
+    app.run(host="0.0.0.0", port=args.port)
 
 
 if __name__ == '__main__':
