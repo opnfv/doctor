@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7ca5a3_968d387e",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-07-12T09:53:36Z",
+      "side": 1,
+      "message": "CONSUMER_IP ?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 8
+      },
+      "revId": "bcc51f6a3e3a506009e3ccc5a71868b642f7b932",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
