@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_7662dcd9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-07-12T09:45:15Z",
+      "side": 1,
+      "message": "OK,i\u0027ll fix it.",
+      "parentUuid": "5a7ca5a3_9bf9e14f",
+      "range": {
+        "startLine": 7,
+        "startChar": 25,
+        "endLine": 7,
+        "endChar": 31
+      },
+      "revId": "0709635664ac1a5a8f4f9bdae344f0473e87b92c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_3b968df1",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-07-12T08:23:02Z",
       "side": 1,
       "message": "\u003d\u003e checking",
+      "range": {
+        "startLine": 10,
+        "startChar": 7,
+        "endLine": 10,
+        "endChar": 12
+      },
+      "revId": "0709635664ac1a5a8f4f9bdae344f0473e87b92c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_369c64c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-07-12T09:45:15Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "5a7ca5a3_3b968df1",
       "range": {
         "startLine": 10,
         "startChar": 7,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_965f780e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-07-12T09:45:15Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "5a7ca5a3_5b9b4918",
+      "range": {
+        "startLine": 10,
+        "startChar": 25,
+        "endLine": 11,
+        "endChar": 10
+      },
+      "revId": "0709635664ac1a5a8f4f9bdae344f0473e87b92c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_1bbcf168",
         "filename": "tests/run.sh",
         "patchSetId": 2
@@ -82,6 +154,24 @@
       "writtenOn": "2016-07-12T08:23:02Z",
       "side": 1,
       "message": "I think it is expected to be in \"DOWN\" status as you have force it to be so in previous step. It may not be necessary to check whether it is up before unsetting force down.",
+      "revId": "0709635664ac1a5a8f4f9bdae344f0473e87b92c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_56a1e0f6",
+        "filename": "tests/run.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-07-12T09:45:15Z",
+      "side": 1,
+      "message": "NO,`cleanup` will run if there is a error. Maybe the error raises before we use `force down`. If the host status is `UP`,we should not to wait computer host back to be enabled.",
+      "parentUuid": "5a7ca5a3_1bbcf168",
       "revId": "0709635664ac1a5a8f4f9bdae344f0473e87b92c",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
