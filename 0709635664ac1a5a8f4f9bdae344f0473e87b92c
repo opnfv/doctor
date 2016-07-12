@@ -175,6 +175,47 @@
       "revId": "0709635664ac1a5a8f4f9bdae344f0473e87b92c",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_d693b0a1",
+        "filename": "tests/run.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-07-12T09:51:04Z",
+      "side": 1,
+      "message": "Agree to Yujun, we should unset force down without such check.\n\nAnd, \u0027if ! check_host_status \"UP\" ; then\u0027 would be easier to read.",
+      "parentUuid": "5a7ca5a3_1bbcf168",
+      "revId": "0709635664ac1a5a8f4f9bdae344f0473e87b92c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_b6af14e3",
+        "filename": "tests/run.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-07-12T09:51:04Z",
+      "side": 1,
+      "message": "+1, we should have this",
+      "range": {
+        "startLine": 279,
+        "startChar": 3,
+        "endLine": 280,
+        "endChar": 63
+      },
+      "revId": "0709635664ac1a5a8f4f9bdae344f0473e87b92c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
