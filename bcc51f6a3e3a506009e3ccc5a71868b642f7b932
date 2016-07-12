@@ -22,6 +22,53 @@
       "revId": "bcc51f6a3e3a506009e3ccc5a71868b642f7b932",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_b695d441",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-07-12T12:56:55Z",
+      "side": 1,
+      "message": "+1\n\nIn addition, \u0027net-tools\u0027 package that provides commands like \u0027ifconfig\u0027 is not installed by default in some major Linux distros. Let\u0027s use \u0027ip\u0027 instead available, used and recommended by distros.\n\n\n    $ ip a | grep \"inet \" | grep -v 127.0.0.1 | head -1 | awk \u0027{ print $2}\u0027 | egrep -o \u0027([0-9]+\\.){3}[0-9]+\u0027",
+      "parentUuid": "5a7ca5a3_968d387e",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 8
+      },
+      "revId": "bcc51f6a3e3a506009e3ccc5a71868b642f7b932",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7ca5a3_d692d056",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-07-12T12:56:55Z",
+      "side": 1,
+      "message": "syntax error. move closing parenthesis to the end of the line.",
+      "range": {
+        "startLine": 33,
+        "startChar": 51,
+        "endLine": 33,
+        "endChar": 52
+      },
+      "revId": "bcc51f6a3e3a506009e3ccc5a71868b642f7b932",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
