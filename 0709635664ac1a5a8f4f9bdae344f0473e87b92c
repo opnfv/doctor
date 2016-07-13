@@ -214,6 +214,24 @@
     },
     {
       "key": {
+        "uuid": "5a7ca5a3_21badcde",
+        "filename": "tests/run.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-07-13T01:33:56Z",
+      "side": 1,
+      "message": "Then I can argue when you do a cleanup, the monitor may not already be started, you should also check for the status before stop it in L268. And the same thing for inspector and consumer, which will make things complex.\n\nWe just need to ensure that `force down --unset` will not cause any exception even when the host is in \"UP\" status.\n\nYes, we may lose 180s waiting for an \"UP\" host to be \"UP\". But since it happens only on error case which should be rare, I think we can afford it rather than sacrifice the consistency and clarity in code.\n\nThe unnecessary 180s waiting should be handled in nova_force_down.py --unset. If the host is already \"UP\", nova should return immediately \"already enabled\" result so the client know it does not have to wait for 180s.",
+      "parentUuid": "5a7ca5a3_56a1e0f6",
+      "revId": "0709635664ac1a5a8f4f9bdae344f0473e87b92c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_b6af14e3",
         "filename": "tests/run.sh",
         "patchSetId": 2
