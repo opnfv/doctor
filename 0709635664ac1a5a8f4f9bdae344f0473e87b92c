@@ -232,6 +232,24 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_d3c3f488",
+        "filename": "tests/run.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-07-18T05:49:51Z",
+      "side": 1,
+      "message": "Hi, sorry for replay with a delay.\n`stop_monitor`,`stop_inspector`,`stop_consumer` will first check whether the app is started.\nYou are right, it happens only on an error case. But i think it\u0027s not suitable handled in `nova_force_down.py --unset`.",
+      "parentUuid": "5a7ca5a3_21badcde",
+      "revId": "0709635664ac1a5a8f4f9bdae344f0473e87b92c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7ca5a3_b6af14e3",
         "filename": "tests/run.sh",
         "patchSetId": 2
