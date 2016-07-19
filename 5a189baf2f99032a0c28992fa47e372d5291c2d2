@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_f6229e00",
+        "filename": "tests/run.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-07-19T06:43:47Z",
+      "side": 1,
+      "message": "nit: delete this sleep",
+      "revId": "5a189baf2f99032a0c28992fa47e372d5291c2d2",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
