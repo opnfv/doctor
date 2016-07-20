@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_e7942a46",
+        "filename": "tests/consumer.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-07-20T02:32:18Z",
+      "side": 1,
+      "message": "\u0027the\u0027 host for consumer? Since I think there will be only one host for the consumer.",
+      "range": {
+        "startLine": 32,
+        "startChar": 30,
+        "endLine": 32,
+        "endChar": 31
+      },
+      "revId": "37f9b580924d9d278d7a6c6877d4e66feeca89e4",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_07928657",
+        "filename": "tests/consumer.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-07-20T02:32:18Z",
+      "side": 1,
+      "message": "The same as L32",
+      "range": {
+        "startLine": 34,
+        "startChar": 30,
+        "endLine": 34,
+        "endChar": 31
+      },
+      "revId": "37f9b580924d9d278d7a6c6877d4e66feeca89e4",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_a79e3262",
+        "filename": "tests/run.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-07-20T02:32:18Z",
+      "side": 1,
+      "message": "Logically we should create_alarm after consumer is started since this is an external dependency for the alarm.",
+      "revId": "37f9b580924d9d278d7a6c6877d4e66feeca89e4",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
