@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_c7f80e4c",
+        "filename": "tests/consumer.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-07-20T07:24:40Z",
+      "side": 1,
+      "message": "? Don\u0027t understand.",
+      "parentUuid": "1a76adc5_e7942a46",
+      "range": {
+        "startLine": 32,
+        "startChar": 30,
+        "endLine": 32,
+        "endChar": 31
+      },
+      "revId": "37f9b580924d9d278d7a6c6877d4e66feeca89e4",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_07928657",
         "filename": "tests/consumer.py",
         "patchSetId": 2
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_47edde8a",
+        "filename": "tests/run.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-07-20T07:24:40Z",
+      "side": 1,
+      "message": "see https://gerrit.opnfv.org/gerrit/#/c/16709/\nComment of Carlos on patch 5.",
+      "parentUuid": "1a76adc5_07512662",
+      "range": {
+        "startLine": 291,
+        "startChar": 5,
+        "endLine": 292,
+        "endChar": 63
+      },
+      "revId": "37f9b580924d9d278d7a6c6877d4e66feeca89e4",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_a79e3262",
         "filename": "tests/run.sh",
         "patchSetId": 2
@@ -82,6 +130,24 @@
       "writtenOn": "2016-07-20T02:32:18Z",
       "side": 1,
       "message": "Logically we should create_alarm after consumer is started since this is an external dependency for the alarm.",
+      "revId": "37f9b580924d9d278d7a6c6877d4e66feeca89e4",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_a7fb9246",
+        "filename": "tests/run.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-07-20T07:24:40Z",
+      "side": 1,
+      "message": "NO,i think it\u0027s not necessary. The alarm is only a rule.",
+      "parentUuid": "1a76adc5_a79e3262",
       "revId": "37f9b580924d9d278d7a6c6877d4e66feeca89e4",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
