@@ -78,13 +78,12 @@ prepare_compute_ssh() {
     # get ssh key from installer node
     if [[ "$INSTALLER_TYPE" == "apex" ]] ; then
         sudo scp $ssh_opts root@"$INSTALLER_IP":/home/stack/.ssh/id_rsa instack_key
+        sudo chown $(whoami):$(whoami) instack_key
+        chmod 400 instack_key
+        ssh_opts_cpu+=" -i instack_key"
     elif [[ "$INSTALLER_TYPE" == "local" ]] ; then
         echo "INSTALLER_TYPE set to 'local'. Assuming SSH keys already exchanged with $COMPUTE_HOST"
     fi
-
-    sudo chown $(whoami):$(whoami) instack_key
-    chmod 400 instack_key
-    ssh_opts_cpu+=" -i instack_key"
 
     # verify ssh to target compute host
     ssh $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP" 'exit'

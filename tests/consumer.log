@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "consumer.py", line 11, in <module>
+    from flask import Flask
+ImportError: No module named flask
