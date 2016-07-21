@@ -72,6 +72,29 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_1cdad478",
+        "filename": "tests/consumer.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-07-21T13:06:19Z",
+      "side": 1,
+      "message": "If we consider this consumer as a sample, we can set \"host\u003d\u00270.0.0.0\u0027\" to allow access from other machines. You can also remove \"debug\u003dTrue\" as we don\u0027t use this in CI.",
+      "range": {
+        "startLine": 40,
+        "startChar": 17,
+        "endLine": 40,
+        "endChar": 26
+      },
+      "revId": "37f9b580924d9d278d7a6c6877d4e66feeca89e4",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_07512662",
         "filename": "tests/run.sh",
         "patchSetId": 2
