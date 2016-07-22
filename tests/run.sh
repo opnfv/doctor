@@ -28,7 +28,6 @@ DOCTOR_ROLE=admin
 SUPPORTED_INSTALLER_TYPES="apex local"
 INSTALLER_TYPE=${INSTALLER_TYPE:-apex}
 INSTALLER_IP=${INSTALLER_IP:-none}
-COMPUTE_USER=${COMPUTE_USER:-none}
 
 ssh_opts="-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 as_doctor_user="--os-username $DOCTOR_USER --os-password $DOCTOR_PW
