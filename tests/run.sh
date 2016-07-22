@@ -31,6 +31,8 @@ INSTALLER_IP=${INSTALLER_IP:-none}
 COMPUTE_USER=${COMPUTE_USER:-none}
 
 ssh_opts="-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
+as_doctor_user="--os-username $DOCTOR_USER --os-password $DOCTOR_PW
+                --os-tenant-name $DOCTOR_PROJECT"
 
 if [[ ! "$SUPPORTED_INSTALLER_TYPES" =~ "$INSTALLER_TYPE" ]] ; then
     echo "ERROR: INSTALLER_TYPE=$INSTALLER_TYPE is not supported."
@@ -38,14 +40,10 @@ if [[ ! "$SUPPORTED_INSTALLER_TYPES" =~ "$INSTALLER_TYPE" ]] ; then
 fi
 
 get_compute_host_info() {
-    (
-        change_to_doctor_user
-
-        # get computer host info which VM boot in
-        export COMPUTE_HOST=$(openstack server show $VM_NAME | \
-                grep "OS-EXT-SRV-ATTR:host" | awk '{ print $4 }' |
-                awk -F '.' '{print $1}')
-    )
+    # get computer host info which VM boot in
+    COMPUTE_HOST=$(openstack $as_doctor_user server show $VM_NAME |
+                   grep "OS-EXT-SRV-ATTR:host" | awk '{ print $4 }' |
+                   awk -F '.' '{print $1}')
     if [[ -z "$COMPUTE_HOST" ]] ; then
         echo "ERROR: failed to get compute hostname"
         exit 1
@@ -141,41 +139,27 @@ create_test_user() {
     }
 }
 
-change_to_doctor_user() {
-    export OS_USERNAME="$DOCTOR_USER"
-    export OS_PASSWORD="$DOCTOR_PW"
-    export OS_PROJECT_NAME="$DOCTOR_PROJECT"
-    export OS_TENANT_NAME="$DOCTOR_PROJECT"
-}
-
 boot_vm() {
-    (
-        # test VM done with test user, so can test non-admin
-        change_to_doctor_user
-        openstack server list | grep -q " $VM_NAME " && return 0
-        openstack server create --flavor "$VM_FLAVOR" \
-                                --image "$IMAGE_NAME" \
-                                "$VM_NAME"
-        sleep 1
-    )
-
+    # test VM done with test user, so can test non-admin
+    openstack $as_doctor_user server list | grep -q " $VM_NAME " && return 0
+    openstack $as_doctor_user server create --flavor "$VM_FLAVOR" \
+                            --image "$IMAGE_NAME" \
+                            "$VM_NAME"
+    sleep 1
 }
 
 create_alarm() {
-    (
-        # get vm_id as test user
-        change_to_doctor_user
-        ceilometer alarm-list | grep -q " $ALARM_NAME " && return 0
-        vm_id=$(openstack server list | grep " $VM_NAME " | awk '{print $2}')
-        ceilometer alarm-event-create --name "$ALARM_NAME" \
-            --alarm-action "http://$CONSUMER_IP:$CONSUMER_PORT/failure" \
-            --description "VM failure" \
-            --enabled True \
-            --repeat-actions False \
-            --severity "moderate" \
-            --event-type compute.instance.update \
-            -q "traits.state=string::error; traits.instance_id=string::$vm_id"
-    )
+    # get vm_id as test user
+    ceilometer $as_doctor_user alarm-list | grep -q " $ALARM_NAME " && return 0
+    vm_id=$(openstack $as_doctor_user server list | grep " $VM_NAME " | awk '{print $2}')
+    ceilometer $as_doctor_user alarm-event-create --name "$ALARM_NAME" \
+        --alarm-action "http://$CONSUMER_IP:$CONSUMER_PORT/failure" \
+        --description "VM failure" \
+        --enabled True \
+        --repeat-actions False \
+        --severity "moderate" \
+        --event-type compute.instance.update \
+        -q "traits.state=string::error; traits.instance_id=string::$vm_id"
 }
 
 
@@ -216,22 +200,17 @@ stop_consumer() {
 wait_for_vm_launch() {
     echo "waiting for vm launch..."
 
-    (
-        # get VM state as test user
-        change_to_doctor_user
-
-        count=0
-        while [[ ${count} -lt 60 ]]
-        do
-            state=$(openstack server list | grep " $VM_NAME " | awk '{print $6}')
-            [[ "$state" == "ACTIVE" ]] && return 0
-            [[ "$state" == "ERROR" ]] && echo "vm state is ERROR" && exit 1
-            count=$(($count+1))
-            sleep 1
-        done
-        echo "ERROR: time out while waiting for vm launch"
-        exit 1
-    )
+    count=0
+    while [[ ${count} -lt 60 ]]
+    do
+        state=$(openstack $as_doctor_user server list | grep " $VM_NAME " | awk '{print $6}')
+        [[ "$state" == "ACTIVE" ]] && return 0
+        [[ "$state" == "ERROR" ]] && echo "vm state is ERROR" && exit 1
+        count=$(($count+1))
+        sleep 1
+    done
+    echo "ERROR: time out while waiting for vm launch"
+    exit 1
 }
 
 inject_failure() {
@@ -258,27 +237,20 @@ calculate_notification_time() {
 }
 
 check_host_status() {
-    expect_state=$1
-    (
-        change_to_doctor_user
+    expected_state=$1
 
-        host_status_line=$(openstack --os-compute-api-version 2.16 server show $VM_NAME | grep "host_status")
-        if [[ $? -ne 0 ]] ; then
-            echo "ERROR: host_status not configured for owner in Nova policy.json"
-            exit 1
-        fi
-
-        host_status=$(echo $host_status_line | awk '{print $4}')
-        if [ -z "$host_status" ] ; then
-            echo "ERROR: host_status not reported by: nova show $VM_NAME"
-            exit 1
-        elif [[ "$host_status" != "$expect_state" ]] ; then
-            echo "ERROR: host_status:$host_status not equal to expect_state: $expect_state"
-            exit 1
-        else
-            echo "$VM_NAME showing host_status: $host_status"
-        fi
-    )
+    host_status_line=$(openstack $as_doctor_user --os-compute-api-version 2.16 \
+                       server show $VM_NAME | grep "host_status")
+    host_status=$(echo $host_status_line | awk '{print $4}')
+    if [ -z "$host_status" ] ; then
+        echo "ERROR: host_status not reported by: nova show $VM_NAME"
+        exit 1
+    elif [[ "$host_status" != "$expected_state" ]] ; then
+        echo "ERROR: host_status:$host_status not equal to expected_state: $expected_state"
+        exit 1
+    else
+        echo "$VM_NAME showing host_status: $host_status"
+    fi
 }
 
 cleanup() {
@@ -295,15 +267,13 @@ cleanup() {
     ssh $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP" \
         "[ -e disable_network.log ] && cat disable_network.log"
 
-    (
-        change_to_doctor_user
-        openstack server list | grep -q " $VM_NAME " && openstack server delete "$VM_NAME"
-        sleep 1
-        alarm_id=$(ceilometer alarm-list | grep " $ALARM_NAME " | awk '{print $2}')
-        sleep 1
-        [ -n "$alarm_id" ] && ceilometer alarm-delete "$alarm_id"
-        sleep 1
-    )
+    openstack $as_doctor_user server list | grep -q " $VM_NAME " && openstack server delete "$VM_NAME"
+    sleep 1
+    alarm_id=$(ceilometer alarm-list | grep " $ALARM_NAME " | awk '{print $2}')
+    sleep 1
+    [ -n "$alarm_id" ] && ceilometer alarm-delete "$alarm_id"
+    sleep 1
+
     image_id=$(openstack image list | grep " $IMAGE_NAME " | awk '{print $2}')
     sleep 1
     [ -n "$image_id" ] && openstack image delete "$image_id"
