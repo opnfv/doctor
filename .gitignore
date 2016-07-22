@@ -1,5 +1,7 @@
 *~
 .*.sw?
+**.log
 /docs_build/
 /docs_output/
 /releng/
+/tests/*.img
