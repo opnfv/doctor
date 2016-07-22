@@ -46,6 +46,10 @@ get_compute_host_info() {
                 grep "OS-EXT-SRV-ATTR:host" | awk '{ print $4 }' |
                 awk -F '.' '{print $1}')
     )
+    if [[ -z "$COMPUTE_HOST" ]] ; then
+        echo "ERROR: failed to get compute hostname"
+        exit 1
+    fi
     if [[ "$INSTALLER_TYPE" == "apex" ]] ; then
         COMPUTE_USER=${COMPUTE_USER:-heat-admin}
         if [[ "$INSTALLER_IP" == "none" ]] ; then
