@@ -31,7 +31,7 @@ class DoctorMonitorSample(object):
         self.ip_addr = args.ip or socket.gethostbyname(self.hostname)
 
     def start_loop(self):
-        print "start ping to host %(h)s (ip=$(i)s)" % {'h': self.hostname,
+        print "start ping to host %(h)s (ip=%(i)s)" % {'h': self.hostname,
                                                        'i': self.ip_addr}
         sock = socket.socket(socket.AF_INET, socket.SOCK_RAW,
                              socket.IPPROTO_ICMP)
