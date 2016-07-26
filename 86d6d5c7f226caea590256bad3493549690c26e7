@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_0b77e8d5",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-07-26T07:05:58Z",
+      "side": 1,
+      "message": "Why reverting to \u0027nova\u0027 CLI?",
+      "revId": "86d6d5c7f226caea590256bad3493549690c26e7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
