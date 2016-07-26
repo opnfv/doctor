@@ -34,6 +34,24 @@
       "revId": "86d6d5c7f226caea590256bad3493549690c26e7",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_06203f48",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-07-26T10:44:16Z",
+      "side": 1,
+      "message": "Because awk parser is not expected output from openstack command:\n\n    [root@undercloud ~]# nova show overcloud-controller-0 | grep ctlplane\n    | ctlplane network                     | 192.0.2.7                                                |\n    [root@undercloud ~]# openstack server show overcloud-controller-0 | grep ctlplane\n    | addresses                            | ctlplane\u003d192.0.2.7                                       |\n\n# This could be temporal fix, and we should consider better way to get infra information. I think using ssh+command is not ideal solution here.",
+      "parentUuid": "1a76adc5_a6ee2b21",
+      "revId": "86d6d5c7f226caea590256bad3493549690c26e7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
