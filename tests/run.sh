@@ -55,7 +55,7 @@ get_compute_host_info() {
         fi
         COMPUTE_IP=$(sudo ssh $ssh_opts $INSTALLER_IP \
              "source stackrc; \
-             openstack server show $COMPUTE_HOST \
+             nova show $COMPUTE_HOST \
              | awk '/ ctlplane network /{print \$5}'")
     elif [[ "$INSTALLER_TYPE" == "local" ]] ; then
         COMPUTE_USER=${COMPUTE_USER:-$(whoami)}
@@ -215,13 +215,14 @@ inject_failure() {
     echo "disabling network of compute host [$COMPUTE_HOST] for 3 mins..."
     cat > disable_network.sh << 'END_TXT'
 #!/bin/bash -x
-dev=$(sudo ip route | awk '/^default/{print $5}')
+dev=$(sudo ip a | awk '/ @COMPUTE_IP@\//{print $7}')
 sleep 1
 sudo ip link set $dev down
 sleep 180
 sudo ip link set $dev up
 sleep 1
 END_TXT
+    sed -i -e "s/@COMPUTE_IP@/$COMPUTE_IP/" disable_network.sh
     chmod +x disable_network.sh
     scp $ssh_opts_cpu disable_network.sh "$COMPUTE_USER@$COMPUTE_IP:"
     ssh $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP" 'nohup ./disable_network.sh > disable_network.log 2>&1 &'
