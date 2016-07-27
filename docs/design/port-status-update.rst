@@ -1,32 +1,178 @@
-.. This work is licensed under a Creative Commons Attribution 4.0 International License.
-.. http://creativecommons.org/licenses/by/4.0
+..
+ This work is licensed under a Creative Commons Attribution 3.0 Unported
+ License.
 
-==========================
-Neutron Port Status Update
-==========================
+ http://creativecommons.org/licenses/by/3.0/legalcode
 
-.. NOTE::
-   This document represents a Neutron RFE reviewed in the Doctor project before submitting upstream to Launchpad Neutron
-   space. The document is not intended to follow a blueprint format or to be an extensive document.
-   For more information, please visit http://docs.openstack.org/developer/neutron/policies/blueprints.html
+====================================
+Port status update
+====================================
 
-   The RFE was submitted to Neutron. You can follow the discussions in https://bugs.launchpad.net/neutron/+bug/1598081
+https://bugs.launchpad.net/neutron/+bug/1598081
 
-Neutron port status field represents the current status of a port in the cloud infrastructure. The field can take one of
-the following values: 'ACTIVE', 'DOWN', 'BUILD' and 'ERROR'.
+Neutron does not detect data planes failures affecting its logical resources.
+This spec addresses that by means of allowing external tools to report to
+Neutron of faults in the data plane affecting ports. A new REST API field is
+proposed to that end.
 
-At present, if a network event occurs in the data-plane (e.g. virtual or physical switch fails or one of its ports,
-cable gets pulled unintentionally, infrastructure topology changes, etc.), connectivity to logical ports may be affected
-and tenants' services interrupted. When tenants/cloud administrators are looking up their resources' status (e.g. Nova
-instances and services running in them, network ports, etc.), they will wrongly see everything looks fine. The problem
-is that Neutron will continue reporting port 'status' as 'ACTIVE'.
 
-Many SDN Controllers managing network elements have the ability to detect and report network events to upper layers.
-This allows SDN Controllers' users to be notified of changes and react accordingly. Such information could be consumed
-by Neutron so that Neutron could update the 'status' field of those logical ports, and additionally generate a
-notification message to the message bus.
+Problem Description
+===================
 
-However, Neutron misses a way to be able to receive such information through e.g. ML2 driver or the REST API ('status'
-field is read-only). There are pros and cons on both of these approaches as well as other possible approaches. This RFE
-intends to trigger a discussion on how Neutron could be improved to receive fault/change events from SDN Controllers or
-even also from 3rd parties not in charge of controlling the network (e.g. monitoring systems, human admins).
+An initial description of the problem was introduced in bug #159801 [1_]. This
+spec focus on capturing half of the problem there described, i.e. extending
+Neutron's REST API to cover the scenario of allowing external tools to report
+network failures to Neutron. Out of scope of this spec are works to enable port
+status changes to be received and managed by mechanism drivers.
+
+This spec also tries to address bug #1575146 [2_]. Specifically, and argued by
+the Neutron driver team in [3_]:
+
+ * Neutron should not shut down the port completly upon detection of physnet
+   failure; connectivity between instances on the same node may still be
+   reachable. Externals tools may or may not want to trigger a status change on
+   the port based on their own logic and orchestration.
+
+ * Port down is not detected when an uplink of a switch is down;
+
+ * The physnet bridge may have multiple physical interfaces plugged; shutting
+   down the logical port may not be needed as network redundancy is in place.
+
+
+Proposed Change
+===============
+
+A couple of possible approaches were proposed in [1_] (comment #3). This spec
+proposes tackling the problema via a new extension API to the port resource.
+The extension adds a new attribute to represent the status of the port on the
+data plane. The field should be read-only by tenants and read-write by admins.
+
+Neutron should send out an event to the message bus upon toggling the data
+plane status value. The event is relevant for e.g. auditing.
+
+
+Data Model Impact
+-----------------
+
+A new attribute as extension will be added to the 'ports' table.
+
++------------+-------+----------+---------+--------------------+--------------+
+|Attribute   |Type   |Access    |Default  |Validation/         |Description   |
+|Name        |       |          |Value    |Conversion          |              |
++============+=======+==========+=========+====================+==============+
+|dp_down     |boolean|RO, tenant|False    |True/False          |              |
+|            |       |RW, admin |         |                    |              |
++------------+-------+----------+---------+--------------------+--------------+
+
+
+REST API Impact
+---------------
+
+A new API extension to the ports resource is going to be introduced.
+
+.. code-block:: python
+
+  EXTENDED_ATTRIBUTES_2_0 = {
+      'ports': {
+          'dp_down': {'allow_post': False, 'allow_put': True,
+                      'default': False, 'convert_to': convert_to_boolean,
+                      'is_visible': True},
+      },
+  }
+
+
+Examples
+~~~~~~~~
+
+Updating port data plane status to down:
+
+.. code-block:: json
+
+   PUT /v2.0/ports/<port-uuid>
+   Accept: application/json
+   {
+       "port": {
+           "dp_down": true
+       }
+   }
+
+
+
+Command Line Client Impact
+--------------------------
+
+::
+
+  neutron port-update [--dp-down <True/False>] <port>
+  openstack port set [--dp-down <True/False>] <port>
+
+Argument --dp-down is optional. Defaults to False.
+
+
+Security Impact
+---------------
+
+None
+
+Notifications Impact
+--------------------
+
+A notification (event) upon toggling the data plane status value should be sent
+to the message bus.
+
+Performance Impact
+------------------
+
+None
+
+IPv6 Impact
+-----------
+
+None
+
+Other Deployer Impact
+---------------------
+
+None
+
+Developer Impact
+----------------
+
+None
+
+Implementation
+==============
+
+Assignee(s)
+-----------
+
+ * cgoncalves
+
+Work Items
+----------
+
+ * New 'dp-down' attribute in 'ports' database table
+ * API extension to introduce new field to port
+ * Client changes to allow for data plane status being set
+ * Policy (tenants read-only; admins read-write)
+
+
+Documentation Impact
+====================
+
+Documentation for both administrators and end users will have to be
+contemplated. Administrators will need to know how to set/unset the data plane
+status field.
+
+
+References
+==========
+
+.. [1] RFE: Port status update,
+   https://bugs.launchpad.net/neutron/+bug/1598081
+
+.. [2] RFE: ovs port status should the same as physnet
+   https://bugs.launchpad.net/neutron/+bug/1575146
+
+.. [3] Neutron Drivers meeting, July 21, 2016
+   http://eavesdrop.openstack.org/meetings/neutron_drivers/2016/neutron_drivers.2016-07-21-22.00.html

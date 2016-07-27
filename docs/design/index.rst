@@ -21,4 +21,5 @@ See also https://wiki.opnfv.org/requirements_projects .
 
    report-host-fault-to-update-server-state-immediately.rst
    notification-alarm-evaluator.rst
+   rfe-port-status-update.rst
    port-status-update.rst
