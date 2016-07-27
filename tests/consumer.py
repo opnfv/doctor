@@ -35,7 +35,7 @@ def get_args():
 
 def main():
     args = get_args()
-    app.run(host="0.0.0.0", port=args.port)
+    app.run(host="0.0.0.0", port=args.port, debug=True)
 
 
 if __name__ == '__main__':
