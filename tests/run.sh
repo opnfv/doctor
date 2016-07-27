@@ -266,7 +266,7 @@ cleanup() {
     ssh $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP" \
         "[ -e disable_network.log ] && cat disable_network.log"
 
-    openstack $as_doctor_user server list | grep -q " $VM_NAME " && openstack server delete "$VM_NAME"
+    openstack $as_doctor_user server list | grep -q " $VM_NAME " && openstack $as_doctor_user server delete "$VM_NAME"
     sleep 1
     alarm_id=$(ceilometer alarm-list | grep " $ALARM_NAME " | awk '{print $2}')
     sleep 1
