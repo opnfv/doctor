@@ -46,6 +46,30 @@
       "revId": "0261242e3586ad8fa55e7d2b958a240d833a37d7",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_0b2cc3aa",
+        "filename": "tests/run.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-07-28T12:47:21Z",
+      "side": 1,
+      "message": "Example:\n\nubuntu@doctor-functest:~$ ip route get 8.8.8.8\n8.8.8.8 via 192.168.100.1 dev eth0  src 192.168.100.18\n    cache\n\n192.168.100.1 is my default gateway. This would be print $3.\n\nBut for an address that would not go over the default route, the output is different:\n\n\nubuntu@doctor-functest:~$ ip route get 192.168.100.12\n192.168.100.12 dev eth0  src 192.168.100.18\n    cache",
+      "parentUuid": "1a76adc5_6b3bf7eb",
+      "range": {
+        "startLine": 99,
+        "startChar": 4,
+        "endLine": 99,
+        "endChar": 69
+      },
+      "revId": "0261242e3586ad8fa55e7d2b958a240d833a37d7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
