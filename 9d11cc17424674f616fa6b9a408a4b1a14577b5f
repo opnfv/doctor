@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_ab8fcf22",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-07-28T11:22:30Z",
+      "side": 1,
+      "message": "I can\u0027t understand this. What is this for?",
+      "range": {
+        "startLine": 68,
+        "startChar": 79,
+        "endLine": 68,
+        "endChar": 85
+      },
+      "revId": "9d11cc17424674f616fa6b9a408a4b1a14577b5f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_8b9e9355",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-07-28T11:22:30Z",
+      "side": 1,
+      "message": "the script cannot find if the output is empty. maybe you ca use \u0027scp\u0027 with sshpass.",
+      "range": {
+        "startLine": 95,
+        "startChar": 36,
+        "endLine": 95,
+        "endChar": 49
+      },
+      "revId": "9d11cc17424674f616fa6b9a408a4b1a14577b5f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_2ba3bf9f",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-07-28T11:22:30Z",
+      "side": 1,
+      "message": "this shouldn\u0027t be run when \u0027local\u0027 type installer.",
+      "range": {
+        "startLine": 100,
+        "startChar": 4,
+        "endLine": 102,
+        "endChar": 35
+      },
+      "revId": "9d11cc17424674f616fa6b9a408a4b1a14577b5f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
