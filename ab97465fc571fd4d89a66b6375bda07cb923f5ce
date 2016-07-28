@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_eb4dc7c5",
+        "filename": "docs/design/port-status-update.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-07-28T12:07:36Z",
+      "side": 1,
+      "message": "This means \u0027status\u0027 of port won\u0027t be affected though if \u0027dp_down\u0027 becomes True. Or, maybe it could be left as an implementation matter in each plugin/driver.",
+      "revId": "ab97465fc571fd4d89a66b6375bda07cb923f5ce",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_4b3cfb2f",
+        "filename": "docs/design/rfe-port-status-update.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-07-28T12:07:36Z",
+      "side": 1,
+      "message": "nod",
+      "range": {
+        "startLine": 30,
+        "startChar": 111,
+        "endLine": 31,
+        "endChar": 31
+      },
+      "revId": "ab97465fc571fd4d89a66b6375bda07cb923f5ce",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
