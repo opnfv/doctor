@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_6b445774",
+        "filename": "docs/design/port-status-update.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-07-28T12:31:14Z",
+      "side": 1,
+      "message": "I think we don\u0027t have to explain in this spec, as it is trigger for such discussion. I\u0027m just curious relation between \u0027status\u0027 and \u0027dp_status\u0027.",
+      "parentUuid": "1a76adc5_ab958fe5",
+      "revId": "ab97465fc571fd4d89a66b6375bda07cb923f5ce",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_4b3cfb2f",
         "filename": "docs/design/rfe-port-status-update.rst",
         "patchSetId": 2
@@ -72,6 +90,30 @@
       "side": 1,
       "message": "Sorry?",
       "parentUuid": "1a76adc5_4b3cfb2f",
+      "range": {
+        "startLine": 30,
+        "startChar": 111,
+        "endLine": 31,
+        "endChar": 31
+      },
+      "revId": "ab97465fc571fd4d89a66b6375bda07cb923f5ce",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_8b49b38d",
+        "filename": "docs/design/rfe-port-status-update.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-07-28T12:31:14Z",
+      "side": 1,
+      "message": "I just agreed this point.",
+      "parentUuid": "1a76adc5_cb9a4b14",
       "range": {
         "startLine": 30,
         "startChar": 111,
