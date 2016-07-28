@@ -70,6 +70,30 @@
       "revId": "0261242e3586ad8fa55e7d2b958a240d833a37d7",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_ee6155d4",
+        "filename": "tests/run.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-07-28T13:51:46Z",
+      "side": 1,
+      "message": "i didn\u0027t know that, then let\u0027s use $NF instead of $7.",
+      "parentUuid": "1a76adc5_0b2cc3aa",
+      "range": {
+        "startLine": 99,
+        "startChar": 4,
+        "endLine": 99,
+        "endChar": 69
+      },
+      "revId": "0261242e3586ad8fa55e7d2b958a240d833a37d7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
