@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_cb8d6b33",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-07-28T11:12:44Z",
+      "side": 1,
+      "message": "How about getting IP facing to compute node simpler, like this?\n\n    CONSUMER_IP\u003d$(ip route get $COMPUTE_IP | awk \u0027/ src /{print $7}\u0027)\n\nI can see it works.\n\n    $ ip route get 172.0.0.4\n    172.0.0.4 via 192.168.121.1 dev eth0  src 192.168.121.189\n        cache\n    $ ip route get 172.0.0.4 | awk \u0027/ src /{print $7}\u0027\n    192.168.121.189",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 6
+      },
+      "revId": "ab0cf5840d0a7a5c5ce63e9649057d1f34577991",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
