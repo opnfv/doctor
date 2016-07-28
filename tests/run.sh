@@ -25,8 +25,8 @@ DOCTOR_PROJECT=doctor
 #TODO: change back to `_member_` when JIRA DOCTOR-55 is done
 DOCTOR_ROLE=admin
 
-SUPPORTED_INSTALLER_TYPES="apex local"
-INSTALLER_TYPE=${INSTALLER_TYPE:-apex}
+SUPPORTED_INSTALLER_TYPES="apex fuel local"
+INSTALLER_TYPE=${INSTALLER_TYPE:-local}
 INSTALLER_IP=${INSTALLER_IP:-none}
 
 ssh_opts="-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
@@ -40,13 +40,14 @@ fi
 
 get_compute_host_info() {
     # get computer host info which VM boot in
-    COMPUTE_HOST=$(openstack $as_doctor_user server show $VM_NAME |
-                   grep "OS-EXT-SRV-ATTR:host" | awk '{ print $4 }' |
-                   awk -F '.' '{print $1}')
+    COMPUTE_HOST_WITH_DOMAIN=$(openstack $as_doctor_user server show $VM_NAME |
+                   grep "OS-EXT-SRV-ATTR:host" | awk '{ print $4 }')
+    COMPUTE_HOST=$(echo $COMPUTE_HOST_WITH_DOMAIN |awk -F '.' '{print $1}')
     if [[ -z "$COMPUTE_HOST" ]] ; then
         echo "ERROR: failed to get compute hostname"
         exit 1
     fi
+
     if [[ "$INSTALLER_TYPE" == "apex" ]] ; then
         COMPUTE_USER=${COMPUTE_USER:-heat-admin}
         if [[ "$INSTALLER_IP" == "none" ]] ; then
@@ -57,13 +58,23 @@ get_compute_host_info() {
              "source stackrc; \
              nova show $COMPUTE_HOST \
              | awk '/ ctlplane network /{print \$5}'")
+    elif [[ "$INSTALLER_TYPE" == "fuel" ]] ; then
+        COMPUTE_USER=${COMPUTE_USER:-root}
+        if [[ "$INSTALLER_IP" == "none" ]] ; then
+            instack_mac=$(sudo virsh domiflist fuel-opnfv | awk '/pxebr/{print $5}')
+            INSTALLER_IP=$(/usr/sbin/arp -e | grep ${instack_mac} | awk '{print $1}')
+        fi
+        node_id=$(echo $COMPUTE_HOST | cut -d "-" -f 2)
+        COMPUTE_IP=$(sshpass -p r00tme ssh 2>/dev/null $ssh_options root@${INSTALLER_IP} \
+             "fuel node|awk -F '|' -v id=$node_id '{if (\$1 == id) print \$5}' |xargs")
     elif [[ "$INSTALLER_TYPE" == "local" ]] ; then
         COMPUTE_USER=${COMPUTE_USER:-$(whoami)}
         COMPUTE_IP=$(getent hosts "$COMPUTE_HOST" | awk '{ print $1 }')
-        if [[ -z "$COMPUTE_IP" ]]; then
-            echo "ERROR: Could not resolve $COMPUTE_HOST. Either manually set COMPUTE_IP or enable DNS resolution."
-            exit 1
-        fi
+    fi
+
+    if [[ -z "$COMPUTE_IP" ]]; then
+        echo "ERROR: Could not resolve $COMPUTE_HOST. Either manually set COMPUTE_IP or enable DNS resolution."
+        exit 1
     fi
 
     # verify connectivity to target compute host
@@ -80,6 +91,12 @@ prepare_compute_ssh() {
     # get ssh key from installer node
     if [[ "$INSTALLER_TYPE" == "apex" ]] ; then
         sudo scp $ssh_opts root@"$INSTALLER_IP":/home/stack/.ssh/id_rsa instack_key
+        sudo chown $(whoami):$(whoami) instack_key
+        chmod 400 instack_key
+        ssh_opts_cpu+=" -i instack_key"
+    elif [[ "$INSTALLER_TYPE" == "fuel" ]] ; then
+        sshpass -p r00tme ssh 2>/dev/null $ssh_options root@${INSTALLER_IP} \
+            "cat /root/.ssh/id_rsa" > instack_key
         sudo chown $(whoami):$(whoami) instack_key
         chmod 400 instack_key
         ssh_opts_cpu+=" -i instack_key"
@@ -163,7 +180,7 @@ create_alarm() {
 
 start_monitor() {
     pgrep -f "python monitor.py" && return 0
-    sudo python monitor.py "$COMPUTE_HOST" "$COMPUTE_IP" \
+    sudo python monitor.py "$COMPUTE_HOST_WITH_DOMAIN" "$COMPUTE_IP" \
         "http://127.0.0.1:$INSPECTOR_PORT/events" > monitor.log 2>&1 &
 }
 
@@ -260,7 +277,7 @@ cleanup() {
     stop_consumer
 
     echo "waiting disabled compute host back to be enabled..."
-    python ./nova_force_down.py "$COMPUTE_HOST" --unset
+    python ./nova_force_down.py "$COMPUTE_HOST_WITH_DOMAIN" --unset
     sleep 180
     check_host_status "UP"
     ssh $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP" \
