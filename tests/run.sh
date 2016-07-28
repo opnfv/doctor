@@ -261,7 +261,7 @@ cleanup() {
 
     echo "waiting disabled compute host back to be enabled..."
     python ./nova_force_down.py "$COMPUTE_HOST" --unset
-    sleep 180
+    sleep 240
     check_host_status "UP"
     ssh $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP" \
         "[ -e disable_network.log ] && cat disable_network.log"
