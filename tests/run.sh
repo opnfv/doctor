@@ -104,9 +104,19 @@ get_consumer_ip() {
     dev=$(ip route |grep $network | awk '{print $3}' |head -n 1)
 
     #if there is no route, use default route
-    [[ -z $dev ]] && dev=$(ip route |grep ^default | awk '{print $3}' |head -n 1)
+    [[ -z $dev ]] && dev=$(ip route |grep ^default | awk '{print $5}' |head -n 1)
 
     CONSUMER_IP=$(ip addr show $dev |grep inet | grep $network_pre | awk '{print $2}' | cut -d'/' -f1)
+
+    #if there is no ip in the same network, use the config ip
+    if [[ -z "$CONSUMER_IP" ]]; then
+        CONSUMER_IP=$(ip addr show $dev |grep inet | grep " $dev " | awk '{print $2}' | cut -d'/' -f1)
+    fi
+
+    if [[ -z "$CONSUMER_IP" ]]; then
+        echo "ERROR: Could not get CONSUMER_IP."
+        exit 1
+    fi
 }
 
 download_image() {
