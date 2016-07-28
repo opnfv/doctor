@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_2b3f3f27",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-07-28T11:45:32Z",
+      "side": 1,
+      "message": "For example: The `COMPUTE_HOST` we get  is `node-1`.\nWe only know the node id is 1, so find the ip according to the `id\u003d\u003d1`.\n[root@fuel2 ~]# fuel node\nid | status | name             | cluster | ip        | mac               | roles                    | pending_roles | online | group_id\n---+--------+------------------+---------+-----------+-------------------+--------------------------+---------------+--------+---------\n 5 | ready  | Untitled (02:4c) |       1 | 10.20.1.7 | 3c:da:2a:e8:02:4c | controller, mongo        |               |      1 |        1\n 3 | ready  | Untitled (01:a7) |       1 | 10.20.1.4 | 3c:da:2a:e8:01:a7 | ceph-osd, controller     |               |      1 |        1\n 1 | ready  | Untitled (01:ed) |       1 | 10.20.1.3 | 3c:da:2a:e8:01:ed | controller, opendaylight |               |      1 |        1\n 4 | ready  | Untitled (01:ca) |       1 | 10.20.1.5 | 3c:da:2a:e8:01:ca | ceph-osd, compute        |               |      1 |        1\n 2 | ready  | Untitled (01:b6) |       1 | 10.20.1.6 | 3c:da:2a:e8:01:b6 | ceph-osd, compute        |               |      1 |        1",
+      "parentUuid": "1a76adc5_ab8fcf22",
+      "range": {
+        "startLine": 68,
+        "startChar": 79,
+        "endLine": 68,
+        "endChar": 85
+      },
+      "revId": "9d11cc17424674f616fa6b9a408a4b1a14577b5f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_8b9e9355",
         "filename": "tests/run.sh",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_6b0c5795",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-07-28T11:45:32Z",
+      "side": 1,
+      "message": "use `scp` has another problems. How the installer to copy the\nprivate_key to the vm where the script run? We don\u0027t know the user and key about the vm where the script run.",
+      "parentUuid": "1a76adc5_8b9e9355",
+      "range": {
+        "startLine": 95,
+        "startChar": 36,
+        "endLine": 95,
+        "endChar": 49
+      },
+      "revId": "9d11cc17424674f616fa6b9a408a4b1a14577b5f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_2ba3bf9f",
         "filename": "tests/run.sh",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2016-07-28T11:22:30Z",
       "side": 1,
       "message": "this shouldn\u0027t be run when \u0027local\u0027 type installer.",
+      "range": {
+        "startLine": 100,
+        "startChar": 4,
+        "endLine": 102,
+        "endChar": 35
+      },
+      "revId": "9d11cc17424674f616fa6b9a408a4b1a14577b5f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_ab126fb2",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-07-28T11:45:32Z",
+      "side": 1,
+      "message": "Yes, i need to repeat the codes in different installer?",
+      "parentUuid": "1a76adc5_2ba3bf9f",
       "range": {
         "startLine": 100,
         "startChar": 4,
