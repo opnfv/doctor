@@ -314,7 +314,7 @@ start_consumer
 sleep 60
 echo "injecting host failure..."
 inject_failure
-sleep 10
+sleep 60
 
 check_host_status "DOWN"
 calculate_notification_time
