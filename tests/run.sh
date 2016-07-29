@@ -96,17 +96,12 @@ prepare_compute_ssh() {
 }
 
 get_consumer_ip() {
-    #get network of the compute_ip address
-    network_pre=${COMPUTE_IP%.*}
-    network=${network_pre}.0/24
+    CONSUMER_IP=$(ip route get $COMPUTE_IP | awk '/ src /{print $NF}')
 
-    #if there is a dedicated route, use it
-    dev=$(ip route |grep $network | awk '{print $3}' |head -n 1)
-
-    #if there is no route, use default route
-    [[ -z $dev ]] && dev=$(ip route |grep ^default | awk '{print $3}' |head -n 1)
-
-    CONSUMER_IP=$(ip addr show $dev |grep inet | grep $network_pre | awk '{print $2}' | cut -d'/' -f1)
+    if [[ -z "$CONSUMER_IP" ]]; then
+        echo "ERROR: Could not get CONSUMER_IP."
+        exit 1
+    fi
 }
 
 download_image() {
