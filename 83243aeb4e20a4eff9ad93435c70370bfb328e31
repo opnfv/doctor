@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_d94a2155",
+        "filename": "tests/run.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-07-29T02:34:28Z",
+      "side": 1,
+      "message": "Done.\nhttps://jira.opnfv.org/browse/FUEL-158",
+      "parentUuid": "1a76adc5_ab634f19",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 60
+      },
+      "revId": "83243aeb4e20a4eff9ad93435c70370bfb328e31",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_b92ba581",
         "filename": "tests/run.sh",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2016-07-29T01:44:16Z",
       "side": 1,
       "message": "Why apex branch is modified in this patch?\n\nEven for editorial fix, it would be better to be landed in a separate patch.",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 39
+      },
+      "revId": "83243aeb4e20a4eff9ad93435c70370bfb328e31",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_99e9091d",
+        "filename": "tests/run.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-07-29T02:34:28Z",
+      "side": 1,
+      "message": "compare with patch 1. I origin want to move these code out of `if -fi` as common for different installers. But it may lead to failure about the `local` installer.",
+      "parentUuid": "1a76adc5_b92ba581",
       "range": {
         "startLine": 94,
         "startChar": 0,
