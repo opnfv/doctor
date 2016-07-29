@@ -2,6 +2,144 @@
   "comments": [
     {
       "key": {
+        "uuid": "1a76adc5_99bca96e",
+        "filename": "docs/design/port-status-update.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-07-29T09:24:50Z",
+      "side": 1,
+      "message": "data plane failures",
+      "range": {
+        "startLine": 13,
+        "startChar": 24,
+        "endLine": 13,
+        "endChar": 44
+      },
+      "revId": "ab97465fc571fd4d89a66b6375bda07cb923f5ce",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_b9c165e6",
+        "filename": "docs/design/port-status-update.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-07-29T09:24:50Z",
+      "side": 1,
+      "message": "that issue",
+      "range": {
+        "startLine": 14,
+        "startChar": 20,
+        "endLine": 14,
+        "endChar": 25
+      },
+      "revId": "ab97465fc571fd4d89a66b6375bda07cb923f5ce",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_59b6118c",
+        "filename": "docs/design/port-status-update.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-07-29T09:24:50Z",
+      "side": 1,
+      "message": "about faults in the data plane that are affecting the ports.",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 15,
+        "endChar": 52
+      },
+      "revId": "ab97465fc571fd4d89a66b6375bda07cb923f5ce",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_19b0998a",
+        "filename": "docs/design/port-status-update.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-07-29T09:24:50Z",
+      "side": 1,
+      "message": "one (main) part of the problem described there",
+      "range": {
+        "startLine": 23,
+        "startChar": 24,
+        "endLine": 23,
+        "endChar": 59
+      },
+      "revId": "ab97465fc571fd4d89a66b6375bda07cb923f5ce",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_79bbcd72",
+        "filename": "docs/design/port-status-update.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-07-29T09:24:50Z",
+      "side": 1,
+      "message": "focuses",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 10
+      },
+      "revId": "ab97465fc571fd4d89a66b6375bda07cb923f5ce",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_39ad5532",
+        "filename": "docs/design/port-status-update.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-07-29T09:24:50Z",
+      "side": 1,
+      "message": "in case",
+      "range": {
+        "startLine": 39,
+        "startChar": 43,
+        "endLine": 39,
+        "endChar": 45
+      },
+      "revId": "ab97465fc571fd4d89a66b6375bda07cb923f5ce",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_eb4dc7c5",
         "filename": "docs/design/port-status-update.rst",
         "patchSetId": 2
@@ -49,6 +187,116 @@
       "side": 1,
       "message": "I think we don\u0027t have to explain in this spec, as it is trigger for such discussion. I\u0027m just curious relation between \u0027status\u0027 and \u0027dp_status\u0027.",
       "parentUuid": "1a76adc5_ab958fe5",
+      "revId": "ab97465fc571fd4d89a66b6375bda07cb923f5ce",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_596db103",
+        "filename": "docs/design/port-status-update.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-07-29T09:24:50Z",
+      "side": 1,
+      "message": "Is this \"status\" different to the \"dp_down\" status in below table? If so, you may indeed need some explanation.",
+      "parentUuid": "1a76adc5_6b445774",
+      "revId": "ab97465fc571fd4d89a66b6375bda07cb923f5ce",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_f92b5d92",
+        "filename": "docs/design/port-status-update.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-07-29T09:24:50Z",
+      "side": 1,
+      "message": "Why \"dp_down\" and not \"dp_status\" that could be \"up/down/maintenance/...\"",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 8
+      },
+      "revId": "ab97465fc571fd4d89a66b6375bda07cb923f5ce",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_b91de575",
+        "filename": "docs/design/port-status-update.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-07-29T09:24:50Z",
+      "side": 1,
+      "message": "Is there a specific syntax to say \"defaults to False\"?",
+      "range": {
+        "startLine": 106,
+        "startChar": 33,
+        "endLine": 106,
+        "endChar": 45
+      },
+      "revId": "ab97465fc571fd4d89a66b6375bda07cb923f5ce",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_79174d52",
+        "filename": "docs/design/port-status-update.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-07-29T09:24:50Z",
+      "side": 1,
+      "message": "Should we also write 1 sentence about the \"impact\" on the performance this might have, e.g. stating that it is expected such events do not only happen with high frequency and thus no negative impact on the notification bus is expected.",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 22
+      },
+      "revId": "ab97465fc571fd4d89a66b6375bda07cb923f5ce",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_94ff9001",
+        "filename": "docs/design/port-status-update.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-07-29T09:24:50Z",
+      "side": 1,
+      "message": "It\u0027s a little confusing to have terminology \"data plan status\" vs. \"data plane down\" which actually refers to the same thing.",
+      "range": {
+        "startLine": 156,
+        "startChar": 31,
+        "endLine": 156,
+        "endChar": 48
+      },
       "revId": "ab97465fc571fd4d89a66b6375bda07cb923f5ce",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
