@@ -373,6 +373,52 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_f445a4b3",
+        "filename": "docs/design/port-status-update.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-07-29T13:07:50Z",
+      "side": 1,
+      "message": "attribute \u0027dp-down\u0027 (data plane down)",
+      "range": {
+        "startLine": 47,
+        "startChar": 25,
+        "endLine": 47,
+        "endChar": 34
+      },
+      "revId": "ab97465fc571fd4d89a66b6375bda07cb923f5ce",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_741194ab",
+        "filename": "docs/design/port-status-update.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-07-29T13:07:50Z",
+      "side": 1,
+      "message": "Is this about the status of the \"port on the data plane\" or the \"data plane\" status? Here you talk about the \"port\", below you talk about \"data plane status\". Does the abbreviation dp-down mean \"data plane down\" or \"dataplane port down\"?",
+      "range": {
+        "startLine": 47,
+        "startChar": 52,
+        "endLine": 48,
+        "endChar": 10
+      },
+      "revId": "ab97465fc571fd4d89a66b6375bda07cb923f5ce",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_f92b5d92",
         "filename": "docs/design/port-status-update.rst",
         "patchSetId": 2
@@ -408,6 +454,30 @@
       "side": 1,
       "message": "Good point. I would say that it would have higher chances of agreement if keeping it of boolean type to match/be in line with the existing \"status\" field type too. For reflecting maintenance status, there\u0027s already the \"admin_state_up\" field (boolean)",
       "parentUuid": "1a76adc5_f92b5d92",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 8
+      },
+      "revId": "ab97465fc571fd4d89a66b6375bda07cb923f5ce",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_941230b3",
+        "filename": "docs/design/port-status-update.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-07-29T13:07:50Z",
+      "side": 1,
+      "message": "okay.",
+      "parentUuid": "1a76adc5_5499f86c",
       "range": {
         "startLine": 63,
         "startChar": 1,
@@ -514,6 +584,29 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_343c7c2f",
+        "filename": "docs/design/port-status-update.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-07-29T13:07:50Z",
+      "side": 1,
+      "message": "data plane status (i.e. \u0027dp-down\u0027 attribute) value",
+      "range": {
+        "startLine": 120,
+        "startChar": 41,
+        "endLine": 120,
+        "endChar": 58
+      },
+      "revId": "ab97465fc571fd4d89a66b6375bda07cb923f5ce",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_94ff9001",
         "filename": "docs/design/port-status-update.rst",
         "patchSetId": 2
@@ -549,6 +642,30 @@
       "side": 1,
       "message": "I can understand your point. How would you propose changing where and how?",
       "parentUuid": "1a76adc5_94ff9001",
+      "range": {
+        "startLine": 156,
+        "startChar": 31,
+        "endLine": 156,
+        "endChar": 48
+      },
+      "revId": "ab97465fc571fd4d89a66b6375bda07cb923f5ce",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_b4308c57",
+        "filename": "docs/design/port-status-update.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-07-29T13:07:50Z",
+      "side": 1,
+      "message": "what about: \"data plane status (i.e. \u0027dp-down\u0027 attribute)\"?",
+      "parentUuid": "1a76adc5_d4ac288f",
       "range": {
         "startLine": 156,
         "startChar": 31,
