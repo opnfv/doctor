@@ -93,6 +93,30 @@
       "revId": "83243aeb4e20a4eff9ad93435c70370bfb328e31",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_99d02955",
+        "filename": "tests/run.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-07-29T02:42:02Z",
+      "side": 1,
+      "message": "I think we can live wth redundant code in this \"add support for fuel\" patch and refactoring the whole script in a separate one.\n\nOtherwise it may result in conflict with apex modification not easy to merge.",
+      "parentUuid": "1a76adc5_99e9091d",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 39
+      },
+      "revId": "83243aeb4e20a4eff9ad93435c70370bfb328e31",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
