@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_baccf336",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-08-02T03:43:52Z",
+      "side": 1,
+      "message": "difficult to understand this one. Maybe simply put \"wait until it is launched\" will be enough. We don\u0027t need to give every detail in the script.",
+      "range": {
+        "startLine": 104,
+        "startChar": 50,
+        "endLine": 105,
+        "endChar": 26
+      },
+      "revId": "867433064ae8b0bbb14165e4e6883724198ad042",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_1adba7ee",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-08-02T03:43:52Z",
+      "side": 1,
+      "message": "\u003d\u003e \"where\" or \"in which\"",
+      "range": {
+        "startLine": 105,
+        "startChar": 59,
+        "endLine": 105,
+        "endChar": 64
+      },
+      "revId": "867433064ae8b0bbb14165e4e6883724198ad042",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_3ad8e3ee",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-08-02T03:43:52Z",
+      "side": 1,
+      "message": "not necessary.",
+      "range": {
+        "startLine": 106,
+        "startChar": 58,
+        "endLine": 107,
+        "endChar": 20
+      },
+      "revId": "867433064ae8b0bbb14165e4e6883724198ad042",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
