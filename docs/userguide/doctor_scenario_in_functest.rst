@@ -94,18 +94,20 @@ Test case
 
 Functest will call the "run.sh" script in Doctor to run the test job.
 
+Currently, only 'Apex' and 'local' installer are supported.
+
 The "run.sh" script will execute the following steps.
 
-Firstly, verify connectivity to target compute host according to different
-installer and prepare image for booting VM. Currently, only 'Apex' and
-'local' installer are supported.
+Firstly, prepare image for booting VM, then create a test project and test
+user (both default to doctor) for the Doctor tests.
 
-Secondly, the Doctor components are started, and, based on the above
-preparation, a test user (default as demo) will be created for the Doctor
-tests.
+Secondly, boot a VM under the doctor project and check the VM status to verify
+that the VM is launched completely. Then get the compute host info where the VM
+is launched to verify connectivity to the target compute host. Get the consumer
+ip according to the route to compute ip and create an alarm event in Ceilometer
+using the consumer ip.
 
-Thirdly, the VM is booted, and an alarm event is created in Ceilometer.
-After sleeping for 1 minute in order to wait for the VM launch to complete,
+Thirdly, the Doctor components are started, and, based on the above preparation,
 a failure is injected to the system, i.e. the network of compute host is
 disabled for 3 minutes. To ensure the host is down, the status of the host
 will be checked.
