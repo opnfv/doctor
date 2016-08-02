@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_da80cf8d",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-08-02T07:02:51Z",
+      "side": 1,
+      "message": "default to \u0027doctor\u0027",
+      "range": {
+        "startLine": 102,
+        "startChar": 19,
+        "endLine": 102,
+        "endChar": 21
+      },
+      "revId": "7dffaad6a6643afc045ce2969b7e451a1a1ad641",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_fa7d8bb2",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-08-02T07:02:51Z",
+      "side": 1,
+      "message": "project and  (no comma)",
+      "range": {
+        "startLine": 104,
+        "startChar": 37,
+        "endLine": 104,
+        "endChar": 50
+      },
+      "revId": "7dffaad6a6643afc045ce2969b7e451a1a1ad641",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_9a4a5782",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-08-02T07:02:51Z",
+      "side": 1,
+      "message": "verify that the VM",
+      "range": {
+        "startLine": 104,
+        "startChar": 73,
+        "endLine": 104,
+        "endChar": 79
+      },
+      "revId": "7dffaad6a6643afc045ce2969b7e451a1a1ad641",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_3a7463ce",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-08-02T07:02:51Z",
+      "side": 1,
+      "message": "ip and create",
+      "range": {
+        "startLine": 107,
+        "startChar": 36,
+        "endLine": 107,
+        "endChar": 37
+      },
+      "revId": "7dffaad6a6643afc045ce2969b7e451a1a1ad641",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_ba4f1392",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-08-02T07:02:51Z",
+      "side": 1,
+      "message": "if the time being the injection of the failure and the notification is below 1 second.",
+      "range": {
+        "startLine": 119,
+        "startChar": 68,
+        "endLine": 120,
+        "endChar": 17
+      },
+      "revId": "7dffaad6a6643afc045ce2969b7e451a1a1ad641",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
