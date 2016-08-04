@@ -491,6 +491,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_c779d7fd",
+        "filename": "docs/design/port-status-update.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-08-04T09:32:28Z",
+      "side": 1,
+      "message": "I\u0027m a bit hesitant to explicitly put it that way but let\u0027s try. The reason is that Neutron cores do not want to add deployment/topology complexity into Neutron at the moment, and seems as if we\u0027re moving the focus from the data plane status of a port to the data plane status of the entire network.\n\nA good point from a Neutron core was what do we consider a data plane fault, because even if there\u0027s one it may not affect communication between instances on the same compute host or rack (e.g. only the ToR uplink is down). But since they don\u0027t want to add topology complexity, let\u0027s keep the status boolean.\n\nAs for the title, \"Port data plane status\" is a good candidate IMO. Here I\u0027m dropping \"update\" because we\u0027re introducing the field for the first time so it is both read and write/update.\n\nWhat do you think, Gerald?",
+      "parentUuid": "1a76adc5_34ff9c36",
+      "range": {
+        "startLine": 47,
+        "startChar": 52,
+        "endLine": 48,
+        "endChar": 10
+      },
+      "revId": "ab97465fc571fd4d89a66b6375bda07cb923f5ce",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_f92b5d92",
         "filename": "docs/design/port-status-update.rst",
         "patchSetId": 2
