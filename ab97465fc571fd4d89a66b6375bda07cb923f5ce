@@ -515,6 +515,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_879f5f03",
+        "filename": "docs/design/port-status-update.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-08-04T11:37:53Z",
+      "side": 1,
+      "message": "Carlos, you had been talking to Neutron folks a lot, so you finally decide which way is the best to be successful.",
+      "parentUuid": "1a76adc5_c779d7fd",
+      "range": {
+        "startLine": 47,
+        "startChar": 52,
+        "endLine": 48,
+        "endChar": 10
+      },
+      "revId": "ab97465fc571fd4d89a66b6375bda07cb923f5ce",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_f92b5d92",
         "filename": "docs/design/port-status-update.rst",
         "patchSetId": 2
