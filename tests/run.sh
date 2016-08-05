@@ -8,7 +8,7 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
 
-[[ "${CI_DEBUG:-true}" == "true" ]] && set -x
+[[ "${CI_DEBUG:-true}" == [Tt]rue ]] && set -x
 
 IMAGE_URL=https://launchpad.net/cirros/trunk/0.3.0/+download/cirros-0.3.0-x86_64-disk.img
 IMAGE_NAME=cirros
@@ -41,13 +41,13 @@ fi
 get_compute_host_info() {
     # get computer host info which VM boot in
     COMPUTE_HOST=$(openstack $as_doctor_user server show $VM_NAME |
-                   grep "OS-EXT-SRV-ATTR:host" | awk '{ print $4 }' |
-                   awk -F '.' '{print $1}')
+                   grep "OS-EXT-SRV-ATTR:host" | awk '{ print $4 }')
     if [[ -z "$COMPUTE_HOST" ]] ; then
         echo "ERROR: failed to get compute hostname"
         exit 1
     fi
     if [[ "$INSTALLER_TYPE" == "apex" ]] ; then
+        compute_host_in_undercloud=${COMPUTE_HOST%%.*}
         COMPUTE_USER=${COMPUTE_USER:-heat-admin}
         if [[ "$INSTALLER_IP" == "none" ]] ; then
             instack_mac=$(sudo virsh domiflist instack | awk '/default/{print $5}')
@@ -55,7 +55,7 @@ get_compute_host_info() {
         fi
         COMPUTE_IP=$(sudo ssh $ssh_opts $INSTALLER_IP \
              "source stackrc; \
-             nova show $COMPUTE_HOST \
+             nova show $compute_host_in_undercloud \
              | awk '/ ctlplane network /{print \$5}'")
     elif [[ "$INSTALLER_TYPE" == "local" ]] ; then
         COMPUTE_USER=${COMPUTE_USER:-$(whoami)}
@@ -65,6 +65,8 @@ get_compute_host_info() {
             exit 1
         fi
     fi
+    echo "COMPUTE_HOST=$COMPUTE_HOST"
+    echo "COMPUTE_IP=$COMPUTE_IP"
 
     # verify connectivity to target compute host
     ping -c 1 "$COMPUTE_IP"
@@ -97,6 +99,7 @@ prepare_compute_ssh() {
 
 get_consumer_ip() {
     CONSUMER_IP=$(ip route get $COMPUTE_IP | awk '/ src /{print $NF}')
+    echo "CONSUMER_IP=$CONSUMER_IP"
 
     if [[ -z "$CONSUMER_IP" ]]; then
         echo "ERROR: Could not get CONSUMER_IP."
@@ -226,6 +229,10 @@ END_TXT
 calculate_notification_time() {
     detected=$(grep "doctor monitor detected at" monitor.log | awk '{print $5}')
     notified=$(grep "doctor consumer notified at" consumer.log | awk '{print $5}')
+    if ! grep -q "doctor consumer notified at" consumer.log ; then
+        echo "ERROR: consumer hasn't received fault notification."
+        exit 1
+    fi
     echo "$notified $detected" | \
         awk '{d = $1 - $2; if (d < 1 && d > 0) print d " OK"; else print d " NG"}'
 }
@@ -239,11 +246,11 @@ check_host_status() {
     if [ -z "$host_status" ] ; then
         echo "ERROR: host_status not reported by: nova show $VM_NAME"
         exit 1
-    elif [[ "$host_status" != "$expected_state" ]] ; then
+    elif [[ "$expected_state" =~ "$host_status" ]] ; then
+        echo "$VM_NAME showing host_status: $host_status"
+    else
         echo "ERROR: host_status:$host_status not equal to expected_state: $expected_state"
         exit 1
-    else
-        echo "$VM_NAME showing host_status: $host_status"
     fi
 }
 
@@ -292,6 +299,7 @@ create_test_user
 echo "creating VM..."
 boot_vm
 wait_for_vm_launch
+openstack $as_doctor_user server show $VM_NAME
 
 echo "get computer host info and prepare to ssh..."
 get_compute_host_info
@@ -311,7 +319,7 @@ echo "injecting host failure..."
 inject_failure
 sleep 60
 
-check_host_status "DOWN"
+check_host_status "(DOWN|UNKNOWN)"
 calculate_notification_time
 
 echo "done"
