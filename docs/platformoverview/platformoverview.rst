@@ -12,21 +12,29 @@ https://wiki.opnfv.org/doctor
 Features
 --------
 
-Doctor platform, as of Brahmaputra release, provides the two features:
+Doctor platform provides these features in `Colorado Release <https://wiki.opnfv.org/display/SWREL/Colorado>`_:
 
 * Immediate Notification
-* Consistent resource state awareness (Compute/host-down)
+* Consistent resource state awareness for compute host down
+* Valid compute host status given to VM owner
 
 These features enable high availability of Network Services on top of
-the virtualized infrastructure. Immediate notification allows VNF managers
-(VNFM) to process recovery actions promptly once a failure has occurred.
+the virtualized infrastructure.
+
+Immediate notification allows VNF managers (VNFM) to process recovery
+actions promptly once a failure has occurred.
+
 Consistency of resource state is necessary to properly execute recovery
 actions properly in the VIM.
+
+Ability to query host status gives VM owner (VNFM) the possibility to get
+consistent state information through an API in case of a compute host
+fault.
 
 Components
 ----------
 
-Doctor platform, as of Brahmaputra release, consists of the following
+Doctor platform, as of Colorado release, consists of the following
 components:
 
 * OpenStack Compute (Nova)
