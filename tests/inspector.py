@@ -20,7 +20,7 @@ import nova_force_down
 
 class DoctorInspectorSample(object):
 
-    nova_api_version = 2.11
+    nova_api_version = '2.11'
 
     def __init__(self):
         self.nova = novaclient.Client(self.nova_api_version,

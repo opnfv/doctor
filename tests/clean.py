@@ -14,7 +14,7 @@ import os
 import novaclient.client as novaclient
 
 
-nova_api_version = 2.11
+nova_api_version = '2.11'
 
 def enable_compute_host(hostname):
     self.nova = novaclient.Client(self.nova_api_version,

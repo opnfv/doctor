@@ -36,7 +36,7 @@ def force_down(hostname, force_down=True):
         'Content-Type': 'application/json',
         'Accept': 'application/json',
         'X-Auth-Token': keystone.auth_ref['token']['id'],
-        'X-OpenStack-Nova-API-Version': 2.11,
+        'X-OpenStack-Nova-API-Version': '2.11',
     }
 
     print requests.put(url, data=json.dumps(data), headers=headers)
