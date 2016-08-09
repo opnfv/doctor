@@ -22,6 +22,30 @@
       "revId": "e132deb886de864c6e96c2a0ade923bbe896e553",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_53c7c545",
+        "filename": "docs/platformoverview/platformoverview.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1482
+      },
+      "writtenOn": "2016-08-09T03:00:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_18a72a51",
+      "range": {
+        "startLine": 30,
+        "startChar": 35,
+        "endLine": 30,
+        "endChar": 43
+      },
+      "revId": "e132deb886de864c6e96c2a0ade923bbe896e553",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
