@@ -22,6 +22,30 @@
       "revId": "c087f2e68fad9caf3df9a4393163be61437087d2",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_3a1d3967",
+        "filename": "docs/userguide/featureusage.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-08-09T13:42:34Z",
+      "side": 1,
+      "message": "The colorado branch is not created yet. I think we may use the master branch for now, i.e. http://artifacts.opnfv.org/doctor/docs/manuals/get-valid-server-state.html",
+      "parentUuid": "1a76adc5_18c16a2e",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 83
+      },
+      "revId": "c087f2e68fad9caf3df9a4393163be61437087d2",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
