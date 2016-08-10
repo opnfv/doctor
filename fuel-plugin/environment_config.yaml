@@ -1,0 +1,7 @@
+attributes:
+  metadata:
+    restrictions:
+      - condition: "settings:additional_components.ceilometer.value == false"
+        message: "Ceilometer should be enabled in the environment settings."
+    label: "Doctor plugin"
+    weight: 90
