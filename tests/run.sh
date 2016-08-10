@@ -22,7 +22,8 @@ CONSUMER_PORT=12346
 DOCTOR_USER=doctor
 DOCTOR_PW=doctor
 DOCTOR_PROJECT=doctor
-DOCTOR_ROLE=_member_
+#TODO: change back to `_member_` when JIRA DOCTOR-55 is done
+DOCTOR_ROLE=admin
 
 SUPPORTED_INSTALLER_TYPES="apex local"
 INSTALLER_TYPE=${INSTALLER_TYPE:-apex}
