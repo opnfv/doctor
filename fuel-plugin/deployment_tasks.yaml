@@ -1,0 +1,16 @@
+# These tasks will be merged into deployment graph. Here you
+# can specify new tasks for any roles, even built-in ones.
+
+- id: doctor-post-deployment-sh
+  type: shell
+  role: [primary-controller, controller]
+  required_for: [post_deployment_end]
+  requires: [post_deployment_start]
+  version: 2.1.0
+  parameters:
+    cmd: ./deploy.sh
+    retries: 3
+    interval: 20
+    timeout: 180
+  reexecute_on:
+    - deploy_changes
