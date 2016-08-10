@@ -37,9 +37,12 @@ See
 http://artifacts.opnfv.org/doctor/brahmaputra/docs/manuals/mark-host-down_manual.html
 for more detail.
 
+Valid compute host status given to VM owner
+-------------------------------------------
+
 The resource state of a compute host can be retrieved by a user with the
 OpenStack Compute (Nova) servers API.
 
 See
-http://artifacts.opnfv.org/doctor/colorado/docs/manuals/get-valid-server-state.html
+http://artifacts.opnfv.org/doctor/docs/manuals/get-valid-server-state.html
 for more detail.
