@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_5d46efc0",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 694,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-08-10T08:16:34Z",
+      "side": 1,
+      "message": "i prefer \" rather than this char.",
+      "range": {
+        "startLine": 694,
+        "startChar": 27,
+        "endLine": 694,
+        "endChar": 28
+      },
+      "revId": "8193510d55722dd0cc449ec0239f7c12d890b749",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
