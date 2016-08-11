@@ -29,6 +29,9 @@ SUPPORTED_INSTALLER_TYPES="apex fuel local"
 INSTALLER_TYPE=${INSTALLER_TYPE:-local}
 INSTALLER_IP=${INSTALLER_IP:-none}
 
+SUPPORTED_INSPECTOR_TYPES="sample congress"
+INSPECTOR_TYPE=${INSPECTOR_TYPE:-sample}
+
 ssh_opts="-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 as_doctor_user="--os-username $DOCTOR_USER --os-password $DOCTOR_PW
                 --os-tenant-name $DOCTOR_PROJECT"
@@ -182,7 +185,7 @@ print_log() {
 
 start_monitor() {
     pgrep -f "python monitor.py" && return 0
-    sudo python monitor.py "$COMPUTE_HOST" "$COMPUTE_IP" \
+    sudo -E python monitor.py "$COMPUTE_HOST" "$COMPUTE_IP" "$INSPECTOR_TYPE" \
         "http://127.0.0.1:$INSPECTOR_PORT/events" > monitor.log 2>&1 &
 }
 
@@ -192,15 +195,68 @@ stop_monitor() {
     print_log monitor.log
 }
 
+congress_add_rule() {
+    name=$1
+    policy=$2
+    rule=$3
+
+    if ! openstack congress policy rule list $policy | grep -q -e "// Name: $name$" ; then
+        openstack congress policy rule create --name $name $policy "$rule"
+    fi
+}
+
+congress_del_rule() {
+    name=$1
+    policy=$2
+
+    if openstack congress policy rule list $policy | grep -q -e "^// Name: $name$" ; then
+        openstack congress policy rule delete $policy $name
+    fi
+}
+
+congress_setup_rules() {
+    congress_add_rule host_down classification \
+        'host_down(host) :-
+            doctor:events(hostname=host, type="compute.host.down", status="down")'
+
+    congress_add_rule active_instance_in_host classification \
+        'active_instance_in_host(vmid, host) :-
+            nova:servers(id=vmid, host_name=host, status="ACTIVE")'
+
+    # TODO(cgoncalves): uncomment once installers create nova datasource with
+    #                   option 'api_version' >= 2.11
+    #congress_add_rule host_force_down classification \
+    #    'execute[nova:services.force_down(host, "nova-compute")] :-
+    #        host_down(host)'
+
+    congress_add_rule error_vm_states classification \
+        'execute[nova:servers.reset_state(vmid, "error")] :-
+            host_down(host),
+            active_instance_in_host(vmid, host)'
+}
+
 start_inspector() {
-    pgrep -f "python inspector.py" && return 0
-    python inspector.py "$INSPECTOR_PORT" > inspector.log 2>&1 &
+    if [[ "$INSPECTOR_TYPE" == "sample" ]] ; then
+        pgrep -f "python inspector.py" && return 0
+        python inspector.py "$INSPECTOR_PORT" > inspector.log 2>&1 &
+    elif [[ "$INSPECTOR_TYPE" == "congress" ]] ; then
+        # TODO(cgoncalves): uncomment once installers create nova datasource
+        #                   with option 'api_version' >= 2.11
+        #openstack congress datasource list | grep -E " nova .*api_version': '2.11"
+        openstack congress driver list | grep -q " doctor "
+        openstack congress datasource list | grep -q " doctor " || {
+            openstack congress datasource create doctor doctor
+        }
+        congress_setup_rules
+    fi
 }
 
 stop_inspector() {
-    pgrep -f "python inspector.py" || return 0
-    kill $(pgrep -f "python inspector.py")
-    print_log inspector.log
+    if [[ "$INSPECTOR_TYPE" == "sample" ]] ; then
+        pgrep -f "python inspector.py" || return 0
+        kill $(pgrep -f "python inspector.py")
+        print_log inspector.log
+    fi
 }
 
 start_consumer() {
@@ -275,6 +331,14 @@ check_host_status() {
     fi
 }
 
+congress_doctor_driver() {
+    openstack congress driver list | grep -q " doctor "
+    openstack congress datasource list | grep -q " doctor " || {
+        openstack congress datasource create doctor doctor
+    }
+    python test_congress.py
+}
+
 cleanup() {
     set +e
     echo "cleanup..."
@@ -303,6 +367,13 @@ cleanup() {
                               --project "$DOCTOR_PROJECT"
     openstack project delete "$DOCTOR_PROJECT"
     openstack user delete "$DOCTOR_USER"
+
+    # TODO(cgoncalves): uncomment once installers create nova datasource
+    #                   with option 'api_version' >= 2.11
+    #congress_del_rule host_force_down classification
+    congress_del_rule error_vm_states classification
+    congress_del_rule active_instance_in_host classification
+    congress_del_rule host_down classification
 }
 
 
@@ -331,8 +402,8 @@ get_consumer_ip
 create_alarm
 
 echo "starting doctor sample components..."
-start_monitor
 start_inspector
+start_monitor
 start_consumer
 
 sleep 60
