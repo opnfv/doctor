@@ -174,6 +174,11 @@ create_alarm() {
         -q "traits.state=string::error; traits.instance_id=string::$vm_id"
 }
 
+print_log() {
+    log_file=$1
+    echo "$log_file:"
+    sed -e 's/^/    /' "$log_file"
+}
 
 start_monitor() {
     pgrep -f "python monitor.py" && return 0
@@ -184,7 +189,7 @@ start_monitor() {
 stop_monitor() {
     pgrep -f "python monitor.py" || return 0
     sudo kill $(pgrep -f "python monitor.py")
-    cat monitor.log
+    print_log monitor.log
 }
 
 start_inspector() {
@@ -195,7 +200,7 @@ start_inspector() {
 stop_inspector() {
     pgrep -f "python inspector.py" || return 0
     kill $(pgrep -f "python inspector.py")
-    cat inspector.log
+    print_log inspector.log
 }
 
 start_consumer() {
@@ -206,7 +211,7 @@ start_consumer() {
 stop_consumer() {
     pgrep -f "python consumer.py" || return 0
     kill $(pgrep -f "python consumer.py")
-    cat consumer.log
+    print_log consumer.log
 }
 
 wait_for_vm_launch() {
@@ -281,8 +286,8 @@ cleanup() {
     python ./nova_force_down.py "$COMPUTE_HOST" --unset
     sleep 240
     check_host_status "UP"
-    ssh $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP" \
-        "[ -e disable_network.log ] && cat disable_network.log"
+    scp $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP:disable_network.log" .
+    print_log disable_network.log
 
     openstack $as_doctor_user server list | grep -q " $VM_NAME " && openstack $as_doctor_user server delete "$VM_NAME"
     sleep 1
