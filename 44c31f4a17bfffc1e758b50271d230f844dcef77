@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_d158a8fc",
+        "filename": "fuel-plugin/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-08-11T13:50:05Z",
+      "side": 1,
+      "message": "shall use the doctor repo not github",
+      "range": {
+        "startLine": 34,
+        "startChar": 18,
+        "endLine": 34,
+        "endChar": 72
+      },
+      "revId": "44c31f4a17bfffc1e758b50271d230f844dcef77",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_9172307b",
+        "filename": "fuel-plugin/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-08-11T13:50:05Z",
+      "side": 1,
+      "message": "trailing spaces",
+      "range": {
+        "startLine": 58,
+        "startChar": 83,
+        "endLine": 58,
+        "endChar": 94
+      },
+      "revId": "44c31f4a17bfffc1e758b50271d230f844dcef77",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_110620cf",
+        "filename": "fuel-plugin/deployment_scripts/deploy.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-08-11T13:50:05Z",
+      "side": 1,
+      "message": "maybe  to replace these 3 line with\n\nsed \u0027s|- notifier://\\([^?]\\)|- notifier://?topic\u003dalarm.all \\1|\u0027 $CEILOMETER_CONF_DIR/event_pipeline.yaml",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 6
+      },
+      "revId": "44c31f4a17bfffc1e758b50271d230f844dcef77",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_310b1cd8",
+        "filename": "fuel-plugin/metadata.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-08-11T13:50:05Z",
+      "side": 1,
+      "message": "trailing space",
+      "range": {
+        "startLine": 27,
+        "startChar": 23,
+        "endLine": 27,
+        "endChar": 24
+      },
+      "revId": "44c31f4a17bfffc1e758b50271d230f844dcef77",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
