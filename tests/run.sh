@@ -254,6 +254,14 @@ check_host_status() {
     fi
 }
 
+congress_doctor_driver() {
+    openstack congress driver list | grep -q " doctor "
+    openstack congress datasource list | grep -q " doctor " || {
+        openstack congress datasource create doctor doctor
+    }
+    python test_congress.py
+}
+
 cleanup() {
     set +e
     echo "cleanup..."
@@ -321,5 +329,8 @@ sleep 60
 
 check_host_status "(DOWN|UNKNOWN)"
 calculate_notification_time
+
+echo "checking Congress Doctor driver support..."
+congress_doctor_driver
 
 echo "done"
