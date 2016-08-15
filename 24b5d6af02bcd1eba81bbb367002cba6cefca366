@@ -16,6 +16,24 @@
       "revId": "24b5d6af02bcd1eba81bbb367002cba6cefca366",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_f4634d18",
+        "filename": "fuel-plugin/uninstall.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-08-15T09:25:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_14c289e9",
+      "revId": "24b5d6af02bcd1eba81bbb367002cba6cefca366",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
