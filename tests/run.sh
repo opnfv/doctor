@@ -38,6 +38,102 @@ if [[ ! "$SUPPORTED_INSTALLER_TYPES" =~ "$INSTALLER_TYPE" ]] ; then
     exit 1
 fi
 
+get_installer_ip() {
+    if [[ "$INSTALLER_TYPE" == "apex" ]] ; then
+        if [[ "$INSTALLER_IP" == "none" ]] ; then
+            instack_mac=$(sudo virsh domiflist instack | awk '/default/{print $5}')
+            INSTALLER_IP=$(/usr/sbin/arp -e | grep ${instack_mac} | awk '{print $1}')
+        fi
+    elif [[ "$INSTALLER_TYPE" == "fuel" ]] ; then
+        if [[ "$INSTALLER_IP" == "none" ]] ; then
+            instack_mac=$(sudo virsh domiflist fuel-opnfv | awk '/pxebr/{print $5}')
+            INSTALLER_IP=$(/usr/sbin/arp -e | grep ${instack_mac} | awk '{print $1}')
+        fi
+    fi
+
+    if [[ -z "$INSTALLER_IP" ]] ; then
+        echo "ERROR: no installer ip"
+        exit 1
+    fi
+}
+
+prepare_ssh_to_cloud() {
+    ssh_opts_cpu="$ssh_opts"
+
+    # get ssh key from installer node
+    if [[ "$INSTALLER_TYPE" == "apex" ]] ; then
+        sudo scp $ssh_opts root@"$INSTALLER_IP":/home/stack/.ssh/id_rsa instack_key
+        sudo chown $(whoami):$(whoami) instack_key
+        chmod 400 instack_key
+        ssh_opts_cpu+=" -i instack_key"
+    elif [[ "$INSTALLER_TYPE" == "fuel" ]] ; then
+        sshpass -p r00tme scp $ssh_opts root@${INSTALLER_IP}:.ssh/id_rsa instack_key
+        sudo chown $(whoami):$(whoami) instack_key
+        chmod 400 instack_key
+        ssh_opts_cpu+=" -i instack_key"
+    elif [[ "$INSTALLER_TYPE" == "local" ]] ; then
+        echo "INSTALLER_TYPE set to 'local'. Assuming SSH keys already exchanged with $COMPUTE_HOST"
+    fi
+}
+
+prepare_test_env() {
+    #TODO delete it when fuel support the configuration
+    if [[ "$INSTALLER_TYPE" == "fuel" ]] ; then
+        echo "modify the ceilometer event_pipeline configuration..."
+        cat > set_alarm_event_conf.sh << 'END_TXT'
+#!/bin/bash
+if [ -e /etc/ceilometer/event_pipeline.yaml ]; then
+    if ! grep -q '^ *- notifier://?topic=alarm.all$' /etc/ceilometer/event_pipeline.yaml; then
+        sed -i 's|- notifier://|- notifier://?topic=alarm.all|' /etc/ceilometer/event_pipeline.yaml
+        service ceilometer-agent-notification restart
+    fi
+else
+    echo "ceilometer event_pipeline.yaml file is not exist"
+    exit 1
+fi
+exit 0
+END_TXT
+        chmod +x set_alarm_event_conf.sh
+        CONTROLLER_IP=$(sshpass -p r00tme ssh 2>/dev/null $ssh_opts root@${INSTALLER_IP} \
+             "fuel node | grep controller | cut -d '|' -f 5|xargs")
+        for node in $CONTROLLER_IP;do
+            scp $ssh_opts_cpu set_alarm_event_conf.sh "root@$node:"
+            ssh $ssh_opts_cpu "root@$node" 'nohup ./set_alarm_event_conf.sh > set_alarm_event_conf.log 2>&1 &'
+        done
+
+        echo "waiting ceilometer-agent-notification restart..."
+        sleep 60
+    fi
+}
+
+restore_test_env() {
+    #TODO delete it when fuel support the configuration
+    if [[ "$INSTALLER_TYPE" == "fuel" ]] ; then
+        echo "restore the ceilometer event_pipeline configuration..."
+        cat > restore_alarm_event_conf.sh << 'END_TXT'
+#!/bin/bash
+if [ -e /etc/ceilometer/event_pipeline.yaml ]; then
+    if grep -q '^ *- notifier://?topic=alarm.all$' /etc/ceilometer/event_pipeline.yaml; then
+        sed -i 's|- notifier://?topic=alarm.all|- notifier://|' /etc/ceilometer/event_pipeline.yaml
+        service ceilometer-agent-notification restart
+    fi
+else
+    echo "ceilometer event_pipeline.yaml file is not exist"
+    exit 1
+fi
+exit 0
+END_TXT
+        chmod +x restore_alarm_event_conf.sh
+        for node in $CONTROLLER_IP;do
+            scp $ssh_opts_cpu restore_alarm_event_conf.sh "root@$node:"
+            ssh $ssh_opts_cpu "root@$node" 'nohup ./restore_alarm_event_conf.sh > set_alarm_event_conf.log 2>&1 &'
+        done
+
+        echo "waiting ceilometer-agent-notification restart..."
+        sleep 60
+    fi
+}
+
 get_compute_host_info() {
     # get computer host info which VM boot in
     COMPUTE_HOST=$(openstack $as_doctor_user server show $VM_NAME |
@@ -50,20 +146,12 @@ get_compute_host_info() {
 
     if [[ "$INSTALLER_TYPE" == "apex" ]] ; then
         COMPUTE_USER=${COMPUTE_USER:-heat-admin}
-        if [[ "$INSTALLER_IP" == "none" ]] ; then
-            instack_mac=$(sudo virsh domiflist instack | awk '/default/{print $5}')
-            INSTALLER_IP=$(/usr/sbin/arp -e | grep ${instack_mac} | awk '{print $1}')
-        fi
         COMPUTE_IP=$(sudo ssh $ssh_opts $INSTALLER_IP \
              "source stackrc; \
              nova show $compute_host_in_undercloud \
              | awk '/ ctlplane network /{print \$5}'")
     elif [[ "$INSTALLER_TYPE" == "fuel" ]] ; then
         COMPUTE_USER=${COMPUTE_USER:-root}
-        if [[ "$INSTALLER_IP" == "none" ]] ; then
-            instack_mac=$(sudo virsh domiflist fuel-opnfv | awk '/pxebr/{print $5}')
-            INSTALLER_IP=$(/usr/sbin/arp -e | grep ${instack_mac} | awk '{print $1}')
-        fi
         node_id=$(echo $compute_host_in_undercloud | cut -d "-" -f 2)
         COMPUTE_IP=$(sshpass -p r00tme ssh 2>/dev/null $ssh_opts root@${INSTALLER_IP} \
              "fuel node|awk -F '|' -v id=$node_id '{if (\$1 == id) print \$5}' |xargs")
@@ -84,25 +172,6 @@ get_compute_host_info() {
     if [[ $? -ne 0 ]] ; then
         echo "ERROR: can not ping to computer host"
         exit 1
-    fi
-}
-
-prepare_compute_ssh() {
-    ssh_opts_cpu="$ssh_opts"
-
-    # get ssh key from installer node
-    if [[ "$INSTALLER_TYPE" == "apex" ]] ; then
-        sudo scp $ssh_opts root@"$INSTALLER_IP":/home/stack/.ssh/id_rsa instack_key
-        sudo chown $(whoami):$(whoami) instack_key
-        chmod 400 instack_key
-        ssh_opts_cpu+=" -i instack_key"
-    elif [[ "$INSTALLER_TYPE" == "fuel" ]] ; then
-        sshpass -p r00tme scp $ssh_opts root@${INSTALLER_IP}:.ssh/id_rsa instack_key
-        sudo chown $(whoami):$(whoami) instack_key
-        chmod 400 instack_key
-        ssh_opts_cpu+=" -i instack_key"
-    elif [[ "$INSTALLER_TYPE" == "local" ]] ; then
-        echo "INSTALLER_TYPE set to 'local'. Assuming SSH keys already exchanged with $COMPUTE_HOST"
     fi
 
     # verify ssh to target compute host
@@ -312,12 +381,19 @@ cleanup() {
                               --project "$DOCTOR_PROJECT"
     openstack project delete "$DOCTOR_PROJECT"
     openstack user delete "$DOCTOR_USER"
+
+    restore_test_env
 }
 
 
 echo "Note: doctor/tests/run.sh has been executed."
 
 trap cleanup EXIT
+
+echo "preparing test env..."
+get_installer_ip
+prepare_ssh_to_cloud
+prepare_test_env
 
 echo "preparing VM image..."
 download_image
@@ -331,9 +407,8 @@ boot_vm
 wait_for_vm_launch
 openstack $as_doctor_user server show $VM_NAME
 
-echo "get computer host info and prepare to ssh..."
+echo "get computer host info..."
 get_compute_host_info
-prepare_compute_ssh
 
 echo "creating alarm..."
 get_consumer_ip
@@ -352,4 +427,5 @@ sleep 60
 check_host_status "(DOWN|UNKNOWN)"
 calculate_notification_time
 
+restore_test_env
 echo "done"
