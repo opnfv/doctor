@@ -16,6 +16,41 @@
       "revId": "9a53a0936b1d4fc2c6378adaa9d46f3175109b76",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_0ccb5da6",
+        "filename": "tests/monitor.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-08-17T13:37:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_25c4313f",
+      "revId": "9a53a0936b1d4fc2c6378adaa9d46f3175109b76",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_8c6c4d9e",
+        "filename": "tests/monitor.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-08-17T13:37:41Z",
+      "side": 1,
+      "message": "duplicated field. should come from inside \u0027details\u0027 removing it...",
+      "revId": "9a53a0936b1d4fc2c6378adaa9d46f3175109b76",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
