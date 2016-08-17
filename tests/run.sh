@@ -65,7 +65,7 @@ get_compute_host_info() {
             INSTALLER_IP=$(/usr/sbin/arp -e | grep ${instack_mac} | awk '{print $1}')
         fi
         node_id=$(echo $compute_host_in_undercloud | cut -d "-" -f 2)
-        COMPUTE_IP=$(sshpass -p r00tme ssh 2>/dev/null $ssh_options root@${INSTALLER_IP} \
+        COMPUTE_IP=$(sshpass -p r00tme ssh 2>/dev/null $ssh_opts root@${INSTALLER_IP} \
              "fuel node|awk -F '|' -v id=$node_id '{if (\$1 == id) print \$5}' |xargs")
     elif [[ "$INSTALLER_TYPE" == "local" ]] ; then
         COMPUTE_USER=${COMPUTE_USER:-$(whoami)}
@@ -97,7 +97,7 @@ prepare_compute_ssh() {
         chmod 400 instack_key
         ssh_opts_cpu+=" -i instack_key"
     elif [[ "$INSTALLER_TYPE" == "fuel" ]] ; then
-        sshpass -p r00tme scp $ssh_options root@${INSTALLER_IP}:.ssh/id_rsa instack_key
+        sshpass -p r00tme scp $ssh_opts root@${INSTALLER_IP}:.ssh/id_rsa instack_key
         sudo chown $(whoami):$(whoami) instack_key
         chmod 400 instack_key
         ssh_opts_cpu+=" -i instack_key"
