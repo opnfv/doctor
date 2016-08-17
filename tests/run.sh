@@ -114,7 +114,8 @@ prepare_compute_ssh() {
 }
 
 get_consumer_ip() {
-    CONSUMER_IP=$(ip route get $COMPUTE_IP | awk '/ src /{print $NF}')
+    CONSUMER_IP=$(sudo ssh $ssh_opts root@$INSTALLER_IP \
+                  "ip route get $COMPUTE_IP | awk '/ src /{print \$NF}'")
     echo "CONSUMER_IP=$CONSUMER_IP"
 
     if [[ -z "$CONSUMER_IP" ]]; then
@@ -206,12 +207,19 @@ stop_inspector() {
 start_consumer() {
     pgrep -f "python consumer.py" && return 0
     python consumer.py "$CONSUMER_PORT" > consumer.log 2>&1 &
+    # NOTE(r-mibu): create tunnel to the installer node, so that we can
+    # avoid some network problems dpends on infra and installers.
+    # This tunnel will be terminated by stop_consumer() or after 10 mins passed.
+    TUNNEL_COMMAND="sudo ssh $ssh_opts $INSTALLER_IP -R $CONSUMER_PORT:localhost:$CONSUMER_PORT 'sleep 600'"
+    $TUNNEL_COMMAND > ssh_tunnel.log 2>&1 < /dev/null &
 }
 
 stop_consumer() {
     pgrep -f "python consumer.py" || return 0
     kill $(pgrep -f "python consumer.py")
     print_log consumer.log
+    kill $(pgrep -f "$TUNNEL_COMMAND")
+    print_log ssh_tunnel.log
 }
 
 wait_for_vm_launch() {
