@@ -86,6 +86,76 @@ prepare_ssh_to_cloud() {
     fi
 }
 
+prepare_test_env() {
+    #TODO delete it when fuel support the configuration
+    if [[ "$INSTALLER_TYPE" == "fuel" ]] ; then
+        echo "modify the ceilometer event_pipeline configuration..."
+        cat > set_alarm_event_conf.sh << 'END_TXT'
+#!/bin/bash
+if [ -e /etc/ceilometer/event_pipeline.yaml ]; then
+    if ! grep -q '^ *- notifier://?topic=alarm.all$' /etc/ceilometer/event_pipeline.yaml; then
+        sed -i 's|- notifier://|- notifier://?topic=alarm.all|' /etc/ceilometer/event_pipeline.yaml
+        echo "modify the ceilometer config"
+        service ceilometer-agent-notification restart
+    fi
+else
+    echo "ceilometer event_pipeline.yaml file does not exist"
+    exit 1
+fi
+exit 0
+END_TXT
+        chmod +x set_alarm_event_conf.sh
+        CONTROLLER_IP=$(sshpass -p r00tme ssh 2>/dev/null $ssh_opts root@${INSTALLER_IP} \
+             "fuel node | grep controller | cut -d '|' -f 5|xargs")
+        for node in $CONTROLLER_IP;do
+            scp $ssh_opts_cpu set_alarm_event_conf.sh "root@$node:"
+            ssh $ssh_opts_cpu "root@$node" './set_alarm_event_conf.sh > set_alarm_event_conf.log 2>&1 &'
+            sleep 1
+            scp $ssh_opts_cpu "root@$node:set_alarm_event_conf.log" set_alarm_event_conf_$node.log
+        done
+
+        if grep -q "modify the ceilometer config" set_alarm_event_conf_*.log ; then
+            NEED_TO_RESTORE=true
+        fi
+
+        echo "waiting ceilometer-agent-notification restart..."
+        sleep 60
+    fi
+}
+
+restore_test_env() {
+    #TODO delete it when fuel support the configuration
+    if [[ "$INSTALLER_TYPE" == "fuel" ]] ; then
+        if ! $NEED_TO_RESTORE ; then
+            echo "Don't need to restore config"
+            exit 0
+        fi
+
+        echo "restore the ceilometer event_pipeline configuration..."
+        cat > restore_alarm_event_conf.sh << 'END_TXT'
+#!/bin/bash
+if [ -e /etc/ceilometer/event_pipeline.yaml ]; then
+    if grep -q '^ *- notifier://?topic=alarm.all$' /etc/ceilometer/event_pipeline.yaml; then
+        sed -i 's|- notifier://?topic=alarm.all|- notifier://|' /etc/ceilometer/event_pipeline.yaml
+        service ceilometer-agent-notification restart
+    fi
+else
+    echo "ceilometer event_pipeline.yaml file does not exist"
+    exit 1
+fi
+exit 0
+END_TXT
+        chmod +x restore_alarm_event_conf.sh
+        for node in $CONTROLLER_IP;do
+            scp $ssh_opts_cpu restore_alarm_event_conf.sh "root@$node:"
+            ssh $ssh_opts_cpu "root@$node" './restore_alarm_event_conf.sh > set_alarm_event_conf.log 2>&1 &'
+        done
+
+        echo "waiting ceilometer-agent-notification restart..."
+        sleep 60
+    fi
+}
+
 get_compute_host_info() {
     # get computer host info which VM boot in
     COMPUTE_HOST=$(openstack $as_doctor_user server show $VM_NAME |
@@ -418,6 +488,8 @@ cleanup() {
                               --project "$DOCTOR_PROJECT"
     openstack project delete "$DOCTOR_PROJECT"
     openstack user delete "$DOCTOR_USER"
+
+    restore_test_env
 }
 
 
@@ -428,6 +500,7 @@ trap cleanup EXIT
 echo "preparing test env..."
 get_installer_ip
 prepare_ssh_to_cloud
+prepare_test_env
 
 echo "preparing VM image..."
 download_image
