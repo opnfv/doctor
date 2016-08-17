@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_25c4313f",
+        "filename": "tests/monitor.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-08-17T01:57:09Z",
+      "side": 1,
+      "message": "This can be `self.event_type`",
+      "revId": "9a53a0936b1d4fc2c6378adaa9d46f3175109b76",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
