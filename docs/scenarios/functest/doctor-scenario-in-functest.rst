@@ -1,8 +1,7 @@
 .. This work is licensed under a Creative Commons Attribution 4.0 International License.
 .. http://creativecommons.org/licenses/by/4.0
 
-Doctor
-^^^^^^
+
 
 Platform overview
 """""""""""""""""
@@ -38,7 +37,7 @@ The Doctor platform consists of the following components:
 You can see an overview of the Doctor platform and how components interact in
 :numref:`figure-p1`.
 
-.. figure:: /platformoverview/images/figure-p1.png
+.. figure:: ./images/figure-p1.png
     :name: figure-p1
     :width: 100%
 
@@ -46,8 +45,7 @@ You can see an overview of the Doctor platform and how components interact in
 
 Detailed information on the Doctor architecture can be found in the Doctor
 requirements documentation:
-http://artifacts.opnfv.org/doctor/docs/requirements/05-implementation.html
-
+http://artifacts.opnfv.org/doctor/colorado/requirements/05-implementation.html
 
 Use case
 """"""""
