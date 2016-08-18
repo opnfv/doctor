@@ -16,6 +16,24 @@
       "revId": "7397aa3c7baf71454159d7b013acfb095a2e7929",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_1db625da",
+        "filename": "tests/run.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-08-18T13:53:19Z",
+      "side": 1,
+      "message": "agree.\nIf Carlos cannot update this patch, I\u0027ll create another patch to add this check.",
+      "parentUuid": "1a76adc5_8fe51faa",
+      "revId": "7397aa3c7baf71454159d7b013acfb095a2e7929",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
