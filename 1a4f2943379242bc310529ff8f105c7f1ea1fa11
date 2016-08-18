@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_6f7f63e1",
+        "filename": "docs/scenarios/functest/index.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-08-18T06:16:08Z",
+      "side": 1,
+      "message": "doctor-scenario-in-functest.rst\n^^^^\n\nyou don\u0027t need to write include directive here",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 44
+      },
+      "revId": "1a4f2943379242bc310529ff8f105c7f1ea1fa11",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
