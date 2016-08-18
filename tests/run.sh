@@ -59,7 +59,7 @@ get_installer_ip() {
         fi
     fi
 
-    if [[ "$INSTALLER_TYPE" -ne "local" ]] ; then
+    if [[ "$INSTALLER_TYPE" != "local" ]] ; then
         if [[ -z "$INSTALLER_IP" ]] ; then
             echo "ERROR: no installer ip"
             exit 1
@@ -205,8 +205,16 @@ get_compute_host_info() {
 }
 
 get_consumer_ip() {
-    CONSUMER_IP=$(sudo ssh $ssh_opts root@$INSTALLER_IP \
-                  "ip route get $COMPUTE_IP | awk '/ src /{print \$NF}'")
+    local get_consumer_command="ip route get $COMPUTE_IP | awk '/ src /{print \$NF}'"
+    if [[ "$INSTALLER_TYPE" == "apex" ]] ; then
+        CONSUMER_IP=$(sudo ssh $ssh_opts root@$INSTALLER_IP \
+                      "$get_consumer_command")
+    elif [[ "$INSTALLER_TYPE" == "fuel" ]] ; then
+        CONSUMER_IP=$(sudo sshpass -p r00tme ssh $ssh_opts root@${INSTALLER_IP} \
+                      "$get_consumer_command")
+    elif [[ "$INSTALLER_TYPE" == "local" ]] ; then
+        CONSUMER_IP=`$get_consumer_command`
+    fi
     echo "CONSUMER_IP=$CONSUMER_IP"
 
     if [[ -z "$CONSUMER_IP" ]]; then
@@ -366,22 +374,28 @@ start_consumer() {
     # NOTE(r-mibu): create tunnel to the controller nodes, so that we can
     # avoid some network problems dpends on infra and installers.
     # This tunnel will be terminated by stop_consumer() or after 10 mins passed.
-    if [[ "$INSTALLER_TYPE" == "apex" ]] ; then
-        CONTROLLER_IPS=$(sudo ssh $ssh_opts $INSTALLER_IP \
-                         "source stackrc; \
-                         nova list | grep ' overcloud-controller-[0-9] ' \
-                         | sed -e 's/^.*ctlplane=//' -e 's/ *|\$//'")
+    if [[ "$INSTALLER_TYPE" != "local" ]] ; then
+        if [[ "$INSTALLER_TYPE" == "apex" ]] ; then
+            CONTROLLER_IPS=$(sudo ssh $ssh_opts $INSTALLER_IP \
+                             "source stackrc; \
+                             nova list | grep ' overcloud-controller-[0-9] ' \
+                             | sed -e 's/^.*ctlplane=//' -e 's/ *|\$//'")
+        elif [[ "$INSTALLER_TYPE" == "fuel" ]] ; then
+            CONTROLLER_IPS=$(sshpass -p r00tme ssh 2>/dev/null $ssh_opts root@${INSTALLER_IP} \
+                            "fuel node | grep controller | cut -d '|' -f 5|xargs")
+        fi
+
+        if [[ -z "$CONTROLLER_IPS" ]]; then
+            echo "ERROR: Could not get CONTROLLER_IPS."
+            exit 1
+        fi
+        for ip in $CONTROLLER_IPS
+        do
+            forward_rule="-R $CONSUMER_PORT:localhost:$CONSUMER_PORT"
+            tunnel_command="sudo ssh $ssh_opts_cpu $COMPUTE_USER@$ip $forward_rule sleep 600"
+            $tunnel_command > "ssh_tunnel.${ip}.log" 2>&1 < /dev/null &
+        done
     fi
-    if [[ -z "$CONTROLLER_IPS" ]]; then
-        echo "ERROR: Could not get CONTROLLER_IPS."
-        exit 1
-    fi
-    for ip in $CONTROLLER_IPS
-    do
-        forward_rule="-R $CONSUMER_PORT:localhost:$CONSUMER_PORT"
-        tunnel_command="sudo ssh $ssh_opts_cpu $COMPUTE_USER@$ip $forward_rule sleep 600"
-        $tunnel_command > "ssh_tunnel.${ip}.log" 2>&1 < /dev/null &
-    done
 }
 
 stop_consumer() {
@@ -390,13 +404,15 @@ stop_consumer() {
     print_log consumer.log
 
     # NOTE(r-mibu): terminate tunnels to the controller nodes
-    for ip in $CONTROLLER_IPS
-    do
-        forward_rule="-R $CONSUMER_PORT:localhost:$CONSUMER_PORT"
-        tunnel_command="sudo ssh $ssh_opts_cpu $COMPUTE_USER@$ip $forward_rule sleep 600"
-        kill $(pgrep -f "$tunnel_command")
-        print_log "ssh_tunnel.${ip}.log"
-    done
+    if [[ "$INSTALLER_TYPE" != "local" ]] ; then
+        for ip in $CONTROLLER_IPS
+        do
+            forward_rule="-R $CONSUMER_PORT:localhost:$CONSUMER_PORT"
+            tunnel_command="sudo ssh $ssh_opts_cpu $COMPUTE_USER@$ip $forward_rule sleep 600"
+            kill $(pgrep -f "$tunnel_command")
+            print_log "ssh_tunnel.${ip}.log"
+        done
+    fi
 }
 
 wait_for_vm_launch() {
@@ -518,7 +534,8 @@ echo "get computer host info..."
 get_compute_host_info
 
 echo "creating alarm..."
-get_consumer_ip
+#TODO: change back to use, network problems depends on infra and installers 
+#get_consumer_ip
 create_alarm
 
 echo "starting doctor sample components..."
