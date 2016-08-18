@@ -210,7 +210,7 @@ start_consumer() {
     # NOTE(r-mibu): create tunnel to the installer node, so that we can
     # avoid some network problems dpends on infra and installers.
     # This tunnel will be terminated by stop_consumer() or after 10 mins passed.
-    TUNNEL_COMMAND="sudo ssh $ssh_opts $INSTALLER_IP -R $CONSUMER_PORT:localhost:$CONSUMER_PORT 'sleep 600'"
+    TUNNEL_COMMAND="sudo ssh $ssh_opts $INSTALLER_IP -R $CONSUMER_PORT:localhost:$CONSUMER_PORT sleep 600"
     $TUNNEL_COMMAND > ssh_tunnel.log 2>&1 < /dev/null &
 }
 
