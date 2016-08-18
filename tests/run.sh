@@ -38,6 +38,46 @@ if [[ ! "$SUPPORTED_INSTALLER_TYPES" =~ "$INSTALLER_TYPE" ]] ; then
     exit 1
 fi
 
+get_installer_ip() {
+    if [[ "$INSTALLER_TYPE" == "apex" ]] ; then
+        if [[ "$INSTALLER_IP" == "none" ]] ; then
+            instack_mac=$(sudo virsh domiflist instack | awk '/default/{print $5}')
+            INSTALLER_IP=$(/usr/sbin/arp -e | grep ${instack_mac} | awk '{print $1}')
+        fi
+    elif [[ "$INSTALLER_TYPE" == "fuel" ]] ; then
+        if [[ "$INSTALLER_IP" == "none" ]] ; then
+            instack_mac=$(sudo virsh domiflist fuel-opnfv | awk '/pxebr/{print $5}')
+            INSTALLER_IP=$(/usr/sbin/arp -e | grep ${instack_mac} | awk '{print $1}')
+        fi
+    fi
+
+    if [[ "$INSTALLER_TYPE" -ne "local" ]] ; then
+        if [[ -z "$INSTALLER_IP" ]] ; then
+            echo "ERROR: no installer ip"
+            exit 1
+        fi
+    fi
+}
+
+prepare_ssh_to_cloud() {
+    ssh_opts_cpu="$ssh_opts"
+
+    # get ssh key from installer node
+    if [[ "$INSTALLER_TYPE" == "apex" ]] ; then
+        sudo scp $ssh_opts root@"$INSTALLER_IP":/home/stack/.ssh/id_rsa instack_key
+        sudo chown $(whoami):$(whoami) instack_key
+        chmod 400 instack_key
+        ssh_opts_cpu+=" -i instack_key"
+    elif [[ "$INSTALLER_TYPE" == "fuel" ]] ; then
+        sshpass -p r00tme scp $ssh_opts root@${INSTALLER_IP}:.ssh/id_rsa instack_key
+        sudo chown $(whoami):$(whoami) instack_key
+        chmod 400 instack_key
+        ssh_opts_cpu+=" -i instack_key"
+    elif [[ "$INSTALLER_TYPE" == "local" ]] ; then
+        echo "INSTALLER_TYPE set to 'local'. Assuming SSH keys already exchanged with $COMPUTE_HOST"
+    fi
+}
+
 get_compute_host_info() {
     # get computer host info which VM boot in
     COMPUTE_HOST=$(openstack $as_doctor_user server show $VM_NAME |
@@ -50,20 +90,12 @@ get_compute_host_info() {
 
     if [[ "$INSTALLER_TYPE" == "apex" ]] ; then
         COMPUTE_USER=${COMPUTE_USER:-heat-admin}
-        if [[ "$INSTALLER_IP" == "none" ]] ; then
-            instack_mac=$(sudo virsh domiflist instack | awk '/default/{print $5}')
-            INSTALLER_IP=$(/usr/sbin/arp -e | grep ${instack_mac} | awk '{print $1}')
-        fi
         COMPUTE_IP=$(sudo ssh $ssh_opts $INSTALLER_IP \
              "source stackrc; \
              nova show $compute_host_in_undercloud \
              | awk '/ ctlplane network /{print \$5}'")
     elif [[ "$INSTALLER_TYPE" == "fuel" ]] ; then
         COMPUTE_USER=${COMPUTE_USER:-root}
-        if [[ "$INSTALLER_IP" == "none" ]] ; then
-            instack_mac=$(sudo virsh domiflist fuel-opnfv | awk '/pxebr/{print $5}')
-            INSTALLER_IP=$(/usr/sbin/arp -e | grep ${instack_mac} | awk '{print $1}')
-        fi
         node_id=$(echo $compute_host_in_undercloud | cut -d "-" -f 2)
         COMPUTE_IP=$(sshpass -p r00tme ssh 2>/dev/null $ssh_opts root@${INSTALLER_IP} \
              "fuel node|awk -F '|' -v id=$node_id '{if (\$1 == id) print \$5}' |xargs")
@@ -84,25 +116,6 @@ get_compute_host_info() {
     if [[ $? -ne 0 ]] ; then
         echo "ERROR: can not ping to computer host"
         exit 1
-    fi
-}
-
-prepare_compute_ssh() {
-    ssh_opts_cpu="$ssh_opts"
-
-    # get ssh key from installer node
-    if [[ "$INSTALLER_TYPE" == "apex" ]] ; then
-        sudo scp $ssh_opts root@"$INSTALLER_IP":/home/stack/.ssh/id_rsa instack_key
-        sudo chown $(whoami):$(whoami) instack_key
-        chmod 400 instack_key
-        ssh_opts_cpu+=" -i instack_key"
-    elif [[ "$INSTALLER_TYPE" == "fuel" ]] ; then
-        sshpass -p r00tme scp $ssh_opts root@${INSTALLER_IP}:.ssh/id_rsa instack_key
-        sudo chown $(whoami):$(whoami) instack_key
-        chmod 400 instack_key
-        ssh_opts_cpu+=" -i instack_key"
-    elif [[ "$INSTALLER_TYPE" == "local" ]] ; then
-        echo "INSTALLER_TYPE set to 'local'. Assuming SSH keys already exchanged with $COMPUTE_HOST"
     fi
 
     # verify ssh to target compute host
@@ -319,6 +332,10 @@ echo "Note: doctor/tests/run.sh has been executed."
 
 trap cleanup EXIT
 
+echo "preparing test env..."
+get_installer_ip
+prepare_ssh_to_cloud
+
 echo "preparing VM image..."
 download_image
 register_image
@@ -331,9 +348,8 @@ boot_vm
 wait_for_vm_launch
 openstack $as_doctor_user server show $VM_NAME
 
-echo "get computer host info and prepare to ssh..."
+echo "get computer host info..."
 get_compute_host_info
-prepare_compute_ssh
 
 echo "creating alarm..."
 get_consumer_ip
