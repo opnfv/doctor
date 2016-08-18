@@ -34,6 +34,24 @@
       "revId": "7397aa3c7baf71454159d7b013acfb095a2e7929",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_bd3ff124",
+        "filename": "tests/run.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-08-18T14:28:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_1db625da",
+      "revId": "7397aa3c7baf71454159d7b013acfb095a2e7929",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
