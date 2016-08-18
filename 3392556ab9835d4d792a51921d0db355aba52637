@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1a76adc5_ef093332",
+        "filename": "tests/run.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-08-18T07:32:01Z",
+      "side": 1,
+      "message": "If this command is common for all installers, then it should be assigned to a variable before using.\n\nCopy \u0026 paste will lead to maintenance issue when you want to modify this command in the future.",
+      "range": {
+        "startLine": 119,
+        "startChar": 22,
+        "endLine": 119,
+        "endChar": 77
+      },
+      "revId": "3392556ab9835d4d792a51921d0db355aba52637",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_6fcd2331",
         "filename": "tests/run.sh",
         "patchSetId": 2
@@ -13,6 +36,30 @@
       "writtenOn": "2016-08-18T06:32:48Z",
       "side": 1,
       "message": "too long,maybe use two lines",
+      "range": {
+        "startLine": 225,
+        "startChar": 7,
+        "endLine": 225,
+        "endChar": 22
+      },
+      "revId": "3392556ab9835d4d792a51921d0db355aba52637",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_8f067f1f",
+        "filename": "tests/run.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-08-18T07:32:01Z",
+      "side": 1,
+      "message": "Agree. Long lines are unfriendly to reviewers",
+      "parentUuid": "1a76adc5_6fcd2331",
       "range": {
         "startLine": 225,
         "startChar": 7,
