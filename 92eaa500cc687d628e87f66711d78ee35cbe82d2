@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_bd6851bb",
+        "filename": "docs/scenarios/functest/index.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-08-18T12:09:04Z",
+      "side": 1,
+      "message": "IMHO should be:\n\n***************\nDoctor scenario\n***************\n\n\n- \u0027***************\u0027 should be same width as \"Doctor scenario\" (not sure it is needed)\n- s/Scenarion/scenario/   no need for capitalization of scenario",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 17
+      },
+      "revId": "92eaa500cc687d628e87f66711d78ee35cbe82d2",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
