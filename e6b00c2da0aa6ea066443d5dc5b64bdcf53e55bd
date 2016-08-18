@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_ef6ff390",
+        "filename": "tests/run.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1482
+      },
+      "writtenOn": "2016-08-18T01:43:06Z",
+      "side": 1,
+      "message": "no all user\u0027s group and user name have the same name.\nmaybe replace with $(groups|awk \u0027{print $1}\u0027)",
+      "range": {
+        "startLine": 66,
+        "startChar": 29,
+        "endLine": 66,
+        "endChar": 38
+      },
+      "revId": "e6b00c2da0aa6ea066443d5dc5b64bdcf53e55bd",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_8f6c3f9e",
+        "filename": "tests/run.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1482
+      },
+      "writtenOn": "2016-08-18T01:43:06Z",
+      "side": 1,
+      "message": "above",
+      "range": {
+        "startLine": 71,
+        "startChar": 29,
+        "endLine": 71,
+        "endChar": 38
+      },
+      "revId": "e6b00c2da0aa6ea066443d5dc5b64bdcf53e55bd",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
