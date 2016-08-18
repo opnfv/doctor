@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_6fcd2331",
+        "filename": "tests/run.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1482
+      },
+      "writtenOn": "2016-08-18T06:32:48Z",
+      "side": 1,
+      "message": "too long,maybe use two lines",
+      "range": {
+        "startLine": 225,
+        "startChar": 7,
+        "endLine": 225,
+        "endChar": 22
+      },
+      "revId": "3392556ab9835d4d792a51921d0db355aba52637",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
