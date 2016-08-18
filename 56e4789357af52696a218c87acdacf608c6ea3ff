@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_7d587956",
+        "filename": "tests/run.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-08-18T16:00:58Z",
+      "side": 1,
+      "message": "Do we still need to keep this comment? There is nothing to `uncomment` now...",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 52
+      },
+      "revId": "56e4789357af52696a218c87acdacf608c6ea3ff",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_9d55551f",
+        "filename": "tests/run.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-08-18T16:00:58Z",
+      "side": 1,
+      "message": "Same as L231",
+      "revId": "56e4789357af52696a218c87acdacf608c6ea3ff",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_3d320111",
+        "filename": "tests/run.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-08-18T16:00:58Z",
+      "side": 1,
+      "message": "Same as L231",
+      "revId": "56e4789357af52696a218c87acdacf608c6ea3ff",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
