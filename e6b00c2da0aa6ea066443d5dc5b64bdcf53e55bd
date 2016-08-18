@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_6f31a359",
+        "filename": "tests/run.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-08-18T07:12:04Z",
+      "side": 1,
+      "message": "so you think the first one is the correct group?",
+      "parentUuid": "1a76adc5_ef6ff390",
+      "range": {
+        "startLine": 66,
+        "startChar": 29,
+        "endLine": 66,
+        "endChar": 38
+      },
+      "revId": "e6b00c2da0aa6ea066443d5dc5b64bdcf53e55bd",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_8f6c3f9e",
         "filename": "tests/run.sh",
         "patchSetId": 2
@@ -94,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_0f36ef52",
+        "filename": "tests/run.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-08-18T07:12:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_8f767f3d",
+      "range": {
+        "startLine": 91,
+        "startChar": 46,
+        "endLine": 91,
+        "endChar": 48
+      },
+      "revId": "e6b00c2da0aa6ea066443d5dc5b64bdcf53e55bd",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_cfa3179d",
         "filename": "tests/run.sh",
         "patchSetId": 2
@@ -105,6 +153,30 @@
       "writtenOn": "2016-08-18T05:02:44Z",
       "side": 1,
       "message": "why do you run this as a back ground process? we can\u0027t see whether the script \"set_alarm_event_conf.sh\" succeeded or not.",
+      "range": {
+        "startLine": 101,
+        "startChar": 44,
+        "endLine": 101,
+        "endChar": 49
+      },
+      "revId": "e6b00c2da0aa6ea066443d5dc5b64bdcf53e55bd",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_2f3bab3b",
+        "filename": "tests/run.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-08-18T07:12:04Z",
+      "side": 1,
+      "message": "OK, fix it.",
+      "parentUuid": "1a76adc5_cfa3179d",
       "range": {
         "startLine": 101,
         "startChar": 44,
@@ -140,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_6f18c3d3",
+        "filename": "tests/run.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-08-18T07:12:04Z",
+      "side": 1,
+      "message": "The modify config script run on the controller node.\nMaybe we can add some notes in the config file as a flag or get the log from all controller node to analysis. Do you have any better suggestions?",
+      "parentUuid": "1a76adc5_efa05392",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 16
+      },
+      "revId": "e6b00c2da0aa6ea066443d5dc5b64bdcf53e55bd",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_ef793330",
         "filename": "tests/run.sh",
         "patchSetId": 2
@@ -151,6 +247,30 @@
       "writtenOn": "2016-08-18T05:02:44Z",
       "side": 1,
       "message": "does",
+      "range": {
+        "startLine": 121,
+        "startChar": 46,
+        "endLine": 121,
+        "endChar": 48
+      },
+      "revId": "e6b00c2da0aa6ea066443d5dc5b64bdcf53e55bd",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_cf3f9724",
+        "filename": "tests/run.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-08-18T07:12:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_ef793330",
       "range": {
         "startLine": 121,
         "startChar": 46,
