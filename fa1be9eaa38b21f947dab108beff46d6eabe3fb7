@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_1db145f8",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-08-18T13:39:30Z",
+      "side": 1,
+      "message": "When INSTALLER_TYPE \u003d\u003d \u0027local\u0027, we will hit this part and exit with error.",
+      "revId": "fa1be9eaa38b21f947dab108beff46d6eabe3fb7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
