@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_6f376300",
+        "filename": "tests/run.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-08-18T07:21:39Z",
+      "side": 1,
+      "message": "It seems this is not related to the ceilometer adaption but a general purpose refactoring. You may consider submit it in a separate patch so this one can focus on **one** correction only.",
+      "parentUuid": "1a76adc5_cf7c7723",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 16
+      },
+      "revId": "e6b00c2da0aa6ea066443d5dc5b64bdcf53e55bd",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_ef6ff390",
         "filename": "tests/run.sh",
         "patchSetId": 2
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "so you think the first one is the correct group?",
       "parentUuid": "1a76adc5_ef6ff390",
+      "range": {
+        "startLine": 66,
+        "startChar": 29,
+        "endLine": 66,
+        "endChar": 38
+      },
+      "revId": "e6b00c2da0aa6ea066443d5dc5b64bdcf53e55bd",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_cf5eb745",
+        "filename": "tests/run.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-08-18T07:21:39Z",
+      "side": 1,
+      "message": "Or you may try `id -g -n USER-NAME` which returns the effective group",
+      "parentUuid": "1a76adc5_6f31a359",
       "range": {
         "startLine": 66,
         "startChar": 29,
