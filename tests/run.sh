@@ -139,11 +139,12 @@ register_image() {
 }
 
 create_test_user() {
-    openstack user list | grep -q " $DOCTOR_USER " || {
-        openstack user create "$DOCTOR_USER" --password "$DOCTOR_PW"
-    }
     openstack project list | grep -q " $DOCTOR_PROJECT " || {
         openstack project create "$DOCTOR_PROJECT"
+    }
+    openstack user list | grep -q " $DOCTOR_USER " || {
+        openstack user create "$DOCTOR_USER" --password "$DOCTOR_PW" \
+                              --project "$DOCTOR_PROJECT"
     }
     openstack user role list "$DOCTOR_USER" --project "$DOCTOR_PROJECT" \
     | grep -q " $DOCTOR_ROLE " || {
