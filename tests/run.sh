@@ -166,8 +166,10 @@ create_alarm() {
     # get vm_id as test user
     ceilometer $as_doctor_user alarm-list | grep -q " $ALARM_NAME " && return 0
     vm_id=$(openstack $as_doctor_user server list | grep " $VM_NAME " | awk '{print $2}')
+    # TODO(r-mibu): change notification endpoint from localhost to the consumer
+    # IP address (functest container).
     ceilometer $as_doctor_user alarm-event-create --name "$ALARM_NAME" \
-        --alarm-action "http://$CONSUMER_IP:$CONSUMER_PORT/failure" \
+        --alarm-action "http://localhost:$CONSUMER_PORT/failure" \
         --description "VM failure" \
         --enabled True \
         --repeat-actions False \
@@ -208,19 +210,39 @@ stop_inspector() {
 start_consumer() {
     pgrep -f "python consumer.py" && return 0
     python consumer.py "$CONSUMER_PORT" > consumer.log 2>&1 &
-    # NOTE(r-mibu): create tunnel to the installer node, so that we can
+
+    # NOTE(r-mibu): create tunnel to the controller nodes, so that we can
     # avoid some network problems dpends on infra and installers.
     # This tunnel will be terminated by stop_consumer() or after 10 mins passed.
-    TUNNEL_COMMAND="sudo ssh $ssh_opts $INSTALLER_IP -R $CONSUMER_PORT:localhost:$CONSUMER_PORT sleep 600"
-    $TUNNEL_COMMAND > ssh_tunnel.log 2>&1 < /dev/null &
+    if [[ "$INSTALLER_TYPE" == "apex" ]] ; then
+        CONTROLLER_IPS=$(nova list | grep ' overcloud-controller-[0-9] ' \
+                         | sed -e 's/^.*ctlplane=//' -e 's/ *|$//')
+    fi
+    if [[ -z "$CONTROLLER_IPS" ]]; then
+        echo "ERROR: Could not get CONTROLLER_IPS."
+        exit 1
+    fi
+    for ip in $CONTROLLER_IPS
+    do
+        forward_rule="-R $CONSUMER_PORT:localhost:$CONSUMER_PORT"
+        tunnel_command="sudo ssh $ssh_opts $ip $forward_rule sleep 600"
+        $tunnel_command > "ssh_tunnel.${ip}.log" 2>&1 < /dev/null &
+    done
 }
 
 stop_consumer() {
     pgrep -f "python consumer.py" || return 0
     kill $(pgrep -f "python consumer.py")
     print_log consumer.log
-    kill $(pgrep -f "$TUNNEL_COMMAND")
-    print_log ssh_tunnel.log
+
+    # NOTE(r-mibu): terminate tunnels to the controller nodes
+    for ip in $CONTROLLER_IPS
+    do
+        forward_rule="-R $CONSUMER_PORT:localhost:$CONSUMER_PORT"
+        tunnel_command="sudo ssh $ssh_opts $ip $forward_rule sleep 600"
+        kill $(pgrep -f "$tunnel_command")
+        print_log "ssh_tunnel.${ip}.log"
+    done
 }
 
 wait_for_vm_launch() {
