@@ -16,6 +16,24 @@
       "revId": "fa1be9eaa38b21f947dab108beff46d6eabe3fb7",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_382c4f02",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-08-19T01:22:24Z",
+      "side": 1,
+      "message": "Right, fix it, thanks a lot.",
+      "parentUuid": "1a76adc5_1db145f8",
+      "revId": "fa1be9eaa38b21f947dab108beff46d6eabe3fb7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
