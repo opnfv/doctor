@@ -227,7 +227,7 @@ start_consumer() {
     for ip in $CONTROLLER_IPS
     do
         forward_rule="-R $CONSUMER_PORT:localhost:$CONSUMER_PORT"
-        tunnel_command="sudo ssh $ssh_opts $ip $forward_rule sleep 600"
+        tunnel_command="sudo ssh $ssh_opts_cpu $COMPUTE_USER@$ip $forward_rule sleep 600"
         $tunnel_command > "ssh_tunnel.${ip}.log" 2>&1 < /dev/null &
     done
 }
@@ -241,7 +241,7 @@ stop_consumer() {
     for ip in $CONTROLLER_IPS
     do
         forward_rule="-R $CONSUMER_PORT:localhost:$CONSUMER_PORT"
-        tunnel_command="sudo ssh $ssh_opts $ip $forward_rule sleep 600"
+        tunnel_command="sudo ssh $ssh_opts_cpu $COMPUTE_USER@$ip $forward_rule sleep 600"
         kill $(pgrep -f "$tunnel_command")
         print_log "ssh_tunnel.${ip}.log"
     done
