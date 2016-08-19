@@ -215,8 +215,10 @@ start_consumer() {
     # avoid some network problems dpends on infra and installers.
     # This tunnel will be terminated by stop_consumer() or after 10 mins passed.
     if [[ "$INSTALLER_TYPE" == "apex" ]] ; then
-        CONTROLLER_IPS=$(nova list | grep ' overcloud-controller-[0-9] ' \
-                         | sed -e 's/^.*ctlplane=//' -e 's/ *|$//')
+        CONTROLLER_IPS=$(sudo ssh $ssh_opts $INSTALLER_IP \
+                         "source stackrc; \
+                         nova list | grep ' overcloud-controller-[0-9] ' \
+                         | sed -e 's/^.*ctlplane=//' -e 's/ *|\$//'")
     fi
     if [[ -z "$CONTROLLER_IPS" ]]; then
         echo "ERROR: Could not get CONTROLLER_IPS."
