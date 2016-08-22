@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_9555291f",
+        "filename": "tests/clean.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-08-22T06:45:36Z",
+      "side": 0,
+      "message": "Why deleted? Not necessary?",
+      "revId": "5ef69fe5a6d84686b44e3d8b455c5fd69094d0d9",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_5550f131",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-08-22T06:45:36Z",
+      "side": 1,
+      "message": "\u003d\u003e active or reactivated",
+      "range": {
+        "startLine": 7,
+        "startChar": 18,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "55f11058b5eabb7d0457eb7e47123fac9561d533",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_f5449d75",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-08-22T06:45:36Z",
+      "side": 1,
+      "message": "\u003d\u003e cleaning up",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 12
+      },
+      "revId": "55f11058b5eabb7d0457eb7e47123fac9561d533",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_154a7980",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-08-22T06:45:36Z",
+      "side": 1,
+      "message": "The same as L7",
+      "range": {
+        "startLine": 10,
+        "startChar": 6,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "55f11058b5eabb7d0457eb7e47123fac9561d533",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_75588d56",
+        "filename": "tests/clean.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-08-22T06:45:36Z",
+      "side": 1,
+      "message": "The new name is confusing...",
+      "range": {
+        "startLine": 19,
+        "startChar": 11,
+        "endLine": 19,
+        "endChar": 25
+      },
+      "revId": "55f11058b5eabb7d0457eb7e47123fac9561d533",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_d55ba152",
+        "filename": "tests/clean.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-08-22T06:45:36Z",
+      "side": 1,
+      "message": "Why making this change? The old way looks good to me.",
+      "range": {
+        "startLine": 20,
+        "startChar": 4,
+        "endLine": 20,
+        "endChar": 15
+      },
+      "revId": "55f11058b5eabb7d0457eb7e47123fac9561d533",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_35321511",
+        "filename": "tests/clean.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-08-22T06:45:36Z",
+      "side": 1,
+      "message": "The new help text is confusing...",
+      "range": {
+        "startLine": 34,
+        "startChar": 30,
+        "endLine": 34,
+        "endChar": 69
+      },
+      "revId": "55f11058b5eabb7d0457eb7e47123fac9561d533",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
