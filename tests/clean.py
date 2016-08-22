@@ -16,7 +16,7 @@ import novaclient.client as novaclient
 
 nova_api_version = '2.11'
 
-def enable_compute_host(hostname):
+def enable_servers_active(hostname):
     self.nova = novaclient.Client(self.nova_api_version,
                                   os.environ['OS_USERNAME'],
                                   os.environ['OS_PASSWORD'],
@@ -26,19 +26,18 @@ def enable_compute_host(hostname):
     opts = {'all_tenants': True, 'host': hostname}
     for server in self.nova.servers.list(detailed=False, search_opts=opts):
         self.nova.servers.reset_state(server, 'active')
-    self.nova.services.force_down(hostname, 'nova-compute', False)
 
 
 def get_args():
     parser = argparse.ArgumentParser(description='Doctor Test Cleaner')
     parser.add_argument('hostname', metavar='HOSTNAME', type=str, nargs='?',
-                        help='a hostname to be re-enable')
+                        help='servers in the hostname to be re-active')
     return parser.parse_args()
 
 
 def main():
     args = get_args()
-    enable_compute_host(args.hostname)
+    enable_servers_active(args.hostname)
 
 
 if __name__ == '__main__':

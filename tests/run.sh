@@ -471,6 +471,7 @@ cleanup() {
     python ./nova_force_down.py "$COMPUTE_HOST" --unset
     sleep 240
     check_host_status "UP"
+    python ./clean.py "$COMPUTE_HOST"
     scp $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP:disable_network.log" .
     print_log disable_network.log
 
