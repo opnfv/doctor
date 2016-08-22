@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_35c8d521",
+        "filename": "tests/run.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-08-22T03:52:35Z",
+      "side": 1,
+      "message": "\u003d\u003e depends",
+      "range": {
+        "startLine": 537,
+        "startChar": 44,
+        "endLine": 537,
+        "endChar": 50
+      },
+      "revId": "f3fdbd1d8c345ebdd91eb6e1b3a5ef5e42182f4a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
