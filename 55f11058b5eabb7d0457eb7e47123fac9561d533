@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_551eb171",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-08-22T07:15:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_5550f131",
+      "range": {
+        "startLine": 7,
+        "startChar": 18,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "55f11058b5eabb7d0457eb7e47123fac9561d533",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_f5449d75",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_3519b588",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-08-22T07:15:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_f5449d75",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 12
+      },
+      "revId": "55f11058b5eabb7d0457eb7e47123fac9561d533",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_154a7980",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2016-08-22T06:45:36Z",
       "side": 1,
       "message": "The same as L7",
+      "range": {
+        "startLine": 10,
+        "startChar": 6,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "55f11058b5eabb7d0457eb7e47123fac9561d533",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_f5125d61",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-08-22T07:15:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_154a7980",
       "range": {
         "startLine": 10,
         "startChar": 6,
@@ -105,6 +177,30 @@
       "writtenOn": "2016-08-22T06:45:36Z",
       "side": 1,
       "message": "Why making this change? The old way looks good to me.",
+      "range": {
+        "startLine": 20,
+        "startChar": 4,
+        "endLine": 20,
+        "endChar": 15
+      },
+      "revId": "55f11058b5eabb7d0457eb7e47123fac9561d533",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_15183980",
+        "filename": "tests/clean.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-08-22T07:15:03Z",
+      "side": 1,
+      "message": "There is no class. `self` causes error.",
+      "parentUuid": "1a76adc5_d55ba152",
       "range": {
         "startLine": 20,
         "startChar": 4,
