@@ -59,7 +59,7 @@ get_installer_ip() {
         fi
     fi
 
-    if [[ "$INSTALLER_TYPE" -ne "local" ]] ; then
+    if [[ "$INSTALLER_TYPE" != "local" ]] ; then
         if [[ -z "$INSTALLER_IP" ]] ; then
             echo "ERROR: no installer ip"
             exit 1
