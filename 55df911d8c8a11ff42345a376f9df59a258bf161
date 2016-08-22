@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_2b2dd646",
+        "filename": "tests/clean.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-08-22T13:54:31Z",
+      "side": 1,
+      "message": "Deleting the force_down call is unwanted. This clean.py file is served as an helper during testing and not needed itself by run.sh",
+      "revId": "55df911d8c8a11ff42345a376f9df59a258bf161",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_6b1aee18",
+        "filename": "tests/run.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-08-22T13:54:31Z",
+      "side": 1,
+      "message": "This clean.py file is served as an helper during testing and not needed itself by run.sh\n\nAdditionally, even if considering adding this line, why resetting the VM states to ACTIVE if they\u0027re deleted right after in L478?",
+      "revId": "55df911d8c8a11ff42345a376f9df59a258bf161",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
