@@ -53,7 +53,7 @@ You can see an overview of the Doctor platform and how components interact in
     :name: figure-p1
     :width: 100%
 
-    Doctor platform and typical sequence (Brahmaputra)
+    Doctor platform and typical sequence (Colorado)
 
 Detailed information on the Doctor architecture can be found in the Doctor
 requirements documentation:
