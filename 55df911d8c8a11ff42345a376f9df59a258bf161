@@ -69,6 +69,24 @@
       "revId": "55df911d8c8a11ff42345a376f9df59a258bf161",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_41a113f7",
+        "filename": "tests/run.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-08-23T08:32:52Z",
+      "side": 1,
+      "message": "see file inspector.py Line 35, function `disable_compute_host`.\nFirst step is setting all VMS\u0027 states as error in the failed host under all tenants. Shouldn\u0027t we restore their states?",
+      "parentUuid": "1a76adc5_81316bee",
+      "revId": "55df911d8c8a11ff42345a376f9df59a258bf161",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
