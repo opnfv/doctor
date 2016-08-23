@@ -51,6 +51,24 @@
       "revId": "55df911d8c8a11ff42345a376f9df59a258bf161",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_81316bee",
+        "filename": "tests/run.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-08-23T07:51:45Z",
+      "side": 1,
+      "message": "No, we don\u0027t. Either other test scripts\u0027 VMs should have been deleted or in case there are running VMs for some reason we don\u0027t want to run this test script in the first place. Even if we consider there are other VMs, they might have been already in ERROR state prior to running this script and thus resetting their state to ACTIVE is unwanted.",
+      "parentUuid": "1a76adc5_86ee61eb",
+      "revId": "55df911d8c8a11ff42345a376f9df59a258bf161",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
