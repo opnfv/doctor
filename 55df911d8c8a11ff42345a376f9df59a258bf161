@@ -33,6 +33,24 @@
       "revId": "55df911d8c8a11ff42345a376f9df59a258bf161",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_86ee61eb",
+        "filename": "tests/run.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-08-23T00:37:59Z",
+      "side": 1,
+      "message": "L478 only delete the doctor_vm under doctor project, but we set all vms\u0027 states as error in the host with all project.\nSo we need to restore other vms\u0027 states.",
+      "parentUuid": "1a76adc5_6b1aee18",
+      "revId": "55df911d8c8a11ff42345a376f9df59a258bf161",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
