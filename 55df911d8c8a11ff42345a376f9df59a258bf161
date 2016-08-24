@@ -141,6 +141,24 @@
       "revId": "55df911d8c8a11ff42345a376f9df59a258bf161",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_7c55d21b",
+        "filename": "tests/run.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-08-24T00:36:09Z",
+      "side": 1,
+      "message": "If we assume it is always a clean env. Why bother calling cleanup on EXIT? The environment should have been destroyed automatically after the test script.",
+      "parentUuid": "1a76adc5_e1f37f08",
+      "revId": "55df911d8c8a11ff42345a376f9df59a258bf161",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
