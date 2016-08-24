@@ -34,6 +34,41 @@
       "revId": "50a959f65e19ee0bd0363e4b1da32df7e16ba5d1",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_7b5cf7ed",
+        "filename": "docs/userguide/feature.userguide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-08-24T09:33:14Z",
+      "side": 1,
+      "message": "Ah, change of dir path. Than can you also fix it here please?",
+      "parentUuid": "1a76adc5_1b4ce341",
+      "revId": "50a959f65e19ee0bd0363e4b1da32df7e16ba5d1",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_1b738381",
+        "filename": "docs/userguide/feature.userguide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-08-24T09:33:14Z",
+      "side": 1,
+      "message": "Same here.\nhttp://artifacts.opnfv.org/doctor/colorado/manuals/get-valid-server-state.html",
+      "revId": "50a959f65e19ee0bd0363e4b1da32df7e16ba5d1",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
