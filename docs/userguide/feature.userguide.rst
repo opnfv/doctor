@@ -3,10 +3,6 @@
 
 Doctor capabilities and usage
 =============================
-
-..
-    This section will be compiled into OPNFV composite document.
-
 Immediate Notification
 ----------------------
 
@@ -21,7 +17,7 @@ repository. It can be executed as follows:
 
 .. code-block:: bash
 
-    git clone https://gerrit.opnfv.org/gerrit/doctor -b stable/brahmaputra
+    git clone https://gerrit.opnfv.org/gerrit/doctor -b stable/colorado
     cd doctor/tests
     CONSUMER_PORT=12346
     python consumer.py "$CONSUMER_PORT" > consumer.log 2>&1 &
