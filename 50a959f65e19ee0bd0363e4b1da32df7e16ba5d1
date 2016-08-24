@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_bbd4cf47",
+        "filename": "docs/userguide/feature.userguide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-08-24T09:11:23Z",
+      "side": 1,
+      "message": "Bertrand, do you know if docs will be re-generated here for colorado too? If yes, we could also rename here.",
+      "revId": "50a959f65e19ee0bd0363e4b1da32df7e16ba5d1",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
