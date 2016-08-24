@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_771dedbc",
+        "filename": "docs/platformoverview/platformoverview.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-08-24T07:56:41Z",
+      "side": 1,
+      "message": "The figure numbering is not shown correct in http://artifacts.opnfv.org/doctor/review/19425/platformoverview/index.html\n\nCompare with the Figures here: http://artifacts.opnfv.org/doctor/review/19425/requirements/02-use_cases.html#fault-management-using-act-stby-configuration\n\nHowever, not sure what is the issue. Maybe, the \"-\" in the figure name?",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 19
+      },
+      "revId": "93dab048d0114fbdd9b9d5f9c501125b5c2687d3",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
