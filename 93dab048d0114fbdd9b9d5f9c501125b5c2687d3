@@ -22,6 +22,30 @@
       "revId": "93dab048d0114fbdd9b9d5f9c501125b5c2687d3",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_f7725de4",
+        "filename": "docs/platformoverview/platformoverview.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-08-24T08:27:29Z",
+      "side": 1,
+      "message": "I think there should be a space before `:numref:`",
+      "parentUuid": "1a76adc5_771dedbc",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 19
+      },
+      "revId": "93dab048d0114fbdd9b9d5f9c501125b5c2687d3",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
