@@ -89,8 +89,8 @@ prepare_ssh_to_cloud() {
 prepare_test_env() {
     #TODO delete it when fuel support the configuration
     if [[ "$INSTALLER_TYPE" == "fuel" ]] ; then
-        echo "modify the ceilometer event_pipeline configuration..."
-        cat > set_alarm_event_conf.sh << 'END_TXT'
+        echo "modify the configuration..."
+        cat > set_conf.sh << 'END_TXT'
 #!/bin/bash
 if [ -e /etc/ceilometer/event_pipeline.yaml ]; then
     if ! grep -q '^ *- notifier://?topic=alarm.all$' /etc/ceilometer/event_pipeline.yaml; then
@@ -102,23 +102,36 @@ else
     echo "ceilometer event_pipeline.yaml file does not exist"
     exit 1
 fi
+if [ -e /etc/nova/nova.conf ]; then
+    if ! grep -q '^notification_driver=messaging$' /etc/nova/nova.conf; then
+        sed -i -r 's/notification_driver=/notification_driver=messaging/g' /etc/nova/nova.conf
+        echo "modify nova config"
+        service nova-api restart
+    fi
+else
+    echo "nova.conf file does not exist"
+    exit 1
+fi
 exit 0
 END_TXT
-        chmod +x set_alarm_event_conf.sh
+        chmod +x set_conf.sh
         CONTROLLER_IP=$(sshpass -p r00tme ssh 2>/dev/null $ssh_opts root@${INSTALLER_IP} \
              "fuel node | grep controller | cut -d '|' -f 5|xargs")
         for node in $CONTROLLER_IP;do
-            scp $ssh_opts_cpu set_alarm_event_conf.sh "root@$node:"
-            ssh $ssh_opts_cpu "root@$node" './set_alarm_event_conf.sh > set_alarm_event_conf.log 2>&1 &'
+            scp $ssh_opts_cpu set_conf.sh "root@$node:"
+            ssh $ssh_opts_cpu "root@$node" './set_conf.sh > set_conf.log 2>&1 &'
             sleep 1
-            scp $ssh_opts_cpu "root@$node:set_alarm_event_conf.log" set_alarm_event_conf_$node.log
+            scp $ssh_opts_cpu "root@$node:set_conf.log" set_conf_$node.log
         done
 
-        if grep -q "modify the ceilometer config" set_alarm_event_conf_*.log ; then
-            NEED_TO_RESTORE=true
+        if grep -q "modify the ceilometer config" set_conf_*.log ; then
+            NEED_TO_RESTORE_CEILOMETER=true
+        fi
+        if grep -q "modify nova config" set_conf_*.log ; then
+            NEED_TO_RESTORE_NOVA=true
         fi
 
-        echo "waiting ceilometer-agent-notification restart..."
+        echo "waiting service restart..."
         sleep 60
     fi
 }
@@ -126,32 +139,47 @@ END_TXT
 restore_test_env() {
     #TODO delete it when fuel support the configuration
     if [[ "$INSTALLER_TYPE" == "fuel" ]] ; then
-        if ! $NEED_TO_RESTORE ; then
+        if ! ($NEED_TO_RESTORE_CEILOMETER || $NEED_TO_RESTORE_NOVA) ; then
             echo "Don't need to restore config"
             exit 0
         fi
 
-        echo "restore the ceilometer event_pipeline configuration..."
-        cat > restore_alarm_event_conf.sh << 'END_TXT'
+        echo "restore the configuration..."
+        cat > restore_conf.sh << 'END_TXT'
 #!/bin/bash
-if [ -e /etc/ceilometer/event_pipeline.yaml ]; then
-    if grep -q '^ *- notifier://?topic=alarm.all$' /etc/ceilometer/event_pipeline.yaml; then
-        sed -i 's|- notifier://?topic=alarm.all|- notifier://|' /etc/ceilometer/event_pipeline.yaml
-        service ceilometer-agent-notification restart
+if @NEED_TO_RESTORE_CEILOMETER@ ; then
+    if [ -e /etc/ceilometer/event_pipeline.yaml ]; then
+        if grep -q '^ *- notifier://?topic=alarm.all$' /etc/ceilometer/event_pipeline.yaml; then
+            sed -i 's|- notifier://?topic=alarm.all|- notifier://|' /etc/ceilometer/event_pipeline.yaml
+            service ceilometer-agent-notification restart
+        fi
+    else
+        echo "ceilometer event_pipeline.yaml file does not exist"
+        exit 1
     fi
-else
-    echo "ceilometer event_pipeline.yaml file does not exist"
-    exit 1
+fi
+if @NEED_TO_RESTORE_NOVA@ ; then
+    if [ -e /etc/nova/nova.conf ]; then
+        if grep -q '^notification_driver=messaging$' /etc/nova/nova.conf; then
+            sed -i -r 's/notification_driver=messaging/notification_driver=/g' /etc/nova/nova.conf
+            service nova-api restart
+        fi
+    else
+        echo "nova.conf file does not exist"
+        exit 1
+    fi
 fi
 exit 0
 END_TXT
-        chmod +x restore_alarm_event_conf.sh
+        sed -i -e "s/@NEED_TO_RESTORE_CEILOMETER@/$NEED_TO_RESTORE_CEILOMETER/" restore_conf.sh
+        sed -i -e "s/@NEED_TO_RESTORE_NOVA@/$NEED_TO_RESTORE_NOVA/" restore_conf.sh
+        chmod +x restore_conf.sh
         for node in $CONTROLLER_IP;do
-            scp $ssh_opts_cpu restore_alarm_event_conf.sh "root@$node:"
-            ssh $ssh_opts_cpu "root@$node" './restore_alarm_event_conf.sh > set_alarm_event_conf.log 2>&1 &'
+            scp $ssh_opts_cpu restore_conf.sh "root@$node:"
+            ssh $ssh_opts_cpu "root@$node" './restore_conf.sh > restore_conf.log 2>&1 &'
         done
 
-        echo "waiting ceilometer-agent-notification restart..."
+        echo "waiting service restart..."
         sleep 60
     fi
 }
