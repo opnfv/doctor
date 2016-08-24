@@ -177,6 +177,24 @@
       "revId": "55df911d8c8a11ff42345a376f9df59a258bf161",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_97f8c97d",
+        "filename": "tests/run.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-08-24T07:44:44Z",
+      "side": 1,
+      "message": "This remind me of something. Since we are not sure about the original states of the other VMs if there is any. There is no way to restore. Suppose some of them were ERROR and some were ACTIVE.\n\nSo do we ever need to cleanup?\n\nIf yes, then we should save the original states of all existing VMs and remove the test project and user we have created during the test and.\n\nWhat do you think?",
+      "parentUuid": "1a76adc5_97e76912",
+      "revId": "55df911d8c8a11ff42345a376f9df59a258bf161",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
