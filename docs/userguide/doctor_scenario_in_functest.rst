@@ -94,7 +94,7 @@ Test case
 
 Functest will call the "run.sh" script in Doctor to run the test job.
 
-Currently, only 'Apex' and 'local' installer are supported.
+Currently, 'Apex', 'fuel' and 'local' installer are supported.
 
 The "run.sh" script will execute the following steps.
 
