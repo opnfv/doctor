@@ -119,7 +119,7 @@ Links:
 ======
 
 [1] Manual for OpenStack NOVA API for marking host down
-http://artifacts.opnfv.org/doctor/brahmaputra/docs/manuals/mark-host-down_manual.html
+http://artifacts.opnfv.org/doctor/colorado/manuals/mark-host-down_manual.html
 
 [2] OpenStack compute manual page
 http://developer.openstack.org/api-ref-compute-v2.1.html#compute-v2.1
