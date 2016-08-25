@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_c178be91",
+        "filename": "docs/platformoverview/platformoverview.rst",
+        "patchSetId": 13
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-08-25T02:33:06Z",
+      "side": 1,
+      "message": "try to use `../platformoverview/images/figure-p1.png` here",
+      "revId": "5f91092ef00e1900c94a7c25376eb2915e513bc7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
