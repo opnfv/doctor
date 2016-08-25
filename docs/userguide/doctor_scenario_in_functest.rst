@@ -94,20 +94,28 @@ Test case
 
 Functest will call the "run.sh" script in Doctor to run the test job.
 
-Currently, only 'Apex' and 'local' installer are supported.
+Currently, only 'Apex' and 'local' installer are supported. The test also
+can be runned successfully in 'fuel' installer because of modifying some
+configurations of OpenStack in the script. But still need 'fuel' installer
+to support these configurations. 
 
 The "run.sh" script will execute the following steps.
 
-Firstly, prepare image for booting VM, then create a test project and test
+Firstly, get the installer ip according to the installer type. Then ssh to
+the installer node to get the private key for accessing to the cloud. As
+'fuel' installer, ssh to the controller node to modify nova and ceilometer
+configuration.     
+
+Secondly, prepare image for booting VM, then create a test project and test
 user (both default to doctor) for the Doctor tests.
 
-Secondly, boot a VM under the doctor project and check the VM status to verify
+Thirdly, boot a VM under the doctor project and check the VM status to verify
 that the VM is launched completely. Then get the compute host info where the VM
 is launched to verify connectivity to the target compute host. Get the consumer
 ip according to the route to compute ip and create an alarm event in Ceilometer
 using the consumer ip.
 
-Thirdly, the Doctor components are started, and, based on the above preparation,
+Fourthly, the Doctor components are started, and, based on the above preparation,
 a failure is injected to the system, i.e. the network of compute host is
 disabled for 3 minutes. To ensure the host is down, the status of the host
 will be checked.
