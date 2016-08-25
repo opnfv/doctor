@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_c4e1acd1",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-08-25T15:02:37Z",
+      "side": 1,
+      "message": "with the modification of",
+      "range": {
+        "startLine": 98,
+        "startChar": 47,
+        "endLine": 98,
+        "endChar": 67
+      },
+      "revId": "98e264357848f8df10efd148e2238d0d64f6658c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_a4def00f",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-08-25T15:02:37Z",
+      "side": 1,
+      "message": "runned \u003d\u003e run",
+      "range": {
+        "startLine": 98,
+        "startChar": 7,
+        "endLine": 98,
+        "endChar": 13
+      },
+      "revId": "98e264357848f8df10efd148e2238d0d64f6658c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
