@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_214c1242",
+        "filename": "docs/configguide/featureconfig.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-08-25T06:28:45Z",
+      "side": 0,
+      "message": "colorado?",
+      "revId": "58fa9c52679c4636fecb30db016834523546ac92",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_4147ce1d",
+        "filename": "docs/configguide/featureconfig.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-08-25T06:28:45Z",
+      "side": 0,
+      "message": "same as above",
+      "revId": "58fa9c52679c4636fecb30db016834523546ac92",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
