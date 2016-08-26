@@ -45,6 +45,54 @@
       "revId": "98e264357848f8df10efd148e2238d0d64f6658c",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_ef6281d7",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-08-26T04:53:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_a4def00f",
+      "range": {
+        "startLine": 98,
+        "startChar": 7,
+        "endLine": 98,
+        "endChar": 13
+      },
+      "revId": "98e264357848f8df10efd148e2238d0d64f6658c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_0f5edd12",
+        "filename": "docs/userguide/doctor_scenario_in_functest.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-08-26T04:53:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_c4e1acd1",
+      "range": {
+        "startLine": 98,
+        "startChar": 47,
+        "endLine": 98,
+        "endChar": 67
+      },
+      "revId": "98e264357848f8df10efd148e2238d0d64f6658c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
