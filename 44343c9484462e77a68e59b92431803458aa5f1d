@@ -22,6 +22,30 @@
       "revId": "44343c9484462e77a68e59b92431803458aa5f1d",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_15ed8cef",
+        "filename": "docs/scenarios/functest/doctor-scenario-in-functest.rst",
+        "patchSetId": 16
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1482
+      },
+      "writtenOn": "2016-08-29T09:24:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_d59f14b3",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 1
+      },
+      "revId": "44343c9484462e77a68e59b92431803458aa5f1d",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
