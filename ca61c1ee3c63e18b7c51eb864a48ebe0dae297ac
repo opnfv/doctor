@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_5591c450",
+        "filename": "docs/scenarios/functest/doctor-scenario-in-functest.rst",
+        "patchSetId": 17
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 346
+      },
+      "writtenOn": "2016-08-30T09:46:44Z",
+      "side": 1,
+      "message": "Nit: Shall be replaced by: http://artifacts.opnfv.org/doctor/colorado/requirements/05-implementation.html",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 74
+      },
+      "revId": "ca61c1ee3c63e18b7c51eb864a48ebe0dae297ac",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
