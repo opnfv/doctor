@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_04079f1d",
+        "filename": "docs/index.rst",
+        "patchSetId": 21
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 346
+      },
+      "writtenOn": "2016-08-30T14:44:36Z",
+      "side": 1,
+      "message": "please replace by installationprocedure",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 16
+      },
+      "revId": "1529a0d4c566fcb558f37b2ec955b10505a330b7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
