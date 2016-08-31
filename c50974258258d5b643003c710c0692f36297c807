@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_da165ca7",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2016-08-31T11:26:47Z",
+      "side": 1,
+      "message": "$as_doctor_user should be switched to: --os-tenant-name $DOCTOR_PROJECT. Then that might be looped if host would not be gotten in the first time somehow (should not need looping as already scheduled to host when this is called)\n\n$DOCTOR_USER should not be allowed to see host information as he should not be admin. Host information need to be queried as admin.",
+      "range": {
+        "startLine": 189,
+        "startChar": 30,
+        "endLine": 189,
+        "endChar": 44
+      },
+      "revId": "c50974258258d5b643003c710c0692f36297c807",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_7a0dc88f",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2016-08-31T11:26:47Z",
+      "side": 1,
+      "message": "This should not be needed if original command fixed.",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 6
+      },
+      "revId": "c50974258258d5b643003c710c0692f36297c807",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
