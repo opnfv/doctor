@@ -188,11 +188,23 @@ get_compute_host_info() {
     # get computer host info which VM boot in
     COMPUTE_HOST=$(openstack $as_doctor_user server show $VM_NAME |
                    grep "OS-EXT-SRV-ATTR:host" | awk '{ print $4 }')
-    compute_host_in_undercloud=${COMPUTE_HOST%%.*}
     if [[ -z "$COMPUTE_HOST" ]] ; then
-        echo "ERROR: failed to get compute hostname"
-        exit 1
+        #loop through all compute node
+        compute_hosts=$(openstack host list | awk '/compute/{print $2}')
+        for host in $compute_hosts
+        do
+            if openstack $as_doctor_user server list --host $host | grep -q " $VM_NAME " ; then
+                COMPUTE_HOST=$host
+                break
+            fi
+        done
+
+        if [[ -z "$COMPUTE_HOST" ]] ; then
+            echo "ERROR: failed to get compute hostname"
+            exit 1
+        fi
     fi
+    compute_host_in_undercloud=${COMPUTE_HOST%%.*}
 
     if [[ "$INSTALLER_TYPE" == "apex" ]] ; then
         COMPUTE_USER=${COMPUTE_USER:-heat-admin}
