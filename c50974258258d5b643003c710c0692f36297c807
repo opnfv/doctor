@@ -117,6 +117,30 @@
       "revId": "c50974258258d5b643003c710c0692f36297c807",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_58033442",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-09-01T04:39:26Z",
+      "side": 1,
+      "message": "No, the command doesn\u0027t work.\n\n[root@fuel ~]# openstack help server show\nusage: openstack server show [-h]\n                             [-f {html,json,json,shell,table,value,yaml,yaml}]\n                             [-c COLUMN] [--max-width \u003cinteger\u003e] [--noindent]\n                             [--prefix PREFIX] [--diagnostics]\n                             \u003cserver\u003e\n\nShow server details\n\npositional arguments:\n  \u003cserver\u003e              Server (name or ID)\n\noptional arguments:\n  -h, --help            show this help message and exit\n  --diagnostics         Display server diagnostics information\n\noutput formatters:\n  output formatter options\n\n  -f {html,json,json,shell,table,value,yaml,yaml}, --format {html,json,json,shell,table,value,yaml,yaml}\n                        the output format, defaults to table\n  -c COLUMN, --column COLUMN\n                        specify the column(s) to include, can be repeated\n\ntable formatter:\n  --max-width \u003cinteger\u003e\n                        Maximum display width, 0 to disable\n\njson formatter:\n  --noindent            whether to disable indenting the JSON\n\nshell formatter:\n  a format a UNIX shell can parse (variable\u003d\"value\")\n\n  --prefix PREFIX       add a prefix to all variable names",
+      "parentUuid": "1a76adc5_985b0c87",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 6
+      },
+      "revId": "c50974258258d5b643003c710c0692f36297c807",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
