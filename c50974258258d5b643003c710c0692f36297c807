@@ -141,6 +141,30 @@
       "revId": "c50974258258d5b643003c710c0692f36297c807",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_587814c4",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2016-09-01T05:33:23Z",
+      "side": 1,
+      "message": "oh I forgot the --os-tenant-name. This should work:\nopenstack --os-tenant-name $DOCTOR_PROJECT server show $VM_NAME",
+      "parentUuid": "1a76adc5_58033442",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 6
+      },
+      "revId": "c50974258258d5b643003c710c0692f36297c807",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
