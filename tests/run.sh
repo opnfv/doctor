@@ -561,6 +561,7 @@ echo "creating VM..."
 boot_vm
 wait_for_vm_launch
 openstack $as_doctor_user server show $VM_NAME
+openstack user role list "$DOCTOR_USER" --project "$DOCTOR_PROJECT"
 
 echo "get computer host info..."
 get_compute_host_info
