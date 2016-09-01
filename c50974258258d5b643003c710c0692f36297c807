@@ -189,6 +189,30 @@
       "revId": "c50974258258d5b643003c710c0692f36297c807",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_785ab051",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2016-09-01T06:17:17Z",
+      "side": 1,
+      "message": "That is strange. Is the user not admin then. I do not have system now to test with this script, but normally this should work as admin. Might need to find root cause why its not working. Is it policy like \"os_compute_api:os-extended-server-attributes\" or what.",
+      "parentUuid": "1a76adc5_98454c72",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 6
+      },
+      "revId": "c50974258258d5b643003c710c0692f36297c807",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
