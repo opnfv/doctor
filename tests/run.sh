@@ -11,7 +11,8 @@
 [[ "${CI_DEBUG:-true}" == [Tt]rue ]] && set -x
 
 IMAGE_URL=https://launchpad.net/cirros/trunk/0.3.0/+download/cirros-0.3.0-x86_64-disk.img
-IMAGE_NAME=cirros
+#if a different image name is provided in the enviroment, use that one
+IMAGE_NAME=${IMAGE_NAME=:-cirros}
 IMAGE_FILE="${IMAGE_NAME}.img"
 IMAGE_FORMAT=qcow2
 VM_NAME=doctor_vm1
@@ -44,6 +45,13 @@ fi
 if [[ ! "$SUPPORTED_INSPECTOR_TYPES" =~ "$INSPECTOR_TYPE" ]] ; then
     echo "ERROR: INSPECTOR_TYPE=$INSPECTOR_TYPE is not supported."
     exit 1
+fi
+
+use_existing_image=0
+#check if we need to use an existing image or we need to download it
+if [[ "$IMAGE_NAME" != "cirros" ]] ; then
+        echo "Use existing image"
+        use_existing_image=1;
 fi
 
 get_installer_ip() {
@@ -252,8 +260,11 @@ get_consumer_ip() {
 }
 
 download_image() {
-    [ -e "$IMAGE_FILE" ] && return 0
-    wget "$IMAGE_URL" -o "$IMAGE_FILE"
+    #if a different name was provided for the image in the enviroment there's no need to download the image
+    if [[ "$use_existing_image" == "0" ]] ; then
+        [ -e "$IMAGE_FILE" ] && return 0
+        wget "$IMAGE_URL" -o "$IMAGE_FILE"
+    fi
 }
 
 register_image() {
@@ -531,7 +542,10 @@ cleanup() {
 
     image_id=$(openstack image list | grep " $IMAGE_NAME " | awk '{print $2}')
     sleep 1
-    [ -n "$image_id" ] && openstack image delete "$image_id"
+    #if an existing image was used, there's no need to remove it here
+    if [[ "$use_existing_image" == "0" ]] ; then
+        [ -n "$image_id" ] && openstack image delete "$image_id"
+    fi
     openstack role remove "$DOCTOR_ROLE" --user "$DOCTOR_USER" \
                               --project "$DOCTOR_PROJECT"
     openstack project delete "$DOCTOR_PROJECT"
