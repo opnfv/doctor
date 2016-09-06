@@ -22,6 +22,30 @@
       "revId": "0c770277725e181b065e7931b05356a9c141f02f",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_bc9a736c",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-09-06T14:30:00Z",
+      "side": 1,
+      "message": "Do we need a sleep? In \u0027wait_for_vm_launch\u0027 we are already waiting for the VM to become \"ACTIVE\". That implies the VM was scheduled to a compute node and thus should be visible in OS-EXT-SRV-ATTR:host.\n\nLet me know if I\u0027m missing something that I\u0027m unaware of.",
+      "parentUuid": "1a76adc5_3cb8a3e4",
+      "range": {
+        "startLine": 188,
+        "startChar": 4,
+        "endLine": 189,
+        "endChar": 3
+      },
+      "revId": "0c770277725e181b065e7931b05356a9c141f02f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
