@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_3cb8a3e4",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 346
+      },
+      "writtenOn": "2016-09-06T14:23:37Z",
+      "side": 1,
+      "message": "What about adding \"sleep 5\" before trying to get compute host info",
+      "range": {
+        "startLine": 188,
+        "startChar": 4,
+        "endLine": 189,
+        "endChar": 3
+      },
+      "revId": "0c770277725e181b065e7931b05356a9c141f02f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
