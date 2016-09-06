@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_3613e467",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-09-06T07:42:35Z",
+      "side": 1,
+      "message": "if [[ \"$use_existing_image\" \u003d\u003d \"0\" ]] ; then\n    openstack image create ...\nfi",
+      "revId": "e9c88815c066bc165e79b285c9b935f9c56830fe",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
