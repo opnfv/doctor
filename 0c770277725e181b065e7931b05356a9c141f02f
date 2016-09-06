@@ -70,6 +70,30 @@
       "revId": "0c770277725e181b065e7931b05356a9c141f02f",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_bca59348",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-09-06T18:26:13Z",
+      "side": 1,
+      "message": "Oh! You win, again :-)\nI will add the sleep inside wait_for_vm_launch.\n\nThanks a lot, Bertrand!",
+      "parentUuid": "1a76adc5_7cba9bc1",
+      "range": {
+        "startLine": 188,
+        "startChar": 4,
+        "endLine": 189,
+        "endChar": 3
+      },
+      "revId": "0c770277725e181b065e7931b05356a9c141f02f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
