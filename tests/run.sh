@@ -450,7 +450,12 @@ wait_for_vm_launch() {
     while [[ ${count} -lt 60 ]]
     do
         state=$(openstack $as_doctor_user server list | grep " $VM_NAME " | awk '{print $6}')
-        [[ "$state" == "ACTIVE" ]] && return 0
+        if [[ "$state" == "ACTIVE" ]]; then
+            # NOTE(cgoncalves): sleeping for a bit to stabilize
+            # See python-openstackclient/functional/tests/compute/v2/test_server.py:wait_for_status
+            sleep 5
+            return 0
+        fi
         [[ "$state" == "ERROR" ]] && echo "vm state is ERROR" && exit 1
         count=$(($count+1))
         sleep 1
@@ -560,13 +565,12 @@ create_test_user
 echo "creating VM..."
 boot_vm
 wait_for_vm_launch
-openstack $as_doctor_user server show $VM_NAME
 
 echo "get computer host info..."
 get_compute_host_info
 
 echo "creating alarm..."
-#TODO: change back to use, network problems depends on infra and installers 
+#TODO: change back to use, network problems depends on infra and installers
 #get_consumer_ip
 create_alarm
 
