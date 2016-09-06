@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "1a76adc5_a14b3058",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 3859
+      },
+      "writtenOn": "2016-09-06T08:26:14Z",
+      "side": 1,
+      "message": "Maybe it\u0027s better to check if the image exists here, rather than using the name cirros as a magic word.\n\nopenstack image list | grep -q \" $IMAGE_NAME \" \u0026\u0026 use_existing_image\u003d1",
+      "revId": "e9c88815c066bc165e79b285c9b935f9c56830fe",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_3613e467",
         "filename": "tests/run.sh",
         "patchSetId": 1
