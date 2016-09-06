@@ -560,7 +560,6 @@ create_test_user
 echo "creating VM..."
 boot_vm
 wait_for_vm_launch
-openstack $as_doctor_user server show $VM_NAME
 
 echo "get computer host info..."
 get_compute_host_info
