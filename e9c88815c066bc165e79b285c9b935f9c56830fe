@@ -33,6 +33,24 @@
       "revId": "e9c88815c066bc165e79b285c9b935f9c56830fe",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_01d9c482",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 5267
+      },
+      "writtenOn": "2016-09-06T09:09:13Z",
+      "side": 1,
+      "message": "There is no need for this check here. The line above will return if the image already exists, so this step will not be performed when using an existing image.",
+      "parentUuid": "1a76adc5_3613e467",
+      "revId": "e9c88815c066bc165e79b285c9b935f9c56830fe",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
