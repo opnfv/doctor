@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_07ca346e",
+        "filename": "tests/run.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-09-07T05:51:58Z",
+      "side": 1,
+      "message": "replace tab by white spaces",
+      "revId": "43f89b4f159a292ed59428e2cf3cc36aef0b887f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
