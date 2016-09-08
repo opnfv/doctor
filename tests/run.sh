@@ -489,11 +489,7 @@ calculate_notification_time() {
         exit 1
     fi
     echo "$notified $detected" | \
-        awk '{
-            d = $1 - $2;
-            if (d < 1 && d > 0) { print d " OK"; exit 0 }
-            else { print d " NG"; exit 1 }
-        }'
+        awk '{d = $1 - $2; if (d < 1 && d > 0) print d " OK"; else print d " NG"}'
 }
 
 check_host_status() {
