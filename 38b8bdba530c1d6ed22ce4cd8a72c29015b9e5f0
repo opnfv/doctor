@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "1a76adc5_6faf3a95",
+        "filename": "tests/run.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-09-08T12:06:34Z",
+      "side": 1,
+      "message": "Delete \u003d\n\nIMAGE_NAME\u003d${IMAGE_NAME:-cirros}",
+      "revId": "38b8bdba530c1d6ed22ce4cd8a72c29015b9e5f0",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_cfc8ce76",
         "filename": "tests/run.sh",
         "patchSetId": 3
