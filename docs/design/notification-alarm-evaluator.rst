@@ -1,12 +1,6 @@
 .. This work is licensed under a Creative Commons Attribution 4.0 International License.
 .. http://creativecommons.org/licenses/by/4.0
 
-..
- This work is licensed under a Creative Commons Attribution 3.0 Unported
- License.
-
- http://creativecommons.org/licenses/by/3.0/legalcode
-
 ============================
 Notification Alarm Evaluator
 ============================
