@@ -53,7 +53,7 @@ inspector = DoctorInspectorSample()
 
 @app.route('/events', methods=['POST'])
 def event_posted():
-    app.logger.debug('event posted')
+    app.logger.debug('event posted at %s' % time.time())
     app.logger.debug('inspector = %s' % inspector)
     app.logger.debug('received data = %s' % request.data)
     d = json.loads(request.data)
