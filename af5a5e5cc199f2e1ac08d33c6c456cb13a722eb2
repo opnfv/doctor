@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_9fd75fed",
+        "filename": "tests/inspector.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-09-12T09:22:40Z",
+      "side": 1,
+      "message": "not really.",
+      "parentUuid": "1a76adc5_5f8d4730",
+      "revId": "af5a5e5cc199f2e1ac08d33c6c456cb13a722eb2",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_9f72ff47",
         "filename": "tests/run.sh",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2016-09-12T09:14:57Z",
       "side": 1,
       "message": "We usually should append new argument at the end for back compatibility.",
+      "revId": "af5a5e5cc199f2e1ac08d33c6c456cb13a722eb2",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_bfd25bfe",
+        "filename": "tests/run.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-09-12T09:22:40Z",
+      "side": 1,
+      "message": "OK,fix it.",
+      "parentUuid": "1a76adc5_9f72ff47",
       "revId": "af5a5e5cc199f2e1ac08d33c6c456cb13a722eb2",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
