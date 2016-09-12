@@ -12,6 +12,7 @@ from flask import Flask
 from flask import request
 import json
 import os
+import time 
 
 import novaclient.client as novaclient
 
@@ -32,9 +33,12 @@ class DoctorInspectorSample(object):
         # check nova is available
         self.nova.servers.list(detailed=False)
 
+    def update_server_list(self, host):
+        opts = {'all_tenants': True, 'host': host}
+        self.servers=self.nova.servers.list(detailed=False, search_opts=opts)
+
     def disable_compute_host(self, hostname):
-        opts = {'all_tenants': True, 'host': hostname}
-        for server in self.nova.servers.list(detailed=False, search_opts=opts):
+        for server in self.servers:
             self.nova.servers.reset_state(server, 'error')
 
         # NOTE: We use our own client here instead of this novaclient for a
@@ -53,7 +57,7 @@ inspector = DoctorInspectorSample()
 
 @app.route('/events', methods=['POST'])
 def event_posted():
-    app.logger.debug('event posted')
+    app.logger.debug('event posted at %s' % time.time())
     app.logger.debug('inspector = %s' % inspector)
     app.logger.debug('received data = %s' % request.data)
     d = json.loads(request.data)
@@ -66,6 +70,8 @@ def event_posted():
 
 def get_args():
     parser = argparse.ArgumentParser(description='Doctor Sample Inspector')
+    parser.add_argument('host', metavar='HOST', type=str, nargs='?',
+                        help='the host which VM boot in')
     parser.add_argument('port', metavar='PORT', type=int, nargs='?',
                         help='a port for inspector')
     return parser.parse_args()
@@ -73,6 +79,7 @@ def get_args():
 
 def main():
     args = get_args()
+    inspector.update_server_list(args.host)
     app.run(port=args.port, debug=True)
 
 

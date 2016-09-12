@@ -371,7 +371,7 @@ congress_setup_rules() {
 start_inspector() {
     if [[ "$INSPECTOR_TYPE" == "sample" ]] ; then
         pgrep -f "python inspector.py" && return 0
-        python inspector.py "$INSPECTOR_PORT" > inspector.log 2>&1 &
+        python inspector.py "$COMPUTE_HOST" "$INSPECTOR_PORT" > inspector.log 2>&1 &
     elif [[ "$INSPECTOR_TYPE" == "congress" ]] ; then
         nova_api_min_version="2.11"
         nova_api_version=$(openstack congress datasource list | \
