@@ -8,10 +8,12 @@
 ##############################################################################
 
 import argparse
+import collections
 from flask import Flask
 from flask import request
 import json
 import os
+import time
 
 import novaclient.client as novaclient
 
@@ -23,6 +25,7 @@ class DoctorInspectorSample(object):
     nova_api_version = '2.11'
 
     def __init__(self):
+        self.servers = collections.defaultdict(list)
         self.nova = novaclient.Client(self.nova_api_version,
                                       os.environ['OS_USERNAME'],
                                       os.environ['OS_PASSWORD'],
@@ -32,9 +35,19 @@ class DoctorInspectorSample(object):
         # check nova is available
         self.nova.servers.list(detailed=False)
 
+    def init_servers_list(self):
+        opts = {'all_tenants': True}
+        servers=self.nova.servers.list(search_opts=opts)
+        for server in servers:
+            try:
+                host=server.__dict__.get('OS-EXT-SRV-ATTR:host')
+                self.servers[host].append(server)
+                app.logger.debug('get hostname=%s from server=%s' % (host, server))
+            except Exception as e:
+                app.logger.debug('can not get hostname from server=%s' % server)
+
     def disable_compute_host(self, hostname):
-        opts = {'all_tenants': True, 'host': hostname}
-        for server in self.nova.servers.list(detailed=False, search_opts=opts):
+        for server in self.servers[hostname]:
             self.nova.servers.reset_state(server, 'error')
 
         # NOTE: We use our own client here instead of this novaclient for a
@@ -53,7 +66,7 @@ inspector = DoctorInspectorSample()
 
 @app.route('/events', methods=['POST'])
 def event_posted():
-    app.logger.debug('event posted')
+    app.logger.debug('event posted at %s' % time.time())
     app.logger.debug('inspector = %s' % inspector)
     app.logger.debug('received data = %s' % request.data)
     d = json.loads(request.data)
@@ -74,7 +87,7 @@ def get_args():
 def main():
     args = get_args()
     app.run(port=args.port, debug=True)
-
+    inspector.init_servers_list()
 
 if __name__ == '__main__':
     main()
