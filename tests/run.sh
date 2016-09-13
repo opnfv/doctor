@@ -10,6 +10,13 @@
 
 [[ "${CI_DEBUG:-true}" == [Tt]rue ]] && set -x
 
+echo hi
+echo
+echo "======================================================================="
+env
+echo "======================================================================="
+echo
+
 IMAGE_URL=https://launchpad.net/cirros/trunk/0.3.0/+download/cirros-0.3.0-x86_64-disk.img
 #if an existing image name is provided in the enviroment, use that one
 IMAGE_NAME=${IMAGE_NAME:-cirros}
