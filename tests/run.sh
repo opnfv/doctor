@@ -8,6 +8,8 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
 
+echo hi
+
 [[ "${CI_DEBUG:-true}" == [Tt]rue ]] && set -x
 
 IMAGE_URL=https://launchpad.net/cirros/trunk/0.3.0/+download/cirros-0.3.0-x86_64-disk.img
