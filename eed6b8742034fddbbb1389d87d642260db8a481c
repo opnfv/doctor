@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_f29a3d62",
+        "filename": "tests/inspector.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-09-19T09:24:27Z",
+      "side": 1,
+      "message": "Yes, i updated it as init_servers_list, see patch 5.",
+      "parentUuid": "1a76adc5_12e25903",
+      "range": {
+        "startLine": 38,
+        "startChar": 8,
+        "endLine": 38,
+        "endChar": 14
+      },
+      "revId": "eed6b8742034fddbbb1389d87d642260db8a481c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_520a11d3",
         "filename": "tests/inspector.py",
         "patchSetId": 4
@@ -178,6 +202,30 @@
       "side": 1,
       "message": "Even if the update method will be made separately later, this method could empty the list first if there will be a need to reinitialize the list. +1 for this enhancement.",
       "parentUuid": "1a76adc5_f2279d62",
+      "range": {
+        "startLine": 44,
+        "startChar": 21,
+        "endLine": 44,
+        "endChar": 28
+      },
+      "revId": "eed6b8742034fddbbb1389d87d642260db8a481c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_129ed956",
+        "filename": "tests/inspector.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-09-19T09:24:27Z",
+      "side": 1,
+      "message": "Ok, fix it.",
+      "parentUuid": "1a76adc5_1287b910",
       "range": {
         "startLine": 44,
         "startChar": 21,
