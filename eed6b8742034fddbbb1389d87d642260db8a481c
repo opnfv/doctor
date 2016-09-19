@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_5231b1a0",
+        "filename": "tests/inspector.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-09-19T08:30:29Z",
+      "side": 1,
+      "message": "Suggest using `set` instead of `list` to avoid duplicate entries.",
+      "range": {
+        "startLine": 28,
+        "startChar": 47,
+        "endLine": 28,
+        "endChar": 51
+      },
+      "revId": "eed6b8742034fddbbb1389d87d642260db8a481c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_520a11d3",
+        "filename": "tests/inspector.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-09-19T08:30:29Z",
+      "side": 1,
+      "message": "It seems both single quote and double quote are used in this script. What rule are you following?",
+      "range": {
+        "startLine": 43,
+        "startChar": 41,
+        "endLine": 43,
+        "endChar": 42
+      },
+      "revId": "eed6b8742034fddbbb1389d87d642260db8a481c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_f2279d62",
+        "filename": "tests/inspector.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-09-19T08:30:29Z",
+      "side": 1,
+      "message": "Consider emptying self.servers before enter loop so that `update_server_list()` can be repeated.\n\nThis will be useful when we handle the `update` event in the future.",
+      "range": {
+        "startLine": 44,
+        "startChar": 21,
+        "endLine": 44,
+        "endChar": 28
+      },
+      "revId": "eed6b8742034fddbbb1389d87d642260db8a481c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
