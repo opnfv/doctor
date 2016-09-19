@@ -46,6 +46,30 @@
       "revId": "31782de2bb4e6048ab771c826e9ddb67c94295e1",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_0dbb1c73",
+        "filename": "tests/inspector.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-09-19T13:44:33Z",
+      "side": 1,
+      "message": "well, then how about adding \u0027app.logger.setLevel(logging.DEBUG)\u0027 between line 64 and 65?  note, you also need to add \u0027import logging\u0027 in the import section above.",
+      "parentUuid": "1a76adc5_edf4a0f3",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 91,
+        "endChar": 33
+      },
+      "revId": "31782de2bb4e6048ab771c826e9ddb67c94295e1",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
