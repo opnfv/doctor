@@ -70,6 +70,54 @@
       "revId": "3f6b6069b88b0e36280ce1c17ec63f54cde4ae72",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_5279b191",
+        "filename": "tests/inspector.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-09-19T07:55:35Z",
+      "side": 1,
+      "message": "Ok,i\u0027ll fix it.",
+      "parentUuid": "1a76adc5_94c97e7a",
+      "range": {
+        "startLine": 75,
+        "startChar": 24,
+        "endLine": 75,
+        "endChar": 29
+      },
+      "revId": "3f6b6069b88b0e36280ce1c17ec63f54cde4ae72",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_72e86d10",
+        "filename": "tests/inspector.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-09-19T07:55:35Z",
+      "side": 1,
+      "message": "yes, agree. But currently to listen  \"instance.update\" will make the sample inspector complex.",
+      "parentUuid": "1a76adc5_b4a91a7d",
+      "range": {
+        "startLine": 75,
+        "startChar": 24,
+        "endLine": 75,
+        "endChar": 29
+      },
+      "revId": "3f6b6069b88b0e36280ce1c17ec63f54cde4ae72",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
