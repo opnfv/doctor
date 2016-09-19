@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_4d2b5482",
+        "filename": "tests/inspector.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-09-19T11:25:45Z",
+      "side": 1,
+      "message": "this should be in  DoctorInspectorSample.__init__(), otherwise this won\u0027t be called in the initialization sequence. You can replace line 35 and 36 by \u0027self.init_servers_list()\u0027.",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 91,
+        "endChar": 33
+      },
+      "revId": "31782de2bb4e6048ab771c826e9ddb67c94295e1",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
