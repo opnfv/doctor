@@ -22,6 +22,30 @@
       "revId": "31782de2bb4e6048ab771c826e9ddb67c94295e1",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_edf4a0f3",
+        "filename": "tests/inspector.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-09-19T12:13:35Z",
+      "side": 1,
+      "message": "That will cause no output of debug log in init_servers_list() if i set it in line 35.",
+      "parentUuid": "1a76adc5_4d2b5482",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 91,
+        "endChar": 33
+      },
+      "revId": "31782de2bb4e6048ab771c826e9ddb67c94295e1",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
