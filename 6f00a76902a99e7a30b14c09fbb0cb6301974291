@@ -96,6 +96,52 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_e0eca291",
+        "filename": "docs/releasenotes/releasenotes.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 252
+      },
+      "writtenOn": "2016-09-20T14:30:59Z",
+      "side": 1,
+      "message": "the OPNFV",
+      "range": {
+        "startLine": 24,
+        "startChar": 55,
+        "endLine": 24,
+        "endChar": 60
+      },
+      "revId": "6f00a76902a99e7a30b14c09fbb0cb6301974291",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_20f37a74",
+        "filename": "docs/releasenotes/releasenotes.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 252
+      },
+      "writtenOn": "2016-09-20T14:30:59Z",
+      "side": 1,
+      "message": "the OPNFV",
+      "range": {
+        "startLine": 24,
+        "startChar": 36,
+        "endLine": 24,
+        "endChar": 41
+      },
+      "revId": "6f00a76902a99e7a30b14c09fbb0cb6301974291",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_e513540b",
         "filename": "docs/releasenotes/releasenotes.rst",
         "patchSetId": 7
@@ -237,6 +283,75 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_80036e41",
+        "filename": "docs/releasenotes/releasenotes.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 252
+      },
+      "writtenOn": "2016-09-20T14:30:59Z",
+      "side": 1,
+      "message": "support",
+      "range": {
+        "startLine": 40,
+        "startChar": 10,
+        "endLine": 40,
+        "endChar": 18
+      },
+      "revId": "6f00a76902a99e7a30b14c09fbb0cb6301974291",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_40fd5639",
+        "filename": "docs/releasenotes/releasenotes.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 252
+      },
+      "writtenOn": "2016-09-20T14:30:59Z",
+      "side": 1,
+      "message": "in the",
+      "range": {
+        "startLine": 46,
+        "startChar": 49,
+        "endLine": 46,
+        "endChar": 51
+      },
+      "revId": "6f00a76902a99e7a30b14c09fbb0cb6301974291",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_00975eed",
+        "filename": "docs/releasenotes/releasenotes.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 252
+      },
+      "writtenOn": "2016-09-20T14:30:59Z",
+      "side": 1,
+      "message": "from the",
+      "range": {
+        "startLine": 46,
+        "startChar": 67,
+        "endLine": 46,
+        "endChar": 71
+      },
+      "revId": "6f00a76902a99e7a30b14c09fbb0cb6301974291",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_450488bf",
         "filename": "docs/releasenotes/releasenotes.rst",
         "patchSetId": 7
@@ -284,6 +399,29 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_209a9a14",
+        "filename": "docs/releasenotes/releasenotes.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 252
+      },
+      "writtenOn": "2016-09-20T14:30:59Z",
+      "side": 1,
+      "message": "From the",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 4
+      },
+      "revId": "6f00a76902a99e7a30b14c09fbb0cb6301974291",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_3acc0735",
         "filename": "docs/releasenotes/releasenotes.rst",
         "patchSetId": 7
@@ -324,6 +462,75 @@
         "startChar": 44,
         "endLine": 59,
         "endChar": 50
+      },
+      "revId": "6f00a76902a99e7a30b14c09fbb0cb6301974291",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_409476e1",
+        "filename": "docs/releasenotes/releasenotes.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 252
+      },
+      "writtenOn": "2016-09-20T14:30:59Z",
+      "side": 1,
+      "message": "the deployment of the",
+      "range": {
+        "startLine": 67,
+        "startChar": 60,
+        "endLine": 67,
+        "endChar": 74
+      },
+      "revId": "6f00a76902a99e7a30b14c09fbb0cb6301974291",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_c0a08645",
+        "filename": "docs/releasenotes/releasenotes.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 252
+      },
+      "writtenOn": "2016-09-20T14:30:59Z",
+      "side": 1,
+      "message": "In the",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 2
+      },
+      "revId": "6f00a76902a99e7a30b14c09fbb0cb6301974291",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_c0b72685",
+        "filename": "docs/releasenotes/releasenotes.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 252
+      },
+      "writtenOn": "2016-09-20T14:30:59Z",
+      "side": 1,
+      "message": "In the",
+      "range": {
+        "startLine": 68,
+        "startChar": 55,
+        "endLine": 68,
+        "endChar": 57
       },
       "revId": "6f00a76902a99e7a30b14c09fbb0cb6301974291",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
@@ -417,6 +624,29 @@
         "startChar": 37,
         "endLine": 154,
         "endChar": 41
+      },
+      "revId": "6f00a76902a99e7a30b14c09fbb0cb6301974291",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_c06e4601",
+        "filename": "docs/releasenotes/releasenotes.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 252
+      },
+      "writtenOn": "2016-09-20T14:30:59Z",
+      "side": 1,
+      "message": "that the",
+      "range": {
+        "startLine": 154,
+        "startChar": 57,
+        "endLine": 154,
+        "endChar": 61
       },
       "revId": "6f00a76902a99e7a30b14c09fbb0cb6301974291",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
@@ -604,6 +834,29 @@
         "startChar": 12,
         "endLine": 164,
         "endChar": 16
+      },
+      "revId": "6f00a76902a99e7a30b14c09fbb0cb6301974291",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_a0730ae6",
+        "filename": "docs/releasenotes/releasenotes.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 252
+      },
+      "writtenOn": "2016-09-20T14:30:59Z",
+      "side": 1,
+      "message": "checking the",
+      "range": {
+        "startLine": 165,
+        "startChar": 31,
+        "endLine": 165,
+        "endChar": 39
       },
       "revId": "6f00a76902a99e7a30b14c09fbb0cb6301974291",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
