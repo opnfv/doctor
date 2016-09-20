@@ -46,6 +46,30 @@
       "revId": "8c8a4392f7211f07f8e53ec7c8f8122ecac787e5",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_26a072f3",
+        "filename": "docs/releasenotes/releasenotes.rst",
+        "patchSetId": 9
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2016-09-20T16:51:44Z",
+      "side": 1,
+      "message": "Here it was changed back to admin:\nhttps://gerrit.opnfv.org/gerrit/#/c/16145\nSo it must mean there is no run as \"_member_\" after APEX got the support. Should have even that installer specific to make things right.",
+      "parentUuid": "1a76adc5_0b145f9e",
+      "range": {
+        "startLine": 77,
+        "startChar": 49,
+        "endLine": 77,
+        "endChar": 58
+      },
+      "revId": "8c8a4392f7211f07f8e53ec7c8f8122ecac787e5",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
