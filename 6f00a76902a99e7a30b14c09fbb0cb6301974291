@@ -22,6 +22,98 @@
       "revId": "6f00a76902a99e7a30b14c09fbb0cb6301974291",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_456d6897",
+        "filename": "docs/releasenotes/releasenotes.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-09-20T09:08:25Z",
+      "side": 1,
+      "message": "Broken linkage. One possible option is: [*]_",
+      "range": {
+        "startLine": 154,
+        "startChar": 37,
+        "endLine": 154,
+        "endChar": 41
+      },
+      "revId": "6f00a76902a99e7a30b14c09fbb0cb6301974291",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_050770cb",
+        "filename": "docs/releasenotes/releasenotes.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-09-20T09:08:25Z",
+      "side": 1,
+      "message": "And here: .. [*]",
+      "range": {
+        "startLine": 157,
+        "startChar": 3,
+        "endLine": 157,
+        "endChar": 7
+      },
+      "revId": "6f00a76902a99e7a30b14c09fbb0cb6301974291",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_250aacd2",
+        "filename": "docs/releasenotes/releasenotes.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-09-20T09:08:25Z",
+      "side": 1,
+      "message": "Also broken here.",
+      "range": {
+        "startLine": 164,
+        "startChar": 12,
+        "endLine": 164,
+        "endChar": 16
+      },
+      "revId": "6f00a76902a99e7a30b14c09fbb0cb6301974291",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_c5109803",
+        "filename": "docs/releasenotes/releasenotes.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-09-20T09:08:25Z",
+      "side": 1,
+      "message": ".. and here.",
+      "range": {
+        "startLine": 168,
+        "startChar": 3,
+        "endLine": 168,
+        "endChar": 7
+      },
+      "revId": "6f00a76902a99e7a30b14c09fbb0cb6301974291",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
