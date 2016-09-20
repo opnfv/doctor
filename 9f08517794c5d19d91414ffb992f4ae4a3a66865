@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_373c2293",
+        "filename": "docs/releasenotes/releasenotes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-09-20T02:55:57Z",
+      "side": 1,
+      "message": "done, fixed line 56 as well",
+      "parentUuid": "1a76adc5_b1692227",
+      "range": {
+        "startLine": 69,
+        "startChar": 37,
+        "endLine": 69,
+        "endChar": 42
+      },
+      "revId": "9f08517794c5d19d91414ffb992f4ae4a3a66865",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_1162563e",
         "filename": "docs/releasenotes/releasenotes.rst",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2016-09-19T15:29:49Z",
       "side": 1,
       "message": "Verified only for admin users",
+      "range": {
+        "startLine": 71,
+        "startChar": 33,
+        "endLine": 71,
+        "endChar": 42
+      },
+      "revId": "9f08517794c5d19d91414ffb992f4ae4a3a66865",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_57567ed3",
+        "filename": "docs/releasenotes/releasenotes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-09-20T02:55:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_1162563e",
       "range": {
         "startLine": 71,
         "startChar": 33,
@@ -94,6 +142,54 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_d7592eff",
+        "filename": "docs/releasenotes/releasenotes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-09-20T02:55:57Z",
+      "side": 1,
+      "message": "You mean a Fuel plugin to configure Congress for Doctor use case? Should we replace \u0027Available\u0027 by \u0027TBC\u0027 or something else?",
+      "parentUuid": "1a76adc5_514f6ebd",
+      "range": {
+        "startLine": 76,
+        "startChar": 60,
+        "endLine": 76,
+        "endChar": 69
+      },
+      "revId": "9f08517794c5d19d91414ffb992f4ae4a3a66865",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_77513ad7",
+        "filename": "docs/releasenotes/releasenotes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-09-20T02:55:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_31651245",
+      "range": {
+        "startLine": 76,
+        "startChar": 33,
+        "endLine": 76,
+        "endChar": 42
+      },
+      "revId": "9f08517794c5d19d91414ffb992f4ae4a3a66865",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_9403b441",
         "filename": "docs/releasenotes/releasenotes.rst",
         "patchSetId": 4
@@ -141,6 +237,24 @@
       "side": 1,
       "message": "OK,finish it later.",
       "parentUuid": "1a76adc5_d7212ea0",
+      "revId": "9f08517794c5d19d91414ffb992f4ae4a3a66865",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_3763c2b2",
+        "filename": "docs/releasenotes/releasenotes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-09-20T02:55:57Z",
+      "side": 1,
+      "message": "Understood, I\u0027ll add mis-configured components.",
+      "parentUuid": "1a76adc5_b792729d",
       "revId": "9f08517794c5d19d91414ffb992f4ae4a3a66865",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
