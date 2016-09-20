@@ -91,6 +91,23 @@
       "revId": "9f08517794c5d19d91414ffb992f4ae4a3a66865",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_9403b441",
+        "filename": "docs/releasenotes/releasenotes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-09-20T01:19:04Z",
+      "side": 1,
+      "message": "There is another issue in Fuel 9.0, no configuration of `notification_driver` in nova.conf. It cause that the ceilometer-agent-notification can not receive the `instance.update` event.",
+      "revId": "9f08517794c5d19d91414ffb992f4ae4a3a66865",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
