@@ -126,6 +126,24 @@
       "revId": "9f08517794c5d19d91414ffb992f4ae4a3a66865",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_b792729d",
+        "filename": "docs/releasenotes/releasenotes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-09-20T02:16:30Z",
+      "side": 1,
+      "message": "OK,finish it later.",
+      "parentUuid": "1a76adc5_d7212ea0",
+      "revId": "9f08517794c5d19d91414ffb992f4ae4a3a66865",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
