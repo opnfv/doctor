@@ -11,11 +11,14 @@ import argparse
 from flask import Flask
 from flask import request
 import json
+import logger as doctor_log
 import os
 
 import novaclient.client as novaclient
 
 import nova_force_down
+
+LOG = doctor_log.Logger(doctor_inspector.log).getLogger()
 
 
 class DoctorInspectorSample(object):
@@ -53,9 +56,9 @@ inspector = DoctorInspectorSample()
 
 @app.route('/events', methods=['POST'])
 def event_posted():
-    app.logger.debug('event posted')
-    app.logger.debug('inspector = %s' % inspector)
-    app.logger.debug('received data = %s' % request.data)
+    LOG.debug('event posted')
+    LOG.debug('inspector = %s' % inspector)
+    LOG.debug('received data = %s' % request.data)
     d = json.loads(request.data)
     hostname = d['hostname']
     event_type = d['type']
@@ -73,7 +76,7 @@ def get_args():
 
 def main():
     args = get_args()
-    app.run(port=args.port, debug=True)
+    app.run(port=args.port)
 
 
 if __name__ == '__main__':
