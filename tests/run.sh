@@ -489,8 +489,8 @@ END_TXT
 }
 
 calculate_notification_time() {
-    detected=$(grep "doctor monitor detected at" monitor.log | awk '{print $5}')
-    notified=$(grep "doctor consumer notified at" consumer.log | awk '{print $5}')
+    detected=$(grep "doctor monitor detected at" monitor.log | awk '{print $10}')
+    notified=$(grep "doctor consumer notified at" consumer.log | awk '{print $10}')
     if ! grep -q "doctor consumer notified at" consumer.log ; then
         echo "ERROR: consumer hasn't received fault notification."
         exit 1
