@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_abc68b47",
+        "filename": "docs/releasenotes/releasenotes.rst",
+        "patchSetId": 9
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 346
+      },
+      "writtenOn": "2016-09-20T15:08:27Z",
+      "side": 1,
+      "message": "No, see https://gerrit.opnfv.org/gerrit/#/c/18323/\nLogs from August 10. This has not been verified for doctor user with role \"_member_\"",
+      "range": {
+        "startLine": 77,
+        "startChar": 49,
+        "endLine": 77,
+        "endChar": 58
+      },
+      "revId": "8c8a4392f7211f07f8e53ec7c8f8122ecac787e5",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
