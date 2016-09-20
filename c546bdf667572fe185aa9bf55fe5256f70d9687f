@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_a03b0a37",
+        "filename": "tests/consumer.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-09-20T13:54:25Z",
+      "side": 1,
+      "message": "It seems timestamp is already included in the logger formatter. Do we still need to print it out?",
+      "range": {
+        "startLine": 26,
+        "startChar": 43,
+        "endLine": 26,
+        "endChar": 45
+      },
+      "revId": "c546bdf667572fe185aa9bf55fe5256f70d9687f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
