@@ -108,6 +108,24 @@
       "revId": "9f08517794c5d19d91414ffb992f4ae4a3a66865",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_d7212ea0",
+        "filename": "docs/releasenotes/releasenotes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-09-20T02:03:47Z",
+      "side": 1,
+      "message": "Then we\u0027d better integrate it also in the plugin.",
+      "parentUuid": "1a76adc5_9403b441",
+      "revId": "9f08517794c5d19d91414ffb992f4ae4a3a66865",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
