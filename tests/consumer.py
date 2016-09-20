@@ -11,8 +11,11 @@ import argparse
 from flask import Flask
 from flask import request
 import json
+import logger as doctor_log
 import os
 import time
+
+LOG = doctor_log.Logger(__name__).getLogger()
 
 
 app = Flask(__name__)
@@ -20,8 +23,8 @@ app = Flask(__name__)
 
 @app.route('/failure', methods=['POST'])
 def event_posted():
-    app.logger.debug('doctor consumer notified at %s' % time.time())
-    app.logger.debug('received data = %s' % request.data)
+    LOG.debug('doctor consumer notified at %s' % time.time())
+    LOG.debug('received data = %s' % request.data)
     d = json.loads(request.data)
     return "OK"
 
@@ -35,7 +38,7 @@ def get_args():
 
 def main():
     args = get_args()
-    app.run(host="0.0.0.0", port=args.port, debug=True)
+    app.run(host="0.0.0.0", port=args.port)
 
 
 if __name__ == '__main__':
