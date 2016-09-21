@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_b3211da1",
+        "filename": "tests/inspector.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 2651
+      },
+      "writtenOn": "2016-09-21T09:09:41Z",
+      "side": 1,
+      "message": "\u0027.log\u0027 will be added automatically, you don\u0027t need to add it here",
+      "range": {
+        "startLine": 23,
+        "startChar": 41,
+        "endLine": 23,
+        "endChar": 45
+      },
+      "revId": "b26acd9839c9d8b4cc95024ba2d46b3c9ed0c7c7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
