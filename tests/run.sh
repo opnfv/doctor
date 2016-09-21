@@ -23,8 +23,7 @@ CONSUMER_PORT=12346
 DOCTOR_USER=doctor
 DOCTOR_PW=doctor
 DOCTOR_PROJECT=doctor
-#TODO: change back to `_member_` when JIRA DOCTOR-55 is done
-DOCTOR_ROLE=admin
+DOCTOR_ROLE=_member_
 
 SUPPORTED_INSTALLER_TYPES="apex fuel local"
 INSTALLER_TYPE=${INSTALLER_TYPE:-local}
@@ -36,6 +35,7 @@ INSPECTOR_TYPE=${INSPECTOR_TYPE:-sample}
 ssh_opts="-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 as_doctor_user="--os-username $DOCTOR_USER --os-password $DOCTOR_PW
                 --os-tenant-name $DOCTOR_PROJECT"
+for_doctor_project="--os-tenant-name $DOCTOR_PROJECT"
 
 if [[ ! "$SUPPORTED_INSTALLER_TYPES" =~ "$INSTALLER_TYPE" ]] ; then
     echo "ERROR: INSTALLER_TYPE=$INSTALLER_TYPE is not supported."
@@ -187,7 +187,7 @@ END_TXT
 
 get_compute_host_info() {
     # get computer host info which VM boot in
-    COMPUTE_HOST=$(openstack $as_doctor_user server show $VM_NAME |
+    COMPUTE_HOST=$(openstack $for_doctor_project server show $VM_NAME |
                    grep "OS-EXT-SRV-ATTR:host" | awk '{ print $4 }')
     compute_host_in_undercloud=${COMPUTE_HOST%%.*}
     if [[ -z "$COMPUTE_HOST" ]] ; then
