@@ -20,11 +20,11 @@ VM_FLAVOR=m1.tiny
 ALARM_NAME=doctor_alarm1
 INSPECTOR_PORT=12345
 CONSUMER_PORT=12346
+
 DOCTOR_USER=doctor
 DOCTOR_PW=doctor
 DOCTOR_PROJECT=doctor
-#TODO: change back to `_member_` when JIRA DOCTOR-55 is done
-DOCTOR_ROLE=admin
+DOCTOR_ROLE=_member_
 
 SUPPORTED_INSTALLER_TYPES="apex fuel local"
 INSTALLER_TYPE=${INSTALLER_TYPE:-local}
@@ -36,6 +36,7 @@ INSPECTOR_TYPE=${INSPECTOR_TYPE:-sample}
 ssh_opts="-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 as_doctor_user="--os-username $DOCTOR_USER --os-password $DOCTOR_PW
                 --os-tenant-name $DOCTOR_PROJECT"
+as_admin_user="--os-username admin --os-tenant-name $DOCTOR_PROJECT"
 
 if [[ ! "$SUPPORTED_INSTALLER_TYPES" =~ "$INSTALLER_TYPE" ]] ; then
     echo "ERROR: INSTALLER_TYPE=$INSTALLER_TYPE is not supported."
@@ -186,8 +187,8 @@ END_TXT
 }
 
 get_compute_host_info() {
-    # get computer host info which VM boot in
-    COMPUTE_HOST=$(openstack $as_doctor_user server show $VM_NAME |
+    # get computer host info which VM boot in as admin user
+    COMPUTE_HOST=$(openstack $as_admin_user server show $VM_NAME |
                    grep "OS-EXT-SRV-ATTR:host" | awk '{ print $4 }')
     compute_host_in_undercloud=${COMPUTE_HOST%%.*}
     if [[ -z "$COMPUTE_HOST" ]] ; then
@@ -276,6 +277,7 @@ create_test_user() {
     openstack project list | grep -q " $DOCTOR_PROJECT " || {
         openstack project create "$DOCTOR_PROJECT"
     }
+    # Doctor user
     openstack user list | grep -q " $DOCTOR_USER " || {
         openstack user create "$DOCTOR_USER" --password "$DOCTOR_PW" \
                               --project "$DOCTOR_PROJECT"
@@ -284,6 +286,11 @@ create_test_user() {
     | grep -q " $DOCTOR_ROLE " || {
         openstack role add "$DOCTOR_ROLE" --user "$DOCTOR_USER" \
                            --project "$DOCTOR_PROJECT"
+    }
+    # Admin user to project
+    openstack user role list admin --project "$DOCTOR_PROJECT" \
+    | grep -q " admin " || {
+        openstack role add admin --user admin --project "$DOCTOR_PROJECT"
     }
 }
 
@@ -549,6 +556,7 @@ cleanup() {
     fi
     openstack role remove "$DOCTOR_ROLE" --user "$DOCTOR_USER" \
                               --project "$DOCTOR_PROJECT"
+    openstack role remove admin --user admin --project "$DOCTOR_PROJECT"
     openstack project delete "$DOCTOR_PROJECT"
     openstack user delete "$DOCTOR_USER"
 
