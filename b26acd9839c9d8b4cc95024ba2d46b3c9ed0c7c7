@@ -46,6 +46,30 @@
       "revId": "b26acd9839c9d8b4cc95024ba2d46b3c9ed0c7c7",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_1f07b01d",
+        "filename": "tests/inspector.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 2651
+      },
+      "writtenOn": "2016-09-22T09:18:28Z",
+      "side": 1,
+      "message": "sorry, I add \u0027.log\u0027 in my logger_utils process, so I don\u0027t need to add here, I assume you do it in the same way",
+      "parentUuid": "1a76adc5_845a994e",
+      "range": {
+        "startLine": 23,
+        "startChar": 41,
+        "endLine": 23,
+        "endChar": 45
+      },
+      "revId": "b26acd9839c9d8b4cc95024ba2d46b3c9ed0c7c7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
