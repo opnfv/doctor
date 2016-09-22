@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_8408592e",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-09-22T02:34:34Z",
+      "side": 1,
+      "message": "As we discussed in https://gerrit.opnfv.org/gerrit/#/c/19967/,\nthis command will not get the compute host.\n\nThe error log is as follows:\n++ openstack --os-tenant-name doctor server show doctor_vm1\n++ grep OS-EXT-SRV-ATTR:host\n++ awk \u0027{ print $4 }\u0027\nThe request you have made requires authentication. (HTTP 401) (Request-ID: req-54b90bd7-bdef-4d4b-82fb-ab8780f0aa0d)\n+ COMPUTE_HOST\u003d",
+      "revId": "1aba1818c1a62afce77aae519c1cdfbab7ae25b6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
