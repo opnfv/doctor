@@ -22,6 +22,30 @@
       "revId": "b26acd9839c9d8b4cc95024ba2d46b3c9ed0c7c7",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_845a994e",
+        "filename": "tests/inspector.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2016-09-22T00:55:30Z",
+      "side": 1,
+      "message": "No, i test it in my devstack env, remove the `.log` in monitor.py file. The result is as follows:\n-rw-r--r-- 1 root root       0 Sep 21 18:16 doctor_consumer.log\n-rw-r--r-- 1 root root       0 Sep 21 18:16 doctor_inspector.log\n-rw-r--r-- 1 root root     108 Sep 21 18:16 doctor_monitor\n\nThe `.log` don\u0027t be added automatically to the doctor_monitor file.",
+      "parentUuid": "1a76adc5_b3211da1",
+      "range": {
+        "startLine": 23,
+        "startChar": 41,
+        "endLine": 23,
+        "endChar": 45
+      },
+      "revId": "b26acd9839c9d8b4cc95024ba2d46b3c9ed0c7c7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
