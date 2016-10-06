@@ -1,0 +1,39 @@
+# Upstream contributions, bitergia will crawl this and extract the relevant information
+# system is one of Gerrit, Bugzilla, Launchpad (insert more)
+---
+-
+  url: https://blueprints.launchpad.net/ceilometer/+spec/event-alarm-evaluator
+  system: Launchpad
+-
+  url: https://blueprints.launchpad.net/nova/+spec/mark-host-down
+  system: Launchpad
+-
+  url: https://blueprints.launchpad.net/python-novaclient/+spec/support-force-down-service
+  system: Launchpad
+-
+  url: https://blueprints.launchpad.net/nova/+spec/get-valid-server-state
+  system: Launchpad
+-
+  url: https://blueprints.launchpad.net/nova/+spec/servers-by-host-status
+  system: Launchpad
+-
+  url: https://blueprints.launchpad.net/nova/+spec/maintenance-reason-to-server
+  system: Launchpad
+-
+  url: https://blueprints.launchpad.net/nova/+spec/service-status-notification
+  system: Launchpad
+-
+  url: https://blueprints.launchpad.net/congress/+spec/push-type-datasource-driver
+  system: Launchpad
+#-
+#  url: https://review.openstack.org/#/c/314915/
+#  system: Gerrit
+-
+  url: https://blueprints.launchpad.net/cinder/+spec/mark-services-down
+  system: Launchpad
+-
+  url: https://blueprints.launchpad.net/python-cinderclient/+spec/mark-service-down-cli
+  system: Launchpad
+#-
+#  url: https://bugs.launchpad.net/neutron/+bug/1513144
+#  system: Launchpad-bug
