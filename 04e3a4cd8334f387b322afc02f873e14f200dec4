@@ -22,6 +22,30 @@
       "revId": "04e3a4cd8334f387b322afc02f873e14f200dec4",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dad5f5cf_c616c0f1",
+        "filename": "UPSTREAM",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-10-11T12:41:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dad5f5cf_772b0883",
+      "range": {
+        "startLine": 20,
+        "startChar": 3,
+        "endLine": 20,
+        "endChar": 73
+      },
+      "revId": "04e3a4cd8334f387b322afc02f873e14f200dec4",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
