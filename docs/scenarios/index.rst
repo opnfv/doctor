@@ -10,3 +10,4 @@ Doctor scenario
     :numbered:
 
    ./functest/doctor-scenario-in-functest.rst
+   ./performance-profile-in-qtip.rst
