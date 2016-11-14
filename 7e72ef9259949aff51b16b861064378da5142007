@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_2f10af4d",
+        "filename": "docs/scenarios/performance-profile-in-qtip.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 304
+      },
+      "writtenOn": "2016-11-14T13:50:37Z",
+      "side": 1,
+      "message": "I\u0027m just not sure how you are classifying this as a performance profile? are you measuring the time? if yes then what are you reporting it in seconds/milliseconds...",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 63
+      },
+      "revId": "7e72ef9259949aff51b16b861064378da5142007",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
