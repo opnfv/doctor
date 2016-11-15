@@ -81,7 +81,7 @@ mapping/translating the OPNFV terms to terminology used in other contexts.
         Virtualized non-volatile storage allocated to a VM.
 
     VNF
-        Virtualized Network Function. Implementation of an Network Function that
+        Virtualized Network Function. Implementation of a Network Function that
         can be deployed on a Network Function Virtualization Infrastructure
         (NFVI).
 
