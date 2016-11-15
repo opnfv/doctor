@@ -17,7 +17,7 @@ repository. It can be executed as follows:
 
 .. code-block:: bash
 
-    git clone https://gerrit.opnfv.org/gerrit/doctor -b stable/colorado
+    git clone https://gerrit.opnfv.org/gerrit/doctor -b stable/danube
     cd doctor/tests
     CONSUMER_PORT=12346
     python consumer.py "$CONSUMER_PORT" > consumer.log 2>&1 &
@@ -30,7 +30,7 @@ from a monitor running outside of OpenStack Compute (Nova) by using
 force-down API.
 
 See
-http://artifacts.opnfv.org/doctor/colorado/manuals/mark-host-down_manual.html
+http://artifacts.opnfv.org/doctor/danube/manuals/mark-host-down_manual.html
 for more detail.
 
 Valid compute host status given to VM owner
@@ -40,5 +40,5 @@ The resource state of a compute host can be retrieved by a user with the
 OpenStack Compute (Nova) servers API.
 
 See
-http://artifacts.opnfv.org/doctor/colorado/manuals/get-valid-server-state.html
+http://artifacts.opnfv.org/doctor/danube/manuals/get-valid-server-state.html
 for more detail.

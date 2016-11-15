@@ -6,7 +6,7 @@
 Platform overview
 """""""""""""""""
 
-Doctor platform provides these features in `Colorado Release <https://wiki.opnfv.org/display/SWREL/Colorado>`_:
+Doctor platform provides these features in `Danube Release <https://wiki.opnfv.org/display/SWREL/Danube>`_:
 
 * Immediate Notification
 * Consistent resource state awareness for compute host down
@@ -41,11 +41,11 @@ You can see an overview of the Doctor platform and how components interact in
     :name: figure-p1
     :width: 100%
 
-    Doctor platform and typical sequence (Colorado)
+    Doctor platform and typical sequence
 
 Detailed information on the Doctor architecture can be found in the Doctor
 requirements documentation:
-http://artifacts.opnfv.org/doctor/colorado/requirements/05-implementation.html
+http://artifacts.opnfv.org/doctor/danube/requirements/05-implementation.html
 
 Use case
 """"""""
