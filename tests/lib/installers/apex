@@ -1,0 +1,24 @@
+#!/bin/bash
+
+function get_installer_ip {
+    local instack_mac=$(sudo virsh domiflist instack | awk '/default/{print $5}')
+    INSTALLER_IP=$(/usr/sbin/arp -e | grep ${instack_mac} | awk '{print $1}')
+    die_if_not_set $LINENO $INSTALLER_IP "No installer IP"
+}
+
+function installer_get_ssh_keys {
+    sudo scp $ssh_opts root@"$INSTALLER_IP":/home/stack/.ssh/id_rsa instack_key
+    sudo chown $(whoami):$(whoami) instack_key
+    chmod 400 instack_key
+    ssh_opts_cpu+=" -i instack_key"
+}
+
+function installer_apply_patches {
+    # Noop
+    return
+}
+
+function cleanup_installer_apex {
+    # Noop
+    return
+}
