@@ -1,0 +1,34 @@
+#!/bin/bash
+
+INSTALLER_TYPE=${INSTALLER_TYPE:-local}
+INSTALLER_IP=${INSTALLER_IP:-none}
+ssh_opts_cpu="$ssh_opts"
+
+function is_installer_supported {
+    local installer="$1"
+    [[ -f $TOP_DIR/lib/installers/$installer ]]
+}
+
+function is_installer {
+    local installer="$1"
+    [[ $installer == $INSTALLER_TYPE ]]
+}
+
+function setup_installer {
+    if ! is_installer_supported $INSTALLER_TYPE; then
+        die $LINENO"INSTALLER_TYPE=$INSTALLER_TYPE is not supported."
+    fi
+
+    source $TOP_DIR/lib/installers/$INSTALLER_TYPE
+
+    if ! is_set INSTALLER_IP; then
+        get_installer_ip
+    fi
+
+    installer_get_ssh_keys
+    installer_apply_patches
+}
+
+function cleanup_installer {
+    cleanup_installer_$INSTALLER_TYPE
+}
