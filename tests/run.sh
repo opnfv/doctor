@@ -32,6 +32,7 @@ INSTALLER_IP=${INSTALLER_IP:-none}
 
 SUPPORTED_INSPECTOR_TYPES="sample congress"
 INSPECTOR_TYPE=${INSPECTOR_TYPE:-sample}
+TOP_DIR=$(cd $(dirname "$0") && pwd)
 
 ssh_opts="-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 as_doctor_user="--os-username $DOCTOR_USER --os-password $DOCTOR_PW
@@ -61,10 +62,7 @@ get_installer_ip() {
     fi
 
     if [[ "$INSTALLER_TYPE" != "local" ]] ; then
-        if [[ -z "$INSTALLER_IP" ]] ; then
-            echo "ERROR: no installer ip"
-            exit 1
-        fi
+        die_if_not_set $LINENO INSTALLER_IP "No installer IP"
     fi
 }
 
@@ -190,10 +188,7 @@ get_compute_host_info() {
     COMPUTE_HOST=$(openstack $as_doctor_user server show $VM_NAME |
                    grep "OS-EXT-SRV-ATTR:host" | awk '{ print $4 }')
     compute_host_in_undercloud=${COMPUTE_HOST%%.*}
-    if [[ -z "$COMPUTE_HOST" ]] ; then
-        echo "ERROR: failed to get compute hostname"
-        exit 1
-    fi
+    die_if_not_set $LINENO COMPUTE_HOST "Failed to get compute hostname"
 
     if [[ "$INSTALLER_TYPE" == "apex" ]] ; then
         COMPUTE_USER=${COMPUTE_USER:-heat-admin}
@@ -211,25 +206,20 @@ get_compute_host_info() {
         COMPUTE_IP=$(getent hosts "$COMPUTE_HOST" | awk '{ print $1 }')
     fi
 
-    if [[ -z "$COMPUTE_IP" ]]; then
-        echo "ERROR: Could not resolve $COMPUTE_HOST. Either manually set COMPUTE_IP or enable DNS resolution."
-        exit 1
-    fi
+    die_if_not_set $LINENO COMPUTE_IP "Could not resolve $COMPUTE_HOST. Either manually set COMPUTE_IP or enable DNS resolution."
     echo "COMPUTE_HOST=$COMPUTE_HOST"
     echo "COMPUTE_IP=$COMPUTE_IP"
 
     # verify connectivity to target compute host
     ping -c 1 "$COMPUTE_IP"
     if [[ $? -ne 0 ]] ; then
-        echo "ERROR: can not ping to computer host"
-        exit 1
+        die $LINENO "Can not ping to computer host"
     fi
 
     # verify ssh to target compute host
     ssh $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP" 'exit'
     if [[ $? -ne 0 ]] ; then
-        echo "ERROR: can not ssh to computer host"
-        exit 1
+        die $LINENO "Can not ssh to computer host"
     fi
 }
 
@@ -246,10 +236,7 @@ get_consumer_ip() {
     fi
     echo "CONSUMER_IP=$CONSUMER_IP"
 
-    if [[ -z "$CONSUMER_IP" ]]; then
-        echo "ERROR: Could not get CONSUMER_IP."
-        exit 1
-    fi
+    die_if_not_set $LINENO CONSUMER_IP "Could not get CONSUMER_IP."
 }
 
 download_image() {
@@ -376,10 +363,11 @@ start_inspector() {
         nova_api_min_version="2.11"
         nova_api_version=$(openstack congress datasource list | \
                            grep nova | grep -Po "(?<='api_version': ')[^']*")
-        [[ -z $nova_api_version ]] && nova_api_version="2.0"
+        if ! is_set nova_api_version; then
+            nova_api_version="2.0"
+        fi
         if [[ "$nova_api_version" < "$nova_api_min_version" ]]; then
-            echo "ERROR: Congress Nova datasource API version < $nova_api_min_version ($nova_api_version)"
-            exit 1
+            die $LINENO "Congress Nova datasource API version < $nova_api_min_version ($nova_api_version)"
         fi
         openstack congress driver list | grep -q " doctor "
         openstack congress datasource list | grep -q " doctor " || {
@@ -415,15 +403,12 @@ start_consumer() {
                              "source stackrc; \
                              nova list | grep ' overcloud-controller-[0-9] ' \
                              | sed -e 's/^.*ctlplane=//' -e 's/ *|\$//'")
-        elif [[ "$INSTALLER_TYPE" == "fuel" ]] ; then
+        elif [[ "$INSTALLER_TYPE" == "apex" ]] ; then
             CONTROLLER_IPS=$(sshpass -p r00tme ssh 2>/dev/null $ssh_opts root@${INSTALLER_IP} \
                             "fuel node | grep controller | cut -d '|' -f 5|xargs")
         fi
 
-        if [[ -z "$CONTROLLER_IPS" ]]; then
-            echo "ERROR: Could not get CONTROLLER_IPS."
-            exit 1
-        fi
+        die_if_not_set $LINENO CONTROLLER_IPS "Could not get CONTROLLER_IPS."
         for ip in $CONTROLLER_IPS
         do
             forward_rule="-R $CONSUMER_PORT:localhost:$CONSUMER_PORT"
@@ -463,12 +448,13 @@ wait_for_vm_launch() {
             sleep 5
             return 0
         fi
-        [[ "$state" == "ERROR" ]] && echo "vm state is ERROR" && exit 1
+        if [[ "$state" == "ERROR" ]]; then
+            die $LINENO "vm state is ERROR"
+        fi
         count=$(($count+1))
         sleep 1
     done
-    echo "ERROR: time out while waiting for vm launch"
-    exit 1
+    die $LINENO "Time out while waiting for VM launch"
 }
 
 inject_failure() {
@@ -492,8 +478,7 @@ calculate_notification_time() {
     detected=$(grep "doctor monitor detected at" monitor.log | awk '{print $5}')
     notified=$(grep "doctor consumer notified at" consumer.log | awk '{print $5}')
     if ! grep -q "doctor consumer notified at" consumer.log ; then
-        echo "ERROR: consumer hasn't received fault notification."
-        exit 1
+        die $LINENO "Consumer hasn't received fault notification."
     fi
     echo "$notified $detected" | \
         awk '{
@@ -509,14 +494,11 @@ check_host_status() {
     host_status_line=$(openstack $as_doctor_user --os-compute-api-version 2.16 \
                        server show $VM_NAME | grep "host_status")
     host_status=$(echo $host_status_line | awk '{print $4}')
-    if [ -z "$host_status" ] ; then
-        echo "ERROR: host_status not reported by: nova show $VM_NAME"
-        exit 1
-    elif [[ "$expected_state" =~ "$host_status" ]] ; then
+    die_if_not_set $LINENO host_status "host_status not reported by: nova show $VM_NAME"
+    if [[ "$expected_state" =~ "$host_status" ]] ; then
         echo "$VM_NAME showing host_status: $host_status"
     else
-        echo "ERROR: host_status:$host_status not equal to expected_state: $expected_state"
-        exit 1
+        die $LINENO "host_status:$host_status not equal to expected_state: $expected_state"
     fi
 }
 
@@ -559,6 +541,8 @@ cleanup() {
 echo "Note: doctor/tests/run.sh has been executed."
 
 trap cleanup EXIT
+
+source $TOP_DIR/functions-common
 
 echo "preparing test env..."
 get_installer_ip
