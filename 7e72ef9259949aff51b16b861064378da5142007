@@ -22,6 +22,30 @@
       "revId": "7e72ef9259949aff51b16b861064378da5142007",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_c4122db4",
+        "filename": "docs/scenarios/performance-profile-in-qtip.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-11-17T13:05:31Z",
+      "side": 1,
+      "message": "Yes, it measures the timestamp at each checkpoint. Maybe I should put also the table of percentage of time cost in each stage.\n\nI didn\u0027t quite get the last question.",
+      "parentUuid": "5ac10518_2f10af4d",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 63
+      },
+      "revId": "7e72ef9259949aff51b16b861064378da5142007",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
