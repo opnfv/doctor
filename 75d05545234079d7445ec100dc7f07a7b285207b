@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_a45cc126",
+        "filename": "tests/run.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-11-17T08:19:07Z",
+      "side": 1,
+      "message": "It should but I would suggest refactoring with baby steps, i.e. verify first nothing gets broken with this directory restructuring and moving code around.\n\nAdditionally, this function is dependent on functions (\u0027boot_vm\u0027) that need refactoring, too. The chunk of proposed changes would be enormous and the likelihood of breaking everything in one shot very high.",
+      "parentUuid": "5ac10518_d09e6c63",
+      "revId": "75d05545234079d7445ec100dc7f07a7b285207b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_f09b6870",
         "filename": "tests/run.sh",
         "patchSetId": 2
