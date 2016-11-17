@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_d09e6c63",
+        "filename": "tests/run.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-11-17T01:35:01Z",
+      "side": 1,
+      "message": "Should installer specific code be moved to /lib/installer/{installer-name}?",
+      "revId": "75d05545234079d7445ec100dc7f07a7b285207b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_f09b6870",
+        "filename": "tests/run.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-11-17T01:35:01Z",
+      "side": 1,
+      "message": "The same as L52",
+      "revId": "75d05545234079d7445ec100dc7f07a7b285207b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
