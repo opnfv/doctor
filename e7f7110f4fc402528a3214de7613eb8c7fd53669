@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_7a6e72cb",
+        "filename": "docs/scenarios/performance-profile-in-qtip.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-11-18T13:08:35Z",
+      "side": 1,
+      "message": "c/m \u003d\u003e ceilometer\n\nToo long to type. I will put it in footnotes.",
+      "parentUuid": "5ac10518_4702bf3f",
+      "range": {
+        "startLine": 54,
+        "startChar": 28,
+        "endLine": 54,
+        "endChar": 31
+      },
+      "revId": "e7f7110f4fc402528a3214de7613eb8c7fd53669",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_67ffbb35",
         "filename": "docs/scenarios/performance-profile-in-qtip.rst",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_9a731eb1",
+        "filename": "docs/scenarios/performance-profile-in-qtip.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-11-18T13:08:35Z",
+      "side": 1,
+      "message": "It\u0027s not actual data. But I\u0027ll start with sample inspector.",
+      "parentUuid": "5ac10518_67ffbb35",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 10
+      },
+      "revId": "e7f7110f4fc402528a3214de7613eb8c7fd53669",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_07fcb73d",
         "filename": "docs/scenarios/performance-profile-in-qtip.rst",
         "patchSetId": 4
@@ -59,6 +107,24 @@
       "writtenOn": "2016-11-18T08:59:16Z",
       "side": 1,
       "message": "Which monitor implementation are you using? I\u0027d assume our sample monitor, but just to be clear.",
+      "revId": "e7f7110f4fc402528a3214de7613eb8c7fd53669",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_3a68eab9",
+        "filename": "docs/scenarios/performance-profile-in-qtip.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-11-18T13:08:35Z",
+      "side": 1,
+      "message": "Not actual data either. Planned to start with sample monitor.",
+      "parentUuid": "5ac10518_07fcb73d",
       "revId": "e7f7110f4fc402528a3214de7613eb8c7fd53669",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
