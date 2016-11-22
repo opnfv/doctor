@@ -22,6 +22,30 @@
       "revId": "5c1b0f65c5767bba5ffb44a5f90c5faba1b593a3",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_d3bbd1c2",
+        "filename": "docs/scenarios/performance-profile-in-qtip.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-11-22T15:10:11Z",
+      "side": 1,
+      "message": "I\u0027ve just realized why it confuses people. Renamed the title to \"profiling\" so people won\u0027t misunderstood it as a real \"performance profile\".\n\nI added also some additional description on working item. Please check again.",
+      "parentUuid": "5ac10518_d3943139",
+      "range": {
+        "startLine": 77,
+        "startChar": 9,
+        "endLine": 77,
+        "endChar": 76
+      },
+      "revId": "5c1b0f65c5767bba5ffb44a5f90c5faba1b593a3",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
