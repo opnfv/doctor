@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_d3943139",
+        "filename": "docs/scenarios/performance-profile-in-qtip.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-11-22T14:54:13Z",
+      "side": 1,
+      "message": "My proposal is to move this NOTE up to the main text part, as it is easily lost in the footnote.",
+      "range": {
+        "startLine": 77,
+        "startChar": 9,
+        "endLine": 77,
+        "endChar": 76
+      },
+      "revId": "5c1b0f65c5767bba5ffb44a5f90c5faba1b593a3",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
