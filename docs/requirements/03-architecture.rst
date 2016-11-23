@@ -217,7 +217,7 @@ restart of the VM, migration/evacuation of the VM, or no action.
 High level northbound interface specification
 ---------------------------------------------
 
-Fault management
+Fault Management
 ^^^^^^^^^^^^^^^^
 
 This interface allows the Consumer to subscribe to fault notification from the
