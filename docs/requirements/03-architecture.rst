@@ -217,7 +217,7 @@ restart of the VM, migration/evacuation of the VM, or no action.
 High level northbound interface specification
 ---------------------------------------------
 
-Fault management
+Fault Management
 ^^^^^^^^^^^^^^^^
 
 This interface allows the Consumer to subscribe to fault notification from the
@@ -321,7 +321,7 @@ An example of a high level message flow to cover the failed NFVI maintenance cas
 shown in :numref:`figure5c`.
 It consists of the following steps:
 
-5. The Consumer C3 switches to standby configuration (STDBY).
+5. The Consumer C3 switches to standby configuration (STBY).
 6. Instructions from Consumers C2/C3 are shared to VIM requesting certain actions to be performed (steps 6a, 6b).
    The VIM executes the requested actions and sends back a NACK to consumer C2 (step 6d) as the
    migration of the virtual resource(s) is not completed by the given timeout.

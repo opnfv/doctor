@@ -136,7 +136,7 @@ the same as in the "Fault management using ACT-STBY configuration" use case,
 except in this case, the Consumer of a VM/VNF switches to STBY configuration
 based on a predicted fault, rather than an occurred fault.
 
-NVFI Maintenance
+NFVI Maintenance
 ----------------
 
 VM Retirement
