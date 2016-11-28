@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_e6b080f6",
+        "filename": "docs/scenarios/index.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2016-11-28T16:09:46Z",
+      "side": 1,
+      "message": "profiling (!)\n\nThis is why the patch does not show up in the compiled document: http://artifacts.opnfv.org/doctor/review/23963/scenarios/index.html",
+      "range": {
+        "startLine": 13,
+        "startChar": 23,
+        "endLine": 13,
+        "endChar": 24
+      },
+      "revId": "e1d95a9260530a27562a91004c5c5df96e565d3a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
