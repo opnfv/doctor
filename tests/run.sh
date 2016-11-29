@@ -501,6 +501,9 @@ calculate_notification_time() {
             if (d < 1 && d > 0) { print d " OK"; exit 0 }
             else { print d " NG"; exit 1 }
         }'
+    DOCTOR_PROFILER_T00=0
+    DOCTOR_PROFILER_T09=$((notified-detected))
+    python profiler.py
 }
 
 check_host_status() {
@@ -554,7 +557,6 @@ cleanup() {
 
     restore_test_env
 }
-
 
 echo "Note: doctor/tests/run.sh has been executed."
 
