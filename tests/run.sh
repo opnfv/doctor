@@ -246,12 +246,25 @@ END_TXT
     ssh $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP" 'nohup ./disable_network.sh > disable_network.log 2>&1 &'
 }
 
+profile_performance() {
+    total=`python -c "print(int(($notified-$detected)*1000))"`
+
+    export DOCTOR_PROFILER_T00=0
+    export DOCTOR_PROFILER_T09=$((total))
+    python profiler.py
+}
+
 calculate_notification_time() {
     detected=$(grep "doctor monitor detected at" monitor.log | awk '{print $10}')
     notified=$(grep "doctor consumer notified at" consumer.log | awk '{print $10}')
     if ! grep -q "doctor consumer notified at" consumer.log ; then
         die $LINENO "Consumer hasn't received fault notification."
     fi
+
+    if is_set DOCTOR_PROFILER_ENABLED; then
+        profile_performance
+    fi
+
     echo "$notified $detected" | \
         awk '{
             d = $1 - $2;
