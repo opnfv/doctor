@@ -252,6 +252,13 @@ calculate_notification_time() {
     if ! grep -q "doctor consumer notified at" consumer.log ; then
         die $LINENO "Consumer hasn't received fault notification."
     fi
+
+    total=`python -c "print(int(($notified-$detected)*1000))"`
+
+    export DOCTOR_PROFILER_T00=0
+    export DOCTOR_PROFILER_T09=$((total))
+    python profiler.py
+
     echo "$notified $detected" | \
         awk '{
             d = $1 - $2;
