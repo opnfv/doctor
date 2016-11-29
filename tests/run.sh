@@ -495,6 +495,11 @@ calculate_notification_time() {
         echo "ERROR: consumer hasn't received fault notification."
         exit 1
     fi
+
+    export DOCTOR_PROFILER_T00=0
+    export DOCTOR_PROFILER_T09=$((notified-detected))
+    python profiler.py
+
     echo "$notified $detected" | \
         awk '{
             d = $1 - $2;
@@ -554,7 +559,6 @@ cleanup() {
 
     restore_test_env
 }
-
 
 echo "Note: doctor/tests/run.sh has been executed."
 
