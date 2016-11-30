@@ -1,0 +1,30 @@
+#!/bin/bash
+
+INSPECTOR_TYPE=${INSPECTOR_TYPE:-sample}
+
+function is_inspector_supported {
+    local inspector="$1"
+    [[ -f $TOP_DIR/lib/inspectors/$inspector ]]
+}
+
+function is_inspector {
+    local inspector="$1"
+    [[ $inspector == $INSPECTOR_TYPE ]]
+}
+
+function start_inspector {
+    if ! is_inspector_supported $INSPECTOR_TYPE; then
+        die $LINENO"INSPECTOR_TYPE=$INSPECTOR_TYPE is not supported."
+    fi
+
+    source $TOP_DIR/lib/inspectors/$INSPECTOR_TYPE
+    start_inspector_$INSPECTOR_TYPE
+}
+
+function stop_inspector {
+    stop_inspector_$INSPECTOR_TYPE
+}
+
+function cleanup_inspector {
+    cleanup_inspector_$INSPECTOR_TYPE
+}
