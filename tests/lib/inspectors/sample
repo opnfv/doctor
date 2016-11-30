@@ -1,0 +1,17 @@
+#!/bin/bash
+
+function start_inspector_sample {
+    pgrep -f "python inspector.py" && return 0
+    python inspector.py "$INSPECTOR_PORT" > inspector.log 2>&1 &
+}
+
+function stop_inspector_sample {
+    pgrep -f "python inspector.py" || return 0
+    kill $(pgrep -f "python inspector.py")
+    print_log inspector.log
+}
+
+function cleanup_inspector_sample {
+    # Noop
+    return
+}
