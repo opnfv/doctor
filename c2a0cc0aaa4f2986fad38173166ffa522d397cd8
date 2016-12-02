@@ -93,6 +93,30 @@
       "revId": "c2a0cc0aaa4f2986fad38173166ffa522d397cd8",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_259f5454",
+        "filename": "tests/lib/inspectors/congress",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-12-02T16:42:35Z",
+      "side": 1,
+      "message": "https://bugs.launchpad.net/congress/+bug/1646893\nhttps://review.openstack.org/#/q/topic:bug/1646893",
+      "parentUuid": "5ac10518_e592ac56",
+      "range": {
+        "startLine": 50,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 4
+      },
+      "revId": "c2a0cc0aaa4f2986fad38173166ffa522d397cd8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
