@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_c5953041",
+        "filename": "tests/lib/inspectors/congress",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-12-02T16:21:53Z",
+      "side": 1,
+      "message": "The Congress devstack plugin does not explicitly set a Nova API version. When not specified, nova_api_version will not be set. \"2.0\" is the default one that doctor driver uses. This leads us to L45: if nova_api_version unset it means default \"2.0\" version is being used.",
+      "parentUuid": "5ac10518_e56f0c91",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 6
+      },
+      "revId": "c2a0cc0aaa4f2986fad38173166ffa522d397cd8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_856c089e",
         "filename": "tests/lib/inspectors/congress",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-12-02T15:55:02Z",
       "side": 1,
       "message": "This is for upstream (Congress) but it seems that the description of the doctor driver is wrong (Datasource driver that interfaces with OpenStack Compute aka nova!). Also does it make sense to continue executing the test script if doctor is not in the list of the drivers?",
+      "range": {
+        "startLine": 50,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 4
+      },
+      "revId": "c2a0cc0aaa4f2986fad38173166ffa522d397cd8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_e592ac56",
+        "filename": "tests/lib/inspectors/congress",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-12-02T16:21:53Z",
+      "side": 1,
+      "message": "Good catch (the description of the doctor driver). I can submit a patch upstream.\n\nI believe the test script does not continue if the doctor driver is not listed because the grep will return exit code !\u003d 0 and thus immediately aborting. Have you experienced that the tests continued?",
+      "parentUuid": "5ac10518_856c089e",
       "range": {
         "startLine": 50,
         "startChar": 4,
