@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_e56f0c91",
+        "filename": "tests/lib/inspectors/congress",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 346
+      },
+      "writtenOn": "2016-12-02T15:55:02Z",
+      "side": 1,
+      "message": "I understand that you added this because of https://gerrit.opnfv.org/gerrit/#/c/18953/\n\nBut with DevStack, the nova api version is not included in the list of datasource when you execute openstack congress datasource list?",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 6
+      },
+      "revId": "c2a0cc0aaa4f2986fad38173166ffa522d397cd8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_856c089e",
+        "filename": "tests/lib/inspectors/congress",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 346
+      },
+      "writtenOn": "2016-12-02T15:55:02Z",
+      "side": 1,
+      "message": "This is for upstream (Congress) but it seems that the description of the doctor driver is wrong (Datasource driver that interfaces with OpenStack Compute aka nova!). Also does it make sense to continue executing the test script if doctor is not in the list of the drivers?",
+      "range": {
+        "startLine": 50,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 4
+      },
+      "revId": "c2a0cc0aaa4f2986fad38173166ffa522d397cd8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
