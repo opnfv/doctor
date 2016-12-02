@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_652c7c9a",
+        "filename": "tests/run.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-12-02T13:36:35Z",
+      "side": 1,
+      "message": "Why do we need to create a new admin user?\nSorry, I may have missed a discussion on that.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 23
+      },
+      "revId": "062c07c1dbfe7494c8dc23e5a7a8a848375d50ff",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_65055c10",
+        "filename": "tests/run.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-12-02T13:36:35Z",
+      "side": 1,
+      "message": "trailing whitespaces",
+      "revId": "062c07c1dbfe7494c8dc23e5a7a8a848375d50ff",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
