@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_d3c73a44",
+        "filename": "tests/lib/inspectors/congress",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 346
+      },
+      "writtenOn": "2016-12-05T10:07:10Z",
+      "side": 1,
+      "message": "Got it but 2.0 \u003c 2.11 so this is not working with DevStack and inspector \u003d Congress?",
+      "parentUuid": "5ac10518_c5953041",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 6
+      },
+      "revId": "c2a0cc0aaa4f2986fad38173166ffa522d397cd8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_856c089e",
         "filename": "tests/lib/inspectors/congress",
         "patchSetId": 1
@@ -113,6 +137,53 @@
         "startChar": 4,
         "endLine": 51,
         "endChar": 4
+      },
+      "revId": "c2a0cc0aaa4f2986fad38173166ffa522d397cd8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_538eea2f",
+        "filename": "tests/lib/inspectors/congress",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 346
+      },
+      "writtenOn": "2016-12-05T10:07:10Z",
+      "side": 1,
+      "message": "Thanks",
+      "parentUuid": "5ac10518_259f5454",
+      "range": {
+        "startLine": 50,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 4
+      },
+      "revId": "c2a0cc0aaa4f2986fad38173166ffa522d397cd8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_3389de26",
+        "filename": "tests/lib/inspectors/congress",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 346
+      },
+      "writtenOn": "2016-12-05T10:07:10Z",
+      "side": 1,
+      "message": "missing _? (See L13)",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 45
       },
       "revId": "c2a0cc0aaa4f2986fad38173166ffa522d397cd8",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
