@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_6e4bf959",
+        "filename": "tests/lib/inspectors/congress",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-12-05T15:07:53Z",
+      "side": 1,
+      "message": "Right. Congress Nova DS has to be created with api_version \u003e\u003d 2.11 and has to be setup by the installers (e.g. apex, local, fuel). This is the minimum required api version for Doctor test cases.",
+      "parentUuid": "5ac10518_d3c73a44",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 6
+      },
+      "revId": "c2a0cc0aaa4f2986fad38173166ffa522d397cd8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_856c089e",
         "filename": "tests/lib/inspectors/congress",
         "patchSetId": 1
@@ -179,6 +203,30 @@
       "writtenOn": "2016-12-05T10:07:10Z",
       "side": 1,
       "message": "missing _? (See L13)",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 45
+      },
+      "revId": "c2a0cc0aaa4f2986fad38173166ffa522d397cd8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_0e26f5b7",
+        "filename": "tests/lib/inspectors/congress",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-12-05T15:07:53Z",
+      "side": 1,
+      "message": "Eagle eye ;)",
+      "parentUuid": "5ac10518_3389de26",
       "range": {
         "startLine": 59,
         "startChar": 4,
