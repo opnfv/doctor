@@ -312,12 +312,6 @@ create_alarm() {
         -q "traits.state=string::error; traits.instance_id=string::$vm_id"
 }
 
-print_log() {
-    log_file=$1
-    echo "$log_file:"
-    sed -e 's/^/    /' "$log_file"
-}
-
 start_monitor() {
     pgrep -f "python monitor.py" && return 0
     sudo -E python monitor.py "$COMPUTE_HOST" "$COMPUTE_IP" "$INSPECTOR_TYPE" \
@@ -327,7 +321,6 @@ start_monitor() {
 stop_monitor() {
     pgrep -f "python monitor.py" || return 0
     sudo kill $(pgrep -f "python monitor.py")
-    print_log monitor.log
 }
 
 congress_add_rule() {
@@ -393,7 +386,6 @@ stop_inspector() {
     if [[ "$INSPECTOR_TYPE" == "sample" ]] ; then
         pgrep -f "python inspector.py" || return 0
         kill $(pgrep -f "python inspector.py")
-        print_log inspector.log
     elif [[ "$INSPECTOR_TYPE" == "congress" ]] ; then
         congress_del_rule host_force_down classification
         congress_del_rule error_vm_states classification
@@ -436,7 +428,6 @@ start_consumer() {
 stop_consumer() {
     pgrep -f "python consumer.py" || return 0
     kill $(pgrep -f "python consumer.py")
-    print_log consumer.log
 
     # NOTE(r-mibu): terminate tunnels to the controller nodes
     if [[ "$INSTALLER_TYPE" != "local" ]] ; then
@@ -445,7 +436,6 @@ stop_consumer() {
             forward_rule="-R $CONSUMER_PORT:localhost:$CONSUMER_PORT"
             tunnel_command="sudo ssh $ssh_opts_cpu $COMPUTE_USER@$ip $forward_rule sleep 600"
             kill $(pgrep -f "$tunnel_command")
-            print_log "ssh_tunnel.${ip}.log"
         done
     fi
 }
@@ -532,7 +522,6 @@ cleanup() {
     sleep 240
     check_host_status "UP"
     scp $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP:disable_network.log" .
-    print_log disable_network.log
 
     openstack $as_doctor_user server list | grep -q " $VM_NAME " && openstack $as_doctor_user server delete "$VM_NAME"
     sleep 1
