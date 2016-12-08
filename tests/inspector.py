@@ -12,12 +12,15 @@ import collections
 from flask import Flask
 from flask import request
 import json
+import logger as doctor_log
 import os
 import time
 
 import novaclient.client as novaclient
 
 import nova_force_down
+
+LOG = doctor_log.Logger('doctor_inspector').getLogger()
 
 
 class DoctorInspectorSample(object):
@@ -44,9 +47,9 @@ class DoctorInspectorSample(object):
             try:
                 host=server.__dict__.get('OS-EXT-SRV-ATTR:host')
                 self.servers[host].append(server)
-                app.logger.debug('get hostname=%s from server=%s' % (host, server))
+                LOG.debug('get hostname=%s from server=%s' % (host, server))
             except Exception as e:
-                app.logger.debug('can not get hostname from server=%s' % server)
+                LOG.error('can not get hostname from server=%s' % server)
 
     def disable_compute_host(self, hostname):
         for server in self.servers[hostname]:
@@ -63,15 +66,14 @@ class DoctorInspectorSample(object):
 
 
 app = Flask(__name__)
-app.debug = True
 inspector = DoctorInspectorSample()
 
 
 @app.route('/events', methods=['POST'])
 def event_posted():
-    app.logger.debug('event posted at %s' % time.time())
-    app.logger.debug('inspector = %s' % inspector)
-    app.logger.debug('received data = %s' % request.data)
+    LOG.info('event posted at %s' % time.time())
+    LOG.info('inspector = %s' % inspector)
+    LOG.info('received data = %s' % request.data)
     d = json.loads(request.data)
     hostname = d['hostname']
     event_type = d['type']
@@ -90,6 +92,7 @@ def get_args():
 def main():
     args = get_args()
     app.run(port=args.port)
+
 
 if __name__ == '__main__':
     main()

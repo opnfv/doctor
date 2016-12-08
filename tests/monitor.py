@@ -10,6 +10,7 @@
 import argparse
 from datetime import datetime
 import json
+import logger as doctor_log
 import os
 import requests
 import socket
@@ -25,6 +26,8 @@ from keystoneclient.auth.identity import v2
 ICMP_ECHO_MESSAGE = '\x08\x00\xf7\xff\x00\x00\x00\x00'
 
 SUPPORTED_INSPECTOR_TYPES = ['sample', 'congress']
+
+LOG = doctor_log.Logger('doctor_monitor').getLogger()
 
 class DoctorMonitorSample(object):
 
@@ -58,8 +61,8 @@ class DoctorMonitorSample(object):
                                   (congress_endpoint, doctor_ds['id']))
 
     def start_loop(self):
-        print "start ping to host %(h)s (ip=%(i)s)" % {'h': self.hostname,
-                                                       'i': self.ip_addr}
+        LOG.debug("start ping to host %(h)s (ip=%(i)s)" % {'h': self.hostname,
+                                                       'i': self.ip_addr})
         sock = socket.socket(socket.AF_INET, socket.SOCK_RAW,
                              socket.IPPROTO_ICMP)
         sock.settimeout(self.timeout)
@@ -68,9 +71,9 @@ class DoctorMonitorSample(object):
                 sock.sendto(ICMP_ECHO_MESSAGE, (self.ip_addr, 0))
                 data = sock.recv(4096)
             except socket.timeout:
-                print "doctor monitor detected at %s" % time.time()
+                LOG.info("doctor monitor detected at %s" % time.time())
                 self.report_error()
-                print "ping timeout, quit monitoring..."
+                LOG.info("ping timeout, quit monitoring...")
                 return
             time.sleep(self.interval)
 
