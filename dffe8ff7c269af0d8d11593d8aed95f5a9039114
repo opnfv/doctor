@@ -1,0 +1,9 @@
+Code-Review+1: Yujun Zhang <zhang.yujunz@zte.com.cn>
+Code-Review+1: wenjuan dong <dong.wenjuan@zte.com.cn>
+Verified+1: jenkins-ci <jenkins-opnfv-ci@opnfv.org>
+Code-Review+2: Ryota Mibu <r-mibu@cq.jp.nec.com>
+Submitted-by: Ryota Mibu <r-mibu@cq.jp.nec.com>
+Submitted-at: Thu, 08 Dec 2016 20:30:07 +0000
+Reviewed-on: https://gerrit.opnfv.org/gerrit/24395
+Project: doctor
+Branch: refs/heads/master
