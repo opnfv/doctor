@@ -1,0 +1,8 @@
+Verified+1: jenkins-ci <jenkins-opnfv-ci@opnfv.org>
+Code-Review+2: Ryota Mibu <r-mibu@cq.jp.nec.com>
+Code-Review+2: Gerald Kunzmann <kunzmann@docomolab-euro.com>
+Submitted-by: Gerald Kunzmann <kunzmann@docomolab-euro.com>
+Submitted-at: Fri, 09 Dec 2016 10:45:17 +0000
+Reviewed-on: https://gerrit.opnfv.org/gerrit/25591
+Project: doctor
+Branch: refs/heads/master
