@@ -1,0 +1,8 @@
+Verified+1: jenkins-ci <jenkins-opnfv-ci@opnfv.org>
+Code-Review+2: Ryota Mibu <r-mibu@cq.jp.nec.com>
+Code-Review+2: Carlos Goncalves <carlos.goncalves@neclab.eu>
+Submitted-by: Gerald Kunzmann <kunzmann@docomolab-euro.com>
+Submitted-at: Tue, 13 Dec 2016 15:00:43 +0000
+Reviewed-on: https://gerrit.opnfv.org/gerrit/24143
+Project: doctor
+Branch: refs/heads/master
