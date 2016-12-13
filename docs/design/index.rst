@@ -24,3 +24,4 @@ See also https://wiki.opnfv.org/requirements_projects .
    rfe-port-status-update.rst
    port-data-plane-status.rst
    inspector-design-guideline.rst
+   performance-profiler.rst
