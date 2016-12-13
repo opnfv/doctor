@@ -23,3 +23,4 @@ See also https://wiki.opnfv.org/requirements_projects .
    notification-alarm-evaluator.rst
    rfe-port-status-update.rst
    port-data-plane-status.rst
+   performance-profiler.rst
