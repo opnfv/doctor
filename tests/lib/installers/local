@@ -1,0 +1,21 @@
+#!/bin/bash
+
+function get_installer_ip {
+    # Noop
+    return
+}
+
+function installer_get_ssh_keys {
+    echo "INSTALLER_TYPE set to 'local'. Assuming SSH keys already exchanged with $COMPUTE_HOST"
+    return
+}
+
+function installer_apply_patches {
+    # Noop
+    return
+}
+
+function cleanup_installer_local {
+    # Noop
+    return
+}
