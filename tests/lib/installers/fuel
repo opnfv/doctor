@@ -74,6 +74,35 @@ function installer_apply_patches {
                 ip netns exec haproxy /usr/lib/ocf/resource.d/fuel/ns_haproxy restart
             fi
             fi
+
+            np_conf=/etc/nova/policy.json
+            if [ -e $np_conf ]; then
+                entry="os_compute_api:servers:show:host_status"
+                new="rule:admin_or_owner"
+                np_backup=$(echo "$np_conf" | sed "s/json/doctor/")
+                if [ ! -s $np_conf ]; then
+                    echo "add nova policy"
+                    cp $np_conf $np_backup
+cat >> $np_conf <<"EOL"
+{
+    "os_compute_api:servers:show:host_status": "rule:admin_or_owner"
+}
+EOL
+                    service nova-api restart
+                elif ! grep -q "$entry" $np_conf | grep -q "$new"; then
+                    echo "modify nova policy"
+                    cp $np_conf $np_backup
+                    oldline=$(grep "$entry" $np_conf)
+                    newline=$(echo "$oldline" | sed "s/rule.*\"/$new\"/")
+                    sed -i "s/$oldline/$newline/" $np_conf
+                    service nova-api restart
+                else
+                    echo "Not modifying nova policy"
+                fi
+            else
+                # TODO(tojuvone) policy.json might not exists in Ocata.
+                echo "$np_conf does not exist!!!"
+            fi
             ' > installer_apply_patches_$node.log 2>&1
     done
 }
@@ -137,6 +166,17 @@ function installer_revert_patches {
             if grep -q "# added by doctor script" $ep_conf; then
                 sed -ie "/# added by doctor script/d" $ep_conf
                 service ceilometer-agent-notification restart
+            fi
+
+            np_conf=/etc/nova/policy.json
+            entry="os_compute_api:servers:show:host_status"
+            if [ -e $np_conf ]; then
+                np_backup=$(echo "$np_conf" | sed "s/json/doctor/")
+                if [ -e $np_backup ]; then
+                    cp -f $np_backup $np_conf
+                    rm $np_backup
+                    service nova-api restart
+                fi
             fi
             ' >> installer_apply_patches_$node.log 2>&1
     done
