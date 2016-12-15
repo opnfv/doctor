@@ -74,6 +74,39 @@ function installer_apply_patches {
                 ip netns exec haproxy /usr/lib/ocf/resource.d/fuel/ns_haproxy restart
             fi
             fi
+
+            np_conf=/etc/nova/policy.json
+            if [ -e $np_conf ]; then
+                entry="os_compute_api:servers:show:host_status"
+                new="rule:admin_or_owner"
+                np_backup="${np_conf}-doctor-saved"
+                if grep -q "${entry}.*${new}" $np_conf; then
+                    echo "Not modifying nova policy"
+                elif grep -q "${entry}" $np_conf; then
+                    echo "modify nova policy"
+                    cp $np_conf $np_backup
+                    oldline=$(grep "$entry" $np_conf)
+                    newline=$(echo "$oldline" | sed "s/rule.*\"/$new\"/")
+                    sed -i "s/$oldline/$newline/" $np_conf
+                    service nova-api restart
+                else
+                    echo "add nova policy"
+                    cp $np_conf $np_backup
+                    sed -i "/{/a \    \"${entry}\": \"$new\"" $np_conf
+                    service nova-api restart
+                    echo "Tomi debug, check policy.json corrupted"
+                    cat $np_conf
+                    echo "Tomi debug, check nova.conf corrupted"
+                    grep -i "doctor" /etc/nova/nova.conf
+                    grep "notification_driver" /etc/nova/nova.conf
+                    sleep 7
+                    echo "Tomi debug, check nova-api misconfigured"
+                    tail -80 /var/log/nova/nova-api.log
+                fi
+            else
+                # TODO(tojuvone) policy.json might not exists in Ocata.
+                echo "$np_conf does not exist!!!"
+            fi
             ' > installer_apply_patches_$node.log 2>&1
     done
 }
@@ -137,6 +170,17 @@ function installer_revert_patches {
             if grep -q "# added by doctor script" $ep_conf; then
                 sed -ie "/# added by doctor script/d" $ep_conf
                 service ceilometer-agent-notification restart
+            fi
+
+            np_conf=/etc/nova/policy.json
+            entry="os_compute_api:servers:show:host_status"
+            if [ -e $np_conf ]; then
+                np_backup="${np_conf}-doctor-saved"
+                if [ -e $np_backup ]; then
+                    cp -f $np_backup $np_conf
+                    rm $np_backup
+                    service nova-api restart
+                fi
             fi
             ' >> installer_apply_patches_$node.log 2>&1
     done
