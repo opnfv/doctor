@@ -25,21 +25,21 @@ CONSUMER_PORT=12346
 DOCTOR_USER=doctor
 DOCTOR_PW=doctor
 DOCTOR_PROJECT=doctor
-#TODO: change back to `_member_` when JIRA DOCTOR-55 is done
-DOCTOR_ROLE=admin
+DOCTOR_ROLE=_member_
 PROFILER_TYPE=${PROFILER_TYPE:-none}
 
 TOP_DIR=$(cd $(dirname "$0") && pwd)
 
 as_doctor_user="--os-username $DOCTOR_USER --os-password $DOCTOR_PW
                 --os-tenant-name $DOCTOR_PROJECT"
+as_admin_user="--os-username admin --os-tenant-name $DOCTOR_PROJECT"
 
 
 # Functions
 
 get_compute_host_info() {
-    # get computer host info which VM boot in
-    COMPUTE_HOST=$(openstack $as_doctor_user server show $VM_NAME |
+    # get computer host info which VM boot in as admin user
+    COMPUTE_HOST=$(openstack $as_admin_user server show $VM_NAME |
                    grep "OS-EXT-SRV-ATTR:host" | awk '{ print $4 }')
     compute_host_in_undercloud=${COMPUTE_HOST%%.*}
     die_if_not_set $LINENO COMPUTE_HOST "Failed to get compute hostname"
@@ -112,6 +112,28 @@ create_test_user() {
     | grep -q " $DOCTOR_ROLE " || {
         openstack role add "$DOCTOR_ROLE" --user "$DOCTOR_USER" \
                            --project "$DOCTOR_PROJECT"
+    }
+    openstack user role list admin --project "$DOCTOR_PROJECT" \
+    | grep -q " admin " || {
+        openstack role add admin --user admin --project "$DOCTOR_PROJECT"
+    }
+}
+
+remove_test_user() {
+    openstack project list | grep -q " $DOCTOR_PROJECT " || {
+        openstack user role list admin --project "$DOCTOR_PROJECT" \
+        | grep -q " admin " || {                        
+            openstack role remove admin --user admin --project "$DOCTOR_PROJECT"
+        }
+        openstack user list | grep -q " $DOCTOR_USER " || {
+            openstack user role list "$DOCTOR_USER" --project "$DOCTOR_PROJECT" \
+            | grep -q " $DOCTOR_ROLE " || {
+                openstack role remove "$DOCTOR_ROLE" --user "$DOCTOR_USER" \
+                --project "$DOCTOR_PROJECT"
+            }
+            openstack user delete "$DOCTOR_USER"
+        }
+        openstack project delete "$DOCTOR_PROJECT"
     }
 }
 
@@ -340,11 +362,9 @@ cleanup() {
     if [[ "$use_existing_image" == false ]] ; then
         [ -n "$image_id" ] && openstack image delete "$image_id"
     fi
-    openstack role remove "$DOCTOR_ROLE" --user "$DOCTOR_USER" \
-                              --project "$DOCTOR_PROJECT"
-    openstack project delete "$DOCTOR_PROJECT"
-    openstack user delete "$DOCTOR_USER"
-
+    
+    remove_test_user
+        
     cleanup_installer
     cleanup_inspector
 }
