@@ -74,6 +74,42 @@ function installer_apply_patches {
                 ip netns exec haproxy /usr/lib/ocf/resource.d/fuel/ns_haproxy restart
             fi
             fi
+
+            nova_api_restart=False
+            np_conf=/etc/nova/policy.json
+            entry="os_compute_api:servers:show:host_status"
+            if [ -e $np_conf ]; then
+                new="rule:admin_or_owner"
+                if ! grep -q "$entry" $np_conf | grep -q "$new"; then
+                    echo "modify nova policy"
+                    np_backup=$(echo "$np_conf" | sed "s/json/doctor/")
+                    cp $np_conf $np_backup
+                    oldline=$(grep "$entry" $np_conf)
+                    newline=$(echo "$oldline" | sed "s/rule.*\"/$new\"/")
+                    sed -i "s/$oldline/$newline/" $np_conf
+                    nova_api_restart=True
+                fi
+            else
+                # TODO(tojuvone) policy.json might not exists or is empty in
+                # Ocata. It is only needed if want to change defaults
+                echo "$np_conf does not exist!!!"
+            fi
+            n_conf=/etc/nova/nova.conf
+            entry="^notification_driver="
+            if [ -e $n_conf ]; then
+                if ! grep -q "${entry}messaging" $n_conf; then
+                    echo "modify nova conf"
+                    n_backup=$(echo "$n_conf" | sed "s/conf/doctor/")
+                    cp $n_conf $n_backup
+                    oldline=$(grep "$entry" $n_conf)
+                    newline=$(echo "$oldline" | sed "s/=/=messaging/")
+                    sed -i "s/$oldline/$newline/" $n_conf
+                    nova_api_restart=True
+                fi
+            else
+                echo "$n_conf file does not exist!!!"
+            fi
+            [[ "$nova_api_restart" == "True" ]] && service nova-api restart
             ' > installer_apply_patches_$node.log 2>&1
     done
 }
@@ -138,6 +174,29 @@ function installer_revert_patches {
                 sed -ie "/# added by doctor script/d" $ep_conf
                 service ceilometer-agent-notification restart
             fi
+
+            nova_api_restart=False
+            np_conf=/etc/nova/policy.json
+            entry="os_compute_api:servers:show:host_status"
+            if [ -e $np_conf ]; then
+                np_backup=$(echo "$np_conf" | sed "s/json/doctor/")
+                if [ -e $np_backup ]; then
+                    cp -f $np_backup $np_conf
+                    rm $np_backup
+                    nova_api_restart=True
+                fi
+            fi
+            n_conf=/etc/nova/nova.conf
+            entry="notification_driver="
+            if [ -e $n_conf ]; then
+                n_backup=$(echo "$n_conf" | sed "s/conf/doctor/")
+                if [ -e $n_backup ]; then
+                    cp -f $n_backup $n_conf
+                    rm $n_backup
+                    nova_api_restart=True
+                fi
+            fi
+            [[ "$nova_api_restart" == "True" ]] && service nova-api restart
             ' >> installer_apply_patches_$node.log 2>&1
     done
 }
