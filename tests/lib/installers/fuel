@@ -74,6 +74,26 @@ function installer_apply_patches {
                 ip netns exec haproxy /usr/lib/ocf/resource.d/fuel/ns_haproxy restart
             fi
             fi
+            
+            np_conf=/etc/nova/policy.json
+            entry="os_compute_api:servers:show:host_status"
+            if [ -e $np_conf ]; then
+                new="rule:admin_or_owner"
+                if ! grep -q "$entry" $np_conf | grep -q "$new"; then
+                    echo "modify nova policy"
+                    oldline=$(grep "$entry" $np_conf)
+                    newline="$(echo "$oldline" | sed "s/rule.*\"/$new\"/") \
+                            \# added by doctor script"
+                    sed -i "/$oldline/a $newline" $np_conf
+                    sed -i "s/$oldline/\#$oldline \# deleted by doctor script/" \
+                        $np_conf
+                    service nova-api restart
+                fi
+            else
+                # TODO(tojuvone) policy.json might not exists or is empty in
+                # Ocata. It is only needed if want to change defaults
+                echo "nova $np_conf file does not exist!!!"
+            fi
             ' > installer_apply_patches_$node.log 2>&1
     done
 }
@@ -137,6 +157,25 @@ function installer_revert_patches {
             if grep -q "# added by doctor script" $ep_conf; then
                 sed -ie "/# added by doctor script/d" $ep_conf
                 service ceilometer-agent-notification restart
+            fi
+
+            np_conf=/etc/nova/policy.json
+            entry="os_compute_api:servers:show:host_status"
+            if [ -e $np_conf ]; then
+                new="rule:admin_or_owner"
+                if $(grep $entry $np_conf | grep -q "# added by doctor script" \
+                    ); then
+                    sed -i "/# added by doctor script/d" $np_conf 
+                fi
+                if $(grep $entry $np_conf | \
+                     grep -q "# deleted by doctor script" ); then
+                    oldline=$(grep $entry $np_conf | \
+                              grep "# deleted by doctor script")
+                    newline=$(echo "${oldline:1}" | \
+                              sed "s/ # deleted by doctor script//")
+                    sed -i "s/$oldline/$newline/" $np_conf
+                fi
+                service nova-api restart
             fi
             ' >> installer_apply_patches_$node.log 2>&1
     done
