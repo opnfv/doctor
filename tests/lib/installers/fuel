@@ -16,6 +16,7 @@ function installer_get_ssh_keys {
 function installer_apply_patches {
     cat > set_conf.sh << 'END_TXT'
 #!/bin/bash
+nova_api_restart=False
 if [ -e /etc/ceilometer/event_pipeline.yaml ]; then
     if ! grep -q '^ *- notifier://?topic=alarm.all$' /etc/ceilometer/event_pipeline.yaml; then
         sed -i 's|- notifier://|- notifier://?topic=alarm.all|' /etc/ceilometer/event_pipeline.yaml
@@ -30,12 +31,26 @@ if [ -e /etc/nova/nova.conf ]; then
     if ! grep -q '^notification_driver=messaging$' /etc/nova/nova.conf; then
         sed -i -r 's/notification_driver=/notification_driver=messaging/g' /etc/nova/nova.conf
         echo "modify nova config"
-        service nova-api restart
+        nova_api_restart=True
     fi
 else
     echo "nova.conf file does not exist"
     exit 1
 fi
+if [ -e /etc/nova/policy.json ]; then
+    if ! grep -q 'os_compute_api:servers:show:host_status' /etc/nova/policy.json; then
+        echo "nova policy.json does not have host_status"
+        exit 1
+    elif ! grep -q '"os_compute_api:servers:show:host_status": "rule:admin_or_owner"' /etc/nova/policy.json; then
+        sed -i 's/"os_compute_api:servers:show:host_status": "rule:admin_api"/"os_compute_api:servers:show:host_status": "rule:admin_or_owner"/' /etc/nova/policy.json
+        echo "modify nova policy"
+        nova_api_restart=True
+    fi
+else
+    echo "nova policy.json file does not exist"
+    exit 1
+fi
+[[ "$nova_api_restart" == "True" ]] && service nova-api restart
 exit 0
 END_TXT
 
@@ -82,15 +97,30 @@ if @NEED_TO_RESTORE_CEILOMETER@ ; then
     fi
 fi
 if @NEED_TO_RESTORE_NOVA@ ; then
+    nova_api_restart=False
     if [ -e /etc/nova/nova.conf ]; then
         if grep -q '^notification_driver=messaging$' /etc/nova/nova.conf; then
             sed -i -r 's/notification_driver=messaging/notification_driver=/g' /etc/nova/nova.conf
-            service nova-api restart
+            nova_api_restart=True
         fi
     else
         echo "nova.conf file does not exist"
         exit 1
     fi
+    if [ -e /etc/nova/policy.json ]; then
+        if ! grep -q 'os_compute_api:servers:show:host_status' /etc/nova/policy.json; then
+            echo "nova policy.json does not have host_status"
+            exit 1
+        elif ! grep -q '"os_compute_api:servers:show:host_status": "rule:admin_api"' /etc/nova/policy.json; then
+            sed -i 's/"os_compute_api:servers:show:host_status": "rule:admin_or_owner"/"os_compute_api:servers:show:host_status": "rule:admin_api"/' /etc/nova/policy.json
+            echo "modify nova policy"
+            nova_api_restart=True
+        fi
+    else
+        echo "nova policy.json file does not exist"
+        exit 1
+    fi
+    [[ "$nova_api_restart" == "True" ]] && service nova-api restart
 fi
 exit 0
 END_TXT
