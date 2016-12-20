@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_b8ea700d",
+        "filename": "tests/run.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2016-12-20T12:49:12Z",
+      "side": 0,
+      "message": "I\u0027d like to keep this two blank lines as this intends section change from functions to main codes.",
+      "range": {
+        "startLine": 557,
+        "startChar": 0,
+        "endLine": 557,
+        "endChar": 0
+      },
+      "revId": "69264fa32e7885be44667efa34c0c58cc110f5b6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
