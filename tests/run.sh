@@ -8,6 +8,8 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
 
+# Configuration
+
 [[ "${CI_DEBUG:-true}" == [Tt]rue ]] && set -x
 
 IMAGE_URL=https://launchpad.net/cirros/trunk/0.3.0/+download/cirros-0.3.0-x86_64-disk.img
@@ -38,6 +40,8 @@ if [[ ! "$SUPPORTED_INSPECTOR_TYPES" =~ "$INSPECTOR_TYPE" ]] ; then
     echo "ERROR: INSPECTOR_TYPE=$INSPECTOR_TYPE is not supported."
     exit 1
 fi
+
+# Functions
 
 get_compute_host_info() {
     # get computer host info which VM boot in
@@ -382,6 +386,7 @@ cleanup() {
     cleanup_installer
 }
 
+# Main process
 
 echo "Note: doctor/tests/run.sh has been executed."
 
