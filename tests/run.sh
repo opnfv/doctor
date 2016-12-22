@@ -8,6 +8,8 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
 
+# Configuration
+
 [[ "${CI_DEBUG:-true}" == [Tt]rue ]] && set -x
 
 IMAGE_URL=https://launchpad.net/cirros/trunk/0.3.0/+download/cirros-0.3.0-x86_64-disk.img
@@ -32,6 +34,8 @@ ssh_opts="-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 as_doctor_user="--os-username $DOCTOR_USER --os-password $DOCTOR_PW
                 --os-tenant-name $DOCTOR_PROJECT"
 
+
+# Functions
 
 get_compute_host_info() {
     # get computer host info which VM boot in
@@ -305,6 +309,7 @@ cleanup() {
     cleanup_inspector
 }
 
+# Main process
 
 echo "Note: doctor/tests/run.sh has been executed."
 
