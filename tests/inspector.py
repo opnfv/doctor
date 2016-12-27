@@ -54,6 +54,7 @@ class DoctorInspectorSample(object):
     def disable_compute_host(self, hostname):
         for server in self.servers[hostname]:
             self.nova.servers.reset_state(server, 'error')
+            LOG.info('doctor mark vm(%s) error at %s' % (server, time.time()))
 
         # NOTE: We use our own client here instead of this novaclient for a
         #       workaround.  Once keystone provides v2.1 nova api endpoint
@@ -63,6 +64,7 @@ class DoctorInspectorSample(object):
         # self.nova.services.force_down(hostname, 'nova-compute', True)
         #
         nova_force_down.force_down(hostname)
+        LOG.info('doctor mark host(%s) down at %s' % (hostname, time.time()))
 
 
 app = Flask(__name__)
