@@ -34,8 +34,8 @@ Total time cost: {total}(ms)
 host down:{T00}|      |      |      |          |        |      |      |      |
      raw failure:{T01}|      |      |          |        |      |      |      |
          found affected:{T02}|      |          |        |      |      |      |
-              marked host down:{T03}|          |        |      |      |      |
-                         set VM error:{T04}    |        |      |      |      |
+                  set VM error:{T03}|          |        |      |      |      |
+                         marked host down:{T04}|        |      |      |      |
                                notified VM error:{T05}  |      |      |      |
                                         transformed event:{T06}|      |      |
                                                  evaluated event:{T07}|      |
