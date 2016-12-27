@@ -235,6 +235,7 @@ inject_failure() {
 #!/bin/bash -x
 dev=$(sudo ip a | awk '/ @COMPUTE_IP@\//{print $7}')
 sleep 1
+echo "doctor set host down at" $(date "+%s.%N")
 sudo ip link set $dev down
 sleep 180
 sudo ip link set $dev up
