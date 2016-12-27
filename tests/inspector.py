@@ -53,6 +53,7 @@ class DoctorInspectorSample(object):
 
     def disable_compute_host(self, hostname):
         for server in self.servers[hostname]:
+            LOG.info('doctor mark vm(%s) error at %s' % (server, time.time()))
             self.nova.servers.reset_state(server, 'error')
 
         # NOTE: We use our own client here instead of this novaclient for a
@@ -62,6 +63,7 @@ class DoctorInspectorSample(object):
         #
         # self.nova.services.force_down(hostname, 'nova-compute', True)
         #
+        LOG.info('doctor mark host(%s) down at %s' % (hostname, time.time()))
         nova_force_down.force_down(hostname)
 
 
