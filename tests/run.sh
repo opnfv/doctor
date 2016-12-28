@@ -248,21 +248,35 @@ END_TXT
 }
 
 profile_performance_poc() {
-    total=`python -c "print(int(($notified-$detected)*1000))"`
-
+    #calculate the relative interval to triggered(T00)
     export DOCTOR_PROFILER_T00=0
-    export DOCTOR_PROFILER_T09=$((total))
+    export DOCTOR_PROFILER_T01=$(echo "($detected-$triggered)*1000/1" |bc)
+    export DOCTOR_PROFILER_T03=$(echo "($vmdown-$triggered)*1000/1" |bc)
+    export DOCTOR_PROFILER_T04=$(echo "($hostdown-$triggered)*1000/1" |bc)
+    export DOCTOR_PROFILER_T09=$(echo "($notified-$triggered)*1000/1" |bc)
+
     python profiler-poc.py
 }
 
 calculate_notification_time() {
-    detected=$(grep "doctor monitor detected at" monitor.log | awk '{print $10}')
-    notified=$(grep "doctor consumer notified at" consumer.log | awk '{print $10}')
     if ! grep -q "doctor consumer notified at" consumer.log ; then
         die $LINENO "Consumer hasn't received fault notification."
     fi
 
-    if [[ PROFILER == 'poc' ]]; then
+    #keep 'at' as the last keyword just before the value, and
+    #use regex to get value instead of the fixed column
+    detected=$(grep "doctor monitor detected at" monitor.log |\
+               sed -e "s/^.*doctor .* at//")
+    notified=$(grep "doctor consumer notified at" consumer.log |\
+               sed -e "s/^.*doctor .* at//")
+    triggered=$(grep "^doctor set host down at" disable_network.log |\
+                sed -e "s/^.*doctor .* at//")
+    vmdown=$(grep "doctor mark vm.* error at" inspector.log |head -n 1 |\
+               sed -e "s/^.*doctor .* at//")
+    hostdown=$(grep "doctor mark host.* down at" inspector.log |\
+               sed -e "s/^.*doctor .* at//")
+
+    if [[ $PROFILER == 'poc' ]]; then
         profile_performance_poc
     fi
 
