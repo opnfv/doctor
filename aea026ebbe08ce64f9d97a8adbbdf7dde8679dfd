@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_e8f33d9d",
+        "filename": "tests/inspector.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-12-28T02:14:07Z",
+      "side": 1,
+      "message": "General question on timestamp, should we mark the start of the action or the end of the action? \n\nPersonally I think we should mark the end of each action because this is the point we leaving this stage, i.e. move this line after L67.",
+      "revId": "aea026ebbe08ce64f9d97a8adbbdf7dde8679dfd",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
