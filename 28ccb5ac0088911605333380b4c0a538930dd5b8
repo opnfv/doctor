@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_2802a56f",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-12-28T01:57:58Z",
+      "side": 1,
+      "message": "Should this be after L239? Which is more precise for the fault moment.",
+      "revId": "28ccb5ac0088911605333380b4c0a538930dd5b8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
