@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_9c099edf",
+        "filename": "tests/inspector.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-12-28T08:16:49Z",
+      "side": 1,
+      "message": "Multiple timestamps has been set. I think we need only one point marking the end of this loop.",
+      "revId": "1dedbe08e7cdf4a3a484219541b5f94fc7d53659",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_3c10aa00",
+        "filename": "tests/inspector.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-12-28T08:16:49Z",
+      "side": 1,
+      "message": "Should this be after L67? We should align all timestamp to end of each event.",
+      "revId": "1dedbe08e7cdf4a3a484219541b5f94fc7d53659",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
