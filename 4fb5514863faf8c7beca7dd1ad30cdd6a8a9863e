@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_9f8c3037",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-12-29T16:24:29Z",
+      "side": 1,
+      "message": "Please delete URL and add \"JIRA: DOCTOR-81\" in the commit message. Gerrit will automatically link to Jira and Jira will automatically add a reference in the Jira issue back to Gerrit.",
+      "revId": "4fb5514863faf8c7beca7dd1ad30cdd6a8a9863e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_5fafa894",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-12-29T16:24:29Z",
+      "side": 1,
+      "message": "This points to master branch. Not sure we should either change as you\u0027re proposing or assume there\u0027s a doctor/danube/manuals/... directory already created prior to branch split.",
+      "revId": "4fb5514863faf8c7beca7dd1ad30cdd6a8a9863e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_7f894425",
+        "filename": "docs/scenarios/functest/doctor-scenario-in-functest.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2016-12-29T16:24:29Z",
+      "side": 1,
+      "message": "Here it\u0027s assumed the doctor/danube/ directory is already created.",
+      "revId": "4fb5514863faf8c7beca7dd1ad30cdd6a8a9863e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
