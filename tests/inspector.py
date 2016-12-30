@@ -75,7 +75,7 @@ def event_posted():
     LOG.info('inspector = %s' % inspector)
     LOG.info('received data = %s' % request.data)
     d = json.loads(request.data)
-    hostname = d['hostname']
+    hostname = d['details']['hostname']
     event_type = d['type']
     if event_type == 'compute.host.down':
         inspector.disable_compute_host(hostname)
