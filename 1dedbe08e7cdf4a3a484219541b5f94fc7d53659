@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_9f08b092",
+        "filename": "tests/inspector.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-30T02:13:26Z",
+      "side": 1,
+      "message": "Hi all, \nfrom the real data of test log, we should keep it in the loop not out range of loop for the main time cost in in this loop, about 68% time cost in one loop.",
+      "parentUuid": "5ac10518_5fe1e8fc",
+      "revId": "1dedbe08e7cdf4a3a484219541b5f94fc7d53659",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_3c10aa00",
         "filename": "tests/inspector.py",
         "patchSetId": 2
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "+1 after force down.",
       "parentUuid": "5ac10518_fc02223d",
+      "revId": "1dedbe08e7cdf4a3a484219541b5f94fc7d53659",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_7f05c478",
+        "filename": "tests/inspector.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2016-12-30T02:13:26Z",
+      "side": 1,
+      "message": "we can move all the timestamps after the operations.",
+      "parentUuid": "5ac10518_ffe77410",
       "revId": "1dedbe08e7cdf4a3a484219541b5f94fc7d53659",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
