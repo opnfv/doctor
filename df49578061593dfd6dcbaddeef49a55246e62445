@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_9f64304a",
+        "filename": "tests/monitor.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2016-12-30T03:52:10Z",
+      "side": 1,
+      "message": "This seems the same as L97. Move it out of if-elif branch?",
+      "revId": "df49578061593dfd6dcbaddeef49a55246e62445",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
