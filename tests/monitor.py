@@ -78,33 +78,31 @@ class DoctorMonitorSample(object):
             time.sleep(self.interval)
 
     def report_error(self):
-        if self.inspector_type == 'sample':
-            payload = {"type": self.event_type, "hostname": self.hostname}
-            data = json.dumps(payload)
-            headers = {'content-type': 'application/json'}
-            requests.post(self.inspector_url, data=data, headers=headers)
-        elif self.inspector_type == 'congress':
-            data = [
-                {
-                    'id': 'monitor_sample_id1',
-                    'time': datetime.now().isoformat(),
-                    'type': self.event_type,
-                    'details': {
-                        'hostname': self.hostname,
-                        'status': 'down',
-                        'monitor': 'monitor_sample',
-                        'monitor_event_id': 'monitor_sample_event1'
-                    },
+        payload = [
+            {
+                'id': 'monitor_sample_id1',
+                'time': datetime.now().isoformat(),
+                'type': self.event_type,
+                'details': {
+                    'hostname': self.hostname,
+                    'status': 'down',
+                    'monitor': 'monitor_sample',
+                    'monitor_event_id': 'monitor_sample_event1'
                 },
-            ]
+            },
+        ]
+        data = json.dumps(payload)
 
+        if self.inspector_type == 'sample':
+            headers = {'content-type': 'application/json'}
+        elif self.inspector_type == 'congress':
             headers = {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
                 'X-Auth-Token':self.session.get_token(),
             }
 
-            requests.put(self.inspector_url, data=json.dumps(data), headers=headers)
+        requests.put(self.inspector_url, data=data, headers=headers)
 
 
 def get_args():
