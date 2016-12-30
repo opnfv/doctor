@@ -75,10 +75,11 @@ def event_posted():
     LOG.info('inspector = %s' % inspector)
     LOG.info('received data = %s' % request.data)
     d = json.loads(request.data)
-    hostname = d['hostname']
-    event_type = d['type']
-    if event_type == 'compute.host.down':
-        inspector.disable_compute_host(hostname)
+    for event in d:
+        hostname = event['details']['hostname']
+        event_type = event['type']
+        if event_type == 'compute.host.down':
+            inspector.disable_compute_host(hostname)
     return "OK"
 
 
