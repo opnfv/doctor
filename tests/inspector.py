@@ -14,6 +14,7 @@ from flask import request
 import json
 import logger as doctor_log
 import os
+import threading
 import time
 
 import novaclient.client as novaclient
@@ -23,19 +24,36 @@ import nova_force_down
 LOG = doctor_log.Logger('doctor_inspector').getLogger()
 
 
+class ThreadedResetState(threading.Thread):
+    
+    def __init__(self, nova, state, server):
+        threading.Thread.__init__(self)
+        self.nova = nova
+        self.state = state
+        self.server = server
+    def run(self):
+        self.nova.servers.reset_state(self.server,self.state)
+        LOG.info('doctor mark vm(%s) error at %s' % (self.server, time.time()))
+
+
 class DoctorInspectorSample(object):
 
     nova_api_version = '2.11'
+    number_of_clients = 50
 
     def __init__(self):
         self.servers = collections.defaultdict(list)
-        self.nova = novaclient.Client(self.nova_api_version,
-                                      os.environ['OS_USERNAME'],
-                                      os.environ['OS_PASSWORD'],
-                                      os.environ['OS_TENANT_NAME'],
-                                      os.environ['OS_AUTH_URL'],
-                                      connection_pool=True)
-        # check nova is available
+        self.novaclients = list()
+        # Pool of novaclients for redundant usage
+        for i in range(self.number_of_clients):
+            self.novaclients.append(novaclient.Client(self.nova_api_version,
+                                    os.environ['OS_USERNAME'],
+                                    os.environ['OS_PASSWORD'],
+                                    os.environ['OS_TENANT_NAME'],
+                                    os.environ['OS_AUTH_URL'],
+                                    connection_pool=True))
+        # Normally we use this client for non redundant API calls
+        self.nova=self.novaclients[0]
         self.nova.servers.list(detailed=False)
         self.init_servers_list()
 
@@ -52,10 +70,18 @@ class DoctorInspectorSample(object):
                 LOG.error('can not get hostname from server=%s' % server)
 
     def disable_compute_host(self, hostname):
-        for server in self.servers[hostname]:
-            self.nova.servers.reset_state(server, 'error')
-            LOG.info('doctor mark vm(%s) error at %s' % (server, time.time()))
-
+        threads = []
+        if len(self.servers[hostname]) > self.number_of_clients:
+            # tojuvone: This could be enhanced in future with dynamic reuse of
+            # clients and core amount based max number of clients.
+            LOG.error('%d servers in %s. Can handle only %d'%(
+                      self.servers[hostname], hostname, self.number_of_clients))
+        for nova, server in zip(self.novaclients,self.servers[hostname]):
+            t = ThreadedResetState(nova, "error", server)
+            t.start()
+            threads.append(t)
+        for t in threads:
+            t.join()
         # NOTE: We use our own client here instead of this novaclient for a
         #       workaround.  Once keystone provides v2.1 nova api endpoint
         #       in the service catalog which is configured by OpenStack
