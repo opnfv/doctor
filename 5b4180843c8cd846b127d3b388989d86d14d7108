@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_d01b87c8",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-01-04T05:12:51Z",
+      "side": 1,
+      "message": "To catch last notification this would also need \"tail -n 1\". Anyhow as you noted, that is only relevant when I add multiple VMs support to this script, so there will be multiple events.",
+      "parentUuid": "5ac10518_954e5195",
+      "range": {
+        "startLine": 270,
+        "startChar": 4,
+        "endLine": 271,
+        "endChar": 44
+      },
+      "revId": "5b4180843c8cd846b127d3b388989d86d14d7108",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_3fa09c42",
         "filename": "tests/run.sh",
         "patchSetId": 1
