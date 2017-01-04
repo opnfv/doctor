@@ -17,9 +17,11 @@ IMAGE_URL=https://launchpad.net/cirros/trunk/0.3.0/+download/cirros-0.3.0-x86_64
 IMAGE_NAME=${IMAGE_NAME:-cirros}
 IMAGE_FILE="${IMAGE_NAME}.img"
 IMAGE_FORMAT=qcow2
-VM_NAME=doctor_vm1
+VM_BASENAME=doctor_vm
 VM_FLAVOR=m1.tiny
-ALARM_NAME=doctor_alarm1
+#if VM_COUNT set, use that instead
+[[ $VM_COUNT ]] || VM_COUNT=1
+ALARM_BASENAME=doctor_alarm
 INSPECTOR_PORT=12345
 CONSUMER_PORT=12346
 DOCTOR_USER=doctor
@@ -39,8 +41,8 @@ as_doctor_user="--os-username $DOCTOR_USER --os-password $DOCTOR_PW
 # Functions
 
 get_compute_host_info() {
-    # get computer host info which VM boot in
-    COMPUTE_HOST=$(openstack $as_doctor_user server show $VM_NAME |
+    # get computer host info which first VM boot in
+    COMPUTE_HOST=$(openstack $as_doctor_user server show ${VM_BASENAME}1 |
                    grep "OS-EXT-SRV-ATTR:host" | awk '{ print $4 }')
     compute_host_in_undercloud=${COMPUTE_HOST%%.*}
     die_if_not_set $LINENO COMPUTE_HOST "Failed to get compute hostname"
@@ -131,27 +133,50 @@ create_test_user() {
 
 boot_vm() {
     # test VM done with test user, so can test non-admin
-    openstack $as_doctor_user server list | grep -q " $VM_NAME " && return 0
-    openstack $as_doctor_user server create --flavor "$VM_FLAVOR" \
+    # We make sure that quota allows number of instances
+    OLD_INSTANCE_QUOTA=$(openstack quota show $DOCTOR_USER |
+                         grep " instances " | awk '{print $4}')
+    if [ $OLD_INSTANCE_QUOTA -lt $VM_COUNT ]; then
+        openstack quota set --instances $VM_COUNT \
+                  $DOCTOR_USER
+    fi
+    OLD_CORES_QUOTA=$(openstack quota show $DOCTOR_USER |
+                      grep " cores " | awk '{print $4}')
+    if [ $OLD_CORES_QUOTA -lt $VM_COUNT ]; then
+        openstack quota set --cores $VM_COUNT \
+                  $DOCTOR_USER
+    fi
+    sleep 1
+    servers=$(openstack $as_doctor_user server list)
+    for i in `seq $VM_COUNT`; do
+        echo "${servers}" | grep -q " $VM_BASENAME$i " && continue
+        openstack $as_doctor_user server create --flavor "$VM_FLAVOR" \
                             --image "$IMAGE_NAME" \
-                            "$VM_NAME"
+                            "$VM_BASENAME$i"
+    done
     sleep 1
 }
 
 create_alarm() {
     # get vm_id as test user
-    ceilometer $as_doctor_user alarm-list | grep -q " $ALARM_NAME " && return 0
-    vm_id=$(openstack $as_doctor_user server list | grep " $VM_NAME " | awk '{print $2}')
-    # TODO(r-mibu): change notification endpoint from localhost to the consumer
-    # IP address (functest container).
-    ceilometer $as_doctor_user alarm-event-create --name "$ALARM_NAME" \
-        --alarm-action "http://localhost:$CONSUMER_PORT/failure" \
-        --description "VM failure" \
-        --enabled True \
-        --repeat-actions False \
-        --severity "moderate" \
-        --event-type compute.instance.update \
-        -q "traits.state=string::error; traits.instance_id=string::$vm_id"
+    alarm_list=$(ceilometer $as_doctor_user alarm-list)
+    vms=$(openstack $as_doctor_user server list)
+    for i in `seq $VM_COUNT`; do
+        echo "${alarm_list}" | grep -q " $ALARM_BASENAME$i " || {
+        vm_id=$(echo "${vms}" | grep " $VM_BASENAME$i " | awk '{print $2}')
+        # TODO(r-mibu): change notification endpoint from localhost to the
+        # consumer. IP address (functest container).
+        ceilometer $as_doctor_user alarm-event-create \
+            --name "$ALARM_BASENAME$i" \
+            --alarm-action "http://localhost:$CONSUMER_PORT/failure" \
+            --description "VM failure" \
+            --enabled True \
+            --repeat-actions False \
+            --severity "moderate" \
+            --event-type compute.instance.update \
+            -q "traits.state=string::error; traits.instance_id=string::$vm_id"
+        }
+     done
 }
 
 start_monitor() {
@@ -214,18 +239,25 @@ wait_for_vm_launch() {
     count=0
     while [[ ${count} -lt 60 ]]
     do
-        state=$(openstack $as_doctor_user server list | grep " $VM_NAME " | awk '{print $6}')
-        if [[ "$state" == "ACTIVE" ]]; then
-            # NOTE(cgoncalves): sleeping for a bit to stabilize
-            # See python-openstackclient/functional/tests/compute/v2/test_server.py:wait_for_status
-            sleep 5
-            return 0
-        fi
-        if [[ "$state" == "ERROR" ]]; then
-            die $LINENO "vm state is ERROR"
-        fi
+        active_count=0
+        vms=$(openstack $as_doctor_user server list)
+        for i in `seq $VM_COUNT`; do
+            state=$(echo "${vms}" | grep " $VM_BASENAME$i " | awk '{print $6}')
+            if [[ "$state" == "ACTIVE" ]]; then
+                active_count=$(($active_count+1))
+            elif [[ "$state" == "ERROR" ]]; then
+                die $LINENO "vm state $VM_BASENAME$i is ERROR"
+            else
+                #This VM not yet active
+                count=$(($count+1))
+                sleep 5
+                continue
+            fi
+        done
+        [[ $active_count -eq $VM_COUNT ]] && return 0
+        #Not all VMs active
         count=$(($count+1))
-        sleep 1
+        sleep 5
     done
     die $LINENO "Time out while waiting for VM launch"
 }
@@ -276,7 +308,7 @@ calculate_notification_time() {
     detected=$(grep "doctor monitor detected at" monitor.log |\
                sed -e "s/^.* at //")
     notified=$(grep "doctor consumer notified at" consumer.log |\
-               sed -e "s/^.* at //")
+               sed -e "s/^.* at //" | tail -1)
 
     if [[ "$PROFILER_TYPE" == "poc" ]]; then
         profile_performance_poc
@@ -290,17 +322,49 @@ calculate_notification_time() {
         }'
 }
 
-check_host_status() {
-    expected_state=$1
+wait_ping() {
+    local interval=5
+    local rounds=$(($1 / $interval))
+    for i in `seq $rounds`; do
+        ping -c 1 "$COMPUTE_IP"
+        if [[ $? -ne 0 ]] ; then
+            sleep  $interval
+            continue
+        fi
+        return 0
+    done
+}
 
-    host_status_line=$(openstack $as_doctor_user --os-compute-api-version 2.16 \
-                       server show $VM_NAME | grep "host_status")
-    host_status=$(echo $host_status_line | awk '{print $4}')
-    die_if_not_set $LINENO host_status "host_status not reported by: nova show $VM_NAME"
+check_host_status() {
+    # Check host related to first Doctor VM is in wanted state
+    # $1    Expected state
+    # $2    Seconds to wait to have wanted state
+    expected_state=$1
+    local interval=5
+    local rounds=$(($2 / $interval))
+    for i in `seq $rounds`; do
+        host_status_line=$(openstack $as_doctor_user --os-compute-api-version \
+                           2.16 server show ${VM_BASENAME}1 | grep "host_status")
+        host_status=$(echo $host_status_line | awk '{print $4}')
+        die_if_not_set $LINENO host_status "host_status not reported by: nova show ${VM_BASENAME}1"
+        if [[ "$expected_state" =~ "$host_status" ]] ; then
+            if [[ "$expected_state" =~ "UP" ]] ; then
+                #Might take 110s for ping to work after state changes UP
+                #VM removal can fail if compute not really up
+                time_left=$(($2-$i*$interval))
+                wait_ping $time_left
+            fi
+            echo "${VM_BASENAME}1 showing host_status: $host_status"
+            return 0
+        else
+            sleep $interval
+            continue
+        fi
+    done
     if [[ "$expected_state" =~ "$host_status" ]] ; then
-        echo "$VM_NAME showing host_status: $host_status"
+        echo "${VM_BASENAME}1 showing host_status: $host_status"
     else
-        die $LINENO "host_status:$host_status not equal to expected_state: $expected_state"
+        die $LINENO  "host_status:$host_status not equal to expected_state: $expected_state"
     fi
 }
 
@@ -313,15 +377,21 @@ cleanup() {
 
     echo "waiting disabled compute host back to be enabled..."
     python ./nova_force_down.py "$COMPUTE_HOST" --unset
-    sleep 240
-    check_host_status "UP"
+    check_host_status "UP" 240
     scp $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP:disable_network.log" .
-
-    openstack $as_doctor_user server list | grep -q " $VM_NAME " && openstack $as_doctor_user server delete "$VM_NAME"
-    sleep 1
-    alarm_id=$(ceilometer $as_doctor_user alarm-list | grep " $ALARM_NAME " | awk '{print $2}')
-    sleep 1
-    [ -n "$alarm_id" ] && ceilometer $as_doctor_user alarm-delete "$alarm_id"
+    vms=$(openstack $as_doctor_user server list)
+    vmstodel=""
+    for i in `seq $VM_COUNT`; do
+        $(echo "${vms}" | grep -q " $VM_BASENAME$i ") &&
+        vmstodel+=" $VM_BASENAME$i"
+    done
+    [[ $vmstodel ]] && openstack $as_doctor_user server delete $vmstodel
+    alarm_list=$(ceilometer $as_doctor_user alarm-list)
+    for i in `seq $VM_COUNT`; do
+        alarm_id=$(echo "${alarm_list}" | grep " $ALARM_BASENAME$i " |
+                   awk '{print $2}')
+        [ -n "$alarm_id" ] && ceilometer $as_doctor_user alarm-delete "$alarm_id"
+    done
     sleep 1
 
     image_id=$(openstack image list | grep " $IMAGE_NAME " | awk '{print $2}')
@@ -378,9 +448,8 @@ start_consumer
 sleep 60
 echo "injecting host failure..."
 inject_failure
-sleep 60
 
-check_host_status "(DOWN|UNKNOWN)"
+check_host_status "(DOWN|UNKNOWN)" 60
 calculate_notification_time
 
 echo "done"
