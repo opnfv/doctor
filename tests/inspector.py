@@ -14,6 +14,7 @@ from flask import request
 import json
 import logger as doctor_log
 import os
+import threading
 import time
 
 import novaclient.client as novaclient
@@ -22,6 +23,14 @@ import nova_force_down
 
 LOG = doctor_log.Logger('doctor_inspector').getLogger()
 
+class ThreadedResetState(threading.Thread):
+    def __init__(self, nova, state, server):
+        threading.Thread.__init__(self)
+        self.nova = nova
+        self.state = state
+        self.server = server
+    def run(self):
+        self.nova.servers.reset_state(self.server,self.state)
 
 class DoctorInspectorSample(object):
 
@@ -52,9 +61,15 @@ class DoctorInspectorSample(object):
                 LOG.error('can not get hostname from server=%s' % server)
 
     def disable_compute_host(self, hostname):
+        threads = []
+        thread_id = 1
         for server in self.servers[hostname]:
-            self.nova.servers.reset_state(server, 'error')
-
+            t = ThreadedResetState(self.nova, "error", server)
+            t.start()
+            threads.append(t)
+            thread_id += 1
+        for t in threads:
+            t.join()
         # NOTE: We use our own client here instead of this novaclient for a
         #       workaround.  Once keystone provides v2.1 nova api endpoint
         #       in the service catalog which is configured by OpenStack
