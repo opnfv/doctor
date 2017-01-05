@@ -22,6 +22,30 @@
       "revId": "dc80df202752ad7f11efb2fdbf879acb6df6bd34",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_c6018d07",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2017-01-05T13:12:54Z",
+      "side": 1,
+      "message": "Okay to change the example to a structured one.\nWhat kind of recommendation do you have in mind? To add a structure for failures?",
+      "parentUuid": "5ac10518_263c11e2",
+      "range": {
+        "startLine": 729,
+        "startChar": 99,
+        "endLine": 729,
+        "endChar": 110
+      },
+      "revId": "dc80df202752ad7f11efb2fdbf879acb6df6bd34",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
