@@ -61,6 +61,13 @@ Immediate Notification
 
     - Fault notifications cannot be received immediately by Ceilometer.
 
+* Solved by
+
+  + Event Alarm Evaluator:
+    https://specs.openstack.org/openstack/ceilometer-specs/specs/liberty/event-alarm-evaluator.html
+  + New OpenStack alarms and notifications project AODH:
+    http://docs.openstack.org/developer/aodh/
+
 Maintenance Notification
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -98,7 +105,7 @@ Maintenance Notification
 
     - VIM user cannot receive maintenance notifications.
 
-* Related blueprints
+* Solved by
 
   + https://blueprints.launchpad.net/nova/+spec/service-status-notification
 
@@ -125,6 +132,10 @@ Normalization of data collection models
   + Gap
 
     - Normalized data format does not exist.
+
+* Solved by
+
+  + Specification in Section :ref:`southbound`. 
 
 OpenStack
 ---------
@@ -157,7 +168,7 @@ ________________________________
     - Ceilometer seems to be unsuitable for monitoring medium and large scale
       NFVI deployments.
 
-* Related blueprints
+* Solved by
 
   + Usage of Zabbix for fault aggregation [ZABB]_. Zabbix can support a much
     higher number of fault events (up to 15 thousand events per second, but
@@ -189,13 +200,14 @@ ___________________________________
     - OpenStack Ceilometer does not monitor hardware and software to capture
       faults.
 
-   + Gap
+  + Gap
 
-     - Ceilometer is not able to detect and handle all faults listed in the Annex.
+    - Ceilometer is not able to detect and handle all faults listed in the Annex.
 
-* Related blueprints / workarounds
+* Solved by
 
-  - Use other dedicated monitoring tools like Zabbix or Monasca
+  + Use of dedicated monitoring tools like Zabbix or Monasca.
+    See :ref:`nfvi_faults`.
 
 Nova
 ^^^^
@@ -218,15 +230,14 @@ ________________________________________
 
   + To-be
 
-    - There needs to be API to change VM power_State in case host has failed.
-    - There needs to be API to change nova-compute state.
+    - The API shall support to change VM power state in case host has failed.
+    - The API shall support to change nova-compute state.
     - There could be single API to change different VM states for all VMs
-      belonging to specific host.
-    - As external system monitoring the infra calls these APIs change can be
-      fast and reliable.
-    - Correlation actions can be faster and automated as states are reliable.
-    - User will be able to read states from OpenStack and trust they are
-      correct.
+      belonging to a specific host.
+    - Support external systems that are monitoring the infrastructure and resources
+      that are able to call the API fast and reliable.
+    - Resource states are reliable such that correlation actions can be fast and automated.
+    - User shall be able to read states from OpenStack and trust they are correct.
 
   + As-is
 
@@ -240,12 +251,11 @@ ________________________________________
   + Gap
 
     - OpenStack does not change its states fast and reliably enough.
-    - There is API missing to have external system to change states and to
-      trust the states are then reliable (external system has fenced failed
-      host).
+    - The API does not support to have an external system to change states and to
+      trust the states are reliable (external system has fenced failed host).
     - User cannot read all the states from OpenStack nor trust they are right.
 
-* Related blueprints
+* Solved by
 
   + https://blueprints.launchpad.net/nova/+spec/mark-host-down
   + https://blueprints.launchpad.net/python-novaclient/+spec/support-force-down-service
@@ -309,7 +319,7 @@ _________________
       underlying root cause of failure. Knowing the root cause can help filter
       out unnecessary and overwhelming alarms.
 
-* Related blueprints / workarounds
+* Status
 
   + Monasca as of now lacks this feature, although the community is aware and
     working toward supporting it.
@@ -334,7 +344,7 @@ _________________
     - Sensor monitoring is very important. It provides operators status
       on the state of the physical infrastructure (e.g. temperature, fans).
 
-* Related blueprints / workarounds
+* Addressed by
 
   + Monasca can be configured to use third-party monitoring solutions (e.g.
     Nagios, Cacti) for retrieving additional data.
@@ -370,7 +380,9 @@ _____________________________
 
   + Gap
 
-    - Cause of the delay needs to be identified and fixed
+    - Cause of the delay is a periodic evaluation and notification. Periodicity is configured
+      as 10s default value and can be reduced to 1s but not below.
+
 
 ..
  vim: set tabstop=4 expandtab textwidth=80:
