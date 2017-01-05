@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_e63fe923",
+        "filename": "docs/manuals/get-valid-server-state.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2017-01-05T10:06:49Z",
+      "side": 1,
+      "message": "My intention was to reduce the need/effort to update such links from release to release, in particular as I don\u0027t expect there will be new patches on the mark-host-down manual.\nNot sure what is the best way. Would like to see feedback from others.",
+      "parentUuid": "5ac10518_5fafa894",
+      "revId": "4fb5514863faf8c7beca7dd1ad30cdd6a8a9863e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_7f894425",
         "filename": "docs/scenarios/functest/doctor-scenario-in-functest.rst",
         "patchSetId": 3
@@ -47,6 +65,24 @@
       "writtenOn": "2016-12-29T16:24:29Z",
       "side": 1,
       "message": "Here it\u0027s assumed the doctor/danube/ directory is already created.",
+      "revId": "4fb5514863faf8c7beca7dd1ad30cdd6a8a9863e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_063b1539",
+        "filename": "docs/scenarios/functest/doctor-scenario-in-functest.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2017-01-05T10:06:49Z",
+      "side": 1,
+      "message": "Okay. For master we should better reference to\nhttp://artifacts.opnfv.org/doctor/docs/requirements/05-implementation.html",
+      "parentUuid": "5ac10518_7f894425",
       "revId": "4fb5514863faf8c7beca7dd1ad30cdd6a8a9863e",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
