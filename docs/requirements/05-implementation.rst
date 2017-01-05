@@ -672,47 +672,81 @@ and correlated alarms. Instead the AODH alarm class has attributes for actions,
 rules and user and project id.
 
 
-+------------------------+------------------------+------------------------+
-| ETSI NFV Alarm Type    | OPNFV Doctor Req Spec  | AODH Alarm Type        |
-+========================+========================+========================+
-| AlarmId                | FaultId                | Alarm Id               |
-+------------------------+------------------------+------------------------+
-| managedObjectId        | virtualResourceId      | (N/A)                  |
-+------------------------+------------------------+------------------------+
-| \-                     | \-                     | User_Id, Project_Id    |
-+------------------------+------------------------+------------------------+
-| alarmRaisedTime        | \-                     | (N/A)                  |
-+------------------------+------------------------+------------------------+
-| alarmChangedTime       | \-                     | (N/A)                  |
-+------------------------+------------------------+------------------------+
-| alarmClearedTime       | \-                     | (N/A)                  |
-+------------------------+------------------------+------------------------+
-| alarmState:            | virtualResourceState   | State: ok, alarm,      |
-| New, Updated, Cleared  | (e.g. normal,          | insufficient data      |
-|                        | maintenance, down,     |                        |
-|                        | error)                 |                        |
-+------------------------+------------------------+------------------------+
-| vrPerceivedSeverity:   | Severity (Integer)     | Severity: low,         |
-| Critical, Major, Minor,|                        | moderate, critical     |
-| Warning, Indeterminate,|                        |                        |
-| Cleared                |                        |                        |
-+------------------------+------------------------+------------------------+
-| eventTime (unclear?)   | EventTime              | (N/A)                  |
-+------------------------+------------------------+------------------------+
-| faultType              | FaultType              | type                   |
-+------------------------+------------------------+------------------------+
-| probableCause          | ProbableCause          | description            |
-+------------------------+------------------------+------------------------+
-| isRootCause            | IsRootCause            | \-                     |
-+------------------------+------------------------+------------------------+
-| correlatedAlarmId      | CorrelatedFaultId      | \-                     |
-+------------------------+------------------------+------------------------+
-| faultDetails           | FaultDetails           | \-                     |
-+------------------------+------------------------+------------------------+
-| \-                     | \-                     | actions, rule, time    |
-|                        |                        | constraints            |
-+------------------------+------------------------+------------------------+
-
++------------------------+------------------------+---------------------+---------------------------------------------+---------------------------------------+
+| ETSI NFV Alarm Type    | OPNFV Doctor           | AODH Event Alarm    | Description / Comment                       | Recommendations                       |
+|                        | Requirement Specs      | Notification        |                                             |                                       |
++========================+========================+=====================+=============================================+=======================================+
+| alarmId                | FaultId                | alarm_id            | Identifier of an alarm.                     | \-                                    |
++------------------------+------------------------+---------------------+---------------------------------------------+---------------------------------------+
+| \-                     | \-                     | alarm_name          | Human readable alarm name.                  | May be added in ETSI NFV Stage 3.     |
++------------------------+------------------------+---------------------+---------------------------------------------+---------------------------------------+
+| managedObjectId        | VirtualResourceId      | (reason)            | Identifier of the affected virtual resource | \-                                    |
+|                        |                        |                     | is part of the AODH reason parameter.       |                                       |
++------------------------+------------------------+---------------------+---------------------------------------------+---------------------------------------+
+| \-                     | \-                     | user_id, project_id | User and project identifiers.               | May be added in ETSI NFV Stage 3.     |
++------------------------+------------------------+---------------------+---------------------------------------------+---------------------------------------+
+| alarmRaisedTime        | \-                     | \-                  | Timestamp when alarm was raised.            | To be added to Doctor and AODH. May   |
+|                        |                        |                     |                                             | be derived (e.g. in a shimlayer) from |
+|                        |                        |                     |                                             | the AODH alarm history.               |
++------------------------+------------------------+---------------------+---------------------------------------------+---------------------------------------+
+| alarmChangedTime       | \-                     | \-                  | Timestamp when alarm was changed/updated.   | see above                             |
++------------------------+------------------------+---------------------+---------------------------------------------+---------------------------------------+
+| alarmClearedTime       | \-                     | \-                  | Timestamp when alarm was cleared.           | see above                             |
++------------------------+------------------------+---------------------+---------------------------------------------+---------------------------------------+
+| eventTime              | \-                     | \-                  | Timestamp when alarm was first observed by  | see above                             |
+|                        |                        |                     | the Monitor.                                |                                       |
++------------------------+------------------------+---------------------+---------------------------------------------+---------------------------------------+
+| \-                     | EventTime              | generated           | Timestamp of the Notification.              | Update parameter name in Doctor spec. |
+|                        |                        |                     |                                             | May be added in ETSI NFV Stage 3.     |
++------------------------+------------------------+---------------------+---------------------------------------------+---------------------------------------+
+| state:                 | VirtualResourceState:  | current: ok, alarm, | ETSI NFV IFA 005/006 lists example alarm    | Maintenance state is missing in AODH. |
+| E.g. Fired, Updated    | E.g. normal, down      | insufficient_data   | states.                                     | List of alarm states will be          |
+| Cleared                | maintenance, error     |                     |                                             | specified in ETSI NFV Stage 3.        |
++------------------------+------------------------+---------------------+---------------------------------------------+---------------------------------------+
+| perceivedSeverity:     | Severity (Integer)     | Severity:           | ETSI NFV IFA 005/006 lists example          | List of alarm states will be          |
+| E.g. Critical, Major,  |                        | low (default),      | perceived severity values.                  | specified in ETSI NFV Stage 3.        |
+| Minor, Warning,        |                        | moderate, critical  |                                             |                                       |
+| Indeterminate, Cleared |                        |                     |                                             | **OPNFV: Severity (Integer)**:        |
+|                        |                        |                     |                                             |   * update OPNFV Doctor specification |
+|                        |                        |                     |                                             |     to *Enum*                         |
+|                        |                        |                     |                                             |                                       |
+|                        |                        |                     |                                             | **perceivedSeverity=Indetermined**:   |
+|                        |                        |                     |                                             |   * remove value *Indetermined* in    |
+|                        |                        |                     |                                             |     IFA and map undefined values to   |
+|                        |                        |                     |                                             |     “minor” severity, or              |
+|                        |                        |                     |                                             |   * add value *indetermined* in AODH  |
+|                        |                        |                     |                                             |     and make it the default value.    |
+|                        |                        |                     |                                             |                                       |
+|                        |                        |                     |                                             | **perceivedSeverity=Cleared**:        |
+|                        |                        |                     |                                             |   * remove value *Cleared* in IFA as  |
+|                        |                        |                     |                                             |     the information about a cleared   |
+|                        |                        |                     |                                             |     alarm alarm can be derived from   |
+|                        |                        |                     |                                             |     the alarm state parameter, or     |
+|                        |                        |                     |                                             |   * add value *cleared* in AODH and   |
+|                        |                        |                     |                                             |     set a rule that the severity is   |
+|                        |                        |                     |                                             |     “cleared” when the state is *ok*. |
++------------------------+------------------------+---------------------+---------------------------------------------+---------------------------------------+
+| faultType              | FaultType              | event_type in       | Type of the fault, e.g. “CPU failure” of a  | OpenStack Alarming (Aodh) can use a   |
+|                        |                        | reason_data         | compute resource, in machine interpretable  | fuzzy matching with wildcard string,  |
+|                        |                        |                     | format.                                       "compute.cpu.failure".                |
++------------------------+------------------------+---------------------+---------------------------------------------+---------------------------------------+
+| N/A                    | N/A                    | type = "event"      | Type of the notification. For fault         | \-                                    |
+|                        |                        |                     | notifications the type in AODH is “event”.  |                                       |
++------------------------+------------------------+---------------------+---------------------------------------------+---------------------------------------+
+| probableCause          | ProbableCause          | \-                  | Probable cause of the alarm.                | May be provided (e.g. in a shimlayer) |
+|                        |                        |                     |                                             | based on Vitrage topology awareness / |
+|                        |                        |                     |                                             | root-cause-analysis.                  |
++------------------------+------------------------+---------------------+---------------------------------------------+---------------------------------------+
+| isRootCause            | IsRootCause            | \-                  | Boolean indicating whether the fault is the | see above                             |
+|                        |                        |                     | root cause of other faults.                 |                                       |
++------------------------+------------------------+---------------------+---------------------------------------------+---------------------------------------+
+| correlatedAlarmId      | CorrelatedFaultId      | \-                  | List of IDs of correlated faults.           | see above                             |
++------------------------+------------------------+---------------------+---------------------------------------------+---------------------------------------+
+| faultDetails           | FaultDetails           | \-                  | Additional details about the fault/alarm.   | FaultDetails information element will |
+|                        |                        |                     |                                             | be specified in ETSI NFV Stage 3.     |
++------------------------+------------------------+---------------------+---------------------------------------------+---------------------------------------+
+| \-                     | \-                     | action, previous    | Additional AODH alarm related parameters.   | \-                                    |
++------------------------+------------------------+---------------------+---------------------------------------------+---------------------------------------+
 
 Table: Comparison of alarm attributes
 
