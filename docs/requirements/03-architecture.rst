@@ -261,7 +261,8 @@ physical resource from 'enabled' to 'going-to-maintenance' and a timeout [#timeo
 After receiving the MaintenanceRequest,the VIM decides on the actions to be taken
 based on maintenance policies predefined by the affected Consumer(s).
 
-.. [#timeout] Timeout is set by the Administrator and corresponds to the maximum time to empty the physical resources.
+.. [#timeout] Timeout is set by the Administrator and corresponds to the maximum time
+   to empty the physical resources.
 
 .. figure:: images/figure5a.png
    :name: figure5a
@@ -322,11 +323,12 @@ shown in :numref:`figure5c`.
 It consists of the following steps:
 
 5. The Consumer C3 switches to standby configuration (STBY).
-6. Instructions from Consumers C2/C3 are shared to VIM requesting certain actions to be performed (steps 6a, 6b).
-   The VIM executes the requested actions and sends back a NACK to consumer C2 (step 6d) as the
-   migration of the virtual resource(s) is not completed by the given timeout.
+6. Instructions from Consumers C2/C3 are shared to VIM requesting certain actions to be performed
+   (steps 6a, 6b). The VIM executes the requested actions and sends back a NACK to consumer C2
+   (step 6d) as the migration of the virtual resource(s) is not completed by the given timeout.
 7. The VIM switches the physical resources to "enabled" state.
-8. MaintenanceResponse is sent from VIM to inform the Administrator that the maintenance action cannot start.
+8. MaintenanceNotification is sent from VIM to inform the Administrator that the maintenance action
+   cannot start.
 
 
 ..
