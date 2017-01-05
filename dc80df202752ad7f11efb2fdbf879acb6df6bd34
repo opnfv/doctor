@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_263c11e2",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-01-05T12:03:01Z",
+      "side": 1,
+      "message": "In Aodh, event_type is a structured/fuzzy matching with wildcard string type, e.g. \"compute.instance.update\" (http://docs.openstack.org/developer/aodh/event-alarm.html). Giving an example of a non-structured string could cause confusion and misleading. How about changing to \"compute.cpu.failure\" and adding a recommendation?",
+      "range": {
+        "startLine": 729,
+        "startChar": 99,
+        "endLine": 729,
+        "endChar": 110
+      },
+      "revId": "dc80df202752ad7f11efb2fdbf879acb6df6bd34",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
