@@ -46,6 +46,30 @@
       "revId": "dc80df202752ad7f11efb2fdbf879acb6df6bd34",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_4f304d56",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-01-09T15:04:47Z",
+      "side": 1,
+      "message": "We don\u0027t need to define a structure for failure; we may just give the example from Aodh suggesting adopting it.\n\nDescription/Comment: machine interpretable format.\nRecommendation: OpenStack Alarming (Aodh) uses a fuzzy matching with wildcard string, e.g.: \"compute.cpu.failure\".",
+      "parentUuid": "5ac10518_c6018d07",
+      "range": {
+        "startLine": 729,
+        "startChar": 99,
+        "endLine": 729,
+        "endChar": 110
+      },
+      "revId": "dc80df202752ad7f11efb2fdbf879acb6df6bd34",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
