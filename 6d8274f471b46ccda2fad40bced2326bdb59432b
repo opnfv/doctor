@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_2f6061a4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-01-09T11:09:36Z",
+      "side": 1,
+      "message": "Add to the commit message (body):\n\nJIRA: DOCTOR-81",
+      "revId": "6d8274f471b46ccda2fad40bced2326bdb59432b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_8f5155da",
+        "filename": "docs/requirements/04-gaps.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-01-09T11:09:36Z",
+      "side": 1,
+      "message": "The default sender frequency is 30 seconds. The lowest frequency one can set is 5 seconds: \n\n### Option: SenderFrequency\n#\tHow often Zabbix will try to send unsent alerts (in seconds).\n#\n# Mandatory: no\n# Range: 5-3600\n# Default:\n# SenderFrequency\u003d30\n\nhttps://github.com/zabbix/zabbix/blob/trunk/conf/zabbix_server.conf#L329",
+      "revId": "6d8274f471b46ccda2fad40bced2326bdb59432b",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
