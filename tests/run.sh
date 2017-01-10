@@ -27,6 +27,7 @@ DOCTOR_PW=doctor
 DOCTOR_PROJECT=doctor
 #TODO: change back to `_member_` when JIRA DOCTOR-55 is done
 DOCTOR_ROLE=admin
+PROFILER_TYPE=${PROFILER_TYPE:-none}
 
 TOP_DIR=$(cd $(dirname "$0") && pwd)
 
@@ -262,7 +263,7 @@ calculate_notification_time() {
         die $LINENO "Consumer hasn't received fault notification."
     fi
 
-    if [[ PROFILER == 'poc' ]]; then
+    if [[ "$PROFILER_TYPE" == 'poc' ]]; then
         profile_performance_poc
     fi
 
