@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_380749cc",
+        "filename": "tests/run.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-01-11T15:33:35Z",
+      "side": 1,
+      "message": "could you change this to \"$PROFILER_TYPE\", in order to get align with other options such as inspector? If it\u0027s OK, I\u0027ll abandon https://gerrit.opnfv.org/gerrit/26833 .",
+      "range": {
+        "startLine": 280,
+        "startChar": 11,
+        "endLine": 280,
+        "endChar": 19
+      },
+      "revId": "ca8d14a6d72fe285bc08124e6b762ea1acd9e544",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
