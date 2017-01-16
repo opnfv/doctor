@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_6ba9747a",
+        "filename": "docs/requirements/03-architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2017-01-16T14:59:17Z",
+      "side": 1,
+      "message": "proposal to change to \"address the gap\" as documenting a gap as in your example below does not \"fill the gap\".",
+      "range": {
+        "startLine": 199,
+        "startChar": 50,
+        "endLine": 199,
+        "endChar": 62
+      },
+      "revId": "634fd373fdd4589c273935712324088d55dbe0db",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
