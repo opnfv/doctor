@@ -18,8 +18,10 @@ Valid check points are: DOCTOR_PROFILER_T{00-09}
 See also: https://goo.gl/98Osig
 """
 
+import json
 import os
 
+LOGFILE = 'performance-profile'
 PREFIX = 'DOCTOR_PROFILER'
 TOTAL_CHECK_POINTS = 10
 MODULE_CHECK_POINTS = ['T00', 'T01', 'T04', 'T05', 'T06', 'T09']
@@ -75,6 +77,9 @@ def main():
     tags.update({'total': time_cost((check_points[0], check_points[-1]))})
 
     profile = TEMPLATE.format(**tags)
+
+    logfile = open('{}.json'.format(LOGFILE), 'w')
+    logfile.write(json.dumps(tags))
 
     print profile
 
