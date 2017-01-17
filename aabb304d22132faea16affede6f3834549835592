@@ -22,6 +22,30 @@
       "revId": "aabb304d22132faea16affede6f3834549835592",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_e6b59bee",
+        "filename": "tests/inspector.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-01-17T07:12:24Z",
+      "side": 1,
+      "message": "You are right, this version did not use this (my bad). Usually threading class would have self.threadID where this would be passed in initialization. I need to check once again wither it was better to have it there. If no impact on time spent at least uniq id for each thread.",
+      "parentUuid": "5ac10518_46634fb1",
+      "range": {
+        "startLine": 70,
+        "startChar": 12,
+        "endLine": 70,
+        "endChar": 21
+      },
+      "revId": "aabb304d22132faea16affede6f3834549835592",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
