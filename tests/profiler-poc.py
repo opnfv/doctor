@@ -18,6 +18,7 @@ Valid check points are: DOCTOR_PROFILER_T{00-09}
 See also: https://goo.gl/98Osig
 """
 
+import json
 import os
 
 PREFIX = 'DOCTOR_PROFILER'
@@ -75,6 +76,9 @@ def main():
     tags.update({'total': time_cost((check_points[0], check_points[-1]))})
 
     profile = TEMPLATE.format(**tags)
+
+    logfile = open('profile.json', 'w')
+    logfile.write(json.dumps(tags))
 
     print profile
 
