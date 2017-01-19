@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_9d3d01be",
+        "filename": "tests/inspector.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-01-19T08:51:51Z",
+      "side": 1,
+      "message": "+1 to leave this threading part from this patch, but maybe you can leave comment as this idea is came from you",
+      "parentUuid": "5ac10518_3a4ad3c5",
+      "range": {
+        "startLine": 69,
+        "startChar": 46,
+        "endLine": 69,
+        "endChar": 55
+      },
+      "revId": "a9944ec6cc71e48dc6dbc801b01cfb7210bfd708",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_da5cefef",
         "filename": "tests/run.sh",
         "patchSetId": 3
@@ -295,6 +319,30 @@
       "side": 1,
       "message": "Yes, we are only interested VMs on same host as \"${VM_BASENAME}1\". Ok, if it works similarly, I will modify the alarm definition. That is also far better in real life, so one do not need to adjust this every time when make new VM.",
       "parentUuid": "5ac10518_1a94b735",
+      "range": {
+        "startLine": 164,
+        "startChar": 4,
+        "endLine": 164,
+        "endChar": 32
+      },
+      "revId": "a9944ec6cc71e48dc6dbc801b01cfb7210bfd708",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_1d791193",
+        "filename": "tests/run.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-01-19T08:51:51Z",
+      "side": 1,
+      "message": "you are right, that is good point",
+      "parentUuid": "5ac10518_3a7893f1",
       "range": {
         "startLine": 164,
         "startChar": 4,
