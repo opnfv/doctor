@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_5ad79fed",
+        "filename": "tests/run.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-01-19T07:34:12Z",
+      "side": 0,
+      "message": "this is still needed in order to wait consumer get notification that is not related to compute state or reachability.",
+      "range": {
+        "startLine": 381,
+        "startChar": 0,
+        "endLine": 381,
+        "endChar": 8
+      },
+      "revId": "2378f04c1b6d333c322f93e44387c6f224dffe3e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}

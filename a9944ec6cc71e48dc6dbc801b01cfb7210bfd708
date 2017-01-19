@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5ac10518_dab86fe7",
+        "filename": "tests/inspector.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-01-19T07:34:12Z",
+      "side": 1,
+      "message": "we don\u0027t need this ID",
+      "range": {
+        "startLine": 66,
+        "startChar": 8,
+        "endLine": 66,
+        "endChar": 17
+      },
+      "revId": "a9944ec6cc71e48dc6dbc801b01cfb7210bfd708",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_7a7dbb1b",
         "filename": "tests/inspector.py",
         "patchSetId": 3
@@ -18,6 +41,167 @@
         "startChar": 12,
         "endLine": 68,
         "endChar": 78
+      },
+      "revId": "a9944ec6cc71e48dc6dbc801b01cfb7210bfd708",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_3ac5f33b",
+        "filename": "tests/inspector.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-01-19T07:34:12Z",
+      "side": 1,
+      "message": "This is not good, please check https://review.openstack.org/#/c/83041/12//COMMIT_MSG . We might need multiple nova client instances as threads.",
+      "range": {
+        "startLine": 69,
+        "startChar": 46,
+        "endLine": 69,
+        "endChar": 55
+      },
+      "revId": "a9944ec6cc71e48dc6dbc801b01cfb7210bfd708",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_da5cefef",
+        "filename": "tests/run.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-01-19T07:34:12Z",
+      "side": 1,
+      "message": "then, you can write like this, otherwise someone can inject a command which is not good in security perspective...\n\nVM_COUNT\u003d${VM_COUNT:-1}",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 29
+      },
+      "revId": "a9944ec6cc71e48dc6dbc801b01cfb7210bfd708",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_3ac97378",
+        "filename": "tests/run.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-01-19T07:34:12Z",
+      "side": 1,
+      "message": "create_test_user() is better place to put these quota settings as it related to user.",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 6
+      },
+      "revId": "a9944ec6cc71e48dc6dbc801b01cfb7210bfd708",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_da862f13",
+        "filename": "tests/run.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-01-19T07:34:12Z",
+      "side": 1,
+      "message": "I like this way which only builds non-existing VMs.",
+      "range": {
+        "startLine": 152,
+        "startChar": 8,
+        "endLine": 152,
+        "endChar": 66
+      },
+      "revId": "a9944ec6cc71e48dc6dbc801b01cfb7210bfd708",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_1a94b735",
+        "filename": "tests/run.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-01-19T07:34:12Z",
+      "side": 1,
+      "message": "I suppose we cannot get all alarm notification, but only get alarms regarding VMs hosted on the same compute which is hosing \"${VM_BASENAME}1\".\n\nJust out of curiosity, do you intended to evaluate aodh-listner by having many alarm definitions? If not, you can have just one alarm definition with \u0027--repeat-actions True\u0027 and \u0027-q \"traits.state\u003dstring::error\"\u0027.",
+      "range": {
+        "startLine": 164,
+        "startChar": 4,
+        "endLine": 164,
+        "endChar": 32
+      },
+      "revId": "a9944ec6cc71e48dc6dbc801b01cfb7210bfd708",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_da02af6e",
+        "filename": "tests/run.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-01-19T07:34:12Z",
+      "side": 1,
+      "message": "Isn\u0027t it needed only in cleanup()?",
+      "range": {
+        "startLine": 352,
+        "startChar": 0,
+        "endLine": 355,
+        "endChar": 36
+      },
+      "revId": "a9944ec6cc71e48dc6dbc801b01cfb7210bfd708",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_baffa366",
+        "filename": "tests/run.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-01-19T07:34:12Z",
+      "side": 1,
+      "message": "we don\u0027t need this",
+      "range": {
+        "startLine": 361,
+        "startChar": 12,
+        "endLine": 361,
+        "endChar": 20
       },
       "revId": "a9944ec6cc71e48dc6dbc801b01cfb7210bfd708",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
