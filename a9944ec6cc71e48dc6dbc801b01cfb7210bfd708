@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_1a303755",
+        "filename": "tests/inspector.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-01-19T08:23:47Z",
+      "side": 1,
+      "message": "Yes, I\u0027ll remove it",
+      "parentUuid": "5ac10518_dab86fe7",
+      "range": {
+        "startLine": 66,
+        "startChar": 8,
+        "endLine": 66,
+        "endChar": 17
+      },
+      "revId": "a9944ec6cc71e48dc6dbc801b01cfb7210bfd708",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_7a7dbb1b",
         "filename": "tests/inspector.py",
         "patchSetId": 3
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_3a4ad3c5",
+        "filename": "tests/inspector.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-01-19T08:23:47Z",
+      "side": 1,
+      "message": "It is easy change to make nova client instance in here or in ThreadedResetState class, but would need more thought if we invoke them in DoctorInspectorSample __init__. Also then more logic needed when more VMs launched than we have nova client threads. Like waiting nova client instance thread to finish if reserved. With this said, I\u0027d leave that for future improvement and make new nova client instance in this loop/ThreadedResetState class? Keeping this only sample inspector code still not so complex.",
+      "parentUuid": "5ac10518_3ac5f33b",
+      "range": {
+        "startLine": 69,
+        "startChar": 46,
+        "endLine": 69,
+        "endChar": 55
+      },
+      "revId": "a9944ec6cc71e48dc6dbc801b01cfb7210bfd708",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_da5cefef",
         "filename": "tests/run.sh",
         "patchSetId": 3
@@ -82,6 +130,30 @@
       "writtenOn": "2017-01-19T07:34:12Z",
       "side": 1,
       "message": "then, you can write like this, otherwise someone can inject a command which is not good in security perspective...\n\nVM_COUNT\u003d${VM_COUNT:-1}",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 29
+      },
+      "revId": "a9944ec6cc71e48dc6dbc801b01cfb7210bfd708",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_5a455fb1",
+        "filename": "tests/run.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-01-19T08:23:47Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "5ac10518_da5cefef",
       "range": {
         "startLine": 23,
         "startChar": 0,
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_1a17d7a4",
+        "filename": "tests/run.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-01-19T08:23:47Z",
+      "side": 1,
+      "message": "I\u0027ll move it, thanks",
+      "parentUuid": "5ac10518_3ac97378",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 6
+      },
+      "revId": "a9944ec6cc71e48dc6dbc801b01cfb7210bfd708",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_da862f13",
         "filename": "tests/run.sh",
         "patchSetId": 3
@@ -128,6 +224,30 @@
       "writtenOn": "2017-01-19T07:34:12Z",
       "side": 1,
       "message": "I like this way which only builds non-existing VMs.",
+      "range": {
+        "startLine": 152,
+        "startChar": 8,
+        "endLine": 152,
+        "endChar": 66
+      },
+      "revId": "a9944ec6cc71e48dc6dbc801b01cfb7210bfd708",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_9a22e7ff",
+        "filename": "tests/run.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-01-19T08:23:47Z",
+      "side": 1,
+      "message": "Yes, our testing can leave also \"existing VMs\" if you press \"ctrl+c\" during our test run.",
+      "parentUuid": "5ac10518_da862f13",
       "range": {
         "startLine": 152,
         "startChar": 8,
@@ -163,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_3a7893f1",
+        "filename": "tests/run.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-01-19T08:23:47Z",
+      "side": 1,
+      "message": "Yes, we are only interested VMs on same host as \"${VM_BASENAME}1\". Ok, if it works similarly, I will modify the alarm definition. That is also far better in real life, so one do not need to adjust this every time when make new VM.",
+      "parentUuid": "5ac10518_1a94b735",
+      "range": {
+        "startLine": 164,
+        "startChar": 4,
+        "endLine": 164,
+        "endChar": 32
+      },
+      "revId": "a9944ec6cc71e48dc6dbc801b01cfb7210bfd708",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_da02af6e",
         "filename": "tests/run.sh",
         "patchSetId": 3
@@ -186,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_daecef91",
+        "filename": "tests/run.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-01-19T08:23:47Z",
+      "side": 1,
+      "message": "Currently yes, but in theory function might be used somewhere else in similar situation and this would be needed. No strong opinion about moving it to cleanup.",
+      "parentUuid": "5ac10518_da02af6e",
+      "range": {
+        "startLine": 352,
+        "startChar": 0,
+        "endLine": 355,
+        "endChar": 36
+      },
+      "revId": "a9944ec6cc71e48dc6dbc801b01cfb7210bfd708",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_baffa366",
         "filename": "tests/run.sh",
         "patchSetId": 3
@@ -197,6 +365,30 @@
       "writtenOn": "2017-01-19T07:34:12Z",
       "side": 1,
       "message": "we don\u0027t need this",
+      "range": {
+        "startLine": 361,
+        "startChar": 12,
+        "endLine": 361,
+        "endChar": 20
+      },
+      "revId": "a9944ec6cc71e48dc6dbc801b01cfb7210bfd708",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_9a50a75f",
+        "filename": "tests/run.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-01-19T08:23:47Z",
+      "side": 1,
+      "message": "oh yes, must have been left over from other iteration.",
+      "parentUuid": "5ac10518_baffa366",
       "range": {
         "startLine": 361,
         "startChar": 12,

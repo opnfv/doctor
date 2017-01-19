@@ -22,6 +22,30 @@
       "revId": "2378f04c1b6d333c322f93e44387c6f224dffe3e",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_9a2187b6",
+        "filename": "tests/run.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-01-19T08:23:47Z",
+      "side": 0,
+      "message": "Consumer gets notification very fast. Inspector first call reset server state and then force down. In practice it shouldn\u0027t happen that consumer didn\u0027t yet receive alarm. Anyhow as this is the case with sample inspector I think in real life even force down can be parallel API call. Anyhow this sleep here is bad, and I need to enhance this where we look consumer.log for received alarms. There should be a loop where according to $VM_COUNT it would wait in loop some time for consumer to get all alarms and make error if didn\u0027t.",
+      "parentUuid": "5ac10518_5ad79fed",
+      "range": {
+        "startLine": 381,
+        "startChar": 0,
+        "endLine": 381,
+        "endChar": 8
+      },
+      "revId": "2378f04c1b6d333c322f93e44387c6f224dffe3e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
