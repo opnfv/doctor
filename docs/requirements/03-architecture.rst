@@ -191,11 +191,15 @@ fencing, but there has not been any progress. The general description is
 available here:
 https://wiki.openstack.org/wiki/Fencing_Instances_of_an_Unreachable_Host
 
-As OpenStack does not cover fencing it is in the responsibility of the Doctor
-project to make sure fencing is done by using tools like pacemaker and by
-calling OpenStack APIs. Only after fencing is done OpenStack resources can be
-marked as down. In case there are gaps in OpenStack projects to have all
-relevant resources marked as down, those gaps need to be identified and fixed.
+OpenStack provides some mechanisms that allow fencing of faulty resources. Some
+are automatically invoked by the platform itself (e.g. Nova disables the
+compute service when libvirtd stops running, preventing new VMs to be scheduled
+to that node), while other mechanisms are consumer trigger-based actions (e.g.
+Neutron port admin-state-up). For other fencing actions not supported by
+OpenStack, the Doctor project may suggest ways to address the gap (e.g. through
+means of resourcing to external tools and orchestration methods), or
+documenting or implementing them upstream.
+
 The Doctor Inspector component will be responsible of marking resources down in
 the OpenStack and back up if necessary.
 
@@ -206,11 +210,11 @@ In the basic :ref:`uc-fault1` use case, no automatic actions will be taken by
 the VIM, but all recovery actions executed by the VIM and the NFVI will be
 instructed and coordinated by the Consumer.
 
-In a more advanced use case, the VIM shall be able to recover the failed virtual
+In a more advanced use case, the VIM may be able to recover the failed virtual
 resources according to a pre-defined behavior for that resource. In principle
 this means that the owner of the resource (i.e., its consumer or administrator)
 can define which recovery actions shall be taken by the VIM. Examples are a
-restart of the VM, migration/evacuation of the VM, or no action.
+restart of the VM or migration/evacuation of the VM.
 
 
 
