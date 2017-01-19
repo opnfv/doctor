@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_da714fe1",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2017-01-19T08:17:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac10518_9a47471d",
+      "range": {
+        "startLine": 729,
+        "startChar": 146,
+        "endLine": 729,
+        "endChar": 150
+      },
+      "revId": "f6328f57cb8f21d6e6e3d1f3f5d5030eb5886cb2",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_7a4cdb42",
         "filename": "docs/requirements/05-implementation.rst",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_9a73c7e6",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2017-01-19T08:17:43Z",
+      "side": 1,
+      "message": "replaced by \"event_rule in reason_data\"",
+      "parentUuid": "5ac10518_7a4cdb42",
+      "range": {
+        "startLine": 730,
+        "startChar": 52,
+        "endLine": 730,
+        "endChar": 61
+      },
+      "revId": "f6328f57cb8f21d6e6e3d1f3f5d5030eb5886cb2",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_3a5653d3",
         "filename": "docs/requirements/05-implementation.rst",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2017-01-19T05:31:35Z",
       "side": 1,
       "message": "we don\u0027t have \u0027description\u0027 in aodh notification, although we have in an alarm definition.",
+      "range": {
+        "startLine": 748,
+        "startChar": 52,
+        "endLine": 748,
+        "endChar": 63
+      },
+      "revId": "f6328f57cb8f21d6e6e3d1f3f5d5030eb5886cb2",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_9a5ae74e",
+        "filename": "docs/requirements/05-implementation.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2017-01-19T08:17:43Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "5ac10518_3a5653d3",
       "range": {
         "startLine": 748,
         "startChar": 52,
