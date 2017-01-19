@@ -728,7 +728,7 @@ rules and user and project id.
 +------------------------+------------------------+---------------------+---------------------------------------------+---------------------------------------+
 | faultType              | FaultType              | event_type in       | Type of the fault, e.g. “CPU failure” of a  | OpenStack Alarming (Aodh) can use a   |
 |                        |                        | reason_data         | compute resource, in machine interpretable  | fuzzy matching with wildcard string,  |
-|                        |                        |                     | format.                                       "compute.cpu.failure".                |
+|                        |                        |                     | format.                                     | "compute.cpu.failure".                |
 +------------------------+------------------------+---------------------+---------------------------------------------+---------------------------------------+
 | N/A                    | N/A                    | type = "event"      | Type of the notification. For fault         | \-                                    |
 |                        |                        |                     | notifications the type in AODH is “event”.  |                                       |
