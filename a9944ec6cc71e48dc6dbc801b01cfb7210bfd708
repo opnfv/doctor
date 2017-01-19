@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_fdb765d6",
+        "filename": "tests/inspector.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-01-19T09:56:29Z",
+      "side": 1,
+      "message": "Threading the API call is something we cannot skip (for multiple VMs), but just that it will be more complex if we build multiple  nova client instances already in DoctorInspectorSample class __init__ (that would be the perfect this to do in real inspector). I leave some comment in code the way or the other.",
+      "parentUuid": "5ac10518_9d3d01be",
+      "range": {
+        "startLine": 69,
+        "startChar": 46,
+        "endLine": 69,
+        "endChar": 55
+      },
+      "revId": "a9944ec6cc71e48dc6dbc801b01cfb7210bfd708",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_da5cefef",
         "filename": "tests/run.sh",
         "patchSetId": 3
