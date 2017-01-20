@@ -22,6 +22,52 @@
       "revId": "9308456706138523874c5a938581a740aa6b99a3",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_861cce14",
+        "filename": "tests/inspector.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2017-01-20T15:40:59Z",
+      "side": 1,
+      "message": "Are these constants or configure options?",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 26
+      },
+      "revId": "9308456706138523874c5a938581a740aa6b99a3",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_4616e6f2",
+        "filename": "tests/inspector.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2017-01-20T15:40:59Z",
+      "side": 1,
+      "message": "Highlight it as `TODO(toyuvone)`? Then it could be listed automatically by some IDE like PyCharm.",
+      "range": {
+        "startLine": 75,
+        "startChar": 14,
+        "endLine": 75,
+        "endChar": 22
+      },
+      "revId": "9308456706138523874c5a938581a740aa6b99a3",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
