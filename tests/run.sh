@@ -248,6 +248,19 @@ END_TXT
     ssh $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP" 'nohup ./disable_network.sh > disable_network.log 2>&1 &'
 }
 
+#Fix for the tool bc missing in OS, only found in Ubuntu
+prepare_bc()
+{
+    if [ -z "$(which bc)" ]; then
+        if [ ! -z "$(which lsb_release)" ] \
+             && [ "Ubuntu" = "$(lsb_release -i|cut -d':' -f2 |sed 's/\s//g')" ]; then
+            sudo apt-get install -y bc
+        else
+            sudo yum install -y bc
+        fi
+    fi
+}
+
 profile_performance_poc() {
     triggered=$(grep "^doctor set host down at" disable_network.log |\
                 sed -e "s/^.* at //")
@@ -255,6 +268,8 @@ profile_performance_poc() {
                sed -e "s/^.* at //")
     hostdown=$(grep "doctor mark host.* down at" inspector.log |\
                sed -e "s/^.* at //")
+
+    prepare_bc
 
     #calculate the relative interval to triggered(T00)
     export DOCTOR_PROFILER_T00=0
