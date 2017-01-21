@@ -246,6 +246,7 @@ END_TXT
     chmod +x disable_network.sh
     scp $ssh_opts_cpu disable_network.sh "$COMPUTE_USER@$COMPUTE_IP:"
     ssh $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP" 'nohup ./disable_network.sh > disable_network.log 2>&1 &'
+    scp $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP:disable_network.log" .
 }
 
 profile_performance_poc() {
@@ -258,10 +259,10 @@ profile_performance_poc() {
 
     #calculate the relative interval to triggered(T00)
     export DOCTOR_PROFILER_T00=0
-    export DOCTOR_PROFILER_T01=$(echo "($detected-$triggered)*1000/1" |bc)
-    export DOCTOR_PROFILER_T03=$(echo "($vmdown-$triggered)*1000/1" |bc)
-    export DOCTOR_PROFILER_T04=$(echo "($hostdown-$triggered)*1000/1" |bc)
-    export DOCTOR_PROFILER_T09=$(echo "($notified-$triggered)*1000/1" |bc)
+    export DOCTOR_PROFILER_T01=$(python -c "print(($detected-$triggered)*1000)")
+    export DOCTOR_PROFILER_T03=$(python -c "print(($vmdown-$triggered)*1000)")
+    export DOCTOR_PROFILER_T04=$(python -c "print(($hostdown-$triggered)*1000)")
+    export DOCTOR_PROFILER_T09=$(python -c "print(($notified-$triggered)*1000)")
 
     python profiler-poc.py
 }
