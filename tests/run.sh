@@ -259,10 +259,10 @@ profile_performance_poc() {
 
     #calculate the relative interval to triggered(T00)
     export DOCTOR_PROFILER_T00=0
-    export DOCTOR_PROFILER_T01=$(echo "($detected-$triggered)*1000/1" |bc)
-    export DOCTOR_PROFILER_T03=$(echo "($vmdown-$triggered)*1000/1" |bc)
-    export DOCTOR_PROFILER_T04=$(echo "($hostdown-$triggered)*1000/1" |bc)
-    export DOCTOR_PROFILER_T09=$(echo "($notified-$triggered)*1000/1" |bc)
+    export DOCTOR_PROFILER_T01=$(python -c "print(($detected-$triggered)*1000)")
+    export DOCTOR_PROFILER_T03=$(python -c "print(($vmdown-$triggered)*1000)")
+    export DOCTOR_PROFILER_T04=$(python -c "print(($hostdown-$triggered)*1000)")
+    export DOCTOR_PROFILER_T09=$(python -c "print(($notified-$triggered)*1000)")
 
     python profiler-poc.py
 }
