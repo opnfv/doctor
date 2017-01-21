@@ -237,7 +237,7 @@ inject_failure() {
 dev=$(sudo ip a | awk '/ @COMPUTE_IP@\//{print $7}')
 sleep 1
 sudo ip link set $dev down
-echo "doctor set host down at" $(date "+%s.%N")
+echo "doctor set link down at" $(date "+%s.%N")
 sleep 180
 sudo ip link set $dev up
 sleep 1
@@ -246,24 +246,33 @@ END_TXT
     chmod +x disable_network.sh
     scp $ssh_opts_cpu disable_network.sh "$COMPUTE_USER@$COMPUTE_IP:"
     ssh $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP" 'nohup ./disable_network.sh > disable_network.log 2>&1 &'
+    # use host time to get rid of potential time sync deviation between nodes
+    triggered=$(date "+%s.%N")
 }
 
-profile_performance_poc() {
-    triggered=$(grep "^doctor set host down at" disable_network.log |\
-                sed -e "s/^.* at //")
-    vmdown=$(grep "doctor mark vm.* error at" inspector.log |tail -n 1 |\
-               sed -e "s/^.* at //")
-    hostdown=$(grep "doctor mark host.* down at" inspector.log |\
-               sed -e "s/^.* at //")
+make_performance_profile() {
+    if [[ "$PROFILER_TYPE" == "poc" ]]; then
+      linkdown=$(grep "doctor set link down at " disable_network.log |\
+                  sed -e "s/^.* at //")
+      vmdown=$(grep "doctor mark vm.* error at" inspector.log |tail -n 1 |\
+                 sed -e "s/^.* at //")
+      hostdown=$(grep "doctor mark host.* down at" inspector.log |\
+                 sed -e "s/^.* at //")
 
-    #calculate the relative interval to triggered(T00)
-    export DOCTOR_PROFILER_T00=0
-    export DOCTOR_PROFILER_T01=$(echo "($detected-$triggered)*1000/1" |bc)
-    export DOCTOR_PROFILER_T03=$(echo "($vmdown-$triggered)*1000/1" |bc)
-    export DOCTOR_PROFILER_T04=$(echo "($hostdown-$triggered)*1000/1" |bc)
-    export DOCTOR_PROFILER_T09=$(echo "($notified-$triggered)*1000/1" |bc)
+      #calculate the relative interval to triggered(T00)
+      # TODO(yujunz) compare triggered to linkdown to detect time sync deviation
+      export DOCTOR_PROFILER_T00=${triggered}
+      export DOCTOR_PROFILER_T01=$(python -c \
+          "print(int(($detected-$triggered)*1000))")
+      export DOCTOR_PROFILER_T03=$(python -c \
+          "print(int(($vmdown-$triggered)*1000))")
+      export DOCTOR_PROFILER_T04=$(python -c \
+          "print(int(($hostdown-$triggered)*1000))")
+      export DOCTOR_PROFILER_T09=$(python -c
+          "print(int(($notified-$triggered)*1000))")
 
-    python profiler-poc.py
+      python profiler-poc.py > doctor_profiler.log
+    fi
 }
 
 calculate_notification_time() {
@@ -277,10 +286,6 @@ calculate_notification_time() {
                sed -e "s/^.* at //")
     notified=$(grep "doctor consumer notified at" consumer.log |\
                sed -e "s/^.* at //")
-
-    if [[ "$PROFILER_TYPE" == "poc" ]]; then
-        profile_performance_poc
-    fi
 
     echo "$notified $detected" | \
         awk '{
@@ -304,18 +309,22 @@ check_host_status() {
     fi
 }
 
+collect_logs() {
+    echo "waiting disabled compute host back to be enabled..."
+    python ./nova_force_down.py "$COMPUTE_HOST" --unset
+    sleep 240
+    check_host_status "UP"
+    scp $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP:disable_network.log" .
+
+    # TODO(yujunz) collect other logs, e.g. nova, aodh
+}
+
 cleanup() {
     set +e
     echo "cleanup..."
     stop_monitor
     stop_inspector
     stop_consumer
-
-    echo "waiting disabled compute host back to be enabled..."
-    python ./nova_force_down.py "$COMPUTE_HOST" --unset
-    sleep 240
-    check_host_status "UP"
-    scp $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP:disable_network.log" .
 
     openstack $as_doctor_user server list | grep -q " $VM_NAME " && openstack $as_doctor_user server delete "$VM_NAME"
     sleep 1
@@ -382,5 +391,7 @@ sleep 60
 
 check_host_status "(DOWN|UNKNOWN)"
 calculate_notification_time
+collect_logs
+make_performance_profile
 
 echo "done"
