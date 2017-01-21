@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_c6489689",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2017-01-21T13:26:22Z",
+      "side": 1,
+      "message": "Is it overkilled to handle such things in the test script? I would suggest using python oneliner to solve it instead.\n\npython -c \"print(3)\"",
+      "revId": "a83528a685dd3cab5480a1f32d4d657a96d8acf4",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
