@@ -16,6 +16,24 @@
       "revId": "a83528a685dd3cab5480a1f32d4d657a96d8acf4",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_662682d0",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-01-21T14:10:28Z",
+      "side": 1,
+      "message": "let it to resolved in shell itself and bc is a basic tool in shell.",
+      "parentUuid": "5ac10518_c6489689",
+      "revId": "a83528a685dd3cab5480a1f32d4d657a96d8acf4",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
