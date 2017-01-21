@@ -21,7 +21,7 @@ See also: https://goo.gl/98Osig
 import json
 import os
 
-LOGFILE = 'performance-profile'
+OUTPUT = 'doctor_profiling_output'
 PREFIX = 'DOCTOR_PROFILER'
 TOTAL_CHECK_POINTS = 10
 MODULE_CHECK_POINTS = ['T00', 'T01', 'T04', 'T05', 'T06', 'T09']
@@ -33,7 +33,7 @@ Total time cost: {total}(ms)
        |Monitor|Inspector           |Controller|Notifier|Evaluator           |
        |{M00}  |{M01}               |{M02}     |{M03}   |{M04}               |
        |       |      |      |      |          |        |      |      |      |
-host down:{T00}|      |      |      |          |        |      |      |      |
+link down:{T00}|      |      |      |          |        |      |      |      |
      raw failure:{T01}|      |      |          |        |      |      |      |
          found affected:{T02}|      |          |        |      |      |      |
                   set VM error:{T03}|          |        |      |      |      |
@@ -78,7 +78,7 @@ def main():
 
     profile = TEMPLATE.format(**tags)
 
-    logfile = open('{}.json'.format(LOGFILE), 'w')
+    logfile = open('{}.json'.format(OUTPUT), 'w')
     logfile.write(json.dumps(tags))
 
     print profile
