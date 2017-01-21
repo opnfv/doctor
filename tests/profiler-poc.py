@@ -21,7 +21,7 @@ See also: https://goo.gl/98Osig
 import json
 import os
 
-LOGFILE = 'performance-profile'
+LOGFILE = 'doctor-profiling-result'
 PREFIX = 'DOCTOR_PROFILER'
 TOTAL_CHECK_POINTS = 10
 MODULE_CHECK_POINTS = ['T00', 'T01', 'T04', 'T05', 'T06', 'T09']
