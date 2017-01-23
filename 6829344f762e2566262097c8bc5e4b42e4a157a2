@@ -22,6 +22,30 @@
       "revId": "6829344f762e2566262097c8bc5e4b42e4a157a2",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_a0276d63",
+        "filename": "tests/run.sh",
+        "patchSetId": 11
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2017-01-23T14:48:06Z",
+      "side": 1,
+      "message": "\u003e Calling here will cause failure. I get detected timestamp before\n \u003e triggered. Might be as this will now be called before\n \u003e calculate_notification_time and also again in cleanup.\n\nI think I moved it instead of copying and it should be called only once. However it seems the last run is not from latest code. \n\nWhere did you get the trigger timestamp? I doubt there could be time sync issue between nodes.",
+      "parentUuid": "5ac10518_40b5692f",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 6
+      },
+      "revId": "6829344f762e2566262097c8bc5e4b42e4a157a2",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
