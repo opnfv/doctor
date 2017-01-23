@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_40b5692f",
+        "filename": "tests/run.sh",
+        "patchSetId": 11
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-01-23T11:29:49Z",
+      "side": 1,
+      "message": "Calling here will cause failure. I get detected timestamp before triggered. Might be as this will now be called before calculate_notification_time and also again in cleanup.",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 6
+      },
+      "revId": "6829344f762e2566262097c8bc5e4b42e4a157a2",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
