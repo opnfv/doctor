@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "5ac10518_63e8afe2",
+        "filename": "tests/run.sh",
+        "patchSetId": 11
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-01-24T06:08:30Z",
+      "side": 1,
+      "message": "Even if compute time would not be in sync as in my env, got this working if took the \"sleep 1\" away from disable_network.sh and had triggered\u003d$(date \"+%s.%N\") right after this line instead later in profile_performance_poc() based on disable_network.log. Anyhow this should not be an issues if times are in sync. How ever run issue later in line 264 forwards.",
+      "range": {
+        "startLine": 248,
+        "startChar": 4,
+        "endLine": 248,
+        "endChar": 107
+      },
+      "revId": "6829344f762e2566262097c8bc5e4b42e4a157a2",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_23a0679e",
+        "filename": "tests/run.sh",
+        "patchSetId": 11
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-01-24T06:08:30Z",
+      "side": 1,
+      "message": "This should start from zero like before:\nDOCTOR_PROFILER_T00\u003d0",
+      "range": {
+        "startLine": 264,
+        "startChar": 4,
+        "endLine": 264,
+        "endChar": 43
+      },
+      "revId": "6829344f762e2566262097c8bc5e4b42e4a157a2",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_83911b54",
+        "filename": "tests/run.sh",
+        "patchSetId": 11
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-01-24T06:08:30Z",
+      "side": 1,
+      "message": "These result to float as before it was int when used \"bc\". This causes error in profiler-poc.py as it can handle just int value. One could either accept float in profiler-poc.py calculation or force as int here: \n$(python -c \"print(int(($detected-$triggered)*1000))\")",
+      "range": {
+        "startLine": 265,
+        "startChar": 3,
+        "endLine": 268,
+        "endChar": 80
+      },
+      "revId": "6829344f762e2566262097c8bc5e4b42e4a157a2",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_40b5692f",
         "filename": "tests/run.sh",
         "patchSetId": 11
