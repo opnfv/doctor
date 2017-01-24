@@ -762,6 +762,7 @@ Other areas that need alignment is the so called alarm state in NFV. Here we mus
 however consider what can be attributes of the notification vs. what should be a
 property of the alarm instance. This will be analyzed later.
 
+.. _southbound:
 
 Detailed southbound interface specification
 -------------------------------------------
