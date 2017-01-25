@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_14e6c3b4",
+        "filename": "tests/run.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-01-25T12:32:42Z",
+      "side": 1,
+      "message": "Thanks Carlos; good idea. --max seems to work, but not --wait at the same time. It only waits first VM. Also Ryota liked that we check server with the same name exists before creating. That doesn\u0027t happen easily with --max. So I might not go for that right now.",
+      "parentUuid": "5ac10518_f46217ac",
+      "range": {
+        "startLine": 158,
+        "startChar": 4,
+        "endLine": 164,
+        "endChar": 8
+      },
+      "revId": "588e6db33d68e52534d1e02e5a1fd0f49fd32d6a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_94595300",
         "filename": "tests/run.sh",
         "patchSetId": 5
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_34e17f9a",
+        "filename": "tests/run.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-01-25T12:32:42Z",
+      "side": 1,
+      "message": "yep, fixing this",
+      "parentUuid": "5ac10518_94595300",
+      "revId": "588e6db33d68e52534d1e02e5a1fd0f49fd32d6a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_34689f86",
         "filename": "tests/run.sh",
         "patchSetId": 5
@@ -53,6 +95,30 @@
       "writtenOn": "2017-01-25T09:26:43Z",
       "side": 1,
       "message": "Could this be replaced by the \u0027--wait\u0027 option in \u0027openstack server create\u0027?",
+      "range": {
+        "startLine": 250,
+        "startChar": 8,
+        "endLine": 268,
+        "endChar": 15
+      },
+      "revId": "588e6db33d68e52534d1e02e5a1fd0f49fd32d6a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_d4efdb85",
+        "filename": "tests/run.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-01-25T12:32:42Z",
+      "side": 1,
+      "message": "As commented on the --wait together with --max, I think I would not do this while idea would be so nice, to have less bash lines and all would work faster. Here we also get this ERROR state visible, that I currently get time to time in system with DPDK.",
+      "parentUuid": "5ac10518_34689f86",
       "range": {
         "startLine": 250,
         "startChar": 8,
