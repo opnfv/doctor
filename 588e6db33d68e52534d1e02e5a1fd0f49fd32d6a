@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_f46217ac",
+        "filename": "tests/run.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-01-25T09:26:43Z",
+      "side": 1,
+      "message": "Why not use \u0027openstack server create --max \u003ccount\u003e\u0027 instead? It should be much faster.",
+      "range": {
+        "startLine": 158,
+        "startChar": 4,
+        "endLine": 164,
+        "endChar": 8
+      },
+      "revId": "588e6db33d68e52534d1e02e5a1fd0f49fd32d6a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_94595300",
+        "filename": "tests/run.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-01-25T09:26:43Z",
+      "side": 1,
+      "message": "indent please.",
+      "revId": "588e6db33d68e52534d1e02e5a1fd0f49fd32d6a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_34689f86",
+        "filename": "tests/run.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-01-25T09:26:43Z",
+      "side": 1,
+      "message": "Could this be replaced by the \u0027--wait\u0027 option in \u0027openstack server create\u0027?",
+      "range": {
+        "startLine": 250,
+        "startChar": 8,
+        "endLine": 268,
+        "endChar": 15
+      },
+      "revId": "588e6db33d68e52534d1e02e5a1fd0f49fd32d6a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
