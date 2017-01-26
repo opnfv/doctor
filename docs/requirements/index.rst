@@ -34,6 +34,9 @@ Doctor: Fault Management and Maintenance
           02.12.2014 Project creation
           14.04.2015 Initial version of the deliverable uploaded to Gerrit
           18.05.2015 Stable version of the Doctor deliverable
+          25.02.2016 Updated version for the Brahmaputra release
+          26.09.2016 Updated version for the Colorado release
+          xx.xx.2017 Updated version for the Danube release
           ========== =====================================================
 
 .. raw:: latex

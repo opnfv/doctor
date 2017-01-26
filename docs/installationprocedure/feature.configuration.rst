@@ -18,7 +18,7 @@ Then, you can configure Doctor Inspector as follows:
 
 .. code-block:: bash
 
-    git clone https://gerrit.opnfv.org/gerrit/doctor -b stable/colorado
+    git clone https://gerrit.opnfv.org/gerrit/doctor -b stable/danube
     cd doctor/tests
     INSPECTOR_PORT=12345
     python inspector.py $INSPECTOR_PORT > inspector.log 2>&1 &
@@ -38,7 +38,7 @@ Then, you can configure the Doctor Monitor as follows (Example for Apex deployme
 
 .. code-block:: bash
 
-    git clone https://gerrit.opnfv.org/gerrit/doctor -b stable/colorado
+    git clone https://gerrit.opnfv.org/gerrit/doctor -b stable/danube
     cd doctor/tests
     INSPECTOR_PORT=12345
     COMPUTE_HOST='overcloud-novacompute-1.localdomain.com'
