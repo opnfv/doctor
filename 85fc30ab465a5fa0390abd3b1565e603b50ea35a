@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_caa2d0ad",
+        "filename": "tests/run.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-01-26T09:05:48Z",
+      "side": 1,
+      "message": "need \u0027\\\u0027",
+      "range": {
+        "startLine": 271,
+        "startChar": 42,
+        "endLine": 271,
+        "endChar": 44
+      },
+      "revId": "85fc30ab465a5fa0390abd3b1565e603b50ea35a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_6a915c51",
+        "filename": "tests/run.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-01-26T09:05:48Z",
+      "side": 1,
+      "message": "This function is good to have. In order to know when an error occurred, I prefer to call this in cleanup().",
+      "range": {
+        "startLine": 312,
+        "startChar": 0,
+        "endLine": 312,
+        "endChar": 11
+      },
+      "revId": "85fc30ab465a5fa0390abd3b1565e603b50ea35a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac10518_0aa0d89d",
+        "filename": "tests/run.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-01-26T09:05:48Z",
+      "side": 1,
+      "message": "This can be left in cleanup(), i guess.",
+      "range": {
+        "startLine": 314,
+        "startChar": 3,
+        "endLine": 314,
+        "endChar": 31
+      },
+      "revId": "85fc30ab465a5fa0390abd3b1565e603b50ea35a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
