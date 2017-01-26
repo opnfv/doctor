@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_cac89024",
+        "filename": "tests/run.sh",
+        "patchSetId": 15
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-01-26T11:16:27Z",
+      "side": 1,
+      "message": "disable_network.sh has 1 second sleep before setting link down. I removed that when tried the same to be closer to truth. I do not know how necessary it is to move this from the way we had it, as for me it just happened so that my compute connectivity had suffered a iptables lost and it couldn\u0027t sync time (caused by compute reboot). If considering time should be in sync normally, it was more accurate before.",
+      "range": {
+        "startLine": 250,
+        "startChar": 4,
+        "endLine": 250,
+        "endChar": 30
+      },
+      "revId": "8fe417a660b4e5da82e7b3b5b7233cbc115eefec",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
