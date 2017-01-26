@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "5ac10518_6a695c24",
+        "filename": "tests/inspector.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-01-26T10:41:44Z",
+      "side": 1,
+      "message": "yes, can do that",
+      "parentUuid": "5ac10518_8a6fe8c4",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 26
+      },
+      "revId": "9308456706138523874c5a938581a740aa6b99a3",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ac10518_4616e6f2",
         "filename": "tests/inspector.py",
         "patchSetId": 4
