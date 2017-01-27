@@ -4,7 +4,7 @@
 # is_set env-var
 function is_set {
     local var=\$"$1"
-    eval "[ -n \"$var\" ]"
+    eval "[[ -n \"$var\" ]]"
 }
 
 # Prints backtrace info
@@ -41,6 +41,8 @@ function err {
 # die $LINENO "message"
 function die {
     local exitcode=$?
+    local xtrace
+    xtrace=$(set +o | grep xtrace)
     set +o xtrace
     local line=$1; shift
     if [ $exitcode == 0 ]; then
@@ -50,6 +52,7 @@ function die {
     err $line "$*"
     # Give buffers a second to flush
     sleep 1
+    $xtrace
     exit $exitcode
 }
 

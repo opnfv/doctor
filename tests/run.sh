@@ -179,8 +179,7 @@ start_consumer() {
                              nova list | grep ' overcloud-controller-[0-9] ' \
                              | sed -e 's/^.*ctlplane=//' -e 's/ *|\$//'")
         elif is_installer fuel; then
-            CONTROLLER_IPS=$(sshpass -p r00tme ssh 2>/dev/null $ssh_opts root@${INSTALLER_IP} \
-                            "fuel node | grep controller | cut -d '|' -f 5|xargs")
+            get_controller_ips
         fi
 
         die_if_not_set $LINENO CONTROLLER_IPS "Could not get CONTROLLER_IPS."
@@ -236,6 +235,7 @@ inject_failure() {
     cat > disable_network.sh << 'END_TXT'
 #!/bin/bash -x
 dev=$(sudo ip a | awk '/ @COMPUTE_IP@\//{print $7}')
+[[ -n "$dev" ]] || dev=$(sudo ip a | awk '/ @COMPUTE_IP@\//{print $5}')
 sleep 1
 sudo ip link set $dev down
 echo "doctor set host down at" $(date "+%s.%N")
@@ -309,6 +309,8 @@ unset_forced_down_hosts() {
     for host in $(openstack compute service list --service nova-compute \
                   -f value -c Host -c State | sed -n -e '/down$/s/ *down$//p')
     do
+        # TODO (r-mibu): make sample inspector use keystone v3 api
+        OS_AUTH_URL=${OS_AUTH_URL/v3/v2.0} \
         python ./nova_force_down.py $host --unset
     done
 
