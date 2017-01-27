@@ -38,12 +38,12 @@ requiring immediate action by the Consumer.
 | failure, CPU      |          |            |                 | standby          |
 | condition not ok  |          |            |                 |                  |
 +-------------------+----------+------------+-----------------+------------------+
-| Memory failure/   | Critical | Zabbix     |                 | Switch to        |
-| Memory condition  |          | (IPMI)     |                 | hot standby      |
+| Memory failure/   | Critical | Zabbix     |                 | Switch to hot    |
+| Memory condition  |          | (IPMI)     |                 | standby          |
 | not ok            |          |            |                 |                  |
 +-------------------+----------+------------+-----------------+------------------+
-| Network card      | Critical | Zabbix/    |                 | Switch to        |
-| failure, e.g.     |          | Ceilometer |                 | hot standby      |
+| Network card      | Critical | Zabbix/    |                 | Switch to hot    |
+| failure, e.g.     |          | Ceilometer |                 | standby          |
 | network adapter   |          |            |                 |                  |
 | connectivity lost |          |            |                 |                  |
 +-------------------+----------+------------+-----------------+------------------+
@@ -62,8 +62,8 @@ requiring immediate action by the Consumer.
 |                   |          |            |                 | otherwise hot    |
 |                   |          |            |                 | standby          |
 +-------------------+----------+------------+-----------------+------------------+
-| PDU/power         | Critical | Zabbix/    |                 | Switch to        |
-| failure, power    |          | Ceilometer |                 | hot standby      |
+| PDU/power         | Critical | Zabbix/    |                 | Switch to hot    |
+| failure, power    |          | Ceilometer |                 | standby          |
 | off, server reset |          |            |                 |                  |
 +-------------------+----------+------------+-----------------+------------------+
 | Power             | Warning  | SNMP       |                 | Live migration   |
@@ -82,11 +82,11 @@ requiring immediate action by the Consumer.
 | thermal condition |          |            |                 |                  |
 | not ok            |          |            |                 |                  |
 +-------------------+----------+------------+-----------------+------------------+
-| Mainboard failure | Critical | Zabbix     | e.g. PCIe, SAS  | Switch to        |
-|                   |          | (IPMI)     | link failure    | hot standby      |
+| Mainboard failure | Critical | Zabbix     | e.g. PCIe, SAS  | Switch to hot    |
+|                   |          | (IPMI)     | link failure    | standby          |
 +-------------------+----------+------------+-----------------+------------------+
-| OS crash (e.g.    | Critical | Zabbix     |                 | Switch to        |
-| kernel panic)     |          |            |                 | hot standby      |
+| OS crash (e.g.    | Critical | Zabbix     |                 | Switch to hot    |
+| kernel panic)     |          |            |                 | standby          |
 +-------------------+----------+------------+-----------------+------------------+
 
 **Hypervisor**
@@ -95,8 +95,8 @@ requiring immediate action by the Consumer.
 | Fault          | Severity | How to     | Comment     | Immediate action  |
 |                |          | detect?    |             | to recover        |
 +================+==========+============+=============+===================+
-| System has     | Critical | Zabbix     |             | Switch to         |
-| restarted      |          |            |             | hot standby       |
+| System has     | Critical | Zabbix     |             | Switch to hot     |
+| restarted      |          |            |             | standby           |
 +----------------+----------+------------+-------------+-------------------+
 | Hypervisor     | Warning/ | Zabbix/    |             | Evacuation/switch |
 | failure        | Critical | Ceilometer |             | to hot standby    |
