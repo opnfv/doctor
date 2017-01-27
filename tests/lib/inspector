@@ -13,11 +13,6 @@ function is_inspector {
 }
 
 function start_inspector {
-    if ! is_inspector_supported $INSPECTOR_TYPE; then
-        die $LINENO"INSPECTOR_TYPE=$INSPECTOR_TYPE is not supported."
-    fi
-
-    source $TOP_DIR/lib/inspectors/$INSPECTOR_TYPE
     start_inspector_$INSPECTOR_TYPE
 }
 
@@ -28,3 +23,10 @@ function stop_inspector {
 function cleanup_inspector {
     cleanup_inspector_$INSPECTOR_TYPE
 }
+
+
+if ! is_inspector_supported $INSPECTOR_TYPE; then
+    die $LINENO"INSPECTOR_TYPE=$INSPECTOR_TYPE is not supported."
+fi
+
+source $TOP_DIR/lib/inspectors/$INSPECTOR_TYPE
