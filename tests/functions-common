@@ -4,7 +4,7 @@
 # is_set env-var
 function is_set {
     local var=\$"$1"
-    eval "[ -n \"$var\" ]"
+    eval "[[ -n \"$var\" ]]"
 }
 
 # Prints backtrace info
