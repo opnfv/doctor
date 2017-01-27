@@ -70,3 +70,20 @@ function die_if_not_set {
     $xtrace
 }
 
+# Wait until the condition is met.
+# wait_until condition timeout interval
+function wait_until {
+    local condition="$1"
+    local timeout=$2
+    local interval=$3
+
+    while [[ ${condition} ]]
+    do
+        sleep ${interval}
+        timeout=$((${timeout} - ${interval}))
+        if [[ ${timeout} < 0 ]]; then
+            err $LINENO "timed out ($condition)..."
+            return 1
+        fi
+    done
+}
