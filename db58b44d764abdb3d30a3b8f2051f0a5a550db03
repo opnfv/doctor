@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac10518_9d5653cd",
+        "filename": "tests/run.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 346
+      },
+      "writtenOn": "2017-01-27T11:03:37Z",
+      "side": 1,
+      "message": "Please check\nSee e.g. https://build.opnfv.org/ci/job/doctor-verify-apex-sample-master/91/artifact/tests/functest-doctor.log",
+      "range": {
+        "startLine": 315,
+        "startChar": 4,
+        "endLine": 316,
+        "endChar": 57
+      },
+      "revId": "db58b44d764abdb3d30a3b8f2051f0a5a550db03",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
