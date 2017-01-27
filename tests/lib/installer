@@ -15,12 +15,6 @@ function is_installer {
 }
 
 function setup_installer {
-    if ! is_installer_supported $INSTALLER_TYPE; then
-        die $LINENO"INSTALLER_TYPE=$INSTALLER_TYPE is not supported."
-    fi
-
-    source $TOP_DIR/lib/installers/$INSTALLER_TYPE
-
     if ! is_set INSTALLER_IP; then
         get_installer_ip
     fi
@@ -32,3 +26,10 @@ function setup_installer {
 function cleanup_installer {
     cleanup_installer_$INSTALLER_TYPE
 }
+
+
+if ! is_installer_supported $INSTALLER_TYPE; then
+    die $LINENO"INSTALLER_TYPE=$INSTALLER_TYPE is not supported."
+fi
+
+source $TOP_DIR/lib/installers/$INSTALLER_TYPE
