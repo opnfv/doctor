@@ -304,6 +304,18 @@ check_host_status() {
     fi
 }
 
+unset_forced_down_hosts() {
+    for host in $(openstack compute service list --service nova-compute \
+                  -f value -c Host -c State | sed -n -e '/down$/s/ *down$//p')
+    do
+        python ./nova_force_down.py $host --unset
+    done
+
+    echo "waiting disabled compute host back to be enabled..."
+    wait_until 'openstack compute service list --service nova-compute
+                -f value -c State | grep -q down' 240 5
+}
+
 cleanup() {
     set +e
     echo "cleanup..."
@@ -311,10 +323,7 @@ cleanup() {
     stop_inspector
     stop_consumer
 
-    echo "waiting disabled compute host back to be enabled..."
-    python ./nova_force_down.py "$COMPUTE_HOST" --unset
-    sleep 240
-    check_host_status "UP"
+    unset_forced_down_hosts
     scp $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP:disable_network.log" .
 
     openstack $as_doctor_user server list | grep -q " $VM_NAME " && openstack $as_doctor_user server delete "$VM_NAME"
