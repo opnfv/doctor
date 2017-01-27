@@ -1,0 +1,7 @@
+Verified+1: jenkins-ci <jenkins-opnfv-ci@opnfv.org>
+Code-Review+2: Gerald Kunzmann <kunzmann@docomolab-euro.com>
+Submitted-by: Gerald Kunzmann <kunzmann@docomolab-euro.com>
+Submitted-at: Fri, 27 Jan 2017 08:25:07 +0000
+Reviewed-on: https://gerrit.opnfv.org/gerrit/27663
+Project: doctor
+Branch: refs/heads/master
