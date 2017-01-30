@@ -342,6 +342,7 @@ cleanup() {
 # Main process
 
 echo "Note: doctor/tests/run.sh has been executed."
+git log --oneline -1 || true   # ignore even you don't have git installed
 
 trap cleanup EXIT
 
