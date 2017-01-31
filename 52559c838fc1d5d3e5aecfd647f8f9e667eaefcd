@@ -22,6 +22,30 @@
       "revId": "52559c838fc1d5d3e5aecfd647f8f9e667eaefcd",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_315ca825",
+        "filename": "tests/run.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-01-31T08:13:58Z",
+      "side": 1,
+      "message": "Tomi, understood. May I leave such change to you and I\u0027ll add sleep 30 in this patch with TODO comment?",
+      "parentUuid": "1acb0d3e_ce0b432a",
+      "range": {
+        "startLine": 326,
+        "startChar": 4,
+        "endLine": 326,
+        "endChar": 27
+      },
+      "revId": "52559c838fc1d5d3e5aecfd647f8f9e667eaefcd",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
