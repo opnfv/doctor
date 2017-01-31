@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1acb0d3e_ce0b432a",
+        "filename": "tests/run.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-01-31T06:58:56Z",
+      "side": 1,
+      "message": "Actually as done similar already in here:\nhttps://gerrit.opnfv.org/gerrit/#/c/26675/7/tests/run.sh\nNoticed that \"state up\" is not enough, but also host need to respond to ping. Only after that it was guaranteed that VM can be deleted successfully in cleanup.",
+      "range": {
+        "startLine": 326,
+        "startChar": 4,
+        "endLine": 326,
+        "endChar": 27
+      },
+      "revId": "52559c838fc1d5d3e5aecfd647f8f9e667eaefcd",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
