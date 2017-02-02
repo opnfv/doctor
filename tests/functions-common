@@ -73,6 +73,20 @@ function die_if_not_set {
     $xtrace
 }
 
+# Check the function is defined
+# die_if_not_defined $LINENO function-name "message"
+function die_if_not_defined {
+    local xtrace
+    xtrace=$(set +o | grep xtrace)
+    set +o xtrace
+    local line=$1; shift
+    local func_name=$1; shift
+    if ! declare -f "$func_name" > /dev/null; then
+        die $line "$*"
+    fi
+    $xtrace
+}
+
 # Wait until the condition is met.
 # wait_until condition timeout interval
 function wait_until {
@@ -89,4 +103,18 @@ function wait_until {
             return 1
         fi
     done
+}
+
+# Print IP address of the first vNIC owned by specified VM via virsh
+# get_first_vnic_ip vm_name
+function get_first_vnic_ip {
+    local vm_name=$1
+
+    _vnic_mac=$(sudo virsh domiflist $vm_name | \
+        sed -n -e 's/^.*\([0-9a-f]\{2\}\(:[0-9a-f]\{2\}\)\{5\}\).*$/\1/p' | \
+        head -1)
+    die_if_not_set $LINENO _vnic_mac
+    _vnic_ip=$(arp -e | grep $_vnic_mac | awk '{print $1}')
+    die_if_not_set $LINENO _vnic_ip
+    echo $_vnic_ip
 }

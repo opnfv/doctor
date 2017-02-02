@@ -4,18 +4,16 @@ if [[ "congress " == "$INSPECTOR_TYPE" ]]; then
     die $LINENO "fuel does not support congress yet..."
 fi
 
+COMPUTE_USER=${COMPUTE_USER:-root}
+ssh_opts_cpu="$ssh_opts -i instack_key"
+
 function get_installer_ip {
-    ssh_opts_cpu="$ssh_opts -i instack_key"
     is_set INSTALLER_IP && return
-    local instack_mac
-    instack_mac=$(sudo virsh domiflist fuel-master | awk '/fuel1/{print $5}')
-    INSTALLER_IP=$(/usr/sbin/arp -e | grep ${instack_mac} | awk '{print $1}')
-    die_if_not_set $LINENO INSTALLER_IP "No installer IP"
+    INSTALLER_IP=$(get_first_vnic_ip fuel-master)
 }
 
 function get_controller_ips {
     is_set CONTROLLER_IPS && return
-    get_installer_ip
     CONTROLLER_IPS=$(ssh $ssh_opts_cpu root@$INSTALLER_IP \
                      "fuel node | grep controller | cut -d '|' -f 5|xargs")
     die_if_not_set $LINENO CONTROLLER_IPS "No controller IPs"
@@ -33,13 +31,7 @@ function installer_get_ssh_keys {
 }
 
 function installer_apply_patches {
-    if ! openstack flavor show $VM_FLAVOR ; then
-        openstack flavor create --ram 512 --disk 1 $VM_FLAVOR \
-            && touch created_doctor_flavor
-    fi
-
     # TODO(r-mibu): fix the followings in upstream (fuel)
-    get_controller_ips
     for node in $CONTROLLER_IPS;do
         echo "check controller configuration for doctor ($node)"
         ssh $ssh_opts_cpu "root@$node" '
@@ -86,11 +78,28 @@ function installer_apply_patches {
     done
 }
 
-function cleanup_installer_fuel {
-    if [[ -e created_doctor_flavor ]] && openstack flavor show $VM_FLAVOR ; then
-        openstack flavor delete $VM_FLAVOR && rm -f created_doctor_flavor
+function setup_installer {
+    get_installer_ip
+    installer_get_ssh_keys
+    get_controller_ips
+    installer_apply_patches
+    if ! openstack flavor show $VM_FLAVOR ; then
+        openstack flavor create --ram 512 --disk 1 $VM_FLAVOR \
+            && touch created_doctor_flavor
     fi
+}
 
+function get_compute_ip_from_hostname {
+    local compute_host=$1
+
+    compute_host_in_undercloud=${compute_host%%.*}
+    node_id=$(echo $compute_host_in_undercloud | cut -d "-" -f 2)
+    COMPUTE_IP=$(sshpass -p r00tme ssh 2>/dev/null $ssh_opts root@${INSTALLER_IP} \
+         "fuel node|awk -F '|' -v id=$node_id '{if (\$1 == id) print \$5}' |xargs")
+    die_if_not_set $LINENO COMPUTE_IP "Could get IP address of $compute_host."
+}
+
+function installer_revert_patches {
     # TODO(r-mibu): fix the followings in upstream (fuel)
     get_controller_ips
     for node in $CONTROLLER_IPS;do
@@ -131,4 +140,11 @@ function cleanup_installer_fuel {
             fi
             ' >> installer_apply_patches_$node.log 2>&1
     done
+}
+
+function cleanup_installer {
+    if [[ -e created_doctor_flavor ]] && openstack flavor show $VM_FLAVOR ; then
+        openstack flavor delete $VM_FLAVOR && rm -f created_doctor_flavor
+    fi
+    installer_revert_patches
 }
