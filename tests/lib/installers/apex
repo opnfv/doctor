@@ -1,24 +1,47 @@
 #!/bin/bash
 
+COMPUTE_USER=${COMPUTE_USER:-heat-admin}
+ssh_opts_cpu="$ssh_opts -i instack_key"
+
 function get_installer_ip {
-    local instack_mac=$(sudo virsh domiflist instack | awk '/default/{print $5}')
-    INSTALLER_IP=$(/usr/sbin/arp -e | grep ${instack_mac} | awk '{print $1}')
-    die_if_not_set $LINENO INSTALLER_IP "No installer IP"
+    is_set INSTALLER_IP && return
+    INSTALLER_IP=$(get_first_vnic_ip instack)
 }
 
 function installer_get_ssh_keys {
-    sudo scp $ssh_opts root@"$INSTALLER_IP":/home/stack/.ssh/id_rsa instack_key
+    sudo scp $ssh_opts "root@$INSTALLER_IP:/home/stack/.ssh/id_rsa" instack_key
     sudo chown $(whoami):$(whoami) instack_key
     chmod 400 instack_key
-    ssh_opts_cpu+=" -i instack_key"
 }
 
-function installer_apply_patches {
-    # Noop
-    return
+function get_controller_ips {
+    is_set CONTROLLER_IPS && return
+    get_installer_ip
+    CONTROLLER_IPS=$(sudo ssh $ssh_opts $INSTALLER_IP \
+                     "source stackrc
+                      nova list | grep ' overcloud-controller-[0-9] ' | \
+                      sed -e 's/^.*ctlplane=//' -e 's/ *|\$//'")
+    die_if_not_set $LINENO CONTROLLER_IPS "No controller IPs"
 }
 
-function cleanup_installer_apex {
+function setup_installer {
+    get_installer_ip
+    installer_get_ssh_keys
+    get_controller_ips
+}
+
+function get_compute_ip_from_hostname {
+    local compute_host=$1
+
+    compute_host_in_undercloud=${compute_host%%.*}
+    COMPUTE_IP=$(sudo ssh $ssh_opts $INSTALLER_IP \
+                 "source stackrc;
+                  nova show $compute_host_in_undercloud  | \
+                  awk '/ ctlplane network /{print \$5}'")
+    die_if_not_set $LINENO COMPUTE_IP "Could get IP address of $compute_host."
+}
+
+function cleanup_installer {
     # Noop
     return
 }

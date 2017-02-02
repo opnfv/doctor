@@ -1,9 +1,7 @@
 #!/bin/bash
 
-function get_installer_ip {
-    # Noop
-    return
-}
+COMPUTE_USER=${COMPUTE_USER:-$(whoami)}
+ssh_opts_cpu="$ssh_opts"
 
 function installer_get_ssh_keys {
     echo "INSTALLER_TYPE set to 'local'. Assuming SSH keys already exchanged with $COMPUTE_HOST"
@@ -15,7 +13,24 @@ function installer_apply_patches {
     return
 }
 
-function cleanup_installer_local {
+function setup_installer {
+    installer_get_ssh_keys
+    installer_apply_patches
+}
+
+function get_compute_ip_from_hostname {
+    local compute_host=$1
+
+    if is_set COMPUTE_IP; then
+        echo "Using pre-configured COMPUTE_IP=$COMPUTE_IP ..."
+        return
+    fi
+    COMPUTE_IP=$(getent hosts "$compute_host" | awk '{ print $1 }')
+    die_if_not_set $LINENO COMPUTE_IP \
+        "Could not resolve $compute_host. Either manually set COMPUTE_IP or enable DNS resolution."
+}
+
+function cleanup_installer {
     # Noop
     return
 }
