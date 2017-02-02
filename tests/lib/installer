@@ -29,7 +29,7 @@ function cleanup_installer {
 
 
 if ! is_installer_supported $INSTALLER_TYPE; then
-    die $LINENO"INSTALLER_TYPE=$INSTALLER_TYPE is not supported."
+    die $LINENO "INSTALLER_TYPE=$INSTALLER_TYPE is not supported."
 fi
 
 source $TOP_DIR/lib/installers/$INSTALLER_TYPE

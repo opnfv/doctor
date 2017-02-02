@@ -7,9 +7,10 @@ fi
 function get_installer_ip {
     ssh_opts_cpu="$ssh_opts -i instack_key"
     is_set INSTALLER_IP && return
-    local instack_mac=$(sudo virsh domiflist fuel-master | awk '/fuel1/{print $5}')
+    local instack_mac
+    instack_mac=$(sudo virsh domiflist fuel-master | awk '/fuel1/{print $5}')
     INSTALLER_IP=$(/usr/sbin/arp -e | grep ${instack_mac} | awk '{print $1}')
-    die_if_not_set $LINENO $INSTALLER_IP "No installer IP"
+    die_if_not_set $LINENO INSTALLER_IP "No installer IP"
 }
 
 function get_controller_ips {
@@ -17,7 +18,7 @@ function get_controller_ips {
     get_installer_ip
     CONTROLLER_IPS=$(ssh $ssh_opts_cpu root@$INSTALLER_IP \
                      "fuel node | grep controller | cut -d '|' -f 5|xargs")
-    die_if_not_set $LINENO $CONTROLLER_IPS "No controller IPs"
+    die_if_not_set $LINENO CONTROLLER_IPS "No controller IPs"
 }
 
 function installer_get_ssh_keys {

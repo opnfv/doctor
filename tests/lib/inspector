@@ -26,7 +26,7 @@ function cleanup_inspector {
 
 
 if ! is_inspector_supported $INSPECTOR_TYPE; then
-    die $LINENO"INSPECTOR_TYPE=$INSPECTOR_TYPE is not supported."
+    die $LINENO "INSPECTOR_TYPE=$INSPECTOR_TYPE is not supported."
 fi
 
 source $TOP_DIR/lib/inspectors/$INSPECTOR_TYPE
