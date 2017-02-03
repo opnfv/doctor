@@ -31,7 +31,6 @@ PROFILER_TYPE=${PROFILER_TYPE:-none}
 
 TOP_DIR=$(cd $(dirname "$0") && pwd)
 
-ssh_opts="-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 as_doctor_user="--os-username $DOCTOR_USER --os-password $DOCTOR_PW
                 --os-tenant-name $DOCTOR_PROJECT"
 
@@ -45,23 +44,8 @@ get_compute_host_info() {
     compute_host_in_undercloud=${COMPUTE_HOST%%.*}
     die_if_not_set $LINENO COMPUTE_HOST "Failed to get compute hostname"
 
-    if is_installer apex; then
-        COMPUTE_USER=${COMPUTE_USER:-heat-admin}
-        COMPUTE_IP=$(sudo ssh $ssh_opts $INSTALLER_IP \
-             "source stackrc; \
-             nova show $compute_host_in_undercloud \
-             | awk '/ ctlplane network /{print \$5}'")
-    elif is_installer fuel; then
-        COMPUTE_USER=${COMPUTE_USER:-root}
-        node_id=$(echo $compute_host_in_undercloud | cut -d "-" -f 2)
-        COMPUTE_IP=$(sshpass -p r00tme ssh 2>/dev/null $ssh_opts root@${INSTALLER_IP} \
-             "fuel node|awk -F '|' -v id=$node_id '{if (\$1 == id) print \$5}' |xargs")
-    elif is_installer local; then
-        COMPUTE_USER=${COMPUTE_USER:-$(whoami)}
-        COMPUTE_IP=$(getent hosts "$COMPUTE_HOST" | awk '{ print $1 }')
-    fi
+    get_compute_ip_from_hostname $COMPUTE_HOST
 
-    die_if_not_set $LINENO COMPUTE_IP "Could not resolve $COMPUTE_HOST. Either manually set COMPUTE_IP or enable DNS resolution."
     echo "COMPUTE_HOST=$COMPUTE_HOST"
     echo "COMPUTE_IP=$COMPUTE_IP"
 
@@ -78,7 +62,9 @@ get_compute_host_info() {
     fi
 }
 
-get_consumer_ip() {
+# TODO(r-mibu): update this function to support consumer instance
+#               and migrate this function into installer lib
+get_consumer_ip___to_be_removed() {
     local get_consumer_command="ip route get $COMPUTE_IP | awk '/ src /{print \$NF}'"
     if is_installer apex; then
         CONSUMER_IP=$(sudo ssh $ssh_opts root@$INSTALLER_IP \
@@ -173,16 +159,6 @@ start_consumer() {
     # avoid some network problems dpends on infra and installers.
     # This tunnel will be terminated by stop_consumer() or after 10 mins passed.
     if ! is_installer local; then
-        if is_installer apex; then
-            CONTROLLER_IPS=$(sudo ssh $ssh_opts $INSTALLER_IP \
-                             "source stackrc; \
-                             nova list | grep ' overcloud-controller-[0-9] ' \
-                             | sed -e 's/^.*ctlplane=//' -e 's/ *|\$//'")
-        elif is_installer fuel; then
-            get_controller_ips
-        fi
-
-        die_if_not_set $LINENO CONTROLLER_IPS "Could not get CONTROLLER_IPS."
         for ip in $CONTROLLER_IPS
         do
             forward_rule="-R $CONSUMER_PORT:localhost:$CONSUMER_PORT"
@@ -347,7 +323,9 @@ cleanup() {
     # TODO: We need to make sure the target compute host is back to IP
     #       reachable. wait_ping() will be added by tojuvone .
     sleep 110
-    scp $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP:disable_network.log" .
+    if is_set COMPUTE_IP; then
+        scp $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP:disable_network.log" .
+    fi
 
     openstack $as_doctor_user server list | grep -q " $VM_NAME " && openstack $as_doctor_user server delete "$VM_NAME"
     sleep 1

@@ -1,8 +1,7 @@
 #!/bin/bash
 
 INSTALLER_TYPE=${INSTALLER_TYPE:-local}
-INSTALLER_IP=${INSTALLER_IP:-none}
-ssh_opts_cpu="$ssh_opts"
+ssh_opts="-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 
 function is_installer_supported {
     local installer="$1"
@@ -14,22 +13,27 @@ function is_installer {
     [[ $installer == $INSTALLER_TYPE ]]
 }
 
-function setup_installer {
-    if ! is_set INSTALLER_IP; then
-        get_installer_ip
-    fi
-
-    installer_get_ssh_keys
-    installer_apply_patches
+function validate_installer_lib {
+    local xtrace
+    xtrace=$(set +o | grep xtrace)
+    set +o xtrace
+    for p in COMPUTE_USER ssh_opts_cpu
+    do
+        die_if_not_set $LINENO $p \
+            "Parameter $p for $INSTALLER_TYPE is missing."
+    done
+    for f in setup_installer get_compute_ip_from_hostname cleanup_installer
+    do
+        die_if_not_defined $LINENO $f \
+            "Mandatory function ${f}() for $INSTALLER_TYPE is missing."
+    done
+    $xtrace
 }
-
-function cleanup_installer {
-    cleanup_installer_$INSTALLER_TYPE
-}
-
 
 if ! is_installer_supported $INSTALLER_TYPE; then
     die $LINENO "INSTALLER_TYPE=$INSTALLER_TYPE is not supported."
 fi
 
 source $TOP_DIR/lib/installers/$INSTALLER_TYPE
+
+validate_installer_lib
