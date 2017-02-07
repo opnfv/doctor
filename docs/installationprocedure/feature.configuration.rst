@@ -4,10 +4,26 @@
 Doctor Configuration
 ====================
 
+OPNFV installers install most components of Doctor framework including
+OpenStack Nova/Neutron/Cinder (Doctor Notifier) and OpenStack Ceilometer/Aodh
+(Doctor Notifier) except Doctor Monitor.
+
+After major components of OPNFV are deployed, you can setup Doctor functions
+by the following instructions in this section. You can also learn detailed
+steps in setup_installer() under `doctor/tests`_.
+
+.. _doctor/tests: https://gerrit.opnfv.org/gerrit/gitweb?p=doctor.git;a=tree;f=tests;
+
 Doctor Inspector
 ----------------
 
-Doctor Inspector is suggested to be placed in one of the controller nodes,
+You need to configure one of Doctor Inspector below.
+
+**Doctor Sample Inspector**
+
+Sample Inspector is intended to show minimum functions of Doctor Inspector.
+
+Doctor Sample Inspector suggested to be placed in one of the controller nodes,
 but it can be put on any host where Doctor Monitor can reach and access
 the OpenStack Controller (Nova).
 
@@ -23,8 +39,49 @@ Then, you can configure Doctor Inspector as follows:
     INSPECTOR_PORT=12345
     python inspector.py $INSPECTOR_PORT > inspector.log 2>&1 &
 
+**Congress**
+
+OpenStack `Congress`_ is Governance as a Service (previously Policy as a
+Service). Congress can be Doctor Inspector as it can inspect a fault situation
+and propagate errors onto other entities.
+
+.. _Congress: https://wiki.openstack.org/wiki/Congress
+
+Congress would be deployed by OPNFV installers. You need to enable doctor
+datassource driver and set policy rules. By the example comfiguratino below,
+Congress will force down nova compute service when it received a fault event
+of that compute host. Also, Congress will propagate the fault of compute host
+to errors of VMs running on that host.
+
+.. code-block:: bash
+
+    openstack congress datasource create doctor doctor
+
+    openstack congress policy rule create \
+        --name host_down classification \
+        'host_down(host) :-
+            doctor:events(hostname=host, type="compute.host.down", status="down")'
+
+    openstack congress policy rule create \
+        --name active_instance_in_host classification \
+        'active_instance_in_host(vmid, host) :-
+            nova:servers(id=vmid, host_name=host, status="ACTIVE")'
+
+    openstack congress policy rule create \
+        --name host_force_down classification \
+        'execute[nova:services.force_down(host, "nova-compute", "True")] :-
+            host_down(host)'
+
+    openstack congress policy rule create \
+        --name error_vm_states classification \
+        'execute[nova:servers.reset_state(vmid, "error")] :-
+            host_down(host),
+            active_instance_in_host(vmid, host)'
+
 Doctor Monitor
 --------------
+
+**Doctor Sample Monitor**
 
 Doctor Monitors are suggested to be placed in one of the controller nodes,
 but those can be put on any host which is reachable to target compute host and
