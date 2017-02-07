@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1acb0d3e_9dffa101",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-02-07T20:40:22Z",
+      "side": 1,
+      "message": "JIRA: DOCTOR-85",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 9
+      },
+      "revId": "254b5d222bf51648ba31a8c5a65f08cfd60df26f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_7918ca84",
+        "filename": "docs/installationprocedure/feature.configuration.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-02-07T20:40:22Z",
+      "side": 1,
+      "message": "\"Nova, Neutron and Cinder\"",
+      "range": {
+        "startLine": 8,
+        "startChar": 10,
+        "endLine": 8,
+        "endChar": 29
+      },
+      "revId": "254b5d222bf51648ba31a8c5a65f08cfd60df26f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_991d7676",
+        "filename": "docs/installationprocedure/feature.configuration.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-02-07T20:40:22Z",
+      "side": 1,
+      "message": "Controller",
+      "range": {
+        "startLine": 8,
+        "startChar": 38,
+        "endLine": 8,
+        "endChar": 46
+      },
+      "revId": "254b5d222bf51648ba31a8c5a65f08cfd60df26f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_39124263",
+        "filename": "docs/installationprocedure/feature.configuration.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-02-07T20:40:22Z",
+      "side": 1,
+      "message": "remove \u0027the\u0027",
+      "range": {
+        "startLine": 12,
+        "startChar": 3,
+        "endLine": 12,
+        "endChar": 6
+      },
+      "revId": "254b5d222bf51648ba31a8c5a65f08cfd60df26f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_59170e52",
+        "filename": "docs/installationprocedure/feature.configuration.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-02-07T20:40:22Z",
+      "side": 1,
+      "message": "\"is a Governance as a Service project\"",
+      "revId": "254b5d222bf51648ba31a8c5a65f08cfd60df26f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_f90b5a29",
+        "filename": "docs/installationprocedure/feature.configuration.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-02-07T20:40:22Z",
+      "side": 1,
+      "message": "\"implements\" maybe?",
+      "range": {
+        "startLine": 45,
+        "startChar": 23,
+        "endLine": 45,
+        "endChar": 25
+      },
+      "revId": "254b5d222bf51648ba31a8c5a65f08cfd60df26f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_19098631",
+        "filename": "docs/installationprocedure/feature.configuration.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-02-07T20:40:22Z",
+      "side": 1,
+      "message": "\"is\"?",
+      "range": {
+        "startLine": 50,
+        "startChar": 9,
+        "endLine": 50,
+        "endChar": 14
+      },
+      "revId": "254b5d222bf51648ba31a8c5a65f08cfd60df26f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_b905d215",
+        "filename": "docs/installationprocedure/feature.configuration.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-02-07T20:40:22Z",
+      "side": 1,
+      "message": "Typo",
+      "range": {
+        "startLine": 51,
+        "startChar": 56,
+        "endLine": 51,
+        "endChar": 69
+      },
+      "revId": "254b5d222bf51648ba31a8c5a65f08cfd60df26f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_d9021e0b",
+        "filename": "docs/installationprocedure/feature.configuration.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-02-07T20:40:22Z",
+      "side": 1,
+      "message": "Suggestion of rewording to:\n\n\"Also, Congress will set the state of all VMs running on that host from ACTIVE to ERROR state.\"",
+      "range": {
+        "startLine": 53,
+        "startChar": 28,
+        "endLine": 54,
+        "endChar": 38
+      },
+      "revId": "254b5d222bf51648ba31a8c5a65f08cfd60df26f",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
