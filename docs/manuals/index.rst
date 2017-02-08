@@ -11,3 +11,4 @@ Manuals
 
 .. include:: mark-host-down_manual.rst
 .. include:: get-valid-server-state.rst
+.. include:: fault-correlation.rst
