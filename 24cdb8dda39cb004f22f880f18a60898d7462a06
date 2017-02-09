@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1acb0d3e_71721ee7",
+        "filename": "docs/development/overview/testing.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 346
+      },
+      "writtenOn": "2017-02-09T15:44:21Z",
+      "side": 1,
+      "message": "Shall we clarify that INSTALLER_TYPE in this case is set to local (default value). This is your intention in this first option right?",
+      "range": {
+        "startLine": 22,
+        "startChar": 6,
+        "endLine": 22,
+        "endChar": 40
+      },
+      "revId": "24cdb8dda39cb004f22f880f18a60898d7462a06",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_516da203",
+        "filename": "docs/development/overview/testing.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 346
+      },
+      "writtenOn": "2017-02-09T15:44:21Z",
+      "side": 1,
+      "message": "Shall we clarify that min release required for Congress is Newton?",
+      "range": {
+        "startLine": 31,
+        "startChar": 40,
+        "endLine": 31,
+        "endChar": 63
+      },
+      "revId": "24cdb8dda39cb004f22f880f18a60898d7462a06",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_519fe203",
+        "filename": "docs/development/overview/testing.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 346
+      },
+      "writtenOn": "2017-02-09T15:44:21Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 31,
+        "startChar": 32,
+        "endLine": 31,
+        "endChar": 39
+      },
+      "revId": "24cdb8dda39cb004f22f880f18a60898d7462a06",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_f154ce22",
+        "filename": "docs/development/overview/testing.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 346
+      },
+      "writtenOn": "2017-02-09T15:44:21Z",
+      "side": 1,
+      "message": "Maybe good also to add a reference to Functest configguide?\nhttp://artifacts.opnfv.org/functest/docs/configguide/index.html\nand replace stable by \u003cTagIdentifier\u003e where TagIdentifier may be set to latest, colorado.3.0 or danube.1.0 in the near future",
+      "range": {
+        "startLine": 42,
+        "startChar": 30,
+        "endLine": 42,
+        "endChar": 37
+      },
+      "revId": "24cdb8dda39cb004f22f880f18a60898d7462a06",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_b1364602",
+        "filename": "docs/development/overview/testing.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 346
+      },
+      "writtenOn": "2017-02-09T15:44:21Z",
+      "side": 1,
+      "message": "This is valid for Apex installer only?",
+      "range": {
+        "startLine": 45,
+        "startChar": 33,
+        "endLine": 45,
+        "endChar": 71
+      },
+      "revId": "24cdb8dda39cb004f22f880f18a60898d7462a06",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_513b62eb",
+        "filename": "docs/development/overview/testing.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 346
+      },
+      "writtenOn": "2017-02-09T15:44:21Z",
+      "side": 1,
+      "message": "See comment above",
+      "range": {
+        "startLine": 46,
+        "startChar": 22,
+        "endLine": 46,
+        "endChar": 29
+      },
+      "revId": "24cdb8dda39cb004f22f880f18a60898d7462a06",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
