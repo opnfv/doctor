@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1acb0d3e_2cd8bdee",
+        "filename": "docs/manuals/use-cases.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-02-10T05:03:15Z",
+      "side": 1,
+      "message": "\"Fault correlation\" would be better, thinking of other items listed in the same level, such as \"Get valid server state\" and  \"OpenStack NOVA API for marking host down.\"",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 9
+      },
+      "revId": "46a30c409955c44f0ed89c421dfe4780c8bf9f68",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_acf34d72",
+        "filename": "docs/manuals/use-cases.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-02-10T05:03:15Z",
+      "side": 1,
+      "message": "Move words over 80 characters to new line. Be careful with indent. you need two spaces to continue as the same item.",
+      "range": {
+        "startLine": 34,
+        "startChar": 97,
+        "endLine": 34,
+        "endChar": 105
+      },
+      "revId": "46a30c409955c44f0ed89c421dfe4780c8bf9f68",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
