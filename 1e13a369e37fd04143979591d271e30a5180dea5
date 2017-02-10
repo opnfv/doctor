@@ -22,6 +22,30 @@
       "revId": "1e13a369e37fd04143979591d271e30a5180dea5",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1acb0d3e_0cd141fb",
+        "filename": "docs/installationprocedure/feature.configuration.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-02-10T02:08:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1acb0d3e_31f6d6d8",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 11
+      },
+      "revId": "1e13a369e37fd04143979591d271e30a5180dea5",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
