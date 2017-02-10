@@ -215,6 +215,30 @@
     },
     {
       "key": {
+        "uuid": "1acb0d3e_77b52ecc",
+        "filename": "tests/inspector.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-02-10T11:02:30Z",
+      "side": 1,
+      "message": "OK, I also have idea to improve this, but let\u0027s do it later.",
+      "parentUuid": "1acb0d3e_2c22fdb9",
+      "range": {
+        "startLine": 42,
+        "startChar": 24,
+        "endLine": 42,
+        "endChar": 26
+      },
+      "revId": "fc87639f35d91b9465d4bfad9d0dceb8d780d0fb",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1acb0d3e_6cd6c5c7",
         "filename": "tests/inspector.py",
         "patchSetId": 9
