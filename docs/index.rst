@@ -11,12 +11,12 @@ Doctor
    :maxdepth: 2
    :numbered:
 
-   ./installationprocedure/index.rst
-   ./design/index.rst
+   ./release/installation/index.rst
+   ./release/userguide/index.rst
+   ./development/design/index.rst
+   ./development/requirements/index.rst
    ./manuals/index.rst
-   ./requirements/index.rst
    ./scenarios/index.rst
-   ./userguide/index.rst
 
 Indices
 =======
