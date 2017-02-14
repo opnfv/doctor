@@ -1,0 +1,30 @@
+#!/bin/bash
+
+TEMPLATE_FILE="/etc/vitrage/templates/vitrage_host_down_scenarios.yaml"
+TEMPLATE_FILE_EXISTS=false
+
+function start_inspector_vitrage {
+    if [ -f "$TEMPLATE_FILE" ];
+    then
+        echo "File $TEMPLATE_FILE exists"
+        TEMPLATE_FILE_EXISTS=true
+    else
+        echo "Copying $TEMPLATE_FILE" >&2
+        cp lib/inspectors/vitrage_host_down_scenarios.yaml /etc/vitrage/templates
+    fi
+
+#    service openstack-vitrage-graph restart
+}
+
+function stop_inspector_vitrage {
+    return
+}
+
+function cleanup_inspector_vitrage {
+    if [ "$TEMPLATE_FILE_EXISTS" = false ];
+    then
+        echo "Deleting $TEMPLATE_FILE"
+        rm -f $TEMPLATE_FILE
+    fi
+}
+

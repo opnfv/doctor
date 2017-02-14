@@ -18,14 +18,16 @@ import sys
 import time
 
 from congressclient.v1 import client
-
 import identity_auth
+from keystoneclient import session as ksc_session
+from keystoneclient.auth.identity import v2
+from vitrageclient import client as v_client
 
 # NOTE: icmp message with all zero data (checksum = 0xf7ff)
 #       see https://tools.ietf.org/html/rfc792
 ICMP_ECHO_MESSAGE = '\x08\x00\xf7\xff\x00\x00\x00\x00'
 
-SUPPORTED_INSPECTOR_TYPES = ['sample', 'congress']
+SUPPORTED_INSPECTOR_TYPES = ['sample', 'congress', 'vitrage']
 
 LOG = doctor_log.Logger('doctor_monitor').getLogger()
 
@@ -57,6 +59,15 @@ class DoctorMonitorSample(object):
             congress_endpoint = congress.httpclient.get_endpoint(auth=auth)
             self.inspector_url = ('%s/v1/data-sources/%s/tables/events/rows' %
                                   (congress_endpoint, doctor_ds['id']))
+
+        elif self.inspector_type == 'vitrage':
+            auth = v2.Password(auth_url=os.environ['OS_AUTH_URL'],
+                               username=os.environ['OS_USERNAME'],
+                               password=os.environ['OS_PASSWORD'],
+                               tenant_name=os.environ['OS_TENANT_NAME'])
+            self.session = ksc_session.Session(auth=auth)
+            self.vitrage_client = v_client.Client('1', session=self.session)
+            self.inspector_url = 'http://127.0.0.1:8999/v1/event/'
 
     def start_loop(self):
         LOG.debug("start ping to host %(h)s (ip=%(i)s)" % {'h': self.hostname,
@@ -101,6 +112,10 @@ class DoctorMonitorSample(object):
                 'X-Auth-Token':self.session.get_token(),
             }
             requests.put(self.inspector_url, data=data, headers=headers)
+        elif self.inspector_type == 'vitrage':
+            self.vitrage_client.event.post(payload[0]['time'],
+                                           payload[0]['type'],
+                                           json.dumps(payload[0]['details']))
 
 
 def get_args():

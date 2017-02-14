@@ -49,4 +49,9 @@
 -
   url: https://review.openstack.org/424340
   system: Gerrit
-  # WIP
+-
+  url: https://blueprints.launchpad.net/vitrage/+spec/doctor-datasource
+  system: Launchpad
+-
+  url: https://blueprints.launchpad.net/vitrage/+spec/support-inspector-sb-api
+  system: Launchpad
