@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# copy run_vitrage_env from the tempest
+
+function start_inspector_vitrage {
+    return
+}
+
+function stop_inspector_vitrage {
+    return
+}
+
+function cleanup_inspector_vitrage {
+    return
+}
+

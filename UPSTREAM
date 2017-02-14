@@ -37,3 +37,9 @@
 #-
 #  url: https://bugs.launchpad.net/neutron/+bug/1513144
 #  system: Launchpad-bug
+-
+  url: https://blueprints.launchpad.net/vitrage/+spec/doctor-datasource
+  system: Launchpad
+-
+  url: https://blueprints.launchpad.net/vitrage/+spec/support-inspector-sb-api
+  system: Launchpad
