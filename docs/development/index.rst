@@ -11,14 +11,11 @@ Doctor
    :maxdepth: 2
    :numbered:
 
-   ./installationprocedure/index.rst
    ./design/index.rst
-   ./manuals/index.rst
    ./requirements/index.rst
-   ./scenarios/index.rst
-   ./userguide/index.rst
+   ./manuals/index.rst
+   ./overview/functest_scenario/index.rst
 
 Indices
 =======
 * :ref:`search`
-
