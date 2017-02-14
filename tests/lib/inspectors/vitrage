@@ -1,0 +1,14 @@
+#!/bin/bash
+
+function start_inspector_vitrage {
+    return
+}
+
+function stop_inspector_vitrage {
+    return
+}
+
+function cleanup_inspector_vitrage {
+    return
+}
+
