@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dabed58f_3eaa3dd5",
+        "filename": "docs/development/overview/testing.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2017-02-15T13:15:03Z",
+      "side": 1,
+      "message": "what does \"properly\" mean? Can we give an example or link to a manual/reference describing this step?",
+      "range": {
+        "startLine": 20,
+        "startChar": 11,
+        "endLine": 20,
+        "endChar": 27
+      },
+      "revId": "f1950276a2eb5ed71b4d1bd104ff02cab1d856e6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_1ea5f903",
+        "filename": "docs/development/overview/testing.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2017-02-15T13:15:03Z",
+      "side": 1,
+      "message": "Is there also a minimum version if you choose \"sample\"?",
+      "range": {
+        "startLine": 33,
+        "startChar": 63,
+        "endLine": 34,
+        "endChar": 54
+      },
+      "revId": "f1950276a2eb5ed71b4d1bd104ff02cab1d856e6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
