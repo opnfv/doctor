@@ -41,6 +41,9 @@ as_doctor_user="--os-username $DOCTOR_USER --os-password $DOCTOR_PW
 ceilometer="ceilometer $as_doctor_user"
 
 
+# testing
+sleep 16
+
 # Functions
 
 get_compute_host_info() {
