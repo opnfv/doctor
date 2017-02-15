@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dabed58f_3817b553",
+        "filename": "docs/development/overview/testing.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-02-15T06:36:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1acb0d3e_3779e62f",
+      "range": {
+        "startLine": 18,
+        "startChar": 11,
+        "endLine": 18,
+        "endChar": 60
+      },
+      "revId": "b3c888996906e760439d8fc1e77b452c725af571",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1acb0d3e_d7750233",
         "filename": "docs/development/overview/testing.rst",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-02-10T10:49:32Z",
       "side": 1,
       "message": "I\u0027d suggest not to refer to a particular branch.",
+      "range": {
+        "startLine": 26,
+        "startChar": 53,
+        "endLine": 26,
+        "endChar": 69
+      },
+      "revId": "b3c888996906e760439d8fc1e77b452c725af571",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_2309c62c",
+        "filename": "docs/development/overview/testing.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-02-15T06:36:34Z",
+      "side": 1,
+      "message": "OK, I\u0027ll delete it, but add note users can checkout stable branch. IMO, we should provide steps for testing with stable version.",
+      "parentUuid": "1acb0d3e_d7750233",
       "range": {
         "startLine": 26,
         "startChar": 53,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "dabed58f_63ffbe02",
+        "filename": "docs/development/overview/testing.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-02-15T06:36:34Z",
+      "side": 1,
+      "message": "I\u0027ll add INSTALLER_TYPE\u003dlocal .",
+      "parentUuid": "1acb0d3e_978f7a23",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 32
+      },
+      "revId": "b3c888996906e760439d8fc1e77b452c725af571",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1acb0d3e_f7727e48",
         "filename": "docs/development/overview/testing.rst",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2017-02-10T10:49:32Z",
       "side": 1,
       "message": "typo (\u0027either\u0027)",
+      "range": {
+        "startLine": 31,
+        "startChar": 32,
+        "endLine": 31,
+        "endChar": 39
+      },
+      "revId": "b3c888996906e760439d8fc1e77b452c725af571",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_83043216",
+        "filename": "docs/development/overview/testing.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-02-15T06:36:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1acb0d3e_f7727e48",
       "range": {
         "startLine": 31,
         "startChar": 32,
