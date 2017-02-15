@@ -37,6 +37,9 @@ as_doctor_user="--os-username $DOCTOR_USER --os-password $DOCTOR_PW
                 --os-tenant-name $DOCTOR_PROJECT"
 
 
+# testing
+sleep 6
+
 # Functions
 
 get_compute_host_info() {
