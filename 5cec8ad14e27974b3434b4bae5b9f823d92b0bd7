@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dabed58f_38ed758c",
+        "filename": "tests/lib/inspectors/vitrage",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-02-15T04:56:27Z",
+      "side": 1,
+      "message": "Does this mean TODO?",
+      "range": {
+        "startLine": 3,
+        "startChar": 1,
+        "endLine": 3,
+        "endChar": 39
+      },
+      "revId": "5cec8ad14e27974b3434b4bae5b9f823d92b0bd7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_5895c9e2",
+        "filename": "tests/lib/inspectors/vitrage",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-02-15T04:56:27Z",
+      "side": 1,
+      "message": "are you sure that you need nothing to configure?",
+      "range": {
+        "startLine": 6,
+        "startChar": 4,
+        "endLine": 6,
+        "endChar": 10
+      },
+      "revId": "5cec8ad14e27974b3434b4bae5b9f823d92b0bd7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_d801b93a",
+        "filename": "tests/monitor.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-02-15T04:56:27Z",
+      "side": 1,
+      "message": "why you override this param? maybe you can set here if that param is empty.",
+      "range": {
+        "startLine": 71,
+        "startChar": 17,
+        "endLine": 71,
+        "endChar": 30
+      },
+      "revId": "5cec8ad14e27974b3434b4bae5b9f823d92b0bd7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_b8f8854a",
+        "filename": "tests/monitor.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-02-15T04:56:27Z",
+      "side": 1,
+      "message": "we cannot use the same data format? we have S/B interface conceptually, so it should be nice if we can use the same data model in this reference platform.",
+      "range": {
+        "startLine": 117,
+        "startChar": 38,
+        "endLine": 117,
+        "endChar": 42
+      },
+      "revId": "5cec8ad14e27974b3434b4bae5b9f823d92b0bd7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
