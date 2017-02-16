@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dabed58f_2b0c3894",
+        "filename": "docs/release/installation/feature.configuration.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 2409
+      },
+      "writtenOn": "2017-02-16T14:27:45Z",
+      "side": 1,
+      "message": "Please move this one to release/configguide/",
+      "revId": "acf398ed42a70ba6308e69a477302f88803bb4a9",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
