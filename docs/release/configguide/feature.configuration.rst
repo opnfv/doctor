@@ -78,6 +78,52 @@ that host from ACTIVE to ERROR state.
             host_down(host),
             active_instance_in_host(vmid, host)'
 
+**Vitrage**
+
+OpenStack `Vitrage`_ is an RCA (Root Cause Analysis) service for organizing,
+analyzing and expanding OpenStack alarms & events. Vitrage implements Doctor
+Inspector, as it receives a notification that a host is down, notifies Nova
+and propagates the alarms to the instances running on this host.
+
+.. _Vitrage: https://wiki.openstack.org/wiki/Vitrage
+
+Vitrage is not deployed by OPNFV installers yet. It can be installed either on
+top of a devstack environment, or on top of a real OpenStack environment. See
+`Vitrage Installation`_
+
+.. _`Vitrage Installation`: https://docs.openstack.org/developer/vitrage/installation-and-configuration.html
+
+Doctor SB API and a Doctor datasource were implemented in Vitrage in the Ocata
+release. The Doctor datasources is enabled by default.
+
+After Vitrage is installed and configured, there is a need to configure it to
+support the Doctor use case. This can be done in a few steps:
+
+1. Make sure that 'aodh' and 'doctor' are included in the list of datasource
+   types in /etc/vitrage/vitrage.conf:
+
+.. code-block:: bash
+
+    [datasources]
+    types = aodh,doctor,nova.host,nova.instance,nova.zone,static,cinder.volume,neutron.network,neutron.port,heat.stack
+
+2. Enable the Vitrage Nova notifier. Set the following line in
+   /etc/vitrage/vitrage.conf:
+
+.. code-block:: bash
+
+    [DEFAULT]
+    notifiers = nova
+
+3. Add a template that is responsible to call Nova force-down if Vitrage
+   receives a 'compute.host.down' alarm. Copy `template`_ and place it under
+   /etc/vitrage/templates
+
+.. _template: https://github.com/openstack/vitrage/blob/master/etc/vitrage/templates.sample/host_down_scenarios.yaml
+
+4. Restart the vitrage-graph and vitrage-notifier services
+
+
 Doctor Monitor
 --------------
 
