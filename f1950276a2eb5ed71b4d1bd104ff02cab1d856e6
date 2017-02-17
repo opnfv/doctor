@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dabed58f_a1f36972",
+        "filename": "docs/development/overview/testing.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-02-17T04:54:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dabed58f_3eaa3dd5",
+      "range": {
+        "startLine": 20,
+        "startChar": 11,
+        "endLine": 20,
+        "endChar": 27
+      },
+      "revId": "f1950276a2eb5ed71b4d1bd104ff02cab1d856e6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dabed58f_1ea5f903",
         "filename": "docs/development/overview/testing.rst",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2017-02-15T13:15:03Z",
       "side": 1,
       "message": "Is there also a minimum version if you choose \"sample\"?",
+      "range": {
+        "startLine": 33,
+        "startChar": 63,
+        "endLine": 34,
+        "endChar": 54
+      },
+      "revId": "f1950276a2eb5ed71b4d1bd104ff02cab1d856e6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_21ff7936",
+        "filename": "docs/development/overview/testing.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-02-17T04:54:18Z",
+      "side": 1,
+      "message": "No, min version of \"sample\" inspector could be lower. I noticed we should note that users need to use the right set of versions which OPNFV released.",
+      "parentUuid": "dabed58f_1ea5f903",
       "range": {
         "startLine": 33,
         "startChar": 63,
