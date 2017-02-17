@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dabed58f_ba2b8f81",
+        "filename": "tests/lib/installers/fuel",
+        "patchSetId": 18
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-02-17T18:06:58Z",
+      "side": 1,
+      "message": "I will change, thanks",
+      "parentUuid": "dabed58f_77aa12d6",
+      "range": {
+        "startLine": 82,
+        "startChar": 26,
+        "endLine": 82,
+        "endChar": 67
+      },
+      "revId": "499d68c4fc8bcc4ada37453bd718e8561c7bcfa5",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dabed58f_d7e65e44",
         "filename": "tests/lib/installers/fuel",
         "patchSetId": 18
@@ -36,6 +60,30 @@
       "writtenOn": "2017-02-17T12:53:34Z",
       "side": 1,
       "message": "this is too specific for current policy.json . how about moving this after L89 part?\n\nif grep -q \"${entry}.*${new}\" $np_conf; then\n    # do nothing\nelif grep -q \"${entry}\" $np_conf; then\n    # modify\nelse\n    # add\nfi",
+      "range": {
+        "startLine": 84,
+        "startChar": 19,
+        "endLine": 84,
+        "endChar": 43
+      },
+      "revId": "499d68c4fc8bcc4ada37453bd718e8561c7bcfa5",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_5a20539b",
+        "filename": "tests/lib/installers/fuel",
+        "patchSetId": 18
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-02-17T18:06:58Z",
+      "side": 1,
+      "message": "That is a very good suggestion as the current add implementation should work regardless there are some entries. Surely in theory indentation and empty json can look different, but wouldn\u0027t expect so (might cause add to make invalid json)",
+      "parentUuid": "dabed58f_d7e65e44",
       "range": {
         "startLine": 84,
         "startChar": 19,
