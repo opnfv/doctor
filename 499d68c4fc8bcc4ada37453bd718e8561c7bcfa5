@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dabed58f_77aa12d6",
+        "filename": "tests/lib/installers/fuel",
+        "patchSetId": 18
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-02-17T12:53:34Z",
+      "side": 1,
+      "message": "how about np_backup\u003d\"${np_conf}-doctor-saved\"? it would be nice to keep \u0027.json\u0027, as we can also use new format with yaml.",
+      "range": {
+        "startLine": 82,
+        "startChar": 26,
+        "endLine": 82,
+        "endChar": 67
+      },
+      "revId": "499d68c4fc8bcc4ada37453bd718e8561c7bcfa5",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_d7e65e44",
+        "filename": "tests/lib/installers/fuel",
+        "patchSetId": 18
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-02-17T12:53:34Z",
+      "side": 1,
+      "message": "this is too specific for current policy.json . how about moving this after L89 part?\n\nif grep -q \"${entry}.*${new}\" $np_conf; then\n    # do nothing\nelif grep -q \"${entry}\" $np_conf; then\n    # modify\nelse\n    # add\nfi",
+      "range": {
+        "startLine": 84,
+        "startChar": 19,
+        "endLine": 84,
+        "endChar": 43
+      },
+      "revId": "499d68c4fc8bcc4ada37453bd718e8561c7bcfa5",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_f7e36231",
+        "filename": "tests/lib/installers/fuel",
+        "patchSetId": 18
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-02-17T12:53:34Z",
+      "side": 1,
+      "message": "in CI, the both values are empty...",
+      "range": {
+        "startLine": 92,
+        "startChar": 20,
+        "endLine": 93,
+        "endChar": 73
+      },
+      "revId": "499d68c4fc8bcc4ada37453bd718e8561c7bcfa5",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
