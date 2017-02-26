@@ -12,11 +12,7 @@
 
 [[ "${CI_DEBUG:-true}" == [Tt]rue ]] && set -x
 
-IMAGE_URL=https://launchpad.net/cirros/trunk/0.3.0/+download/cirros-0.3.0-x86_64-disk.img
-#if an existing image name is provided in the enviroment, use that one
 IMAGE_NAME=${IMAGE_NAME:-cirros}
-IMAGE_FILE="${IMAGE_NAME}.img"
-IMAGE_FORMAT=qcow2
 VM_BASENAME=doctor_vm
 VM_FLAVOR=m1.tiny
 #if VM_COUNT set, use that instead
@@ -84,26 +80,6 @@ get_consumer_ip___to_be_removed() {
     echo "CONSUMER_IP=$CONSUMER_IP"
 
     die_if_not_set $LINENO CONSUMER_IP "Could not get CONSUMER_IP."
-}
-
-download_image() {
-    #if a different name was provided for the image in the enviroment there's no need to download the image
-    use_existing_image=false
-    openstack image list | grep -q " $IMAGE_NAME " && use_existing_image=true
-
-    if [[ "$use_existing_image" == false ]] ; then
-        [ -e "$IMAGE_FILE" ] && return 0
-        wget "$IMAGE_URL" -o "$IMAGE_FILE"
-    fi
-}
-
-register_image() {
-    openstack image list | grep -q " $IMAGE_NAME " && return 0
-    openstack image create "$IMAGE_NAME" \
-                           --public \
-                           --disk-format "$IMAGE_FORMAT" \
-                           --container-format bare \
-                           --file "$IMAGE_FILE"
 }
 
 create_test_user() {
@@ -469,8 +445,7 @@ source $TOP_DIR/lib/inspector
 setup_installer
 
 echo "preparing VM image..."
-download_image
-register_image
+python main.py
 
 echo "creating test user..."
 create_test_user
