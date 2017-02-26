@@ -8,9 +8,15 @@
 ##############################################################################
 from oslo_config import cfg
 
+import image
+import os_clients
+
 
 def list_opts():
-    return []
+    return [
+        ('keystone_auth', os_clients.OPTS),
+        ('image', image.IMAGE_OPTS),
+    ]
 
 
 def prepare_conf(conf=None):
