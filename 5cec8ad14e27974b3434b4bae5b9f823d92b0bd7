@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "dabed58f_6bd1b9fa",
+        "filename": "tests/lib/inspectors/vitrage",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2017-02-27T18:28:00Z",
+      "side": 1,
+      "message": "Ok, then maybe I better handle the template here, to make it independent of the installation phase.",
+      "parentUuid": "dabed58f_fc3908d9",
+      "range": {
+        "startLine": 6,
+        "startChar": 4,
+        "endLine": 6,
+        "endChar": 10
+      },
+      "revId": "5cec8ad14e27974b3434b4bae5b9f823d92b0bd7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dabed58f_d801b93a",
         "filename": "tests/monitor.py",
         "patchSetId": 1
@@ -179,6 +203,30 @@
       "side": 1,
       "message": "See line 44 and 131. We can pass this param as args of command.",
       "parentUuid": "dabed58f_ab9268f4",
+      "range": {
+        "startLine": 71,
+        "startChar": 17,
+        "endLine": 71,
+        "endChar": 30
+      },
+      "revId": "5cec8ad14e27974b3434b4bae5b9f823d92b0bd7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_4bd8751d",
+        "filename": "tests/monitor.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2017-02-27T18:28:00Z",
+      "side": 1,
+      "message": "Ok, I will modify it",
+      "parentUuid": "dabed58f_bc3390f5",
       "range": {
         "startLine": 71,
         "startChar": 17,
@@ -321,6 +369,30 @@
       "side": 1,
       "message": "OK, and maybe using \u0027request\u0027 would be better to show HTTP level alignment rather than vitrage cli.",
       "parentUuid": "dabed58f_8bc1a4e6",
+      "range": {
+        "startLine": 117,
+        "startChar": 38,
+        "endLine": 117,
+        "endChar": 42
+      },
+      "revId": "5cec8ad14e27974b3434b4bae5b9f823d92b0bd7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_eb04c97f",
+        "filename": "tests/monitor.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2017-02-27T18:28:00Z",
+      "side": 1,
+      "message": "Ok, but if I understand correctly it will require a modification in Vitrage API first",
+      "parentUuid": "dabed58f_dc30c4ea",
       "range": {
         "startLine": 117,
         "startChar": 38,
