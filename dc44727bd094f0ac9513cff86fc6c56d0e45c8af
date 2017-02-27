@@ -51,6 +51,24 @@
       "revId": "dc44727bd094f0ac9513cff86fc6c56d0e45c8af",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_683a1fcf",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2017-02-27T03:36:56Z",
+      "side": 1,
+      "message": "Modular is not limited to separating code into files and function. It emphasis more on using each module independently.\n\nSo I guess we should be able to run only the prepare image step instead of the whole procedure after refactoring.",
+      "parentUuid": "dabed58f_e5bcfa6e",
+      "revId": "dc44727bd094f0ac9513cff86fc6c56d0e45c8af",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
