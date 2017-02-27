@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dabed58f_4574e6fc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2017-02-27T01:03:53Z",
+      "side": 1,
+      "message": "Better to copy the long term plan to JIRA ticket instead of commit message, or leave it in gerrit comments.\n\nA commit message should be reflecting the purpose and content of the current commit, not an overall plan.",
+      "revId": "dc44727bd094f0ac9513cff86fc6c56d0e45c8af",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_a5d122cf",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2017-02-27T01:03:53Z",
+      "side": 1,
+      "message": "I think you should have something like `python prepare_image.py` or `python -m doctor-image` instead of a single main entry point.\n\nOne motivation of moving to Python is to make it modular and easy to test part by part.",
+      "revId": "dc44727bd094f0ac9513cff86fc6c56d0e45c8af",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
