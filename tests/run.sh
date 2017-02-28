@@ -430,6 +430,17 @@ cleanup() {
 
     cleanup_installer
     cleanup_inspector
+
+    # NOTE: Temporal log printer.
+    for f in $(find . -name '*.log')
+    do
+        echo
+        echo "[$f]"
+        echo "----------------------------------------------------------------"
+        cat $f
+        echo "----------------------------------------------------------------"
+        echo
+    done
 }
 
 # Main process
