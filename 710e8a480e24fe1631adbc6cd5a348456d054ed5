@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dabed58f_19a737bf",
+        "filename": "docs/installationprocedure/feature.configuration.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2017-02-28T14:37:12Z",
+      "side": 1,
+      "message": "Minor comment: Vitrage is not \"implementing a Doctor Inspector use case\". What about \"Vitrage implements Doctor Inspector ...\"",
+      "range": {
+        "startLine": 84,
+        "startChar": 51,
+        "endLine": 85,
+        "endChar": 25
+      },
+      "revId": "710e8a480e24fe1631adbc6cd5a348456d054ed5",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
