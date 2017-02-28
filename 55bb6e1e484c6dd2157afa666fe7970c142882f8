@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dabed58f_39f23b9b",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-02-28T15:38:27Z",
+      "side": 1,
+      "message": "$f",
+      "range": {
+        "startLine": 438,
+        "startChar": 15,
+        "endLine": 438,
+        "endChar": 17
+      },
+      "revId": "55bb6e1e484c6dd2157afa666fe7970c142882f8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_59efefb0",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-02-28T15:38:27Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 440,
+        "startChar": 12,
+        "endLine": 440,
+        "endChar": 14
+      },
+      "revId": "55bb6e1e484c6dd2157afa666fe7970c142882f8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
