@@ -430,6 +430,15 @@ cleanup() {
 
     cleanup_installer
     cleanup_inspector
+
+    # NOTE: Temporal log printer.
+    for f in $(find . -name '*.log')
+    do
+        echo
+        echo "[$f]"
+        sed -e 's/^/ | /' $f
+        echo
+    done
 }
 
 # Main process
