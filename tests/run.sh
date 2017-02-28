@@ -430,6 +430,17 @@ cleanup() {
 
     cleanup_installer
     cleanup_inspector
+
+    # NOTE: Temporal log printer.
+    for f in *.log
+    do
+        echo
+        echo "[$i]"
+        echo "----------------------------------------------------------------"
+        cat $i
+        echo "----------------------------------------------------------------"
+        echo
+    done
 }
 
 # Main process
