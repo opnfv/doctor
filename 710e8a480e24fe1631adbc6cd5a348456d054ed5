@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dabed58f_440cdf42",
+        "filename": "docs/installationprocedure/feature.configuration.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2017-03-02T17:35:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dabed58f_19a737bf",
+      "range": {
+        "startLine": 84,
+        "startChar": 51,
+        "endLine": 85,
+        "endChar": 25
+      },
+      "revId": "710e8a480e24fe1631adbc6cd5a348456d054ed5",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dabed58f_df889fe9",
         "filename": "docs/installationprocedure/feature.configuration.rst",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-03-01T08:58:45Z",
       "side": 1,
       "message": "Could you please include few words on the Doctor Driver / Post Event API in Vitrage, e.g. doctor driver has been enabled by default from Ocata release.\n\nhttps://github.com/openstack/vitrage/blob/stable/ocata/devstack/settings\n\nThanks.",
+      "range": {
+        "startLine": 90,
+        "startChar": 49,
+        "endLine": 91,
+        "endChar": 73
+      },
+      "revId": "710e8a480e24fe1631adbc6cd5a348456d054ed5",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_6409e330",
+        "filename": "docs/installationprocedure/feature.configuration.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2017-03-02T17:35:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dabed58f_df889fe9",
       "range": {
         "startLine": 90,
         "startChar": 49,
