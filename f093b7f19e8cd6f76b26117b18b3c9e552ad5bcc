@@ -1,0 +1,8 @@
+Verified+1: jenkins-ci <jenkins-opnfv-ci@opnfv.org>
+Code-Review+2: Carlos Goncalves <carlos.goncalves@neclab.eu>
+Code-Review+2: Gerald Kunzmann <kunzmann@docomolab-euro.com>
+Submitted-by: Carlos Goncalves <carlos.goncalves@neclab.eu>
+Submitted-at: Thu, 02 Mar 2017 10:58:53 +0000
+Reviewed-on: https://gerrit.opnfv.org/gerrit/29489
+Project: doctor
+Branch: refs/heads/master
