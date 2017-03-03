@@ -17,9 +17,9 @@ import os
 import threading
 import time
 
+from keystoneauth1.identity import v3
+from keystoneauth1 import session
 import novaclient.client as novaclient
-
-import nova_force_down
 
 LOG = doctor_log.Logger('doctor_inspector').getLogger()
 
@@ -39,7 +39,7 @@ class ThreadedResetState(threading.Thread):
 
 class DoctorInspectorSample(object):
 
-    NOVA_API_VERSION = '2.11'
+    NOVA_API_VERSION = '2.34'
     NUMBER_OF_CLIENTS = 50
     # TODO(tojuvone): This could be enhanced in future with dynamic
     # reuse of self.novaclients when all threads in use and
@@ -49,14 +49,18 @@ class DoctorInspectorSample(object):
     def __init__(self):
         self.servers = collections.defaultdict(list)
         self.novaclients = list()
+        auth = v3.Password(auth_url=os.environ['OS_AUTH_URL'],
+                           username=os.environ['OS_USERNAME'],
+                           password=os.environ['OS_PASSWORD'],
+                           user_domain_name=os.environ['OS_USER_DOMAIN_NAME'],
+                           project_name=os.environ['OS_PROJECT_NAME'],
+                           project_domain_name=os.environ['OS_PROJECT_DOMAIN_NAME'])
+        sess=session.Session(auth=auth)
         # Pool of novaclients for redundant usage
         for i in range(self.NUMBER_OF_CLIENTS):
-            self.novaclients.append(novaclient.Client(self.NOVA_API_VERSION,
-                                    os.environ['OS_USERNAME'],
-                                    os.environ['OS_PASSWORD'],
-                                    os.environ['OS_TENANT_NAME'],
-                                    os.environ['OS_AUTH_URL'],
-                                    connection_pool=True))
+            self.novaclients.append(
+                novaclient.Client(self.NOVA_API_VERSION, session=sess,
+                                  connection_pool=True))
         # Normally we use this client for non redundant API calls
         self.nova=self.novaclients[0]
         self.nova.servers.list(detailed=False)
@@ -87,14 +91,7 @@ class DoctorInspectorSample(object):
             threads.append(t)
         for t in threads:
             t.join()
-        # NOTE: We use our own client here instead of this novaclient for a
-        #       workaround.  Once keystone provides v2.1 nova api endpoint
-        #       in the service catalog which is configured by OpenStack
-        #       installer, we can use this:
-        #
-        # self.nova.services.force_down(hostname, 'nova-compute', True)
-        #
-        nova_force_down.force_down(hostname)
+        self.nova.services.force_down(hostname, 'nova-compute', True)
         LOG.info('doctor mark host(%s) down at %s' % (hostname, time.time()))
 
 

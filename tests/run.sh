@@ -21,8 +21,9 @@ VM_BASENAME=doctor_vm
 VM_FLAVOR=m1.tiny
 #if VM_COUNT set, use that instead
 VM_COUNT=${VM_COUNT:-1}
+NET_NAME=doctor_net
+NET_CIDR=192.168.168.0/24
 ALARM_BASENAME=doctor_alarm
-INSPECTOR_PORT=12345
 CONSUMER_PORT=12346
 DOCTOR_USER=doctor
 DOCTOR_PW=doctor
@@ -34,7 +35,10 @@ PROFILER_TYPE=${PROFILER_TYPE:-none}
 TOP_DIR=$(cd $(dirname "$0") && pwd)
 
 as_doctor_user="--os-username $DOCTOR_USER --os-password $DOCTOR_PW
-                --os-tenant-name $DOCTOR_PROJECT"
+                --os-project-name $DOCTOR_PROJECT --os-tenant-name $DOCTOR_PROJECT"
+# NOTE: ceilometer command still requires '--os-tenant-name'.
+#ceilometer="ceilometer ${as_doctor_user/--os-project-name/--os-tenant-name}"
+ceilometer="ceilometer $as_doctor_user"
 
 
 # Functions
@@ -110,17 +114,17 @@ create_test_user() {
         openstack user create "$DOCTOR_USER" --password "$DOCTOR_PW" \
                               --project "$DOCTOR_PROJECT"
     }
-    openstack user role list "$DOCTOR_USER" --project "$DOCTOR_PROJECT" \
-    | grep -q " $DOCTOR_ROLE " || {
-        openstack role add "$DOCTOR_ROLE" --user "$DOCTOR_USER" \
-                           --project "$DOCTOR_PROJECT"
+    openstack role show "$DOCTOR_ROLE" || {
+        openstack role create "$DOCTOR_ROLE"
     }
+    openstack role add "$DOCTOR_ROLE" --user "$DOCTOR_USER" \
+                       --project "$DOCTOR_PROJECT"
     # tojuvone: openstack quota show is broken and have to use nova
     # https://bugs.launchpad.net/manila/+bug/1652118
     # Note! while it is encouraged to use openstack client it has proven
     # quite buggy.
     # QUOTA=$(openstack quota show $DOCTOR_PROJECT)
-    DOCTOR_QUOTA=$(nova quota-show --tenant DOCTOR_PROJECT)
+    DOCTOR_QUOTA=$(nova quota-show --tenant $DOCTOR_PROJECT)
     # We make sure that quota allows number of instances and cores
     OLD_INSTANCE_QUOTA=$(echo "${DOCTOR_QUOTA}" | grep " instances " | \
                          awk '{print $4}')
@@ -138,26 +142,35 @@ create_test_user() {
 
 boot_vm() {
     # test VM done with test user, so can test non-admin
+
+    if ! openstack $as_doctor_user network show $NET_NAME; then
+        openstack $as_doctor_user network create $NET_NAME
+    fi
+    if ! openstack $as_doctor_user subnet show $NET_NAME; then
+        openstack $as_doctor_user subnet create $NET_NAME \
+            --network $NET_NAME --subnet-range $NET_CIDR --no-dhcp
+    fi
+    net_id=$(openstack $as_doctor_user network show $NET_NAME -f value -c id)
+
     servers=$(openstack $as_doctor_user server list)
     for i in `seq $VM_COUNT`; do
         echo "${servers}" | grep -q " $VM_BASENAME$i " && continue
         openstack $as_doctor_user server create --flavor "$VM_FLAVOR" \
-                            --image "$IMAGE_NAME" \
-                            "$VM_BASENAME$i"
+            --image "$IMAGE_NAME" --nic net-id=$net_id "$VM_BASENAME$i"
     done
     sleep 1
 }
 
 create_alarm() {
     # get vm_id as test user
-    alarm_list=$(ceilometer $as_doctor_user alarm-list)
+    alarm_list=$($ceilometer alarm-list)
     vms=$(openstack $as_doctor_user server list)
     for i in `seq $VM_COUNT`; do
         echo "${alarm_list}" | grep -q " $ALARM_BASENAME$i " || {
             vm_id=$(echo "${vms}" | grep " $VM_BASENAME$i " | awk '{print $2}')
             # TODO(r-mibu): change notification endpoint from localhost to the
             # consumer. IP address (functest container).
-            ceilometer $as_doctor_user alarm-event-create \
+            $ceilometer alarm-event-create \
                        --name "$ALARM_BASENAME$i" \
                        --alarm-action "http://localhost:$CONSUMER_PORT/failure" \
                        --description "VM failure" \
@@ -174,7 +187,7 @@ create_alarm() {
 start_monitor() {
     pgrep -f "python monitor.py" && return 0
     sudo -E python monitor.py "$COMPUTE_HOST" "$COMPUTE_IP" "$INSPECTOR_TYPE" \
-        "http://127.0.0.1:$INSPECTOR_PORT/events" > monitor.log 2>&1 &
+        > monitor.log 2>&1 &
 }
 
 stop_monitor() {
@@ -300,19 +313,6 @@ calculate_notification_time() {
         }'
 }
 
-wait_ping() {
-    local interval=5
-    local rounds=$(($1 / $interval))
-    for i in `seq $rounds`; do
-        ping -c 1 "$COMPUTE_IP"
-        if [[ $? -ne 0 ]] ; then
-            sleep $interval
-            continue
-        fi
-        return 0
-    done
-}
-
 check_host_status() {
     # Check host related to first Doctor VM is in wanted state
     # $1    Expected state
@@ -340,25 +340,36 @@ check_host_status() {
 }
 
 unset_forced_down_hosts() {
-    for host in $(openstack compute service list --service nova-compute \
-                  -f value -c Host -c State | sed -n -e '/down$/s/ *down$//p')
+    # for debug
+    openstack compute service list --service nova-compute
+
+    downed_computes=$(openstack compute service list --service nova-compute \
+                      -f value -c Host -c State | grep ' down$' \
+                      | sed -e 's/ *down$//')
+    echo "downed_computes: $downed_computes"
+    for host in $downed_computes
     do
-        # TODO (r-mibu): make sample inspector use keystone v3 api
-        OS_AUTH_URL=${OS_AUTH_URL/v3/v2.0} \
-        python ./nova_force_down.py $host --unset
+        # TODO(r-mibu): use openstack client
+        #openstack compute service set --up $host nova-compute
+        nova service-force-down --unset $host nova-compute
     done
 
     echo "waiting disabled compute host back to be enabled..."
     wait_until 'openstack compute service list --service nova-compute
                 -f value -c State | grep -q down' 240 5
+
+    for host in $downed_computes
+    do
+        # TODO(r-mibu): improve 'get_compute_ip_from_hostname'
+        get_compute_ip_from_hostname $host
+        wait_until "! ping -c 1 $COMPUTE_IP" 120 5
+    done
 }
 
 collect_logs() {
-    unset_forced_down_hosts
-    # TODO: We need to make sure the target compute host is back to IP
-    #       reachable. wait_ping() will be added by tojuvone .
-    sleep 110
-    scp $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP:disable_network.log" .
+    if [[ -n "$COMPUTE_IP" ]];then
+        scp $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP:disable_network.log" .
+    fi
 
     # TODO(yujunz) collect other logs, e.g. nova, aodh
 }
@@ -398,10 +409,8 @@ cleanup() {
     stop_consumer
 
     unset_forced_down_hosts
+    collect_logs
 
-    wait_ping 120
-
-    scp $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP:disable_network.log" .
     vms=$(openstack $as_doctor_user server list)
     vmstodel=""
     for i in `seq $VM_COUNT`; do
@@ -409,12 +418,15 @@ cleanup() {
         vmstodel+=" $VM_BASENAME$i"
     done
     [[ $vmstodel ]] && openstack $as_doctor_user server delete $vmstodel
-    alarm_list=$(ceilometer $as_doctor_user alarm-list)
+    alarm_list=$($ceilometer alarm-list)
     for i in `seq $VM_COUNT`; do
         alarm_id=$(echo "${alarm_list}" | grep " $ALARM_BASENAME$i " |
                    awk '{print $2}')
-        [ -n "$alarm_id" ] && ceilometer $as_doctor_user alarm-delete "$alarm_id"
+        [ -n "$alarm_id" ] && $ceilometer alarm-delete "$alarm_id"
     done
+    openstack $as_doctor_user subnet delete $NET_NAME
+    sleep 1
+    openstack $as_doctor_user network delete $NET_NAME
     sleep 1
 
     image_id=$(openstack image list | grep " $IMAGE_NAME " | awk '{print $2}')
@@ -427,6 +439,8 @@ cleanup() {
                               --project "$DOCTOR_PROJECT"
     openstack project delete "$DOCTOR_PROJECT"
     openstack user delete "$DOCTOR_USER"
+    # NOTE: remove role only for doctor test.
+    #openstack role delete "$DOCTOR_ROLE"
 
     cleanup_installer
     cleanup_inspector
@@ -481,6 +495,7 @@ inject_failure
 
 check_host_status "(DOWN|UNKNOWN)" 60
 calculate_notification_time
+unset_forced_down_hosts
 collect_logs
 run_profiler
 
