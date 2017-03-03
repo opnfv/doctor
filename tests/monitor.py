@@ -40,11 +40,12 @@ class DoctorMonitorSample(object):
             raise Exception("Inspector type '%s' not supported", args.inspector_type)
 
         self.hostname = args.hostname
-        self.inspector_url = args.inspector_url
         self.inspector_type = args.inspector_type
         self.ip_addr = args.ip or socket.gethostbyname(self.hostname)
 
-        if self.inspector_type == 'congress':
+        if self.inspector_type == 'sample':
+            self.inspector_url = 'http://127.0.0.1:12345/events'
+        elif self.inspector_type == 'congress':
             auth = v2.Password(auth_url=os.environ['OS_AUTH_URL'],
                                username=os.environ['OS_USERNAME'],
                                password=os.environ['OS_PASSWORD'],
@@ -114,9 +115,6 @@ def get_args():
     parser.add_argument('inspector_type', metavar='INSPECTOR_TYPE', type=str, nargs='?',
                         help='inspector to report',
                         default='sample')
-    parser.add_argument('inspector_url', metavar='INSPECTOR_URL', type=str, nargs='?',
-                        help='inspector url to report error',
-                        default='http://127.0.0.1:12345/events')
     return parser.parse_args()
 
 
