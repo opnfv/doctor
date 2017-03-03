@@ -21,6 +21,8 @@ VM_BASENAME=doctor_vm
 VM_FLAVOR=m1.tiny
 #if VM_COUNT set, use that instead
 VM_COUNT=${VM_COUNT:-1}
+NET_NAME=doctor_net
+NET_CIDR=192.168.168.0/24
 ALARM_BASENAME=doctor_alarm
 INSPECTOR_PORT=12345
 CONSUMER_PORT=12346
@@ -120,7 +122,7 @@ create_test_user() {
     # Note! while it is encouraged to use openstack client it has proven
     # quite buggy.
     # QUOTA=$(openstack quota show $DOCTOR_PROJECT)
-    DOCTOR_QUOTA=$(nova quota-show --tenant DOCTOR_PROJECT)
+    DOCTOR_QUOTA=$(nova quota-show --tenant $DOCTOR_PROJECT)
     # We make sure that quota allows number of instances and cores
     OLD_INSTANCE_QUOTA=$(echo "${DOCTOR_QUOTA}" | grep " instances " | \
                          awk '{print $4}')
@@ -138,12 +140,21 @@ create_test_user() {
 
 boot_vm() {
     # test VM done with test user, so can test non-admin
+
+    if ! openstack $as_doctor_user network show $NET_NAME; then
+        openstack $as_doctor_user network create $NET_NAME
+    fi
+    if ! openstack $as_doctor_user subnet show $NET_NAME; then
+        openstack $as_doctor_user subnet create $NET_NAME \
+            --network $NET_NAME --no-dhcp
+    fi
+    net_id=$(openstack $as_doctor_user network show $NET_NAME -f value -c id)
+
     servers=$(openstack $as_doctor_user server list)
     for i in `seq $VM_COUNT`; do
         echo "${servers}" | grep -q " $VM_BASENAME$i " && continue
         openstack $as_doctor_user server create --flavor "$VM_FLAVOR" \
-                            --image "$IMAGE_NAME" \
-                            "$VM_BASENAME$i"
+            --image "$IMAGE_NAME" --nic net-id=$net_id "$VM_BASENAME$i"
     done
     sleep 1
 }
@@ -300,19 +311,6 @@ calculate_notification_time() {
         }'
 }
 
-wait_ping() {
-    local interval=5
-    local rounds=$(($1 / $interval))
-    for i in `seq $rounds`; do
-        ping -c 1 "$COMPUTE_IP"
-        if [[ $? -ne 0 ]] ; then
-            sleep $interval
-            continue
-        fi
-        return 0
-    done
-}
-
 check_host_status() {
     # Check host related to first Doctor VM is in wanted state
     # $1    Expected state
@@ -340,8 +338,11 @@ check_host_status() {
 }
 
 unset_forced_down_hosts() {
-    for host in $(openstack compute service list --service nova-compute \
-                  -f value -c Host -c State | sed -n -e '/down$/s/ *down$//p')
+    downed_computes=$(openstack compute service list --service nova-compute \
+                      -f value -c Host -c State | grep ' down$' \
+                      | sed -e 's/ *down$//')
+    echo "downed_computes: $downed_computes"
+    for host in "$downed_computes"
     do
         # TODO (r-mibu): make sample inspector use keystone v3 api
         OS_AUTH_URL=${OS_AUTH_URL/v3/v2.0} \
@@ -351,13 +352,14 @@ unset_forced_down_hosts() {
     echo "waiting disabled compute host back to be enabled..."
     wait_until 'openstack compute service list --service nova-compute
                 -f value -c State | grep -q down' 240 5
+
+    for host in "$downed_computes"
+    do
+        wait_until "! ping -c 1 $host" 120 5
+    done
 }
 
 collect_logs() {
-    unset_forced_down_hosts
-    # TODO: We need to make sure the target compute host is back to IP
-    #       reachable. wait_ping() will be added by tojuvone .
-    sleep 110
     scp $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP:disable_network.log" .
 
     # TODO(yujunz) collect other logs, e.g. nova, aodh
@@ -399,8 +401,6 @@ cleanup() {
 
     unset_forced_down_hosts
 
-    wait_ping 120
-
     scp $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP:disable_network.log" .
     vms=$(openstack $as_doctor_user server list)
     vmstodel=""
@@ -415,6 +415,9 @@ cleanup() {
                    awk '{print $2}')
         [ -n "$alarm_id" ] && ceilometer $as_doctor_user alarm-delete "$alarm_id"
     done
+    openstack $as_doctor_user subnet delete $NET_NAME
+    sleep 1
+    openstack $as_doctor_user network delete $NET_NAME
     sleep 1
 
     image_id=$(openstack image list | grep " $IMAGE_NAME " | awk '{print $2}')
@@ -481,6 +484,7 @@ inject_failure
 
 check_host_status "(DOWN|UNKNOWN)" 60
 calculate_notification_time
+unset_forced_down_hosts
 collect_logs
 run_profiler
 
