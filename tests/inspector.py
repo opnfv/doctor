@@ -17,6 +17,8 @@ import os
 import threading
 import time
 
+from keystoneauth1.identity import v3
+from keystoneauth1 import session
 import novaclient.client as novaclient
 
 import nova_force_down
@@ -49,13 +51,16 @@ class DoctorInspectorSample(object):
     def __init__(self):
         self.servers = collections.defaultdict(list)
         self.novaclients = list()
+        auth = v3.Password(auth_url=os.environ['OS_AUTH_URL'],
+                           username=os.environ['OS_USERNAME'],
+                           password=os.environ['OS_PASSWORD'],
+                           project_name=os.environ['OS_PROJECT_NAME'],
+                           user_domain_id=os.environ['OS_USER_DOMAIN_NAME'],
+                           project_domain_id=os.environ['OS_PROJECT_DOMAIN_NAME'])
         # Pool of novaclients for redundant usage
         for i in range(self.NUMBER_OF_CLIENTS):
             self.novaclients.append(novaclient.Client(self.NOVA_API_VERSION,
-                                    os.environ['OS_USERNAME'],
-                                    os.environ['OS_PASSWORD'],
-                                    os.environ['OS_TENANT_NAME'],
-                                    os.environ['OS_AUTH_URL'],
+                                    session=session.Session(auth=auth),
                                     connection_pool=True))
         # Normally we use this client for non redundant API calls
         self.nova=self.novaclients[0]
