@@ -120,7 +120,7 @@ create_test_user() {
     # Note! while it is encouraged to use openstack client it has proven
     # quite buggy.
     # QUOTA=$(openstack quota show $DOCTOR_PROJECT)
-    DOCTOR_QUOTA=$(nova quota-show --tenant DOCTOR_PROJECT)
+    DOCTOR_QUOTA=$(nova quota-show --tenant $DOCTOR_PROJECT)
     # We make sure that quota allows number of instances and cores
     OLD_INSTANCE_QUOTA=$(echo "${DOCTOR_QUOTA}" | grep " instances " | \
                          awk '{print $4}')
@@ -142,7 +142,7 @@ boot_vm() {
     for i in `seq $VM_COUNT`; do
         echo "${servers}" | grep -q " $VM_BASENAME$i " && continue
         openstack $as_doctor_user server create --flavor "$VM_FLAVOR" \
-                            --image "$IMAGE_NAME" \
+                            --image "$IMAGE_NAME" --nic auto \
                             "$VM_BASENAME$i"
     done
     sleep 1
@@ -300,19 +300,6 @@ calculate_notification_time() {
         }'
 }
 
-wait_ping() {
-    local interval=5
-    local rounds=$(($1 / $interval))
-    for i in `seq $rounds`; do
-        ping -c 1 "$COMPUTE_IP"
-        if [[ $? -ne 0 ]] ; then
-            sleep $interval
-            continue
-        fi
-        return 0
-    done
-}
-
 check_host_status() {
     # Check host related to first Doctor VM is in wanted state
     # $1    Expected state
@@ -340,8 +327,9 @@ check_host_status() {
 }
 
 unset_forced_down_hosts() {
-    for host in $(openstack compute service list --service nova-compute \
-                  -f value -c Host -c State | sed -n -e '/down$/s/ *down$//p')
+    downed_computes=$(openstack compute service list --service nova-compute \
+                      -f value -c Host -c State | sed -n -e '/down$/s/ *down$//p')
+    for host in $downed_computes
     do
         # TODO (r-mibu): make sample inspector use keystone v3 api
         OS_AUTH_URL=${OS_AUTH_URL/v3/v2.0} \
@@ -351,13 +339,14 @@ unset_forced_down_hosts() {
     echo "waiting disabled compute host back to be enabled..."
     wait_until 'openstack compute service list --service nova-compute
                 -f value -c State | grep -q down' 240 5
+
+    for host in $downed_computes
+    do
+        wait_until "! ping -c 1 $host" 120 5
+    done
 }
 
 collect_logs() {
-    unset_forced_down_hosts
-    # TODO: We need to make sure the target compute host is back to IP
-    #       reachable. wait_ping() will be added by tojuvone .
-    sleep 110
     scp $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP:disable_network.log" .
 
     # TODO(yujunz) collect other logs, e.g. nova, aodh
@@ -398,8 +387,6 @@ cleanup() {
     stop_consumer
 
     unset_forced_down_hosts
-
-    wait_ping 120
 
     scp $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP:disable_network.log" .
     vms=$(openstack $as_doctor_user server list)
@@ -481,6 +468,7 @@ inject_failure
 
 check_host_status "(DOWN|UNKNOWN)" 60
 calculate_notification_time
+unset_forced_down_hosts
 collect_logs
 run_profiler
 
