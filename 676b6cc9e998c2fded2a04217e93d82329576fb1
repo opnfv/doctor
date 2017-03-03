@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dabed58f_221afb17",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2017-03-03T09:07:10Z",
+      "side": 1,
+      "message": "do we need to call this here? isn\u0027t it enough to have it in the cleanup() ?",
+      "range": {
+        "startLine": 471,
+        "startChar": 0,
+        "endLine": 471,
+        "endChar": 23
+      },
+      "revId": "676b6cc9e998c2fded2a04217e93d82329576fb1",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
