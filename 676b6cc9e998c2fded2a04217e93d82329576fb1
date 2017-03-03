@@ -22,6 +22,30 @@
       "revId": "676b6cc9e998c2fded2a04217e93d82329576fb1",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_7da09690",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-03-03T17:09:26Z",
+      "side": 1,
+      "message": "yes, we need this here in order to make sure that this script can reach downed compute hosts and collect logs in the next line.",
+      "parentUuid": "dabed58f_221afb17",
+      "range": {
+        "startLine": 471,
+        "startChar": 0,
+        "endLine": 471,
+        "endChar": 23
+      },
+      "revId": "676b6cc9e998c2fded2a04217e93d82329576fb1",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
