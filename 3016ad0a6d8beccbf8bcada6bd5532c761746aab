@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dabed58f_224e7bc2",
+        "filename": "docs/release/configguide/feature.configuration.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2017-03-03T13:06:35Z",
+      "side": 1,
+      "message": "s/datasources/datasource/   or change s/is/are/",
+      "range": {
+        "startLine": 97,
+        "startChar": 20,
+        "endLine": 97,
+        "endChar": 31
+      },
+      "revId": "3016ad0a6d8beccbf8bcada6bd5532c761746aab",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
