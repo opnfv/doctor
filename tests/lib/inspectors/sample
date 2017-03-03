@@ -1,9 +1,9 @@
 #!/bin/bash
 
+INSPECTOR_PORT=${INSPECTOR_PORT:-12345}
+
 function start_inspector_sample {
     pgrep -f "python inspector.py" && return 0
-    # TODO (r-mibu): make sample inspector use keystone v3 api
-    OS_AUTH_URL=${OS_AUTH_URL/v3/v2.0} \
     python inspector.py "$INSPECTOR_PORT" > inspector.log 2>&1 &
 }
 
