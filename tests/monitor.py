@@ -18,8 +18,8 @@ import sys
 import time
 
 from congressclient.v1 import client
-from keystoneclient import session as ksc_session
-from keystoneclient.auth.identity import v2
+
+import identity_auth
 
 # NOTE: icmp message with all zero data (checksum = 0xf7ff)
 #       see https://tools.ietf.org/html/rfc792
@@ -28,6 +28,7 @@ ICMP_ECHO_MESSAGE = '\x08\x00\xf7\xff\x00\x00\x00\x00'
 SUPPORTED_INSPECTOR_TYPES = ['sample', 'congress']
 
 LOG = doctor_log.Logger('doctor_monitor').getLogger()
+
 
 class DoctorMonitorSample(object):
 
@@ -46,13 +47,9 @@ class DoctorMonitorSample(object):
         if self.inspector_type == 'sample':
             self.inspector_url = 'http://127.0.0.1:12345/events'
         elif self.inspector_type == 'congress':
-            auth = v2.Password(auth_url=os.environ['OS_AUTH_URL'],
-                               username=os.environ['OS_USERNAME'],
-                               password=os.environ['OS_PASSWORD'],
-                               tenant_name=os.environ['OS_TENANT_NAME'])
-            self.session = ksc_session.Session(auth=auth)
-
-            congress = client.Client(session=self.session, service_type='policy')
+            auth=identity_auth.get_identity_auth()
+            sess=session.Session(auth=auth)
+            congress = client.Client(session=sess, service_type='policy')
             ds = congress.list_datasources()['results']
             doctor_ds = next((item for item in ds if item['driver'] == 'doctor'),
                              None)
