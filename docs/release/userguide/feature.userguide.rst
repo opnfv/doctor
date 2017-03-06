@@ -3,6 +3,23 @@
 
 Doctor capabilities and usage
 =============================
+
+:numref:`figure1` shows the currently implemented and tested architecture of
+Doctor. The implementation is based on OpenStack and related components. The
+Monitor can be realized by a sample Python-based implementation provided in the
+Doctor code repository. The Controller is realized by OpenStack Nova, Neutron
+and Cinder for compute, network and storage, respectively. The Inspector can be
+realized by OpenStack Congress or a sample Python-based implementation also
+available in the code repository of Doctor. The Notifier is realized by
+OpenStack Aodh.
+
+.. figure:: images/figure1.png
+   :name: figure1
+   :width: 100%
+
+   Implemented and tested architecture
+
+
 Immediate Notification
 ----------------------
 

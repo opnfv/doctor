@@ -204,7 +204,7 @@ b) Response to the query request with information about the current state of
    :name: figure10
    :width: 100%
 
-   NFVI Maintenance implementation plan
+   NFVI Maintenance scenario
 
 :numref:`figure10` shows a more detailed message flow (Steps 3 to 6 and 9)
 between the 4 building blocks introduced in Section 5.1..
@@ -228,77 +228,6 @@ between the 4 building blocks introduced in Section 5.1..
 9. The Controller informs the Administrator after the physical resources have
    been freed.
 
-
-
-Implementation plan for OPNFV Release 1
----------------------------------------
-
-Fault management
-^^^^^^^^^^^^^^^^
-
-:numref:`figure11` shows the implementation plan based on OpenStack and
-related components as planned for Release 1. Hereby, the Monitor can be realized
-by Zabbix. The Controller is realized by OpenStack Nova [NOVA]_, Neutron
-[NEUT]_, and Cinder [CIND]_ for compute, network, and storage,
-respectively. The Inspector can be realized by Monasca [MONA]_ or a simple
-script querying Nova in order to map between physical and virtual resources. The
-Notifier will be realized by Ceilometer [CEIL]_ receiving failure events
-on its notification bus.
-
-:numref:`figure12` shows the inner-workings of Ceilometer. After receiving
-an "event" on its notification bus, first a notification agent will grab the
-event and send a "notification" to the Collector. The collector writes the
-notifications received to the Ceilometer databases.
-
-In the existing Ceilometer implementation, an alarm evaluator is periodically
-polling those databases through the APIs provided. If it finds new alarms, it
-will evaluate them based on the pre-defined alarm configuration, and depending
-on the configuration, it will hand a message to the Alarm Notifier, which in
-turn will send the alarm message northbound to the Consumer. :numref:`figure12`
-also shows an optimized work flow for Ceilometer with the goal to
-reduce the delay for fault notifications to the Consumer. The approach is to
-implement a new notification agent (called "publisher" in Ceilometer
-terminology) which is directly sending the alarm through the "Notification Bus"
-to a new "Notification-driven Alarm Evaluator (NAE)" (see Sections 5.6.2 and
-5.6.3), thereby bypassing the Collector and avoiding the additional delay of the
-existing polling-based alarm evaluator. The NAE is similar to the OpenStack
-"Alarm Evaluator", but is triggered by incoming notifications instead of
-periodically polling the OpenStack "Alarms" database for new alarms. The
-Ceilometer "Alarms" database can hold three states: "normal", "insufficient
-data", and "fired". It is representing a persistent alarm database. In order to
-realize the Doctor requirements, we need to define new "meters" in the database
-(see Section 5.6.1).
-
-.. figure:: images/figure11.png
-   :name: figure11
-   :width: 100%
-
-   Implementation plan in OpenStack (OPNFV Release 1 ”Arno”)
-
-
-.. figure:: images/figure12.png
-   :name: figure12
-   :width: 100%
-
-   Implementation plan in Ceilometer architecture
-
-
-NFVI Maintenance
-^^^^^^^^^^^^^^^^
-
-For NFVI Maintenance, a quite similar implementation plan exists. Instead of a
-raw fault being observed by the Monitor, the Administrator is sending a
-Maintenance Request through the northbound interface towards the Controller
-residing in the VIM. Similar to the Fault Management use case, the Controller
-(in our case OpenStack Nova) will send a maintenance event to the Notifier (i.e.
-Ceilometer in our implementation). Within Ceilometer, the same workflow as
-described in the previous section applies. In addition, the Controller(s) will
-take appropriate actions to evacuate the physical machines in order to prepare
-them for the planned maintenance operation. After the physical machines are
-emptied, the Controller will inform the Administrator that it can initiate the
-maintenance. Alternatively the VMs can just be shut down and boot up on the
-same host after maintenance is over. There needs to be policy for administrator
-to know the plan for VMs in maintenance.
 
 Information elements
 --------------------
@@ -889,55 +818,62 @@ Event Publisher for Alarm  (Ceilometer) [*]_
 
 **Problem statement:**
 
-  The existing "Alarm Evaluator" in OpenStack Ceilometer is periodically
-  querying/polling the databases in order to check all alarms independently from
-  other processes. This is adding additional delay to the fault notification
-  send to the Consumer, whereas one requirement of Doctor is to react on faults
-  as fast as possible.
+The existing "Alarm Evaluator" in OpenStack Ceilometer is periodically
+querying/polling the databases in order to check all alarms independently from
+other processes. This is adding additional delay to the fault notification
+send to the Consumer, whereas one requirement of Doctor is to react on faults
+as fast as possible.
 
-  The existing message flow is shown in :numref:`figure12`: after receiving
-  an "event", a "notification agent" (i.e. "event publisher") will send a
-  "notification" to a "Collector". The "collector" is collecting the
-  notifications and is updating the Ceilometer "Meter" database that is storing
-  information about the "sample" which is capured from original "event". The
-  "Alarm Evaluator" is periodically polling this databases then querying "Meter"
-  database based on each alarm configuration.
+The existing message flow is shown in :numref:`figure12`: after receiving
+an "event", a "notification agent" (i.e. "event publisher") will send a
+"notification" to a "Collector". The "collector" is collecting the
+notifications and is updating the Ceilometer "Meter" database that is storing
+information about the "sample" which is capured from original "event". The
+"Alarm Evaluator" is periodically polling this databases then querying "Meter"
+database based on each alarm configuration.
 
-  In the current Ceilometer implementation, there is no possibility to directly
-  trigger the "Alarm Evaluator" when a new "event" was received, but the "Alarm
-  Evaluator" will only find out that requires firing new notification to the
-  Consumer when polling the database.
+.. figure:: images/figure12.png
+   :name: figure12
+   :width: 100%
+
+   Implementation plan in Ceilometer architecture
+
+In the current Ceilometer implementation, there is no possibility to directly
+trigger the "Alarm Evaluator" when a new "event" was received, but the "Alarm
+Evaluator" will only find out that requires firing new notification to the
+Consumer when polling the database.
 
 **Change/feature request:**
 
-  This BP proposes to add a new "event publisher for alarm", which is bypassing
-  several steps in Ceilometer in order to avoid the polling-based approach of
-  the existing Alarm Evaluator that makes notification slow to users.
+This BP proposes to add a new "event publisher for alarm", which is bypassing
+several steps in Ceilometer in order to avoid the polling-based approach of
+the existing Alarm Evaluator that makes notification slow to users. See
+:numref:`figure12`.
 
-  After receiving an "(alarm) event" by listening on the Ceilometer message
-  queue ("notification bus"), the new "event publisher for alarm" immediately
-  hands a "notification" about this event to a new Ceilometer component
-  "Notification-driven alarm evaluator" proposed in the other BP (see Section
-  5.6.3).
+After receiving an "(alarm) event" by listening on the Ceilometer message
+queue ("notification bus"), the new "event publisher for alarm" immediately
+hands a "notification" about this event to a new Ceilometer component
+"Notification-driven alarm evaluator" proposed in the other BP (see Section
+5.6.3).
 
-  Note, the term "publisher" refers to an entity in the Ceilometer architecture
-  (it is a "notification agent"). It offers the capability to provide
-  notifications to other services outside of Ceilometer, but it is also used to
-  deliver notifications to other Ceilometer components (e.g. the "Collectors")
-  via the Ceilometer "notification bus".
+Note, the term "publisher" refers to an entity in the Ceilometer architecture
+(it is a "notification agent"). It offers the capability to provide
+notifications to other services outside of Ceilometer, but it is also used to
+deliver notifications to other Ceilometer components (e.g. the "Collectors")
+via the Ceilometer "notification bus".
 
 **Implementation detail**
 
-  * "Event publisher for alarm" is part of Ceilometer
-  * The standard AMQP message queue is used with a new topic string.
-  * No new interfaces have to be added to Ceilometer.
-  * "Event publisher for Alarm" can be configured by the Administrator of
-    Ceilometer to be used as "Notification Agent" in addition to the existing
-    "Notifier"
-  * Existing alarm mechanisms of Ceilometer can be used allowing users to
-    configure how to distribute the "notifications" transformed from "events",
-    e.g. there is an option whether an ongoing alarm is re-issued or not
-    ("repeat_actions").
+* "Event publisher for alarm" is part of Ceilometer
+* The standard AMQP message queue is used with a new topic string.
+* No new interfaces have to be added to Ceilometer.
+* "Event publisher for Alarm" can be configured by the Administrator of
+  Ceilometer to be used as "Notification Agent" in addition to the existing
+  "Notifier"
+* Existing alarm mechanisms of Ceilometer can be used allowing users to
+  configure how to distribute the "notifications" transformed from "events",
+  e.g. there is an option whether an ongoing alarm is re-issued or not
+  ("repeat_actions").
 
 .. [*] https://etherpad.opnfv.org/p/doctor_bps
 
