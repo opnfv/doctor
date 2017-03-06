@@ -25,15 +25,28 @@
 -
   url: https://blueprints.launchpad.net/congress/+spec/push-type-datasource-driver
   system: Launchpad
-#-
-#  url: https://review.openstack.org/#/c/314915/
-#  system: Gerrit
 -
   url: https://blueprints.launchpad.net/cinder/+spec/mark-services-down
   system: Launchpad
 -
   url: https://blueprints.launchpad.net/python-cinderclient/+spec/mark-service-down-cli
   system: Launchpad
-#-
-#  url: https://bugs.launchpad.net/neutron/+bug/1513144
-#  system: Launchpad-bug
+-
+  url: https://bugs.launchpad.net/neutron/+bug/1513144
+  system: Launchpad-bug
+-
+  url: https://review.openstack.org/314915
+  system: Gerrit
+  # shortest path
+-
+  url: https://review.openstack.org/424868/
+  system: Gerrit
+  # endswith '/'
+-
+  url: https://review.openstack.org/#/c/430428
+  system: Gerrit
+  # comment path
+-
+  url: https://review.openstack.org/424340
+  system: Gerrit
+  # WIP
