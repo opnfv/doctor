@@ -24,10 +24,44 @@ function get_controller_ips {
     die_if_not_set $LINENO CONTROLLER_IPS "No controller IPs"
 }
 
+function installer_apply_patches {
+    # TODO(r-mibu): fix the followings in upstream (apex)
+    for node in $CONTROLLER_IPS;do
+        echo "check controller configuration for doctor ($node)"
+        ssh $ssh_opts_cpu "heat-admin@$node" '
+            set -x
+            date
+            echo "### apply patches (installer=apex)"
+
+            ep_conf=/etc/ceilometer/event_pipeline.yaml
+            ep_entry="- notifier://?topic=alarm.all"
+            if sudo grep -e "$ep_entry" $ep_conf; then
+                echo "NOTE: ceilometer is configured as we needed"
+            else
+                echo "modify the ceilometer config"
+                sudo sed -i -e "$ a \ \ \ \ \ \ \ \ \ \ $ep_entry    # added by doctor script" $ep_conf
+                sudo systemctl restart openstack-ceilometer-notification.service
+            fi
+
+            co_conf=/etc/congress/congress.conf
+            co_entry="congress.datasources.doctor_driver.DoctorDriver"
+            if sudo grep -e "^drivers.*$co_entry" $co_conf; then
+                echo "NOTE: congress is configured as we needed"
+            else
+                echo "modify the congress config"
+                sudo sed -i -e "/^drivers/s/$/,$co_entry    # added by doctor script/" \
+                    $co_conf
+                sudo systemctl restart openstack-congress-server.service
+            fi
+            ' > installer_apply_patches_$node.log 2>&1
+    done
+}
+
 function setup_installer {
     get_installer_ip
     installer_get_ssh_keys
     get_controller_ips
+    installer_apply_patches
 
     # NOTE: while executing command as doctor user,
     #       'OS_PROJECT_ID' env parameter make openstack clients confused.
@@ -45,7 +79,35 @@ function get_compute_ip_from_hostname {
     die_if_not_set $LINENO COMPUTE_IP "Could get IP address of $compute_host."
 }
 
+function installer_revert_patches {
+    # TODO(r-mibu): fix the followings in upstream (apex)
+    get_controller_ips
+    for node in $CONTROLLER_IPS;do
+        echo "restore controller configuration if touched ($node)"
+        ssh $ssh_opts_cpu "heat-admin@$node" '
+            set -x
+            echo "### revert patches (installer=apex)"
+            date
+
+            co_conf=/etc/congress/congress.conf
+            co_entry="congress.datasources.doctor_driver.DoctorDriver"
+            if sudo grep -q -e "# added by doctor script" $co_conf; then
+                echo "modify the congress config"
+                sudo sed -i -e "/^drivers/s/^\(.*\),$co_entry    # added by doctor script/\1/" $co_conf
+                sudo systemctl restart openstack-congress-server.service
+            fi
+
+            ep_conf=/etc/ceilometer/event_pipeline.yaml
+            if sudo grep -q -e "# added by doctor script" $ep_conf; then
+                echo "modify the ceilometer config"
+                sudo sed -ie "/# added by doctor script/d" $ep_conf
+                sudo systemctl restart openstack-ceilometer-notification.service
+            fi
+            ' >> installer_apply_patches_$node.log 2>&1
+    done
+}
+
 function cleanup_installer {
-    # Noop
+    installer_revert_patches
     return
 }
