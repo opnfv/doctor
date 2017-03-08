@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dabed58f_2832d110",
+        "filename": "tests/run.sh",
+        "patchSetId": 27
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-03-08T14:19:47Z",
+      "side": 1,
+      "message": "also needs to be checked if exists already before\n\n+ openstack role add _member_ --user doctor --project doctor\nConflict occurred attempting to store role grant - User dff0af24043a4dda8f6ada1611f43337 already has role 9fe2ff9ee4384b1894a90878d3e92bab in tenant 883e86bd5594480380c9580cd41e1ee8 (HTTP 409) (Request-ID: req-2c1c0d37-ade8-4486-8f62-fc23d67e4ccd)",
+      "range": {
+        "startLine": 122,
+        "startChar": 4,
+        "endLine": 123,
+        "endChar": 50
+      },
+      "revId": "8513bff71b415c73c11f2be87f840c1eb688fce0",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
