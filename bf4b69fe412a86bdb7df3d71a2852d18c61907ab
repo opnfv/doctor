@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dabed58f_edab6b87",
+        "filename": "tests/lib/installers/apex",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-03-08T07:47:23Z",
+      "side": 1,
+      "message": "s/fuel/apex/",
+      "range": {
+        "startLine": 34,
+        "startChar": 47,
+        "endLine": 34,
+        "endChar": 51
+      },
+      "revId": "bf4b69fe412a86bdb7df3d71a2852d18c61907ab",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_0db11ff8",
+        "filename": "tests/lib/installers/apex",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-03-08T07:47:23Z",
+      "side": 1,
+      "message": "s/fuel/apex/",
+      "range": {
+        "startLine": 89,
+        "startChar": 48,
+        "endLine": 89,
+        "endChar": 52
+      },
+      "revId": "bf4b69fe412a86bdb7df3d71a2852d18c61907ab",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
