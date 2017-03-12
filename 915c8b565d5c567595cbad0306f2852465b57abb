@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dabed58f_51424c11",
+        "filename": "docs/release/configguide/feature.configuration.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2017-03-12T15:41:46Z",
+      "side": 1,
+      "message": "I modified the description to be more precise.\nAre the set-state APIs already supported in Neutron and Cinder? If so, supporting them in Vitrage should be an easy task.",
+      "parentUuid": "dabed58f_025ecee6",
+      "range": {
+        "startLine": 85,
+        "startChar": 62,
+        "endLine": 85,
+        "endChar": 75
+      },
+      "revId": "915c8b565d5c567595cbad0306f2852465b57abb",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dabed58f_a272627a",
         "filename": "docs/release/configguide/feature.configuration.rst",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-03-08T00:03:15Z",
       "side": 1,
       "message": "Who propagates (Vitrage? Nova?) which alarms? What are the consequences of those alarms?\n\nI think you\u0027re suggesting here that upon marking host down, Vitrage will deduct that all VM instances on that particular host are hence affected, too, and their state need to be thus set to ERROR, which Vitrage will call the Nova instance set-state API.",
+      "range": {
+        "startLine": 86,
+        "startChar": 4,
+        "endLine": 86,
+        "endChar": 25
+      },
+      "revId": "915c8b565d5c567595cbad0306f2852465b57abb",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabed58f_71451016",
+        "filename": "docs/release/configguide/feature.configuration.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2017-03-12T15:41:46Z",
+      "side": 1,
+      "message": "I modified the description.",
+      "parentUuid": "dabed58f_a272627a",
       "range": {
         "startLine": 86,
         "startChar": 4,
