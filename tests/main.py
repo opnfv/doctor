@@ -42,6 +42,40 @@ class DoctorTest(object):
             self.use_existing_image = True
             self.image = images[self.conf.image.name]
 
+    def create_doctor_user(self):
+        keystone_client = self.os_clients["keystone"]
+        nova_client = self.os_clients["nova"]
+
+        projects = {project.name: project for project in keystone_client.tenants.list()}
+        self.project = projects[self.conf.test_project] if self.conf.test_project in projects \
+            else keystone_client.tenants.create(self.conf.test_project)
+
+        users = {user.name: user for user in keystone_client.users.list()}
+        self.user = users[self.conf.test_user] if self.conf.test_user in users \
+            else keystone_client.users.create(self.conf.test_user,
+                                            password=self.conf.test_password,
+                                            tenant_id=self.project.id)
+
+        roles = {role.name: role for role in keystone_client.roles.list()}
+        self.role = roles[self.conf.role] if self.conf.role in roles \
+            else keystone_client.roles.create(self.conf.role)
+
+        roles_user = {role.name: role for role in
+                      keystone_client.roles.roles_for_user(self.user,
+                                                           tenant=self.project)}
+        if self.conf.role not in roles_user:
+            keystone_client.roles.add_user_role(self.user, self.role, tenant=self.project)
+
+        quota = nova_client.quotas.get(self.conf.test_project)
+        if self.conf.vm_count > quota.instances:
+            nova_client.quotas.update(self.conf.test_project,
+                                      instances=self.conf.vm_count,
+                                      user_id=self.conf.test_user)
+        if self.conf.vm_count > quota.cores:
+            nova_client.quotas.update(self.conf.test_project,
+                                      cores=self.conf.vm_count,
+                                      user_id=self.conf.test_user)
+
     def run(self):
         # prepare the cloud env
 
@@ -49,6 +83,7 @@ class DoctorTest(object):
         self.upload_image_to_cloud()
 
         # creating test user...
+        self.create_doctor_user()
 
         # creating VM...
 
