@@ -33,9 +33,30 @@ IMAGE_OPTS = [
 ]
 
 
+DEFAULT_OPTS = [
+    cfg.StrOpt('test_user',
+               default='doctor',
+               help='the name of test user',
+               required=True),
+    cfg.StrOpt('test_password',
+               default='doctor',
+               help='the password of test user',
+               required=True),
+    cfg.StrOpt('test_project',
+               default='doctor',
+               help='the name of test project',
+               required=True),
+    cfg.StrOpt('role',
+               default='admin',
+               help='the role of test user',
+               required=True),
+]
+
+
 def list_opts():
     return [
         ('keystone_auth', os_clients.OPTS),
         ('image', IMAGE_OPTS),
+        ('DEFAULT', DEFAULT_OPTS),
     ]
 

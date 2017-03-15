@@ -82,40 +82,6 @@ get_consumer_ip___to_be_removed() {
     die_if_not_set $LINENO CONSUMER_IP "Could not get CONSUMER_IP."
 }
 
-create_test_user() {
-    openstack project list | grep -q " $DOCTOR_PROJECT " || {
-        openstack project create "$DOCTOR_PROJECT"
-    }
-    openstack user list | grep -q " $DOCTOR_USER " || {
-        openstack user create "$DOCTOR_USER" --password "$DOCTOR_PW" \
-                              --project "$DOCTOR_PROJECT"
-    }
-    openstack role show "$DOCTOR_ROLE" || {
-        openstack role create "$DOCTOR_ROLE"
-    }
-    openstack role add "$DOCTOR_ROLE" --user "$DOCTOR_USER" \
-                       --project "$DOCTOR_PROJECT"
-    # tojuvone: openstack quota show is broken and have to use nova
-    # https://bugs.launchpad.net/manila/+bug/1652118
-    # Note! while it is encouraged to use openstack client it has proven
-    # quite buggy.
-    # QUOTA=$(openstack quota show $DOCTOR_PROJECT)
-    DOCTOR_QUOTA=$(nova quota-show --tenant $DOCTOR_PROJECT)
-    # We make sure that quota allows number of instances and cores
-    OLD_INSTANCE_QUOTA=$(echo "${DOCTOR_QUOTA}" | grep " instances " | \
-                         awk '{print $4}')
-    if [ $OLD_INSTANCE_QUOTA -lt $VM_COUNT ]; then
-        openstack quota set --instances $VM_COUNT \
-                  $DOCTOR_USER
-    fi
-    OLD_CORES_QUOTA=$(echo "${DOCTOR_QUOTA}" | grep " cores " | \
-                      awk '{print $4}')
-    if [ $OLD_CORES_QUOTA -lt $VM_COUNT ]; then
-        openstack quota set --cores $VM_COUNT \
-                  $DOCTOR_USER
-    fi
-}
-
 boot_vm() {
     # test VM done with test user, so can test non-admin
 
@@ -445,10 +411,8 @@ source $TOP_DIR/lib/inspector
 setup_installer
 
 echo "preparing VM image..."
-python main.py
-
 echo "creating test user..."
-create_test_user
+python main.py
 
 echo "creating VM..."
 boot_vm
