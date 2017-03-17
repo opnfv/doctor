@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab8dda7_e4e3b331",
+        "filename": "tests/monitor.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-03-17T03:19:41Z",
+      "side": 1,
+      "message": "Maybe we can get the vitrage endpoint from API, `127.0.0.1` may not be correct.?The script runs in the functest docker to access the OS env, so the local address is not useful.",
+      "range": {
+        "startLine": 70,
+        "startChar": 41,
+        "endLine": 70,
+        "endChar": 50
+      },
+      "revId": "db216a8d38438b7f43c68e81d5c37e49294287ee",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
