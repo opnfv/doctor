@@ -11,7 +11,7 @@ Version history
 +------------+--------------+------------+-------------+
 | **Date**   | **Ver.**     | **Author** | **Comment** |
 +============+==============+============+=============+
-| 2016-XX-XX | Danube 1.0   | ...        |             |
+| 2017-03-28 | Danube 1.0   | Ryota Mibu |             |
 +------------+--------------+------------+-------------+
 
 Important notes
@@ -30,11 +30,26 @@ release, including new features, known issues and documentation updates.
 New features
 ============
 
-* **FEATURE 1**
+(Testing tool enhancement)
 
-  TODO: add description including pointer to `feature1`_ and explain what it is about.
+* **Performance profiler PoC**
 
-.. _feature1: https://review.openstack.org/#/c/....../
+  The performance profiler is designed to get timestamp in each inout of
+  components for further analysis. In Danube, initial PoC implementation of the
+  perfomance profiler has been added to Doctor testing script ("tests/run.sh")
+  by contribution from the qtip team. Now, you can see how long it took for
+  each component in a series of processes for fault notification partially.
+  To activate this, you need to set PROFILER_TYPE="poc" before running the
+  script. See `DOCTOR-72`_ for more details.
+
+* **Testing with multiple tenant VMs**
+
+  The Doctor testing script now supports creation of multiple tenant VMs
+  (`DOCTOR-77`_). This allows you to measure fault notification time/cost with
+  stressed VIM controllers, in order to see perfomance trends.
+
+.. _DOCTOR-72: https://jira.opnfv.org/browse/DOCTOR-72
+.. _DOCTOR-77: https://jira.opnfv.org/browse/DOCTOR-77
 
 Installer support and verification status
 =========================================
@@ -47,11 +62,13 @@ the Brahmaputra release. The basic Doctor framework in VIM consists of a
 Controller (Nova) and a Notifier (Ceilometer+Aodh) along with a sample
 Inspector and Monitor developed by the Doctor team.
 
-From the Danube release, key integrated features are:
+From the Danube release, key integrated feature is:
 
-* ...
+* **Congress as Doctor Inspector**
 
-* ...
+  Congress Inspector is now verified with latest vanila OpenStack without
+  backporting any patch, like the one we have backported for adding Doctor
+  driver of Congress in Colorado.
 
 OPNFV installer support matrix
 ------------------------------
@@ -60,35 +77,29 @@ In the Brahmaputra release, only one installer (Apex) supported the deployment
 of the basic doctor framework by configuring Doctor features. In the Danube
 release, integration of Doctor features progressed in other OPNFV installers.
 
-TODO: TABLE TO BE UPDATED!
++-----------+-------------------+--------------+-----------------+-------------------+
+| Installer | Aodh              | Nova: Force  | Nova: Get valid | Congress          |
+|           | integration       | compute down | service status  | integration       |
++===========+===================+==============+=================+===================+
+| Apex      | Available         | Available    | Available,      | Available         |
+|           |                   |              | Verified only   |                   |
+|           |                   |              | for admin users |                   |
++-----------+-------------------+--------------+-----------------+-------------------+
+| Fuel      | Available         | Available    | Available,      | N/A               |
+|           | (`DOCTOR-58`_)    |              | Verified only   | (`FUEL-230`_)     |
+|           |                   |              | for admin users |                   |
++-----------+-------------------+--------------+-----------------+-------------------+
+| Joid      | Available         | TBC          | TBC             | Available         |
+|           | (`JOID-76`_),     |              |                 | (`JOID-73`_),     |
+|           | Not verified      |              |                 | Not verified      |
++-----------+-------------------+--------------+-----------------+-------------------+
+| Compass   | Available         | TBC          | TBC             | Available         |
+|           | (`COMPASS-357`_), |              |                 | (`COMPASS-367`_), |
+|           | Not verified      |              |                 | Not verified      |
++-----------+-------------------+--------------+-----------------+-------------------+
 
-+-----------+-------------------+--------------+-----------------+------------------+
-| Installer | Aodh              | Nova: Force  | Nova: Get valid | Congress         |
-|           | integration       | compute down | service status  | integration      |
-+===========+===================+==============+=================+==================+
-| Apex      | Available         | Available    | Available       | Available        |
-|           |                   |              | (`DOCTOR-67`_), | (`APEX-135`_,    |
-|           |                   |              | Verified only   | `APEX-158`_),    |
-|           |                   |              | for admin users | Not Verified     |
-+-----------+-------------------+--------------+-----------------+------------------+
-| Fuel      | Available         | Available    | Available,      | N/A              |
-|           | (`DOCTOR-58`_),   |              | Verified only   | (`FUEL-119`_)    |
-|           | Not verified      |              | for admin users |                  |
-+-----------+-------------------+--------------+-----------------+------------------+
-| Joid      | Available         | TBC          | TBC             | TBC              |
-|           | (`JOID-76`_),     |              |                 | (`JOID-73`_)     |
-|           | Not verified      |              |                 |                  |
-+-----------+-------------------+--------------+-----------------+------------------+
-| Compass   | Available         | TBC          | TBC             | N/A              |
-|           | (`COMPASS-357`_), |              |                 | (`COMPASS-367`_) |
-|           | Not verified      |              |                 |                  |
-+-----------+-------------------+--------------+-----------------+------------------+
-
-.. _DOCTOR-67: https://jira.opnfv.org/browse/DOCTOR-67
-.. _APEX-135: https://jira.opnfv.org/browse/APEX-135
-.. _APEX-158: https://jira.opnfv.org/browse/APEX-158
 .. _DOCTOR-58: https://jira.opnfv.org/browse/DOCTOR-58
-.. _FUEL-119: https://jira.opnfv.org/browse/FUEL-119
+.. _FUEL-230: https://jira.opnfv.org/browse/FUEL-230
 .. _JOID-76: https://jira.opnfv.org/browse/JOID-76
 .. _JOID-73: https://jira.opnfv.org/browse/JOID-73
 .. _COMPASS-357: https://jira.opnfv.org/browse/COMPASS-357
@@ -100,14 +111,37 @@ our own test scenario running in OPNFV CI pipeline yet.
 Documentation updates
 =====================
 
-* **Update 1**
+* **Configuration manual for Congress**
 
-  Description including pointer to JIRA ticket (`DOCTOR-46`_).
+  Steps to configure congress as Doctor inspector have been added
+  to Doctor configuration manual (`DOCTOR-85`_).
 
-.. _DOCTOR-46: https://jira.opnfv.org/browse/DOCTOR-46
+* **Alarm comparison**
 
+  In review of comparison between Doctor Danube (OpenStack Newton) and ETSI NFV
+  IFA, alarm comparison table has been updated (`DOCTOR-82`_).
+
+* **OpenStack mechanisms for fencing**
+
+  Fencing sub-section in the requirement document has been updated with more
+  details of Nova and Neutron (`REVIEW#27049`_).
+
+* **How to test**
+
+  The two ways to run the Doctor testing script have been added
+  (`REVIEW#28223`_).
+
+You can also find other minor updates in `DOCTOR-81`_.
+
+.. _DOCTOR-81: https://jira.opnfv.org/browse/DOCTOR-81
+.. _DOCTOR-82: https://jira.opnfv.org/browse/DOCTOR-82
+.. _DOCTOR-85: https://jira.opnfv.org/browse/DOCTOR-85
+.. _REVIEW#28223: https://gerrit.opnfv.org/gerrit/28223/
+.. _REVIEW#27049: https://gerrit.opnfv.org/gerrit/27049/
 
 Known issues
 ============
 
-* ...
+* Doctor testing scenario is not verified with non-admin user (`DOCTOR-80`_).
+
+.. _DOCTOR-80: https://jira.opnfv.org/browse/DOCTOR-80
