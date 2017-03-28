@@ -25,6 +25,236 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_db2c2a4d",
+        "filename": "docs/release/installation/releasenotes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2017-03-28T21:43:04Z",
+      "side": 1,
+      "message": "Sentence is not clear. What does the \"partially\" refer to?",
+      "range": {
+        "startLine": 42,
+        "startChar": 41,
+        "endLine": 43,
+        "endChar": 74
+      },
+      "revId": "e131971282a7044dd8357859b1fb39909ae12bc6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_fb31eea2",
+        "filename": "docs/release/installation/releasenotes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2017-03-28T21:43:04Z",
+      "side": 1,
+      "message": "avoid \"you\", e.g. s/you need to set/set the/",
+      "range": {
+        "startLine": 44,
+        "startChar": 20,
+        "endLine": 44,
+        "endChar": 35
+      },
+      "revId": "e131971282a7044dd8357859b1fb39909ae12bc6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_9b26b267",
+        "filename": "docs/release/installation/releasenotes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2017-03-28T21:43:04Z",
+      "side": 1,
+      "message": "\"where multiple tenant VMs in the system under test can be created (`DOCTOR-77`_).\"",
+      "range": {
+        "startLine": 49,
+        "startChar": 61,
+        "endLine": 50,
+        "endChar": 68
+      },
+      "revId": "e131971282a7044dd8357859b1fb39909ae12bc6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_bb2b762f",
+        "filename": "docs/release/installation/releasenotes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2017-03-28T21:43:04Z",
+      "side": 1,
+      "message": "removed \"you\"",
+      "range": {
+        "startLine": 51,
+        "startChar": 14,
+        "endLine": 51,
+        "endChar": 18
+      },
+      "revId": "e131971282a7044dd8357859b1fb39909ae12bc6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_5b203a49",
+        "filename": "docs/release/installation/releasenotes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2017-03-28T21:43:04Z",
+      "side": 1,
+      "message": "vanilla",
+      "range": {
+        "startLine": 73,
+        "startChar": 49,
+        "endLine": 73,
+        "endChar": 55
+      },
+      "revId": "e131971282a7044dd8357859b1fb39909ae12bc6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_7b1dfe0e",
+        "filename": "docs/release/installation/releasenotes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2017-03-28T21:43:04Z",
+      "side": 1,
+      "message": "had",
+      "range": {
+        "startLine": 74,
+        "startChar": 41,
+        "endLine": 74,
+        "endChar": 45
+      },
+      "revId": "e131971282a7044dd8357859b1fb39909ae12bc6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_5be7da12",
+        "filename": "docs/release/installation/releasenotes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2017-03-28T21:43:04Z",
+      "side": 1,
+      "message": "As part of the review between",
+      "range": {
+        "startLine": 125,
+        "startChar": 2,
+        "endLine": 125,
+        "endChar": 25
+      },
+      "revId": "e131971282a7044dd8357859b1fb39909ae12bc6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_7be41e0d",
+        "filename": "docs/release/installation/releasenotes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2017-03-28T21:43:04Z",
+      "side": 1,
+      "message": "the alarm comparison table",
+      "range": {
+        "startLine": 126,
+        "startChar": 7,
+        "endLine": 126,
+        "endChar": 29
+      },
+      "revId": "e131971282a7044dd8357859b1fb39909ae12bc6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_3beea6ed",
+        "filename": "docs/release/installation/releasenotes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2017-03-28T21:43:04Z",
+      "side": 1,
+      "message": "The section on fencing",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 20
+      },
+      "revId": "e131971282a7044dd8357859b1fb39909ae12bc6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_1bf162cd",
+        "filename": "docs/release/installation/releasenotes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2017-03-28T21:43:04Z",
+      "side": 1,
+      "message": "Two ways",
+      "range": {
+        "startLine": 135,
+        "startChar": 2,
+        "endLine": 135,
+        "endChar": 14
+      },
+      "revId": "e131971282a7044dd8357859b1fb39909ae12bc6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_c0119bad",
         "filename": "docs/release/installation/releasenotes.rst",
         "patchSetId": 2
