@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab8dda7_c0119bad",
+        "filename": "docs/release/installation/releasenotes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 346
+      },
+      "writtenOn": "2017-03-28T14:46:47Z",
+      "side": 1,
+      "message": "Shall we add another known issue regarding Congress Nova driver (for api_version \u003e\u003d2.35)? Bug entry upstream:  https://bugs.launchpad.net/congress/+bug/1670345",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 12
+      },
+      "revId": "e131971282a7044dd8357859b1fb39909ae12bc6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
