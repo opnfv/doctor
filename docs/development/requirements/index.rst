@@ -37,7 +37,6 @@ Doctor: Fault Management and Maintenance
 
 .. toctree::
     :maxdepth: 4
-    :numbered:
 
     01-intro.rst
     02-use_cases.rst

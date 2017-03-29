@@ -9,7 +9,6 @@ Doctor
 
 .. toctree::
    :maxdepth: 2
-   :numbered:
 
    ./design/index.rst
    ./requirements/index.rst
