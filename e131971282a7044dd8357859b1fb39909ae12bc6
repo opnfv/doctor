@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_5b027a3f",
+        "filename": "docs/release/installation/releasenotes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-03-29T02:37:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab8dda7_fb2b2e80",
+      "range": {
+        "startLine": 14,
+        "startChar": 2,
+        "endLine": 14,
+        "endChar": 12
+      },
+      "revId": "e131971282a7044dd8357859b1fb39909ae12bc6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_db2c2a4d",
         "filename": "docs/release/installation/releasenotes.rst",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-03-28T21:43:04Z",
       "side": 1,
       "message": "Sentence is not clear. What does the \"partially\" refer to?",
+      "range": {
+        "startLine": 42,
+        "startChar": 41,
+        "endLine": 43,
+        "endChar": 74
+      },
+      "revId": "e131971282a7044dd8357859b1fb39909ae12bc6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_7bff3e35",
+        "filename": "docs/release/installation/releasenotes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-03-29T02:37:29Z",
+      "side": 1,
+      "message": "i mean not all checkpoints are covered yet. So, I\u0027ll remove \u0027partially\u0027, but add \u0027Some checkpoints are not covered yet though.\u0027.",
+      "parentUuid": "9ab8dda7_db2c2a4d",
       "range": {
         "startLine": 42,
         "startChar": 41,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_bba4d657",
+        "filename": "docs/release/installation/releasenotes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-03-29T02:37:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab8dda7_fb31eea2",
+      "range": {
+        "startLine": 44,
+        "startChar": 20,
+        "endLine": 44,
+        "endChar": 35
+      },
+      "revId": "e131971282a7044dd8357859b1fb39909ae12bc6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_9b26b267",
         "filename": "docs/release/installation/releasenotes.rst",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2017-03-28T21:43:04Z",
       "side": 1,
       "message": "\"where multiple tenant VMs in the system under test can be created (`DOCTOR-77`_).\"",
+      "range": {
+        "startLine": 49,
+        "startChar": 61,
+        "endLine": 50,
+        "endChar": 68
+      },
+      "revId": "e131971282a7044dd8357859b1fb39909ae12bc6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_7b865ebb",
+        "filename": "docs/release/installation/releasenotes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-03-29T02:37:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab8dda7_9b26b267",
       "range": {
         "startLine": 49,
         "startChar": 61,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_5b891ac9",
+        "filename": "docs/release/installation/releasenotes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-03-29T02:37:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab8dda7_bb2b762f",
+      "range": {
+        "startLine": 51,
+        "startChar": 14,
+        "endLine": 51,
+        "endChar": 18
+      },
+      "revId": "e131971282a7044dd8357859b1fb39909ae12bc6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_5b203a49",
         "filename": "docs/release/installation/releasenotes.rst",
         "patchSetId": 2
@@ -128,6 +248,30 @@
       "writtenOn": "2017-03-28T21:43:04Z",
       "side": 1,
       "message": "vanilla",
+      "range": {
+        "startLine": 73,
+        "startChar": 49,
+        "endLine": 73,
+        "endChar": 55
+      },
+      "revId": "e131971282a7044dd8357859b1fb39909ae12bc6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_1b93a2fb",
+        "filename": "docs/release/installation/releasenotes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-03-29T02:37:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab8dda7_5b203a49",
       "range": {
         "startLine": 73,
         "startChar": 49,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_3b90e6eb",
+        "filename": "docs/release/installation/releasenotes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-03-29T02:37:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab8dda7_7b1dfe0e",
+      "range": {
+        "startLine": 74,
+        "startChar": 41,
+        "endLine": 74,
+        "endChar": 45
+      },
+      "revId": "e131971282a7044dd8357859b1fb39909ae12bc6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_5be7da12",
         "filename": "docs/release/installation/releasenotes.rst",
         "patchSetId": 2
@@ -174,6 +342,30 @@
       "writtenOn": "2017-03-28T21:43:04Z",
       "side": 1,
       "message": "As part of the review between",
+      "range": {
+        "startLine": 125,
+        "startChar": 2,
+        "endLine": 125,
+        "endChar": 25
+      },
+      "revId": "e131971282a7044dd8357859b1fb39909ae12bc6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_fbc1eee4",
+        "filename": "docs/release/installation/releasenotes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-03-29T02:37:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab8dda7_5be7da12",
       "range": {
         "startLine": 125,
         "startChar": 2,
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_dbbc2a6f",
+        "filename": "docs/release/installation/releasenotes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-03-29T02:37:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab8dda7_7be41e0d",
+      "range": {
+        "startLine": 126,
+        "startChar": 7,
+        "endLine": 126,
+        "endChar": 29
+      },
+      "revId": "e131971282a7044dd8357859b1fb39909ae12bc6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_3beea6ed",
         "filename": "docs/release/installation/releasenotes.rst",
         "patchSetId": 2
@@ -220,6 +436,30 @@
       "writtenOn": "2017-03-28T21:43:04Z",
       "side": 1,
       "message": "The section on fencing",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 20
+      },
+      "revId": "e131971282a7044dd8357859b1fb39909ae12bc6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_9bb6b289",
+        "filename": "docs/release/installation/releasenotes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-03-29T02:37:29Z",
+      "side": 1,
+      "message": "of?",
+      "parentUuid": "9ab8dda7_3beea6ed",
       "range": {
         "startLine": 130,
         "startChar": 2,
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_bbbb7671",
+        "filename": "docs/release/installation/releasenotes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-03-29T02:37:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab8dda7_1bf162cd",
+      "range": {
+        "startLine": 135,
+        "startChar": 2,
+        "endLine": 135,
+        "endChar": 14
+      },
+      "revId": "e131971282a7044dd8357859b1fb39909ae12bc6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_c0119bad",
         "filename": "docs/release/installation/releasenotes.rst",
         "patchSetId": 2
@@ -266,6 +530,30 @@
       "writtenOn": "2017-03-28T14:46:47Z",
       "side": 1,
       "message": "Shall we add another known issue regarding Congress Nova driver (for api_version \u003e\u003d2.35)? Bug entry upstream:  https://bugs.launchpad.net/congress/+bug/1670345",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 12
+      },
+      "revId": "e131971282a7044dd8357859b1fb39909ae12bc6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_1baac219",
+        "filename": "docs/release/installation/releasenotes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-03-29T02:37:29Z",
+      "side": 1,
+      "message": "Thanks! I\u0027ll add this.",
+      "parentUuid": "9ab8dda7_c0119bad",
       "range": {
         "startLine": 146,
         "startChar": 0,
