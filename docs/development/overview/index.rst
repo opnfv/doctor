@@ -9,6 +9,5 @@ Doctor Development Guide
 
 .. toctree::
     :maxdepth: 2
-    :numbered:
 
     testing.rst

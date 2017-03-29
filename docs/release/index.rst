@@ -9,11 +9,7 @@ Doctor
 
 .. toctree::
    :maxdepth: 2
-   :numbered:
 
    ./installation/index.rst
    ./userguide/index.rst
 
-Indices
-=======
-* :ref:`search`

@@ -9,6 +9,5 @@ Doctor Installation Guide
 
 .. toctree::
     :maxdepth: 2
-    :numbered:
 
     feature.configuration.rst
