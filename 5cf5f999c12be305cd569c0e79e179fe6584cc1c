@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_7b4979cf",
+        "filename": "docs/release/installation/releasenotes.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-03-30T01:55:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab8dda7_b63aad34",
+      "range": {
+        "startLine": 131,
+        "startChar": 14,
+        "endLine": 131,
+        "endChar": 16
+      },
+      "revId": "5cf5f999c12be305cd569c0e79e179fe6584cc1c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_96352948",
         "filename": "docs/release/installation/releasenotes.rst",
         "patchSetId": 3
@@ -59,6 +83,54 @@
       "writtenOn": "2017-03-29T07:43:36Z",
       "side": 1,
       "message": "is relying",
+      "range": {
+        "startLine": 152,
+        "startChar": 23,
+        "endLine": 152,
+        "endChar": 30
+      },
+      "revId": "5cf5f999c12be305cd569c0e79e179fe6584cc1c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_9b46adbe",
+        "filename": "docs/release/installation/releasenotes.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-03-30T01:55:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab8dda7_96352948",
+      "range": {
+        "startLine": 152,
+        "startChar": 63,
+        "endLine": 152,
+        "endChar": 73
+      },
+      "revId": "5cf5f999c12be305cd569c0e79e179fe6584cc1c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_3b1301ba",
+        "filename": "docs/release/installation/releasenotes.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-03-30T01:55:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab8dda7_f6302558",
       "range": {
         "startLine": 152,
         "startChar": 23,
