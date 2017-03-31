@@ -79,7 +79,7 @@ OPNFV installer support matrix
 ------------------------------
 
 In the Brahmaputra release, only one installer (Apex) supported the deployment
-of the basic doctor framework by configuring Doctor features. In the Danube
+of the basic Doctor framework by configuring Doctor features. In the Danube
 release, integration of Doctor features progressed in other OPNFV installers.
 
 +-----------+-------------------+--------------+-----------------+-------------------+
@@ -152,7 +152,7 @@ Known issues
 * Congress Nova driver is relying on deprecated Nova APIs and can lead to
   an error (`BUG#1670345`_). The workaround for this issue is to specify nova
   micro version to 2.34 . Apex is using this workaround for OpenStack Newton
-  (`_REVIEW#29463`_).
+  (`REVIEW#29463`_).
 
 .. _DOCTOR-80: https://jira.opnfv.org/browse/DOCTOR-80
 .. _BUG#1670345: https://bugs.launchpad.net/congress/+bug/1670345
