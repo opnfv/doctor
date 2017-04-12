@@ -9,6 +9,7 @@
 from oslo_config import cfg
 
 import image
+import monitor
 import os_clients
 
 
@@ -16,6 +17,7 @@ def list_opts():
     return [
         ('os_clients', os_clients.OPTS),
         ('image', image.IMAGE_OPTS),
+        ('monitor', monitor.OPTS),
     ]
 
 
