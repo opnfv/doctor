@@ -10,12 +10,14 @@ import itertools
 from oslo_config import cfg
 
 import image
+import monitor
 import os_clients
 import user
 
 
 def list_opts():
     return [
+        ('monitor', monitor.OPTS),
         ('DEFAULT', itertools.chain(
             os_clients.OPTS,
             image.OPTS,
