@@ -9,13 +9,19 @@
 from oslo_config import cfg
 
 import glanceclient.client as glanceclient
+import novaclient.client as novaclient
 
 
 OPTS = [
-    cfg.StrOpt('glance_version', default='2', help='glance version'),
+    cfg.StrOpt('glance_version', default='2', help='Glance version'),
+    cfg.StrOpt('nova_version', default='2.34', help='Nova version'),
 ]
 
 
 def glance_client(version, session):
     return glanceclient.Client(version=version,
                                session=session)
+
+def nova_client(version, session):
+    return novaclient.Client(version=version,
+                             session=session)
