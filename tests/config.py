@@ -11,12 +11,14 @@ from oslo_config import cfg
 
 import image
 import inspector
+import monitor
 import os_clients
 import user
 
 
 def list_opts():
     return [
+        ('monitor', monitor.OPTS),
         ('inspector', inspector.OPTS),
         ('DEFAULT', itertools.chain(
             os_clients.OPTS,
