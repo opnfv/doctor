@@ -1,0 +1,117 @@
+##############################################################################
+# Copyright (c) 2017 ZTE Corporation and others.
+#
+# All rights reserved. This program and the accompanying materials
+# are made available under the terms of the Apache License, Version 2.0
+# which accompanies this distribution, and is available at
+# http://www.apache.org/licenses/LICENSE-2.0
+##############################################################################
+from datetime import datetime
+import json
+import requests
+import socket
+from threading import Thread
+import time
+
+from identity_auth import get_session
+import logger as doctor_logger
+import os_clients import nova_client
+from monitor.base import Monitor
+
+ICMP_ECHO_MESSAGE = '\x08\x00\xf7\xff\x00\x00\x00\x00'
+LOG = doctor_logger.Logger('doctor').getLogger()
+
+
+class SampleMonitor(Monitor):
+
+    def __init__(self, conf, inspector_url):
+        super(SampleMonitor, self).__init__(conf)
+        self.nova = nova_client(conf.os_clients.nova_version,
+                                get_session(conf))
+        self.hosts = self._filter_computer_hosts(self.nova.hosts.list())
+
+    def _filter_computer_hosts(self, hosts):
+        compute_hosts = []
+        for host in hosts:
+            host_dict = host.__dict__
+            if host_dict['service'] and host_dict['service'] == 'compute':
+                compute_hosts.append(host_dict)
+        return compute_hosts
+
+    def start(self):
+        self.listeners = []
+        for host in self.hosts:
+            host_name = host['name']
+            host_ip = socket.gethostbyname(host_name)
+            listener = Listener(self.conf, host_name, host_ip,
+                                self.inspector_url)
+            listener.start()
+            self.listeners.append(listener)
+
+    def stop(self):
+        for listener in self.listeners:
+            listener.stop()
+            listener.join()
+        del self.listeners
+
+
+class Listener(Thread):
+    interval = 0.1  # second
+    timeout = 0.1   # second
+    event_type = "compute.host.down"
+
+    def __init__(self, conf, host_name, host_ip, inspector_url):
+        super(Listener).__init__(self)
+        self.conf = conf
+        self.hostname = host_name
+        self.ip_addr = host_ip
+        self.inspector_url = inspector_url
+        self._stopped = False
+
+    def run(self):
+        while not self._stopped:
+            self._run()
+
+    def stop(self):
+        LOG.info("Stopping listener host_name(%s), host_ip(%s)"
+                 % (self.hostname, self.ip_addr))
+        self._stopped = True
+
+    def _run(self):
+        sock = socket.socket(socket.AF_INET, socket.SOCK_RAW,
+                             socket.IPPROTO_ICMP)
+        sock.settimeout(self.timeout)
+        while True:
+            try:
+                sock.sendto(ICMP_ECHO_MESSAGE, (self.ip_addr, 0))
+                data = sock.recv(4096)
+            except socket.timeout:
+                LOG.info("doctor monitor detected at %s" % time.time())
+                self._report_error()
+                LOG.info("ping timeout, quit monitoring...")
+                self._stopped = True
+            time.sleep(self.interval)
+
+    def _report_error(self):
+        data = [
+            {
+                'time': datetime.now().isoformat(),
+                'type': self.event_type,
+                'details': {
+                    'hostname': self.hostname,
+                    'status': 'down',
+                    'monitor': 'monitor_sample',
+                    'monitor_event_id': 'monitor_sample_event1'
+                },
+            },
+        ]
+
+        auth_token = get_session(self.conf).get_token() if \
+                     self.conf.inspector.type != 'sample' else None
+        headers = {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-Auth-Token': auth_token,
+        }
+
+        requests.put(self.inspector_url, data=json.dumps(data), headers=headers)
