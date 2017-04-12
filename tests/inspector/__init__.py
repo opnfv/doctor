@@ -11,6 +11,7 @@ import os
 from oslo_config import cfg
 from oslo_utils import importutils
 
+
 OPTS = [
     cfg.StrOpt('type',
                default=os.environ.get('INSPECTOR_TYPE', 'sample'),
@@ -19,7 +20,7 @@ OPTS = [
                required=True),
     cfg.StrOpt('ip',
                default='127.0.0.1',
-               help='the ip of default inspector',
+               help='the host ip of inspector',
                required=False),
     cfg.StrOpt('port',
                default='12345',
@@ -31,6 +32,7 @@ OPTS = [
 _inspector_name_class_mapping = {
     'sample': 'inspector.sample.SampleInspector',
 }
+
 
 def get_inspector(conf, log):
     inspector_class = _inspector_name_class_mapping[conf.inspector.type]

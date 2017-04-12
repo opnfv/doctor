@@ -18,6 +18,8 @@ from inspector import get_inspector
 import logger as doctor_log
 from user import User
 from network import Network
+from monitor import get_monitor
+
 
 LOG = doctor_log.Logger('doctor').getLogger()
 
@@ -32,6 +34,9 @@ class DoctorTest(object):
         self.instance = Instance(self.conf, LOG)
         self.alarm = Alarm(self.conf, LOG)
         self.inspector = get_inspector(self.conf, LOG)
+        self.monitor = get_monitor(self.conf,
+                                   self.inspector.get_inspector_url(),
+                                   LOG)
 
     def setup(self):
         # prepare the cloud env
@@ -53,6 +58,7 @@ class DoctorTest(object):
 
         # starting doctor sample components...
         self.inspector.start()
+        self.monitor.start()
 
     def run(self):
         """run doctor test"""
@@ -78,6 +84,7 @@ class DoctorTest(object):
         self.image.delete()
         self.user.delete()
         self.inspector.stop()
+        self.monitor.stop()
 
 
 def main():
