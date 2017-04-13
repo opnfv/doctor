@@ -8,23 +8,14 @@
 ##############################################################################
 from oslo_config import cfg
 
-import image
-import os_clients
+import glanceclient.client as glanceclient
 
 
-def list_opts():
-    return [
-        ('os_clients', os_clients.OPTS),
-        ('image', image.IMAGE_OPTS),
-    ]
+OPTS = [
+    cfg.StrOpt('glance_version', default='2', help='glance version'),
+]
 
 
-def prepare_conf(conf=None):
-    if conf is None:
-        conf = cfg.ConfigOpts()
-
-    for group, options in list_opts():
-        conf.register_opts(list(options),
-                           group=None if group == 'DEFAULT' else group)
-
-    return conf
+def glance_client(version, session):
+    return glanceclient.Client(version=version,
+                               session=session)
