@@ -11,6 +11,7 @@ import os
 
 from keystoneauth1.identity import v2
 from keystoneauth1.identity import v3
+from keystoneauth1 import session
 
 
 def get_identity_auth():
@@ -32,3 +33,10 @@ def get_identity_auth():
                            username=username,
                            password=password,
                            tenant_name=project_name)
+
+
+def get_session(auth=None):
+    """Get a user credentials auth session."""
+    if auth is None:
+        auth = get_identity_auth()
+    return session.Session(auth=auth)
