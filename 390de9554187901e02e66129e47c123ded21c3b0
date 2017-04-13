@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_acba426c",
+        "filename": "tests/py/image.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-04-13T01:28:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab8dda7_f15573c6",
+      "revId": "390de9554187901e02e66129e47c123ded21c3b0",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_314c6b42",
         "filename": "tests/py/image.py",
         "patchSetId": 6
@@ -30,6 +48,30 @@
       "writtenOn": "2017-04-12T14:00:48Z",
       "side": 1,
       "message": "it is not a code, it is a file handle, change it to a file handle is clearer",
+      "range": {
+        "startLine": 46,
+        "startChar": 62,
+        "endLine": 46,
+        "endChar": 66
+      },
+      "revId": "390de9554187901e02e66129e47c123ded21c3b0",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_ccbd366a",
+        "filename": "tests/py/image.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-04-13T01:28:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab8dda7_314c6b42",
       "range": {
         "startLine": 46,
         "startChar": 62,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_0cab4e1e",
+        "filename": "tests/py/logger.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-04-13T01:28:29Z",
+      "side": 1,
+      "message": "It is different.\nsee http://stackoverflow.com/questions/7816363/if-a-vs-if-a-is-not-none",
+      "parentUuid": "9ab8dda7_91399743",
+      "range": {
+        "startLine": 33,
+        "startChar": 11,
+        "endLine": 33,
+        "endChar": 31
+      },
+      "revId": "390de9554187901e02e66129e47c123ded21c3b0",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_ec627aac",
         "filename": "tests/run.sh",
         "patchSetId": 6
@@ -76,6 +142,30 @@
       "writtenOn": "2017-04-12T14:00:48Z",
       "side": 1,
       "message": "suggest to use if..else..fi instead of return 0\n1, the return value is not used in this latter file\n2, return value can only be consumed by $?\n3, not easy to understand the logy",
+      "range": {
+        "startLine": 95,
+        "startChar": 32,
+        "endLine": 95,
+        "endChar": 40
+      },
+      "revId": "390de9554187901e02e66129e47c123ded21c3b0",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_cc645624",
+        "filename": "tests/run.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-04-13T01:28:29Z",
+      "side": 1,
+      "message": "It\u0027s a original remaining problem, not related to the refactor. I can fix it in another patch if it is needed.",
+      "parentUuid": "9ab8dda7_ec627aac",
       "range": {
         "startLine": 95,
         "startChar": 32,
