@@ -5,3 +5,13 @@
 /docs_output/
 /releng/
 /tests/*.img
+
+#Build results
+*.egg
+*.egg-info
+.tox
+.testrepository
+.coverage
+
+#Python
+*.pyc
