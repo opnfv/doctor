@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab8dda7_010f942f",
+        "filename": "tests/py/INFO",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2017-04-17T06:48:45Z",
+      "side": 1,
+      "message": "Why duplicating INFO file?",
+      "revId": "80ab5af92dcd8acb7b04c5b90bacbbfa47f7c72c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_a11d6868",
+        "filename": "tests/py/requirements.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2017-04-17T06:48:45Z",
+      "side": 1,
+      "message": "Why freezing other package versions but a loose striction here?",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 32
+      },
+      "revId": "80ab5af92dcd8acb7b04c5b90bacbbfa47f7c72c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
