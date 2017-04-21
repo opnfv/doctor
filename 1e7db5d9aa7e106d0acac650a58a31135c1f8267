@@ -22,6 +22,30 @@
       "revId": "1e7db5d9aa7e106d0acac650a58a31135c1f8267",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_30869c14",
+        "filename": "doctor/logger.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-04-21T03:07:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab8dda7_f50eb631",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 53
+      },
+      "revId": "1e7db5d9aa7e106d0acac650a58a31135c1f8267",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
