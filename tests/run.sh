@@ -29,7 +29,7 @@ DOCTOR_USER=doctor
 DOCTOR_PW=doctor
 DOCTOR_PROJECT=doctor
 DOCTOR_ROLE=_member_
-PROFILER_TYPE=${PROFILER_TYPE:-none}
+PROFILER_TYPE=${PROFILER_TYPE:-poc}
 PYTHON_ENABLE=${PYTHON_ENABLE:-false}
 
 TOP_DIR=$(cd $(dirname "$0") && pwd)
@@ -421,7 +421,7 @@ run_profiler() {
         export DOCTOR_PROFILER_T09=$(python -c \
           "print(int(($notified-$relative_start)*1000))")
 
-        python profiler-poc.py >doctor_profiler.log 2>&1
+        python profiler-poc.py > doctor_profiler.log 2>&1
     fi
 }
 
