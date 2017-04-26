@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab8dda7_43b587ec",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-04-26T12:06:26Z",
+      "side": 1,
+      "message": "could we avoid the \"fi\" here? code is not indented so would be confusing to see a \"fi\" after so many lines of code after.\n\nEither:\n\n  if $PYTHON_ENABLE; then\n    cd $TOP_DIR\n    echo \"executing tox...\"\n    tox\n    echo \"done\"\n  else\n\nor simply not output the \"done\" message if $PYTHON_ENABLE.",
+      "revId": "1fd352c5bc7119336ad1a069d1fd2a119bc37da1",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
