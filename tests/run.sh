@@ -30,7 +30,6 @@ DOCTOR_PW=doctor
 DOCTOR_PROJECT=doctor
 #TODO: change back to `_member_` when JIRA DOCTOR-55 is done
 DOCTOR_ROLE=admin
-PROFILER_TYPE=${PROFILER_TYPE:-none}
 
 TOP_DIR=$(cd $(dirname "$0") && pwd)
 
@@ -375,30 +374,28 @@ collect_logs() {
 }
 
 run_profiler() {
-    if [[ "$PROFILER_TYPE" == "poc" ]]; then
-        linkdown=$(grep "doctor set link down at " disable_network.log |\
-                  sed -e "s/^.* at //")
-        vmdown=$(grep "doctor mark vm.* error at" inspector.log |tail -n 1 |\
-                 sed -e "s/^.* at //")
-        hostdown=$(grep "doctor mark host.* down at" inspector.log |\
-                 sed -e "s/^.* at //")
+    inkdown=$(grep "doctor set link down at " disable_network.log |\
+              sed -e "s/^.* at //")
+    vmdown=$(grep "doctor mark vm.* error at" inspector.log |tail -n 1 |\
+             sed -e "s/^.* at //")
+    hostdown=$(grep "doctor mark host.* down at" inspector.log |\
+             sed -e "s/^.* at //")
 
-        # TODO(yujunz) check the actual delay to verify time sync status
-        # expected ~1s delay from $trigger to $linkdown
-        relative_start=${linkdown}
-        export DOCTOR_PROFILER_T00=$(python -c \
-          "print(int(($linkdown-$relative_start)*1000))")
-        export DOCTOR_PROFILER_T01=$(python -c \
-          "print(int(($detected-$relative_start)*1000))")
-        export DOCTOR_PROFILER_T03=$(python -c \
-          "print(int(($vmdown-$relative_start)*1000))")
-        export DOCTOR_PROFILER_T04=$(python -c \
-          "print(int(($hostdown-$relative_start)*1000))")
-        export DOCTOR_PROFILER_T09=$(python -c \
-          "print(int(($notified-$relative_start)*1000))")
+    # TODO(yujunz) check the actual delay to verify time sync status
+    # expected ~1s delay from $trigger to $linkdown
+    relative_start=${linkdown}
+    export DOCTOR_PROFILER_T00=$(python -c \
+      "print(int(($linkdown-$relative_start)*1000))")
+    export DOCTOR_PROFILER_T01=$(python -c \
+      "print(int(($detected-$relative_start)*1000))")
+    export DOCTOR_PROFILER_T03=$(python -c \
+      "print(int(($vmdown-$relative_start)*1000))")
+    export DOCTOR_PROFILER_T04=$(python -c \
+      "print(int(($hostdown-$relative_start)*1000))")
+    export DOCTOR_PROFILER_T09=$(python -c \
+      "print(int(($notified-$relative_start)*1000))")
 
-        python profiler-poc.py >doctor_profiler.log 2>&1
-    fi
+    python profiler-poc.py > doctor_profiler.log 2>&1
 }
 
 cleanup() {
