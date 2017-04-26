@@ -31,6 +31,7 @@ DOCTOR_PROJECT=doctor
 #TODO: change back to `_member_` when JIRA DOCTOR-55 is done
 DOCTOR_ROLE=admin
 PROFILER_TYPE=${PROFILER_TYPE:-none}
+PYTHON_ENABLE=${PYTHON_ENABLE:-false}
 
 TOP_DIR=$(cd $(dirname "$0") && pwd)
 
@@ -457,6 +458,12 @@ cleanup() {
 
 # Main process
 
+if $PYTHON_ENABLE; then
+    cd $TOP_DIR
+    echo "executing tox..."
+    tox
+else
+
 echo "Note: doctor/tests/run.sh has been executed."
 git log --oneline -1 || true   # ignore even you don't have git installed
 
@@ -498,5 +505,7 @@ calculate_notification_time
 unset_forced_down_hosts
 collect_logs
 run_profiler
+
+fi
 
 echo "done"
