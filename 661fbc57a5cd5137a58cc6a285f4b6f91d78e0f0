@@ -1,0 +1,8 @@
+Verified+1: jenkins-ci <jenkins-opnfv-ci@opnfv.org>
+Code-Review+2: Bertrand Souville <souville@docomolab-euro.com>
+Code-Review+2: wenjuan dong <dong.wenjuan@zte.com.cn>
+Submitted-by: Tomi Juvonen <tomi.juvonen@nokia.com>
+Submitted-at: Thu, 27 Apr 2017 03:59:59 +0000
+Reviewed-on: https://gerrit.opnfv.org/gerrit/22141
+Project: doctor
+Branch: refs/heads/master
