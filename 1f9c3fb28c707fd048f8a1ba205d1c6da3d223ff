@@ -16,6 +16,24 @@
       "revId": "1f9c3fb28c707fd048f8a1ba205d1c6da3d223ff",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_7ec85e22",
+        "filename": "tests/run.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2017-04-27T03:04:31Z",
+      "side": 1,
+      "message": "+1 for exit with tox result",
+      "parentUuid": "9ab8dda7_9e2f52f6",
+      "revId": "1f9c3fb28c707fd048f8a1ba205d1c6da3d223ff",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
