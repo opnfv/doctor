@@ -6,16 +6,20 @@
 # which accompanies this distribution, and is available at
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
+import itertools
 from oslo_config import cfg
 
 import image
 import os_clients
+import user
 
 
 def list_opts():
     return [
-        ('os_clients', os_clients.OPTS),
-        ('image', image.IMAGE_OPTS),
+        ('DEFAULT', itertools.chain(
+            os_clients.OPTS,
+            image.OPTS,
+            user.OPTS))
     ]
 
 

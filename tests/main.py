@@ -11,6 +11,7 @@ import sys
 import config
 from image import Image
 import logger as doctor_log
+from user import User
 
 
 LOG = doctor_log.Logger('doctor').getLogger()
@@ -20,33 +21,39 @@ class DoctorTest(object):
 
     def __init__(self, conf):
         self.conf = conf
-        self.image = Image(self.conf)
+        self.image = Image(self.conf, LOG)
+        self.user = User(self.conf, LOG)
+
+    def setup(self):
+        # prepare the cloud env
+
+        # preparing VM image...
+        self.image.create()
+
+        # creating test user...
+        self.user.create()
+        self.user.update_quota()
 
     def run(self):
         """run doctor test"""
         try:
             LOG.info('doctor test starting.......')
-            # prepare the cloud env
 
-            # preparing VM image...
-            self.image.create()
-
-            # creating test user...
-
-            # creating VM...
-
-            # creating alarm...
-
-            # starting doctor sample components...
+            self.setup()
 
             # injecting host failure...
 
             # verify the test results
+
         except Exception as e:
             LOG.error('doctor test failed, Exception=%s' % e)
             sys.exit(1)
         finally:
-            self.image.delete()
+            self.cleanup()
+
+    def cleanup(self):
+        self.image.delete()
+        self.user.delete()
 
 
 def main():
