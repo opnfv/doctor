@@ -13,65 +13,62 @@ from oslo_config import cfg
 
 from identity_auth import get_session
 from os_clients import glance_client
-import logger as doctor_log
 
-IMAGE_OPTS = [
-    cfg.StrOpt('name',
+OPTS = [
+    cfg.StrOpt('image_name',
                default=os.environ.get('IMAGE_NAME', 'cirros'),
                help='the name of test image',
                required=True),
-    cfg.StrOpt('format',
+    cfg.StrOpt('image_format',
                default='qcow2',
                help='the format of test image',
                required=True),
-    cfg.StrOpt('file_name',
+    cfg.StrOpt('image_filename',
                default='cirros.img',
                help='the name of image file',
                required=True),
-    cfg.StrOpt('url',
+    cfg.StrOpt('image_download_url',
                default='https://launchpad.net/cirros/trunk/0.3.0/+download/cirros-0.3.0-x86_64-disk.img',
                help='the url where to get the image',
                required=True),
 ]
 
-LOG = doctor_log.Logger('doctor').getLogger()
-
 
 class Image(object):
 
-    def __init__(self, conf):
+    def __init__(self, conf, log):
         self.conf = conf
+        self.log = log
         self.glance = \
-            glance_client(conf.os_clients.glance_version,
-                          get_session())
+            glance_client(conf.glance_version, get_session())
         self.use_existing_image = False
         self.image = None
 
     def create(self):
-        LOG.info('image create start......')
+        self.log.info('image create start......')
 
         images = {image.name: image for image in self.glance.images.list()}
-        if self.conf.image.name not in images:
-            if not os.path.exists(self.conf.image.file_name):
-                resp = urllib2.urlopen(self.conf.image.url)
-                with open(self.conf.image.file_name, "wb") as file:
+        if self.conf.image_name not in images:
+            if not os.path.exists(self.conf.image_filename):
+                resp = urllib2.urlopen(self.conf.image_download_url)
+                with open(self.conf.image_filename, "wb") as file:
                     file.write(resp.read())
-            self.image = self.glance.images.create(name=self.conf.image.name,
-                                                   disk_format=self.conf.image.format,
+            self.image = self.glance.images.create(name=self.conf.image_name,
+                                                   disk_format=self.conf.image_format,
                                                    container_format="bare",
                                                    visibility="public")
             self.glance.images.upload(self.image['id'],
-                                      open(self.conf.image.file_name, 'rb'))
+                                      open(self.conf.image_filename, 'rb'))
         else:
             self.use_existing_image = True
-            self.image = images[self.conf.image.name]
+            self.image = images[self.conf.image_name]
 
-        LOG.info('image create end......')
+        self.log.info('image create end......')
 
     def delete(self):
-        LOG.info('image delete start.......')
+        self.log.info('image delete start.......')
 
         if not self.use_existing_image and self.image:
             self.glance.images.delete(self.image['id'])
 
-        LOG.info('image delete end.......')
+        self.log.info('image delete end.......')
