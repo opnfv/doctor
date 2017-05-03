@@ -13,7 +13,6 @@ from oslo_config import cfg
 
 from identity_auth import get_session
 from os_clients import glance_client
-import logger as doctor_log
 
 IMAGE_OPTS = [
     cfg.StrOpt('name',
@@ -34,21 +33,19 @@ IMAGE_OPTS = [
                required=True),
 ]
 
-LOG = doctor_log.Logger('doctor').getLogger()
-
 
 class Image(object):
 
-    def __init__(self, conf):
+    def __init__(self, conf, log):
         self.conf = conf
+        self.log = log
         self.glance = \
-            glance_client(conf.os_clients.glance_version,
-                          get_session())
+            glance_client(conf.glance_version, get_session())
         self.use_existing_image = False
         self.image = None
 
     def create(self):
-        LOG.info('image create start......')
+        self.log.info('image create start......')
 
         images = {image.name: image for image in self.glance.images.list()}
         if self.conf.image.name not in images:
@@ -66,12 +63,12 @@ class Image(object):
             self.use_existing_image = True
             self.image = images[self.conf.image.name]
 
-        LOG.info('image create end......')
+        self.log.info('image create end......')
 
     def delete(self):
-        LOG.info('image delete start.......')
+        self.log.info('image delete start.......')
 
         if not self.use_existing_image and self.image:
             self.glance.images.delete(self.image['id'])
 
-        LOG.info('image delete end.......')
+        self.log.info('image delete end.......')
