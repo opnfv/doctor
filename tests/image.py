@@ -42,8 +42,7 @@ class Image(object):
     def __init__(self, conf):
         self.conf = conf
         self.glance = \
-            glance_client(conf.os_clients.glance_version,
-                          get_session())
+            glance_client(conf.glance_version, get_session())
         self.use_existing_image = False
         self.image = None
 
