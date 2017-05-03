@@ -11,6 +11,8 @@ import sys
 import config
 from image import Image
 import logger as doctor_log
+from user import Quota
+from user import User
 
 
 LOG = doctor_log.Logger('doctor').getLogger()
@@ -21,6 +23,8 @@ class DoctorTest(object):
     def __init__(self, conf):
         self.conf = conf
         self.image = Image(self.conf)
+        self.user = User(self.conf)
+        self.quota = Quota(self.conf)
 
     def run(self):
         """run doctor test"""
@@ -32,6 +36,8 @@ class DoctorTest(object):
             self.image.create()
 
             # creating test user...
+            self.user.create()
+            self.quota.update()
 
             # creating VM...
 
@@ -47,6 +53,7 @@ class DoctorTest(object):
             sys.exit(1)
         finally:
             self.image.delete()
+            self.user.delete()
 
 
 def main():
