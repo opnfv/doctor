@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_7a2141fa",
+        "filename": "tests/os_clients.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-05-04T01:50:21Z",
+      "side": 1,
+      "message": "Should be StrOpt.",
+      "parentUuid": "9ab8dda7_1ff837e4",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 16
+      },
+      "revId": "82707ce2a103c0f7292ae3a930c1ffac93c75fdf",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_ffcbe3a2",
         "filename": "tests/user.py",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2017-05-03T13:37:50Z",
       "side": 1,
       "message": "Why `Quota` in `user.py`? Shall we name it `UserQuota` to distinguish from project quota? Or move it to `quota.py` if it is not specific for user quota updating. \n\nRefer to https://docs.openstack.org/admin-guide/cli-set-compute-quotas.html",
+      "revId": "82707ce2a103c0f7292ae3a930c1ffac93c75fdf",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_7afdc139",
+        "filename": "tests/user.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-05-04T01:50:21Z",
+      "side": 1,
+      "message": "It should be \u0027UserQuota\u0027. Move these to \"User\" class.",
+      "parentUuid": "9ab8dda7_ffcbe3a2",
       "revId": "82707ce2a103c0f7292ae3a930c1ffac93c75fdf",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
