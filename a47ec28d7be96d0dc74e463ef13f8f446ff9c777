@@ -2,6 +2,121 @@
   "comments": [
     {
       "key": {
+        "uuid": "9ab8dda7_2dbb90c5",
+        "filename": "tests/main.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-05-07T11:32:18Z",
+      "side": 1,
+      "message": "testing code should check and make sure the image has been successfully created in openstack.\n\nand if all the parameters are passed through conf file, then create() can be a internal function and called by __init",
+      "range": {
+        "startLine": 34,
+        "startChar": 12,
+        "endLine": 34,
+        "endChar": 31
+      },
+      "revId": "a47ec28d7be96d0dc74e463ef13f8f446ff9c777",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_8dd2bcfe",
+        "filename": "tests/main.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-05-07T11:32:18Z",
+      "side": 1,
+      "message": "check user, tenant, role and others existed after calling this function.",
+      "range": {
+        "startLine": 37,
+        "startChar": 11,
+        "endLine": 37,
+        "endChar": 30
+      },
+      "revId": "a47ec28d7be96d0dc74e463ef13f8f446ff9c777",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_cde8b4b6",
+        "filename": "tests/main.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-05-07T11:32:18Z",
+      "side": 1,
+      "message": "using admin role to perform some test which only admin call use",
+      "range": {
+        "startLine": 38,
+        "startChar": 12,
+        "endLine": 38,
+        "endChar": 36
+      },
+      "revId": "a47ec28d7be96d0dc74e463ef13f8f446ff9c777",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_edb498d2",
+        "filename": "tests/user.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-05-07T11:32:18Z",
+      "side": 1,
+      "message": "suggest to use several sub-functions to finish the same feature.",
+      "range": {
+        "startLine": 71,
+        "startChar": 8,
+        "endLine": 71,
+        "endChar": 26
+      },
+      "revId": "a47ec28d7be96d0dc74e463ef13f8f446ff9c777",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_6dc0a82a",
+        "filename": "tests/user.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-05-07T11:32:18Z",
+      "side": 1,
+      "message": "if the \u0027admin\u0027 is existed already, this will clean a existed user/project and tenant/role when calling delete()?",
+      "range": {
+        "startLine": 118,
+        "startChar": 12,
+        "endLine": 118,
+        "endChar": 47
+      },
+      "revId": "a47ec28d7be96d0dc74e463ef13f8f446ff9c777",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_e0c0247e",
         "filename": "tests/user.py",
         "patchSetId": 2
