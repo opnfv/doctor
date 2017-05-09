@@ -117,6 +117,30 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_88edcaf1",
+        "filename": "tests/user.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-05-09T01:06:48Z",
+      "side": 1,
+      "message": "No, it only remove the \u0027admin\u0027 user with \"admin\" role in doctor test project.",
+      "parentUuid": "9ab8dda7_6dc0a82a",
+      "range": {
+        "startLine": 118,
+        "startChar": 12,
+        "endLine": 118,
+        "endChar": 47
+      },
+      "revId": "a47ec28d7be96d0dc74e463ef13f8f446ff9c777",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_e0c0247e",
         "filename": "tests/user.py",
         "patchSetId": 2
@@ -128,6 +152,24 @@
       "writtenOn": "2017-05-04T12:10:04Z",
       "side": 1,
       "message": "What if project or user not available?\n\nIMHO, better to let it crash with exception message than fail silently. The best is to handle the exception gracefully, i.e. if the test can continue, print warning message and continue, otherwise exit with an error message.",
+      "revId": "a47ec28d7be96d0dc74e463ef13f8f446ff9c777",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_28bcdedb",
+        "filename": "tests/user.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-05-09T01:06:48Z",
+      "side": 1,
+      "message": "Fix it.",
+      "parentUuid": "9ab8dda7_e0c0247e",
       "revId": "a47ec28d7be96d0dc74e463ef13f8f446ff9c777",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
