@@ -10,7 +10,9 @@ from oslo_config import cfg
 
 import glanceclient.client as glanceclient
 from keystoneclient.v2_0 import client as ks_client
+from neutronclient.v2_0 import client as neutronclient
 import novaclient.client as novaclient
+
 
 OPTS = [
     cfg.StrOpt('glance_version', default='2', help='glance version'),
@@ -30,3 +32,7 @@ def keystone_client(session):
 def nova_client(version, session):
     return novaclient.Client(version=version,
                              session=session)
+
+
+def neutron_client(session):
+    return neutronclient.Client(session=session)
