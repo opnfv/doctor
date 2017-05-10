@@ -13,13 +13,15 @@ from keystoneauth1 import loading
 from keystoneauth1 import session
 
 
-def get_identity_auth():
+def get_identity_auth(username=None, password=None, project=None):
     auth_url = os.environ['OS_AUTH_URL']
-    username = os.environ['OS_USERNAME']
-    password = os.environ['OS_PASSWORD']
+    username = username if username else os.environ['OS_USERNAME']
+    password = password if password else os.environ['OS_PASSWORD']
     user_domain_name = os.environ.get('OS_USER_DOMAIN_NAME') or 'default'
     user_domain_id = os.environ.get('OS_USER_DOMAIN_ID') or 'default'
-    project_name = os.environ.get('OS_PROJECT_NAME') or os.environ.get('OS_TENANT_NAME')
+    project_name = project if project else \
+        (os.environ.get('OS_PROJECT_NAME')
+         or os.environ.get('OS_TENANT_NAME'))
     project_domain_name = os.environ.get('OS_PROJECT_DOMAIN_NAME') or 'default'
     project_domain_id = os.environ.get('OS_PROJECT_DOMAIN_ID') or 'default'
 
