@@ -10,7 +10,9 @@ import sys
 
 import config
 from image import Image
+from instance import Instance
 import logger as doctor_log
+from network import Network
 
 
 LOG = doctor_log.Logger('doctor').getLogger()
@@ -21,6 +23,8 @@ class DoctorTest(object):
     def __init__(self, conf):
         self.conf = conf
         self.image = Image(self.conf)
+        self.network = Network(self.conf)
+        self.instance = Instance(self.conf)
 
     def run(self):
         """run doctor test"""
@@ -34,6 +38,9 @@ class DoctorTest(object):
             # creating test user...
 
             # creating VM...
+            self.network.create()
+            self.instance.create()
+            self.instance.wait_for_vm_launch()
 
             # creating alarm...
 
@@ -47,6 +54,8 @@ class DoctorTest(object):
             sys.exit(1)
         finally:
             self.image.delete()
+            self.instance.delete()
+            self.network.delete()
 
 
 def main():
