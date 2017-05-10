@@ -12,9 +12,10 @@ import sys
 
 import config
 from image import Image
+from instance import Instance
 import logger as doctor_log
 from user import User
-
+from network import Network
 
 LOG = doctor_log.Logger('doctor').getLogger()
 
@@ -25,6 +26,8 @@ class DoctorTest(object):
         self.conf = conf
         self.image = Image(self.conf, LOG)
         self.user = User(self.conf, LOG)
+        self.network = Network(self.conf, LOG)
+        self.instance = Instance(self.conf, LOG)
 
     def setup(self):
         # prepare the cloud env
@@ -35,6 +38,11 @@ class DoctorTest(object):
         # creating test user...
         self.user.create()
         self.user.update_quota()
+
+        # creating VM...
+        self.network.create()
+        self.instance.create()
+        self.instance.wait_for_vm_launch()
 
     def run(self):
         """run doctor test"""
@@ -54,6 +62,8 @@ class DoctorTest(object):
             self.cleanup()
 
     def cleanup(self):
+        self.instance.delete()
+        self.network.delete()
         self.image.delete()
         self.user.delete()
 
