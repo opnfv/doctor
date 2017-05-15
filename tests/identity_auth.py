@@ -9,8 +9,7 @@
 
 import os
 
-from keystoneauth1.identity import v2
-from keystoneauth1.identity import v3
+from keystoneauth1 import loading
 from keystoneauth1 import session
 
 
@@ -21,18 +20,16 @@ def get_identity_auth():
     user_domain_name = os.environ.get('OS_USER_DOMAIN_NAME')
     project_name = os.environ.get('OS_PROJECT_NAME') or os.environ.get('OS_TENANT_NAME')
     project_domain_name = os.environ.get('OS_PROJECT_DOMAIN_NAME')
-    if auth_url.endswith('v3'):
-        return v3.Password(auth_url=auth_url,
-                           username=username,
-                           password=password,
-                           user_domain_name=user_domain_name,
-                           project_name=project_name,
-                           project_domain_name=project_domain_name)
-    else:
-        return v2.Password(auth_url=auth_url,
-                           username=username,
-                           password=password,
-                           tenant_name=project_name)
+
+    loader = loading.get_plugin_loader('password')
+    return loader.load_from_options(
+        auth_url=auth_url,
+        username=username,
+        password=password,
+        user_domain_name=user_domain_name,
+        project_name=project_name,
+        tenant_name=project_name,
+        project_domain_name=project_domain_name)
 
 
 def get_session(auth=None):
