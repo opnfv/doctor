@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_666e7d31",
+        "filename": "tests/identity_auth.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-05-16T07:41:24Z",
+      "side": 1,
+      "message": "Doctor\u0027s test needs two auths, Under \u0027admin\u0027 user to create test project, test user, test role and etc. Under \u0027test(doctor)\u0027 user to verify the function.",
+      "parentUuid": "9ab8dda7_26ae4586",
+      "range": {
+        "startLine": 17,
+        "startChar": 4,
+        "endLine": 17,
+        "endChar": 21
+      },
+      "revId": "38ebd0f056f604e14cb1b07f938cfd792b34c3a6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_4672594a",
         "filename": "tests/instance.py",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "9ab8dda7_267885f1",
+        "filename": "tests/instance.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-05-16T07:41:24Z",
+      "side": 1,
+      "message": "Fix it.",
+      "parentUuid": "9ab8dda7_4672594a",
+      "range": {
+        "startLine": 96,
+        "startChar": 20,
+        "endLine": 96,
+        "endChar": 30
+      },
+      "revId": "38ebd0f056f604e14cb1b07f938cfd792b34c3a6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_8678512c",
         "filename": "tests/instance.py",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2017-05-16T06:09:04Z",
       "side": 1,
       "message": "not necessary.\n\nafter the for loop finished without Exception, this should be the same.",
+      "range": {
+        "startLine": 98,
+        "startChar": 12,
+        "endLine": 98,
+        "endChar": 50
+      },
+      "revId": "38ebd0f056f604e14cb1b07f938cfd792b34c3a6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_86693127",
+        "filename": "tests/instance.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-05-16T07:41:24Z",
+      "side": 1,
+      "message": "Maybe some vms\u0027 status is not \u0027active\u0027, this should not be the same. We still need to do the loop again to check.",
+      "parentUuid": "9ab8dda7_8678512c",
       "range": {
         "startLine": 98,
         "startChar": 12,
@@ -105,6 +177,30 @@
       "writtenOn": "2017-05-16T06:09:04Z",
       "side": 1,
       "message": "do net and subnet use the same name?",
+      "range": {
+        "startLine": 53,
+        "startChar": 32,
+        "endLine": 53,
+        "endChar": 40
+      },
+      "revId": "38ebd0f056f604e14cb1b07f938cfd792b34c3a6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_46733915",
+        "filename": "tests/network.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-05-16T07:41:24Z",
+      "side": 1,
+      "message": "Yes. We can add a new subnet_name config.But i think it\u0027s Ok to reuse the net_name.",
+      "parentUuid": "9ab8dda7_a69a3561",
       "range": {
         "startLine": 53,
         "startChar": 32,
