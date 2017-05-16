@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab8dda7_26ae4586",
+        "filename": "tests/identity_auth.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-05-16T06:09:04Z",
+      "side": 1,
+      "message": "suggest to keep the session in a global vars, when it has pass the authentication, it is not necessary to connect again.",
+      "range": {
+        "startLine": 17,
+        "startChar": 4,
+        "endLine": 17,
+        "endChar": 21
+      },
+      "revId": "38ebd0f056f604e14cb1b07f938cfd792b34c3a6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_4672594a",
+        "filename": "tests/instance.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-05-16T06:09:04Z",
+      "side": 1,
+      "message": "count +\u003d 2\nfor using time.sleep(2)\ncount is in waiting time or max try times?",
+      "range": {
+        "startLine": 96,
+        "startChar": 20,
+        "endLine": 96,
+        "endChar": 30
+      },
+      "revId": "38ebd0f056f604e14cb1b07f938cfd792b34c3a6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_8678512c",
+        "filename": "tests/instance.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-05-16T06:09:04Z",
+      "side": 1,
+      "message": "not necessary.\n\nafter the for loop finished without Exception, this should be the same.",
+      "range": {
+        "startLine": 98,
+        "startChar": 12,
+        "endLine": 98,
+        "endChar": 50
+      },
+      "revId": "38ebd0f056f604e14cb1b07f938cfd792b34c3a6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_e6902d45",
+        "filename": "tests/instance.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-05-16T06:09:04Z",
+      "side": 1,
+      "message": "the same",
+      "range": {
+        "startLine": 101,
+        "startChar": 12,
+        "endLine": 102,
+        "endChar": 25
+      },
+      "revId": "38ebd0f056f604e14cb1b07f938cfd792b34c3a6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_a69a3561",
+        "filename": "tests/network.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-05-16T06:09:04Z",
+      "side": 1,
+      "message": "do net and subnet use the same name?",
+      "range": {
+        "startLine": 53,
+        "startChar": 32,
+        "endLine": 53,
+        "endChar": 40
+      },
+      "revId": "38ebd0f056f604e14cb1b07f938cfd792b34c3a6",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
