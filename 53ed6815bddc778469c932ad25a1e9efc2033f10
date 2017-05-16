@@ -16,6 +16,24 @@
       "revId": "53ed6815bddc778469c932ad25a1e9efc2033f10",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab8dda7_124fbc93",
+        "filename": "tests/user.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 483
+      },
+      "writtenOn": "2017-05-16T00:37:43Z",
+      "side": 1,
+      "message": "I think it is ok!\ncreate when not existed.",
+      "parentUuid": "9ab8dda7_32c9a078",
+      "revId": "53ed6815bddc778469c932ad25a1e9efc2033f10",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
