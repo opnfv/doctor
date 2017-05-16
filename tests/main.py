@@ -8,6 +8,7 @@
 ##############################################################################
 import sys
 
+from alarm import Alarm
 import config
 from image import Image
 import logger as doctor_log
@@ -21,6 +22,7 @@ class DoctorTest(object):
     def __init__(self, conf):
         self.conf = conf
         self.image = Image(self.conf)
+        self.alarm = Alarm(self.conf)
 
     def run(self):
         """run doctor test"""
@@ -36,6 +38,7 @@ class DoctorTest(object):
             # creating VM...
 
             # creating alarm...
+            self.alarm.create()
 
             # starting doctor sample components...
 
@@ -47,6 +50,7 @@ class DoctorTest(object):
             sys.exit(1)
         finally:
             self.image.delete()
+            self.alarm.delete()
 
 
 def main():
