@@ -9,6 +9,7 @@
 import itertools
 from oslo_config import cfg
 
+import alarm
 import image
 import instance
 import network
@@ -23,7 +24,8 @@ def list_opts():
             image.OPTS,
             user.OPTS,
             network.OPTS,
-            instance.OPTS))
+            instance.OPTS,
+            alarm.OPTS))
     ]
 
 
