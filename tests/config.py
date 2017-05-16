@@ -10,6 +10,8 @@ import itertools
 
 from oslo_config import cfg
 
+import alarm
+import consumer
 import image
 import instance
 import network
@@ -19,12 +21,14 @@ import user
 
 def list_opts():
     return [
+        ('consumer', consumer.OPTS),
         ('DEFAULT', itertools.chain(
             os_clients.OPTS,
             image.OPTS,
             user.OPTS,
             network.OPTS,
-            instance.OPTS))
+            instance.OPTS,
+            alarm.OPTS))
     ]
 
 
