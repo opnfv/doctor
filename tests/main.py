@@ -9,6 +9,7 @@
 import sys
 import time
 
+from alarm import Alarm
 import config
 from image import Image
 from instance import Instance
@@ -27,6 +28,7 @@ class DoctorTest(object):
         self.user = User(self.conf, LOG)
         self.network = Network(self.conf, LOG)
         self.instance = Instance(self.conf, LOG)
+        self.alarm = Alarm(self.conf, LOG)
 
     def setup(self):
         # prepare the cloud env
@@ -42,6 +44,9 @@ class DoctorTest(object):
         self.network.create()
         self.instance.create()
         self.instance.wait_for_vm_launch()
+
+        # creating alarm...
+        self.alarm.create()
 
     def run(self):
         """run doctor test"""
@@ -61,6 +66,7 @@ class DoctorTest(object):
             self.cleanup()
 
     def cleanup(self):
+        self.alarm.delete()
         self.instance.delete()
         self.network.delete()
         self.image.delete()

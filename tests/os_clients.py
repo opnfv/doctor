@@ -8,6 +8,7 @@
 ##############################################################################
 from oslo_config import cfg
 
+import aodhclient.client as aodhclient
 import glanceclient.client as glanceclient
 from keystoneclient.v2_0 import client as ks_client
 from neutronclient.v2_0 import client as neutronclient
@@ -17,6 +18,7 @@ import novaclient.client as novaclient
 OPTS = [
     cfg.StrOpt('glance_version', default='2', help='glance version'),
     cfg.StrOpt('nova_version', default='2.34', help='Nova version'),
+    cfg.StrOpt('aodh_version', default='2', help='aodh version'),
 ]
 
 
@@ -36,3 +38,7 @@ def nova_client(version, session):
 
 def neutron_client(session):
     return neutronclient.Client(session=session)
+
+
+def aodh_client(version, session):
+    return aodhclient.Client(version, session=session)
