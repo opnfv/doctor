@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "5aaae553_e202bf0a",
+        "filename": "tests/monitor/__init__.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-05-29T04:42:07Z",
+      "side": 1,
+      "message": "+1, it is good to state here, even we have default vale for this option.",
+      "range": {
+        "startLine": 17,
+        "startChar": 15,
+        "endLine": 17,
+        "endChar": 28
+      },
+      "revId": "2794692ecd9c331d752175ddcf3ec61f9be012d8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aaae553_3d09da2c",
+        "filename": "tests/monitor/base.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-05-29T04:42:07Z",
+      "side": 1,
+      "message": "these should be in \u0027__init__.py\u0027 rather than base/reference monitor class file.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 72
+      },
+      "revId": "2794692ecd9c331d752175ddcf3ec61f9be012d8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aaae553_5d0e1636",
+        "filename": "tests/monitor/base.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-05-29T04:42:07Z",
+      "side": 1,
+      "message": "BaseMonitor should be better.\n\nHaving base class sounds nice, but it may need description of what Monitor should do. Those can be added in another patch though.",
+      "range": {
+        "startLine": 21,
+        "startChar": 6,
+        "endLine": 21,
+        "endChar": 13
+      },
+      "revId": "2794692ecd9c331d752175ddcf3ec61f9be012d8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_a68475d4",
         "filename": "tests/monitor/sample.py",
         "patchSetId": 2
@@ -18,6 +87,75 @@
         "startChar": 15,
         "endLine": 37,
         "endChar": 35
+      },
+      "revId": "2794692ecd9c331d752175ddcf3ec61f9be012d8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aaae553_7d2672bc",
+        "filename": "tests/monitor/sample.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-05-29T04:42:07Z",
+      "side": 1,
+      "message": "This class is not just listening, but also sending out ICMP packets. How about \u0027Pinger\u0027?",
+      "range": {
+        "startLine": 58,
+        "startChar": 6,
+        "endLine": 58,
+        "endChar": 14
+      },
+      "revId": "2794692ecd9c331d752175ddcf3ec61f9be012d8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aaae553_fd126257",
+        "filename": "tests/monitor/sample.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-05-29T04:42:07Z",
+      "side": 1,
+      "message": "having this function in \u0027Listener\u0027 is bit strange. I mean this is too much for Listener jobs. Can you move this function to Monitor and call that function in _run()?",
+      "range": {
+        "startLine": 95,
+        "startChar": 8,
+        "endLine": 95,
+        "endChar": 21
+      },
+      "revId": "2794692ecd9c331d752175ddcf3ec61f9be012d8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aaae553_9d2b2e82",
+        "filename": "tests/monitor/sample.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-05-29T04:42:07Z",
+      "side": 1,
+      "message": "is this for sample inspector? we still need two format supports for sample inspector and congress.",
+      "range": {
+        "startLine": 117,
+        "startChar": 8,
+        "endLine": 117,
+        "endChar": 20
       },
       "revId": "2794692ecd9c331d752175ddcf3ec61f9be012d8",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
