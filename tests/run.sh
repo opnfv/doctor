@@ -293,7 +293,7 @@ inject_failure() {
     echo "disabling network of compute host [$COMPUTE_HOST] for 3 mins..."
     cat > disable_network.sh << 'END_TXT'
 #!/bin/bash -x
-dev=$(sudo ip a | awk '/ @COMPUTE_IP@\//{print $7}')
+dev=$(sudo ip a | awk '/ @COMPUTE_IP@\//{print $NF}')
 [[ -n "$dev" ]] || dev=$(sudo ip a | awk '/ @COMPUTE_IP@\//{print $5}')
 sleep 1
 sudo ip link set $dev down
