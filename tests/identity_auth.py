@@ -17,9 +17,11 @@ def get_identity_auth():
     auth_url = os.environ['OS_AUTH_URL']
     username = os.environ['OS_USERNAME']
     password = os.environ['OS_PASSWORD']
-    user_domain_name = os.environ.get('OS_USER_DOMAIN_NAME')
+    user_domain_name = os.environ.get('OS_USER_DOMAIN_NAME') or 'default'
+    user_domain_id = os.environ.get('OS_USER_DOMAIN_ID') or 'default'
     project_name = os.environ.get('OS_PROJECT_NAME') or os.environ.get('OS_TENANT_NAME')
-    project_domain_name = os.environ.get('OS_PROJECT_DOMAIN_NAME')
+    project_domain_name = os.environ.get('OS_PROJECT_DOMAIN_NAME') or 'default'
+    project_domain_id = os.environ.get('OS_PROJECT_DOMAIN_ID') or 'default'
 
     loader = loading.get_plugin_loader('password')
     return loader.load_from_options(
@@ -27,9 +29,11 @@ def get_identity_auth():
         username=username,
         password=password,
         user_domain_name=user_domain_name,
+        user_domain_id=user_domain_id,
         project_name=project_name,
         tenant_name=project_name,
-        project_domain_name=project_domain_name)
+        project_domain_name=project_domain_name,
+        project_domain_id=project_domain_id)
 
 
 def get_session(auth=None):
