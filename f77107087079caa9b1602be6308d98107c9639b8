@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5aaae553_fd3902d9",
+        "filename": "tests/identity_auth.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-05-29T04:48:50Z",
+      "side": 1,
+      "message": "yes, this is what we should use.",
+      "range": {
+        "startLine": 24,
+        "startChar": 21,
+        "endLine": 24,
+        "endChar": 38
+      },
+      "revId": "f77107087079caa9b1602be6308d98107c9639b8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
