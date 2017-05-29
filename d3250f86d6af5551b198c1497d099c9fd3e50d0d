@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5aaae553_fdafc229",
+        "filename": "devstack/plugin.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2017-05-29T12:51:26Z",
+      "side": 1,
+      "message": "This is in fact a partial copy from osprofiler.\n\nhttps://github.com/openstack/osprofiler/blob/master/devstack/lib/osprofiler\n\nIf the env contains a different value from default one, it won\u0027t work any way...",
+      "parentUuid": "5aaae553_dd68c689",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 1
+      },
+      "revId": "d3250f86d6af5551b198c1497d099c9fd3e50d0d",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5aaae553_7d0512c1",
         "filename": "devstack/plugin.sh",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-05-29T09:39:29Z",
       "side": 1,
       "message": "In line with comment above, maybe there\u0027s a env variable we could use instead of hardcoding.",
+      "range": {
+        "startLine": 28,
+        "startChar": 60,
+        "endLine": 28,
+        "endChar": 69
+      },
+      "revId": "d3250f86d6af5551b198c1497d099c9fd3e50d0d",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aaae553_1dadfe31",
+        "filename": "devstack/plugin.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2017-05-29T12:51:26Z",
+      "side": 1,
+      "message": "Agree. I\u0027ll fix it.",
+      "parentUuid": "5aaae553_7d0512c1",
       "range": {
         "startLine": 28,
         "startChar": 60,
