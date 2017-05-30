@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5aaae553_785e80eb",
+        "filename": "devstack/README.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-05-30T20:11:04Z",
+      "side": 1,
+      "message": "https://github.com/opnfv/doctor",
+      "range": {
+        "startLine": 19,
+        "startChar": 25,
+        "endLine": 19,
+        "endChar": 68
+      },
+      "revId": "67356f82f06fb5f0854e03671ec53e706a1499ef",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
