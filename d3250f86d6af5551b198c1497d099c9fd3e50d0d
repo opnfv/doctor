@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5aaae553_734a2385",
+        "filename": "devstack/plugin.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-05-30T20:11:04Z",
+      "side": 1,
+      "message": "https://review.openstack.org/#/c/469236/",
+      "parentUuid": "5aaae553_fdafc229",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 1
+      },
+      "revId": "d3250f86d6af5551b198c1497d099c9fd3e50d0d",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5aaae553_7d0512c1",
         "filename": "devstack/plugin.sh",
         "patchSetId": 1
