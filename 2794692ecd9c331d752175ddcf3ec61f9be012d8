@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5aaae553_b805d815",
+        "filename": "tests/monitor/__init__.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-05-30T10:20:24Z",
+      "side": 1,
+      "message": "Could you also add parameter \u0027choices\u0027? For now we only support one monitor, though it would enforce users specify only valid monitors. \n\nhttps://docs.openstack.org/developer/oslo.config/opts.html#oslo_config.cfg.StrOpt",
+      "range": {
+        "startLine": 15,
+        "startChar": 15,
+        "endLine": 15,
+        "endChar": 32
+      },
+      "revId": "2794692ecd9c331d752175ddcf3ec61f9be012d8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5aaae553_e202bf0a",
         "filename": "tests/monitor/__init__.py",
         "patchSetId": 2
@@ -71,6 +94,53 @@
     },
     {
       "key": {
+        "uuid": "5aaae553_1822ecb9",
+        "filename": "tests/monitor/base.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-05-30T10:20:24Z",
+      "side": 1,
+      "message": "+1 for BaseMonitor",
+      "parentUuid": "5aaae553_5d0e1636",
+      "range": {
+        "startLine": 21,
+        "startChar": 6,
+        "endLine": 21,
+        "endChar": 13
+      },
+      "revId": "2794692ecd9c331d752175ddcf3ec61f9be012d8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aaae553_93047f16",
+        "filename": "tests/monitor/sample.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-05-30T10:20:24Z",
+      "side": 1,
+      "message": "\u0027doctor-monitor\u0027 or \u0027doctor-monitor-sample\u0027 maybe?",
+      "range": {
+        "startLine": 22,
+        "startChar": 28,
+        "endLine": 22,
+        "endChar": 34
+      },
+      "revId": "2794692ecd9c331d752175ddcf3ec61f9be012d8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab8dda7_a68475d4",
         "filename": "tests/monitor/sample.py",
         "patchSetId": 2
@@ -94,6 +164,30 @@
     },
     {
       "key": {
+        "uuid": "5aaae553_7326a3bc",
+        "filename": "tests/monitor/sample.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-05-30T10:20:24Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "9ab8dda7_a68475d4",
+      "range": {
+        "startLine": 37,
+        "startChar": 15,
+        "endLine": 37,
+        "endChar": 35
+      },
+      "revId": "2794692ecd9c331d752175ddcf3ec61f9be012d8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5aaae553_7d2672bc",
         "filename": "tests/monitor/sample.py",
         "patchSetId": 2
@@ -105,6 +199,30 @@
       "writtenOn": "2017-05-29T04:42:07Z",
       "side": 1,
       "message": "This class is not just listening, but also sending out ICMP packets. How about \u0027Pinger\u0027?",
+      "range": {
+        "startLine": 58,
+        "startChar": 6,
+        "endLine": 58,
+        "endChar": 14
+      },
+      "revId": "2794692ecd9c331d752175ddcf3ec61f9be012d8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aaae553_5325a7a9",
+        "filename": "tests/monitor/sample.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-05-30T10:20:24Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "5aaae553_7d2672bc",
       "range": {
         "startLine": 58,
         "startChar": 6,
@@ -156,6 +274,29 @@
         "startChar": 8,
         "endLine": 117,
         "endChar": 20
+      },
+      "revId": "2794692ecd9c331d752175ddcf3ec61f9be012d8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aaae553_734d4372",
+        "filename": "tests/os_clients.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-05-30T10:20:24Z",
+      "side": 1,
+      "message": "nit: s/glance/Glance/ for consistency with \"Nova\" below.",
+      "range": {
+        "startLine": 16,
+        "startChar": 52,
+        "endLine": 16,
+        "endChar": 53
       },
       "revId": "2794692ecd9c331d752175ddcf3ec61f9be012d8",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
