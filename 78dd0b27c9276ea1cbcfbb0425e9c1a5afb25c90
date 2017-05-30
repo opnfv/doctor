@@ -34,6 +34,24 @@
       "revId": "78dd0b27c9276ea1cbcfbb0425e9c1a5afb25c90",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aaae553_d3ed17f1",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 6805
+      },
+      "writtenOn": "2017-05-30T15:34:34Z",
+      "side": 1,
+      "message": "The error occurs when local installer type is used instead of fuel. In that case, the user has to run devstack and may configure the network with DHCP and problem occurs when disable_network.sh script tries to set the compute node NIC to down. Also always taking the 7th value of the \"ip a\" command output is not an efficient method. Instead using the last value is a surer way as last value is always interface name.",
+      "parentUuid": "5aaae553_93d8ff54",
+      "revId": "78dd0b27c9276ea1cbcfbb0425e9c1a5afb25c90",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
