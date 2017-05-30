@@ -16,6 +16,24 @@
       "revId": "78dd0b27c9276ea1cbcfbb0425e9c1a5afb25c90",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aaae553_53e28704",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-05-30T14:09:18Z",
+      "side": 1,
+      "message": "This line regards to the compute physical interface, not VMs.",
+      "parentUuid": "5aaae553_93d8ff54",
+      "revId": "78dd0b27c9276ea1cbcfbb0425e9c1a5afb25c90",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
