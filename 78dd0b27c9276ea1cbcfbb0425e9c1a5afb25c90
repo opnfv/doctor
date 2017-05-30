@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5aaae553_93d8ff54",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-05-30T14:07:50Z",
+      "side": 1,
+      "message": "We create the subnet with \u0027no-dhcp\u0027,see line 178",
+      "revId": "78dd0b27c9276ea1cbcfbb0425e9c1a5afb25c90",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
