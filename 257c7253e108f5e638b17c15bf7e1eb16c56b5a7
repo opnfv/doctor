@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "5aaae553_b3bdfb04",
+        "filename": "tests/image.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-05-30T12:26:49Z",
+      "side": 1,
+      "message": "No,it\u0027s in the \u0027DEFAULT\u0027 group.",
+      "parentUuid": "5aaae553_5d7376b1",
+      "range": {
+        "startLine": 43,
+        "startChar": 26,
+        "endLine": 43,
+        "endChar": 45
+      },
+      "revId": "257c7253e108f5e638b17c15bf7e1eb16c56b5a7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5aaae553_fd67c2e8",
         "filename": "tests/user.py",
         "patchSetId": 5
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "5aaae553_d3baf709",
+        "filename": "tests/user.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-05-30T12:26:49Z",
+      "side": 1,
+      "message": "You\u0027re right. It should be moved to Instance. This patch was posted before https://gerrit.opnfv.org/gerrit/#/c/34537/, but \u0027vm_count\u0027 is used for updating the quota, so.....",
+      "parentUuid": "5aaae553_fd67c2e8",
+      "range": {
+        "startLine": 35,
+        "startChar": 16,
+        "endLine": 35,
+        "endChar": 24
+      },
+      "revId": "257c7253e108f5e638b17c15bf7e1eb16c56b5a7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5aaae553_1d65fee0",
         "filename": "tests/user.py",
         "patchSetId": 5
@@ -82,6 +130,30 @@
       "writtenOn": "2017-05-29T05:43:15Z",
       "side": 1,
       "message": "Is this responsibility of this \u0027User\u0027? I suppose quota update might be admin\u0027s job in the process of creating new non-admin user for test.",
+      "range": {
+        "startLine": 141,
+        "startChar": 8,
+        "endLine": 141,
+        "endChar": 20
+      },
+      "revId": "257c7253e108f5e638b17c15bf7e1eb16c56b5a7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aaae553_933c7f95",
+        "filename": "tests/user.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-05-30T12:26:49Z",
+      "side": 1,
+      "message": "\u0027User\u0027 is admin\u0027s job to create non-admin user, project and role. And the quota is the user\u0027s quota which i create here.",
+      "parentUuid": "5aaae553_1d65fee0",
       "range": {
         "startLine": 141,
         "startChar": 8,
