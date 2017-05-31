@@ -12,7 +12,6 @@ from flask import Flask
 from flask import request
 import json
 import logger as doctor_log
-import os
 import time
 
 LOG = doctor_log.Logger('doctor_consumer').getLogger()

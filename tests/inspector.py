@@ -13,7 +13,6 @@ from flask import Flask
 from flask import request
 import json
 import logger as doctor_log
-import os
 import threading
 import time
 

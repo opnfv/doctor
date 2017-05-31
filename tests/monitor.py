@@ -11,10 +11,8 @@ import argparse
 from datetime import datetime
 import json
 import logger as doctor_log
-import os
 import requests
 import socket
-import sys
 import time
 
 from keystoneauth1 import session
