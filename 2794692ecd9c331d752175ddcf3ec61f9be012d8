@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5aaae553_13488f2c",
+        "filename": "tests/monitor/__init__.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-05-31T06:23:33Z",
+      "side": 1,
+      "message": "Sure. Currently we only have the \u0027sample\u0027 monitor.",
+      "parentUuid": "5aaae553_b805d815",
+      "range": {
+        "startLine": 15,
+        "startChar": 15,
+        "endLine": 15,
+        "endChar": 32
+      },
+      "revId": "2794692ecd9c331d752175ddcf3ec61f9be012d8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5aaae553_e202bf0a",
         "filename": "tests/monitor/__init__.py",
         "patchSetId": 2
@@ -59,6 +83,30 @@
       "writtenOn": "2017-05-29T04:42:07Z",
       "side": 1,
       "message": "these should be in \u0027__init__.py\u0027 rather than base/reference monitor class file.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 72
+      },
+      "revId": "2794692ecd9c331d752175ddcf3ec61f9be012d8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aaae553_33934aa5",
+        "filename": "tests/monitor/base.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-05-31T06:23:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5aaae553_3d09da2c",
       "range": {
         "startLine": 12,
         "startChar": 0,
@@ -118,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "5aaae553_d38f5674",
+        "filename": "tests/monitor/base.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-05-31T06:23:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5aaae553_1822ecb9",
+      "range": {
+        "startLine": 21,
+        "startChar": 6,
+        "endLine": 21,
+        "endChar": 13
+      },
+      "revId": "2794692ecd9c331d752175ddcf3ec61f9be012d8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5aaae553_93047f16",
         "filename": "tests/monitor/sample.py",
         "patchSetId": 2
@@ -129,6 +201,30 @@
       "writtenOn": "2017-05-30T10:20:24Z",
       "side": 1,
       "message": "\u0027doctor-monitor\u0027 or \u0027doctor-monitor-sample\u0027 maybe?",
+      "range": {
+        "startLine": 22,
+        "startChar": 28,
+        "endLine": 22,
+        "endChar": 34
+      },
+      "revId": "2794692ecd9c331d752175ddcf3ec61f9be012d8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aaae553_f38cd281",
+        "filename": "tests/monitor/sample.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-05-31T06:23:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5aaae553_93047f16",
       "range": {
         "startLine": 22,
         "startChar": 28,
@@ -188,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "5aaae553_73f8e2e5",
+        "filename": "tests/monitor/sample.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-05-31T06:23:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5aaae553_7326a3bc",
+      "range": {
+        "startLine": 37,
+        "startChar": 15,
+        "endLine": 37,
+        "endChar": 35
+      },
+      "revId": "2794692ecd9c331d752175ddcf3ec61f9be012d8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5aaae553_7d2672bc",
         "filename": "tests/monitor/sample.py",
         "patchSetId": 2
@@ -235,6 +355,30 @@
     },
     {
       "key": {
+        "uuid": "5aaae553_73b9c2e8",
+        "filename": "tests/monitor/sample.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-05-31T06:23:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5aaae553_5325a7a9",
+      "range": {
+        "startLine": 58,
+        "startChar": 6,
+        "endLine": 58,
+        "endChar": 14
+      },
+      "revId": "2794692ecd9c331d752175ddcf3ec61f9be012d8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5aaae553_fd126257",
         "filename": "tests/monitor/sample.py",
         "patchSetId": 2
@@ -246,6 +390,30 @@
       "writtenOn": "2017-05-29T04:42:07Z",
       "side": 1,
       "message": "having this function in \u0027Listener\u0027 is bit strange. I mean this is too much for Listener jobs. Can you move this function to Monitor and call that function in _run()?",
+      "range": {
+        "startLine": 95,
+        "startChar": 8,
+        "endLine": 95,
+        "endChar": 21
+      },
+      "revId": "2794692ecd9c331d752175ddcf3ec61f9be012d8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aaae553_13ddee70",
+        "filename": "tests/monitor/sample.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-05-31T06:23:33Z",
+      "side": 1,
+      "message": "make sense.",
+      "parentUuid": "5aaae553_fd126257",
       "range": {
         "startLine": 95,
         "startChar": 8,
@@ -281,6 +449,30 @@
     },
     {
       "key": {
+        "uuid": "5aaae553_d3c43761",
+        "filename": "tests/monitor/sample.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-05-31T06:23:33Z",
+      "side": 1,
+      "message": "Oh,yes. As it was fixed in Pike https://review.openstack.org/#/c/439401/, we still need two format supports.",
+      "parentUuid": "5aaae553_9d2b2e82",
+      "range": {
+        "startLine": 117,
+        "startChar": 8,
+        "endLine": 117,
+        "endChar": 20
+      },
+      "revId": "2794692ecd9c331d752175ddcf3ec61f9be012d8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5aaae553_734d4372",
         "filename": "tests/os_clients.py",
         "patchSetId": 2
@@ -292,6 +484,30 @@
       "writtenOn": "2017-05-30T10:20:24Z",
       "side": 1,
       "message": "nit: s/glance/Glance/ for consistency with \"Nova\" below.",
+      "range": {
+        "startLine": 16,
+        "startChar": 52,
+        "endLine": 16,
+        "endChar": 53
+      },
+      "revId": "2794692ecd9c331d752175ddcf3ec61f9be012d8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aaae553_13ce4e84",
+        "filename": "tests/os_clients.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-05-31T06:23:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5aaae553_734d4372",
       "range": {
         "startLine": 16,
         "startChar": 52,
