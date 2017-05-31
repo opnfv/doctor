@@ -30,6 +30,7 @@ DOCTOR_PW=doctor
 DOCTOR_PROJECT=doctor
 DOCTOR_ROLE=_member_
 PROFILER_TYPE=${PROFILER_TYPE:-none}
+PYTHON_ENABLE=${PYTHON_ENABLE:-false}
 
 TOP_DIR=$(cd $(dirname "$0") && pwd)
 
@@ -479,6 +480,13 @@ cleanup() {
 }
 
 # Main process
+
+if $PYTHON_ENABLE; then
+    cd $TOP_DIR
+    echo "executing tox..."
+    tox
+    exit $?
+fi
 
 echo "Note: doctor/tests/run.sh has been executed."
 git log --oneline -1 || true   # ignore even you don't have git installed
