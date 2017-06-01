@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5aaae553_33ca6ba2",
+        "filename": "tests/alarm.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-06-01T06:32:40Z",
+      "side": 1,
+      "message": "belongs to \"DEFAULT\" group.",
+      "parentUuid": "5aaae553_dd5e8612",
+      "range": {
+        "startLine": 29,
+        "startChar": 57,
+        "endLine": 29,
+        "endChar": 61
+      },
+      "revId": "70887afb80d04f97f015d39a90ab9a2ffe392c26",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5aaae553_7d9bd2c9",
         "filename": "tests/alarm.py",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5aaae553_f3c37388",
+        "filename": "tests/alarm.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-06-01T06:32:40Z",
+      "side": 1,
+      "message": "all alarms are updated in the self.alarms.",
+      "parentUuid": "5aaae553_7d9bd2c9",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 8
+      },
+      "revId": "70887afb80d04f97f015d39a90ab9a2ffe392c26",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5aaae553_9da00ef6",
         "filename": "tests/config.py",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2017-05-29T05:52:23Z",
       "side": 1,
       "message": "just out of curiosity. I\u0027m fine with putting this option under default, but what is the policy behind? why we have \u0027image\u0027 group, but don\u0027t have \u0027alarm\u0027 group here?",
+      "range": {
+        "startLine": 22,
+        "startChar": 12,
+        "endLine": 22,
+        "endChar": 22
+      },
+      "revId": "70887afb80d04f97f015d39a90ab9a2ffe392c26",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aaae553_59ab8589",
+        "filename": "tests/config.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-06-01T06:32:40Z",
+      "side": 1,
+      "message": "Maybe putting \u0027image\u0027,\u0027alarm\u0027, \u0027user\u0027 and \u0027instance\u0027 options all under \u0027default\u0027 group makes sense. We only need to define \"DEFAULT\", \u0027monitor\u0027, \u0027inspector\u0027 and \u0027consumer\u0027 groups.",
+      "parentUuid": "5aaae553_9da00ef6",
       "range": {
         "startLine": 22,
         "startChar": 12,
