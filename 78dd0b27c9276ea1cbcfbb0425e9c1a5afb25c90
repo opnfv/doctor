@@ -111,6 +111,30 @@
       "revId": "78dd0b27c9276ea1cbcfbb0425e9c1a5afb25c90",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aaae553_2d22ffb9",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-06-05T11:47:00Z",
+      "side": 1,
+      "message": "+1. Replacing with $NF we no longer need this line.",
+      "parentUuid": "5aaae553_6d40f756",
+      "range": {
+        "startLine": 297,
+        "startChar": 19,
+        "endLine": 297,
+        "endChar": 70
+      },
+      "revId": "78dd0b27c9276ea1cbcfbb0425e9c1a5afb25c90",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
