@@ -7,6 +7,7 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
 import itertools
+
 from oslo_config import cfg
 
 import image
@@ -23,12 +24,15 @@ def list_opts():
     ]
 
 
-def prepare_conf(conf=None):
+def prepare_conf(args=None, conf=None, config_files=None):
     if conf is None:
         conf = cfg.ConfigOpts()
 
     for group, options in list_opts():
         conf.register_opts(list(options),
                            group=None if group == 'DEFAULT' else group)
+
+    conf(args, project='doctor', validate_default_values=True,
+         default_config_files=config_files)
 
     return conf
