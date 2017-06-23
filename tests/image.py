@@ -7,7 +7,7 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
 import os
-import urllib2
+import urllib.request
 
 from oslo_config import cfg
 
@@ -53,7 +53,7 @@ class Image(object):
         images = {image.name: image for image in self.glance.images.list()}
         if self.conf.image.name not in images:
             if not os.path.exists(self.conf.image.file_name):
-                resp = urllib2.urlopen(self.conf.image.url)
+                resp = urllib.request.urlopen(self.conf.image.url)
                 with open(self.conf.image.file_name, "wb") as file:
                     file.write(resp.read())
             self.image = self.glance.images.create(name=self.conf.image.name,
