@@ -118,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "1aa4ed85_7d68b7f5",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2017-06-27T11:00:56Z",
+      "side": 1,
+      "message": "I\u0027m not sure if you would like to do a default action like migration, if you were not asked to do it directly by the application manager. Maybe send another notification after a while?",
+      "parentUuid": "1aa4ed85_3db55fcd",
+      "range": {
+        "startLine": 89,
+        "startChar": 4,
+        "endLine": 89,
+        "endChar": 65
+      },
+      "revId": "b1fa053643cec195c919f05d4efef1a8449228af",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1aa4ed85_bd470f4b",
         "filename": "docs/development/design/maintenance-design-guideline.rst",
         "patchSetId": 1
@@ -165,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "1aa4ed85_5d637b1a",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2017-06-27T11:00:56Z",
+      "side": 1,
+      "message": "Ok",
+      "parentUuid": "1aa4ed85_1de743e6",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 94,
+        "endChar": 13
+      },
+      "revId": "b1fa053643cec195c919f05d4efef1a8449228af",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1aa4ed85_9d61f3d5",
         "filename": "docs/development/design/maintenance-design-guideline.rst",
         "patchSetId": 1
@@ -200,6 +248,30 @@
       "side": 1,
       "message": "Migration might fail and if cannot be resolved maintenance cannot be done automatically. In case of full maintenance to host/resource it is normal that admin test resource works after maintenance and thus it needs to be not used.",
       "parentUuid": "1aa4ed85_9d61f3d5",
+      "range": {
+        "startLine": 99,
+        "startChar": 60,
+        "endLine": 100,
+        "endChar": 26
+      },
+      "revId": "b1fa053643cec195c919f05d4efef1a8449228af",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_7dc197e3",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2017-06-27T11:00:56Z",
+      "side": 1,
+      "message": "Ok",
+      "parentUuid": "1aa4ed85_ddd0cbf9",
       "range": {
         "startLine": 99,
         "startChar": 60,
