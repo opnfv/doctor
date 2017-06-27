@@ -22,6 +22,30 @@
       "revId": "c1b131435d11e11d2f1089de53f66737996a0791",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_3881ed4a",
+        "filename": "tests/lib/installers/fuel",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 6805
+      },
+      "writtenOn": "2017-06-27T12:07:55Z",
+      "side": 1,
+      "message": "Done. With a *doctor_saved_rm file that is top indicate whether the policy.json file was present originally or not.",
+      "parentUuid": "1aa4ed85_f2f4d688",
+      "range": {
+        "startLine": 176,
+        "startChar": 16,
+        "endLine": 176,
+        "endChar": 27
+      },
+      "revId": "c1b131435d11e11d2f1089de53f66737996a0791",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
