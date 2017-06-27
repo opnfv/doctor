@@ -26,3 +26,4 @@ See also https://wiki.opnfv.org/requirements_projects .
    port-data-plane-status.rst
    inspector-design-guideline.rst
    performance-profiler.rst
+   maintenance-design-guideline.rst
