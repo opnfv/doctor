@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aa4ed85_f2f4d688",
+        "filename": "tests/lib/installers/fuel",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-06-27T04:43:38Z",
+      "side": 1,
+      "message": "This is dangerous, as unmodified np_conf could be also deleted.\n\nCan you propose further improvement? E.g. having empty doctor-saved file, etc.",
+      "range": {
+        "startLine": 176,
+        "startChar": 16,
+        "endLine": 176,
+        "endChar": 27
+      },
+      "revId": "c1b131435d11e11d2f1089de53f66737996a0791",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
