@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aa4ed85_fd36e7e6",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2017-06-27T07:42:54Z",
+      "side": 1,
+      "message": "You have an extra space here",
+      "range": {
+        "startLine": 13,
+        "startChar": 72,
+        "endLine": 13,
+        "endChar": 73
+      },
+      "revId": "b1fa053643cec195c919f05d4efef1a8449228af",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_fd3d87bc",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2017-06-27T07:42:54Z",
+      "side": 1,
+      "message": "Another extra space",
+      "range": {
+        "startLine": 81,
+        "startChar": 80,
+        "endLine": 81,
+        "endChar": 81
+      },
+      "revId": "b1fa053643cec195c919f05d4efef1a8449228af",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_9d4a5354",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2017-06-27T07:42:54Z",
+      "side": 1,
+      "message": "do",
+      "range": {
+        "startLine": 87,
+        "startChar": 28,
+        "endLine": 87,
+        "endChar": 30
+      },
+      "revId": "b1fa053643cec195c919f05d4efef1a8449228af",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_bd5e2f11",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2017-06-27T07:42:54Z",
+      "side": 1,
+      "message": "As far as I can see, there is no direct call from the Admin to the application manager. The Admin sends alarms to Aodh, and the application manager consumes them. \n\nWhat is the relation between the application manager and the Admin tool? what is the purpose of this ACK? will the Admin tool wait for the it? how will it know which application managers are relevant to this specific maintenance and are supposed to send ACK? (and whether they registered to the Aodh alarm at all?)",
+      "range": {
+        "startLine": 89,
+        "startChar": 4,
+        "endLine": 89,
+        "endChar": 65
+      },
+      "revId": "b1fa053643cec195c919f05d4efef1a8449228af",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_bd470f4b",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2017-06-27T07:42:54Z",
+      "side": 1,
+      "message": "Is this notification sent to the inspector SB API?",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 94,
+        "endChar": 13
+      },
+      "revId": "b1fa053643cec195c919f05d4efef1a8449228af",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_9d61f3d5",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2017-06-27T07:42:54Z",
+      "side": 1,
+      "message": "Do you mean that the Admin tool will wait a predefined amount of time until all VMs are migrated to another host, and if that doesn\u0027t happen the maintenance will be canceled? will there be an option to do the maintenance anyway?",
+      "range": {
+        "startLine": 99,
+        "startChar": 60,
+        "endLine": 100,
+        "endChar": 26
+      },
+      "revId": "b1fa053643cec195c919f05d4efef1a8449228af",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_5d829b53",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2017-06-27T07:42:54Z",
+      "side": 1,
+      "message": "Will this notification raise a new alarm in Aodh, or clear the alarms that were raised in steps 2 and 8?",
+      "range": {
+        "startLine": 106,
+        "startChar": 4,
+        "endLine": 106,
+        "endChar": 69
+      },
+      "revId": "b1fa053643cec195c919f05d4efef1a8449228af",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_7da0b7f4",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2017-06-27T07:42:54Z",
+      "side": 1,
+      "message": "unique",
+      "range": {
+        "startLine": 110,
+        "startChar": 44,
+        "endLine": 110,
+        "endChar": 48
+      },
+      "revId": "b1fa053643cec195c919f05d4efef1a8449228af",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_1da50304",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2017-06-27T07:42:54Z",
+      "side": 1,
+      "message": "unique",
+      "range": {
+        "startLine": 111,
+        "startChar": 49,
+        "endLine": 111,
+        "endChar": 53
+      },
+      "revId": "b1fa053643cec195c919f05d4efef1a8449228af",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_fdab47d4",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2017-06-27T07:42:54Z",
+      "side": 1,
+      "message": "Extra dashes",
+      "range": {
+        "startLine": 117,
+        "startChar": 3,
+        "endLine": 117,
+        "endChar": 18
+      },
+      "revId": "b1fa053643cec195c919f05d4efef1a8449228af",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
