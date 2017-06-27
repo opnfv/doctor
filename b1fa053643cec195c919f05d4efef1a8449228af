@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "1aa4ed85_3db55fcd",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-06-27T09:03:42Z",
+      "side": 1,
+      "message": "You could say each project should send a reply. Admin tool will certainly know each project having affected VMs or containers. But I think you are right, there can be all kind of projects in theory running that are not OPNFV compliant and do not reply, or do not get the alarm for reason or other. That said there should be some period to wait instructions on admin operation or then just make default action like migration.",
+      "parentUuid": "1aa4ed85_bd5e2f11",
+      "range": {
+        "startLine": 89,
+        "startChar": 4,
+        "endLine": 89,
+        "endChar": 65
+      },
+      "revId": "b1fa053643cec195c919f05d4efef1a8449228af",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1aa4ed85_bd470f4b",
         "filename": "docs/development/design/maintenance-design-guideline.rst",
         "patchSetId": 1
@@ -105,6 +129,30 @@
       "writtenOn": "2017-06-27T07:42:54Z",
       "side": 1,
       "message": "Is this notification sent to the inspector SB API?",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 94,
+        "endChar": 13
+      },
+      "revId": "b1fa053643cec195c919f05d4efef1a8449228af",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_1de743e6",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-06-27T09:03:42Z",
+      "side": 1,
+      "message": "This might be a notification to rabbitmq that can be consumed services needing this. In our case, Inspector. Similar to notifications like from Nova.",
+      "parentUuid": "1aa4ed85_bd470f4b",
       "range": {
         "startLine": 93,
         "startChar": 4,
@@ -140,6 +188,30 @@
     },
     {
       "key": {
+        "uuid": "1aa4ed85_ddd0cbf9",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-06-27T09:03:42Z",
+      "side": 1,
+      "message": "Migration might fail and if cannot be resolved maintenance cannot be done automatically. In case of full maintenance to host/resource it is normal that admin test resource works after maintenance and thus it needs to be not used.",
+      "parentUuid": "1aa4ed85_9d61f3d5",
+      "range": {
+        "startLine": 99,
+        "startChar": 60,
+        "endLine": 100,
+        "endChar": 26
+      },
+      "revId": "b1fa053643cec195c919f05d4efef1a8449228af",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1aa4ed85_5d829b53",
         "filename": "docs/development/design/maintenance-design-guideline.rst",
         "patchSetId": 1
@@ -151,6 +223,30 @@
       "writtenOn": "2017-06-27T07:42:54Z",
       "side": 1,
       "message": "Will this notification raise a new alarm in Aodh, or clear the alarms that were raised in steps 2 and 8?",
+      "range": {
+        "startLine": 106,
+        "startChar": 4,
+        "endLine": 106,
+        "endChar": 69
+      },
+      "revId": "b1fa053643cec195c919f05d4efef1a8449228af",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_bdd70fed",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-06-27T09:03:42Z",
+      "side": 1,
+      "message": "My bad. Yes, guess `cancel maintenance` and `maintenance over` should be clearing the alarm.",
+      "parentUuid": "1aa4ed85_5d829b53",
       "range": {
         "startLine": 106,
         "startChar": 4,
