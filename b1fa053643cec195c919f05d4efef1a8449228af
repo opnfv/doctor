@@ -166,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "1aa4ed85_6f4d5c72",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2017-06-28T09:36:00Z",
+      "side": 1,
+      "message": "Ok",
+      "parentUuid": "1aa4ed85_6cba4ae3",
+      "range": {
+        "startLine": 89,
+        "startChar": 4,
+        "endLine": 89,
+        "endChar": 65
+      },
+      "revId": "b1fa053643cec195c919f05d4efef1a8449228af",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1aa4ed85_bd470f4b",
         "filename": "docs/development/design/maintenance-design-guideline.rst",
         "patchSetId": 1
