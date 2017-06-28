@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aa4ed85_6c37aab1",
+        "filename": "tests/identity_auth.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2017-06-28T01:18:16Z",
+      "side": 1,
+      "message": "`a if a else b` seems equivalent to `a or b`.\n\nI suggest to use the same pattern for setting default value instead of a mixture, especially in L22.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 45
+      },
+      "revId": "6cda770b624b8f885fa7bd36db7bed3fd525e90e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_8c3c6695",
+        "filename": "tests/instance.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2017-06-28T01:18:16Z",
+      "side": 1,
+      "message": "I understand `vm` is a common alias for `instance`. \n\nBut it seems not a formal terminology in openstack. Maybe `instance` will be better.",
+      "range": {
+        "startLine": 23,
+        "startChar": 16,
+        "endLine": 23,
+        "endChar": 27
+      },
+      "revId": "6cda770b624b8f885fa7bd36db7bed3fd525e90e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_2c41b20b",
+        "filename": "tests/main.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2017-06-28T01:18:16Z",
+      "side": 1,
+      "message": "It may worth adding a comment on why this sleep is required.",
+      "revId": "6cda770b624b8f885fa7bd36db7bed3fd525e90e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
