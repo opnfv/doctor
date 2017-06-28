@@ -1,0 +1,9 @@
+Verified+1: jenkins-ci <jenkins-opnfv-ci@opnfv.org>
+Code-Review+1: Yujun Zhang <zhang.yujunz@zte.com.cn>
+Code-Review+2: Ryota Mibu <r-mibu@cq.jp.nec.com>
+Code-Review+2: Tomi Juvonen <tomi.juvonen@nokia.com>
+Submitted-by: wenjuan dong <dong.wenjuan@zte.com.cn>
+Submitted-at: Wed, 28 Jun 2017 12:43:32 +0000
+Reviewed-on: https://gerrit.opnfv.org/gerrit/34101
+Project: doctor
+Branch: refs/heads/master
