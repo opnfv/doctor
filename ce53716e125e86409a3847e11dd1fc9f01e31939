@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aa4ed85_256ea5ca",
+        "filename": "tests/lib/installers/fuel",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-06-29T09:26:32Z",
+      "side": 1,
+      "message": "Doesn\u0027t the policy file need to start with \u0027{\u0027 and end with \u0027}\u0027?",
+      "range": {
+        "startLine": 101,
+        "startChar": 15,
+        "endLine": 104,
+        "endChar": 115
+      },
+      "revId": "ce53716e125e86409a3847e11dd1fc9f01e31939",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_c547914a",
+        "filename": "tests/lib/installers/fuel",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-06-29T09:26:32Z",
+      "side": 1,
+      "message": "Remove line",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 12
+      },
+      "revId": "ce53716e125e86409a3847e11dd1fc9f01e31939",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
