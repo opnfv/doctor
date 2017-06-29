@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1aa4ed85_02927f57",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-06-29T06:29:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1aa4ed85_fd36e7e6",
+      "range": {
+        "startLine": 13,
+        "startChar": 72,
+        "endLine": 13,
+        "endChar": 73
+      },
+      "revId": "b1fa053643cec195c919f05d4efef1a8449228af",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1aa4ed85_fd3d87bc",
         "filename": "docs/development/design/maintenance-design-guideline.rst",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-06-27T07:42:54Z",
       "side": 1,
       "message": "Another extra space",
+      "range": {
+        "startLine": 81,
+        "startChar": 80,
+        "endLine": 81,
+        "endChar": 81
+      },
+      "revId": "b1fa053643cec195c919f05d4efef1a8449228af",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_a29e0b62",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-06-29T06:29:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1aa4ed85_fd3d87bc",
       "range": {
         "startLine": 81,
         "startChar": 80,
@@ -402,6 +450,30 @@
     },
     {
       "key": {
+        "uuid": "1aa4ed85_c29b0771",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-06-29T06:29:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1aa4ed85_7da0b7f4",
+      "range": {
+        "startLine": 110,
+        "startChar": 44,
+        "endLine": 110,
+        "endChar": 48
+      },
+      "revId": "b1fa053643cec195c919f05d4efef1a8449228af",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1aa4ed85_1da50304",
         "filename": "docs/development/design/maintenance-design-guideline.rst",
         "patchSetId": 1
@@ -425,6 +497,30 @@
     },
     {
       "key": {
+        "uuid": "1aa4ed85_62881323",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-06-29T06:29:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1aa4ed85_1da50304",
+      "range": {
+        "startLine": 111,
+        "startChar": 49,
+        "endLine": 111,
+        "endChar": 53
+      },
+      "revId": "b1fa053643cec195c919f05d4efef1a8449228af",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1aa4ed85_fdab47d4",
         "filename": "docs/development/design/maintenance-design-guideline.rst",
         "patchSetId": 1
@@ -436,6 +532,30 @@
       "writtenOn": "2017-06-27T07:42:54Z",
       "side": 1,
       "message": "Extra dashes",
+      "range": {
+        "startLine": 117,
+        "startChar": 3,
+        "endLine": 117,
+        "endChar": 18
+      },
+      "revId": "b1fa053643cec195c919f05d4efef1a8449228af",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_828d0f34",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-06-29T06:29:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1aa4ed85_fdab47d4",
       "range": {
         "startLine": 117,
         "startChar": 3,
