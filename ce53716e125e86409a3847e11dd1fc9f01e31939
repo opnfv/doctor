@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "1aa4ed85_3b99e26e",
+        "filename": "tests/lib/installers/fuel",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-06-30T05:27:52Z",
+      "side": 1,
+      "message": "Thanks, I just didn\u0027t spot it first perhaps as on the same line. This is ok.",
+      "parentUuid": "1aa4ed85_853c3995",
+      "range": {
+        "startLine": 101,
+        "startChar": 15,
+        "endLine": 104,
+        "endChar": 115
+      },
+      "revId": "ce53716e125e86409a3847e11dd1fc9f01e31939",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1aa4ed85_c547914a",
         "filename": "tests/lib/installers/fuel",
         "patchSetId": 2
