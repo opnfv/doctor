@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aa4ed85_5bb5becb",
+        "filename": "tests/lib/installers/local",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-06-30T05:42:26Z",
+      "side": 1,
+      "message": "remove white space",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 4
+      },
+      "revId": "bf1797d45704d0d304ff5577ca579344ab787b33",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_dbc0ce2c",
+        "filename": "tests/lib/installers/local",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-06-30T05:42:26Z",
+      "side": 1,
+      "message": "I do not know if worth commenting TBD that systemd will be used instead of screen after Pike.",
+      "range": {
+        "startLine": 29,
+        "startChar": 12,
+        "endLine": 29,
+        "endChar": 82
+      },
+      "revId": "bf1797d45704d0d304ff5577ca579344ab787b33",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_fbc90a5b",
+        "filename": "tests/lib/installers/local",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-06-30T05:42:26Z",
+      "side": 1,
+      "message": "remove white space",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 3
+      },
+      "revId": "bf1797d45704d0d304ff5577ca579344ab787b33",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
