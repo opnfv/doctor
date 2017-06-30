@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1aa4ed85_1bce665b",
+        "filename": "tests/identity_auth.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-06-30T06:46:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1aa4ed85_6c37aab1",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 45
+      },
+      "revId": "6cda770b624b8f885fa7bd36db7bed3fd525e90e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1aa4ed85_8c3c6695",
         "filename": "tests/instance.py",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1aa4ed85_dbd76eec",
+        "filename": "tests/instance.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-06-30T06:46:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1aa4ed85_8c3c6695",
+      "range": {
+        "startLine": 23,
+        "startChar": 16,
+        "endLine": 23,
+        "endChar": 27
+      },
+      "revId": "6cda770b624b8f885fa7bd36db7bed3fd525e90e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1aa4ed85_2c41b20b",
         "filename": "tests/main.py",
         "patchSetId": 7
@@ -59,6 +107,24 @@
       "writtenOn": "2017-06-28T01:18:16Z",
       "side": 1,
       "message": "It may worth adding a comment on why this sleep is required.",
+      "revId": "6cda770b624b8f885fa7bd36db7bed3fd525e90e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_9b09f697",
+        "filename": "tests/main.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-06-30T06:46:09Z",
+      "side": 1,
+      "message": "I deleted the time sleep here and in the process of instance deleting to make sure that the instance is actually deleted that no other ports are used for the instance so that we can delete the network next step.",
+      "parentUuid": "1aa4ed85_2c41b20b",
       "revId": "6cda770b624b8f885fa7bd36db7bed3fd525e90e",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
