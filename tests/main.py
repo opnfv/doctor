@@ -14,6 +14,7 @@ from alarm import Alarm
 import config
 from image import Image
 from instance import Instance
+from inspector import get_inspector
 import logger as doctor_log
 from user import User
 from network import Network
@@ -30,6 +31,7 @@ class DoctorTest(object):
         self.network = Network(self.conf, LOG)
         self.instance = Instance(self.conf, LOG)
         self.alarm = Alarm(self.conf, LOG)
+        self.inspector = get_inspector(self.conf, LOG)
 
     def setup(self):
         # prepare the cloud env
@@ -48,6 +50,9 @@ class DoctorTest(object):
 
         # creating alarm...
         self.alarm.create()
+
+        # starting doctor sample components...
+        self.inspector.start()
 
     def run(self):
         """run doctor test"""
@@ -72,6 +77,7 @@ class DoctorTest(object):
         self.network.delete()
         self.image.delete()
         self.user.delete()
+        self.inspector.stop()
 
 
 def main():

@@ -15,6 +15,7 @@ import consumer
 import image
 import instance
 import network
+import inspector
 import os_clients
 import user
 
@@ -22,6 +23,7 @@ import user
 def list_opts():
     return [
         ('consumer', consumer.OPTS),
+        ('inspector', inspector.OPTS),
         ('DEFAULT', itertools.chain(
             os_clients.OPTS,
             image.OPTS,
