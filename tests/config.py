@@ -10,12 +10,14 @@ import itertools
 from oslo_config import cfg
 
 import image
+import inspector
 import os_clients
 import user
 
 
 def list_opts():
     return [
+        ('inspector', inspector.OPTS),
         ('DEFAULT', itertools.chain(
             os_clients.OPTS,
             image.OPTS,
