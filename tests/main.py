@@ -6,6 +6,8 @@
 # which accompanies this distribution, and is available at
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
+import os
+from os.path import isfile, join
 import sys
 
 import config
@@ -58,7 +60,13 @@ class DoctorTest(object):
 
 def main():
     """doctor main"""
-    conf = config.prepare_conf()
+    doctor_root_dir = os.path.dirname(os.getcwd())
+    config_file_dir = '{0}/{1}'.format(doctor_root_dir, 'etc/')
+    config_files = [join(config_file_dir, f) for f in os.listdir(config_file_dir)
+                    if isfile(join(config_file_dir, f))]
+
+    conf = config.prepare_conf(args=sys.argv[1:],
+                               config_files=config_files)
 
     doctor = DoctorTest(conf)
     doctor.run()
