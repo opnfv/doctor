@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aa4ed85_0f893bca",
+        "filename": "tests/main.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-07-05T08:30:14Z",
+      "side": 1,
+      "message": "nit, we don\u0027t need this",
+      "range": {
+        "startLine": 10,
+        "startChar": 7,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "d49e5ac375d58a440093f1bcf36a25ddd3de9c06",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
