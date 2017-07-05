@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aa4ed85_aaa015f5",
+        "filename": "tests/alarm.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-07-05T09:06:19Z",
+      "side": 1,
+      "message": "Can you check my comment in patch set 4? I\u0027m OK with current patch set, as this is not big change from the original script.\n\n1. create 10 alarms and exit without delete()\n\n2. try to create 10 alarms again, but failed in creation of alarm #5 after 5 alarms appended to slef.alarm_names\n\nIn this case, 5 alarms will be deleted and other 5 alarms will  remain.",
+      "range": {
+        "startLine": 85,
+        "startChar": 8,
+        "endLine": 85,
+        "endChar": 11
+      },
+      "revId": "5a8181eb002947c59d8806e65ebdfb3011753f6e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
