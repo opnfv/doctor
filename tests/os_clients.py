@@ -9,6 +9,7 @@
 from oslo_config import cfg
 
 import aodhclient.client as aodhclient
+from congressclient.v1 import client as congressclient
 import glanceclient.client as glanceclient
 from keystoneclient.v2_0 import client as ks_client
 from neutronclient.v2_0 import client as neutronclient
@@ -42,3 +43,8 @@ def neutron_client(session):
 
 def aodh_client(version, session):
     return aodhclient.Client(version, session=session)
+
+
+def congress_client(session):
+    return congressclient.Client(session=session,
+                                 service_type='policy')
