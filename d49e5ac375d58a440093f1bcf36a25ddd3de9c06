@@ -46,6 +46,30 @@
       "revId": "d49e5ac375d58a440093f1bcf36a25ddd3de9c06",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_b42637b9",
+        "filename": "tests/main.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2017-07-06T10:08:17Z",
+      "side": 1,
+      "message": "A bit surprised that this is not captured by CI. Missing pep8 check task?",
+      "parentUuid": "1aa4ed85_0f893bca",
+      "range": {
+        "startLine": 10,
+        "startChar": 7,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "d49e5ac375d58a440093f1bcf36a25ddd3de9c06",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
