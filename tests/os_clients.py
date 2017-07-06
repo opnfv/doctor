@@ -8,6 +8,7 @@
 ##############################################################################
 from oslo_config import cfg
 
+from congressclient.v1 import client as congressclient
 import glanceclient.client as glanceclient
 from keystoneclient.v2_0 import client as ks_client
 import novaclient.client as novaclient
@@ -30,3 +31,8 @@ def keystone_client(session):
 def nova_client(version, session):
     return novaclient.Client(version=version,
                              session=session)
+
+
+def congress_client(session):
+    return congressclient.Client(session=session,
+                                 service_type='policy')
