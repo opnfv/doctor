@@ -11,6 +11,7 @@ class BaseInspector(object):
     def __init__(self, conf, log):
         self.conf = conf
         self.log = log
+        self.inspector_url = self.get_inspector_url()
 
     def get_inspector_url(self):
         pass

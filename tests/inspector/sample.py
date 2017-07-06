@@ -18,7 +18,6 @@ class SampleInspector(BaseInspector):
 
     def __init__(self, conf, log):
         super(SampleInspector, self).__init__(conf, log)
-        self.inspector_url = self.get_inspector_url()
         self.novaclients = list()
         self._init_novaclients()
         # Normally we use this client for non redundant API calls
