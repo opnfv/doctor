@@ -52,7 +52,7 @@ class DoctorTest(object):
     def run(self):
         """run doctor test"""
         try:
-            LOG.info('doctor test starting.......')
+            LOG.info('doctor test starting: test.......')
 
             self.setup()
 
