@@ -7,6 +7,7 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
 from oslo_config import cfg
+from oslo_utils import importutils
 
 
 OPTS = [
@@ -24,3 +25,13 @@ OPTS = [
                help='the port of doctor consumer',
                required=True),
 ]
+
+
+_consumer_name_class_mapping = {
+    'sample': 'consumer.sample.SampleConsumer'
+}
+
+
+def get_consumer(conf, log):
+    consumer_class = _consumer_name_class_mapping.get(conf.consumer.type)
+    return importutils.import_object(consumer_class, conf, log)
