@@ -12,6 +12,7 @@ import sys
 
 from alarm import Alarm
 import config
+from consumer import get_consumer
 from image import Image
 from instance import Instance
 from inspector import get_inspector
@@ -37,6 +38,7 @@ class DoctorTest(object):
         self.monitor = get_monitor(self.conf,
                                    self.inspector.get_inspector_url(),
                                    LOG)
+        self.consumer = get_consumer(self.conf, LOG)
 
     def setup(self):
         # prepare the cloud env
@@ -59,6 +61,7 @@ class DoctorTest(object):
         # starting doctor sample components...
         self.inspector.start()
         self.monitor.start()
+        self.consumer.start()
 
     def run(self):
         """run doctor test"""
@@ -85,6 +88,7 @@ class DoctorTest(object):
         self.user.delete()
         self.inspector.stop()
         self.monitor.stop()
+        self.consumer.stop()
 
 
 def main():
