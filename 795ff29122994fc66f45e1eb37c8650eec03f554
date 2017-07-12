@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aa4ed85_5bb6073f",
+        "filename": "tests/inspector/sample.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 4469
+      },
+      "writtenOn": "2017-07-12T01:14:00Z",
+      "side": 1,
+      "message": "Should class name be `InspectorApp` ?",
+      "range": {
+        "startLine": 114,
+        "startChar": 6,
+        "endLine": 114,
+        "endChar": 19
+      },
+      "revId": "795ff29122994fc66f45e1eb37c8650eec03f554",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
