@@ -1,0 +1,31 @@
+#!/bin/bash
+
+MONITOR_TYPE=${MONITOR_TYPE:-sample}
+
+function is_monitor_supported {
+    local monitor="$1"
+    [[ -f $TOP_DIR/lib/monitors/$monitor/$monitor ]]
+}
+
+function is_monitor {
+    local monitor="$1"
+    [[ $monitor == $MONITOR_TYPE ]]
+}
+
+function start_monitor {
+    start_monitor_$MONITOR_TYPE
+}
+
+function stop_monitor {
+    stop_monitor_$MONITOR_TYPE
+}
+
+function cleanup_monitor {
+    cleanup_monitor_$MONITOR_TYPE
+}
+
+if ! is_monitor_supported $MONITOR_TYPE; then
+    die $LINENO "MONITOR_TYPE=$MONITOR_TYPE is not supported."
+fi
+
+source $TOP_DIR/lib/monitors/$MONITOR_TYPE/$MONITOR_TYPE
