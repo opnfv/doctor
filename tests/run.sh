@@ -52,7 +52,7 @@ get_compute_host_info() {
     compute_host_in_undercloud=${COMPUTE_HOST%%.*}
     die_if_not_set $LINENO COMPUTE_HOST "Failed to get compute hostname"
 
-    get_compute_ip_from_hostname $COMPUTE_HOST
+    get_compute_mgmt_ip_from_hostname $COMPUTE_HOST
 
     echo "COMPUTE_HOST=$COMPUTE_HOST"
     echo "COMPUTE_IP=$COMPUTE_IP"
@@ -388,7 +388,7 @@ unset_forced_down_hosts() {
     for host in $downed_computes
     do
         # TODO(r-mibu): improve 'get_compute_ip_from_hostname'
-        get_compute_ip_from_hostname $host
+        get_compute_mgmt_ip_from_hostname $host
         wait_until "! ping -c 1 $COMPUTE_IP" 120 5
     done
 }

@@ -53,16 +53,28 @@ function setup_installer {
     installer_apply_patches
 }
 
-function get_compute_ip_from_hostname {
+function get_compute_mgmt_ip_from_hostname {
     local compute_host=$1
 
     if is_set COMPUTE_IP; then
-        echo "Using pre-configured COMPUTE_IP=$COMPUTE_IP ..."
+        echo "Using pre-configured COMPUTE_IP_MGMT=$COMPUTE_IP ..."
         return
     fi
-    COMPUTE_IP=$(getent hosts "$compute_host" | awk '{ print $1 }')
+    COMPUTE_IP=$(openstack hypervisor list | grep $compute_host | awk '{print $8}')
     die_if_not_set $LINENO COMPUTE_IP \
-        "Could not resolve $compute_host. Either manually set COMPUTE_IP or enable DNS resolution."
+        "Openstack compute node $compute_host not found"
+}
+
+function get_compute_adm_ip_from_hostname {
+    local compute_host=$1
+
+    if is_set COMPUTE_IP_ADM; then
+        echo "Using pre-configured COMPUTE_IP_ADM=$COMPUTE_IP_ADM ..."
+        return
+    fi
+    COMPUTE_IP_ADM=$(getent hosts "$compute_host" | awk '{ print $1 }')
+    die_if_not_set $LINENO COMPUTE_IP_ADM \
+        "Could not resolve $compute_host. Either manually set COMPUTE_IP_ADM or enable DNS resolution."
 }
 
 function cleanup_installer {

@@ -22,7 +22,7 @@ function validate_installer_lib {
         die_if_not_set $LINENO $p \
             "Parameter $p for $INSTALLER_TYPE is missing."
     done
-    for f in setup_installer get_compute_ip_from_hostname cleanup_installer
+    for f in setup_installer get_compute_adm_ip_from_hostname cleanup_installer
     do
         die_if_not_defined $LINENO $f \
             "Mandatory function ${f}() for $INSTALLER_TYPE is missing."
