@@ -48,7 +48,7 @@ as_admin_user="--os-username admin --os-project-name $DOCTOR_PROJECT
 get_compute_host_info() {
     # get computer host info which first VM boot in as admin user
     COMPUTE_HOST=$(openstack $as_admin_user server show ${VM_BASENAME}1 |
-                   grep "OS-EXT-SRV-ATTR:host" | awk '{ print $4 }')
+                   grep "OS-EXT-SRV-ATTR:host " | awk '{ print $4 }')
     compute_host_in_undercloud=${COMPUTE_HOST%%.*}
     die_if_not_set $LINENO COMPUTE_HOST "Failed to get compute hostname"
 

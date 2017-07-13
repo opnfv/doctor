@@ -54,8 +54,7 @@ class DoctorInspectorSample(object):
         # Pool of novaclients for redundant usage
         for i in range(self.NUMBER_OF_CLIENTS):
             self.novaclients.append(
-                novaclient.Client(self.NOVA_API_VERSION, session=sess,
-                                  connection_pool=True))
+                novaclient.Client(self.NOVA_API_VERSION, session=sess))
         # Normally we use this client for non redundant API calls
         self.nova=self.novaclients[0]
         self.nova.servers.list(detailed=False)
