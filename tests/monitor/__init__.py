@@ -12,14 +12,15 @@ from oslo_utils import importutils
 OPTS = [
     cfg.StrOpt('type',
                default='sample',
-               choices=['sample'],
+               choices=['sample', 'collectd'],
                help='the type of doctor monitor component',
                required=True),
 ]
 
 
 _monitor_name_class_mapping = {
-    'sample': 'monitor.sample.SampleMonitor'
+    'sample': 'monitor.sample.SampleMonitor',
+    'collectd': 'monitor.collectd.CollectdMonitor'
 }
 
 def get_monitor(conf, inspector_url, log):

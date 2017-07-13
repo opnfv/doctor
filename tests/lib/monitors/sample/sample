@@ -1,0 +1,18 @@
+#!/bin/bash
+
+function start_monitor_sample {
+    cp $TOP_DIR/lib/monitors/sample/monitor.py $TOP_DIR/monitor.py
+    pgrep -f "python monitor.py" && return 0
+    sudo -E python monitor.py "$COMPUTE_HOST" "$COMPUTE_IP" "$INSPECTOR_TYPE" \
+        > monitor.log 2>&1 &
+}
+
+function stop_monitor_sample {
+    pgrep -f "python monitor.py" || return 0
+    sudo kill $(pgrep -f "python monitor.py")
+}
+
+function cleanup_monitor_sample {
+    rm monitor.py
+    return
+}
