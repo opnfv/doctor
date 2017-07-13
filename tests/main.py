@@ -74,8 +74,10 @@ class DoctorTest(object):
             self.setup()
 
             # injecting host failure...
+            # NOTE (umar) add INTERFACE_NAME logic to host injection
 
             # verify the test results
+            # NOTE (umar) copy remote monitor.log file when monitor=collectd
 
         except Exception as e:
             LOG.error('doctor test failed, Exception=%s' % e)
