@@ -123,7 +123,7 @@ function setup_installer {
     fi
 }
 
-function get_compute_ip_from_hostname {
+function get_compute_adm_ip_from_hostname {
     local compute_host=$1
 
     compute_host_in_undercloud=${compute_host%%.*}
