@@ -294,8 +294,12 @@ inject_failure() {
     echo "disabling network of compute host [$COMPUTE_HOST] for 3 mins..."
     cat > disable_network.sh << 'END_TXT'
 #!/bin/bash -x
-dev=$(sudo ip a | awk '/ @COMPUTE_IP@\//{print $NF}')
 sleep 1
+if [ -n "@INTERFACE_NAME@" ]; then
+    dev=@INTERFACE_NAME@
+else
+    dev=$(sudo ip a | awk '/ @COMPUTE_IP@\//{print $NF}')
+fi
 sudo ip link set $dev down
 echo "doctor set link down at" $(date "+%s.%N")
 sleep 180
@@ -303,6 +307,7 @@ sudo ip link set $dev up
 sleep 1
 END_TXT
     sed -i -e "s/@COMPUTE_IP@/$COMPUTE_IP/" disable_network.sh
+    sed -i -e "s/@INTERFACE_NAME@/$INTERFACE_NAME/" disable_network.sh
     chmod +x disable_network.sh
     scp $ssh_opts_cpu disable_network.sh "$COMPUTE_USER@$COMPUTE_IP:"
     ssh $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP" 'nohup ./disable_network.sh > disable_network.log 2>&1 &'
@@ -327,8 +332,11 @@ calculate_notification_time() {
     wait_consumer 60
     #keep 'at' as the last keyword just before the value, and
     #use regex to get value instead of the fixed column
+    if [ ! -f monitor.log ]; then
+        scp $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP:monitor.log" .
+    fi
     detected=$(grep "doctor monitor detected at" monitor.log |\
-               sed -e "s/^.* at //")
+               sed -e "s/^.* at //" | tail -1)
     notified=$(grep "doctor consumer notified at" consumer.log |\
                sed -e "s/^.* at //" | tail -1)
 
@@ -431,11 +439,11 @@ run_profiler() {
 cleanup() {
     set +e
     echo "cleanup..."
-    stop_monitor
     stop_inspector
     stop_consumer
 
     unset_forced_down_hosts
+    stop_monitor
     collect_logs
 
     vms=$(openstack $as_doctor_user server list)
@@ -467,6 +475,7 @@ cleanup() {
 
     cleanup_installer
     cleanup_inspector
+    cleanup_monitor
 
     # NOTE: Temporal log printer.
     for f in $(find . -name '*.log')
@@ -495,6 +504,9 @@ trap cleanup EXIT
 source $TOP_DIR/functions-common
 source $TOP_DIR/lib/installer
 source $TOP_DIR/lib/inspector
+source $TOP_DIR/lib/monitor
+
+rm -f *.log
 
 setup_installer
 
@@ -524,8 +536,8 @@ echo "injecting host failure..."
 inject_failure
 
 check_host_status "(DOWN|UNKNOWN)" 60
-calculate_notification_time
 unset_forced_down_hosts
+calculate_notification_time
 collect_logs
 run_profiler
 
