@@ -9,7 +9,7 @@ Enabling OPNFV Doctor using DevStack
 This directory contains the files necessary to run OpenStack with enabled
 OPNFV Doctor in DevStack.
 
-To configure DevStack to enable OPNFV Doctor edit
+1. To configure DevStack to enable OPNFV Doctor edit
 ``${DEVSTACK_DIR}/local.conf`` file and add::
 
     enable_plugin aodh http://git.openstack.org/openstack/aodh
@@ -22,6 +22,14 @@ to the ``[[local|localrc]]`` section.
 
 .. note:: The order of enabling plugins matters.
 
-Run DevStack as normal::
+2. To enable Python 3 in DevStack, please add::
+
+   USE_PYTHON3=True
+
+3. To enable Congress as Doctor Inspector, please also add::
+
+   enable_plugin congress https://git.openstack.org/openstack/congress
+
+4. Run DevStack as normal::
 
     $ ./stack.sh
