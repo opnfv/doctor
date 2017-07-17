@@ -49,4 +49,6 @@
 -
   url: https://review.openstack.org/424340
   system: Gerrit
-  # WIP
+-
+  url: https://bugs.launchpad.net/python-openstackclient/+bug/1684989
+  system: Launchpad-bug
