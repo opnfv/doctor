@@ -15,6 +15,7 @@ import config
 from image import Image
 from instance import Instance
 from inspector import get_inspector
+from installer import get_installer
 import logger as doctor_log
 from user import User
 from network import Network
@@ -37,9 +38,12 @@ class DoctorTest(object):
         self.monitor = get_monitor(self.conf,
                                    self.inspector.get_inspector_url(),
                                    LOG)
+        self.installer = get_installer(self.conf, LOG)
+
 
     def setup(self):
         # prepare the cloud env
+        self.installer.setup()
 
         # preparing VM image...
         self.image.create()
@@ -85,6 +89,7 @@ class DoctorTest(object):
         self.user.delete()
         self.inspector.stop()
         self.monitor.stop()
+        self.installer.cleanup()
 
 
 def main():
