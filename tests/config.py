@@ -14,6 +14,7 @@ import alarm
 import consumer
 import image
 import instance
+import installer
 import network
 import os_clients
 import user
@@ -21,6 +22,7 @@ import user
 
 def list_opts():
     return [
+        ('installer', installer.OPTS),
         ('consumer', consumer.OPTS),
         ('DEFAULT', itertools.chain(
             os_clients.OPTS,
