@@ -14,6 +14,7 @@ from alarm import Alarm
 import config
 from image import Image
 from instance import Instance
+from installer import get_installer
 import logger as doctor_log
 from user import User
 from network import Network
@@ -30,9 +31,11 @@ class DoctorTest(object):
         self.network = Network(self.conf, LOG)
         self.instance = Instance(self.conf, LOG)
         self.alarm = Alarm(self.conf, LOG)
+        self.installer = get_installer(self.conf, LOG)
 
     def setup(self):
         # prepare the cloud env
+        self.installer.setup()
 
         # preparing VM image...
         self.image.create()
@@ -72,6 +75,7 @@ class DoctorTest(object):
         self.network.delete()
         self.image.delete()
         self.user.delete()
+        self.installer.cleanup()
 
 
 def main():

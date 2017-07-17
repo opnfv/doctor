@@ -21,6 +21,7 @@ class Logger(object):
 
         CI_DEBUG = os.getenv('CI_DEBUG')
 
+        logging.basicConfig(filemode='w')
         self.logger = logging.getLogger(logger_name)
         self.logger.propagate = 0
         self.logger.setLevel(logging.DEBUG)
@@ -41,7 +42,5 @@ class Logger(object):
         file_handler.setLevel(logging.DEBUG)
         self.logger.addHandler(file_handler)
 
-
     def getLogger(self):
         return self.logger
-
