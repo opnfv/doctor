@@ -1,0 +1,6 @@
+--2017-07-23 20:45:02--  https://launchpad.net/cirros/trunk/0.3.0/+download/cirros-0.3.0-x86_64-disk.img
+Connecting to 127.0.0.1:8081... connected.
+Proxy request sent, awaiting response... 303 See Other
+Location: https://launchpadlibrarian.net/83305348/cirros-0.3.0-x86_64-disk.img [following]
+--2017-07-23 20:45:05--  https://launchpadlibrarian.net/83305348/cirros-0.3.0-x86_64-disk.img
+Connecting to 127.0.0.1:8081... connected.
