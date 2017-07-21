@@ -5,7 +5,7 @@ ssh_opts_cpu="$ssh_opts -i instack_key"
 
 function get_installer_ip {
     is_set INSTALLER_IP && return
-    INSTALLER_IP=$(get_first_vnic_ip instack)
+    INSTALLER_IP=$(get_first_vnic_ip undercloud)
 }
 
 function installer_get_ssh_keys {
