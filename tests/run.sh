@@ -480,7 +480,7 @@ cleanup() {
 
 # Main process
 
-if $PYTHON_ENABLE; then
+if [[ $PYTHON_ENABLE == [Tt]rue ]]; then
     cd $TOP_DIR
     echo "executing tox..."
     tox
