@@ -480,7 +480,14 @@ cleanup() {
 
 # Main process
 
-if $PYTHON_ENABLE; then
+if [[ $PYTHON_ENABLE == [Tt]rue ]]; then
+    which tox || sudo pip install tox
+    if [ -f /usr/bin/apt-get ]; then
+        sudo apt-get install -y python3-dev
+    elif [ -f /usr/bin/yum ] ; then
+        sudo yum install -y python3-devel
+    fi
+
     cd $TOP_DIR
     echo "executing tox..."
     tox
