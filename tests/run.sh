@@ -480,7 +480,8 @@ cleanup() {
 
 # Main process
 
-if $PYTHON_ENABLE; then
+if [[ $PYTHON_ENABLE == [Tt]rue ]]; then
+    which tox || sudo pip install tox
     cd $TOP_DIR
     echo "executing tox..."
     tox
