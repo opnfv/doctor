@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aa4ed85_f4d6c6f0",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-07-25T08:37:29Z",
+      "side": 1,
+      "message": "It seems that the fix can broke in Apex and Fuel.\nHow to get computer_ip for Apex and Fuel installer?\nYou don\u0027t call the function to get computer_ip for other installers.",
+      "revId": "21bc2e3dadfe17ae2c3fe58aae13fb7df4f10a14",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
