@@ -16,6 +16,24 @@
       "revId": "21bc2e3dadfe17ae2c3fe58aae13fb7df4f10a14",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4ed85_14511dd8",
+        "filename": "tests/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 6805
+      },
+      "writtenOn": "2017-07-26T17:42:12Z",
+      "side": 1,
+      "message": "Yes this breaks the test for Apex and Fuel. I must use get_compute_adm_ip which is valid for all installers in this patch. Fixed it.\nFurther work needs to be done to implement a way to find out whether to monitor admin IP or management IP based on user input. For local installer it is simple to get management IP (included in this patch) but for Apex and Fuel I have to study further. I think that would be a task for future (JIRA issue DOCTOR-112 can be used for further discussion).",
+      "parentUuid": "1aa4ed85_f4d6c6f0",
+      "revId": "21bc2e3dadfe17ae2c3fe58aae13fb7df4f10a14",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
