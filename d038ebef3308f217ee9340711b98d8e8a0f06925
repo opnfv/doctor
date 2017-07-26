@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aa4ed85_e00360b6",
+        "filename": "tests/inspector/congress.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-07-26T11:55:05Z",
+      "side": 1,
+      "message": "we may not need this function. you can define \u0027rules\u0027 as class property.",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 30
+      },
+      "revId": "d038ebef3308f217ee9340711b98d8e8a0f06925",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
