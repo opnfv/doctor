@@ -1,0 +1,8 @@
+Verified+1: jenkins-ci <jenkins-opnfv-ci@opnfv.org>
+Code-Review+2: Ryota Mibu <r-mibu@cq.jp.nec.com>
+Code-Review+2: wenjuan dong <dong.wenjuan@zte.com.cn>
+Submitted-by: wenjuan dong <dong.wenjuan@zte.com.cn>
+Submitted-at: Thu, 27 Jul 2017 01:29:50 +0000
+Reviewed-on: https://gerrit.opnfv.org/gerrit/37907
+Project: doctor
+Branch: refs/heads/master
