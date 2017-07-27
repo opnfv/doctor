@@ -1,4 +1,5 @@
 *~
+*.pyc
 .*.sw?
 **.log
 /docs_build/

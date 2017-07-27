@@ -82,7 +82,7 @@ class DoctorTest(object):
 
 def main():
     """doctor main"""
-    doctor_root_dir = os.path.dirname(os.getcwd())
+    doctor_root_dir = os.path.dirname(sys.path[0])
     config_file_dir = '{0}/{1}'.format(doctor_root_dir, 'etc/')
     config_files = [join(config_file_dir, f) for f in os.listdir(config_file_dir)
                     if isfile(join(config_file_dir, f))]
