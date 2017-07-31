@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "da33351e_c424b0c8",
+        "filename": "tests/installer/__init__.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-07-31T14:32:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da33351e_04585855",
+      "range": {
+        "startLine": 17,
+        "startChar": 24,
+        "endLine": 17,
+        "endChar": 39
+      },
+      "revId": "fa2c7360fe6c41cb088fe1789815db70dbc41c44",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da33351e_e4545423",
         "filename": "tests/installer/__init__.py",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2017-07-31T14:20:25Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 43
+      },
+      "revId": "fa2c7360fe6c41cb088fe1789815db70dbc41c44",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_a421acb6",
+        "filename": "tests/installer/__init__.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-07-31T14:32:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da33351e_e4545423",
       "range": {
         "startLine": 31,
         "startChar": 0,
