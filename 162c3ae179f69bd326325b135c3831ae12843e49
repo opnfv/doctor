@@ -1,0 +1,8 @@
+Verified+1: jenkins-ci <jenkins-opnfv-ci@opnfv.org>
+Code-Review+2: Carlos Goncalves <carlos.goncalves@neclab.eu>
+Code-Review+2: wenjuan dong <dong.wenjuan@zte.com.cn>
+Submitted-by: wenjuan dong <dong.wenjuan@zte.com.cn>
+Submitted-at: Tue, 01 Aug 2017 03:08:01 +0000
+Reviewed-on: https://gerrit.opnfv.org/gerrit/37173
+Project: doctor
+Branch: refs/heads/master
