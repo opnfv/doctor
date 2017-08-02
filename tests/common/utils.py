@@ -54,7 +54,7 @@ class SSHClient(object):
         self.client = paramiko.SSHClient()
         self.client.load_system_host_keys()
         self.client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        self.client.connect(ip, username=username, password=password,
+        self.client.connect(ip.decode('utf-8'), username=username, password=password,
                             pkey=pkey, key_filename=key_filename,
                             look_for_keys=look_for_keys,
                             allow_agent=allow_agent)

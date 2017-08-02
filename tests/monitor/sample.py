@@ -12,6 +12,8 @@ import requests
 import socket
 from threading import Thread
 import time
+import subprocess
+import os
 
 from identity_auth import get_session
 from monitor.base import BaseMonitor
@@ -77,28 +79,43 @@ class Pinger(Thread):
         self.hostname = host_name
         self.ip_addr = host_ip or socket.gethostbyname(self.hostname)
         self.log = log
+        self.node_user_name = os.environ['USER'] or 'root'
         self._stopped = False
+
+    def logmonitor(self):
+        self.log.info("doctor monitor detected at %s" % time.time())
+        self.monitor.report_error(self.hostname)
+        self.log.info("ping timeout, quit monitoring...")
 
     def run(self):
         self.log.info("Starting Pinger host_name(%s), host_ip(%s)"
                       % (self.hostname, self.ip_addr))
-
-        sock = socket.socket(socket.AF_INET, socket.SOCK_RAW,
+        if self.node_user_name == "root":
+            sock = socket.socket(socket.AF_INET, socket.SOCK_RAW,
                              socket.IPPROTO_ICMP)
-        sock.settimeout(self.timeout)
-        while True:
-            if self._stopped:
-                return
-            try:
-                sock.sendto(self.ICMP_ECHO_MESSAGE, (self.ip_addr, 0))
-                sock.recv(4096)
-            except socket.timeout:
-                self.log.info("doctor monitor detected at %s" % time.time())
-                self.monitor.report_error(self.hostname)
-                self.log.info("ping timeout, quit monitoring...")
-                self._stopped = True
-                return
-            time.sleep(self.interval)
+            sock.settimeout(self.timeout)
+            while True:
+                if self._stopped:
+                    return
+                try:
+                    sock.sendto(self.ICMP_ECHO_MESSAGE, (self.ip_addr, 0))
+                    sock.recv(4096)
+                except socket.timeout:
+                    self.logmonitor()
+                    self._stopped = True
+                    return
+                time.sleep(self.interval)
+        else:
+            while True:
+                if self._stopped:
+                    return
+                proc = subprocess.Popen(['ping',self.ip_addr,'-c','1',"-W","2"], stdout=subprocess.PIPE)
+                proc.wait()
+                if proc.poll():
+                    self.logmonitor()
+                    self._stopped = True
+                    return
+                time.sleep(self.interval)
 
     def stop(self):
         self.log.info("Stopping Pinger host_name(%s), host_ip(%s)"

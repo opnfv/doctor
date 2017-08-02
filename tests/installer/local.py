@@ -9,6 +9,7 @@
 import os
 import shutil
 import subprocess
+from time import sleep
 
 from installer.base import BaseInstaller
 from common.utils import load_json_file
@@ -16,7 +17,7 @@ from common.utils import write_json_file
 
 
 class LocalInstaller(BaseInstaller):
-    node_user_name = 'root'
+    node_user_name = os.environ['USER'] or 'root'
 
     nova_policy_file = '/etc/nova/policy.json'
     nova_policy_file_backup = '%s%s' % (nova_policy_file, '.bak')
@@ -95,6 +96,7 @@ class LocalInstaller(BaseInstaller):
         if self.policy_modified or self.add_policy_file:
             write_json_file(self.nova_policy_file, data)
             os.system('screen -S stack -p n-api -X stuff "^C^M^[[A^M"')
+            sleep(10)
 
     def _restore_nova_policy(self):
         if self.policy_modified:
@@ -105,5 +107,6 @@ class LocalInstaller(BaseInstaller):
 
         if self.add_policy_file or self.policy_modified:
             os.system('screen -S stack -p n-api -X stuff "^C^M^[[A^M"')
+            sleep(10)
             self.add_policy_file = False
             self.policy_modified = False

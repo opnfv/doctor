@@ -7,8 +7,11 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
 import os
-import urllib.request
-
+try:
+    from urllib.request import urlopen
+except ImportError:
+    # Python 2 version
+    from urllib2 import urlopen
 from oslo_config import cfg
 
 from identity_auth import get_session
@@ -50,7 +53,7 @@ class Image(object):
         images = {image.name: image for image in self.glance.images.list()}
         if self.conf.image_name not in images:
             if not os.path.exists(self.conf.image_filename):
-                resp = urllib.request.urlopen(self.conf.image_download_url)
+                resp = urlopen(self.conf.image_download_url)
                 with open(self.conf.image_filename, "wb") as file:
                     file.write(resp.read())
             self.image = self.glance.images.create(name=self.conf.image_name,
