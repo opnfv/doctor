@@ -16,8 +16,8 @@ class BaseInstaller(object):
         self.log = log
 
     @abc.abstractproperty
-    def computer_user_name(self):
-        """user name for login to computer node"""
+    def node_user_name(self):
+        """user name for login to cloud node"""
 
     @abc.abstractmethod
     def get_ssh_key_from_installer(self):
