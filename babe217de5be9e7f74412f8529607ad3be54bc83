@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da33351e_94e2cd01",
+        "filename": "tests/lib/installers/apex",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-08-07T14:47:16Z",
+      "side": 1,
+      "message": "I\u0027d prefer \u0027mv\u0027 instead of cp+rm but it is a more of personal taste and efficiency (not that it impacts much anyway). +2",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 36
+      },
+      "revId": "babe217de5be9e7f74412f8529607ad3be54bc83",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
