@@ -15,7 +15,7 @@ from utils import write_json_file
 
 
 class LocalInstaller(BaseInstaller):
-    computer_user_name = 'root'
+    node_user_name = 'root'
 
     nova_policy_file = '/etc/nova/policy.json'
     nova_policy_file_backup = '%s%s' % (nova_policy_file, '.bak')
