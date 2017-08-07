@@ -478,6 +478,13 @@ cleanup() {
     done
 }
 
+setup_python_packages() {
+    sudo pip install flask==0.10.1
+    command -v openstack || sudo pip install python-openstackclient==2.3.0
+    command -v ceilometer || sudo pip install python-ceilometerclient==2.6.2
+    command -v congress || sudo pip install python-congressclient==1.5.0
+}
+
 # Main process
 
 if [[ $PYTHON_ENABLE == [Tt]rue ]]; then
@@ -498,6 +505,8 @@ echo "Note: doctor/tests/run.sh has been executed."
 git log --oneline -1 || true   # ignore even you don't have git installed
 
 trap cleanup EXIT
+
+setup_python_packages
 
 source $TOP_DIR/functions-common
 source $TOP_DIR/lib/installer
