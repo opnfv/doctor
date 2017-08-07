@@ -44,13 +44,14 @@ function installer_apply_patches {
             fi
 
             co_conf=/etc/congress/congress.conf
+            co_conf_bak=/etc/congress/congress.conf.bak
             co_entry="congress.datasources.doctor_driver.DoctorDriver"
             if sudo grep -e "^drivers.*$co_entry" $co_conf; then
                 echo "NOTE: congress is configured as we needed"
             else
                 echo "modify the congress config"
-                sudo sed -i -e "/^drivers/s/$/,$co_entry    # added by doctor script/" \
-                    $co_conf
+                sudo cp $co_conf $co_conf_bak
+                sudo sed -i -e "/^drivers/s/$/,$co_entry/"  $co_conf
                 sudo systemctl restart openstack-congress-server.service
             fi
             ' > installer_apply_patches_$node.log 2>&1
@@ -90,10 +91,10 @@ function installer_revert_patches {
             date
 
             co_conf=/etc/congress/congress.conf
-            co_entry="congress.datasources.doctor_driver.DoctorDriver"
-            if sudo grep -q -e "# added by doctor script" $co_conf; then
-                echo "modify the congress config"
-                sudo sed -i -e "/^drivers/s/^\(.*\),$co_entry    # added by doctor script/\1/" $co_conf
+            co_conf_bak=/etc/congress/congress.conf.bak
+            if [ -e $co_conf_bak ]; then
+                echo "restore the congress config"
+                sudo mv $co_conf_bak $co_conf
                 sudo systemctl restart openstack-congress-server.service
             fi
 
