@@ -14,7 +14,7 @@ from oslo_utils import importutils
 OPTS = [
     cfg.StrOpt('type',
                default=os.environ.get('INSTALLER_TYPE', 'local'),
-               choices=['local'],
+               choices=['local', 'apex'],
                help='the type of installer',
                required=True),
     cfg.StrOpt('ip',
@@ -28,7 +28,8 @@ OPTS = [
 
 
 _installer_name_class_mapping = {
-    'local': 'installer.local.LocalInstaller'
+    'local': 'installer.local.LocalInstaller',
+    'apex': 'installer.apex.ApexInstaller'
 }
 
 
