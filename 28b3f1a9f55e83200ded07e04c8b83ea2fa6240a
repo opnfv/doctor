@@ -22,6 +22,30 @@
       "revId": "28b3f1a9f55e83200ded07e04c8b83ea2fa6240a",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_2f3448dd",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-08-08T06:51:53Z",
+      "side": 1,
+      "message": "Thanks Yujun. I will correct that. Also talk here about nova-compute, but it is more or less as we have been working with that and VMs to far. Anyhow document can be updated in the future when there is something concrete implemented and also with containers.",
+      "parentUuid": "da33351e_b4b6f188",
+      "range": {
+        "startLine": 40,
+        "startChar": 10,
+        "endLine": 40,
+        "endChar": 14
+      },
+      "revId": "28b3f1a9f55e83200ded07e04c8b83ea2fa6240a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
