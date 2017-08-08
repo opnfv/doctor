@@ -22,6 +22,30 @@
       "revId": "babe217de5be9e7f74412f8529607ad3be54bc83",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_b4443175",
+        "filename": "tests/lib/installers/apex",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-08-08T01:39:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da33351e_94e2cd01",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 36
+      },
+      "revId": "babe217de5be9e7f74412f8529607ad3be54bc83",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
