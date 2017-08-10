@@ -1,0 +1,9 @@
+Verified+1: jenkins-ci <jenkins-opnfv-ci@opnfv.org>
+Code-Review+2: Ryota Mibu <r-mibu@cq.jp.nec.com>
+Code-Review+2: Bertrand Souville <souville@docomolab-euro.com>
+Code-Review+2: Carlos Goncalves <carlos.goncalves@neclab.eu>
+Submitted-by: Carlos Goncalves <carlos.goncalves@neclab.eu>
+Submitted-at: Thu, 10 Aug 2017 09:57:55 +0000
+Reviewed-on: https://gerrit.opnfv.org/gerrit/37357
+Project: doctor
+Branch: refs/heads/master
