@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da33351e_62901996",
+        "filename": "etc/doctor.sample.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-08-14T15:52:33Z",
+      "side": 1,
+      "message": "I suggest hinting users to use the \"sample\" monitor instead as collectd is quite fresh and barely tested.",
+      "revId": "e72e9e1fb029c034796f7346105e37c7deb8bf16",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_22961195",
+        "filename": "etc/doctor.sample.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-08-14T15:52:33Z",
+      "side": 1,
+      "message": "Please add a whitespace after \u003d\n\n  #port \u003d 12345",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 12
+      },
+      "revId": "e72e9e1fb029c034796f7346105e37c7deb8bf16",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_02930da4",
+        "filename": "etc/doctor.sample.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-08-14T15:52:33Z",
+      "side": 1,
+      "message": "ditto, plus port should be different from inspector port (e.g. \"123457\")",
+      "revId": "e72e9e1fb029c034796f7346105e37c7deb8bf16",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
