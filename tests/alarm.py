@@ -26,9 +26,7 @@ class Alarm(object):
     def __init__(self, conf, log):
         self.conf = conf
         self.log = log
-        self.auth = get_identity_auth(username=self.conf.doctor_user,
-                                      password=self.conf.doctor_passwd,
-                                      project=self.conf.doctor_project)
+        self.auth = get_identity_auth(project=self.conf.doctor_project)
         self.aodh = \
             aodh_client(conf.aodh_version,
                         get_session(auth=self.auth))

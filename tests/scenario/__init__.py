@@ -6,22 +6,3 @@
 # which accompanies this distribution, and is available at
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
-import abc
-import six
-
-
-@six.add_metaclass(abc.ABCMeta)
-class BaseMonitor(object):
-    """Monitor computer fault and report error to the inspector"""
-    def __init__(self, conf, inspector_url, log):
-        self.conf = conf
-        self.log = log
-        self.inspector_url = inspector_url
-
-    @abc.abstractmethod
-    def start(self, host):
-        pass
-
-    @abc.abstractmethod
-    def stop(self):
-        pass

@@ -1,0 +1,549 @@
+c4ae9cf6 (Ryota MIBU       2016-05-27 15:54:28 +0900   1) #!/bin/bash -e
+c052eb4a (Ryota MIBU       2016-01-29 14:44:27 +0900   2) ##############################################################################
+c052eb4a (Ryota MIBU       2016-01-29 14:44:27 +0900   3) # Copyright (c) 2016 NEC Corporation and others.
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900   4) #
+c052eb4a (Ryota MIBU       2016-01-29 14:44:27 +0900   5) # All rights reserved. This program and the accompanying materials
+c052eb4a (Ryota MIBU       2016-01-29 14:44:27 +0900   6) # are made available under the terms of the Apache License, Version 2.0
+c052eb4a (Ryota MIBU       2016-01-29 14:44:27 +0900   7) # which accompanies this distribution, and is available at
+c052eb4a (Ryota MIBU       2016-01-29 14:44:27 +0900   8) # http://www.apache.org/licenses/LICENSE-2.0
+c052eb4a (Ryota MIBU       2016-01-29 14:44:27 +0900   9) ##############################################################################
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900  10) 
+d599bb9f (Yujun Zhang      2016-12-22 11:02:07 +0800  11) # Configuration
+d599bb9f (Yujun Zhang      2016-12-22 11:02:07 +0800  12) 
+1a5fa763 (Ryota MIBU       2016-08-05 18:43:42 +0900  13) [[ "${CI_DEBUG:-true}" == [Tt]rue ]] && set -x
+c4ae9cf6 (Ryota MIBU       2016-05-27 15:54:28 +0900  14) 
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900  15) IMAGE_URL=https://launchpad.net/cirros/trunk/0.3.0/+download/cirros-0.3.0-x86_64-disk.img
+34e59395 (cristinapauna    2016-09-05 18:47:23 +0300  16) #if an existing image name is provided in the enviroment, use that one
+34e59395 (cristinapauna    2016-09-05 18:47:23 +0300  17) IMAGE_NAME=${IMAGE_NAME:-cirros}
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900  18) IMAGE_FILE="${IMAGE_NAME}.img"
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900  19) IMAGE_FORMAT=qcow2
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200  20) VM_BASENAME=doctor_vm
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900  21) VM_FLAVOR=m1.tiny
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200  22) #if VM_COUNT set, use that instead
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200  23) VM_COUNT=${VM_COUNT:-1}
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000  24) NET_NAME=doctor_net
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000  25) NET_CIDR=192.168.168.0/24
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200  26) ALARM_BASENAME=doctor_alarm
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900  27) CONSUMER_PORT=12346
+17d3d38a (dongwenjuan      2016-06-30 10:09:27 +0800  28) DOCTOR_USER=doctor
+17d3d38a (dongwenjuan      2016-06-30 10:09:27 +0800  29) DOCTOR_PW=doctor
+17d3d38a (dongwenjuan      2016-06-30 10:09:27 +0800  30) DOCTOR_PROJECT=doctor
+661fbc57 (Tomi Juvonen     2016-12-15 10:10:07 +0200  31) DOCTOR_ROLE=_member_
+b9a24a91 (Ryota MIBU       2017-04-26 14:31:15 +0000  32) PROFILER_TYPE=${PROFILER_TYPE:-poc}
+20b36795 (Ryota MIBU       2017-04-26 11:31:03 +0000  33) PYTHON_ENABLE=${PYTHON_ENABLE:-false}
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900  34) 
+dffe8ff7 (Carlos Goncalves 2016-11-16 08:57:09 +0000  35) TOP_DIR=$(cd $(dirname "$0") && pwd)
+1f2f6c3c (Carlos Goncalves 2016-08-11 13:04:14 +0000  36) 
+362e96e0 (Ryota MIBU       2016-07-22 19:56:06 +0900  37) as_doctor_user="--os-username $DOCTOR_USER --os-password $DOCTOR_PW
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000  38)                 --os-project-name $DOCTOR_PROJECT --os-tenant-name $DOCTOR_PROJECT"
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000  39) # NOTE: ceilometer command still requires '--os-tenant-name'.
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000  40) #ceilometer="ceilometer ${as_doctor_user/--os-project-name/--os-tenant-name}"
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000  41) ceilometer="ceilometer $as_doctor_user"
+661fbc57 (Tomi Juvonen     2016-12-15 10:10:07 +0200  42) as_admin_user="--os-username admin --os-project-name $DOCTOR_PROJECT
+661fbc57 (Tomi Juvonen     2016-12-15 10:10:07 +0200  43)                --os-tenant-name $DOCTOR_PROJECT"
+ac816319 (Ryota MIBU       2016-02-08 22:38:27 +0900  44) 
+1f2f6c3c (Carlos Goncalves 2016-08-11 13:04:14 +0000  45) 
+d599bb9f (Yujun Zhang      2016-12-22 11:02:07 +0800  46) # Functions
+d599bb9f (Yujun Zhang      2016-12-22 11:02:07 +0800  47) 
+99356c5f (dongwenjuan      2016-07-06 14:58:20 +0800  48) get_compute_host_info() {
+661fbc57 (Tomi Juvonen     2016-12-15 10:10:07 +0200  49)     # get computer host info which first VM boot in as admin user
+661fbc57 (Tomi Juvonen     2016-12-15 10:10:07 +0200  50)     COMPUTE_HOST=$(openstack $as_admin_user server show ${VM_BASENAME}1 |
+7e133306 (Umar Farooq      2017-07-13 14:51:51 +0200  51)                    grep "OS-EXT-SRV-ATTR:host " | awk '{ print $4 }')
+d9c90b63 (dongwenjuan      2016-07-28 19:35:36 +0800  52)     compute_host_in_undercloud=${COMPUTE_HOST%%.*}
+dffe8ff7 (Carlos Goncalves 2016-11-16 08:57:09 +0000  53)     die_if_not_set $LINENO COMPUTE_HOST "Failed to get compute hostname"
+d9c90b63 (dongwenjuan      2016-07-28 19:35:36 +0800  54) 
+1d5c5fae (Ryota MIBU       2017-02-02 15:03:01 +0000  55)     get_compute_ip_from_hostname $COMPUTE_HOST
+d9c90b63 (dongwenjuan      2016-07-28 19:35:36 +0800  56) 
+1a5fa763 (Ryota MIBU       2016-08-05 18:43:42 +0900  57)     echo "COMPUTE_HOST=$COMPUTE_HOST"
+1a5fa763 (Ryota MIBU       2016-08-05 18:43:42 +0900  58)     echo "COMPUTE_IP=$COMPUTE_IP"
+5e00dc42 (Carlos Goncalves 2016-03-20 17:15:17 +0000  59) 
+99356c5f (dongwenjuan      2016-07-06 14:58:20 +0800  60)     # verify connectivity to target compute host
+99356c5f (dongwenjuan      2016-07-06 14:58:20 +0800  61)     ping -c 1 "$COMPUTE_IP"
+99356c5f (dongwenjuan      2016-07-06 14:58:20 +0800  62)     if [[ $? -ne 0 ]] ; then
+dffe8ff7 (Carlos Goncalves 2016-11-16 08:57:09 +0000  63)         die $LINENO "Can not ping to computer host"
+99356c5f (dongwenjuan      2016-07-06 14:58:20 +0800  64)     fi
+5e00dc42 (Carlos Goncalves 2016-03-20 17:15:17 +0000  65) 
+99356c5f (dongwenjuan      2016-07-06 14:58:20 +0800  66)     # verify ssh to target compute host
+99356c5f (dongwenjuan      2016-07-06 14:58:20 +0800  67)     ssh $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP" 'exit'
+99356c5f (dongwenjuan      2016-07-06 14:58:20 +0800  68)     if [[ $? -ne 0 ]] ; then
+dffe8ff7 (Carlos Goncalves 2016-11-16 08:57:09 +0000  69)         die $LINENO "Can not ssh to computer host"
+99356c5f (dongwenjuan      2016-07-06 14:58:20 +0800  70)     fi
+9171d144 (Ryota MIBU       2016-02-18 12:30:31 +0900  71) }
+9171d144 (Ryota MIBU       2016-02-18 12:30:31 +0900  72) 
+1d5c5fae (Ryota MIBU       2017-02-02 15:03:01 +0000  73) # TODO(r-mibu): update this function to support consumer instance
+1d5c5fae (Ryota MIBU       2017-02-02 15:03:01 +0000  74) #               and migrate this function into installer lib
+1d5c5fae (Ryota MIBU       2017-02-02 15:03:01 +0000  75) get_consumer_ip___to_be_removed() {
+4cb2a317 (dongwenjuan      2016-08-18 10:48:22 +0800  76)     local get_consumer_command="ip route get $COMPUTE_IP | awk '/ src /{print \$NF}'"
+83076cf4 (Carlos Goncalves 2016-11-16 09:55:01 +0000  77)     if is_installer apex; then
+4cb2a317 (dongwenjuan      2016-08-18 10:48:22 +0800  78)         CONSUMER_IP=$(sudo ssh $ssh_opts root@$INSTALLER_IP \
+4cb2a317 (dongwenjuan      2016-08-18 10:48:22 +0800  79)                       "$get_consumer_command")
+83076cf4 (Carlos Goncalves 2016-11-16 09:55:01 +0000  80)     elif is_installer fuel; then
+4cb2a317 (dongwenjuan      2016-08-18 10:48:22 +0800  81)         CONSUMER_IP=$(sudo sshpass -p r00tme ssh $ssh_opts root@${INSTALLER_IP} \
+4cb2a317 (dongwenjuan      2016-08-18 10:48:22 +0800  82)                       "$get_consumer_command")
+83076cf4 (Carlos Goncalves 2016-11-16 09:55:01 +0000  83)     elif is_installer local; then
+4cb2a317 (dongwenjuan      2016-08-18 10:48:22 +0800  84)         CONSUMER_IP=`$get_consumer_command`
+4cb2a317 (dongwenjuan      2016-08-18 10:48:22 +0800  85)     fi
+1a5fa763 (Ryota MIBU       2016-08-05 18:43:42 +0900  86)     echo "CONSUMER_IP=$CONSUMER_IP"
+5aa25460 (dongwenjuan      2016-07-12 18:10:56 +0800  87) 
+dffe8ff7 (Carlos Goncalves 2016-11-16 08:57:09 +0000  88)     die_if_not_set $LINENO CONSUMER_IP "Could not get CONSUMER_IP."
+5aa25460 (dongwenjuan      2016-07-12 18:10:56 +0800  89) }
+5aa25460 (dongwenjuan      2016-07-12 18:10:56 +0800  90) 
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900  91) download_image() {
+34e59395 (cristinapauna    2016-09-05 18:47:23 +0300  92)     #if a different name was provided for the image in the enviroment there's no need to download the image
+34e59395 (cristinapauna    2016-09-05 18:47:23 +0300  93)     use_existing_image=false
+34e59395 (cristinapauna    2016-09-05 18:47:23 +0300  94)     openstack image list | grep -q " $IMAGE_NAME " && use_existing_image=true
+34e59395 (cristinapauna    2016-09-05 18:47:23 +0300  95) 
+34e59395 (cristinapauna    2016-09-05 18:47:23 +0300  96)     if [[ "$use_existing_image" == false ]] ; then
+34e59395 (cristinapauna    2016-09-05 18:47:23 +0300  97)         [ -e "$IMAGE_FILE" ] && return 0
+34e59395 (cristinapauna    2016-09-05 18:47:23 +0300  98)         wget "$IMAGE_URL" -o "$IMAGE_FILE"
+34e59395 (cristinapauna    2016-09-05 18:47:23 +0300  99)     fi
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 100) }
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 101) 
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 102) register_image() {
+f2acc144 (Carlos Goncalves 2016-07-05 13:05:47 +0200 103)     openstack image list | grep -q " $IMAGE_NAME " && return 0
+f2acc144 (Carlos Goncalves 2016-07-05 13:05:47 +0200 104)     openstack image create "$IMAGE_NAME" \
+f2acc144 (Carlos Goncalves 2016-07-05 13:05:47 +0200 105)                            --public \
+f2acc144 (Carlos Goncalves 2016-07-05 13:05:47 +0200 106)                            --disk-format "$IMAGE_FORMAT" \
+f2acc144 (Carlos Goncalves 2016-07-05 13:05:47 +0200 107)                            --container-format bare \
+f2acc144 (Carlos Goncalves 2016-07-05 13:05:47 +0200 108)                            --file "$IMAGE_FILE"
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 109) }
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 110) 
+24359cbe (Tomi Juvonen     2016-05-16 13:38:23 +0300 111) create_test_user() {
+17d3d38a (dongwenjuan      2016-06-30 10:09:27 +0800 112)     openstack project list | grep -q " $DOCTOR_PROJECT " || {
+661fbc57 (Tomi Juvonen     2016-12-15 10:10:07 +0200 113)         openstack project create --description "Doctor Project" \
+661fbc57 (Tomi Juvonen     2016-12-15 10:10:07 +0200 114)                                  "$DOCTOR_PROJECT"
+24359cbe (Tomi Juvonen     2016-05-16 13:38:23 +0300 115)     }
+b7d86efb (dongwenjuan      2016-08-17 16:55:16 +0800 116)     openstack user list | grep -q " $DOCTOR_USER " || {
+b7d86efb (dongwenjuan      2016-08-17 16:55:16 +0800 117)         openstack user create "$DOCTOR_USER" --password "$DOCTOR_PW" \
+b7d86efb (dongwenjuan      2016-08-17 16:55:16 +0800 118)                               --project "$DOCTOR_PROJECT"
+b7d86efb (dongwenjuan      2016-08-17 16:55:16 +0800 119)     }
+661fbc57 (Tomi Juvonen     2016-12-15 10:10:07 +0200 120)     openstack role show "$DOCTOR_ROLE" | grep -q " $DOCTOR_ROLE " || {
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 121)         openstack role create "$DOCTOR_ROLE"
+24359cbe (Tomi Juvonen     2016-05-16 13:38:23 +0300 122)     }
+661fbc57 (Tomi Juvonen     2016-12-15 10:10:07 +0200 123)     openstack role assignment list --user "$DOCTOR_USER" \
+661fbc57 (Tomi Juvonen     2016-12-15 10:10:07 +0200 124)     --project "$DOCTOR_PROJECT" --names | grep -q " $DOCTOR_ROLE " || {
+661fbc57 (Tomi Juvonen     2016-12-15 10:10:07 +0200 125)         openstack role add "$DOCTOR_ROLE" --user "$DOCTOR_USER" \
+661fbc57 (Tomi Juvonen     2016-12-15 10:10:07 +0200 126)                            --project "$DOCTOR_PROJECT"
+661fbc57 (Tomi Juvonen     2016-12-15 10:10:07 +0200 127)     }
+661fbc57 (Tomi Juvonen     2016-12-15 10:10:07 +0200 128)     openstack role assignment list --user admin --project "$DOCTOR_PROJECT" \
+661fbc57 (Tomi Juvonen     2016-12-15 10:10:07 +0200 129)     --names | grep -q " admin " || {
+661fbc57 (Tomi Juvonen     2016-12-15 10:10:07 +0200 130)         openstack role add admin --user admin --project "$DOCTOR_PROJECT"
+661fbc57 (Tomi Juvonen     2016-12-15 10:10:07 +0200 131)     }
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 132)     # tojuvone: openstack quota show is broken and have to use nova
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 133)     # https://bugs.launchpad.net/manila/+bug/1652118
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 134)     # Note! while it is encouraged to use openstack client it has proven
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 135)     # quite buggy.
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 136)     # QUOTA=$(openstack quota show $DOCTOR_PROJECT)
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 137)     DOCTOR_QUOTA=$(nova quota-show --tenant $DOCTOR_PROJECT)
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 138)     # We make sure that quota allows number of instances and cores
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 139)     OLD_INSTANCE_QUOTA=$(echo "${DOCTOR_QUOTA}" | grep " instances " | \
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 140)                          awk '{print $4}')
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 141)     if [ $OLD_INSTANCE_QUOTA -lt $VM_COUNT ]; then
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 142)         openstack quota set --instances $VM_COUNT \
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 143)                   $DOCTOR_USER
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 144)     fi
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 145)     OLD_CORES_QUOTA=$(echo "${DOCTOR_QUOTA}" | grep " cores " | \
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 146)                       awk '{print $4}')
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 147)     if [ $OLD_CORES_QUOTA -lt $VM_COUNT ]; then
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 148)         openstack quota set --cores $VM_COUNT \
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 149)                   $DOCTOR_USER
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 150)     fi
+24359cbe (Tomi Juvonen     2016-05-16 13:38:23 +0300 151) }
+24359cbe (Tomi Juvonen     2016-05-16 13:38:23 +0300 152) 
+661fbc57 (Tomi Juvonen     2016-12-15 10:10:07 +0200 153) remove_test_user() {
+661fbc57 (Tomi Juvonen     2016-12-15 10:10:07 +0200 154)     openstack project list | grep -q " $DOCTOR_PROJECT " && {
+661fbc57 (Tomi Juvonen     2016-12-15 10:10:07 +0200 155)         openstack role assignment list --user admin \
+661fbc57 (Tomi Juvonen     2016-12-15 10:10:07 +0200 156)         --project "$DOCTOR_PROJECT" --names | grep -q " admin " && {
+661fbc57 (Tomi Juvonen     2016-12-15 10:10:07 +0200 157)             openstack role remove admin --user admin --project "$DOCTOR_PROJECT"
+661fbc57 (Tomi Juvonen     2016-12-15 10:10:07 +0200 158)         }
+661fbc57 (Tomi Juvonen     2016-12-15 10:10:07 +0200 159)         openstack user list | grep -q " $DOCTOR_USER " && {
+661fbc57 (Tomi Juvonen     2016-12-15 10:10:07 +0200 160)             openstack role assignment list --user "$DOCTOR_USER" \
+661fbc57 (Tomi Juvonen     2016-12-15 10:10:07 +0200 161)             --project "$DOCTOR_PROJECT" --names | grep -q " $DOCTOR_ROLE " && {
+661fbc57 (Tomi Juvonen     2016-12-15 10:10:07 +0200 162)                 openstack role remove "$DOCTOR_ROLE" --user "$DOCTOR_USER" \
+661fbc57 (Tomi Juvonen     2016-12-15 10:10:07 +0200 163)                 --project "$DOCTOR_PROJECT"
+661fbc57 (Tomi Juvonen     2016-12-15 10:10:07 +0200 164)             }
+661fbc57 (Tomi Juvonen     2016-12-15 10:10:07 +0200 165)             openstack user delete "$DOCTOR_USER"
+661fbc57 (Tomi Juvonen     2016-12-15 10:10:07 +0200 166)         }
+661fbc57 (Tomi Juvonen     2016-12-15 10:10:07 +0200 167)         openstack project delete "$DOCTOR_PROJECT"
+661fbc57 (Tomi Juvonen     2016-12-15 10:10:07 +0200 168)     }
+661fbc57 (Tomi Juvonen     2016-12-15 10:10:07 +0200 169) }
+661fbc57 (Tomi Juvonen     2016-12-15 10:10:07 +0200 170) 
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 171) boot_vm() {
+362e96e0 (Ryota MIBU       2016-07-22 19:56:06 +0900 172)     # test VM done with test user, so can test non-admin
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 173) 
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 174)     if ! openstack $as_doctor_user network show $NET_NAME; then
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 175)         openstack $as_doctor_user network create $NET_NAME
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 176)     fi
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 177)     if ! openstack $as_doctor_user subnet show $NET_NAME; then
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 178)         openstack $as_doctor_user subnet create $NET_NAME \
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 179)             --network $NET_NAME --subnet-range $NET_CIDR --no-dhcp
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 180)     fi
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 181)     net_id=$(openstack $as_doctor_user network show $NET_NAME -f value -c id)
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 182) 
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 183)     servers=$(openstack $as_doctor_user server list)
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 184)     for i in `seq $VM_COUNT`; do
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 185)         echo "${servers}" | grep -q " $VM_BASENAME$i " && continue
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 186)         openstack $as_doctor_user server create --flavor "$VM_FLAVOR" \
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 187)             --image "$IMAGE_NAME" --nic net-id=$net_id "$VM_BASENAME$i"
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 188)     done
+362e96e0 (Ryota MIBU       2016-07-22 19:56:06 +0900 189)     sleep 1
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 190) }
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 191) 
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 192) create_alarm() {
+362e96e0 (Ryota MIBU       2016-07-22 19:56:06 +0900 193)     # get vm_id as test user
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 194)     alarm_list=$($ceilometer alarm-list)
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 195)     vms=$(openstack $as_doctor_user server list)
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 196)     for i in `seq $VM_COUNT`; do
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 197)         echo "${alarm_list}" | grep -q " $ALARM_BASENAME$i " || {
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 198)             vm_id=$(echo "${vms}" | grep " $VM_BASENAME$i " | awk '{print $2}')
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 199)             # TODO(r-mibu): change notification endpoint from localhost to the
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 200)             # consumer. IP address (functest container).
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 201)             $ceilometer alarm-event-create \
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 202)                        --name "$ALARM_BASENAME$i" \
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 203)                        --alarm-action "http://localhost:$CONSUMER_PORT/failure" \
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 204)                        --description "VM failure" \
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 205)                        --enabled True \
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 206)                        --repeat-actions False \
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 207)                        --severity "moderate" \
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 208)                        --event-type compute.instance.update \
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 209)                        -q "traits.state=string::error; \
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 210)                        traits.instance_id=string::$vm_id"
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 211)             }
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 212)      done
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 213) }
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 214) 
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 215) start_consumer() {
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 216)     pgrep -f "python consumer.py" && return 0
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 217)     python consumer.py "$CONSUMER_PORT" > consumer.log 2>&1 &
+d0c8723c (Ryota MIBU       2016-08-19 17:58:20 +0900 218) 
+d0c8723c (Ryota MIBU       2016-08-19 17:58:20 +0900 219)     # NOTE(r-mibu): create tunnel to the controller nodes, so that we can
+a6795a5d (Ryota MIBU       2016-08-18 02:20:46 +0900 220)     # avoid some network problems dpends on infra and installers.
+a6795a5d (Ryota MIBU       2016-08-18 02:20:46 +0900 221)     # This tunnel will be terminated by stop_consumer() or after 10 mins passed.
+83076cf4 (Carlos Goncalves 2016-11-16 09:55:01 +0000 222)     if ! is_installer local; then
+4cb2a317 (dongwenjuan      2016-08-18 10:48:22 +0800 223)         for ip in $CONTROLLER_IPS
+4cb2a317 (dongwenjuan      2016-08-18 10:48:22 +0800 224)         do
+4cb2a317 (dongwenjuan      2016-08-18 10:48:22 +0800 225)             forward_rule="-R $CONSUMER_PORT:localhost:$CONSUMER_PORT"
+4cb2a317 (dongwenjuan      2016-08-18 10:48:22 +0800 226)             tunnel_command="sudo ssh $ssh_opts_cpu $COMPUTE_USER@$ip $forward_rule sleep 600"
+4cb2a317 (dongwenjuan      2016-08-18 10:48:22 +0800 227)             $tunnel_command > "ssh_tunnel.${ip}.log" 2>&1 < /dev/null &
+4cb2a317 (dongwenjuan      2016-08-18 10:48:22 +0800 228)         done
+d0c8723c (Ryota MIBU       2016-08-19 17:58:20 +0900 229)     fi
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 230) }
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 231) 
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 232) stop_consumer() {
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 233)     pgrep -f "python consumer.py" || return 0
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 234)     kill $(pgrep -f "python consumer.py")
+d0c8723c (Ryota MIBU       2016-08-19 17:58:20 +0900 235) 
+d0c8723c (Ryota MIBU       2016-08-19 17:58:20 +0900 236)     # NOTE(r-mibu): terminate tunnels to the controller nodes
+83076cf4 (Carlos Goncalves 2016-11-16 09:55:01 +0000 237)     if ! is_installer local; then
+4cb2a317 (dongwenjuan      2016-08-18 10:48:22 +0800 238)         for ip in $CONTROLLER_IPS
+4cb2a317 (dongwenjuan      2016-08-18 10:48:22 +0800 239)         do
+4cb2a317 (dongwenjuan      2016-08-18 10:48:22 +0800 240)             forward_rule="-R $CONSUMER_PORT:localhost:$CONSUMER_PORT"
+4cb2a317 (dongwenjuan      2016-08-18 10:48:22 +0800 241)             tunnel_command="sudo ssh $ssh_opts_cpu $COMPUTE_USER@$ip $forward_rule sleep 600"
+4cb2a317 (dongwenjuan      2016-08-18 10:48:22 +0800 242)             kill $(pgrep -f "$tunnel_command")
+4cb2a317 (dongwenjuan      2016-08-18 10:48:22 +0800 243)         done
+4cb2a317 (dongwenjuan      2016-08-18 10:48:22 +0800 244)     fi
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 245) }
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 246) 
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 247) wait_for_vm_launch() {
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 248)     echo "waiting for vm launch..."
+17d3d38a (dongwenjuan      2016-06-30 10:09:27 +0800 249) 
+362e96e0 (Ryota MIBU       2016-07-22 19:56:06 +0900 250)     count=0
+362e96e0 (Ryota MIBU       2016-07-22 19:56:06 +0900 251)     while [[ ${count} -lt 60 ]]
+362e96e0 (Ryota MIBU       2016-07-22 19:56:06 +0900 252)     do
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 253)         active_count=0
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 254)         vms=$(openstack $as_doctor_user server list)
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 255)         for i in `seq $VM_COUNT`; do
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 256)             state=$(echo "${vms}" | grep " $VM_BASENAME$i " | awk '{print $6}')
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 257)             if [[ "$state" == "ACTIVE" ]]; then
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 258)                 active_count=$(($active_count+1))
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 259)             elif [[ "$state" == "ERROR" ]]; then
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 260)                 die $LINENO "vm state $VM_BASENAME$i is ERROR"
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 261)             else
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 262)                 #This VM not yet active
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 263)                 count=$(($count+1))
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 264)                 sleep 5
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 265)                 continue
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 266)             fi
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 267)         done
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 268)         [[ $active_count -eq $VM_COUNT ]] && {
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 269)             echo "get computer host info..."
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 270)             get_compute_host_info
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 271)             VMS_ON_FAILED_HOST=$(openstack $as_doctor_user server list --host \
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 272)                          $COMPUTE_HOST | grep " ${VM_BASENAME}" |  wc -l)
+5d2b686e (Carlos Goncalves 2016-09-06 15:40:37 +0200 273)             return 0
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 274)         }
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 275)         #Not all VMs active
+362e96e0 (Ryota MIBU       2016-07-22 19:56:06 +0900 276)         count=$(($count+1))
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 277)         sleep 5
+362e96e0 (Ryota MIBU       2016-07-22 19:56:06 +0900 278)     done
+dffe8ff7 (Carlos Goncalves 2016-11-16 08:57:09 +0000 279)     die $LINENO "Time out while waiting for VM launch"
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 280) }
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 281) 
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 282) inject_failure() {
+a1bab6ec (Carlos Goncalves 2016-03-20 22:23:44 +0100 283)     echo "disabling network of compute host [$COMPUTE_HOST] for 3 mins..."
+ac816319 (Ryota MIBU       2016-02-08 22:38:27 +0900 284)     cat > disable_network.sh << 'END_TXT'
+ac816319 (Ryota MIBU       2016-02-08 22:38:27 +0900 285) #!/bin/bash -x
+67c4462e (Ryota MIBU       2016-01-29 09:15:15 +0900 286) sleep 1
+282369b6 (Umar Farooq      2017-07-13 12:20:56 +0200 287) if [ -n "@INTERFACE_NAME@" ]; then
+282369b6 (Umar Farooq      2017-07-13 12:20:56 +0200 288)     dev=@INTERFACE_NAME@
+282369b6 (Umar Farooq      2017-07-13 12:20:56 +0200 289) else
+282369b6 (Umar Farooq      2017-07-13 12:20:56 +0200 290)     dev=$(sudo ip a | awk '/ @COMPUTE_IP@\//{print $NF}')
+282369b6 (Umar Farooq      2017-07-13 12:20:56 +0200 291) fi
+a1bab6ec (Carlos Goncalves 2016-03-20 22:23:44 +0100 292) sudo ip link set $dev down
+eac3701e (Yujun Zhang      2017-01-21 22:30:05 +0800 293) echo "doctor set link down at" $(date "+%s.%N")
+eed432fa (Ryota MIBU       2016-02-19 22:11:47 +0900 294) sleep 180
+a1bab6ec (Carlos Goncalves 2016-03-20 22:23:44 +0100 295) sudo ip link set $dev up
+67c4462e (Ryota MIBU       2016-01-29 09:15:15 +0900 296) sleep 1
+67c4462e (Ryota MIBU       2016-01-29 09:15:15 +0900 297) END_TXT
+86d6d5c7 (Ryota MIBU       2016-07-26 14:49:18 +0900 298)     sed -i -e "s/@COMPUTE_IP@/$COMPUTE_IP/" disable_network.sh
+282369b6 (Umar Farooq      2017-07-13 12:20:56 +0200 299)     sed -i -e "s/@INTERFACE_NAME@/$INTERFACE_NAME/" disable_network.sh
+ac816319 (Ryota MIBU       2016-02-08 22:38:27 +0900 300)     chmod +x disable_network.sh
+5e00dc42 (Carlos Goncalves 2016-03-20 17:15:17 +0000 301)     scp $ssh_opts_cpu disable_network.sh "$COMPUTE_USER@$COMPUTE_IP:"
+5e00dc42 (Carlos Goncalves 2016-03-20 17:15:17 +0000 302)     ssh $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP" 'nohup ./disable_network.sh > disable_network.log 2>&1 &'
+eac3701e (Yujun Zhang      2017-01-21 22:30:05 +0800 303)     # use host time to get rid of potential time sync deviation between nodes
+eac3701e (Yujun Zhang      2017-01-21 22:30:05 +0800 304)     triggered=$(date "+%s.%N")
+cf5a27a4 (Yujun Zhang      2016-11-29 16:03:17 +0800 305) }
+cf5a27a4 (Yujun Zhang      2016-11-29 16:03:17 +0800 306) 
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 307) wait_consumer() {
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 308)     local interval=1
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 309)     local rounds=$(($1 / $interval))
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 310)     for i in `seq $rounds`; do
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 311)         notified_count=$(grep "doctor consumer notified at" consumer.log | wc -l)
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 312)         if [[ $notified_count -eq  $VMS_ON_FAILED_HOST ]]; then
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 313)             return 0
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 314)         fi
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 315)         sleep $interval
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 316)     done
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 317)     die $LINENO "Consumer hasn't received fault notification."
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 318) }
+cf5a27a4 (Yujun Zhang      2016-11-29 16:03:17 +0800 319) 
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 320) calculate_notification_time() {
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 321)     wait_consumer 60
+2378f04c (Julien           2016-12-27 23:28:21 +0800 322)     #keep 'at' as the last keyword just before the value, and
+2378f04c (Julien           2016-12-27 23:28:21 +0800 323)     #use regex to get value instead of the fixed column
+282369b6 (Umar Farooq      2017-07-13 12:20:56 +0200 324)     if [ ! -f monitor.log ]; then
+282369b6 (Umar Farooq      2017-07-13 12:20:56 +0200 325)         scp $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP:monitor.log" .
+282369b6 (Umar Farooq      2017-07-13 12:20:56 +0200 326)     fi
+2378f04c (Julien           2016-12-27 23:28:21 +0800 327)     detected=$(grep "doctor monitor detected at" monitor.log |\
+282369b6 (Umar Farooq      2017-07-13 12:20:56 +0200 328)                sed -e "s/^.* at //" | tail -1)
+2378f04c (Julien           2016-12-27 23:28:21 +0800 329)     notified=$(grep "doctor consumer notified at" consumer.log |\
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 330)                sed -e "s/^.* at //" | tail -1)
+2378f04c (Julien           2016-12-27 23:28:21 +0800 331) 
+a1bab6ec (Carlos Goncalves 2016-03-20 22:23:44 +0100 332)     echo "$notified $detected" | \
+d921539a (Carlos Goncalves 2016-08-26 14:00:29 +0000 333)         awk '{
+d921539a (Carlos Goncalves 2016-08-26 14:00:29 +0000 334)             d = $1 - $2;
+d921539a (Carlos Goncalves 2016-08-26 14:00:29 +0000 335)             if (d < 1 && d > 0) { print d " OK"; exit 0 }
+d921539a (Carlos Goncalves 2016-08-26 14:00:29 +0000 336)             else { print d " NG"; exit 1 }
+d921539a (Carlos Goncalves 2016-08-26 14:00:29 +0000 337)         }'
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 338) }
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 339) 
+414228a4 (dongwenjuan      2016-06-30 10:19:49 +0800 340) check_host_status() {
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 341)     # Check host related to first Doctor VM is in wanted state
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 342)     # $1    Expected state
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 343)     # $2    Seconds to wait to have wanted state
+362e96e0 (Ryota MIBU       2016-07-22 19:56:06 +0900 344)     expected_state=$1
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 345)     local interval=5
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 346)     local rounds=$(($2 / $interval))
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 347)     for i in `seq $rounds`; do
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 348)         host_status_line=$(openstack $as_doctor_user --os-compute-api-version \
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 349)                            2.16 server show ${VM_BASENAME}1 | grep "host_status")
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 350)         host_status=$(echo $host_status_line | awk '{print $4}')
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 351)         die_if_not_set $LINENO host_status "host_status not reported by: nova show ${VM_BASENAME}1"
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 352)         if [[ "$expected_state" =~ "$host_status" ]] ; then
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 353)             echo "${VM_BASENAME}1 showing host_status: $host_status"
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 354)             return 0
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 355)         else
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 356)             sleep $interval
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 357)         fi
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 358)     done
+dffe8ff7 (Carlos Goncalves 2016-11-16 08:57:09 +0000 359)     if [[ "$expected_state" =~ "$host_status" ]] ; then
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 360)         echo "${VM_BASENAME}1 showing host_status: $host_status"
+1a5fa763 (Ryota MIBU       2016-08-05 18:43:42 +0900 361)     else
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 362)         die $LINENO  "host_status:$host_status not equal to expected_state: $expected_state"
+362e96e0 (Ryota MIBU       2016-07-22 19:56:06 +0900 363)     fi
+24359cbe (Tomi Juvonen     2016-05-16 13:38:23 +0300 364) }
+24359cbe (Tomi Juvonen     2016-05-16 13:38:23 +0300 365) 
+c9d0d2c9 (Ryota MIBU       2017-01-27 06:34:06 +0000 366) unset_forced_down_hosts() {
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 367)     # for debug
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 368)     openstack compute service list --service nova-compute
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 369) 
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 370)     downed_computes=$(openstack compute service list --service nova-compute \
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 371)                       -f value -c Host -c State | grep ' down$' \
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 372)                       | sed -e 's/ *down$//')
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 373)     echo "downed_computes: $downed_computes"
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 374)     for host in $downed_computes
+c9d0d2c9 (Ryota MIBU       2017-01-27 06:34:06 +0000 375)     do
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 376)         # TODO(r-mibu): use openstack client
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 377)         #openstack compute service set --up $host nova-compute
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 378)         nova service-force-down --unset $host nova-compute
+c9d0d2c9 (Ryota MIBU       2017-01-27 06:34:06 +0000 379)     done
+c9d0d2c9 (Ryota MIBU       2017-01-27 06:34:06 +0000 380) 
+c9d0d2c9 (Ryota MIBU       2017-01-27 06:34:06 +0000 381)     echo "waiting disabled compute host back to be enabled..."
+c9d0d2c9 (Ryota MIBU       2017-01-27 06:34:06 +0000 382)     wait_until 'openstack compute service list --service nova-compute
+c9d0d2c9 (Ryota MIBU       2017-01-27 06:34:06 +0000 383)                 -f value -c State | grep -q down' 240 5
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 384) 
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 385)     for host in $downed_computes
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 386)     do
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 387)         # TODO(r-mibu): improve 'get_compute_ip_from_hostname'
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 388)         get_compute_ip_from_hostname $host
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 389)         wait_until "! ping -c 1 $COMPUTE_IP" 120 5
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 390)     done
+c9d0d2c9 (Ryota MIBU       2017-01-27 06:34:06 +0000 391) }
+c9d0d2c9 (Ryota MIBU       2017-01-27 06:34:06 +0000 392) 
+eac3701e (Yujun Zhang      2017-01-21 22:30:05 +0800 393) collect_logs() {
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 394)     if [[ -n "$COMPUTE_IP" ]];then
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 395)         scp $ssh_opts_cpu "$COMPUTE_USER@$COMPUTE_IP:disable_network.log" .
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 396)     fi
+eac3701e (Yujun Zhang      2017-01-21 22:30:05 +0800 397) 
+eac3701e (Yujun Zhang      2017-01-21 22:30:05 +0800 398)     # TODO(yujunz) collect other logs, e.g. nova, aodh
+eac3701e (Yujun Zhang      2017-01-21 22:30:05 +0800 399) }
+eac3701e (Yujun Zhang      2017-01-21 22:30:05 +0800 400) 
+eac3701e (Yujun Zhang      2017-01-21 22:30:05 +0800 401) run_profiler() {
+eac3701e (Yujun Zhang      2017-01-21 22:30:05 +0800 402)     if [[ "$PROFILER_TYPE" == "poc" ]]; then
+eac3701e (Yujun Zhang      2017-01-21 22:30:05 +0800 403)         linkdown=$(grep "doctor set link down at " disable_network.log |\
+eac3701e (Yujun Zhang      2017-01-21 22:30:05 +0800 404)                   sed -e "s/^.* at //")
+eac3701e (Yujun Zhang      2017-01-21 22:30:05 +0800 405)         vmdown=$(grep "doctor mark vm.* error at" inspector.log |tail -n 1 |\
+eac3701e (Yujun Zhang      2017-01-21 22:30:05 +0800 406)                  sed -e "s/^.* at //")
+eac3701e (Yujun Zhang      2017-01-21 22:30:05 +0800 407)         hostdown=$(grep "doctor mark host.* down at" inspector.log |\
+eac3701e (Yujun Zhang      2017-01-21 22:30:05 +0800 408)                  sed -e "s/^.* at //")
+eac3701e (Yujun Zhang      2017-01-21 22:30:05 +0800 409) 
+eac3701e (Yujun Zhang      2017-01-21 22:30:05 +0800 410)         # TODO(yujunz) check the actual delay to verify time sync status
+eac3701e (Yujun Zhang      2017-01-21 22:30:05 +0800 411)         # expected ~1s delay from $trigger to $linkdown
+eac3701e (Yujun Zhang      2017-01-21 22:30:05 +0800 412)         relative_start=${linkdown}
+eac3701e (Yujun Zhang      2017-01-21 22:30:05 +0800 413)         export DOCTOR_PROFILER_T00=$(python -c \
+eac3701e (Yujun Zhang      2017-01-21 22:30:05 +0800 414)           "print(int(($linkdown-$relative_start)*1000))")
+eac3701e (Yujun Zhang      2017-01-21 22:30:05 +0800 415)         export DOCTOR_PROFILER_T01=$(python -c \
+eac3701e (Yujun Zhang      2017-01-21 22:30:05 +0800 416)           "print(int(($detected-$relative_start)*1000))")
+eac3701e (Yujun Zhang      2017-01-21 22:30:05 +0800 417)         export DOCTOR_PROFILER_T03=$(python -c \
+eac3701e (Yujun Zhang      2017-01-21 22:30:05 +0800 418)           "print(int(($vmdown-$relative_start)*1000))")
+eac3701e (Yujun Zhang      2017-01-21 22:30:05 +0800 419)         export DOCTOR_PROFILER_T04=$(python -c \
+eac3701e (Yujun Zhang      2017-01-21 22:30:05 +0800 420)           "print(int(($hostdown-$relative_start)*1000))")
+eac3701e (Yujun Zhang      2017-01-21 22:30:05 +0800 421)         export DOCTOR_PROFILER_T09=$(python -c \
+eac3701e (Yujun Zhang      2017-01-21 22:30:05 +0800 422)           "print(int(($notified-$relative_start)*1000))")
+eac3701e (Yujun Zhang      2017-01-21 22:30:05 +0800 423) 
+b9a24a91 (Ryota MIBU       2017-04-26 14:31:15 +0000 424)         python profiler-poc.py > doctor_profiler.log 2>&1
+eac3701e (Yujun Zhang      2017-01-21 22:30:05 +0800 425)     fi
+eac3701e (Yujun Zhang      2017-01-21 22:30:05 +0800 426) }
+eac3701e (Yujun Zhang      2017-01-21 22:30:05 +0800 427) 
+3c09b82d (Ryota MIBU       2016-02-12 21:05:48 +0900 428) cleanup() {
+3c09b82d (Ryota MIBU       2016-02-12 21:05:48 +0900 429)     set +e
+3c09b82d (Ryota MIBU       2016-02-12 21:05:48 +0900 430)     echo "cleanup..."
+3c09b82d (Ryota MIBU       2016-02-12 21:05:48 +0900 431)     stop_inspector
+3c09b82d (Ryota MIBU       2016-02-12 21:05:48 +0900 432)     stop_consumer
+3c09b82d (Ryota MIBU       2016-02-12 21:05:48 +0900 433) 
+c9d0d2c9 (Ryota MIBU       2017-01-27 06:34:06 +0000 434)     unset_forced_down_hosts
+282369b6 (Umar Farooq      2017-07-13 12:20:56 +0200 435)     stop_monitor
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 436)     collect_logs
+5a189baf (dongwenjuan      2016-07-12 10:21:51 +0800 437) 
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 438)     vms=$(openstack $as_doctor_user server list)
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 439)     vmstodel=""
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 440)     for i in `seq $VM_COUNT`; do
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 441)         $(echo "${vms}" | grep -q " $VM_BASENAME$i ") &&
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 442)         vmstodel+=" $VM_BASENAME$i"
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 443)     done
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 444)     [[ $vmstodel ]] && openstack $as_doctor_user server delete $vmstodel
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 445)     alarm_list=$($ceilometer alarm-list)
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 446)     for i in `seq $VM_COUNT`; do
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 447)         alarm_id=$(echo "${alarm_list}" | grep " $ALARM_BASENAME$i " |
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 448)                    awk '{print $2}')
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 449)         [ -n "$alarm_id" ] && $ceilometer alarm-delete "$alarm_id"
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 450)     done
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 451)     openstack $as_doctor_user subnet delete $NET_NAME
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 452)     sleep 1
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 453)     openstack $as_doctor_user network delete $NET_NAME
+362e96e0 (Ryota MIBU       2016-07-22 19:56:06 +0900 454)     sleep 1
+362e96e0 (Ryota MIBU       2016-07-22 19:56:06 +0900 455) 
+f2acc144 (Carlos Goncalves 2016-07-05 13:05:47 +0200 456)     image_id=$(openstack image list | grep " $IMAGE_NAME " | awk '{print $2}')
+3c09b82d (Ryota MIBU       2016-02-12 21:05:48 +0900 457)     sleep 1
+34e59395 (cristinapauna    2016-09-05 18:47:23 +0300 458)     #if an existing image was used, there's no need to remove it here
+34e59395 (cristinapauna    2016-09-05 18:47:23 +0300 459)     if [[ "$use_existing_image" == false ]] ; then
+34e59395 (cristinapauna    2016-09-05 18:47:23 +0300 460)         [ -n "$image_id" ] && openstack image delete "$image_id"
+34e59395 (cristinapauna    2016-09-05 18:47:23 +0300 461)     fi
+661fbc57 (Tomi Juvonen     2016-12-15 10:10:07 +0200 462) 
+661fbc57 (Tomi Juvonen     2016-12-15 10:10:07 +0200 463)     remove_test_user
+5ef69fe5 (dongwenjuan      2016-08-17 18:03:11 +0800 464) 
+83076cf4 (Carlos Goncalves 2016-11-16 09:55:01 +0000 465)     cleanup_installer
+18651c07 (Carlos Goncalves 2016-11-30 13:08:20 +0000 466)     cleanup_inspector
+282369b6 (Umar Farooq      2017-07-13 12:20:56 +0200 467)     cleanup_monitor
+f093b7f1 (Ryota MIBU       2017-02-28 15:33:20 +0000 468) 
+f093b7f1 (Ryota MIBU       2017-02-28 15:33:20 +0000 469)     # NOTE: Temporal log printer.
+f093b7f1 (Ryota MIBU       2017-02-28 15:33:20 +0000 470)     for f in $(find . -name '*.log')
+f093b7f1 (Ryota MIBU       2017-02-28 15:33:20 +0000 471)     do
+f093b7f1 (Ryota MIBU       2017-02-28 15:33:20 +0000 472)         echo
+f093b7f1 (Ryota MIBU       2017-02-28 15:33:20 +0000 473)         echo "[$f]"
+f093b7f1 (Ryota MIBU       2017-02-28 15:33:20 +0000 474)         sed -e 's/^/ | /' $f
+f093b7f1 (Ryota MIBU       2017-02-28 15:33:20 +0000 475)         echo
+f093b7f1 (Ryota MIBU       2017-02-28 15:33:20 +0000 476)     done
+3c09b82d (Ryota MIBU       2016-02-12 21:05:48 +0900 477) }
+3c09b82d (Ryota MIBU       2016-02-12 21:05:48 +0900 478) 
+82dccaf2 (dongwenjuan      2017-08-07 14:28:37 +0800 479) setup_python_packages() {
+82dccaf2 (dongwenjuan      2017-08-07 14:28:37 +0800 480)     sudo pip install flask==0.10.1
+82dccaf2 (dongwenjuan      2017-08-07 14:28:37 +0800 481)     command -v openstack || sudo pip install python-openstackclient==2.3.0
+82dccaf2 (dongwenjuan      2017-08-07 14:28:37 +0800 482)     command -v ceilometer || sudo pip install python-ceilometerclient==2.6.2
+82dccaf2 (dongwenjuan      2017-08-07 14:28:37 +0800 483)     command -v congress || sudo pip install python-congressclient==1.5.0
+82dccaf2 (dongwenjuan      2017-08-07 14:28:37 +0800 484) }
+82dccaf2 (dongwenjuan      2017-08-07 14:28:37 +0800 485) 
+d599bb9f (Yujun Zhang      2016-12-22 11:02:07 +0800 486) # Main process
+3c09b82d (Ryota MIBU       2016-02-12 21:05:48 +0900 487) 
+cbb58ee4 (dongwenjuan      2017-07-21 15:20:54 +0800 488) if [[ $PYTHON_ENABLE == [Tt]rue ]]; then
+cbb58ee4 (dongwenjuan      2017-07-21 15:20:54 +0800 489)     which tox || sudo pip install tox
+cbb58ee4 (dongwenjuan      2017-07-21 15:20:54 +0800 490)     if [ -f /usr/bin/apt-get ]; then
+cbb58ee4 (dongwenjuan      2017-07-21 15:20:54 +0800 491)         sudo apt-get install -y python3-dev
+cbb58ee4 (dongwenjuan      2017-07-21 15:20:54 +0800 492)     elif [ -f /usr/bin/yum ] ; then
+cbb58ee4 (dongwenjuan      2017-07-21 15:20:54 +0800 493)         sudo yum install -y python3-devel
+cbb58ee4 (dongwenjuan      2017-07-21 15:20:54 +0800 494)     fi
+cbb58ee4 (dongwenjuan      2017-07-21 15:20:54 +0800 495) 
+20b36795 (Ryota MIBU       2017-04-26 11:31:03 +0000 496)     cd $TOP_DIR
+20b36795 (Ryota MIBU       2017-04-26 11:31:03 +0000 497)     echo "executing tox..."
+20b36795 (Ryota MIBU       2017-04-26 11:31:03 +0000 498)     tox
+20b36795 (Ryota MIBU       2017-04-26 11:31:03 +0000 499)     exit $?
+20b36795 (Ryota MIBU       2017-04-26 11:31:03 +0000 500) fi
+20b36795 (Ryota MIBU       2017-04-26 11:31:03 +0000 501) 
+ac816319 (Ryota MIBU       2016-02-08 22:38:27 +0900 502) echo "Note: doctor/tests/run.sh has been executed."
+ee4ef36a (Ryota MIBU       2017-01-30 05:44:28 +0000 503) git log --oneline -1 || true   # ignore even you don't have git installed
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 504) 
+eed432fa (Ryota MIBU       2016-02-19 22:11:47 +0900 505) trap cleanup EXIT
+3c09b82d (Ryota MIBU       2016-02-12 21:05:48 +0900 506) 
+82dccaf2 (dongwenjuan      2017-08-07 14:28:37 +0800 507) setup_python_packages
+82dccaf2 (dongwenjuan      2017-08-07 14:28:37 +0800 508) 
+dffe8ff7 (Carlos Goncalves 2016-11-16 08:57:09 +0000 509) source $TOP_DIR/functions-common
+83076cf4 (Carlos Goncalves 2016-11-16 09:55:01 +0000 510) source $TOP_DIR/lib/installer
+18651c07 (Carlos Goncalves 2016-11-30 13:08:20 +0000 511) source $TOP_DIR/lib/inspector
+282369b6 (Umar Farooq      2017-07-13 12:20:56 +0200 512) source $TOP_DIR/lib/monitor
+282369b6 (Umar Farooq      2017-07-13 12:20:56 +0200 513) 
+282369b6 (Umar Farooq      2017-07-13 12:20:56 +0200 514) rm -f *.log
+dffe8ff7 (Carlos Goncalves 2016-11-16 08:57:09 +0000 515) 
+83076cf4 (Carlos Goncalves 2016-11-16 09:55:01 +0000 516) setup_installer
+f12254fd (dongwenjuan      2016-08-18 16:20:44 +0800 517) 
+3c09b82d (Ryota MIBU       2016-02-12 21:05:48 +0900 518) echo "preparing VM image..."
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 519) download_image
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 520) register_image
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 521) 
+24359cbe (Tomi Juvonen     2016-05-16 13:38:23 +0300 522) echo "creating test user..."
+24359cbe (Tomi Juvonen     2016-05-16 13:38:23 +0300 523) create_test_user
+24359cbe (Tomi Juvonen     2016-05-16 13:38:23 +0300 524) 
+5aa25460 (dongwenjuan      2016-07-12 18:10:56 +0800 525) echo "creating VM..."
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 526) boot_vm
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 527) wait_for_vm_launch
+99356c5f (dongwenjuan      2016-07-06 14:58:20 +0800 528) 
+5aa25460 (dongwenjuan      2016-07-12 18:10:56 +0800 529) echo "creating alarm..."
+5d2b686e (Carlos Goncalves 2016-09-06 15:40:37 +0200 530) #TODO: change back to use, network problems depends on infra and installers
+4cb2a317 (dongwenjuan      2016-08-18 10:48:22 +0800 531) #get_consumer_ip
+5aa25460 (dongwenjuan      2016-07-12 18:10:56 +0800 532) create_alarm
+5aa25460 (dongwenjuan      2016-07-12 18:10:56 +0800 533) 
+99356c5f (dongwenjuan      2016-07-06 14:58:20 +0800 534) echo "starting doctor sample components..."
+99356c5f (dongwenjuan      2016-07-06 14:58:20 +0800 535) start_inspector
+1f2f6c3c (Carlos Goncalves 2016-08-11 13:04:14 +0000 536) start_monitor
+99356c5f (dongwenjuan      2016-07-06 14:58:20 +0800 537) start_consumer
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 538) 
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 539) sleep 60
+3c09b82d (Ryota MIBU       2016-02-12 21:05:48 +0900 540) echo "injecting host failure..."
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 541) inject_failure
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 542) 
+73e637e1 (Tomi Juvonen     2017-01-04 09:34:37 +0200 543) check_host_status "(DOWN|UNKNOWN)" 60
+8f72e695 (Ryota MIBU       2017-03-03 06:58:42 +0000 544) unset_forced_down_hosts
+282369b6 (Umar Farooq      2017-07-13 12:20:56 +0200 545) calculate_notification_time
+eac3701e (Yujun Zhang      2017-01-21 22:30:05 +0800 546) collect_logs
+eac3701e (Yujun Zhang      2017-01-21 22:30:05 +0800 547) run_profiler
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 548) 
+116bee29 (Ryota MIBU       2016-01-04 16:12:39 +0900 549) echo "done"
