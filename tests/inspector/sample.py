@@ -32,7 +32,6 @@ class SampleInspector(BaseInspector):
         self.nova = self.novaclients[0]
 
         self.servers = collections.defaultdict(list)
-        self.hostnames = list()
         self.app = None
 
     def _init_novaclients(self):
@@ -68,8 +67,6 @@ class SampleInspector(BaseInspector):
         self.log.info('sample inspector stop......')
         if not self.app:
             return
-        for hostname in self.hostnames:
-            self.nova.services.force_down(hostname, 'nova-compute', False)
 
         headers = {
             'Content-Type': 'application/json',
@@ -85,7 +82,6 @@ class SampleInspector(BaseInspector):
             hostname = event['details']['hostname']
             event_type = event['type']
             if event_type == self.event_type:
-                self.hostnames.append(hostname)
                 self.disable_compute_host(hostname)
 
     def disable_compute_host(self, hostname):

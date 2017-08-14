@@ -67,6 +67,17 @@ class ApexInstaller(BaseInstaller):
                             'ret=%s, output=%s' % (ret, controllers))
         self.controllers = controllers
 
+    def get_host_ip_from_hostname(self, hostname):
+        self.log.info('Get host ip from host name in Apex installer......')
+
+        command = "source stackrc; nova show %s  | \
+                  awk '/ ctlplane network /{print \$5}'" % (hostname)
+        ret, host_ip = self.client.ssh(command)
+        if ret:
+            raise Exception('Exec command to get host ip from hostname(%s) in Apex installer failed'
+                            'ret=%s, output=%s' % (hostname, ret, host_ip))
+        return host_ip
+
     def set_apply_patches(self):
         self.log.info('Set apply patches start......')
 

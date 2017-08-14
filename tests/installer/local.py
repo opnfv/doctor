@@ -36,6 +36,10 @@ class LocalInstaller(BaseInstaller):
         self.log.info('Assuming SSH keys already exchanged with computer for local installer type')
         return
 
+    def get_host_ip_from_hostname(self, hostname):
+        cmd = "getent hosts %s | awk '{ print $1 }'" % (hostname)
+        return os.system(cmd)
+
     def set_apply_patches(self):
         self._set_nova_policy()
 

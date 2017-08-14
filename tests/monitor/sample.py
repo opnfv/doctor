@@ -21,8 +21,8 @@ from monitor.base import BaseMonitor
 class SampleMonitor(BaseMonitor):
     event_type = "compute.host.down"
 
-    def __init__(self, conf, inspector_url, log):
-        super(SampleMonitor, self).__init__(conf, inspector_url, log)
+    def __init__(self, conf, installer, inspector_url, log):
+        super(SampleMonitor, self).__init__(conf, installer, inspector_url, log)
         self.session = get_session()
         self.nova = nova_client(conf.nova_version, self.session)
         self.hosts = self.nova.hypervisors.list(detailed=True)
@@ -33,7 +33,7 @@ class SampleMonitor(BaseMonitor):
         for host in self.hosts:
             host_dict = host.__dict__
             host_name = host_dict['hypervisor_hostname']
-            host_ip = host_dict['host_ip']
+            host_ip = self.installer.get_host_ip_from_hostname(host_name)
             pinger = Pinger(host_name, host_ip, self, self.log)
             pinger.start()
             self.pingers.append(pinger)

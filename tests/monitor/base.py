@@ -13,9 +13,10 @@ import six
 @six.add_metaclass(abc.ABCMeta)
 class BaseMonitor(object):
     """Monitor computer fault and report error to the inspector"""
-    def __init__(self, conf, inspector_url, log):
+    def __init__(self, conf, installer, inspector_url, log):
         self.conf = conf
         self.log = log
+        self.installer = installer
         self.inspector_url = inspector_url
 
     @abc.abstractmethod
