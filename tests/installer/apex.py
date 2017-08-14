@@ -11,12 +11,13 @@ import grp
 import os
 import pwd
 import stat
+import subprocess
 import sys
 
+from common.utils import SSHClient
 from installer.common.congress import set_doctor_driver_conf
 from installer.common.congress import restore_doctor_driver_conf
 from installer.base import BaseInstaller
-from utils import SSHClient
 
 
 class ApexInstaller(BaseInstaller):
@@ -32,19 +33,27 @@ class ApexInstaller(BaseInstaller):
         self.key_file = None
         self.controllers = list()
         self.controller_clients = list()
+        self.servers = list()
 
     def setup(self):
         self.log.info('Setup Apex installer start......')
 
-        self.key_file = self.get_ssh_key_from_installer()
+        self.get_ssh_key_from_installer()
         self.get_controller_ips()
         self.set_apply_patches()
+        self.setup_stunnel()
 
     def cleanup(self):
         self.restore_apply_patches()
+        for server in self.servers:
+            server.terminate()
 
     def get_ssh_key_from_installer(self):
         self.log.info('Get SSH keys from Apex installer......')
+
+        if self.key_file is not None:
+            self.log.info('Already have SSH keys from Apex installer......')
+            return self.key_file
 
         self.client.scp('/home/stack/.ssh/id_rsa', './instack_key', method='get')
         user = getpass.getuser()
@@ -53,7 +62,8 @@ class ApexInstaller(BaseInstaller):
         os.chown('./instack_key', uid, gid)
         os.chmod('./instack_key', stat.S_IREAD)
         current_dir = sys.path[0]
-        return '{0}/{1}'.format(current_dir, 'instack_key')
+        self.key_file = '{0}/{1}'.format(current_dir, 'instack_key')
+        return self.key_file
 
     def get_controller_ips(self):
         self.log.info('Get controller ips from Apex installer......')
@@ -65,7 +75,31 @@ class ApexInstaller(BaseInstaller):
         if ret:
             raise Exception('Exec command to get controller ips in Apex installer failed'
                             'ret=%s, output=%s' % (ret, controllers))
+        self.log.info('Get controller_ips:%s from Apex installer' % controllers)
         self.controllers = controllers
+
+    def get_host_ip_from_hostname(self, hostname):
+        self.log.info('Get host ip from host name in Apex installer......')
+
+        hostname_in_undercloud = hostname.split('.')[0]
+
+        command = "source stackrc; nova show %s  | awk '/ ctlplane network /{print $5}'" % (hostname_in_undercloud)
+        ret, host_ip = self.client.ssh(command)
+        if ret:
+            raise Exception('Exec command to get host ip from hostname(%s) in Apex installer failed'
+                            'ret=%s, output=%s' % (hostname, ret, host_ip))
+        self.log.info('Get host_ip:%s from host_name:%s in Apex installer' % (host_ip, hostname))
+        return host_ip[0]
+
+    def setup_stunnel(self):
+        self.log.info('Setup ssh stunnel in controller nodes in Apex installer......')
+        for node_ip in self.controllers:
+            cmd = "sudo ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i %s %s@%s -R %s:localhost:%s sleep 600 > ssh_tunnel.%s.log 2>&1 < /dev/null &" \
+                  % (self.key_file, self.node_user_name, node_ip,
+                     self.conf.consumer.port, self.conf.consumer.port, node_ip)
+            server = subprocess.Popen(cmd, shell=True)
+            self.servers.append(server)
+            server.communicate()
 
     def set_apply_patches(self):
         self.log.info('Set apply patches start......')

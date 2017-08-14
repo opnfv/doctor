@@ -24,6 +24,10 @@ class BaseInstaller(object):
         pass
 
     @abc.abstractmethod
+    def get_host_ip_from_hostname(self, hostname):
+        pass
+
+    @abc.abstractmethod
     def setup(self):
         pass
 

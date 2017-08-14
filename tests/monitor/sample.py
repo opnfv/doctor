@@ -14,7 +14,6 @@ from threading import Thread
 import time
 
 from identity_auth import get_session
-from os_clients import nova_client
 from monitor.base import BaseMonitor
 
 
@@ -24,26 +23,18 @@ class SampleMonitor(BaseMonitor):
     def __init__(self, conf, inspector_url, log):
         super(SampleMonitor, self).__init__(conf, inspector_url, log)
         self.session = get_session()
-        self.nova = nova_client(conf.nova_version, self.session)
-        self.hosts = self.nova.hypervisors.list(detailed=True)
-        self.pingers = []
+        self.pinger = None
 
-    def start(self):
+    def start(self, host):
         self.log.info('sample monitor start......')
-        for host in self.hosts:
-            host_dict = host.__dict__
-            host_name = host_dict['hypervisor_hostname']
-            host_ip = host_dict['host_ip']
-            pinger = Pinger(host_name, host_ip, self, self.log)
-            pinger.start()
-            self.pingers.append(pinger)
+        self.pinger = Pinger(host.name, host.ip, self, self.log)
+        self.pinger.start()
 
     def stop(self):
         self.log.info('sample monitor stop......')
-        for pinger in self.pingers:
-            pinger.stop()
-            pinger.join()
-        del self.pingers
+        if self.pinger is not None:
+            self.pinger.stop()
+            self.pinger.join()
 
     def report_error(self, hostname):
         self.log.info('sample monitor report error......')
