@@ -12,8 +12,6 @@ import socket
 import getpass
 import sys
 
-from identity_auth import get_session
-from os_clients import nova_client
 from monitor.base import BaseMonitor
 
 
@@ -21,13 +19,6 @@ class CollectdMonitor(BaseMonitor):
     def __init__(self, conf, inspector_url, log):
         super(CollectdMonitor, self).__init__(conf, inspector_url, log)
         self.top_dir = os.path.dirname(sys.path[0])
-        self.session = get_session()
-        self.nova = nova_client(conf.nova_version, self.session)
-        self.compute_hosts = self.nova.hypervisors.list(detailed=True)
-        for host in self.compute_hosts:
-            host_dict = host.__dict__
-            self.compute_host = host_dict['hypervisor_hostname']
-            self.compute_ip = host_dict['host_ip']
         tmp_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         tmp_sock.connect(("8.8.8.8", 80))
 
@@ -50,8 +41,10 @@ class CollectdMonitor(BaseMonitor):
         self.project_domain_id = os.environ.get('OS_PROJECT_DOMAIN_ID')
         self.ssh_opts_cpu = '-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 
-    def start(self):
+    def start(self, host):
         self.log.info("Collectd monitor start.........")
+        self.compute_host = host.name
+        self.compute_ip = host.ip
         f = open("%s/tests/collectd.conf" % self.top_dir, 'w')
         collectd_conf_file = """ 
 Hostname %s

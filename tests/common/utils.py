@@ -51,7 +51,7 @@ class SSHClient(object):
 
     def ssh(self, command):
         if self.log:
-            self.log.debug("Executing: %s" % command)
+            self.log.info("Executing: %s" % command)
         stdin, stdout, stderr = self.client.exec_command(command)
         ret = stdout.channel.recv_exit_status()
         output = list()
@@ -59,12 +59,12 @@ class SSHClient(object):
             output.append(line.decode('utf-8'))
         if ret:
             if self.log:
-                self.log.debug("*** FAILED to run command %s (%s)" % (command, ret))
+                self.log.info("*** FAILED to run command %s (%s)" % (command, ret))
             raise Exception(
                 "Unable to run \ncommand: %s\nret: %s"
                 % (command, ret))
         if self.log:
-            self.log.debug("*** SUCCESSFULLY run command %s" % command)
+            self.log.info("*** SUCCESSFULLY run command %s" % command)
         return ret, output
 
     def scp(self, source, dest, method='put'):
@@ -76,6 +76,7 @@ class SSHClient(object):
         elif method == 'get':
             ftp.get(source, dest)
         ftp.close()
+
 
 def run_async(func):
     from threading import Thread
