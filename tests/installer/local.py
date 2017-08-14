@@ -10,8 +10,8 @@ import os
 import shutil
 
 from installer.base import BaseInstaller
-from utils import load_json_file
-from utils import write_json_file
+from common.utils import load_json_file
+from common.utils import write_json_file
 
 
 class LocalInstaller(BaseInstaller):
@@ -34,7 +34,11 @@ class LocalInstaller(BaseInstaller):
 
     def get_ssh_key_from_installer(self):
         self.log.info('Assuming SSH keys already exchanged with computer for local installer type')
-        return
+        return None
+
+    def get_host_ip_from_hostname(self, hostname):
+        cmd = "getent hosts %s | awk '{ print $1 }'" % (hostname)
+        return os.system(cmd)
 
     def set_apply_patches(self):
         self._set_nova_policy()
