@@ -17,7 +17,9 @@ import requests
 from identity_auth import get_identity_auth
 from identity_auth import get_session
 from os_clients import nova_client
+from os_clients import neutron_client
 from inspector.base import BaseInspector
+import utils
 
 
 class SampleInspector(BaseInspector):
@@ -30,6 +32,10 @@ class SampleInspector(BaseInspector):
         self._init_novaclients()
         # Normally we use this client for non redundant API calls
         self.nova = self.novaclients[0]
+
+        auth = get_identity_auth(project=self.conf.doctor_project)
+        session = get_session(auth=auth)
+        self.neutron = neutron_client(session)
 
         self.servers = collections.defaultdict(list)
         self.hostnames = list()
@@ -86,37 +92,49 @@ class SampleInspector(BaseInspector):
             event_type = event['type']
             if event_type == self.event_type:
                 self.hostnames.append(hostname)
-                self.disable_compute_host(hostname)
+                thr1 = self._disable_compute_host(hostname)
+                thr2 = self._vms_reset_state('error', hostname)
+                thr3 = self._set_ports_data_plane_status('DOWN', hostname)
+                thr1.join()
+                thr2.join()
+                thr3.join()
 
-    def disable_compute_host(self, hostname):
-        threads = []
-        if len(self.servers[hostname]) > self.NUMBER_OF_CLIENTS:
-            # TODO(tojuvone): This could be enhanced in future with dynamic
-            # reuse of self.novaclients when all threads in use
-            self.log.error('%d servers in %s. Can handle only %d'%(
-                           self.servers[hostname], hostname, self.NUMBER_OF_CLIENTS))
-        for nova, server in zip(self.novaclients, self.servers[hostname]):
-            t = ThreadedResetState(nova, "error", server, self.log)
-            t.start()
-            threads.append(t)
-        for t in threads:
-            t.join()
+    @utils.run_async
+    def _disable_compute_host(hostname):
         self.nova.services.force_down(hostname, 'nova-compute', True)
         self.log.info('doctor mark host(%s) down at %s' % (hostname, time.time()))
 
+    @utils.run_async
+    def _vms_reset_state(state, hostname):
 
-class ThreadedResetState(Thread):
+        @utils.run_async
+        def _vm_reset_state(nova, server, state):
+            nova.servers.reset_state(server, state)
+            self.log.info('doctor mark vm(%s) error at %s' % (server, time.time()))
 
-    def __init__(self, nova, state, server, log):
-        Thread.__init__(self)
-        self.nova = nova
-        self.state = state
-        self.server = server
-        self.log = log
+        thrs = []
+        for nova, server in zip(self.novaclients, self.servers[hostname]):
+            t = _vm_reset_state(nova, server, state)
+            thrs.append(t)
+        for t in thrs:
+            t.join()
 
-    def run(self):
-        self.nova.servers.reset_state(self.server, self.state)
-        self.log.info('doctor mark vm(%s) error at %s' % (self.server, time.time()))
+    @utils.run_async
+    def _set_ports_data_plane_status(status, hostname):
+        body = {'data_plane_status': status}
+
+        @utils.run_async
+        def _set_port_data_plane_status(port_id):
+            self.neutron.update_port(port_id, body)
+            self.log.info('doctor set data plane status %s on port %s' % (status, port_id))
+
+        thrs = []
+        params = {'binding:host_id': hostname}
+        for port_id in self.neutron.list_ports(**params):
+            t = _set_port_data_plane_status(port_id, status)
+            thrs.append(t)
+        for t in thrs:
+            t.join()
 
 
 class InspectorApp(Thread):
