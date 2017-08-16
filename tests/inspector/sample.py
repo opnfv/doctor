@@ -135,7 +135,7 @@ class InspectorApp(Thread):
             self.log.info('event posted in sample inspector at %s' % time.time())
             self.log.info('sample inspector = %s' % self.inspector)
             self.log.info('sample inspector received data = %s' % request.data)
-            events = json.loads(request.data)
+            events = json.loads(request.data.decode('utf8'))
             self.inspector.handle_events(events)
             return "OK"
 
