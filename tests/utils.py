@@ -56,7 +56,7 @@ class SSHClient(object):
         ret = stdout.channel.recv_exit_status()
         output = list()
         for line in stdout.read().splitlines():
-            output.append(line)
+            output.append(line.decode('utf-8'))
         if ret:
             if self.log:
                 self.log.debug("*** FAILED to run command %s (%s)" % (command, ret))
