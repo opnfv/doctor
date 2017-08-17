@@ -78,7 +78,7 @@ class SampleMonitor(BaseMonitor):
 class Pinger(Thread):
     interval = 0.1  # second
     timeout = 0.1   # second
-    ICMP_ECHO_MESSAGE = '\x08\x00\xf7\xff\x00\x00\x00\x00'
+    ICMP_ECHO_MESSAGE = bytes([0x08, 0x00, 0xf7, 0xff, 0x00, 0x00, 0x00, 0x00])
 
     def __init__(self, host_name, host_ip, monitor, log):
         Thread.__init__(self)
@@ -109,7 +109,7 @@ class Pinger(Thread):
         sock.settimeout(self.timeout)
         while True:
             try:
-                sock.sendto(self.ICMP_ECHO_MESSAGE.encode(), (self.ip_addr, 0))
+                sock.sendto(self.ICMP_ECHO_MESSAGE, (self.ip_addr, 0))
                 sock.recv(4096)
             except socket.timeout:
                 self.log.info("doctor monitor detected at %s" % time.time())
