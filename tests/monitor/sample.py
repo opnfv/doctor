@@ -78,7 +78,7 @@ class SampleMonitor(BaseMonitor):
 class Pinger(Thread):
     interval = 0.1  # second
     timeout = 0.1   # second
-    ICMP_ECHO_MESSAGE = '\x08\x00\xf7\xff\x00\x00\x00\x00'
+    ICMP_ECHO_MESSAGE = bytes([0x08, 0x00, 0xf7, 0xff, 0x00, 0x00, 0x00, 0x00])
 
     def __init__(self, host_name, host_ip, monitor, log):
         Thread.__init__(self)
@@ -89,18 +89,6 @@ class Pinger(Thread):
         self._stopped = False
 
     def run(self):
-        while True:
-            if self._stopped:
-                return
-            self._run()
-            time.sleep(self.interval)
-
-    def stop(self):
-        self.log.info("Stopping Pinger host_name(%s), host_ip(%s)"
-                      % (self.hostname, self.ip_addr))
-        self._stopped = True
-
-    def _run(self):
         self.log.info("Starting Pinger host_name(%s), host_ip(%s)"
                       % (self.hostname, self.ip_addr))
 
@@ -108,8 +96,10 @@ class Pinger(Thread):
                              socket.IPPROTO_ICMP)
         sock.settimeout(self.timeout)
         while True:
+            if self._stopped:
+                return
             try:
-                sock.sendto(self.ICMP_ECHO_MESSAGE.encode(), (self.ip_addr, 0))
+                sock.sendto(self.ICMP_ECHO_MESSAGE, (self.ip_addr, 0))
                 sock.recv(4096)
             except socket.timeout:
                 self.log.info("doctor monitor detected at %s" % time.time())
@@ -117,3 +107,9 @@ class Pinger(Thread):
                 self.log.info("ping timeout, quit monitoring...")
                 self._stopped = True
                 return
+            time.sleep(self.interval)
+
+    def stop(self):
+        self.log.info("Stopping Pinger host_name(%s), host_ip(%s)"
+                      % (self.hostname, self.ip_addr))
+        self._stopped = True
