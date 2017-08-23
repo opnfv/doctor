@@ -21,7 +21,8 @@ class Logger(object):
 
         CI_DEBUG = os.getenv('CI_DEBUG')
 
-        logging.basicConfig(filemode='w')
+        filename = '%s.log' % logger_name
+        logging.basicConfig(filemode='w', filename=filename)
         self.logger = logging.getLogger(logger_name)
         self.logger.propagate = 0
         self.logger.setLevel(logging.DEBUG)
@@ -37,7 +38,7 @@ class Logger(object):
             ch.setLevel(logging.INFO)
         self.logger.addHandler(ch)
 
-        file_handler = logging.FileHandler('%s.log' % logger_name)
+        file_handler = logging.FileHandler(filename)
         file_handler.setFormatter(formatter)
         file_handler.setLevel(logging.DEBUG)
         self.logger.addHandler(file_handler)
