@@ -19,6 +19,7 @@ import network
 import inspector
 import monitor
 import os_clients
+import profiler_poc
 import user
 
 
@@ -34,7 +35,8 @@ def list_opts():
             user.OPTS,
             network.OPTS,
             instance.OPTS,
-            alarm.OPTS))
+            alarm.OPTS,
+            profiler_poc.OPTS))
     ]
 
 
