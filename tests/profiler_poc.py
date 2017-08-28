@@ -21,6 +21,16 @@ See also: https://goo.gl/98Osig
 import json
 import os
 
+from oslo_config import cfg
+
+
+OPTS = [
+    cfg.StrOpt('profiler_type',
+               default=os.environ.get('PROFILER_TYPE', 'poc'),
+               help='the type of installer'),
+]
+
+
 OUTPUT = 'doctor_profiling_output'
 PREFIX = 'DOCTOR_PROFILER'
 TOTAL_CHECK_POINTS = 10
@@ -46,7 +56,7 @@ link down:{T00}|      |      |      |          |        |      |      |      |
 """
 
 
-def main():
+def main(log=None):
     check_points = ["T{:02d}".format(i) for i in range(TOTAL_CHECK_POINTS)]
     module_map = {"M{:02d}".format(i):
                   (MODULE_CHECK_POINTS[i], MODULE_CHECK_POINTS[i + 1])
@@ -59,7 +69,7 @@ def main():
     def format_tag(tag):
         return TAG_FORMAT.format(tag or '?')
 
-    tags = {cp: format_tag(ms) for cp, ms in elapsed_ms.iteritems()}
+    tags = {cp: format_tag(ms) for cp, ms in elapsed_ms.items()}
 
     def time_cost(cp):
         if elapsed_ms[cp[0]] and elapsed_ms[cp[1]]:
@@ -69,10 +79,10 @@ def main():
 
     # module time cost tags
     modules_cost_ms = {module: time_cost(cp)
-                       for module, cp in module_map.iteritems()}
+                       for module, cp in module_map.items()}
 
     tags.update({module: format_tag(cost)
-                 for module, cost in modules_cost_ms.iteritems()})
+                 for module, cost in modules_cost_ms.items()})
 
     tags.update({'total': time_cost((check_points[0], check_points[-1]))})
 
@@ -81,7 +91,10 @@ def main():
     logfile = open('{}.json'.format(OUTPUT), 'w')
     logfile.write(json.dumps(tags))
 
-    print profile
+    print(profile)
+    if log:
+        log.info('%s' % profile)
+
 
 if __name__ == '__main__':
     main()
