@@ -14,6 +14,7 @@ import time
 
 from alarm import Alarm
 from common.constants import Host
+from common.utils import match_rep_in_file
 import config
 from consumer import get_consumer
 from identity_auth import get_identity_auth
@@ -26,6 +27,7 @@ import logger as doctor_log
 from network import Network
 from monitor import get_monitor
 from os_clients import nova_client
+from profiler_poc import main as profiler_main
 from scenario.common import calculate_notification_time
 from scenario.network_failure import NetworkFault
 from user import User
@@ -110,6 +112,10 @@ class DoctorTest(object):
             else:
                 LOG.error('doctor test failed, notification_time=%s' % notification_time)
                 sys.exit(1)
+
+            if self.conf.profiler_type:
+                self.collect_logs()
+                self.run_profiler()
         except Exception as e:
             LOG.error('doctor test failed, Exception=%s' % e)
             sys.exit(1)
@@ -144,6 +150,39 @@ class DoctorTest(object):
             self.nova.services.force_down(self.down_host.name, 'nova-compute', False)
             time.sleep(2)
             self.check_host_status(self.down_host.name, 'up')
+
+    def collect_logs(self):
+        self.fault.get_disable_network_log()
+
+    def run_profiler(self):
+
+        log_file = '{0}/{1}'.format(sys.path[0], 'disable_network.log')
+        reg = '(?<=doctor set link down at )\d+.\d+'
+        linkdown = match_rep_in_file(reg, log_file)
+
+        log_file = '{0}/{1}'.format(sys.path[0], 'doctor.log')
+        reg = '(?<=doctor mark vm.* error at )\d+.\d+'
+        vmdown = match_rep_in_file(reg, log_file)
+
+        reg = '(?<=doctor mark host.* down at )\d+.\d+'
+        hostdown = match_rep_in_file(reg, log_file)
+
+        reg = '(?<=doctor monitor detected at )\d+.\d+'
+        detected = match_rep_in_file(reg, log_file)
+
+        reg = '(?<=doctor consumer notified at )\d+.\d+'
+        notified = match_rep_in_file(reg, log_file)
+
+        # TODO(yujunz) check the actual delay to verify time sync status
+        # expected ~1s delay from $trigger to $linkdown
+        relative_start = linkdown
+        os.environ['DOCTOR_PROFILER_T00'] = int((linkdown-relative_start)*1000)
+        os.environ['DOCTOR_PROFILER_T01'] = int((detected - relative_start) * 1000)
+        os.environ['DOCTOR_PROFILER_T03'] = int((vmdown - relative_start) * 1000)
+        os.environ['DOCTOR_PROFILER_T04'] = int((hostdown - relative_start) * 1000)
+        os.environ['DOCTOR_PROFILER_T09'] = int((notified - relative_start) * 1000)
+
+        profiler_main()
 
     def cleanup(self):
         self.unset_forced_down_hosts()

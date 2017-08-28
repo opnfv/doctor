@@ -21,6 +21,17 @@ See also: https://goo.gl/98Osig
 import json
 import os
 
+from oslo_config import cfg
+
+
+OPTS = [
+    cfg.StrOpt('profiler_type',
+               default=os.environ.get('PROFILER_TYPE', None),
+               help='the type of installer',
+               required=True),
+]
+
+
 OUTPUT = 'doctor_profiling_output'
 PREFIX = 'DOCTOR_PROFILER'
 TOTAL_CHECK_POINTS = 10

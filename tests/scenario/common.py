@@ -6,22 +6,8 @@
 # which accompanies this distribution, and is available at
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
-import os
-import re
 import sys
-
-
-def match_rep_in_file(regex, full_path):
-    if not os.path.isfile(full_path):
-        raise Exception('File(%s) does not exist' % full_path)
-
-    with open(full_path, 'r') as file:
-        for line in file:
-            result = re.search(regex, line)
-            if result:
-                return result.group(0)
-
-    return None
+from common.utils import match_rep_in_file
 
 
 def calculate_notification_time():

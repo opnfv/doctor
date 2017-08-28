@@ -421,7 +421,7 @@ run_profiler() {
         export DOCTOR_PROFILER_T09=$(python -c \
           "print(int(($notified-$relative_start)*1000))")
 
-        python profiler-poc.py > doctor_profiler.log 2>&1
+        python profiler_poc.py > doctor_profiler.log 2>&1
     fi
 }
 
