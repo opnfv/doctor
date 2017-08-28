@@ -9,6 +9,7 @@
 import json
 import os
 import paramiko
+import re
 
 
 def load_json_file(full_path):
@@ -31,6 +32,19 @@ def write_json_file(full_path, data):
 
     with open(full_path, 'w+') as file:
         file.write(json.dumps(data))
+
+
+def match_rep_in_file(regex, full_path):
+    if not os.path.isfile(full_path):
+        raise Exception('File(%s) does not exist' % full_path)
+
+    with open(full_path, 'r') as file:
+        for line in file:
+            result = re.search(regex, line)
+            if result:
+                return result
+
+    return None
 
 
 class SSHClient(object):

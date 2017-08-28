@@ -40,10 +40,10 @@ class NetworkFault(object):
 
     def cleanup(self):
         self.log.info('fault inject cleanup......')
-        self.get_diable_network_log()
+        self.get_disable_network_log()
 
-    def get_diable_network_log(self):
-        if not self.GetLog:
+    def get_disable_network_log(self):
+        if self.GetLog:
             self.log.info('Already get the disable_netork.log from down_host......')
             return
         if self.host is not None:
