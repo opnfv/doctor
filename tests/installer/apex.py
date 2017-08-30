@@ -13,8 +13,6 @@ import pwd
 import stat
 import sys
 
-from installer.common.congress import set_doctor_driver_conf
-from installer.common.congress import restore_doctor_driver_conf
 from installer.base import BaseInstaller
 from utils import SSHClient
 
@@ -74,16 +72,12 @@ class ApexInstaller(BaseInstaller):
             client = SSHClient(node_ip, self.node_user_name, key_filename=self.key_file)
             self.controller_clients.append(client)
             self._ceilometer_apply_patches(client, self.cm_set_script)
-            cmd = 'sudo systemctl restart openstack-congress-server.service'
-            set_doctor_driver_conf(client, cmd)
 
     def restore_apply_patches(self):
         self.log.info('restore apply patches start......')
 
         for client in self.controller_clients:
             self._ceilometer_apply_patches(client, self.cm_restore_script)
-            cmd = 'sudo systemctl restart openstack-congress-server.service'
-            restore_doctor_driver_conf(client, cmd)
 
     def _ceilometer_apply_patches(self, ssh_client, script_name):
         installer_dir = os.path.dirname(os.path.realpath(__file__))
