@@ -31,7 +31,24 @@ Guidelines
 Host specific VMs list
 ----------------------
 
-TBD, see `DOCTOR-76`_.
+While requirement in doctor project is to have alarm about fault to consumer in one second, it is just a limit we have
+set in requirements. When talking about fault management in Telco, the implementation needs to be by all means optimal
+and the one second is far from traditional Telco requirements.
+
+One thing to be optimized in inspector is to eliminate the need to read list of host specific VMs from Nova API, when
+it gets a host specific failure event. Optimal way of implementation would be to initialize this list when Inspector
+start by reading from Nova API and after this list would be kept up-to-date by ``instance.update`` notifications
+received from nova. Polling Nova API can be used as a complementary channel to make snapshot of hosts and VMs list in
+order to keep the data consistent with reality.
+
+This is enhancement and not perhaps something needed to keep under one second in a small system. Anyhow this would be
+something needed in case of production use.
+
+This guideline can be summarized as following:
+
+- cache the host VMs mapping instead of reading it on request
+- subscribe and handle update notifications to keep the list up to date
+- make snapshot periodically to ensure data consistency
 
 Parallel execution
 ------------------
