@@ -2,6 +2,9 @@
 *.pyc
 .*.sw?
 **.log
+*.pyc
+/*.egg-info/
+/build/
 /docs_build/
 /docs_output/
 /releng/
