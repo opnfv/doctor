@@ -42,6 +42,8 @@ ceilometer="ceilometer $as_doctor_user"
 as_admin_user="--os-username admin --os-project-name $DOCTOR_PROJECT
                --os-tenant-name $DOCTOR_PROJECT"
 
+upper_constraints="https://git.openstack.org/cgit/openstack/requirements/plain/upper-constraints.txt?h=stable/ocata"
+pip_install="pip install -c${upper_constraints}"
 
 # Functions
 
@@ -477,16 +479,16 @@ cleanup() {
 }
 
 setup_python_packages() {
-    sudo pip install flask==0.10.1
-    command -v openstack || sudo pip install python-openstackclient==2.3.0
-    command -v ceilometer || sudo pip install python-ceilometerclient==2.6.2
-    command -v congress || sudo pip install python-congressclient==1.5.0
+    pip freeze |grep -i flask\= > /dev/null || sudo ${pip_install} flask
+    command -v openstack || sudo ${pip_install} python-openstackclient
+    command -v ceilometer || sudo ${pip_install} python-ceilometerclient
+    command -v congress || sudo ${pip_install} python-congressclient
 }
 
 # Main process
 
 if [[ $PYTHON_ENABLE == [Tt]rue ]]; then
-    which tox || sudo pip install tox
+    which tox || sudo ${pip_install} tox
     if [ -f /usr/bin/apt-get ]; then
         sudo apt-get install -y python3-dev
     elif [ -f /usr/bin/yum ] ; then
