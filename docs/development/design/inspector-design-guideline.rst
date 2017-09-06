@@ -53,7 +53,46 @@ This guideline can be summarized as following:
 Parallel execution
 ------------------
 
-TBD, see `discussion in mailing list`_.
+In doctor's architecture, the inspector is responsible to set error state for the affected VMs in order to notify the
+consumers of such failure. This is done by calling the nova `reset-state`_ API. However, this action is a synchronous
+request with many underlying steps and cost typically hundreds of milliseconds. According to the
+`discussion in mailing list`_, this time cost will grow linearly if the requests are sent one by one. It will become
+a critical issue in large scale system.
+
+It is recommended to introduce **parallel execution** for actions like ``reset-state`` that takes a list of targets.
+
+Shortcut notification
+---------------------
+
+An alternative way to improve notification performance is to take a shortcut from inspector to notifier instead of
+triggering it from controller. The difference between the two workflow is shown below:
+
+.. figure:: images/conservative-notification.png
+   :alt: conservative notification
+
+   Conservative Notification
+
+.. figure:: images/shortcut-notification.png
+   :alt: shortcut notification
+
+   Shortcut Notification
+
+It worth noting that the shortcut notification has a side effect that cloud resource states could still be out-of-sync
+by the time consumer processes the alarm notification. This is out of scope of inspector design but need to be taken
+consideration in system level.
+
+Appendix
+========
+
+A study has been made to evaluate the effect of parallel execution and shortcut notification on OPNFV Beijing Summit
+2017.
+
+.. figure:: images/notification-time.png
+   :alt: notification time
+
+   Notification Time
+
+Download the `full presentation slides`_ here.
 
 .. _DOCTOR-73: https://jira.opnfv.org/browse/DOCTOR-73
 .. _OPNFV Doctor project: https://wiki.opnfv.org/doctor
@@ -61,3 +100,5 @@ TBD, see `discussion in mailing list`_.
 .. _patch set for caching the list: https://gerrit.opnfv.org/gerrit/#/c/20877/
 .. _DOCTOR-76: https://jira.opnfv.org/browse/DOCTOR-76
 .. _discussion in mailing list: https://lists.opnfv.org/pipermail/opnfv-tech-discuss/2016-October/013036.html
+.. _reset-state: https://developer.openstack.org/api-ref/compute/#reset-server-state-os-resetstate-action
+.. _full presentation slides: https://wiki.opnfv.org/download/attachments/5046291/doctor_qtip_faster_higher_stronger.pdf
