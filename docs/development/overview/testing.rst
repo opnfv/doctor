@@ -29,7 +29,10 @@ OpenStack services.
 
 .. _OpenStack CLI manual: https://docs.openstack.org/user-guide/common/cli-set-environment-variables-using-openstack-rc.html
 
-Then, you can run the script as follows:
+Run Bash Test Script
+~~~~~~~~~~~~~~~~~~~~
+
+You can run the bash script as follows:
 
 .. code-block:: bash
 
@@ -46,6 +49,24 @@ INSPECTOR_TYPE can be specified either 'sample'(default) or 'congress'.
 For testing with stable version, checkout stable branch of doctor repo before
 './run.sh'.
 
+The bash test script will be deprecated(only bug fixes) after E Release.
+
+Run Python Test Script
+~~~~~~~~~~~~~~~~~~~~~~
+
+You can run the python script as follows:
+
+.. code-block:: bash
+
+    git clone https://gerrit.opnfv.org/gerrit/doctor
+    cd doctor && tox
+
+You can see all the configurations with default values in sample configuration
+file `doctor.sample.conf`_. And you can also modify the file to meet your
+environment and then run the test.
+
+.. _doctor.sample.conf: https://git.opnfv.org/doctor/tree/etc/doctor.sample.conf
+
 Run Functest Suite
 ==================
 
@@ -60,9 +81,13 @@ Functest container. You can run the Doctor test with the following steps:
         -e INSTALLER_TYPE=${INSTALLER_TYPE} \
         -e INSTALLER_IP=${INSTALLER_IP} \
         -e INSPECTOR_TYPE=sample \
+        -e PYTHON_ENABLE=True \
         opnfv/functest:${DOCKER_TAG} /bin/bash
     docker exec <container_id> python /home/opnfv/repos/functest/functest/ci/prepare_env.py start
     docker exec <container_id> functest testcase run doctor
+
+Add an environment variable *PYTHON_ENABLE* to indicate that using Python or
+Bash to run the test when start the docker container.
 
 See `Functest Userguide`_ for more information.
 
