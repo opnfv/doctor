@@ -27,3 +27,4 @@ See also https://wiki.opnfv.org/requirements_projects .
    inspector-design-guideline.rst
    performance-profiler.rst
    maintenance-design-guideline.rst
+   inspector-design-guideline.rst
