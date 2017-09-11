@@ -1,0 +1,8 @@
+Verified+1: jenkins-ci <jenkins-opnfv-ci@opnfv.org>
+Code-Review+2: Ryota Mibu <r-mibu@cq.jp.nec.com>
+Code-Review+2: Carlos Goncalves <mail@cgoncalves.pt>
+Submitted-by: Carlos Goncalves <mail@cgoncalves.pt>
+Submitted-at: Mon, 11 Sep 2017 15:03:56 +0000
+Reviewed-on: https://gerrit.opnfv.org/gerrit/41159
+Project: doctor
+Branch: refs/heads/master
