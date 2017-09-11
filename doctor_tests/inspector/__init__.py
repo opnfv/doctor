@@ -30,8 +30,8 @@ OPTS = [
 
 
 _inspector_name_class_mapping = {
-    'sample': 'inspector.sample.SampleInspector',
-    'congress': 'inspector.congress.CongressInspector',
+    'sample': 'doctor_tests.inspector.sample.SampleInspector',
+    'congress': 'doctor_tests.inspector.congress.CongressInspector',
 }
 
 

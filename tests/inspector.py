@@ -19,7 +19,7 @@ import time
 from keystoneauth1 import session
 import novaclient.client as novaclient
 
-import identity_auth
+import doctor_tests.identity_auth
 
 LOG = doctor_log.Logger('doctor_inspector').getLogger()
 

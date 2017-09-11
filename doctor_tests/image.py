@@ -11,8 +11,8 @@ import urllib.request
 
 from oslo_config import cfg
 
-from identity_auth import get_session
-from os_clients import glance_client
+from doctor_tests.identity_auth import get_session
+from doctor_tests.os_clients import glance_client
 
 OPTS = [
     cfg.StrOpt('image_name',

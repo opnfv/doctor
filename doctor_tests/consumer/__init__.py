@@ -28,7 +28,7 @@ OPTS = [
 
 
 _consumer_name_class_mapping = {
-    'sample': 'consumer.sample.SampleConsumer'
+    'sample': 'doctor_tests.consumer.sample.SampleConsumer'
 }
 
 

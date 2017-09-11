@@ -14,12 +14,12 @@ import time
 from threading import Thread
 import requests
 
-from common import utils
-from identity_auth import get_identity_auth
-from identity_auth import get_session
-from os_clients import nova_client
-from os_clients import neutron_client
-from inspector.base import BaseInspector
+from doctor_tests.common import utils
+from doctor_tests.identity_auth import get_identity_auth
+from doctor_tests.identity_auth import get_session
+from doctor_tests.os_clients import nova_client
+from doctor_tests.os_clients import neutron_client
+from doctor_tests.inspector.base import BaseInspector
 
 
 class SampleInspector(BaseInspector):

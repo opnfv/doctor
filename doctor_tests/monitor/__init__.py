@@ -19,8 +19,8 @@ OPTS = [
 
 
 _monitor_name_class_mapping = {
-    'sample': 'monitor.sample.SampleMonitor',
-    'collectd': 'monitor.collectd.CollectdMonitor'
+    'sample': 'doctor_tests.monitor.sample.SampleMonitor',
+    'collectd': 'doctor_tests.monitor.collectd.CollectdMonitor'
 }
 
 def get_monitor(conf, inspector_url, log):
