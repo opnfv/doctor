@@ -14,8 +14,8 @@ import stat
 import subprocess
 import sys
 
-from common.utils import SSHClient
-from installer.base import BaseInstaller
+from doctor_tests.common.utils import SSHClient
+from doctor_tests.installer.base import BaseInstaller
 
 
 class ApexInstaller(BaseInstaller):
@@ -59,7 +59,7 @@ class ApexInstaller(BaseInstaller):
         gid = grp.getgrnam(user).gr_gid
         os.chown('./instack_key', uid, gid)
         os.chmod('./instack_key', stat.S_IREAD)
-        current_dir = sys.path[0]
+        current_dir = os.curdir
         self.key_file = '{0}/{1}'.format(current_dir, 'instack_key')
         return self.key_file
 

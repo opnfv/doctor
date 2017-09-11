@@ -6,9 +6,9 @@
 # which accompanies this distribution, and is available at
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
-from identity_auth import get_session
-from os_clients import nova_client
-from common.utils import SSHClient
+from doctor_tests.identity_auth import get_session
+from doctor_tests.os_clients import nova_client
+from doctor_tests.common.utils import SSHClient
 
 LINK_DOWN_SCRIPT = """
 #!/bin/bash -x
