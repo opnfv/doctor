@@ -10,9 +10,9 @@ import os
 import shutil
 import subprocess
 
-from installer.base import BaseInstaller
-from common.utils import load_json_file
-from common.utils import write_json_file
+from doctor_tests.installer.base import BaseInstaller
+from doctor_tests.common.utils import load_json_file
+from doctor_tests.common.utils import write_json_file
 
 
 class LocalInstaller(BaseInstaller):

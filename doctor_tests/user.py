@@ -10,9 +10,9 @@ import os
 
 from oslo_config import cfg
 
-from identity_auth import get_session
-from os_clients import keystone_client
-from os_clients import nova_client
+from doctor_tests.identity_auth import get_session
+from doctor_tests.os_clients import keystone_client
+from doctor_tests.os_clients import nova_client
 
 
 OPTS = [

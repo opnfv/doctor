@@ -6,11 +6,11 @@
 # which accompanies this distribution, and is available at
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
-from identity_auth import get_identity_auth
-from identity_auth import get_session
-from os_clients import congress_client
+from doctor_tests.identity_auth import get_identity_auth
+from doctor_tests.identity_auth import get_session
+from doctor_tests.os_clients import congress_client
 
-from inspector.base import BaseInspector
+from doctor_tests.inspector.base import BaseInspector
 
 
 class CongressInspector(BaseInspector):
