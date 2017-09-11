@@ -10,17 +10,17 @@ import itertools
 
 from oslo_config import cfg
 
-import alarm
-import consumer
-import image
-import instance
-import installer
-import network
-import inspector
-import monitor
-import os_clients
-import profiler_poc
-import user
+import doctor_tests.alarm
+import doctor_tests.consumer
+import doctor_tests.image
+import doctor_tests.instance
+import doctor_tests.installer
+import doctor_tests.network
+import doctor_tests.inspector
+import doctor_tests.monitor
+import doctor_tests.os_clients
+import doctor_tests.profiler_poc
+import doctor_tests.user
 
 
 def list_opts():

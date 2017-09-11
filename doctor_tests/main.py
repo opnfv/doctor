@@ -12,25 +12,25 @@ import random
 import sys
 import time
 
-from alarm import Alarm
-from common.constants import Host
-from common.utils import match_rep_in_file
-import config
-from consumer import get_consumer
-from identity_auth import get_identity_auth
-from identity_auth import get_session
-from image import Image
-from instance import Instance
-from inspector import get_inspector
-from installer import get_installer
-import logger as doctor_log
-from network import Network
-from monitor import get_monitor
-from os_clients import nova_client
-from profiler_poc import main as profiler_main
-from scenario.common import calculate_notification_time
-from scenario.network_failure import NetworkFault
-from user import User
+from doctor_tests.alarm import Alarm
+from doctor_tests.common.constants import Host
+from doctor_tests.common.utils import match_rep_in_file
+import doctor_tests.config
+from doctor_tests.consumer import get_consumer
+from doctor_tests.identity_auth import get_identity_auth
+from doctor_tests.identity_auth import get_session
+from doctor_tests.image import Image
+from doctor_tests.instance import Instance
+from doctor_tests.inspector import get_inspector
+from doctor_tests.installer import get_installer
+import doctor_tests.logger as doctor_log
+from doctor_tests.network import Network
+from doctor_tests.monitor import get_monitor
+from doctor_tests.os_clients import nova_client
+from doctor_tests.profiler_poc import main as profiler_main
+from doctor_tests.scenario.common import calculate_notification_time
+from doctor_tests.scenario.network_failure import NetworkFault
+from doctor_tests.user import User
 
 
 LOG = doctor_log.Logger('doctor').getLogger()
