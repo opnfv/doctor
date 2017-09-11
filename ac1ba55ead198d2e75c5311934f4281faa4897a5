@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da33351e_acbac120",
+        "filename": "doctor_tests/consumer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-09-11T15:00:06Z",
+      "side": 1,
+      "message": "Good point. This is a copy of tests/consumer.py. I think we need to keep a copy of it, yes. The tests/consumer.py should not be touched anymore from now on as it belongs to the deprecated bash script tests. Thanks!",
+      "revId": "ac1ba55ead198d2e75c5311934f4281faa4897a5",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_8cb53d33",
+        "filename": "doctor_tests/inspector.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-09-11T15:00:06Z",
+      "side": 1,
+      "message": "Same comment I left on doctor_tests/consumer.py applies here :-)",
+      "revId": "ac1ba55ead198d2e75c5311934f4281faa4897a5",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
