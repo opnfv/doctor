@@ -33,6 +33,23 @@
       "revId": "ac1ba55ead198d2e75c5311934f4281faa4897a5",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_b2be9cd2",
+        "filename": "tests/alarm.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-09-12T01:43:02Z",
+      "side": 1,
+      "message": "Is this file should be moved to doctor_tests dir?",
+      "revId": "ac1ba55ead198d2e75c5311934f4281faa4897a5",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
