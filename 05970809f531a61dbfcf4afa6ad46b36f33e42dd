@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da33351e_d22d2048",
+        "filename": "tests/common/utils.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-09-12T01:37:17Z",
+      "side": 1,
+      "message": "I think this should be fixed in the caller.",
+      "revId": "05970809f531a61dbfcf4afa6ad46b36f33e42dd",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_b2305c9f",
+        "filename": "tests/image.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-09-12T01:37:17Z",
+      "side": 1,
+      "message": "delete this? Only support python3",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 31
+      },
+      "revId": "05970809f531a61dbfcf4afa6ad46b36f33e42dd",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
