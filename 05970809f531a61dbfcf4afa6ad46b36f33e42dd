@@ -39,6 +39,121 @@
       "revId": "05970809f531a61dbfcf4afa6ad46b36f33e42dd",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_565e1b13",
+        "filename": "tests/image.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-09-14T06:19:33Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "da33351e_b2305c9f",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 31
+      },
+      "revId": "05970809f531a61dbfcf4afa6ad46b36f33e42dd",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_f6a64f0f",
+        "filename": "tests/installer/local.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-09-14T06:19:33Z",
+      "side": 1,
+      "message": "Perhaps have this setting available via the config file and load from it? If not explicitly set by user, try os.environ or root as you have here.",
+      "revId": "05970809f531a61dbfcf4afa6ad46b36f33e42dd",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_b69cc7c1",
+        "filename": "tests/installer/local.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-09-14T06:19:33Z",
+      "side": 1,
+      "message": "Could you add a log.info message informing users why there\u0027s a sleep time? e.g. \"Restarting nova-api service and waiting for service up\"",
+      "revId": "05970809f531a61dbfcf4afa6ad46b36f33e42dd",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_969f03b4",
+        "filename": "tests/installer/local.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-09-14T06:19:33Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "05970809f531a61dbfcf4afa6ad46b36f33e42dd",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_d6a98be0",
+        "filename": "tests/monitor/sample.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-09-14T06:19:33Z",
+      "side": 1,
+      "message": "ditto for loading from config if available, falling back to os.env or \u0027root\u0027",
+      "revId": "05970809f531a61dbfcf4afa6ad46b36f33e42dd",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_36b0b742",
+        "filename": "tests/monitor/sample.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-09-14T06:19:33Z",
+      "side": 1,
+      "message": "s/logmonitor/log_monitor (snake_case)",
+      "range": {
+        "startLine": 85,
+        "startChar": 8,
+        "endLine": 85,
+        "endChar": 18
+      },
+      "revId": "05970809f531a61dbfcf4afa6ad46b36f33e42dd",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
