@@ -17,7 +17,8 @@ from doctor_tests.monitor.base import BaseMonitor
 class CollectdMonitor(BaseMonitor):
     def __init__(self, conf, inspector_url, log):
         super(CollectdMonitor, self).__init__(conf, inspector_url, log)
-        self.top_dir = os.path.dirname(sys.path[0])
+        monitor_dir = os.path.split(os.path.realpath(__file__))[0]
+        self.top_dir = os.path.dirname(monitor_dir)
         tmp_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         tmp_sock.connect(("8.8.8.8", 80))
 
@@ -44,7 +45,7 @@ class CollectdMonitor(BaseMonitor):
         self.log.info("Collectd monitor start.........")
         self.compute_host = host.name
         self.compute_ip = host.ip
-        f = open("%s/tests/collectd.conf" % self.top_dir, 'w')
+        f = open("%s/collectd.conf" % self.top_dir, 'w')
         collectd_conf_file = """ 
 Hostname %s
 FQDNLookup false
@@ -98,7 +99,7 @@ LoadPlugin logfile
         f.write(collectd_conf_file)
         f.close()
 
-        os.system(" scp %s %s/tests/collectd.conf %s@%s: " % (self.ssh_opts_cpu, self.top_dir, self.compute_user, self.compute_ip))
+        os.system(" scp %s %s/collectd.conf %s@%s: " % (self.ssh_opts_cpu, self.top_dir, self.compute_user, self.compute_ip))
         self.log.info("after first scp")
         ## @TODO (umar) Always assuming that the interface is assigned an IP if
         ## interface name is not provided. See if there is a better approach
@@ -116,7 +117,7 @@ LoadPlugin logfile
         fi
         sudo mv collectd.conf /opt/collectd/etc/collectd.conf\" """ % (self.ssh_opts_cpu, self.compute_user, self.compute_ip, self.interface_name, self.interface_name, self.compute_ip))
         self.log.info("after first ssh")
-        os.system(" scp  %s %s/tests/lib/monitors/collectd/collectd_plugin.py %s@%s:collectd_plugin.py " % (self.ssh_opts_cpu, self.top_dir, self.compute_user, self.compute_ip))
+        os.system(" scp  %s %s/monitor/collectd_plugin.py %s@%s:collectd_plugin.py " % (self.ssh_opts_cpu, self.top_dir, self.compute_user, self.compute_ip))
         self.log.info("after sec scp")
         os.system(" ssh %s %s@%s \"sudo pkill collectd; sudo /opt/collectd/sbin/collectd\" " % (self.ssh_opts_cpu, self.compute_user, self.compute_ip))
         self.log.info("after sec ssh")
@@ -134,4 +135,4 @@ LoadPlugin logfile
                 sudo cp -f \"\${collectd_conf}-doctor-saved\" \$collectd_conf
                 sudo rm \"\${collectd_conf}-doctor-saved\"
             fi\" """ % (self.ssh_opts_cpu, self.compute_user, self.compute_ip))
-        os.remove("%s/tests/collectd.conf" % self.top_dir)
+        os.remove("%s/collectd.conf" % self.top_dir)
