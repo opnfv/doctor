@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da33351e_badf850c",
+        "filename": "docs/development/design/inspector-design-guideline.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-09-15T10:44:25Z",
+      "side": 1,
+      "message": "Also the call of \"reset servers state to error\" is not necessary in the alternative notification case where the host forced down is still called. \"get-valid-server-state\" was implemented to have valid server state while earlier one couldn\u0027t get it unless calling \"reset servers state to error\". When not having \"reset servers state to error\", states are more unlikely to be out of sync while notification and force down host would be parallel.",
+      "range": {
+        "startLine": 82,
+        "startChar": 29,
+        "endLine": 82,
+        "endChar": 30
+      },
+      "revId": "8a6616c22a745dc1240e20103709feb58de2ddbb",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
