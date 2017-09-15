@@ -13,8 +13,8 @@ import socket
 from threading import Thread
 import time
 
-from identity_auth import get_session
-from monitor.base import BaseMonitor
+from doctor_tests.identity_auth import get_session
+from doctor_tests.monitor.base import BaseMonitor
 
 
 class SampleMonitor(BaseMonitor):

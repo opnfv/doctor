@@ -6,13 +6,12 @@
 # which accompanies this distribution, and is available at
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
-
 import os
 import socket
 import getpass
 import sys
 
-from monitor.base import BaseMonitor
+from doctor_tests.monitor.base import BaseMonitor
 
 
 class CollectdMonitor(BaseMonitor):

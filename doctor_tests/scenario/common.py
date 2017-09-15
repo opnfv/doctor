@@ -7,7 +7,8 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
 import sys
-from common.utils import match_rep_in_file
+
+from doctor_tests.common.utils import match_rep_in_file
 
 
 def calculate_notification_time():

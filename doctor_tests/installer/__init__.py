@@ -28,8 +28,8 @@ OPTS = [
 
 
 _installer_name_class_mapping = {
-    'local': 'installer.local.LocalInstaller',
-    'apex': 'installer.apex.ApexInstaller'
+    'local': 'doctor_tests.installer.local.LocalInstaller',
+    'apex': 'doctor_tests.installer.apex.ApexInstaller'
 }
 
 

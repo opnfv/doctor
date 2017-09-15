@@ -13,7 +13,7 @@ import time
 from threading import Thread
 import requests
 
-from consumer.base import BaseConsumer
+from doctor_tests.consumer.base import BaseConsumer
 
 
 class SampleConsumer(BaseConsumer):
