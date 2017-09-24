@@ -17,6 +17,7 @@ import socket
 import sys
 import time
 
+from keystoneauth1 import session
 from congressclient.v1 import client
 
 import identity_auth
@@ -48,8 +49,8 @@ class DoctorMonitorSample(object):
             self.inspector_url = 'http://127.0.0.1:12345/events'
         elif self.inspector_type == 'congress':
             auth=identity_auth.get_identity_auth()
-            sess=session.Session(auth=auth)
-            congress = client.Client(session=sess, service_type='policy')
+            self.sess=session.Session(auth=auth)
+            congress = client.Client(session=self.sess, service_type='policy')
             ds = congress.list_datasources()['results']
             doctor_ds = next((item for item in ds if item['driver'] == 'doctor'),
                              None)
@@ -98,7 +99,7 @@ class DoctorMonitorSample(object):
             headers = {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
-                'X-Auth-Token':self.session.get_token(),
+                'X-Auth-Token':self.sess.get_token(),
             }
             requests.put(self.inspector_url, data=data, headers=headers)
 
