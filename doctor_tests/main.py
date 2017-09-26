@@ -156,16 +156,17 @@ class DoctorTest(object):
         self.fault.get_disable_network_log()
 
     def run_profiler(self):
+        test_dir = os.path.split(os.path.realpath(__file__))[0]
 
-        log_file = '{0}/{1}'.format(sys.path[0], 'disable_network.log')
+        log_file = '{0}/{1}'.format(test_dir, 'disable_network.log')
         reg = '(?<=doctor set link down at )\d+.\d+'
         linkdown = float(match_rep_in_file(reg, log_file).group(0))
 
-        log_file = '{0}/{1}'.format(sys.path[0], 'doctor.log')
+        log_file = '{0}/{1}'.format(test_dir, 'doctor.log')
         reg = '(.* doctor mark vm.* error at )(\d+.\d+)'
         vmdown = float(match_rep_in_file(reg, log_file).group(2))
 
-        reg = '(?<=doctor mark host.* down at )\d+.\d+'
+        reg = '(.* doctor mark host.* down at )(\d+.\d+)'
         hostdown = float(match_rep_in_file(reg, log_file).group(2))
 
         reg = '(?<=doctor monitor detected at )\d+.\d+'
