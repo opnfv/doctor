@@ -1,0 +1,229 @@
+CHANGES
+=======
+
+* fix package path and move files under doctor\_tests
+* Select stable/ocata packages
+* Add host specific VM list to inspector design guide line
+* add running profiler in python
+* refactor failure inject
+* delete workaroud of doctor driver in congress for Apex installer
+* Specify the filename for 'w' filemode
+* add maintenance detailed spec
+* Test port data plane status on Sample Inspector
+* fix some bugs in monitor
+* Decode received data in byte type to str type
+* Delete project after stopping Inspector
+* add the whole config opts in sample config
+* make poc profiler run in default
+* Add Collectd as a Monitor Type
+* fix the bug: congress server can't be started
+* refactor apex installer
+* install python packages
+* refactor local installer
+* refactor sample consumer
+* Add doctor-test package
+* refactor congress inspector
+* refactor the monitor
+* fix some bugs for python verify jobs:
+* refactor sample inspector
+* Added steps to enable Python 3 and Congress in README file
+* Updates upstream file (dataplane status to network port in Neutron)
+* Fix host status grep bug and Remove connection\_pool argument
+* add create alarm
+* Add create instances
+* Create policy.json file in Ocata for non-admin user
+* support config file
+* replace urllib2 with urllib.request for python3
+* add test user, project and role
+* Fix run.sh bug for dynamic interfaces
+* Remove obsolete packages
+* Create devstack plugin for osprofiler configuration
+* Fix session error with INSPECTOR\_TYPE=congress
+* Adding PYTHON\_ENABLE option
+* Add Keystone missing params
+* use password\_plugin\_loader for auth
+* add image code
+* add framework and tox
+* Change role of doctor user to \_member\_
+* [docs] fix link in danube release notes
+* Fix release notes reference
+* danube release notes
+* Remove numbering
+* Add installation and configuration instructions for Vitrage as the Inspector
+* Adding Labels
+* [apex] change config for doctor testing
+* Adding back the summary to the requirement document, but updated with current Doctor status
+* Updated implemented architecture description and figure
+* add upstream gerrit path
+* urgent bug fixes for danube (2)
+* urgent bug fixes for danube (1)
+* Updates to Danube release documentation: JIRA: DOCTOR-81
+* [test] print log files
+* [docs] add test manual
+* Add multiple VM support
+* Update docs structure according to new guidelines in https://wiki.opnfv.org/display/DOC
+* improve installation manual (add congress config)
+* refactor lib/installer
+* correct usage of common functions
+* Fix functions for fuel installer
+* Fix bugs in profiler
+* improve cleanup() in run.sh
+* print git head
+* Fix an issue with the latest build as proposed by Aric in https://lists.opnfv.org/pipermail/opnfv-tech-discuss/2017-January/014799.html This patch is not changing the content of the document
+* Editorial fix on the fault table in 5.5.3
+* Several updates to the alarm comparison table in Section 5.5.3
+* Dump profiling data to json file to report by functest
+* Detail more on fencing mechanisms
+* Add more timestamps and export them for profiler
+* resignation of Tommy Lindgren
+* Several editorial corrections and improvements
+* Update the documentation to Danube release: JIRA: DOCTOR-81
+* fix the data which post to sample inspector align to SB API
+* Add timelog when set network down
+* PoC of performance profiler
+* Add section headers to verification script
+* Refactor inspectors support code
+* Add performance-profiler to index
+* Refactor installers support code
+* blueprint performance-profiler
+* remove print\_log
+* remove \`Debug = True when run Flask and add logger
+* Fix typo in text and images
+* Inspector design guideline
+* Introducing common functions
+* Adding UPSTREAM links
+* cache host-vm list when inspect start to run
+* release notes for colorado
+* Run the tests with existing image
+* update docs license to CC BY 4.0
+* Unnecessary command and let VM creation stabilize
+* fix the description in doctor\_scenario\_in\_functest.rst
+* Adjust the structure of doctor/userguide dir
+* Add exit status to notification time calculation
+* Minor changes to user guide Removal of configguide directory Corrected links
+* add notification\_driver config in nova.conf
+* Update version info of image
+* Updated Doctor user/config guides using opnfvdocs templates
+* resolve controller cannot talk to consumer in fuel
+* string compare use \`!=\` not \`-ne\`
+* add modify ceilometer config in fuel env
+* refactor some commmon function
+* Test Congress Doctor driver support
+* fix login to controller nodes
+* fix the way to get controller IPs
+* update workaround for notification from OpenStack
+* fix ssh tunnel creation
+* workaround for issue controller cannot talk to consumer
+* add project when create user
+* misuse \`ssh\_options\`
+* improve log printings
+* Adding comparison of NFV, Doctor and AODH alarms
+* test scenario support fuel installer
+* Revert role of doctor user to admin
+* Add newest Colorado feature
+* Add a subsection under "Doctor capabilities and usage" section
+* Change type of nova\_api\_version from float to str
+* Change role of doctor user to \_member\_
+* fix doctor test
+* Port status update
+* Add Bertrand to Doctor Committer list
+* Update Peter Lee's contact info
+* fix the description of Doctor Scenario
+* fix bugs to get \`CONSUMER\_IP\`
+* Increase sleep time before re-checking host status
+* Increase sleep time at cleanup phase
+* Delete $VM\_NAME and alrms with doctor user creds
+* add \`debug=True\` in consumer
+* fix doctor test
+* use --os-\* options instead of env param
+* Unset default COMPUTE\_USER at the beginning of tests
+* make script fail if it failed to get COMPUTE\_HOST
+* use specify host\_ip in alarm\_action
+* Fix typo in monitor to correctly print IP address
+* Exclude .img and .log files
+* Move block code inside Apex section
+* check host status before deleting doctor project
+* get compute host info after vm boot
+* add version para to use \`openstack server show\` cli
+* Move from legacy CLI to openstack CLI
+* fix check host states
+* get doctor vm info under doctor project
+* Pointer to "Port status update" RFE in upstream
+* Neutron RFE: Port Status Update
+* Add Dong Wenjuan as committer
+* Description of Doctor Scenario in Functest
+* add timeout handle
+* Before deleting the instance, check if the instance exists
+* use \`openstack\` cli instead of \`keystone\`cli
+* Add SB Event API specification
+* Fix a word spell in docs:02-use\_cases.rst
+* Revisit fault table
+* test: respect 'CI\_DEBUG' set by functest
+* Adding checking of host\_status
+* Fix typo and inconsistency
+* Manual for get-valid-server-state
+* Run 'ip' with sudo
+* Fix disable\_network.sh and 'ip' path
+* Add support to multi-installers and local envs
+* Fix typos in strings
+* Output log when compute node is back online
+* docs: add index.rst files to component docs
+* test: add nova\_force\_down client
+* test: fix bugs (ssh args and force-down in cleanup)
+* test: fix bugs (scp -l and trap ERR)
+* test: fix bug: missing installer\_ip in scp args
+* test: fix DNS issue in test scenario
+* tests: enable doctor test scenario with fixes
+* docs: fix filename
+* tests: collect infra IPs
+* docs: fix filename and test4composite
+* Add license header to RST files
+* Editorial changes in Section 5.2.2 NFVI Maintenance
+* contents for OPNFV composite docs
+* fix license description in code headers
+* tests: fix inject\_failure() for deployment built by apex
+* Created a template for the User Guide
+* Extend maintenance workflow
+* Support recovering VM on the same host
+* docs: add platform overview
+* disable doctor functional test
+* fix docs build dirs in .gitignore
+* add test scenario and sample components
+* Minor changes to NFVI Faults Annex (Fault Tables)
+* update .gitignore for swap files
+* Note to spec file pointing to upstream activity
+* change dirs to use new opnfv doc build script
+* Fencing requirement
+* update Makefile to create index and public dir
+* Add manual for mark-host-down
+* Example as code, documentation template for sphinx build
+* Solves the duplicate figure numbering in PDF issue
+* Move fault table to the Annex
+* Replace word 'poison' by 'force'
+* Clarifying fault propagation between phys-virtual
+* Clairify notification related architecture
+* Editorial on README Just to get some hands-on experience with git/gerrit
+* Updates to README
+* Adding fencing as general feature
+* Add a History table
+* Replace chapter name by reST reference labels
+
+2015.1.0
+--------
+
+* Add reference to service-status-notification bp
+* Add Gerald to the committer list
+* Add fullname on committer list
+* Committer list update
+* Minor fix for lines exceeding 79 chars
+* Rename title of section 5 (implementation)
+* Fix build of blueprints in Makefile
+* Doctor requirement deliverable
+* Remove tariling white spaces from LICENSE file
+* New nova API call to mark nova-compute down
+* Adding key prject facts (INFO) to the repository
+* New alarm evaluator for handling alarms on events
+* Add 'design\_docs' dir and README
+* Adding LICENSE file
+* Adding .gitreview to doctor more information at https://wiki.opendaylight.org/view/Git-review\_Workflow
+* Initial empty repository
