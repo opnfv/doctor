@@ -1,0 +1,8 @@
+Verified+1: jenkins-ci <jenkins-opnfv-ci@opnfv.org>
+Code-Review+2: wenjuan dong <dong.wenjuan@zte.com.cn>
+Code-Review+2: Bertrand Souville <souville@docomolab-euro.com>
+Submitted-by: Bertrand Souville <souville@docomolab-euro.com>
+Submitted-at: Wed, 27 Sep 2017 06:04:39 +0000
+Reviewed-on: https://gerrit.opnfv.org/gerrit/43255
+Project: doctor
+Branch: refs/heads/stable/euphrates
