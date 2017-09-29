@@ -26,6 +26,10 @@ OPTS = [
                default='12345',
                help='the port of default for inspector',
                required=False),
+    cfg.BoolOpt('update_neutron_port_dp_status',
+                default=False,
+                help='Update data plane status of affected neutron ports',
+                required=False),
 ]
 
 
