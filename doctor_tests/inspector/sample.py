@@ -35,7 +35,7 @@ class SampleInspector(BaseInspector):
 
         auth = get_identity_auth(project=self.conf.doctor_project)
         session = get_session(auth=auth)
-        if self.conf.update_neutron_port_dp_status:
+        if self.conf.inspector.update_neutron_port_dp_status:
             self.neutron = neutron_client(session)
 
         self.servers = collections.defaultdict(list)
@@ -95,11 +95,11 @@ class SampleInspector(BaseInspector):
                 self.hostnames.append(hostname)
                 thr1 = self._disable_compute_host(hostname)
                 thr2 = self._vms_reset_state('error', hostname)
-                if self.conf.update_neutron_port_dp_status:
+                if self.conf.inspector.update_neutron_port_dp_status:
                     thr3 = self._set_ports_data_plane_status('DOWN', hostname)
                 thr1.join()
                 thr2.join()
-                if self.conf.update_neutron_port_dp_status:
+                if self.conf.inspector.update_neutron_port_dp_status:
                     thr3.join()
 
     @utils.run_async
