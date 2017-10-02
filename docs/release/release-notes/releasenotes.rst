@@ -1,18 +1,21 @@
 .. This work is licensed under a Creative Commons Attribution 4.0 International License.
 .. http://creativecommons.org/licenses/by/4.0
 
-=====================================
-OPNFV Doctor release notes (Danube)
-=====================================
+======================================
+OPNFV Doctor release notes (Euphrates)
+======================================
+
+This document provides an overview of the Doctor project in the OPNFV Euphrates
+release, including new features, known issues and documentation updates.
 
 Version history
 ===============
 
-+------------+--------------+------------+-------------+
-| **Date**   | **Ver.**     | **Author** | **Comment** |
-+============+==============+============+=============+
-| 2017-03-31 | Danube 1.0   | Ryota Mibu |             |
-+------------+--------------+------------+-------------+
++------------+----------+------------+-------------+
+| **Date**   | **Ver.** | **Author** | **Comment** |
++============+==========+============+=============+
+| 2017-10-02 | 5.0.0    | Ryota Mibu |             |
++------------+----------+------------+-------------+
 
 Important notes
 ===============
@@ -24,37 +27,17 @@ upstream OSS projects. After those features were implemented, OPNFV installer
 projects integrated the features to the OPNFV platform and the OPNFV
 infra/testing projects verified the functionalities in the OPNFV Labs.
 
-This document provides an overview of the Doctor project in the OPNFV Danube
-release, including new features, known issues and documentation updates.
+For Euphrates release, the Doctor project focused primarily on extending to
+network state and refactoring testing code by python.
 
 New features
 ============
 
-For Danube release, the Doctor project focused primarily on enhancing the
-testing tools, enabling additional test scenarios, and support and verification
-on a wider range of OPNFV installers.
+Doctor now supports network state handling where VIM tells you the actual data
+plane port state, utilizing the new feature called `port-dp-status`_ developed
+in OpenStack Neutron as the result of our upstreaming efforts.
 
-* **Performance profiler PoC**
-
-  The performance profiler is designed to get timestamp in each checkpoint of
-  components for further analysis. In Danube, initial PoC implementation of the
-  perfomance profiler has been added to the Doctor testing tools
-  by contribution from the `QTIP`_ team. The tools can now show how long it
-  takes for each component in a series of processes for fault notification.
-  Some checkpoints are not covered yet though. To activate this, set the
-  PROFILER_TYPE="poc" before running the main script ("tests/run.sh").
-  See `DOCTOR-72`_ for more details.
-
-* **Testing with multiple tenant VMs**
-
-  The Doctor testing tools now supports new testing scenario where multiple
-  tenant VMs in the system under test can be created (`DOCTOR-77`_).
-  This allows to measure fault notification time/cost with stressed VIM
-  controllers, in order to see perfomance trends.
-
-.. _QTIP: https://wiki.opnfv.org/display/qtip
-.. _DOCTOR-72: https://jira.opnfv.org/browse/DOCTOR-72
-.. _DOCTOR-77: https://jira.opnfv.org/browse/DOCTOR-77
+.. _port-data-plane-status: https://specs.openstack.org/openstack/neutron-specs/specs/backlog/ocata/port-data-plane-status.html
 
 Installer support and verification status
 =========================================
@@ -62,37 +45,37 @@ Installer support and verification status
 Integrated features
 -------------------
 
-Minimal Doctor functionality of VIM is available in the OPNFV platform from
-the Brahmaputra release. The basic Doctor framework in VIM consists of a
-Controller (Nova) and a Notifier (Ceilometer+Aodh) along with a sample
-Inspector and Monitor developed by the Doctor team.
+The testing code for doctor test cases are enhanced by refactoring in python,
+and supporting collectd monitor.
 
-From the Danube release, key integrated feature is:
+The python refactoring improves readability and maintainability of the testing
+code in the Doctor repository. This would help Doctor developers as well as
+engineers who are referring OPNFV.
 
-* **Congress as Doctor Inspector**
+From the Euphrates release, key integrated feature is:
 
-  Congress Inspector is now verified with latest vanilla OpenStack without
-  backporting any patch, like the one we had backported for adding Doctor
-  driver of Congress in Colorado.
+* **collectd as Doctor Monitor**
+
+ This is experimental, as CI job is not enabled yet. But, you can see and test
+ with collectd integrated in Doctor reference architecture.
 
 OPNFV installer support matrix
 ------------------------------
 
+(TBC)
+
 In the Brahmaputra release, only one installer (Apex) supported the deployment
-of the basic Doctor framework by configuring Doctor features. In the Danube
+of the basic Doctor framework by configuring Doctor features. In the Euphrates
 release, integration of Doctor features progressed in other OPNFV installers.
 
 +-----------+-------------------+--------------+-----------------+-------------------+
 | Installer | Aodh              | Nova: Force  | Nova: Get valid | Congress          |
 |           | integration       | compute down | service status  | integration       |
 +===========+===================+==============+=================+===================+
-| Apex      | Available         | Available    | Available,      | Available         |
-|           |                   |              | Verified only   |                   |
-|           |                   |              | for admin users |                   |
+| Apex      | Available         | Available    | Available       | Available         |
 +-----------+-------------------+--------------+-----------------+-------------------+
-| Fuel      | Available         | Available    | Available,      | N/A               |
-|           | (`DOCTOR-58`_)    |              | Verified only   | (`FUEL-230`_)     |
-|           |                   |              | for admin users |                   |
+| Fuel      | Available         | Available    | Available       | N/A               |
+|           | (`DOCTOR-58`_)    |              |                 | (`FUEL-230`_)     |
 +-----------+-------------------+--------------+-----------------+-------------------+
 | Joid      | Available         | TBC          | TBC             | Available         |
 |           | (`JOID-76`_),     |              |                 | (`JOID-73`_),     |
@@ -116,44 +99,16 @@ our own test scenario running in OPNFV CI pipeline yet.
 Documentation updates
 =====================
 
-* **Configuration manual for Congress**
+* **maintenance detailed spec**
 
-  Steps to configure Congress as Doctor Inspector have been added
-  to Doctor configuration manual (`DOCTOR-85`_).
+  The maintenance design document was filed, including suggestions how to
+  leverage features in OpenStack while developing automated maintenance
+  capability.
 
-* **Alarm comparison**
-
-  As part of the review between Doctor Danube (OpenStack Newton) and ETSI NFV
-  IFA, the alarm comparison table has been updated (`DOCTOR-82`_).
-
-* **OpenStack mechanisms for fencing**
-
-  The section on fencing in the requirement document has been updated with more
-  details of Nova and Neutron (`REVIEW#27049`_).
-
-* **How to test**
-
-  Two ways to run the Doctor testing tools have been added
-  (`REVIEW#28223`_).
-
-You can also find other minor updates in `DOCTOR-81`_.
-
-.. _DOCTOR-81: https://jira.opnfv.org/browse/DOCTOR-81
-.. _DOCTOR-82: https://jira.opnfv.org/browse/DOCTOR-82
-.. _DOCTOR-85: https://jira.opnfv.org/browse/DOCTOR-85
-.. _REVIEW#28223: https://gerrit.opnfv.org/gerrit/28223/
-.. _REVIEW#27049: https://gerrit.opnfv.org/gerrit/27049/
+* **Inspector design guideline**
 
 Known issues
 ============
 
-* Doctor testing scenario is not verified with non-admin user (`DOCTOR-80`_).
-
-* Congress Nova driver is relying on deprecated Nova APIs and can lead to
-  an error (`BUG#1670345`_). The workaround for this issue is to specify nova
-  micro version to 2.34 . Apex is using this workaround for OpenStack Newton
-  (`REVIEW#29463`_).
-
-.. _DOCTOR-80: https://jira.opnfv.org/browse/DOCTOR-80
-.. _BUG#1670345: https://bugs.launchpad.net/congress/+bug/1670345
-.. _REVIEW#29463: https://gerrit.opnfv.org/gerrit/29463/
+* Testing code for `port-data-plane-status` in Doctor repository was disabled
+  in 5.0, as we have problem in neutron client load in CI job container.
