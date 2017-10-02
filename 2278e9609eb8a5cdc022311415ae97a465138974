@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da33351e_c45519fb",
+        "filename": "docs/release/release-notes/releasenotes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2017-10-02T15:47:29Z",
+      "side": 1,
+      "message": "I would mention both \"extending to network state\" and \"refactoring\" as the two focus areas.",
+      "range": {
+        "startLine": 30,
+        "startChar": 42,
+        "endLine": 30,
+        "endChar": 59
+      },
+      "revId": "2278e9609eb8a5cdc022311415ae97a465138974",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_64540dff",
+        "filename": "docs/release/release-notes/releasenotes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2017-10-02T15:47:29Z",
+      "side": 1,
+      "message": "maintainability",
+      "range": {
+        "startLine": 31,
+        "startChar": 55,
+        "endLine": 31,
+        "endChar": 72
+      },
+      "revId": "2278e9609eb8a5cdc022311415ae97a465138974",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_04438142",
+        "filename": "docs/release/release-notes/releasenotes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2017-10-02T15:47:29Z",
+      "side": 1,
+      "message": "typo.\nWhat do you mean by \"referring OPNFV\"?",
+      "range": {
+        "startLine": 51,
+        "startChar": 20,
+        "endLine": 51,
+        "endChar": 30
+      },
+      "revId": "2278e9609eb8a5cdc022311415ae97a465138974",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_e43f7db2",
+        "filename": "docs/release/release-notes/releasenotes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2017-10-02T15:47:29Z",
+      "side": 1,
+      "message": "\"Doctor\"",
+      "range": {
+        "startLine": 51,
+        "startChar": 67,
+        "endLine": 51,
+        "endChar": 73
+      },
+      "revId": "2278e9609eb8a5cdc022311415ae97a465138974",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_2446854f",
+        "filename": "docs/release/release-notes/releasenotes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2017-10-02T15:47:29Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 59,
+        "startChar": 46,
+        "endLine": 59,
+        "endChar": 58
+      },
+      "revId": "2278e9609eb8a5cdc022311415ae97a465138974",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
