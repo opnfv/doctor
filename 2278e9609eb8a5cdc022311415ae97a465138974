@@ -114,6 +114,29 @@
       "revId": "2278e9609eb8a5cdc022311415ae97a465138974",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_5a33a2aa",
+        "filename": "docs/release/release-notes/releasenotes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2017-10-03T05:14:51Z",
+      "side": 1,
+      "message": "We do not anymore test as admin, so this needs to be changed.\nRemove: Available, Verified only for admin users\nAdd: Available",
+      "range": {
+        "startLine": 74,
+        "startChar": 49,
+        "endLine": 80,
+        "endChar": 65
+      },
+      "revId": "2278e9609eb8a5cdc022311415ae97a465138974",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
