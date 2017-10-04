@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "da33351e_a9c70563",
+        "filename": "docs/release/release-notes/releasenotes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-10-04T16:53:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da33351e_c45519fb",
+      "range": {
+        "startLine": 30,
+        "startChar": 42,
+        "endLine": 30,
+        "endChar": 59
+      },
+      "revId": "2278e9609eb8a5cdc022311415ae97a465138974",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da33351e_64540dff",
         "filename": "docs/release/release-notes/releasenotes.rst",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-10-02T15:47:29Z",
       "side": 1,
       "message": "maintainability",
+      "range": {
+        "startLine": 31,
+        "startChar": 55,
+        "endLine": 31,
+        "endChar": 72
+      },
+      "revId": "2278e9609eb8a5cdc022311415ae97a465138974",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_c9a7e9bb",
+        "filename": "docs/release/release-notes/releasenotes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-10-04T16:53:41Z",
+      "side": 1,
+      "message": "Done\n\nSeems like I can merge this sentence in the similar description in \"Integrated features\".",
+      "parentUuid": "da33351e_64540dff",
       "range": {
         "startLine": 31,
         "startChar": 55,
@@ -94,6 +142,54 @@
     },
     {
       "key": {
+        "uuid": "da33351e_69a69daf",
+        "filename": "docs/release/release-notes/releasenotes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-10-04T16:53:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da33351e_04438142",
+      "range": {
+        "startLine": 51,
+        "startChar": 20,
+        "endLine": 51,
+        "endChar": 30
+      },
+      "revId": "2278e9609eb8a5cdc022311415ae97a465138974",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_099c315c",
+        "filename": "docs/release/release-notes/releasenotes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-10-04T16:53:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da33351e_e43f7db2",
+      "range": {
+        "startLine": 51,
+        "startChar": 67,
+        "endLine": 51,
+        "endChar": 73
+      },
+      "revId": "2278e9609eb8a5cdc022311415ae97a465138974",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da33351e_2446854f",
         "filename": "docs/release/release-notes/releasenotes.rst",
         "patchSetId": 1
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "da33351e_49a11993",
+        "filename": "docs/release/release-notes/releasenotes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-10-04T16:53:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da33351e_2446854f",
+      "range": {
+        "startLine": 59,
+        "startChar": 46,
+        "endLine": 59,
+        "endChar": 58
+      },
+      "revId": "2278e9609eb8a5cdc022311415ae97a465138974",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da33351e_5a33a2aa",
         "filename": "docs/release/release-notes/releasenotes.rst",
         "patchSetId": 1
@@ -128,6 +248,30 @@
       "writtenOn": "2017-10-03T05:14:51Z",
       "side": 1,
       "message": "We do not anymore test as admin, so this needs to be changed.\nRemove: Available, Verified only for admin users\nAdd: Available",
+      "range": {
+        "startLine": 74,
+        "startChar": 49,
+        "endLine": 80,
+        "endChar": 65
+      },
+      "revId": "2278e9609eb8a5cdc022311415ae97a465138974",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da33351e_09b391e9",
+        "filename": "docs/release/release-notes/releasenotes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2017-10-04T16:53:41Z",
+      "side": 1,
+      "message": "Done.\n\nI suppose we should remove \"Aodh integration\" Column, and add Neutron port down.",
+      "parentUuid": "da33351e_5a33a2aa",
       "range": {
         "startLine": 74,
         "startChar": 49,
