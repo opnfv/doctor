@@ -35,6 +35,9 @@ from doctor_tests.user import User
 
 LOG = doctor_log.Logger('doctor').getLogger()
 
+# TODO (r-mibu): fix doctor logger or consider logfile option
+LOG_FILE = LOG.handlers[0].baseFilename
+
 
 class DoctorTest(object):
 
@@ -106,7 +109,7 @@ class DoctorTest(object):
             # NOTE (umar) copy remote monitor.log file when monitor=collectd
             self.check_host_status(self.down_host.name, 'down')
 
-            notification_time = calculate_notification_time()
+            notification_time = calculate_notification_time(LOG_FILE)
             if notification_time < 1 and notification_time > 0:
                 LOG.info('doctor test successfully, notification_time=%s' % notification_time)
             else:
@@ -158,22 +161,20 @@ class DoctorTest(object):
     def run_profiler(self):
         test_dir = os.path.split(os.path.realpath(__file__))[0]
 
-        log_file = '{0}/{1}'.format(test_dir, 'disable_network.log')
         reg = '(?<=doctor set link down at )\d+.\d+'
-        linkdown = float(match_rep_in_file(reg, log_file).group(0))
+        linkdown = float(match_rep_in_file(reg, LOG_FILE).group(0))
 
-        log_file = '{0}/{1}'.format(test_dir, 'doctor.log')
         reg = '(.* doctor mark vm.* error at )(\d+.\d+)'
-        vmdown = float(match_rep_in_file(reg, log_file).group(2))
+        vmdown = float(match_rep_in_file(reg, LOG_FILE).group(2))
 
         reg = '(.* doctor mark host.* down at )(\d+.\d+)'
-        hostdown = float(match_rep_in_file(reg, log_file).group(2))
+        hostdown = float(match_rep_in_file(reg, LOG_FILE).group(2))
 
         reg = '(?<=doctor monitor detected at )\d+.\d+'
-        detected = float(match_rep_in_file(reg, log_file).group(0))
+        detected = float(match_rep_in_file(reg, LOG_FILE).group(0))
 
         reg = '(?<=doctor consumer notified at )\d+.\d+'
-        notified = float(match_rep_in_file(reg, log_file).group(0))
+        notified = float(match_rep_in_file(reg, LOG_FILE).group(0))
 
         # TODO(yujunz) check the actual delay to verify time sync status
         # expected ~1s delay from $trigger to $linkdown
