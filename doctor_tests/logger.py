@@ -40,6 +40,7 @@ class Logger(object):
         file_handler = logging.FileHandler(filename, mode='w')
         file_handler.setFormatter(formatter)
         file_handler.setLevel(logging.DEBUG)
+        self.filename = file_handler.baseFilename
         self.logger.addHandler(file_handler)
 
     def getLogger(self):
