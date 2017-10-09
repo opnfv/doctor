@@ -1,0 +1,7 @@
+Verified+1: jenkins-ci <jenkins-opnfv-ci@opnfv.org>
+Code-Review+2: Carlos Goncalves <mail@cgoncalves.pt>
+Submitted-by: Carlos Goncalves <mail@cgoncalves.pt>
+Submitted-at: Mon, 09 Oct 2017 10:49:48 +0000
+Reviewed-on: https://gerrit.opnfv.org/gerrit/44539
+Project: doctor
+Branch: refs/heads/master
