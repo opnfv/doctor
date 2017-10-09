@@ -13,6 +13,7 @@ import pwd
 import stat
 import subprocess
 
+from doctor_tests.common.utils import get_doctor_test_root_dir
 from doctor_tests.common.utils import SSHClient
 from doctor_tests.installer.base import BaseInstaller
 
@@ -31,6 +32,7 @@ class ApexInstaller(BaseInstaller):
         self.controllers = list()
         self.controller_clients = list()
         self.servers = list()
+        self.test_dir = get_doctor_test_root_dir()
 
     def setup(self):
         self.log.info('Setup Apex installer start......')
@@ -52,14 +54,14 @@ class ApexInstaller(BaseInstaller):
             self.log.info('Already have SSH keys from Apex installer......')
             return self.key_file
 
-        self.client.scp('/home/stack/.ssh/id_rsa', './instack_key', method='get')
+        ssh_key = '{0}/{1}'.format(self.test_dir, 'instack_key')
+        self.client.scp('/home/stack/.ssh/id_rsa', ssh_key, method='get')
         user = getpass.getuser()
         uid = pwd.getpwnam(user).pw_uid
         gid = grp.getgrnam(user).gr_gid
-        os.chown('./instack_key', uid, gid)
-        os.chmod('./instack_key', stat.S_IREAD)
-        current_dir = os.curdir
-        self.key_file = '{0}/{1}'.format(current_dir, 'instack_key')
+        os.chown(ssh_key, uid, gid)
+        os.chmod(ssh_key, stat.S_IREAD)
+        self.key_file = ssh_key
         return self.key_file
 
     def get_controller_ips(self):
