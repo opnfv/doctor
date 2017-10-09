@@ -15,6 +15,8 @@
 import logging
 import os
 
+from doctor_tests.common.utils import get_doctor_test_root_dir
+
 
 class Logger(object):
     def __init__(self, logger_name):
@@ -36,12 +38,15 @@ class Logger(object):
             ch.setLevel(logging.INFO)
         self.logger.addHandler(ch)
 
-        filename = '%s.log' % logger_name
-        file_handler = logging.FileHandler(filename, mode='w')
+        test_dir = get_doctor_test_root_dir()
+        self.filename = '{0}/{1}.log'.format(test_dir, logger_name)
+        file_handler = logging.FileHandler(self.filename, mode='w')
         file_handler.setFormatter(formatter)
         file_handler.setLevel(logging.DEBUG)
-        self.filename = file_handler.baseFilename
         self.logger.addHandler(file_handler)
 
     def getLogger(self):
         return self.logger
+
+    def getLogFilename(self):
+        return self.filename
