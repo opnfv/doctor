@@ -8,6 +8,7 @@
 ##############################################################################
 from doctor_tests.identity_auth import get_session
 from doctor_tests.os_clients import nova_client
+from doctor_tests.common.utils import get_root_dir
 from doctor_tests.common.utils import SSHClient
 
 LINK_DOWN_SCRIPT = """
@@ -29,6 +30,7 @@ class NetworkFault(object):
         self.log = log
         self.installer = installer
         self.nova = nova_client(self.conf.nova_version, get_session())
+        self.test_dir = get_root_dir()
         self.host = None
         self.GetLog = False
 
@@ -52,7 +54,9 @@ class NetworkFault(object):
                                key_filename=self.installer.get_ssh_key_from_installer(),
                                look_for_keys=True,
                                log=self.log)
-            client.scp('disable_network.log', './disable_network.log', method='get')
+
+            disable_network_log = '{0}/{1}'.format(self.test_dir, 'disable_network.log')
+            client.scp('disable_network.log', disable_network_log, method='get')
             self.log.info('Get the disable_netork.log from down_host(host_name:%s, host_ip:%s)'
                           % (self.host.name, self.host.ip))
         self.GetLog = True

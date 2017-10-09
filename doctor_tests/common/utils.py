@@ -47,6 +47,11 @@ def match_rep_in_file(regex, full_path):
     return None
 
 
+def get_root_dir():
+    current_dir = os.path.split(os.path.realpath(__file__))[0]
+    return os.path.dirname(current_dir)
+
+
 class SSHClient(object):
     def __init__(self, ip, username, password=None, pkey=None,
                  key_filename=None, log=None, look_for_keys=False,
