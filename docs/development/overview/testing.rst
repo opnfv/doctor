@@ -76,15 +76,14 @@ Functest container. You can run the Doctor test with the following steps:
 .. code-block:: bash
 
     DOCKER_TAG=latest
-    docker pull opnfv/functest:${DOCKER_TAG}
+    docker pull docker.io/opnfv/functest-features:${DOCKER_TAG}
     docker run --privileged=true -id \
         -e INSTALLER_TYPE=${INSTALLER_TYPE} \
         -e INSTALLER_IP=${INSTALLER_IP} \
         -e INSPECTOR_TYPE=sample \
-        -e PYTHON_ENABLE=True \
-        opnfv/functest:${DOCKER_TAG} /bin/bash
-    docker exec <container_id> python /home/opnfv/repos/functest/functest/ci/prepare_env.py start
-    docker exec <container_id> functest testcase run doctor
+        docker.io/opnfv/functest-features:${DOCKER_TAG} /bin/bash
+    docker exec <container_id> functest env prepare
+    docker exec <container_id> functest testcase run doctor-notification
 
 Add an environment variable *PYTHON_ENABLE* to indicate that using Python or
 Bash to run the test when start the docker container.
