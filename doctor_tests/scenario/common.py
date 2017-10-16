@@ -6,8 +6,6 @@
 # which accompanies this distribution, and is available at
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
-import os
-
 from doctor_tests.common.utils import match_rep_in_file
 
 
