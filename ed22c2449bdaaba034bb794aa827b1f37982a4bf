@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3d3df0_e96ed2c8",
+        "filename": "docs/development/overview/testing.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 346
+      },
+      "writtenOn": "2017-10-18T12:54:10Z",
+      "side": 1,
+      "message": "This seems to be outdated/obsolete as \"-e PYTHON_ENABLE\u003dTrue\" is been removed in this patch.",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 53
+      },
+      "revId": "ed22c2449bdaaba034bb794aa827b1f37982a4bf",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_0948562c",
+        "filename": "docs/development/overview/testing.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 346
+      },
+      "writtenOn": "2017-10-18T12:54:10Z",
+      "side": 1,
+      "message": "I suggest to replace by the following link: http://docs.opnfv.org/en/latest/submodules/functest/docs/testing/user/userguide/index.html",
+      "range": {
+        "startLine": 93,
+        "startChar": 24,
+        "endLine": 93,
+        "endChar": 85
+      },
+      "revId": "ed22c2449bdaaba034bb794aa827b1f37982a4bf",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
