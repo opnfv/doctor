@@ -26,10 +26,14 @@ to the ``[[local|localrc]]`` section.
 
    USE_PYTHON3=True
 
-3. To enable Congress as Doctor Inspector, please also add::
+3. To enable Congress as Doctor Inspector, please add::
 
    enable_plugin congress https://git.openstack.org/openstack/congress
 
-4. Run DevStack as normal::
+4. To enable Neutron port data plane status, please also add::
+
+   Q_ML2_PLUGIN_EXT_DRIVERS=data_plane_status
+
+5. Run DevStack as normal::
 
     $ ./stack.sh
