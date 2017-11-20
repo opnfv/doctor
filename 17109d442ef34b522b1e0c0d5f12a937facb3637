@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3d3df0_5eec978f",
+        "filename": "devstack/README.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 132
+      },
+      "writtenOn": "2017-11-20T10:58:43Z",
+      "side": 1,
+      "message": "Q_ML2_PLUGIN_EXT_DRIVERS\u003ddata_plane_status should be enough. Also explicitely appending port_security here hints to users that it is a requirement of the data_plane_status extension.\n\nThe port_security extension gets appended if NEUTRON_PORT_SECURITY\u003dTrue (default; https://github.com/openstack-dev/devstack/blob/master/stackrc#L846)\n\nhttps://github.com/openstack-dev/devstack/blob/master/lib/neutron_plugins/ml2#L38",
+      "revId": "17109d442ef34b522b1e0c0d5f12a937facb3637",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
