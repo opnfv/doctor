@@ -63,7 +63,7 @@ class SampleInspector(BaseInspector):
                 self.log.info('can not get hostname from server=%s' % server)
 
     def get_inspector_url(self):
-        return 'http://%s:%s' % (self.conf.inspector.ip, self.conf.inspector.port)
+        return 'http://%s:%s/events' % (self.conf.inspector.ip, self.conf.inspector.port)
 
     def start(self):
         self.log.info('sample inspector start......')

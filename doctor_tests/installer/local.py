@@ -11,6 +11,8 @@ import shutil
 import subprocess
 
 from doctor_tests.installer.base import BaseInstaller
+from doctor_tests.installer.common.vitrage import set_vitrage_host_down_template
+from doctor_tests.common.constants import Inspector
 from doctor_tests.common.utils import load_json_file
 from doctor_tests.common.utils import write_json_file
 
@@ -43,13 +45,16 @@ class LocalInstaller(BaseInstaller):
         cmd = "getent hosts %s | awk '{ print $1 }'" % (hostname)
         server = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
         stdout, stderr = server.communicate()
-        host_ip = stdout.strip()
+        host_ip = stdout.strip().decode("utf-8")
 
         self.log.info('Get host_ip:%s from host_name:%s in local installer' % (host_ip, hostname))
         return host_ip
 
     def set_apply_patches(self):
         self._set_nova_policy()
+        if self.conf.inspector.type == Inspector.VITRAGE:
+            set_vitrage_host_down_template()
+            os.system('screen -S stack -p vitrage-graph -X stuff "^C^M^[[A^M"')
 
     def restore_apply_patches(self):
         self._restore_nova_policy()

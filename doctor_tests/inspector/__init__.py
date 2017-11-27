@@ -11,10 +11,12 @@ import os
 from oslo_config import cfg
 from oslo_utils import importutils
 
+from doctor_tests.common.constants import Inspector
+
 
 OPTS = [
     cfg.StrOpt('type',
-               default=os.environ.get('INSPECTOR_TYPE', 'sample'),
+               default=os.environ.get('INSPECTOR_TYPE', Inspector.SAMPLE),
                choices=['sample', 'congress', 'vitrage'],
                help='the component of doctor inspector',
                required=True),
@@ -34,8 +36,9 @@ OPTS = [
 
 
 _inspector_name_class_mapping = {
-    'sample': 'doctor_tests.inspector.sample.SampleInspector',
-    'congress': 'doctor_tests.inspector.congress.CongressInspector',
+    Inspector.SAMPLE: 'doctor_tests.inspector.sample.SampleInspector',
+    Inspector.CONGRESS: 'doctor_tests.inspector.congress.CongressInspector',
+    Inspector.VITRAGE: 'doctor_tests.inspector.vitrage.VitrageInspector',
 }
 
 
