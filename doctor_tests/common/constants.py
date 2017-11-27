@@ -10,3 +10,9 @@ from collections import namedtuple
 
 
 Host = namedtuple('Host', ['name', 'ip'])
+
+
+class Inspector(object):
+    CONGRESS = 'congress'
+    SAMPLE = 'sample'
+    VITRAGE = 'vitrage'

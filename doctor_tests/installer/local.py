@@ -11,6 +11,8 @@ import shutil
 import subprocess
 
 from doctor_tests.installer.base import BaseInstaller
+from doctor_tests.installer.common.vitrage import set_vitrage_host_down_template
+from doctor_tests.common.constants import Inspector
 from doctor_tests.common.utils import load_json_file
 from doctor_tests.common.utils import write_json_file
 
@@ -43,13 +45,16 @@ class LocalInstaller(BaseInstaller):
         cmd = "getent hosts %s | awk '{ print $1 }'" % (hostname)
         server = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
         stdout, stderr = server.communicate()
-        host_ip = stdout.strip()
+        host_ip = stdout.strip().decode("utf-8")
 
         self.log.info('Get host_ip:%s from host_name:%s in local installer' % (host_ip, hostname))
         return host_ip
 
     def set_apply_patches(self):
         self._set_nova_policy()
+        if self.conf.inspector.type == Inspector.VITRAGE:
+            set_vitrage_host_down_template()
+            os.system('sudo systemctl restart devstack@vitrage-graph.service')
 
     def restore_apply_patches(self):
         self._restore_nova_policy()
@@ -94,7 +99,7 @@ class LocalInstaller(BaseInstaller):
 
         if self.policy_modified or self.add_policy_file:
             write_json_file(self.nova_policy_file, data)
-            os.system('screen -S stack -p n-api -X stuff "^C^M^[[A^M"')
+            os.system('sudo systemctl restart devstack@n-api.service')
 
     def _restore_nova_policy(self):
         if self.policy_modified:
@@ -104,6 +109,6 @@ class LocalInstaller(BaseInstaller):
             os.remove(self.nova_policy_file)
 
         if self.add_policy_file or self.policy_modified:
-            os.system('screen -S stack -p n-api -X stuff "^C^M^[[A^M"')
+            os.system('sudo systemctl restart devstack@n-api.service')
             self.add_policy_file = False
             self.policy_modified = False

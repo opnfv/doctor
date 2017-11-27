@@ -13,6 +13,7 @@ import socket
 from threading import Thread
 import time
 
+from doctor_tests.common.constants import Inspector
 from doctor_tests.identity_auth import get_session
 from doctor_tests.monitor.base import BaseMonitor
 
@@ -38,19 +39,16 @@ class SampleMonitor(BaseMonitor):
 
     def report_error(self, hostname):
         self.log.info('sample monitor report error......')
-        data = [
-            {
-                'id': 'monitor_sample_id1',
-                'time': datetime.now().isoformat(),
-                'type': self.event_type,
-                'details': {
-                    'hostname': hostname,
-                    'status': 'down',
-                    'monitor': 'monitor_sample',
-                    'monitor_event_id': 'monitor_sample_event1'
-                },
+        data = {
+            'time': datetime.now().isoformat(),
+            'type': self.event_type,
+            'details': {
+                'hostname': hostname,
+                'status': 'down',
+                'monitor': 'monitor_sample',
+                'monitor_event_id': 'monitor_sample_event1'
             },
-        ]
+        }
 
         auth_token = self.session.get_token() if \
                      self.conf.inspector.type != 'sample' else None
@@ -59,11 +57,10 @@ class SampleMonitor(BaseMonitor):
             'Accept': 'application/json',
             'X-Auth-Token': auth_token,
         }
-
-        url = '%s%s' % (self.inspector_url, 'events') \
-            if self.inspector_url.endswith('/') else \
-            '%s%s' % (self.inspector_url, '/events')
-        requests.put(url, data=json.dumps(data), headers=headers)
+        if self.conf.inspector.type != Inspector.VITRAGE:
+            requests.put(self.inspector_url, data=json.dumps([data]), headers=headers)
+        else:
+            requests.post(self.inspector_url, data=json.dumps(data), headers=headers)
 
 
 class Pinger(Thread):
