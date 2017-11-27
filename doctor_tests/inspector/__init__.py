@@ -36,6 +36,7 @@ OPTS = [
 _inspector_name_class_mapping = {
     'sample': 'doctor_tests.inspector.sample.SampleInspector',
     'congress': 'doctor_tests.inspector.congress.CongressInspector',
+    'vitrage': 'doctor_tests.inspector.vitrage.VitrageInspector',
 }
 
 

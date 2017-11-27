@@ -14,12 +14,14 @@ import glanceclient.client as glanceclient
 from keystoneclient.v2_0 import client as ks_client
 from neutronclient.v2_0 import client as neutronclient
 import novaclient.client as novaclient
+import vitrageclient.client as vitrageclient
 
 
 OPTS = [
     cfg.StrOpt('glance_version', default='2', help='glance version'),
     cfg.StrOpt('nova_version', default='2.34', help='Nova version'),
     cfg.StrOpt('aodh_version', default='2', help='aodh version'),
+    cfg.StrOpt('vitrage_version', default='1', help='vitrage version'),
 ]
 
 
@@ -48,3 +50,8 @@ def aodh_client(version, session):
 def congress_client(session):
     return congressclient.Client(session=session,
                                  service_type='policy')
+
+
+def vitrage_client(version, session):
+    return vitrageclient.Client(version=version,
+                                session=session)

@@ -40,7 +40,6 @@ class SampleMonitor(BaseMonitor):
         self.log.info('sample monitor report error......')
         data = [
             {
-                'id': 'monitor_sample_id1',
                 'time': datetime.now().isoformat(),
                 'type': self.event_type,
                 'details': {
@@ -59,11 +58,10 @@ class SampleMonitor(BaseMonitor):
             'Accept': 'application/json',
             'X-Auth-Token': auth_token,
         }
-
-        url = '%s%s' % (self.inspector_url, 'events') \
-            if self.inspector_url.endswith('/') else \
-            '%s%s' % (self.inspector_url, '/events')
-        requests.put(url, data=json.dumps(data), headers=headers)
+        if self.conf.inspector.type != 'vitrage':
+            requests.put(self.inspector_url, data=json.dumps(data), headers=headers)
+        else:
+            requests.post(self.inspector_url, data=json.dumps(data), headers=headers)
 
 
 class Pinger(Thread):

@@ -11,6 +11,7 @@ import shutil
 import subprocess
 
 from doctor_tests.installer.base import BaseInstaller
+from doctor_tests.installer.common.vitrage import set_vitrage_host_down_template
 from doctor_tests.common.utils import load_json_file
 from doctor_tests.common.utils import write_json_file
 
@@ -50,6 +51,7 @@ class LocalInstaller(BaseInstaller):
 
     def set_apply_patches(self):
         self._set_nova_policy()
+        self._set_vitrage_template()
 
     def restore_apply_patches(self):
         self._restore_nova_policy()
@@ -107,3 +109,9 @@ class LocalInstaller(BaseInstaller):
             os.system('screen -S stack -p n-api -X stuff "^C^M^[[A^M"')
             self.add_policy_file = False
             self.policy_modified = False
+
+    def _set_vitrage_template(self):
+        set_vitrage_host_down_template()
+
+    def _restore_vitrage_template(self):
+        pass
