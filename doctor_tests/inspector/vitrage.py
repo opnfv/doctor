@@ -19,7 +19,8 @@ class VitrageInspector(BaseInspector):
     def __init__(self, conf, log):
         super(VitrageInspector, self).__init__(conf, log)
         self.auth = get_identity_auth()
-        self.keystone = keystone_client(get_session(auth=self.auth))
+        self.keystone = keystone_client(self.conf.keystone_version,
+                                        get_session(auth=self.auth))
         self.vitrage = vitrage_client(self.conf.vitrage_version,
                                       get_session(auth=self.auth))
         self.inspector_url = self.get_inspector_url()
