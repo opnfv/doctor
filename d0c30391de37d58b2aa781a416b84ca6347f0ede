@@ -1,0 +1,10 @@
+Code-Review+2: Bertrand Souville <souville@docomolab-euro.com>
+Verified+1: Bertrand Souville <souville@docomolab-euro.com>
+Code-Review+1: valentin boucher <valentin.boucher@kontron.com>
+Code-Review+1: Jose Lausuch <jalausuch@suse.com>
+Code-Review+2: Ryota Mibu <r-mibu@cq.jp.nec.com>
+Submitted-by: Ryota Mibu <r-mibu@cq.jp.nec.com>
+Submitted-at: Tue, 05 Dec 2017 01:00:48 +0000
+Reviewed-on: https://gerrit.opnfv.org/gerrit/48173
+Project: doctor
+Branch: refs/heads/stable/euphrates
