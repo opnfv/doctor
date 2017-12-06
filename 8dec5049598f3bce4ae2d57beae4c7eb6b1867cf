@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3d3df0_2b14db4c",
+        "filename": "doctor_tests/installer/local.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2017-12-06T08:28:09Z",
+      "side": 1,
+      "message": "What about the other Vitrage processes? (vitrage-collector, vitrage-api, vitrage-notifier)",
+      "range": {
+        "startLine": 57,
+        "startChar": 42,
+        "endLine": 57,
+        "endChar": 55
+      },
+      "revId": "8dec5049598f3bce4ae2d57beae4c7eb6b1867cf",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
