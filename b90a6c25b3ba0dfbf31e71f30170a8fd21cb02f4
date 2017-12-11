@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9a3d3df0_0ecc80bb",
+        "filename": "doctor_tests/user.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-12-11T07:02:12Z",
+      "side": 1,
+      "message": "Currently doctor doesn\u0027t run pep8 check, maybe we need to add the task.",
+      "parentUuid": "9a3d3df0_ae9f54b3",
+      "revId": "b90a6c25b3ba0dfbf31e71f30170a8fd21cb02f4",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a3d3df0_0ea7600d",
         "filename": "tox.ini",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2017-12-11T04:46:02Z",
       "side": 1,
       "message": "pike instead of ocata",
+      "revId": "b90a6c25b3ba0dfbf31e71f30170a8fd21cb02f4",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_ced1f858",
+        "filename": "tox.ini",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-12-11T07:02:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a3d3df0_0ea7600d",
       "revId": "b90a6c25b3ba0dfbf31e71f30170a8fd21cb02f4",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
