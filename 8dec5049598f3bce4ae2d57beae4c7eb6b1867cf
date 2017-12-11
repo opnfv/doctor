@@ -93,6 +93,30 @@
       "revId": "8dec5049598f3bce4ae2d57beae4c7eb6b1867cf",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_2ec0647b",
+        "filename": "doctor_tests/installer/local.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2017-12-11T07:12:12Z",
+      "side": 1,
+      "message": "Yes, it should be execute in master branch, as we support \u0027mark-down\u0027 for instances in Queens. :)\nI\u0027ll change to use systemd to restart the services.",
+      "parentUuid": "9a3d3df0_94a0a4a0",
+      "range": {
+        "startLine": 57,
+        "startChar": 23,
+        "endLine": 57,
+        "endChar": 77
+      },
+      "revId": "8dec5049598f3bce4ae2d57beae4c7eb6b1867cf",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
