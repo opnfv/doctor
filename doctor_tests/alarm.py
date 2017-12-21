@@ -52,7 +52,7 @@ class Alarm(object):
         for i in range(0, self.conf.instance_count):
             alarm_name = self.alarm_names[i]
             if alarm_name in alarms:
-                continue;
+                continue
             vm_name = '%s%d' % (self.conf.instance_basename, i)
             vm_id = getattr(servers[vm_name], 'id')
             alarm_request = dict(

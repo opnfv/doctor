@@ -6,6 +6,8 @@
 # which accompanies this distribution, and is available at
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
+
+
 def set_doctor_driver_conf(ssh_client, restart_cmd):
     cg_set_cmd = '''#!/bin/bash
 co_conf=/etc/congress/congress.conf
@@ -23,8 +25,9 @@ fi
 
     ret, output = ssh_client.ssh(cg_set_cmd)
     if ret:
-        raise Exception('Do the congress command in controller node failed....'
-                        'ret=%s, cmd=%s, output=%s' % (ret, cg_set_cmd, output))
+        raise Exception('Do the congress command in controller node failed...'
+                        'ret=%s, cmd=%s, output=%s'
+                        % (ret, cg_set_cmd, output))
 
 
 def restore_doctor_driver_conf(ssh_client, restart_cmd):
@@ -43,5 +46,6 @@ fi
 
     ret, output = ssh_client.ssh(cg_restore_cmd)
     if ret:
-        raise Exception('Do the congress command in controller node failed....'
-                        'ret=%s, cmd=%s, output=%s' % (ret, cg_restore_cmd, output))
+        raise Exception('Do the congress command in controller node failed...'
+                        'ret=%s, cmd=%s, output=%s'
+                        % (ret, cg_restore_cmd, output))

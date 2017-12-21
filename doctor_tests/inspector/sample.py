@@ -58,12 +58,15 @@ class SampleInspector(BaseInspector):
             try:
                 host = server.__dict__.get('OS-EXT-SRV-ATTR:host')
                 self.servers[host].append(server)
-                self.log.debug('get hostname=%s from server=%s' % (host, server))
+                self.log.debug('get hostname=%s from server=%s'
+                               % (host, server))
             except Exception as e:
-                self.log.info('can not get hostname from server=%s' % server)
+                self.log.info('can not get hostname from server=%s, error=%s'
+                              % (server, e))
 
     def get_inspector_url(self):
-        return 'http://%s:%s/events' % (self.conf.inspector.ip, self.conf.inspector.port)
+        return 'http://%s:%s/events' % (self.conf.inspector.ip,
+                                        self.conf.inspector.port)
 
     def start(self):
         self.log.info('sample inspector start......')
@@ -105,7 +108,8 @@ class SampleInspector(BaseInspector):
     @utils.run_async
     def _disable_compute_host(self, hostname):
         self.nova.services.force_down(hostname, 'nova-compute', True)
-        self.log.info('doctor mark host(%s) down at %s' % (hostname, time.time()))
+        self.log.info('doctor mark host(%s) down at %s'
+                      % (hostname, time.time()))
 
     @utils.run_async
     def _vms_reset_state(self, state, hostname):
@@ -113,7 +117,8 @@ class SampleInspector(BaseInspector):
         @utils.run_async
         def _vm_reset_state(nova, server, state):
             nova.servers.reset_state(server, state)
-            self.log.info('doctor mark vm(%s) error at %s' % (server, time.time()))
+            self.log.info('doctor mark vm(%s) error at %s'
+                          % (server, time.time()))
 
         thrs = []
         for nova, server in zip(self.novaclients, self.servers[hostname]):
@@ -129,7 +134,8 @@ class SampleInspector(BaseInspector):
         @utils.run_async
         def _set_port_data_plane_status(port_id):
             self.neutron.update_port(port_id, body)
-            self.log.info('doctor set data plane status %s on port %s' % (status, port_id))
+            self.log.info('doctor set data plane status %s on port %s'
+                          % (status, port_id))
 
         thrs = []
         params = {'binding:host_id': hostname}
@@ -153,9 +159,11 @@ class InspectorApp(Thread):
 
         @app.route('/events', methods=['PUT'])
         def event_posted():
-            self.log.info('event posted in sample inspector at %s' % time.time())
+            self.log.info('event posted in sample inspector at %s'
+                          % time.time())
             self.log.info('sample inspector = %s' % self.inspector)
-            self.log.info('sample inspector received data = %s' % request.data)
+            self.log.info('sample inspector received data = %s'
+                          % request.data)
             events = json.loads(request.data.decode('utf8'))
             self.inspector.handle_events(events)
             return "OK"
