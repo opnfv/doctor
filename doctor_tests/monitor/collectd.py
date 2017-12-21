@@ -9,7 +9,6 @@
 import os
 import socket
 import getpass
-import sys
 
 from doctor_tests.monitor.base import BaseMonitor
 
@@ -22,11 +21,11 @@ class CollectdMonitor(BaseMonitor):
         tmp_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         tmp_sock.connect(("8.8.8.8", 80))
 
-        ## control_ip is the IP of primary interface of control node i.e.
-        ## eth0, eno1. It is used by collectd monitor to communicate with
-        ## sample inspector.
-        ## TODO (umar) see if mgmt IP of control is a better option. Also
-        ## primary interface may not be the right option
+        # control_ip is the IP of primary interface of control node i.e.
+        # eth0, eno1. It is used by collectd monitor to communicate with
+        # sample inspector.
+        # TODO (umar) see if mgmt IP of control is a better option. Also
+        # primary interface may not be the right option
         self.control_ip = tmp_sock.getsockname()[0]
         self.compute_user = getpass.getuser()
         self.interface_name = os.environ.get('INTERFACE_NAME') or ''
@@ -35,18 +34,21 @@ class CollectdMonitor(BaseMonitor):
         self.username = os.environ.get('OS_USERNAME')
         self.password = os.environ.get('OS_PASSWORD')
         self.project_name = os.environ.get('OS_PROJECT_NAME')
-        self.user_domain_name = os.environ.get('OS_USER_DOMAIN_NAME') or 'default'
+        self.user_domain_name = \
+            os.environ.get('OS_USER_DOMAIN_NAME') or 'default'
         self.user_domain_id = os.environ.get('OS_USER_DOMAIN_ID')
-        self.project_domain_name = os.environ.get('OS_PROJECT_DOMAIN_NAME') or 'default'
+        self.project_domain_name = \
+            os.environ.get('OS_PROJECT_DOMAIN_NAME') or 'default'
         self.project_domain_id = os.environ.get('OS_PROJECT_DOMAIN_ID')
-        self.ssh_opts_cpu = '-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+        self.ssh_opts_cpu = \
+            '-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 
     def start(self, host):
         self.log.info("Collectd monitor start.........")
         self.compute_host = host.name
         self.compute_ip = host.ip
         f = open("%s/collectd.conf" % self.top_dir, 'w')
-        collectd_conf_file = """ 
+        collectd_conf_file = """
 Hostname %s
 FQDNLookup false
 Interval 1
@@ -93,16 +95,21 @@ LoadPlugin logfile
     SendNotification true
     DispatchValues false
 </Plugin>
-            """ % (self.compute_host, self.compute_user, self.control_ip, self.compute_ip, self.compute_host, self.compute_user,
-                   self.inspector_type, self.auth_url, self.username, self.password, self.project_name, self.user_domain_name,
-                   self.user_domain_id, self.project_domain_name, self.project_domain_id)
+            """ % (self.compute_host, self.compute_user, self.control_ip,
+                   self.compute_ip, self.compute_host, self.compute_user,
+                   self.inspector_type, self.auth_url, self.username,
+                   self.password, self.project_name, self.user_domain_name,
+                   self.user_domain_id, self.project_domain_name,
+                   self.project_domain_id)
         f.write(collectd_conf_file)
         f.close()
 
-        os.system(" scp %s %s/collectd.conf %s@%s: " % (self.ssh_opts_cpu, self.top_dir, self.compute_user, self.compute_ip))
+        os.system("scp %s %s/collectd.conf %s@%s: "
+                  % (self.ssh_opts_cpu, self.top_dir,
+                     self.compute_user, self.compute_ip))
         self.log.info("after first scp")
-        ## @TODO (umar) Always assuming that the interface is assigned an IP if
-        ## interface name is not provided. See if there is a better approach
+        # @TODO (umar) Always assuming that the interface is assigned an IP if
+        # interface name is not provided. See if there is a better approach
         os.system(""" ssh %s %s@%s \"if [ -n \"%s\" ]; then
             dev=%s
         else
@@ -115,15 +122,24 @@ LoadPlugin logfile
         else
             sudo touch \${collectd_conf}-doctor-created
         fi
-        sudo mv collectd.conf /opt/collectd/etc/collectd.conf\" """ % (self.ssh_opts_cpu, self.compute_user, self.compute_ip, self.interface_name, self.interface_name, self.compute_ip))
+        sudo mv collectd.conf /opt/collectd/etc/collectd.conf\" """
+                  % (self.ssh_opts_cpu, self.compute_user,
+                     self.compute_ip, self.interface_name,
+                     self.interface_name, self.compute_ip))
         self.log.info("after first ssh")
-        os.system(" scp  %s %s/monitor/collectd_plugin.py %s@%s:collectd_plugin.py " % (self.ssh_opts_cpu, self.top_dir, self.compute_user, self.compute_ip))
+        os.system("scp %s %s/monitor/collectd_plugin.py"
+                  "%s@%s:collectd_plugin.py"
+                  % (self.ssh_opts_cpu, self.top_dir,
+                     self.compute_user, self.compute_ip))
         self.log.info("after sec scp")
-        os.system(" ssh %s %s@%s \"sudo pkill collectd; sudo /opt/collectd/sbin/collectd\" " % (self.ssh_opts_cpu, self.compute_user, self.compute_ip))
+        os.system("ssh %s %s@%s \"sudo pkill collectd;"
+                  "sudo /opt/collectd/sbin/collectd\" "
+                  % (self.ssh_opts_cpu, self.compute_user, self.compute_ip))
         self.log.info("after sec ssh")
 
     def stop(self):
-        os.system(" ssh %s %s@%s \"sudo pkill collectd\" " % (self.ssh_opts_cpu, self.compute_user, self.compute_ip))
+        os.system(" ssh %s %s@%s \"sudo pkill collectd\" "
+                  % (self.ssh_opts_cpu, self.compute_user, self.compute_ip))
 
     def cleanup(self):
         os.system(""" ssh %s %s@%s \"

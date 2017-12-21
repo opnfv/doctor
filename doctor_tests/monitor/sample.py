@@ -51,16 +51,20 @@ class SampleMonitor(BaseMonitor):
         }
 
         auth_token = self.session.get_token() if \
-                     self.conf.inspector.type != 'sample' else None
+            self.conf.inspector.type != 'sample' else None
         headers = {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
             'X-Auth-Token': auth_token,
         }
         if self.conf.inspector.type != Inspector.VITRAGE:
-            requests.put(self.inspector_url, data=json.dumps([data]), headers=headers)
+            requests.put(self.inspector_url,
+                         data=json.dumps([data]),
+                         headers=headers)
         else:
-            requests.post(self.inspector_url, data=json.dumps(data), headers=headers)
+            requests.post(self.inspector_url,
+                          data=json.dumps(data),
+                          headers=headers)
 
 
 class Pinger(Thread):

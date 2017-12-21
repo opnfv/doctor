@@ -9,6 +9,7 @@
 import abc
 import six
 
+
 @six.add_metaclass(abc.ABCMeta)
 class BaseInstaller(object):
     def __init__(self, conf, log):

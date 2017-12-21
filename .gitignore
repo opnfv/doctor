@@ -4,6 +4,7 @@
 **.log
 *.pyc
 /*.egg-info/
+.eggs/
 /build/
 /docs_build/
 /docs_output/
