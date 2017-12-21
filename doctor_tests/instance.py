@@ -54,14 +54,15 @@ class Instance(object):
         flavors = {flavor.name: flavor for flavor in self.nova.flavors.list()}
         flavor = flavors.get(self.conf.flavor)
         image = self.nova.glance.find_image(self.conf.image_name)
-        network = self.neutron.list_networks(name=self.conf.net_name)['networks'][0]
+        network = \
+            self.neutron.list_networks(name=self.conf.net_name)['networks'][0]
         nics = {'net-id': network['id']}
 
         self.servers = \
             {getattr(server, 'name'): server
              for server in self.nova.servers.list()}
         for i in range(0, self.conf.instance_count):
-            vm_name = "%s%d"%(self.conf.instance_basename, i)
+            vm_name = "%s%d" % (self.conf.instance_basename, i)
             self.vm_names.append(vm_name)
             if vm_name not in self.servers:
                 server = self.nova.servers.create(vm_name, image,
@@ -111,4 +112,3 @@ class Instance(object):
             count += 1
             time.sleep(2)
         raise Exception('time out for vm launch')
-

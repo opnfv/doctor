@@ -9,7 +9,8 @@
 import os
 
 
-vitrage_template_file = '/etc/vitrage/templates/vitrage_host_down_scenarios.yaml'
+vitrage_template_file = \
+    '/etc/vitrage/templates/vitrage_host_down_scenarios.yaml'
 
 template = """
 metadata:
@@ -91,8 +92,10 @@ scenarios:
 
 def set_vitrage_host_down_template():
     if os.path.isfile(vitrage_template_file):
-        print('Vitrage host_down template file: %s already exists.' % vitrage_template_file)
+        print('Vitrage host_down template file: %s already exists.'
+              % vitrage_template_file)
     else:
-        print('Create Vitrage host_down template file:%s.' % vitrage_template_file)
+        print('Create Vitrage host_down template file:%s.'
+              % vitrage_template_file)
         with open(vitrage_template_file, 'w') as file:
             file.write(template)

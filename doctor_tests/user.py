@@ -72,8 +72,8 @@ class User(object):
 
     def _create_project(self):
         """create test project"""
-        self.projects = {project.name: project
-                    for project in self.keystone.tenants.list()}
+        self.projects = {project.name: project for project
+                         in self.keystone.tenants.list()}
         if self.conf.doctor_project not in self.projects:
             test_project = \
                 self.keystone.tenants.create(self.conf.doctor_project)

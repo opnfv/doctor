@@ -53,10 +53,12 @@ class Image(object):
                 resp = urllib.request.urlopen(self.conf.image_download_url)
                 with open(self.conf.image_filename, "wb") as file:
                     file.write(resp.read())
-            self.image = self.glance.images.create(name=self.conf.image_name,
-                                                   disk_format=self.conf.image_format,
-                                                   container_format="bare",
-                                                   visibility="public")
+            self.image = \
+                self.glance.images.create(
+                    name=self.conf.image_name,
+                    disk_format=self.conf.image_format,
+                    container_format="bare",
+                    visibility="public")
             self.glance.images.upload(self.image['id'],
                                       open(self.conf.image_filename, 'rb'))
         else:
