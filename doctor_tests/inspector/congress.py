@@ -20,13 +20,13 @@ class CongressInspector(BaseInspector):
     policy = 'classification'
     rules = {
         'host_down':
-            'host_down(host) :- doctor:events(hostname=host, type="compute.host.down", status="down")',
+            'host_down(host) :- doctor:events(hostname=host, type="compute.host.down", status="down")',       # noqa
         'active_instance_in_host':
-            'active_instance_in_host(vmid, host) :- nova:servers(id=vmid, host_name=host, status="ACTIVE")',
+            'active_instance_in_host(vmid, host) :- nova:servers(id=vmid, host_name=host, status="ACTIVE")',  # noqa
         'host_force_down':
-            'execute[nova:services.force_down(host, "nova-compute", "True")] :- host_down(host)',
+            'execute[nova:services.force_down(host, "nova-compute", "True")] :- host_down(host)',             # noqa
         'error_vm_states':
-            'execute[nova:servers.reset_state(vmid, "error")] :- host_down(host), active_instance_in_host(vmid, host)'
+            'execute[nova:servers.reset_state(vmid, "error")] :- host_down(host), active_instance_in_host(vmid, host)'    # noqa
     }
 
     def __init__(self, conf, log):
@@ -38,12 +38,14 @@ class CongressInspector(BaseInspector):
 
     def _init_driver_and_ds(self):
         datasources = \
-            {ds['name']: ds for ds in self.congress.list_datasources()['results']}
+            {ds['name']: ds for ds in
+             self.congress.list_datasources()['results']}
 
         # check nova_api version
         nova_api_version = datasources['nova']['config'].get('api_version')
         if nova_api_version and nova_api_version < self.nova_api_min_version:
-            raise Exception('Congress Nova datasource API version < nova_api_min_version(%s)'
+            raise Exception('Congress Nova datasource API '
+                            'version < nova_api_min_version(%s)'
                             % self.nova_api_min_version)
 
         # create doctor datasource if it's not exist
@@ -54,7 +56,8 @@ class CongressInspector(BaseInspector):
 
         # check whether doctor driver exist
         drivers = \
-            {driver['id']: driver for driver in self.congress.list_drivers()['results']}
+            {driver['id']: driver for driver in
+             self.congress.list_drivers()['results']}
         if self.doctor_driver not in drivers:
             raise Exception('Do not support doctor driver in congress')
 
@@ -66,7 +69,8 @@ class CongressInspector(BaseInspector):
         ds = self.congress.list_datasources()['results']
         doctor_ds = next((item for item in ds if item['driver'] == 'doctor'),
                          None)
-        congress_endpoint = self.congress.httpclient.get_endpoint(auth=self.auth)
+        congress_endpoint = \
+            self.congress.httpclient.get_endpoint(auth=self.auth)
         return ('%s/v1/data-sources/%s/tables/events/rows' %
                 (congress_endpoint, doctor_ds['id']))
 

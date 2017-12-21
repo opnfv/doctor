@@ -55,8 +55,8 @@ class ConsumerApp(Thread):
         @app.route('/failure', methods=['POST'])
         def event_posted():
             self.log.info('doctor consumer notified at %s' % time.time())
-            self.log.info('sample consumer received data = %s' % request.data)
             data = json.loads(request.data.decode('utf8'))
+            self.log.info('sample consumer received data = %s' % data)
             return 'OK'
 
         @app.route('/shutdown', methods=['POST'])

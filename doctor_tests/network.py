@@ -47,7 +47,8 @@ class Network(object):
         self.log.info('network create end.......')
 
         self.log.info('subnet create start.......')
-        subnets = self.neutron.list_subnets(network_id=self.net['id'])['subnets']
+        subnets = \
+            self.neutron.list_subnets(network_id=self.net['id'])['subnets']
         subnet_param = {'name': net_name, 'network_id': self.net['id'],
                         'cidr': self.conf.net_cidr, 'ip_version': 4,
                         'enable_dhcp': False}

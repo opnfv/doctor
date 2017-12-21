@@ -93,7 +93,6 @@ class User(object):
 
     def _create_user(self):
         """create test user"""
-        project = self.projects.get(self.conf.doctor_project)
         self.users = {user.name: user for user in
                       self.keystone.users.list(
                           domain=self.conf.doctor_domain_id)}

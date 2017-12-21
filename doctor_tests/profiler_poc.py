@@ -12,7 +12,8 @@ PoC of performance profiler for OPNFV doctor project
 
 Usage:
 
-Export environment variables to set timestamp at each checkpoint in millisecond.
+Export environment variables to set timestamp at each
+checkpoint in millisecond.
 Valid check points are: DOCTOR_PROFILER_T{00-09}
 
 See also: https://goo.gl/98Osig
@@ -53,7 +54,7 @@ link down:{T00}|      |      |      |          |        |      |      |      |
                                                  evaluated event:{T07}|      |
                                                             fired alarm:{T08}|
                                                                 received alarm:{T09}
-"""
+"""    # noqa
 
 
 def main(log=None):
