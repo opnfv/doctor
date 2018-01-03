@@ -6,3 +6,12 @@
 # which accompanies this distribution, and is available at
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
+from oslo_config import cfg
+
+
+OPTS = [
+    cfg.StrOpt('test_case',
+               default='all',
+               help='the name of test case',
+               required=False),
+]

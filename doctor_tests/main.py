@@ -68,6 +68,9 @@ class DoctorTest(object):
 
         # creating test user...
         self.user.create()
+
+    def setup_fault_management(self):
+        # user settings...
         self.user.update_quota()
 
         # creating VM...
@@ -79,20 +82,21 @@ class DoctorTest(object):
         self.alarm.create()
 
         # starting doctor sample components...
-        self.inspector.start()
+        # tbd tojuvone: move inspector and consumer to common setup
+        # when they support updating VMs via instance.create and
+        # instance.delete alarm
 
+        self.inspector.start()
+        self.consumer.start()
         self.down_host = self.get_host_info_for_random_vm()
         self.monitor.start(self.down_host)
 
-        self.consumer.start()
-
-    def run(self):
-        """run doctor test"""
+    def test_fault_management(self):
         try:
-            LOG.info('doctor test starting.......')
+            LOG.info('doctor fault management test starting.......')
 
             # prepare test env
-            self.setup()
+            self.setup_fault_management()
 
             # wait for aodh alarms are updated in caches for event evaluator,
             # sleep time should be larger than event_alarm_cache_ttl
@@ -111,17 +115,55 @@ class DoctorTest(object):
 
             notification_time = calculate_notification_time(LogFile)
             if notification_time < 1 and notification_time > 0:
-                LOG.info('doctor test successfully, notification_time=%s'
-                         % notification_time)
+                LOG.info('doctor fault management test successfully, '
+                         'notification_time=%s' % notification_time)
             else:
-                LOG.error('doctor test failed, notification_time=%s'
-                          % notification_time)
+                LOG.error('doctor fault management test failed, '
+                          'notification_time=%s' % notification_time)
                 sys.exit(1)
 
             if self.conf.profiler_type:
-                LOG.info('doctor test begin to run profile.......')
+                LOG.info('doctor fault management test begin to run '
+                         'profile.......')
                 self.collect_logs()
                 self.run_profiler()
+        except Exception as e:
+            LOG.error('doctor fault management test failed, '
+                      'Exception=%s' % e)
+            sys.exit(1)
+        finally:
+            self.cleanup_fault_management()
+
+    def _amount_compute_nodes(self):
+        services = self.nova.services.list(binary='nova-compute')
+        return len(services)
+
+    def test_maintenance(self):
+        cnodes = self._amount_compute_nodes()
+        if cnodes < 3:
+            # need 2 compute for redundancy and one spare to migrate
+            LOG.info('not enough compute nodes, skipping doctor '
+                     'maintenance test')
+            return
+        try:
+            LOG.info('doctor maintenance test starting.......')
+            # TODO (tojuvone) test setup and actual test
+        except Exception as e:
+            LOG.error('doctor maintenance test failed, Exception=%s' % e)
+            sys.exit(1)
+        # TODO (tojuvone) finally: test case specific cleanup
+
+    def run(self):
+        """run doctor tests"""
+        try:
+            LOG.info('doctor test starting.......')
+            # prepare common test env
+            self.setup()
+            if self.conf.test_case == 'all':
+                self.test_fault_management()
+                self.test_maintenance()
+            else:
+                getattr(self, self.conf.test_case)()
         except Exception as e:
             LOG.error('doctor test failed, Exception=%s' % e)
             sys.exit(1)
@@ -196,17 +238,19 @@ class DoctorTest(object):
 
         profiler_main(log=LOG)
 
-    def cleanup(self):
+    def cleanup_fault_management(self):
         self.unset_forced_down_hosts()
         self.inspector.stop()
         self.monitor.stop()
         self.consumer.stop()
-        self.installer.cleanup()
         self.alarm.delete()
         self.instance.delete()
         self.network.delete()
-        self.image.delete()
         self.fault.cleanup()
+
+    def cleanup(self):
+        self.installer.cleanup()
+        self.image.delete()
         self.user.delete()
 
 
