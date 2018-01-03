@@ -68,6 +68,9 @@ class DoctorTest(object):
 
         # creating test user...
         self.user.create()
+
+    def setup_fault_management(self):
+        # user settings...
         self.user.update_quota()
 
         # creating VM...
@@ -79,23 +82,25 @@ class DoctorTest(object):
         self.alarm.create()
 
         # starting doctor sample components...
-        self.inspector.start()
+        # tbd tojuvone: move inspector and consumer to common setup
+        # when they support updating VMs via instance.create and
+        # instance.delete alarm
 
+        self.inspector.start()
+        self.consumer.start()
         self.down_host = self.get_host_info_for_random_vm()
         self.monitor.start(self.down_host)
 
-        self.consumer.start()
-
-    def run(self):
-        """run doctor test"""
+    def test_fault_management(self):
         try:
-            LOG.info('doctor test starting.......')
+            LOG.info('doctor fault management test starting.......')
 
             # prepare test env
-            self.setup()
+            self.setup_fault_management()
 
             # wait for aodh alarms are updated in caches for event evaluator,
-            # sleep time should be larger than event_alarm_cache_ttl(default 60)
+            # sleep time should be larger than event_alarm_cache_ttl
+            # (default 60)
             time.sleep(60)
 
             # injecting host failure...
@@ -110,15 +115,54 @@ class DoctorTest(object):
 
             notification_time = calculate_notification_time(LogFile)
             if notification_time < 1 and notification_time > 0:
-                LOG.info('doctor test successfully, notification_time=%s' % notification_time)
+                LOG.info('doctor fault management test successfully, '
+                         'notification_time=%s' % notification_time)
             else:
-                LOG.error('doctor test failed, notification_time=%s' % notification_time)
+                LOG.error('doctor fault management test failed, '
+                          'notification_time=%s' % notification_time)
                 sys.exit(1)
 
             if self.conf.profiler_type:
-                LOG.info('doctor test begin to run profile.......')
+                LOG.info('doctor fault management test begin to run '
+                         'profile.......')
                 self.collect_logs()
                 self.run_profiler()
+        except Exception as e:
+            LOG.error('doctor fault management test failed, '
+                      'Exception=%s' % e)
+            sys.exit(1)
+        finally:
+            self.cleanup_fault_management()
+
+    def _amount_compute_nodes(self):
+        services = self.nova.services.list(binary='nova-compute')
+        return len(services)
+
+    def test_maintenance(self):
+        cnodes = self._amount_compute_nodes()
+        if cnodes < 3:
+            # need 2 compute for redundancy and one spare to migrate
+            LOG.info('not enough compute nodes, skipping doctor '
+                     'maintenance test')
+            return
+        try:
+            LOG.info('doctor maintenance test starting.......')
+            # TODO (tojuvone) test setup and actual test
+        except Exception as e:
+            LOG.error('doctor maintenance test failed, Exception=%s' % e)
+            sys.exit(1)
+        # TODO (tojuvone) finally: test case specific cleanup
+
+    def run(self):
+        """run doctor tests"""
+        try:
+            LOG.info('doctor test starting.......')
+            # prepare common test env
+            self.setup()
+
+            self.test_fault_management()
+            self.test_maintenance()
+
         except Exception as e:
             LOG.error('doctor test failed, Exception=%s' % e)
             sys.exit(1)
@@ -144,13 +188,15 @@ class DoctorTest(object):
         return Host(host_name, host_ip)
 
     def check_host_status(self, hostname, state):
-        service = self.nova.services.list(host=hostname, binary='nova-compute')
+        service = self.nova.services.list(host=hostname,
+                                          binary='nova-compute')
         host_state = service[0].__dict__.get('state')
         assert host_state == state
 
     def unset_forced_down_hosts(self):
         if self.down_host:
-            self.nova.services.force_down(self.down_host.name, 'nova-compute', False)
+            self.nova.services.force_down(self.down_host.name,
+                                          'nova-compute', False)
             time.sleep(2)
             self.check_host_status(self.down_host.name, 'up')
 
@@ -178,25 +224,32 @@ class DoctorTest(object):
         # TODO(yujunz) check the actual delay to verify time sync status
         # expected ~1s delay from $trigger to $linkdown
         relative_start = linkdown
-        os.environ['DOCTOR_PROFILER_T00'] = str(int((linkdown - relative_start)*1000))
-        os.environ['DOCTOR_PROFILER_T01'] = str(int((detected - relative_start) * 1000))
-        os.environ['DOCTOR_PROFILER_T03'] = str(int((vmdown - relative_start) * 1000))
-        os.environ['DOCTOR_PROFILER_T04'] = str(int((hostdown - relative_start) * 1000))
-        os.environ['DOCTOR_PROFILER_T09'] = str(int((notified - relative_start) * 1000))
+        os.environ['DOCTOR_PROFILER_T00'] = \
+            str(int((linkdown - relative_start)*1000))
+        os.environ['DOCTOR_PROFILER_T01'] = \
+            str(int((detected - relative_start) * 1000))
+        os.environ['DOCTOR_PROFILER_T03'] = \
+            str(int((vmdown - relative_start) * 1000))
+        os.environ['DOCTOR_PROFILER_T04'] = \
+            str(int((hostdown - relative_start) * 1000))
+        os.environ['DOCTOR_PROFILER_T09'] = \
+            str(int((notified - relative_start) * 1000))
 
         profiler_main(log=LOG)
 
-    def cleanup(self):
+    def cleanup_fault_management(self):
         self.unset_forced_down_hosts()
         self.inspector.stop()
         self.monitor.stop()
         self.consumer.stop()
-        self.installer.cleanup()
         self.alarm.delete()
         self.instance.delete()
         self.network.delete()
-        self.image.delete()
         self.fault.cleanup()
+
+    def cleanup(self):
+        self.installer.cleanup()
+        self.image.delete()
         self.user.delete()
 
 
@@ -206,7 +259,8 @@ def main():
     doctor_root_dir = os.path.dirname(test_dir)
 
     config_file_dir = '{0}/{1}'.format(doctor_root_dir, 'etc/')
-    config_files = [join(config_file_dir, f) for f in os.listdir(config_file_dir)
+    config_files = [join(config_file_dir, f)
+                    for f in os.listdir(config_file_dir)
                     if isfile(join(config_file_dir, f))]
 
     conf = config.prepare_conf(args=sys.argv[1:],
