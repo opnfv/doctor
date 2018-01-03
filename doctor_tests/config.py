@@ -23,6 +23,13 @@ from doctor_tests import profiler_poc
 from doctor_tests import user
 
 
+OPTS = [
+    cfg.StrOpt('test_case',
+               default='all',
+               help='the name of test case',
+               required=False),
+]
+
 def list_opts():
     return [
         ('installer', installer.OPTS),
@@ -36,7 +43,8 @@ def list_opts():
             network.OPTS,
             instance.OPTS,
             alarm.OPTS,
-            profiler_poc.OPTS))
+            profiler_poc.OPTS,
+            OPTS))
     ]
 
 
