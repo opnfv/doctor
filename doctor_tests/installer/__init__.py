@@ -14,7 +14,7 @@ from oslo_utils import importutils
 OPTS = [
     cfg.StrOpt('type',
                default=os.environ.get('INSTALLER_TYPE', 'local'),
-               choices=['local', 'apex'],
+               choices=['local', 'apex', 'daisy'],
                help='the type of installer',
                required=True),
     cfg.StrOpt('ip',
@@ -29,7 +29,8 @@ OPTS = [
 
 _installer_name_class_mapping = {
     'local': 'doctor_tests.installer.local.LocalInstaller',
-    'apex': 'doctor_tests.installer.apex.ApexInstaller'
+    'apex': 'doctor_tests.installer.apex.ApexInstaller',
+    'daisy': 'doctor_tests.installer.daisy.DaisyInstaller'
 }
 
 
