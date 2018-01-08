@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3d3df0_80eaf0a9",
+        "filename": "doctor_tests/consumer/sample.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2018-01-08T13:47:05Z",
+      "side": 1,
+      "message": "good catch, using decoded string should be better to be printed out",
+      "range": {
+        "startLine": 59,
+        "startChar": 12,
+        "endLine": 59,
+        "endChar": 70
+      },
+      "revId": "d0486d85d8799e6590d616354e6d27b726353569",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_e0d2dcfe",
+        "filename": "doctor_tests/identity_auth.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2018-01-08T13:47:05Z",
+      "side": 1,
+      "message": "how about using \u0027()\u0027 instead of \u0027\\\u0027?\n\n    project_name \u003d (project\n        or os.environ.get(\u0027OS_PROJECT_NAME\u0027)\n        or os.environ.get(\u0027OS_TENANT_NAME\u0027))",
+      "range": {
+        "startLine": 21,
+        "startChar": 19,
+        "endLine": 23,
+        "endChar": 43
+      },
+      "revId": "d0486d85d8799e6590d616354e6d27b726353569",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_00d6e0f0",
+        "filename": "doctor_tests/installer/apex.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2018-01-08T13:47:05Z",
+      "side": 1,
+      "message": "you can just wrap by \u0027()\u0027.",
+      "range": {
+        "startLine": 101,
+        "startChar": 18,
+        "endLine": 105,
+        "endChar": 40
+      },
+      "revId": "d0486d85d8799e6590d616354e6d27b726353569",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
