@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3d3df0_8515e24a",
+        "filename": "doctor_tests/user.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-01-08T10:15:12Z",
+      "side": 1,
+      "message": "I hit this also this is how it works:\nfrom keystoneclient import exceptions as ks_exceptions\n\ntry:\n            self.keystone.roles.check(role, user\u003duser, project\u003dproject)\n            self.log.info(\u0027Already grant a role:%s to user: %s on\u0027\n                          \u0027 project: %s\u0027\n                          % (role_name, user_name,\n                             self.conf.doctor_project))\n        except ks_exceptions.NotFound:\n            self.keystone.roles.grant(role, user\u003duser, project\u003dproject)\n            roles_for_user[role_name] \u003d role",
+      "range": {
+        "startLine": 139,
+        "startChar": 8,
+        "endLine": 147,
+        "endChar": 78
+      },
+      "revId": "6adfe4a88a5660765ce9ed3f5431924977d74ef1",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
