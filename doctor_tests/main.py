@@ -95,7 +95,8 @@ class DoctorTest(object):
             self.setup()
 
             # wait for aodh alarms are updated in caches for event evaluator,
-            # sleep time should be larger than event_alarm_cache_ttl(default 60)
+            # sleep time should be larger than event_alarm_cache_ttl
+            # (default 60)
             time.sleep(60)
 
             # injecting host failure...
@@ -110,9 +111,11 @@ class DoctorTest(object):
 
             notification_time = calculate_notification_time(LogFile)
             if notification_time < 1 and notification_time > 0:
-                LOG.info('doctor test successfully, notification_time=%s' % notification_time)
+                LOG.info('doctor test successfully, notification_time=%s'
+                         % notification_time)
             else:
-                LOG.error('doctor test failed, notification_time=%s' % notification_time)
+                LOG.error('doctor test failed, notification_time=%s'
+                          % notification_time)
                 sys.exit(1)
 
             if self.conf.profiler_type:
@@ -144,13 +147,15 @@ class DoctorTest(object):
         return Host(host_name, host_ip)
 
     def check_host_status(self, hostname, state):
-        service = self.nova.services.list(host=hostname, binary='nova-compute')
+        service = self.nova.services.list(host=hostname,
+                                          binary='nova-compute')
         host_state = service[0].__dict__.get('state')
         assert host_state == state
 
     def unset_forced_down_hosts(self):
         if self.down_host:
-            self.nova.services.force_down(self.down_host.name, 'nova-compute', False)
+            self.nova.services.force_down(self.down_host.name,
+                                          'nova-compute', False)
             time.sleep(2)
             self.check_host_status(self.down_host.name, 'up')
 
@@ -178,11 +183,16 @@ class DoctorTest(object):
         # TODO(yujunz) check the actual delay to verify time sync status
         # expected ~1s delay from $trigger to $linkdown
         relative_start = linkdown
-        os.environ['DOCTOR_PROFILER_T00'] = str(int((linkdown - relative_start)*1000))
-        os.environ['DOCTOR_PROFILER_T01'] = str(int((detected - relative_start) * 1000))
-        os.environ['DOCTOR_PROFILER_T03'] = str(int((vmdown - relative_start) * 1000))
-        os.environ['DOCTOR_PROFILER_T04'] = str(int((hostdown - relative_start) * 1000))
-        os.environ['DOCTOR_PROFILER_T09'] = str(int((notified - relative_start) * 1000))
+        os.environ['DOCTOR_PROFILER_T00'] = \
+            str(int((linkdown - relative_start) * 1000))
+        os.environ['DOCTOR_PROFILER_T01'] = \
+            str(int((detected - relative_start) * 1000))
+        os.environ['DOCTOR_PROFILER_T03'] = \
+            str(int((vmdown - relative_start) * 1000))
+        os.environ['DOCTOR_PROFILER_T04'] = \
+            str(int((hostdown - relative_start) * 1000))
+        os.environ['DOCTOR_PROFILER_T09'] = \
+            str(int((notified - relative_start) * 1000))
 
         profiler_main(log=LOG)
 
@@ -206,7 +216,8 @@ def main():
     doctor_root_dir = os.path.dirname(test_dir)
 
     config_file_dir = '{0}/{1}'.format(doctor_root_dir, 'etc/')
-    config_files = [join(config_file_dir, f) for f in os.listdir(config_file_dir)
+    config_files = [join(config_file_dir, f)
+                    for f in os.listdir(config_file_dir)
                     if isfile(join(config_file_dir, f))]
 
     conf = config.prepare_conf(args=sys.argv[1:],

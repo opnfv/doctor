@@ -33,7 +33,8 @@ def set_notifier_topic():
                 publishers.append(event_notifier_topic)
                 config_modified = True
             else:
-                print('NOTE: event notifier is configured in ceilometer as we needed')
+                print('NOTE: event notifier is configured'
+                      'in ceilometer as we needed')
 
     if config_modified:
         shutil.copyfile(ep_file, ep_file_bak)

@@ -72,9 +72,11 @@ class ApexInstaller(BaseInstaller):
                   "| sed -e 's/^.*ctlplane=//' |awk '{print $1}'"
         ret, controllers = self.client.ssh(command)
         if ret:
-            raise Exception('Exec command to get controller ips in Apex installer failed'
-                            'ret=%s, output=%s' % (ret, controllers))
-        self.log.info('Get controller_ips:%s from Apex installer' % controllers)
+            raise Exception('Exec command to get controller ips'
+                            'in Apex installer failed, ret=%s, output=%s'
+                            % (ret, controllers))
+        self.log.info('Get controller_ips:%s from Apex installer'
+                      % controllers)
         self.controllers = controllers
 
     def get_host_ip_from_hostname(self, hostname):
@@ -82,20 +84,31 @@ class ApexInstaller(BaseInstaller):
 
         hostname_in_undercloud = hostname.split('.')[0]
 
-        command = "source stackrc; nova show %s  | awk '/ ctlplane network /{print $5}'" % (hostname_in_undercloud)
+        command = "source stackrc; nova show %s | awk '/ ctlplane network /{print $5}'" % (hostname_in_undercloud)   # noqa
         ret, host_ip = self.client.ssh(command)
         if ret:
-            raise Exception('Exec command to get host ip from hostname(%s) in Apex installer failed'
-                            'ret=%s, output=%s' % (hostname, ret, host_ip))
-        self.log.info('Get host_ip:%s from host_name:%s in Apex installer' % (host_ip, hostname))
+            raise Exception('Exec command to get host ip from hostname(%s)'
+                            'in Apex installer failed, ret=%s, output=%s'
+                            % (hostname, ret, host_ip))
+        self.log.info('Get host_ip:%s from host_name:%s in Apex installer'
+                      % (host_ip, hostname))
         return host_ip[0]
 
     def setup_stunnel(self):
-        self.log.info('Setup ssh stunnel in controller nodes in Apex installer......')
+        self.log.info('Setup ssh stunnel in controller nodes'
+                      ' in Apex installer......')
         for node_ip in self.controllers:
-            cmd = "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i %s %s@%s -R %s:localhost:%s sleep 600 > ssh_tunnel.%s.log 2>&1 < /dev/null &" \
-                  % (self.key_file, self.node_user_name, node_ip,
-                     self.conf.consumer.port, self.conf.consumer.port, node_ip)
+            cmd = ("ssh -o UserKnownHostsFile=/dev/null"
+                   "-o StrictHostKeyChecking=no"
+                   "-i %s %s@%s -R %s:localhost:%s"
+                   "sleep 600 > ssh_tunnel.%s.log"
+                   "2>&1 < /dev/null &"
+                   % (self.key_file,
+                      self.node_user_name,
+                      node_ip,
+                      self.conf.consumer.port,
+                      self.conf.consumer.port,
+                      node_ip))
             server = subprocess.Popen(cmd, shell=True)
             self.servers.append(server)
             server.communicate()
@@ -104,7 +117,8 @@ class ApexInstaller(BaseInstaller):
         self.log.info('Set apply patches start......')
 
         for node_ip in self.controllers:
-            client = SSHClient(node_ip, self.node_user_name, key_filename=self.key_file)
+            client = SSHClient(node_ip, self.node_user_name,
+                               key_filename=self.key_file)
             self.controller_clients.append(client)
             self._ceilometer_apply_patches(client, self.cm_set_script)
 
@@ -116,13 +130,15 @@ class ApexInstaller(BaseInstaller):
 
     def _ceilometer_apply_patches(self, ssh_client, script_name):
         installer_dir = os.path.dirname(os.path.realpath(__file__))
-        script_abs_path = '{0}/{1}/{2}'.format(installer_dir, 'common', script_name)
+        script_abs_path = '{0}/{1}/{2}'.format(installer_dir,
+                                               'common', script_name)
 
         ssh_client.scp(script_abs_path, script_name)
         cmd = 'sudo python %s' % script_name
         ret, output = ssh_client.ssh(cmd)
         if ret:
-            raise Exception('Do the ceilometer command in controller node failed....'
-                            'ret=%s, cmd=%s, output=%s' % (ret, cmd, output))
-        ssh_client.ssh('sudo systemctl restart openstack-ceilometer-notification.service')
-
+            raise Exception('Do the ceilometer command in controller'
+                            ' node failed, ret=%s, cmd=%s, output=%s'
+                            % (ret, cmd, output))
+        ssh_client.ssh('sudo systemctl restart '
+                       'openstack-ceilometer-notification.service')

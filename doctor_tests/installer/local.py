@@ -11,7 +11,8 @@ import shutil
 import subprocess
 
 from doctor_tests.installer.base import BaseInstaller
-from doctor_tests.installer.common.vitrage import set_vitrage_host_down_template
+from doctor_tests.installer.common.vitrage import \
+    set_vitrage_host_down_template
 from doctor_tests.common.constants import Inspector
 from doctor_tests.common.utils import load_json_file
 from doctor_tests.common.utils import write_json_file
@@ -36,7 +37,8 @@ class LocalInstaller(BaseInstaller):
         self.restore_apply_patches()
 
     def get_ssh_key_from_installer(self):
-        self.log.info('Assuming SSH keys already exchanged with computer for local installer type')
+        self.log.info('Assuming SSH keys already exchanged with computer'
+                      'for local installer type')
         return None
 
     def get_host_ip_from_hostname(self, hostname):
@@ -47,7 +49,8 @@ class LocalInstaller(BaseInstaller):
         stdout, stderr = server.communicate()
         host_ip = stdout.strip().decode("utf-8")
 
-        self.log.info('Get host_ip:%s from host_name:%s in local installer' % (host_ip, hostname))
+        self.log.info('Get host_ip:%s from host_name:%s in local installer'
+                      % (host_ip, hostname))
         return host_ip
 
     def set_apply_patches(self):
@@ -103,7 +106,8 @@ class LocalInstaller(BaseInstaller):
 
     def _restore_nova_policy(self):
         if self.policy_modified:
-            shutil.copyfile(self.nova_policy_file_backup, self.nova_policy_file)
+            shutil.copyfile(self.nova_policy_file_backup,
+                            self.nova_policy_file)
             os.remove(self.nova_policy_file_backup)
         elif self.add_policy_file:
             os.remove(self.nova_policy_file)

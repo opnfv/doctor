@@ -23,7 +23,7 @@ from congressclient.v1 import client
 def write_debug(str_write, write_type, compute_user):
     file_name = ('/home/%s/monitor.log' % compute_user)
     file_tmp = open(file_name, write_type)
-    file_tmp.write( "%s" % str_write)
+    file_tmp.write("%s" % str_write)
     file_tmp.close()
 
 
@@ -84,48 +84,51 @@ class DoctorMonitorCollectd(object):
                 collectd.info('Unknown config key "%s"' % key)
 
     def init_collectd(self):
-        write_debug("Compute node collectd monitor start at %s\n\n" % datetime.now().isoformat(), "w", self.compute_user)
+        write_debug("Compute node collectd monitor start at %s\n\n"
+                    % datetime.now().isoformat(), "w", self.compute_user)
 
         if self.inspector_type == 'sample':
             self.inspector_url = ('http://%s:12345/events' % self.control_ip)
         elif self.inspector_type == 'congress':
             loader = loading.get_plugin_loader('password')
-            self.auth = loader.load_from_options(auth_url=self.os_auth_url,
-                        username=self.os_username,
-                        password=self.os_password,
-                        project_name=self.os_project_name,
-                        user_domain_name=self.os_user_domain_name,
-                        user_domain_id=self.os_user_domain_id,
-                        project_domain_name=self.os_project_domain_name,
-                        project_domain_id=self.os_project_domain_id)
-            self.sess=session.Session(auth=self.auth)
+            self.auth = loader.load_from_options(
+                auth_url=self.os_auth_url,
+                username=self.os_username,
+                password=self.os_password,
+                project_name=self.os_project_name,
+                user_domain_name=self.os_user_domain_name,
+                user_domain_id=self.os_user_domain_id,
+                project_domain_name=self.os_project_domain_name,
+                project_domain_id=self.os_project_domain_id)
+            self.sess = session.Session(auth=self.auth)
             congress = client.Client(session=self.sess, service_type='policy')
             ds = congress.list_datasources()['results']
-            doctor_ds = next((item for item in ds if item['driver'] == 'doctor'),
-                         None)
+            doctor_ds = next(
+                (item for item in ds if item['driver'] == 'doctor'), None)
 
-            congress_endpoint = congress.httpclient.get_endpoint(auth=self.auth)
-            self.inspector_url = ('%s/v1/data-sources/%s/tables/events/rows' %
-                              (congress_endpoint, doctor_ds['id']))
+            congress_endpoint = \
+                congress.httpclient.get_endpoint(auth=self.auth)
+            self.inspector_url = ('%s/v1/data-sources/%s/tables/events/rows'
+                                  % (congress_endpoint, doctor_ds['id']))
         else:
             sys.exit()
         self.start_notifications = 1
-
 
     def notify_inspector(self):
         event_type = "compute.host.down"
         payload = [
             {
-                 'id': ("monitor_%s_id1" % self.monitor_type),
-                 'time': datetime.now().isoformat(),
-                 'type': event_type,
-                 'details': {
-                     'hostname': self.host_name,
-                     'status': 'down',
-                     'monitor': ("monitor_%s" % self.monitor_type),
-                     'monitor_event_id': ("monitor_%s_event1" % self.monitor_type)
-                 },
-             },
+                'id': ("monitor_%s_id1" % self.monitor_type),
+                'time': datetime.now().isoformat(),
+                'type': event_type,
+                'details': {
+                    'hostname': self.host_name,
+                    'status': 'down',
+                    'monitor': ("monitor_%s" % self.monitor_type),
+                    'monitor_event_id':
+                        ("monitor_%s_event1" % self.monitor_type)
+                },
+            },
         ]
         data = json.dumps(payload)
         self.inspector_notified = 1
@@ -135,7 +138,7 @@ class DoctorMonitorCollectd(object):
             try:
                 requests.post(self.inspector_url, data=data, headers=headers)
             except ConnectionError as err:
-                print err
+                print(err)
         elif self.inspector_type == 'congress':
             # TODO(umar) enhance for token expiry case
             headers = {
@@ -145,22 +148,25 @@ class DoctorMonitorCollectd(object):
             }
             requests.put(self.inspector_url, data=data, headers=headers)
 
-
-    def handle_notif(self, notification, data=None):
-        if (notification.severity == collectd.NOTIF_FAILURE or
-            notification.severity == collectd.NOTIF_WARNING):
-            if (self.start_notifications == 1 and self.inspector_notified == 0):
-                write_debug("Received down notification: doctor monitor detected at %s\n" % time.time(), "a", self.compute_user)
+    def handle_notify(self, notification, data=None):
+        if (notification.seerity == collectd.NOTIF_FAILURE or
+                notification.severity == collectd.NOTIF_WARNING):
+            if (self.start_notifications == 1 and
+                    self.inspector_notified == 0):
+                write_debug("Received down notification:"
+                            "doctor monitor detected at %s\n"
+                            % time.time(), "a", self.compute_user)
                 self.notify_inspector()
 
         elif notification.severity == collectd.NOTIF_OKAY:
             collectd.info("Interface status: UP again %s\n" % time.time())
         else:
-            collectd.info("Unknown notification severity %s\n" % notification.severity)
+            collectd.info("Unknown notification severity %s\n"
+                          % notification.severity)
 
 
 monitor = DoctorMonitorCollectd()
 
 collectd.register_config(monitor.config_func)
 collectd.register_init(monitor.init_collectd)
-collectd.register_notification(monitor.handle_notif)
+collectd.register_notification(monitor.handle_notify)

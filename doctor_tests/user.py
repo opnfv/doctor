@@ -89,12 +89,13 @@ class User(object):
                     self.conf.doctor_domain_id)
             self.projects[test_project.name] = test_project
         else:
-            self.log.info('project %s already created......' % self.conf.doctor_project)
-        self.log.info('test project %s' % str(self.projects[self.conf.doctor_project]))
+            self.log.info('project %s already created......'
+                          % self.conf.doctor_project)
+        self.log.info('test project %s'
+                      % str(self.projects[self.conf.doctor_project]))
 
     def _create_user(self):
         """create test user"""
-        project = self.projects.get(self.conf.doctor_project)
         self.users = {user.name: user for user in
                       self.keystone.users.list(
                           domain=self.conf.doctor_domain_id)}
@@ -106,8 +107,10 @@ class User(object):
                 domain=self.conf.doctor_domain_id)
             self.users[test_user.name] = test_user
         else:
-            self.log.info('user %s already created......' % self.conf.doctor_user)
-        self.log.info('test user %s' % str(self.users[self.conf.doctor_user]))
+            self.log.info('user %s already created......'
+                          % self.conf.doctor_user)
+        self.log.info('test user %s'
+                      % str(self.users[self.conf.doctor_user]))
 
     def _create_role(self):
         """create test role"""
@@ -120,7 +123,8 @@ class User(object):
             self.roles[test_role.name] = test_role
         else:
             self.use_exist_role = True
-            self.log.info('role %s already created......' % self.conf.doctor_role)
+            self.log.info('role %s already created......'
+                          % self.conf.doctor_role)
         self.log.info('test role %s' % str(self.roles[self.conf.doctor_role]))
 
     def _add_user_role_in_project(self, is_admin=False):
@@ -182,9 +186,10 @@ class User(object):
             self.quota = self.nova.quotas.get(project.id,
                                               user_id=user.id)
             if self.conf.quota_instances > self.quota.instances:
-                self.nova.quotas.update(project.id,
-                                        instances=self.conf.quota_instances,
-                                        user_id=user.id)
+                self.nova.quotas.update(
+                    project.id,
+                    instances=self.conf.quota_instances,
+                    user_id=user.id)
             if self.conf.quota_cores > self.quota.cores:
                 self.nova.quotas.update(project.id,
                                         cores=self.conf.quota_cores,
@@ -192,4 +197,3 @@ class User(object):
             self.log.info('user quota update end......')
         else:
             raise Exception('No project or role for update quota')
-

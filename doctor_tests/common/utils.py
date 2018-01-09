@@ -77,7 +77,8 @@ class SSHClient(object):
             output.append(line.decode('utf-8'))
         if ret:
             if self.log:
-                self.log.info("*** FAILED to run command %s (%s)" % (command, ret))
+                self.log.info("*** FAILED to run command %s (%s)"
+                              % (command, ret))
             raise Exception(
                 "Unable to run \ncommand: %s\nret: %s"
                 % (command, ret))

@@ -23,6 +23,7 @@ _monitor_name_class_mapping = {
     'collectd': 'doctor_tests.monitor.collectd.CollectdMonitor'
 }
 
+
 def get_monitor(conf, inspector_url, log):
     monitor_class = _monitor_name_class_mapping.get(conf.monitor.type)
     return importutils.import_object(monitor_class, conf,

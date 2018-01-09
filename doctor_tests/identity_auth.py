@@ -18,8 +18,8 @@ def get_identity_auth(username=None, password=None, project=None):
     password = password or os.environ['OS_PASSWORD']
     user_domain_name = os.environ.get('OS_USER_DOMAIN_NAME') or 'Default'
     user_domain_id = os.environ.get('OS_USER_DOMAIN_ID') or 'default'
-    project_name = project or os.environ.get('OS_PROJECT_NAME') \
-                   or os.environ.get('OS_TENANT_NAME')
+    project_name = (project or os.environ.get('OS_PROJECT_NAME') or
+                    os.environ.get('OS_TENANT_NAME'))
     project_domain_name = os.environ.get('OS_PROJECT_DOMAIN_NAME') or 'Default'
     project_domain_id = os.environ.get('OS_PROJECT_DOMAIN_ID') or 'default'
 
