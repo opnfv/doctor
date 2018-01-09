@@ -13,6 +13,7 @@ from oslo_config import cfg
 from doctor_tests.identity_auth import get_session
 from doctor_tests.os_clients import keystone_client
 from doctor_tests.os_clients import nova_client
+from keystoneclient import exceptions as ks_exceptions
 
 
 OPTS = [
@@ -136,12 +137,15 @@ class User(object):
         roles_for_user = self.roles_for_admin \
             if is_admin else self.roles_for_user
 
-        if not self.keystone.roles.check(role, user=user, project=project):
+        try:
+            self.keystone.roles.check(role, user=user, project=project)
+            self.log.info('Already grant a role:%s to user: %s on'
+                          ' project: %s'
+                          % (role_name, user_name,
+                             self.conf.doctor_project))
+        except ks_exceptions.NotFound:
             self.keystone.roles.grant(role, user=user, project=project)
             roles_for_user[role_name] = role
-        else:
-            self.log.info('Already grant a role:%s to user: %s on project: %s'
-                          % (role_name, user_name, self.conf.doctor_project))
 
     def delete(self):
         """delete the test user, project and role"""
