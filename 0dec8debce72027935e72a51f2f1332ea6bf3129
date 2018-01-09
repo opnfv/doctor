@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3d3df0_6dc880a8",
+        "filename": "doctor_tests/main.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2018-01-09T13:40:06Z",
+      "side": 1,
+      "message": "Can we have an option to switch test case to be run, fault management or maintenance? I\u0027ll add experimental job for maintenance test. The reason to have such option is we need to see CI job success for F release. So, we need to make sure test maintenance doesn\u0027t block any other on-going activities, e.g. installer support.",
+      "range": {
+        "startLine": 164,
+        "startChar": 12,
+        "endLine": 164,
+        "endChar": 35
+      },
+      "revId": "0dec8debce72027935e72a51f2f1332ea6bf3129",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
