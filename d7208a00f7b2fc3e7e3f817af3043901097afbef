@@ -34,6 +34,24 @@
       "revId": "d7208a00f7b2fc3e7e3f817af3043901097afbef",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_2a4f7e6c",
+        "filename": "doctor_tests/main.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-01-09T07:43:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a3d3df0_171903d7",
+      "revId": "d7208a00f7b2fc3e7e3f817af3043901097afbef",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
