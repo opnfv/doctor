@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3d3df0_c3d4f8be",
+        "filename": "doctor_tests/config.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2018-01-12T06:34:25Z",
+      "side": 1,
+      "message": "scenario?",
+      "range": {
+        "startLine": 41,
+        "startChar": 12,
+        "endLine": 41,
+        "endChar": 23
+      },
+      "revId": "285f8a3899520876f4872d2c061180c9ae269966",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_a3f0d467",
+        "filename": "doctor_tests/scenario/maintenance.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2018-01-12T06:34:25Z",
+      "side": 1,
+      "message": "Sorry, still a tiny comment.\nWhat about moving to scenario/__init__.py?\nIt\u0027s the configuration for scenario, the implemation of  maintence test case should be located in this file.",
+      "revId": "285f8a3899520876f4872d2c061180c9ae269966",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
