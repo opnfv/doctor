@@ -163,7 +163,13 @@ class DoctorTest(object):
                 self.test_fault_management()
                 self.test_maintenance()
             else:
-                getattr(self, self.conf.test_case)()
+                function = 'test_%s' % self.conf.test_case
+                if hasattr(self, function):
+                    getattr(self, function)()
+                else:
+                    raise Exception('Can not find function <%s> in'
+                                    'DoctorTest, see config manual'
+                                    % function)
         except Exception as e:
             LOG.error('doctor test failed, Exception=%s' % e)
             sys.exit(1)

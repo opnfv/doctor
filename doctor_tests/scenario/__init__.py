@@ -11,7 +11,12 @@ from oslo_config import cfg
 
 OPTS = [
     cfg.StrOpt('test_case',
-               default='all',
-               help='the name of test case',
+               default='fault_management',
+               help="A name of test case to be executed,"
+                    " choices are 'all', 'fault_management' or 'maintenance'."
+                    " Set 'all' to execute all the test cases existing in"
+                    " this repo. Default is 'fault_management'. Another test"
+                    " case can be specified only if a function named"
+                    " test_<test_case>() was implemented in DoctorTest.",
                required=False),
 ]
