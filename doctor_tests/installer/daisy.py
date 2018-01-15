@@ -97,11 +97,16 @@ class DaisyInstaller(BaseInstaller):
             self.nova.flavors.create(self.conf.flavor, 512, 1, 1)
 
     def setup_stunnel(self):
-        self.log.info('Setup ssh stunnel in controller nodes in Daisy installer......')
+        self.log.info('Setup ssh stunnel in controller nodes'
+                      'in Daisy installer......')
         for node_ip in self.controllers:
-            cmd = "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i %s %s@%s -R %s:localhost:%s sleep 600 > ssh_tunnel.%s 2>&1 < /dev/null &" \
-                  % (self.key_file, self.node_user_name, node_ip,
-                     self.conf.consumer.port, self.conf.consumer.port, node_ip)
+            cmd = ("ssh -o UserKnownHostsFile=/dev/null"
+                   " -o StrictHostKeyChecking=no"
+                   " -i %s %s@%s -R %s:localhost:%s"
+                   " sleep 600 > ssh_tunnel.%s 2>&1 < /dev/null &"
+                   % (self.key_file, self.node_user_name,
+                      node_ip, self.conf.consumer.port,
+                      self.conf.consumer.port, node_ip))
             server = subprocess.Popen(cmd, shell=True)
             self.servers.append(server)
             server.communicate()
