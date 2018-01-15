@@ -96,13 +96,13 @@ class ApexInstaller(BaseInstaller):
 
     def setup_stunnel(self):
         self.log.info('Setup ssh stunnel in controller nodes'
-                      ' in Apex installer......')
+                      'in Apex installer......')
         for node_ip in self.controllers:
             cmd = ("ssh -o UserKnownHostsFile=/dev/null"
-                   "-o StrictHostKeyChecking=no"
-                   "-i %s %s@%s -R %s:localhost:%s"
-                   "sleep 600 > ssh_tunnel.%s.log"
-                   "2>&1 < /dev/null &"
+                   " -o StrictHostKeyChecking=no"
+                   " -i %s %s@%s -R %s:localhost:%s"
+                   " sleep 600 > ssh_tunnel.%s.log"
+                   " 2>&1 < /dev/null &"
                    % (self.key_file,
                       self.node_user_name,
                       node_ip,
