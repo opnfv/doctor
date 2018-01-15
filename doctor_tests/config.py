@@ -21,6 +21,7 @@ from doctor_tests import monitor
 from doctor_tests import os_clients
 from doctor_tests import profiler_poc
 from doctor_tests import user
+from doctor_tests import scenario
 
 
 def list_opts():
@@ -36,7 +37,8 @@ def list_opts():
             network.OPTS,
             instance.OPTS,
             alarm.OPTS,
-            profiler_poc.OPTS))
+            profiler_poc.OPTS,
+            scenario.OPTS))
     ]
 
 
