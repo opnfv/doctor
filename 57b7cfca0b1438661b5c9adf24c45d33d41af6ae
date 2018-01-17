@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3d3df0_faa432a7",
+        "filename": "doctor_tests/os_clients.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-01-17T10:32:29Z",
+      "side": 1,
+      "message": "need 2 empty lines",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "57b7cfca0b1438661b5c9adf24c45d33d41af6ae",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
