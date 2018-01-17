@@ -58,22 +58,34 @@ class BaseInstaller(object):
     def setup_stunnel(self):
         self.log.info('Setup ssh stunnel in %s installer......'
                       % self.conf.installer.type)
+        tunnels = [self.conf.consumer.port]
+        if self.conf.test_case == 'maintenance':
+            tunnel_uptime = 1200
+            tunnels += [self.conf.app_manager.port, self.conf.inspector.port]
+        elif self.conf.test_case == 'all':
+            tunnel_uptime = 1800
+            tunnels += [self.conf.app_manager.port, self.conf.inspector.port]
+        else:
+            tunnel_uptime = 600
 
         for node_ip in self.controllers:
-            cmd = ("ssh -o UserKnownHostsFile=/dev/null"
-                   " -o StrictHostKeyChecking=no"
-                   " -i %s %s@%s -R %s:localhost:%s"
-                   " sleep 600 > ssh_tunnel.%s"
-                   " 2>&1 < /dev/null &"
-                   % (self.key_file,
-                      self.node_user_name,
-                      node_ip,
-                      self.conf.consumer.port,
-                      self.conf.consumer.port,
-                      node_ip))
-            server = subprocess.Popen(cmd, shell=True)
-            self.servers.append(server)
-            server.communicate()
+            for port in tunnels:
+                self.log.info('tunnel for port %s' % port)
+                cmd = ("ssh -o UserKnownHostsFile=/dev/null"
+                       " -o StrictHostKeyChecking=no"
+                       " -i %s %s@%s -R %s:localhost:%s"
+                       " sleep %s > ssh_tunnel.%s.log"
+                       " 2>&1 < /dev/null &"
+                       % (self.key_file,
+                          self.node_user_name,
+                          node_ip,
+                          port,
+                          port,
+                          tunnel_uptime,
+                          node_ip))
+                server = subprocess.Popen(cmd, shell=True)
+                self.servers.append(server)
+                server.communicate()
 
     def _get_ssh_key(self, client, key_path):
         self.log.info('Get SSH keys from %s installer......'
