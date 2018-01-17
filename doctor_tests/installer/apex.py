@@ -10,8 +10,10 @@ import getpass
 import grp
 import os
 import pwd
+import re
 import stat
 import subprocess
+import time
 
 from doctor_tests.common.utils import get_doctor_test_root_dir
 from doctor_tests.common.utils import SSHClient
@@ -20,8 +22,8 @@ from doctor_tests.installer.base import BaseInstaller
 
 class ApexInstaller(BaseInstaller):
     node_user_name = 'heat-admin'
-    cm_set_script = 'set_ceilometer.py'
-    cm_restore_script = 'restore_ceilometer.py'
+    cm_set_script = 'set_config.py'
+    cm_restore_script = 'restore_config.py'
 
     def __init__(self, conf, log):
         super(ApexInstaller, self).__init__(conf, log)
@@ -95,24 +97,47 @@ class ApexInstaller(BaseInstaller):
                       % (host_ip, hostname))
         return host_ip[0]
 
+    def get_transport_url(self):
+        client = SSHClient(self.controllers[0], self.node_user_name,
+                           key_filename=self.key_file)
+
+        command = 'sudo grep "^transport_url" /etc/nova/nova.conf'
+        ret, url = client.ssh(command)
+        if ret:
+            raise Exception('Exec command to get host ip from controller(%s)'
+                            'in Apex installer failed, ret=%s, output=%s'
+                            % (self.controllers[0], ret, url))
+        # need to use ip instead of hostname
+        ret = (re.sub("@.*:", "@%s:" % self.controllers[0],
+               url[0].split("=", 1)[1]))
+        self.log.debug('get_transport_url %s' % ret)
+        return ret
+
     def setup_stunnel(self):
-        self.log.info('Setup ssh stunnel in controller nodes'
+        self.log.info('Setup ssh stunnel in controller nodes '
                       'in Apex installer......')
+
+        tunnels = [self.conf.consumer.port]
+        tunnel_uptime = 600
+
         for node_ip in self.controllers:
-            cmd = ("ssh -o UserKnownHostsFile=/dev/null"
-                   " -o StrictHostKeyChecking=no"
-                   " -i %s %s@%s -R %s:localhost:%s"
-                   " sleep 600 > ssh_tunnel.%s.log"
-                   " 2>&1 < /dev/null &"
-                   % (self.key_file,
-                      self.node_user_name,
-                      node_ip,
-                      self.conf.consumer.port,
-                      self.conf.consumer.port,
-                      node_ip))
-            server = subprocess.Popen(cmd, shell=True)
-            self.servers.append(server)
-            server.communicate()
+            for port in tunnels:
+                self.log.info('tunnel for port %s' % port)
+                cmd = ("ssh -o UserKnownHostsFile=/dev/null"
+                       " -o StrictHostKeyChecking=no"
+                       " -i %s %s@%s -R %s:localhost:%s"
+                       " sleep %s > ssh_tunnel.%s.log"
+                       " 2>&1 < /dev/null &"
+                       % (self.key_file,
+                          self.node_user_name,
+                          node_ip,
+                          port,
+                          port,
+                          tunnel_uptime,
+                          node_ip))
+                server = subprocess.Popen(cmd, shell=True)
+                self.servers.append(server)
+                server.communicate()
 
     def set_apply_patches(self):
         self.log.info('Set apply patches start......')
@@ -121,15 +146,16 @@ class ApexInstaller(BaseInstaller):
             client = SSHClient(node_ip, self.node_user_name,
                                key_filename=self.key_file)
             self.controller_clients.append(client)
-            self._ceilometer_apply_patches(client, self.cm_set_script)
+            self._config_apply_patches(client, self.cm_set_script)
+        time.sleep(10)
 
     def restore_apply_patches(self):
         self.log.info('restore apply patches start......')
 
         for client in self.controller_clients:
-            self._ceilometer_apply_patches(client, self.cm_restore_script)
+            self._config_apply_patches(client, self.cm_restore_script)
 
-    def _ceilometer_apply_patches(self, ssh_client, script_name):
+    def _config_apply_patches(self, ssh_client, script_name):
         installer_dir = os.path.dirname(os.path.realpath(__file__))
         script_abs_path = '{0}/{1}/{2}'.format(installer_dir,
                                                'common', script_name)
@@ -138,8 +164,16 @@ class ApexInstaller(BaseInstaller):
         cmd = 'sudo python %s' % script_name
         ret, output = ssh_client.ssh(cmd)
         if ret:
-            raise Exception('Do the ceilometer command in controller'
+            raise Exception('Do the config command in controller'
                             ' node failed, ret=%s, cmd=%s, output=%s'
                             % (ret, cmd, output))
-        ssh_client.ssh('sudo systemctl restart '
-                       'openstack-ceilometer-notification.service')
+        else:
+            self.log.info('patches done, restart needed services......')
+        cmd = ('sudo systemctl restart openstack-ceilometer-notification'
+               '.service openstack-nova*')
+        ret, output = ssh_client.ssh(cmd)
+        if ret:
+            raise Exception('Restart services failed ret=%s, cmd=%s, output=%s'
+                            % (ret, cmd, output))
+        else:
+            self.log.info('services restarted......')
