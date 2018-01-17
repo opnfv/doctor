@@ -24,4 +24,18 @@ def restore_ep_config():
     return
 
 
+def restore_ed_config():
+
+    ed_file = '/etc/ceilometer/event_definitions.yaml'
+    ed_file_bak = '/etc/ceilometer/event_definitions.bak'
+
+    if not os.path.isfile(ed_file_bak):
+        print("Bak_file doesn't exist: %s." % ed_file_bak)
+    else:
+        print('restore: %s' % ed_file)
+        shutil.copyfile(ed_file_bak, ed_file)
+        os.remove(ed_file_bak)
+    return
+
 restore_ep_config()
+restore_ed_config()

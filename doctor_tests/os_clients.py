@@ -11,6 +11,7 @@ from oslo_config import cfg
 import aodhclient.client as aodhclient
 from congressclient.v1 import client as congressclient
 import glanceclient.client as glanceclient
+import heatclient.client as heatclient
 from keystoneclient import client as ks_client
 from neutronclient.v2_0 import client as neutronclient
 import novaclient.client as novaclient
@@ -23,12 +24,18 @@ OPTS = [
     cfg.StrOpt('aodh_version', default='2', help='aodh version'),
     cfg.StrOpt('vitrage_version', default='1', help='vitrage version'),
     cfg.StrOpt('keystone_version', default='v3', help='keystone version'),
+    cfg.StrOpt('heat_version', default='1', help='heat version'),
 ]
 
 
 def glance_client(version, session):
     return glanceclient.Client(version=version,
                                session=session)
+
+
+def heat_client(version, session):
+    return heatclient.Client(version=version,
+                             session=session)
 
 
 def keystone_client(version, session):

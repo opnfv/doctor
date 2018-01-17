@@ -1,0 +1,118 @@
+heat_template_version: 2017-02-24
+description: Doctor Maintenance test case
+
+parameters:
+  ext_net:
+    type: string
+    default: external
+  flavor_vcpus:
+    type: number
+    default: 24
+  maint_image:
+    type: string
+    default: cirros
+  ha_intances:
+    type: number
+    default: 2
+  nonha_intances:
+    type: number
+    default: 4
+  app_manager_alarm_url:
+    type: string
+    default: http://0.0.0.0:12348/maintenance
+  inpector_alarm_url:
+    type: string
+    default: http://0.0.0.0:12345/maintenance
+
+
+resources:
+  int_net:
+    type: OS::Neutron::Net
+
+  int_subnet:
+    type: OS::Neutron::Subnet
+    properties:
+      network_id: { get_resource: int_net }
+      cidr: "9.9.9.0/24"
+      dns_nameservers: [ "8.8.8.8" ]
+      ip_version: 4
+
+  int_router:
+    type: OS::Neutron::Router
+    properties:
+      external_gateway_info: { network: { get_param: ext_net } }
+
+  int_interface:
+    type: OS::Neutron::RouterInterface
+    properties:
+      router_id: { get_resource: int_router }
+      subnet: { get_resource: int_subnet }
+
+  maint_instance_flavor:
+   type: OS::Nova::Flavor
+   properties:
+     name: doctor_maint_flavor
+     ram: 512
+     vcpus: { get_param: flavor_vcpus }
+     disk: 1
+
+  ha_app_svrgrp:
+    type: OS::Nova::ServerGroup
+    properties:
+      name: doctor_ha_app_group
+      policies: [ 'anti-affinity' ]
+
+  floating_ip:
+    type: OS::Nova::FloatingIP
+    properties:
+      pool: { get_param: ext_net }
+
+  multi_ha_instances:
+    type: OS::Heat::ResourceGroup
+    properties:
+      count: { get_param: ha_intances }
+      resource_def:
+        type: OS::Nova::Server
+        properties:
+          name: doctor_ha_app_%index%
+          flavor: { get_resource: maint_instance_flavor }
+          image: { get_param: maint_image }
+          networks:
+            - network: { get_resource: int_net }
+          scheduler_hints:
+            group: { get_resource: ha_app_svrgrp }
+
+  multi_nonha_instances:
+    type: OS::Heat::ResourceGroup
+    properties:
+      count: { get_param: nonha_intances }
+      resource_def:
+        type: OS::Nova::Server
+        properties:
+          name: doctor_nonha_app_%index%
+          flavor: { get_resource: maint_instance_flavor }
+          image: { get_param: maint_image }
+          networks:
+            - network: { get_resource: int_net }
+
+  association:
+    type: OS::Nova::FloatingIPAssociation
+    properties:
+      floating_ip: { get_resource: floating_ip }
+      server_id: { get_attr: [ multi_ha_instances, refs, 0 ] }
+
+  app_manager_alarm:
+    type: OS::Aodh::EventAlarm
+    properties:
+      alarm_actions:
+        - { get_param: app_manager_alarm_url }
+      event_type: "maintenance.scheduled"
+      repeat_actions: true
+
+  inpector_alarm:
+    type: OS::Aodh::EventAlarm
+    properties:
+      alarm_actions:
+        - { get_param: inpector_alarm_url }
+      event_type: "maintenance.host"
+      repeat_actions: true

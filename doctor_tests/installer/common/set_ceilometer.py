@@ -42,4 +42,59 @@ def set_notifier_topic():
             file.write(yaml.safe_dump(config))
 
 
+def set_maintenance_event_definitions():
+    ed_file = '/etc/ceilometer/event_definitions.yaml'
+    ed_file_bak = '/etc/ceilometer/event_definitions.bak'
+
+    config_modified = False
+
+    if not os.path.isfile(ed_file):
+        raise Exception("File doesn't exist: %s." % ed_file)
+
+    with open(ed_file, 'r') as file:
+        config = yaml.safe_load(file)
+
+    et_list = [et['event_type'] for et in config]
+
+    if 'maintenance.scheduled' in et_list:
+        add_mscheduled = False
+    else:
+        add_mscheduled = True
+        mscheduled = {
+            'event_type': 'maintenance.scheduled',
+            'traits': {
+                'allowed_actions': {'fields': 'payload.allowed_actions'},
+                'instance_ids': {'fields': 'payload.instance_ids'},
+                'reply_url': {'fields': 'payload.reply_url'},
+                'actions_at': {'fields': 'payload.actions_at',
+                               'type': 'datetime'},
+                'state': {'fields': 'payload.state'},
+                'session_id': {'fields': 'payload.session_id'},
+                'project_id': {'fields': 'payload.project_id'},
+                'metadata': {'fields': 'payload.metadata'}
+            }
+        }
+        config.append(mscheduled)
+
+    if 'maintenance.host' in et_list:
+        add_mhost = False
+    else:
+        add_mhost = True
+        mhost = {
+            'event_type': 'maintenance.host',
+            'traits': {
+                'host': {'fields': 'payload.host'},
+                'project_id': {'fields': 'payload.project_id'},
+                'state': {'fields': 'payload.state'},
+                'session_id': {'fields': 'payload.session_id'}
+            }
+        }
+        config.append(mhost)
+
+    if add_mscheduled or add_mhost:
+        shutil.copyfile(ed_file, ed_file_bak)
+        with open(ed_file, 'w+') as file:
+            file.write(yaml.safe_dump(config))
+
 set_notifier_topic()
+set_maintenance_event_definitions()
