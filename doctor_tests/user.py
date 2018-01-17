@@ -8,12 +8,12 @@
 ##############################################################################
 import os
 
+from keystoneclient import exceptions as ks_exceptions
 from oslo_config import cfg
 
 from doctor_tests.identity_auth import get_session
 from doctor_tests.os_clients import keystone_client
 from doctor_tests.os_clients import nova_client
-from keystoneclient import exceptions as ks_exceptions
 
 
 OPTS = [
@@ -53,10 +53,11 @@ class User(object):
     def __init__(self, conf, log):
         self.conf = conf
         self.log = log
+        self.def_quota = None
+        self.restore_def_quota = False
         self.keystone = keystone_client(
             self.conf.keystone_version, get_session())
-        self.nova = \
-            nova_client(conf.nova_version, get_session())
+        self.nova = nova_client(conf.nova_version, get_session())
         self.users = {}
         self.projects = {}
         self.roles = {}
@@ -83,10 +84,9 @@ class User(object):
                              domain=self.conf.doctor_domain_id)}
         if self.conf.doctor_project not in self.projects:
             self.log.info('create project......')
-            test_project = \
-                self.keystone.projects.create(
-                    self.conf.doctor_project,
-                    self.conf.doctor_domain_id)
+            test_project = self.keystone.projects.create(
+                self.conf.doctor_project,
+                self.conf.doctor_domain_id)
             self.projects[test_project.name] = test_project
         else:
             self.log.info('project %s already created......'
@@ -151,6 +151,13 @@ class User(object):
             self.keystone.roles.grant(role, user=user, project=project)
             roles_for_user[role_name] = role
 
+    def _restore_default_quota(self):
+        if self.def_quota is not None and self.restore_def_quota:
+            self.log.info('restore default quota......')
+            self.nova.quota_classes.update('default',
+                                           instances=self.def_quota.instances,
+                                           cores=self.def_quota.cores)
+
     def delete(self):
         """delete the test user, project and role"""
         self.log.info('user delete start......')
@@ -158,6 +165,8 @@ class User(object):
         project = self.projects.get(self.conf.doctor_project)
         user = self.users.get(self.conf.doctor_user)
         role = self.roles.get(self.conf.doctor_role)
+
+        self._restore_default_quota()
 
         if project:
             if 'admin' in self.roles_for_admin:
@@ -177,23 +186,45 @@ class User(object):
             self.keystone.projects.delete(project)
         self.log.info('user delete end......')
 
-    def update_quota(self):
-        self.log.info('user quota update start......')
+    def update_quota(self, instances=None, cores=None):
+        self.log.info('quota update start......')
         project = self.projects.get(self.conf.doctor_project)
+
         user = self.users.get(self.conf.doctor_user)
 
+        if instances is not None:
+            quota_instances = instances
+        else:
+            quota_instances = self.conf.quota_instances
+        if cores is not None:
+            quota_cores = cores
+        else:
+            quota_cores = self.conf.quota_cores
+
         if project and user:
+            # default needs to be at least the same as with doctor_user
+            self.log.info('default quota update start......')
+
+            self.def_quota = self.nova.quota_classes.get('default')
+            if quota_instances > self.def_quota.instances:
+                self.restore_def_quota = True
+                self.nova.quota_classes.update('default',
+                                               instances=quota_instances)
+            if quota_cores > self.def_quota.cores:
+                self.restore_def_quota = True
+                self.nova.quota_classes.update('default',
+                                               cores=quota_cores)
+            self.log.info('user quota update start......')
             self.quota = self.nova.quotas.get(project.id,
                                               user_id=user.id)
-            if self.conf.quota_instances > self.quota.instances:
-                self.nova.quotas.update(
-                    project.id,
-                    instances=self.conf.quota_instances,
-                    user_id=user.id)
-            if self.conf.quota_cores > self.quota.cores:
+            if quota_instances > self.quota.instances:
                 self.nova.quotas.update(project.id,
-                                        cores=self.conf.quota_cores,
+                                        instances=quota_instances,
                                         user_id=user.id)
-            self.log.info('user quota update end......')
+            if quota_cores > self.quota.cores:
+                self.nova.quotas.update(project.id,
+                                        cores=quota_cores,
+                                        user_id=user.id)
         else:
             raise Exception('No project or role for update quota')
+        self.log.info('quota update end......')
