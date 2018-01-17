@@ -10,6 +10,7 @@ import os
 from os.path import isfile, join
 import sys
 import time
+from traceback import format_exc
 
 from doctor_tests import config
 from doctor_tests.identity_auth import get_identity_auth
@@ -17,8 +18,15 @@ from doctor_tests.identity_auth import get_session
 from doctor_tests.image import Image
 from doctor_tests.installer import get_installer
 import doctor_tests.logger as doctor_log
-from doctor_tests.os_clients import nova_client
 from doctor_tests.scenario.fault_management import FaultManagement
+from doctor_tests.network import Network
+from doctor_tests.monitor import get_monitor
+from doctor_tests.os_clients import neutron_client
+from doctor_tests.os_clients import nova_client
+from doctor_tests.profiler_poc import main as profiler_main
+from doctor_tests.scenario.common import calculate_notification_time
+from doctor_tests.scenario.network_failure import NetworkFault
+from doctor_tests.scenario.maintenance import Maintenance
 from doctor_tests.user import User
 
 
@@ -37,6 +45,8 @@ class DoctorTest(object):
         auth = get_identity_auth(project=self.conf.doctor_project)
         self.nova = nova_client(self.conf.nova_version,
                                 get_session(auth=auth))
+        self.neutron = neutron_client(get_session(auth=auth))
+        self.down_host = None
 
     def setup(self):
         # prepare the cloud env
@@ -92,20 +102,33 @@ class DoctorTest(object):
             LOG.info('not enough compute nodes, skipping doctor '
                      'maintenance test')
             return
+        elif self.conf.installer.type != 'apex':
+            LOG.info('not supported installer, skipping doctor '
+                     'maintenance test')
+            return
         try:
             LOG.info('doctor maintenance test starting.......')
-            # TODO (tojuvone) test setup and actual test
+
+            maintenance = Maintenance(self.conf, LOG)
+            maintenance.setup_maintenance(self.user)
+
+            # TODO (tojuvone) actual test
+
         except Exception as e:
             LOG.error('doctor maintenance test failed, Exception=%s' % e)
+            LOG.error(format_exc())
             sys.exit(1)
-        # TODO (tojuvone) finally: test case specific cleanup
+        finally:
+            maintenance.cleanup_maintenance()
 
     def run(self):
         """run doctor tests"""
         try:
             LOG.info('doctor test starting.......')
+
             # prepare common test env
             self.setup()
+
             if self.conf.test_case == 'all':
                 self.test_fault_management()
                 self.test_maintenance()
