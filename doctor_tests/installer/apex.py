@@ -6,14 +6,17 @@
 # which accompanies this distribution, and is available at
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
+import re
+import time
+
 from doctor_tests.common.utils import SSHClient
 from doctor_tests.installer.base import BaseInstaller
 
 
 class ApexInstaller(BaseInstaller):
     node_user_name = 'heat-admin'
-    cm_set_script = 'set_ceilometer.py'
-    cm_restore_script = 'restore_ceilometer.py'
+    cm_set_script = 'set_config.py'
+    cm_restore_script = 'restore_config.py'
 
     def __init__(self, conf, log):
         super(ApexInstaller, self).__init__(conf, log)
@@ -62,11 +65,28 @@ class ApexInstaller(BaseInstaller):
         host_ips = self._run_cmd_remote(self.client, command)
         return host_ips[0]
 
+    def get_transport_url(self):
+        client = SSHClient(self.controllers[0], self.node_user_name,
+                           key_filename=self.key_file)
+
+        command = 'sudo grep "^transport_url" /etc/nova/nova.conf'
+        ret, url = client.ssh(command)
+        if ret:
+            raise Exception('Exec command to get host ip from controller(%s)'
+                            'in Apex installer failed, ret=%s, output=%s'
+                            % (self.controllers[0], ret, url))
+        # need to use ip instead of hostname
+        ret = (re.sub("@.*:", "@%s:" % self.controllers[0],
+               url[0].split("=", 1)[1]))
+        self.log.debug('get_transport_url %s' % ret)
+        return ret
+
     def set_apply_patches(self):
         self.log.info('Set apply patches start......')
 
         restart_cm_cmd = 'sudo systemctl restart ' \
-                         'openstack-ceilometer-notification.service'
+                         'openstack-ceilometer-notification.service' \
+                         ' openstack-nova*'
 
         for node_ip in self.controllers:
             client = SSHClient(node_ip, self.node_user_name,
@@ -75,12 +95,14 @@ class ApexInstaller(BaseInstaller):
             self._run_apply_patches(client,
                                     restart_cm_cmd,
                                     self.cm_set_script)
+        time.sleep(10)
 
     def restore_apply_patches(self):
         self.log.info('restore apply patches start......')
 
         restart_cm_cmd = 'sudo systemctl restart ' \
-                         'openstack-ceilometer-notification.service'
+                         'openstack-ceilometer-notification.service' \
+                         ' openstack-nova*'
 
         for client in self.controller_clients:
             self._run_apply_patches(client,
