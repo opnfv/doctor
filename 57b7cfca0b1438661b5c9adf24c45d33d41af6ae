@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9a3d3df0_c7051612",
+        "filename": "doctor_tests/main.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-01-19T07:12:19Z",
+      "side": 1,
+      "message": "Thanks, again left over from dev version.",
+      "parentUuid": "9a3d3df0_cb5c024e",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 53
+      },
+      "revId": "57b7cfca0b1438661b5c9adf24c45d33d41af6ae",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a3d3df0_faa432a7",
         "filename": "doctor_tests/os_clients.py",
         "patchSetId": 2
@@ -59,6 +83,30 @@
       "writtenOn": "2018-01-19T03:28:19Z",
       "side": 1,
       "message": "Why use two clients?",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 45
+      },
+      "revId": "57b7cfca0b1438661b5c9adf24c45d33d41af6ae",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3d3df0_0b01ca05",
+        "filename": "doctor_tests/os_clients.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-01-19T07:12:19Z",
+      "side": 1,
+      "message": "Thanks, I was figuring out the heat usage, so this is left over from that. I will remove the duplicate.",
+      "parentUuid": "9a3d3df0_2b564e2a",
       "range": {
         "startLine": 35,
         "startChar": 0,
