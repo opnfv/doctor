@@ -15,9 +15,7 @@ import subprocess
 
 from doctor_tests.common.utils import get_doctor_test_root_dir
 from doctor_tests.common.utils import SSHClient
-from doctor_tests.identity_auth import get_session
 from doctor_tests.installer.base import BaseInstaller
-from doctor_tests.os_clients import nova_client
 
 
 class DaisyInstaller(BaseInstaller):
@@ -87,14 +85,6 @@ class DaisyInstaller(BaseInstaller):
         self.log.info('Get host_ip:%s from host_name:%s'
                       % (host_ip, hostname))
         return host_ip
-
-    def create_flavor(self):
-        self.nova = \
-            nova_client(self.conf.nova_version,
-                        get_session())
-        flavors = {flavor.name: flavor for flavor in self.nova.flavors.list()}
-        if self.conf.flavor not in flavors:
-            self.nova.flavors.create(self.conf.flavor, 512, 1, 1)
 
     def setup_stunnel(self):
         self.log.info('Setup ssh stunnel in controller nodes'
