@@ -39,6 +39,7 @@ class ApexInstaller(BaseInstaller):
 
         self.get_ssh_key_from_installer()
         self.get_controller_ips()
+        self.create_flavor()
         self.set_apply_patches()
         self.setup_stunnel()
 

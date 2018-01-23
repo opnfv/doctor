@@ -9,6 +9,9 @@
 import abc
 import six
 
+from doctor_tests.identity_auth import get_session
+from doctor_tests.os_clients import nova_client
+
 
 @six.add_metaclass(abc.ABCMeta)
 class BaseInstaller(object):
@@ -35,3 +38,11 @@ class BaseInstaller(object):
     @abc.abstractmethod
     def cleanup(self):
         pass
+
+    def create_flavor(self):
+        self.nova = \
+            nova_client(self.conf.nova_version,
+                        get_session())
+        flavors = {flavor.name: flavor for flavor in self.nova.flavors.list()}
+        if self.conf.flavor not in flavors:
+            self.nova.flavors.create(self.conf.flavor, 512, 1, 1)
