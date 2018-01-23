@@ -1,0 +1,8 @@
+Verified+1: jenkins-ci <jenkins-opnfv-ci@opnfv.org>
+Code-Review+2: Tomi Juvonen <tomi.juvonen@nokia.com>
+Code-Review+2: Ryota Mibu <r-mibu@cq.jp.nec.com>
+Submitted-by: Ryota Mibu <r-mibu@cq.jp.nec.com>
+Submitted-at: Tue, 23 Jan 2018 11:06:04 +0000
+Reviewed-on: https://gerrit.opnfv.org/gerrit/50975
+Project: doctor
+Branch: refs/heads/master
