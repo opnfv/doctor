@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3d3df0_37f68c5d",
+        "filename": "doctor_tests/maintenance_hot_tpl.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-02-07T06:25:49Z",
+      "side": 1,
+      "message": "This stopped working when env is Pike. Will update later:\nmulti_ha_instances, resource.0",
+      "range": {
+        "startLine": 102,
+        "startChar": 31,
+        "endLine": 102,
+        "endChar": 58
+      },
+      "revId": "595e0c593f3ef5f3e046cfd6ba2dbe427d58b7a8",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
