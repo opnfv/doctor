@@ -9,6 +9,7 @@
 import os
 from os.path import isfile, join
 import random
+import signal
 import sys
 import time
 
@@ -180,13 +181,11 @@ class DoctorTest(object):
         num = random.randint(0, self.conf.instance_count - 1)
         vm_name = "%s%d" % (self.conf.instance_basename, num)
 
-        servers = \
-            {getattr(server, 'name'): server
-             for server in self.nova.servers.list()}
+        servers = {getattr(server, 'name'): server
+                   for server in self.nova.servers.list()}
         server = servers.get(vm_name)
         if not server:
-            raise \
-                Exception('Can not find instance: vm_name(%s)' % vm_name)
+            raise Exception('Can not find instance: vm_name(%s)' % vm_name)
         host_name = server.__dict__.get('OS-EXT-SRV-ATTR:hypervisor_hostname')
         host_ip = self.installer.get_host_ip_from_hostname(host_name)
 
@@ -231,16 +230,16 @@ class DoctorTest(object):
         # TODO(yujunz) check the actual delay to verify time sync status
         # expected ~1s delay from $trigger to $linkdown
         relative_start = linkdown
-        os.environ['DOCTOR_PROFILER_T00'] = \
-            str(int((linkdown - relative_start) * 1000))
-        os.environ['DOCTOR_PROFILER_T01'] = \
-            str(int((detected - relative_start) * 1000))
-        os.environ['DOCTOR_PROFILER_T03'] = \
-            str(int((vmdown - relative_start) * 1000))
-        os.environ['DOCTOR_PROFILER_T04'] = \
-            str(int((hostdown - relative_start) * 1000))
-        os.environ['DOCTOR_PROFILER_T09'] = \
-            str(int((notified - relative_start) * 1000))
+        os.environ['DOCTOR_PROFILER_T00'] = (
+            str(int((linkdown - relative_start) * 1000)))
+        os.environ['DOCTOR_PROFILER_T01'] = (
+            str(int((detected - relative_start) * 1000)))
+        os.environ['DOCTOR_PROFILER_T03'] = (
+            str(int((vmdown - relative_start) * 1000)))
+        os.environ['DOCTOR_PROFILER_T04'] = (
+            str(int((hostdown - relative_start) * 1000)))
+        os.environ['DOCTOR_PROFILER_T09'] = (
+            str(int((notified - relative_start) * 1000)))
 
         profiler_main(log=LOG)
 
@@ -258,10 +257,16 @@ class DoctorTest(object):
         self.installer.cleanup()
         self.image.delete()
         self.user.delete()
+        # Kill possible hanging subprocess
+        os.killpg(0, signal.SIGKILL)
 
 
 def main():
     """doctor main"""
+    # TODO (tojuvone): JIRA DOCTOR-123: Test cases have some issue to always
+    # kill all subprocesses. To ensure they are killed this group is done so
+    # all processes can be killed without knowing what they are.
+    os.setpgrp()
     test_dir = os.path.split(os.path.realpath(__file__))[0]
     doctor_root_dir = os.path.dirname(test_dir)
 
