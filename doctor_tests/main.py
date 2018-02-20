@@ -102,7 +102,8 @@ class DoctorTest(object):
             # wait for aodh alarms are updated in caches for event evaluator,
             # sleep time should be larger than event_alarm_cache_ttl
             # (default 60)
-            time.sleep(60)
+            # (tojuvone) Fraser currently needs 120
+            time.sleep(120)
 
             # injecting host failure...
             # NOTE (umar) add INTERFACE_NAME logic to host injection
