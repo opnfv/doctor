@@ -168,7 +168,7 @@ class InspectorApp(Thread):
             self.inspector.handle_events(events)
             return "OK"
 
-        @app.route('/shutdown', methods=['POST'])
+        @app.route('/events/shutdown', methods=['POST'])
         def shutdown():
             self.log.info('shutdown inspector app server at %s' % time.time())
             func = request.environ.get('werkzeug.server.shutdown')
