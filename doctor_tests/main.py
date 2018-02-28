@@ -9,7 +9,6 @@
 import os
 from os.path import isfile, join
 import random
-import signal
 import sys
 import time
 
@@ -258,16 +257,10 @@ class DoctorTest(object):
         self.installer.cleanup()
         self.image.delete()
         self.user.delete()
-        # Kill possible hanging subprocess
-        os.killpg(0, signal.SIGKILL)
 
 
 def main():
     """doctor main"""
-    # TODO (tojuvone): JIRA DOCTOR-123: Test cases have some issue to always
-    # kill all subprocesses. To ensure they are killed this group is done so
-    # all processes can be killed without knowing what they are.
-    os.setpgrp()
     test_dir = os.path.split(os.path.realpath(__file__))[0]
     doctor_root_dir = os.path.dirname(test_dir)
 
