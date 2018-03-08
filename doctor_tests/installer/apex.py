@@ -34,7 +34,6 @@ class ApexInstaller(BaseInstaller):
 
     def setup(self):
         self.log.info('Setup Apex installer start......')
-
         self.key_file = self.get_ssh_key_from_installer()
         self._get_and_set_ips()
         self.create_flavor()

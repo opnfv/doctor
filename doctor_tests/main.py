@@ -100,11 +100,20 @@ class DoctorTest(object):
             return
         try:
             LOG.info('doctor maintenance test starting.......')
-
-            maintenance = Maintenance(self.conf, LOG)
+            trasport_url = self.installer.get_transport_url()
+            maintenance = Maintenance(trasport_url, self.conf, LOG)
             maintenance.setup_maintenance(self.user)
 
-            # TODO (tojuvone) actual test
+            # wait for aodh alarms are updated in caches for event evaluator,
+            # sleep time should be larger than event_alarm_cache_ttl
+            # (default 60)
+            LOG.info('wait aodh for 120s.......')
+            time.sleep(120)
+
+            session_id = maintenance.start_maintenance()
+            maintenance.wait_maintenance_complete(session_id)
+
+            LOG.info('doctor maintenance complete.......')
 
         except Exception as e:
             LOG.error('doctor maintenance test failed, Exception=%s' % e)
