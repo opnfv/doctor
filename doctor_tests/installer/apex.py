@@ -114,9 +114,15 @@ class ApexInstaller(BaseInstaller):
     def setup_stunnel(self):
         self.log.info('Setup ssh stunnel in controller nodes '
                       'in Apex installer......')
-
         tunnels = [self.conf.consumer.port]
-        tunnel_uptime = 600
+        if self.conf.test_case == 'maintenance':
+            tunnel_uptime = 1200
+            tunnels += [self.conf.app_manager.port, self.conf.inspector.port]
+        elif self.conf.test_case == 'all':
+            tunnel_uptime = 1800
+            tunnels += [self.conf.app_manager.port, self.conf.inspector.port]
+        else:
+            tunnel_uptime = 600
 
         for node_ip in self.controllers:
             for port in tunnels:

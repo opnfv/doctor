@@ -11,6 +11,8 @@ import itertools
 from oslo_config import cfg
 
 from doctor_tests import alarm
+from doctor_tests import admin_tool
+from doctor_tests import app_manager
 from doctor_tests import consumer
 from doctor_tests import image
 from doctor_tests import instance
@@ -30,6 +32,8 @@ def list_opts():
         ('monitor', monitor.OPTS),
         ('inspector', inspector.OPTS),
         ('consumer', consumer.OPTS),
+        ('admin_tool', admin_tool.OPTS),
+        ('app_manager', app_manager.OPTS),
         ('DEFAULT', itertools.chain(
             os_clients.OPTS,
             image.OPTS,
