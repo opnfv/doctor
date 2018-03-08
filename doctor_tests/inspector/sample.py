@@ -13,6 +13,7 @@ import json
 import time
 from threading import Thread
 import requests
+import yaml
 
 from doctor_tests.common import utils
 from doctor_tests.identity_auth import get_identity_auth
@@ -105,6 +106,39 @@ class SampleInspector(BaseInspector):
                 if self.conf.inspector.update_neutron_port_dp_status:
                     thr3.join()
 
+    def _alarm_data_decoder(self, data):
+        if "[" in data or "{" in data:
+            # string to list or dict removing unicode
+            data = yaml.load(data.replace("u'", "'"))
+        return data
+
+    def _alarm_traits_decoder(self, data):
+        return ({str(t[0]): self._alarm_data_decoder(str(t[2]))
+                for t in data['reason_data']['event']['traits']})
+
+    def maintenance(self, data):
+        try:
+            payload = self._alarm_traits_decoder(data)
+        except:
+            payload = ({t[0]: t[2] for t in
+                       data['reason_data']['event']['traits']})
+            self.log.error('cannot parse alarm data: %s' % payload)
+            raise Exception('sample inspector cannot parse alarm.'
+                            'Possibly trait data over 256 char')
+        self.log.info('sample inspector received data = %s' % payload)
+
+        state = payload['state']
+        host = payload['host']
+
+        if state == 'IN_MAINTENANCE':
+            self.log.info("sample inspector: disable %s automatic fault "
+                          "management" % host)
+        elif state == 'MAINTENANCE_COMPLETE':
+            self.log.info("sample inspector: enable %s automatic fault "
+                          "management" % host)
+        else:
+            raise("sample inspector couldn't handle state: %s" % state)
+
     @utils.run_async
     def _disable_compute_host(self, hostname):
         self.nova.services.force_down(hostname, 'nova-compute', True)
@@ -171,6 +205,11 @@ class InspectorApp(Thread):
                           % request.data)
             events = json.loads(request.data.decode('utf8'))
             self.inspector.handle_events(events)
+            return "OK"
+
+        @app.route('/maintenance', methods=['POST'])
+        def maintenance():
+            self.inspector.maintenance(request.json)
             return "OK"
 
         @app.route('/events/shutdown', methods=['POST'])
