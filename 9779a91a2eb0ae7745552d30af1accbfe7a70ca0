@@ -34,6 +34,24 @@
       "revId": "9779a91a2eb0ae7745552d30af1accbfe7a70ca0",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a3f45e8_b8efd6af",
+        "filename": "doctor_tests/installer/apex.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-03-09T09:43:54Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "5a3f45e8_78926e58",
+      "revId": "9779a91a2eb0ae7745552d30af1accbfe7a70ca0",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
