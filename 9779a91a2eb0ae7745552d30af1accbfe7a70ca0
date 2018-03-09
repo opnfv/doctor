@@ -16,6 +16,24 @@
       "revId": "9779a91a2eb0ae7745552d30af1accbfe7a70ca0",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a3f45e8_78926e58",
+        "filename": "doctor_tests/installer/apex.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-03-09T09:24:25Z",
+      "side": 0,
+      "message": "My bad, not rebased properly. I will fix this",
+      "parentUuid": "5a3f45e8_38d0e64f",
+      "revId": "9779a91a2eb0ae7745552d30af1accbfe7a70ca0",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
