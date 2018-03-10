@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a3f45e8_7151e961",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 3405
+      },
+      "writtenOn": "2018-03-10T08:40:51Z",
+      "side": 1,
+      "message": "You must insert a blank line after the title.\nElse everything is interpreted as title",
+      "revId": "dabff5b7e567838566eeac3d10ae0ce562e8e58a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a3f45e8_515b0d87",
+        "filename": "doctor_tests/admin_tool/base.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3405
+      },
+      "writtenOn": "2018-03-10T08:40:51Z",
+      "side": 1,
+      "message": "You should add shebangs in you python scripts. At least file would detect them as python scripts.\n\n#!/usr/bin/env python",
+      "revId": "dabff5b7e567838566eeac3d10ae0ce562e8e58a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a3f45e8_31600132",
+        "filename": "doctor_tests/admin_tool/sample.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3405
+      },
+      "writtenOn": "2018-03-10T08:40:51Z",
+      "side": 1,
+      "message": "idem",
+      "revId": "dabff5b7e567838566eeac3d10ae0ce562e8e58a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a3f45e8_91547555",
+        "filename": "requirements.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 3405
+      },
+      "writtenOn": "2018-03-10T08:40:51Z",
+      "side": 1,
+      "message": "License should be added.\nLet me know when this patch is merged. doctor is synchronized by my script and they will be automatically fixed.",
+      "revId": "dabff5b7e567838566eeac3d10ae0ce562e8e58a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
