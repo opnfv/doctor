@@ -1,0 +1,11 @@
+Verified+1: jenkins-ci <jenkins-opnfv-ci@opnfv.org>
+Code-Review+2: Bertrand Souville <souville@docomolab-euro.com>
+Code-Review+2: wenjuan dong <dong.wenjuan@zte.com.cn>
+Code-Review+2: Tomi Juvonen <tomi.juvonen@nokia.com>
+Code-Review+2: Ryota Mibu <r-mibu@cq.jp.nec.com>
+Code-Review+2: Gerald Kunzmann <kunzmann@docomolab-euro.com>
+Submitted-by: Gerald Kunzmann <kunzmann@docomolab-euro.com>
+Submitted-at: Fri, 16 Mar 2018 09:42:04 +0000
+Reviewed-on: https://gerrit.opnfv.org/gerrit/53807
+Project: doctor
+Branch: refs/heads/master
