@@ -30,13 +30,14 @@ class LocalInstaller(BaseInstaller):
         self.add_policy_file = False
 
     def setup(self):
-        self.get_ssh_key_from_installer()
+        key_path = ''
+        self.get_ssh_key_from_installer(key_path)
         self.set_apply_patches()
 
     def cleanup(self):
         self.restore_apply_patches()
 
-    def get_ssh_key_from_installer(self):
+    def get_ssh_key_from_installer(self, key_path):
         self.log.info('Assuming SSH keys already exchanged with computer'
                       'for local installer type')
         return None
