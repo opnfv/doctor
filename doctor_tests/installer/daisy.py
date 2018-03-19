@@ -6,14 +6,6 @@
 # which accompanies this distribution, and is available at
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
-import getpass
-import grp
-import os
-import pwd
-import stat
-import subprocess
-
-from doctor_tests.common.utils import get_doctor_test_root_dir
 from doctor_tests.common.utils import SSHClient
 from doctor_tests.installer.base import BaseInstaller
 
@@ -28,14 +20,13 @@ class DaisyInstaller(BaseInstaller):
                                 password='r00tme')
         self.key_file = None
         self.controllers = list()
-        self.servers = list()
-        self.test_dir = get_doctor_test_root_dir()
+        self.controller_clients = list()
 
     def setup(self):
         self.log.info('Setup Daisy installer start......')
 
-        self.get_ssh_key_from_installer()
-        self.get_controller_ips()
+        self.key_file = self.get_ssh_key_from_installer()
+        self.controllers = self.get_controller_ips()
         self.create_flavor()
         self.setup_stunnel()
 
@@ -44,38 +35,21 @@ class DaisyInstaller(BaseInstaller):
             server.terminate()
 
     def get_ssh_key_from_installer(self):
-        self.log.info('Get SSH keys from Daisy installer......')
-
-        if self.key_file is not None:
-            self.log.info('Already have SSH keys from Daisy installer......')
-            return self.key_file
-
-        ssh_key = '{0}/{1}'.format(self.test_dir, 'instack_key')
-        self.client.scp('/root/.ssh/id_dsa', ssh_key, method='get')
-        user = getpass.getuser()
-        uid = pwd.getpwnam(user).pw_uid
-        gid = grp.getgrnam(user).gr_gid
-        os.chown(ssh_key, uid, gid)
-        os.chmod(ssh_key, stat.S_IREAD)
-        self.key_file = ssh_key
-        return self.key_file
+        key_path = '/root/.ssh/id_dsa'
+        return self._get_ssh_key(self.client, key_path)
 
     def get_controller_ips(self):
         self.log.info('Get controller ips from Daisy installer......')
 
         command = "source daisyrc_admin; " \
                   "daisy host-list | grep 'CONTROLLER_LB' | cut -d '|' -f 3 "
-        ret, controllers = self.client.ssh(command)
-        if ret:
-            raise Exception('Exec command to get controller ips'
-                            'in Daisy installer failed'
-                            'ret=%s, output=%s' % (ret, controllers))
-        controller_ips = []
-        for controller in controllers:
-            controller_ips.append(self.get_host_ip_from_hostname(controller))
+        controller_names = self._run_cmd_remote(self.client, command)
+        controllers = \
+            [self.get_host_ip_from_hostname(controller)
+             for controller in controller_names]
         self.log.info('Get controller_ips:%s from Daisy installer'
-                      % controller_ips)
-        self.controllers = controller_ips
+                      % controllers)
+        return controllers
 
     def get_host_ip_from_hostname(self, hostname):
         self.log.info('Get host ip from host name......')
@@ -85,18 +59,3 @@ class DaisyInstaller(BaseInstaller):
         self.log.info('Get host_ip:%s from host_name:%s'
                       % (host_ip, hostname))
         return host_ip
-
-    def setup_stunnel(self):
-        self.log.info('Setup ssh stunnel in controller nodes'
-                      'in Daisy installer......')
-        for node_ip in self.controllers:
-            cmd = ("ssh -o UserKnownHostsFile=/dev/null"
-                   " -o StrictHostKeyChecking=no"
-                   " -i %s %s@%s -R %s:localhost:%s"
-                   " sleep 600 > ssh_tunnel.%s 2>&1 < /dev/null &"
-                   % (self.key_file, self.node_user_name,
-                      node_ip, self.conf.consumer.port,
-                      self.conf.consumer.port, node_ip))
-            server = subprocess.Popen(cmd, shell=True)
-            self.servers.append(server)
-            server.communicate()
