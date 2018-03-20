@@ -16,6 +16,15 @@ class BaseConsumer(object):
     def __init__(self, conf, log):
         self.conf = conf
         self.log = log
+        self._notified_time = None
+
+    @property
+    def notified_time(self):
+        return self._notified_time
+
+    @notified_time.setter
+    def notified_time(self, notified_time):
+        self._notified_time = notified_time
 
     @abc.abstractmethod
     def start(self):

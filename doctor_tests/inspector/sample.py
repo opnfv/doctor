@@ -108,8 +108,11 @@ class SampleInspector(BaseInspector):
     @utils.run_async
     def _disable_compute_host(self, hostname):
         self.nova.services.force_down(hostname, 'nova-compute', True)
+
+        hostdown_time = time.time()
+        self.host_down_time = hostdown_time
         self.log.info('doctor mark host(%s) down at %s'
-                      % (hostname, time.time()))
+                      % (hostname, hostdown_time))
 
     @utils.run_async
     def _vms_reset_state(self, state, hostname):
@@ -117,8 +120,10 @@ class SampleInspector(BaseInspector):
         @utils.run_async
         def _vm_reset_state(nova, server, state):
             nova.servers.reset_state(server, state)
+            vmdown_time = time.time()
+            self.vm_down_time = vmdown_time
             self.log.info('doctor mark vm(%s) error at %s'
-                          % (server, time.time()))
+                          % (server, vmdown_time))
 
         thrs = []
         for nova, server in zip(self.novaclients, self.servers[hostname]):
