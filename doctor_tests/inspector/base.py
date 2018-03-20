@@ -16,6 +16,24 @@ class BaseInspector(object):
     def __init__(self, conf, log):
         self.conf = conf
         self.log = log
+        self._host_down_time = None
+        self._vm_down_time = None
+
+    @property
+    def host_down_time(self):
+        return self._host_down_time
+
+    @host_down_time.setter
+    def host_down_time(self, host_down_time):
+        self._host_down_time = host_down_time
+
+    @property
+    def vm_down_time(self):
+        return self._vm_down_time
+
+    @vm_down_time.setter
+    def vm_down_time(self, vm_down_time):
+        self._vm_down_time = vm_down_time
 
     @abc.abstractmethod
     def get_inspector_url(self):
