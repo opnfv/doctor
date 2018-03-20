@@ -94,7 +94,9 @@ class Pinger(Thread):
                 sock.sendto(self.ICMP_ECHO_MESSAGE, (self.ip_addr, 0))
                 sock.recv(4096)
             except socket.timeout:
-                self.log.info("doctor monitor detected at %s" % time.time())
+                detected_time = time.time()
+                self.log.info("doctor monitor detected at %s" % detected_time)
+                self.monitor.detected_time = detected_time
                 self.monitor.report_error(self.hostname)
                 self.log.info("ping timeout, quit monitoring...")
                 self._stopped = True
