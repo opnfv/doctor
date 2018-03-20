@@ -17,6 +17,15 @@ class BaseMonitor(object):
         self.conf = conf
         self.log = log
         self.inspector_url = inspector_url
+        self._detected_time = None
+
+    @property
+    def detected_time(self):
+        return self._detected_time
+
+    @detected_time.setter
+    def detected_time(self, detected_time):
+        self._detected_time = detected_time
 
     @abc.abstractmethod
     def start(self, host):
