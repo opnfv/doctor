@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5a3f45e8_649ba572",
+        "filename": "docs/release/release-notes/releasenotes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2018-04-10T07:05:00Z",
+      "side": 1,
+      "message": "Extra \u003d\u003d\u003d",
+      "range": {
+        "startLine": 4,
+        "startChar": 35,
+        "endLine": 4,
+        "endChar": 38
+      },
+      "revId": "cae33a75768a33e4276a1ff4a061d91fc34c5644",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a3f45e8_44fae9bd",
         "filename": "docs/release/release-notes/releasenotes.rst",
         "patchSetId": 1
