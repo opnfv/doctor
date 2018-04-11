@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5a3f45e8_95ba5dbe",
+        "filename": "doctor_tests/installer/apex.py",
+        "patchSetId": 20
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-04-11T10:08:56Z",
+      "side": 1,
+      "message": "No, should figure out what is needed.",
+      "parentUuid": "5a3f45e8_15476d1e",
+      "range": {
+        "startLine": 89,
+        "startChar": 27,
+        "endLine": 89,
+        "endChar": 42
+      },
+      "revId": "79a394663fed93aa4953ad43b6879b35b65de7fa",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a3f45e8_35738981",
         "filename": "doctor_tests/installer/common/set_config.py",
         "patchSetId": 20
@@ -36,6 +60,30 @@
       "writtenOn": "2018-04-11T08:44:17Z",
       "side": 1,
       "message": "Were there changes in API enforcement policies during Pike/Fraser release in Nova/OPNFV? I am missing in this file the change to the nova policy.yaml required for get valid service status feature.\nhttps://github.com/openstack/nova/blob/stable/pike/etc/nova/README-policy.yaml.txt",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 26
+      },
+      "revId": "79a394663fed93aa4953ad43b6879b35b65de7fa",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a3f45e8_15cdad5d",
+        "filename": "doctor_tests/installer/common/set_config.py",
+        "patchSetId": 20
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-04-11T10:08:56Z",
+      "side": 1,
+      "message": "I think we tried to push the change to installer side before, but generically if it doesn\u0027t do it, then this script should do it. If it would not work currently, our fault management test case should fail (so it works without a change here). Seems currently only the local installer changes/creates policy.json.",
+      "parentUuid": "5a3f45e8_35738981",
       "range": {
         "startLine": 137,
         "startChar": 0,
