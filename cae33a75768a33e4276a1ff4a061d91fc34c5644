@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5a3f45e8_55ed75ee",
+        "filename": "docs/release/release-notes/releasenotes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2018-04-11T09:21:09Z",
+      "side": 1,
+      "message": "I manually verified it in ZTE Pod before, but didn\u0027t enable it in functest yet.\n\nAs functest changed to not trigger feature project test with \u0027nofeature\u0027 scenario, all our ZTE pods need to redeploy with\n\u0027feature\u0027 scenario.\n\nMaybe I can enable it in functest to see whether the test can run successfully in other community Pods.",
+      "parentUuid": "5a3f45e8_953b7d9b",
+      "range": {
+        "startLine": 67,
+        "startChar": 62,
+        "endLine": 67,
+        "endChar": 71
+      },
+      "revId": "cae33a75768a33e4276a1ff4a061d91fc34c5644",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a3f45e8_24f51dcb",
         "filename": "docs/release/release-notes/releasenotes.rst",
         "patchSetId": 1
@@ -107,6 +131,30 @@
       "side": 1,
       "message": "@ wenjuan\nHave u already tested (e.g. on community POD) event alarming feature with Daisy installer? Is this already enabled?\nThanks a lot!",
       "parentUuid": "5a3f45e8_24f51dcb",
+      "range": {
+        "startLine": 76,
+        "startChar": 62,
+        "endLine": 76,
+        "endChar": 72
+      },
+      "revId": "cae33a75768a33e4276a1ff4a061d91fc34c5644",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a3f45e8_b5bb19e4",
+        "filename": "docs/release/release-notes/releasenotes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2018-04-11T09:21:09Z",
+      "side": 1,
+      "message": "Not enabled in functest. I can enable it, the test can be runned on zte-pod9.",
+      "parentUuid": "5a3f45e8_b53839a1",
       "range": {
         "startLine": 76,
         "startChar": 62,
