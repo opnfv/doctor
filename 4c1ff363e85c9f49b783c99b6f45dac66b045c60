@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a3f45e8_15c00d7b",
+        "filename": "docs/release/release-notes/releasenotes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 346
+      },
+      "writtenOn": "2018-04-11T07:49:24Z",
+      "side": 0,
+      "message": "This is still a known issue AFAIK\nhttps://github.com/opnfv/doctor/blob/master/etc/doctor.sample.conf#L48",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 72
+      },
+      "revId": "4c1ff363e85c9f49b783c99b6f45dac66b045c60",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
