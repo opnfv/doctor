@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5a3f45e8_f58481d5",
+        "filename": "doctor_tests/installer/apex.py",
+        "patchSetId": 20
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-04-11T10:36:36Z",
+      "side": 1,
+      "message": "Actually had some scheduler problems at some point of time where VCPUs were still over-committed occasionally. With some investigations where \u0027cpu_allocation_ratio\u0027 is being used, I should restart at least nova-scheduler and nova-compute. This means it gets more complicated as have to go trough all compute nodes also when changing nova.conf and restart nova-compute there.",
+      "parentUuid": "5a3f45e8_95ba5dbe",
+      "range": {
+        "startLine": 89,
+        "startChar": 27,
+        "endLine": 89,
+        "endChar": 42
+      },
+      "revId": "79a394663fed93aa4953ad43b6879b35b65de7fa",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a3f45e8_35738981",
         "filename": "doctor_tests/installer/common/set_config.py",
         "patchSetId": 20
