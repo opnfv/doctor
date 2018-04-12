@@ -73,6 +73,54 @@
     },
     {
       "key": {
+        "uuid": "5a3f45e8_56673ab7",
+        "filename": "doctor_tests/installer/apex.py",
+        "patchSetId": 20
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-04-12T10:17:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a3f45e8_f58481d5",
+      "range": {
+        "startLine": 89,
+        "startChar": 27,
+        "endLine": 89,
+        "endChar": 42
+      },
+      "revId": "79a394663fed93aa4953ad43b6879b35b65de7fa",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a3f45e8_36fb8ec2",
+        "filename": "doctor_tests/installer/apex.py",
+        "patchSetId": 20
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-04-12T10:17:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a3f45e8_15476d1e",
+      "range": {
+        "startLine": 89,
+        "startChar": 27,
+        "endLine": 89,
+        "endChar": 42
+      },
+      "revId": "79a394663fed93aa4953ad43b6879b35b65de7fa",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a3f45e8_35738981",
         "filename": "doctor_tests/installer/common/set_config.py",
         "patchSetId": 20
