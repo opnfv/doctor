@@ -10,7 +10,7 @@ for doctor CI.
 
 You need to install OpenStack and other OPNFV components except Doctor Sample
 Inspector, Sample Monitor and Sample Consumer, as these will be launched in
-this script. You are encouraged to use OPNFV offcial installers, but you can
+this script. You are encouraged to use OPNFV official installers, but you can
 also deploy all components with other installers such as devstack or manual
 operation. In those cases, the versions of all components shall be matched with
 the versions of them in OPNFV specific release.
@@ -18,38 +18,16 @@ the versions of them in OPNFV specific release.
 Run Test Script
 ===============
 
-Doctor project has own testing script under `doctor/tests`_. This test script
+Doctor project has own testing script under `doctor/doctor_tests`_. This test script
 can be used for functional testing agained an OPNFV deployment.
 
-.. _doctor/tests: https://gerrit.opnfv.org/gerrit/gitweb?p=doctor.git;a=tree;f=tests;
+.. _doctor/doctor_tests: https://git.opnfv.org/doctor/tree/doctor_tests
 
 Before running this script, make sure OpenStack env parameters are set properly
-following `OpenStack CLI manual`_, so that Doctor Inspector can operate
+(See e.g. `OpenStackClient Configuration`_), so that Doctor Inspector can operate
 OpenStack services.
 
-.. _OpenStack CLI manual: https://docs.openstack.org/user-guide/common/cli-set-environment-variables-using-openstack-rc.html
-
-Run Bash Test Script
-~~~~~~~~~~~~~~~~~~~~
-
-You can run the bash script as follows:
-
-.. code-block:: bash
-
-    git clone https://gerrit.opnfv.org/gerrit/doctor
-    cd doctor/tests
-    export INSTALLER_TYPE=local
-    export INSPECTOR_TYPE=sample
-    ./run.sh
-
-INSTALLER_TYPE can be 'apex', 'fuel', 'joid' and 'local'(default). If you are
-not using OPNFV installers in this option, chose 'local'.
-INSPECTOR_TYPE can be specified either 'sample'(default) or 'congress'.
-
-For testing with stable version, checkout stable branch of doctor repo before
-'./run.sh'.
-
-The bash test script will be deprecated(only bug fixes) after E Release.
+.. _OpenStackClient Configuration: https://docs.openstack.org/python-openstackclient/latest/configuration/index.html
 
 Run Python Test Script
 ~~~~~~~~~~~~~~~~~~~~~~
