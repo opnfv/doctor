@@ -10,34 +10,38 @@ Ceilometer and Aodh (Doctor Notifier) except Doctor Monitor.
 
 After major components of OPNFV are deployed, you can setup Doctor functions
 by following instructions in this section. You can also learn detailed
-steps in setup_installer() under `doctor/tests`_.
+steps for all supported installers under `doctor/doctor_tests/installer`_.
 
-.. _doctor/tests: https://gerrit.opnfv.org/gerrit/gitweb?p=doctor.git;a=tree;f=tests;
+.. _doctor/doctor_tests/installer: https://git.opnfv.org/doctor/tree/doctor_tests/installer
 
 Doctor Inspector
 ----------------
 
-You need to configure one of Doctor Inspector below.
+You need to configure one of Doctor Inspectors below. You can also learn detailed steps for
+all supported Inspectors under `doctor/doctor_tests/inspector`_.
 
-**Doctor Sample Inspector**
+.. _doctor/doctor_tests/inspector: https://git.opnfv.org/doctor/tree/doctor_tests/inspector
+
+
+**Sample Inspector**
 
 Sample Inspector is intended to show minimum functions of Doctor Inspector.
 
-Doctor Sample Inspector suggested to be placed in one of the controller nodes,
-but it can be put on any host where Doctor Monitor can reach and access
-the OpenStack Controller (Nova).
+Sample Inspector is suggested to be placed in one of the controller nodes,
+but it can be put on any host where Sample Inspector can reach and access
+the OpenStack Controllers (e.g. Nova, Neutron).
 
-Make sure OpenStack env parameters are set properly, so that Doctor Inspector
+Make sure OpenStack env parameters are set properly, so that Sample Inspector
 can issue admin actions such as compute host force-down and state update of VM.
 
-Then, you can configure Doctor Inspector as follows:
+Then, you can configure Sample Inspector as follows:
 
 .. code-block:: bash
 
-    git clone https://gerrit.opnfv.org/gerrit/doctor -b stable/danube
-    cd doctor/tests
+    git clone https://gerrit.opnfv.org/gerrit/doctor
+    cd doctor/doctor_tests/inspector
     INSPECTOR_PORT=12345
-    python inspector.py $INSPECTOR_PORT > inspector.log 2>&1 &
+    python sample.py $INSPECTOR_PORT > inspector.log 2>&1 &
 
 **Congress**
 
@@ -45,9 +49,9 @@ OpenStack `Congress`_ is a Governance as a Service (previously Policy as a
 Service). Congress implements Doctor Inspector as it can inspect a fault
 situation and propagate errors onto other entities.
 
-.. _Congress: https://wiki.openstack.org/wiki/Congress
+.. _Congress: https://governance.openstack.org/tc/reference/projects/congress.html
 
-Congress is deployed by OPNFV installers. You need to enable doctor
+Congress is deployed by OPNFV Apex installer. You need to enable doctor
 datasource driver and set policy rules. By the example configuration below,
 Congress will force down nova compute service when it received a fault event
 of that compute host. Also, Congress will set the state of all VMs running on
@@ -55,7 +59,12 @@ that host from ACTIVE to ERROR state.
 
 .. code-block:: bash
 
-    openstack congress datasource create doctor doctor
+    openstack congress datasource create doctor "doctor"
+
+    openstack congress datasource create --config api_version=$NOVA_MICRO_VERSION \
+        --config username=$OS_USERNAME --config tenant_name=$OS_TENANT_NAME \
+        --config password=$OS_PASSWORD --config auth_url=$OS_AUTH_URL \
+        nova "nova21"
 
     openstack congress policy rule create \
         --name host_down classification \
@@ -125,27 +134,28 @@ support the Doctor use case. This can be done in a few steps:
 4. Restart the vitrage-graph and vitrage-notifier services
 
 
-Doctor Monitor
---------------
-
-**Doctor Sample Monitor**
+Doctor Monitors
+---------------
 
 Doctor Monitors are suggested to be placed in one of the controller nodes,
 but those can be put on any host which is reachable to target compute host and
 accessible by the Doctor Inspector.
-You need to configure Monitors for all compute hosts one by one.
+You need to configure Monitors for all compute hosts one by one. You can also learn detailed
+steps for all supported monitors under `doctor/doctor_tests/monitor`_.
 
-Make sure OpenStack env parameters are set properly, so that Doctor Inspector
-can issue admin actions such as compute host force-down and state update of VM.
+.. _doctor/doctor_tests/monitor: https://git.opnfv.org/doctor/tree/doctor_tests/monitor
 
-Then, you can configure the Doctor Monitor as follows (Example for Apex deployment):
+**Sample Monitor**
+You can configure the Sample Monitor as follows (Example for Apex deployment):
 
 .. code-block:: bash
 
-    git clone https://gerrit.opnfv.org/gerrit/doctor -b stable/danube
-    cd doctor/tests
+    git clone https://gerrit.opnfv.org/gerrit/doctor
+    cd doctor/doctor_tests/monitor
     INSPECTOR_PORT=12345
     COMPUTE_HOST='overcloud-novacompute-1.localdomain.com'
     COMPUTE_IP=192.30.9.5
-    sudo python monitor.py "$COMPUTE_HOST" "$COMPUTE_IP" \
+    sudo python sample.py "$COMPUTE_HOST" "$COMPUTE_IP" \
         "http://127.0.0.1:$INSPECTOR_PORT/events" > monitor.log 2>&1 &
+
+**Collectd Monitor**
