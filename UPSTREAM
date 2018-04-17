@@ -52,3 +52,12 @@
 -
   url: https://bugs.launchpad.net/python-openstackclient/+bug/1684989
   system: Launchpad-bug
+-
+  url: https://blueprints.launchpad.net/vitrage/+spec/doctor-datasource
+  system: Launchpad
+-
+  url: https://blueprints.launchpad.net/vitrage/+spec/support-inspector-sb-api
+  system: Launchpad
+-
+  url: https://review.openstack.org/#/c/514507
+  system: Gerrit
