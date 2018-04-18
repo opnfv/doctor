@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a3f45e8_1e72dbac",
+        "filename": "UPSTREAM",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2018-04-18T01:09:32Z",
+      "side": 1,
+      "message": "Hi, this patch is related to this BP:\nhttps://blueprints.launchpad.net/vitrage/+spec/support-mark-down-action-for-instances.",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 16
+      },
+      "revId": "90efafe5699bceebdd7a2ac6f5df601bded58f7c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
