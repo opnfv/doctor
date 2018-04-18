@@ -22,6 +22,30 @@
       "revId": "90efafe5699bceebdd7a2ac6f5df601bded58f7c",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a3f45e8_fe39efa4",
+        "filename": "UPSTREAM",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-04-18T04:43:03Z",
+      "side": 1,
+      "message": "I can see we have here bugs, BP and then also straight references to patches. Maybe should avoid the straight reference to patch if there is a way to link via bug or BP. I think these are also used to calculate analytics data, so hope it finds lines done for patches under BPs and bugs.",
+      "parentUuid": "5a3f45e8_1e72dbac",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 16
+      },
+      "revId": "90efafe5699bceebdd7a2ac6f5df601bded58f7c",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
