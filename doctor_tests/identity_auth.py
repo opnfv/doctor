@@ -40,4 +40,5 @@ def get_session(auth=None):
     """Get a user credentials auth session."""
     if auth is None:
         auth = get_identity_auth()
-    return session.Session(auth=auth)
+    return session.Session(auth=auth,
+                           verify=os.environ.get('OS_CACERT'))
