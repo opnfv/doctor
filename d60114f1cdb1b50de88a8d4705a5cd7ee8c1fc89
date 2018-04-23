@@ -1,0 +1,7 @@
+Verified+1: jenkins-ci <jenkins-opnfv-ci@opnfv.org>
+Code-Review+2: Tomi Juvonen <tomi.juvonen@nokia.com>
+Submitted-by: Bertrand Souville <souville@docomolab-euro.com>
+Submitted-at: Mon, 23 Apr 2018 10:32:27 +0000
+Reviewed-on: https://gerrit.opnfv.org/gerrit/56255
+Project: doctor
+Branch: refs/heads/stable/fraser
