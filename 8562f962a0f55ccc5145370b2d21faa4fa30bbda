@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5a3f45e8_1dcad81a",
+        "filename": "docs/release/release-notes/releasenotes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-04-23T10:19:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a3f45e8_7d25dc07",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 4
+      },
+      "revId": "8562f962a0f55ccc5145370b2d21faa4fa30bbda",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a3f45e8_dd1eb0ba",
         "filename": "docs/release/release-notes/releasenotes.rst",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5a3f45e8_fdce0c2d",
+        "filename": "docs/release/release-notes/releasenotes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-04-23T10:19:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a3f45e8_dd1eb0ba",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 38
+      },
+      "revId": "8562f962a0f55ccc5145370b2d21faa4fa30bbda",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a3f45e8_fd80ccc1",
         "filename": "docs/release/release-notes/releasenotes.rst",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2018-04-23T09:38:15Z",
       "side": 1,
       "message": "\"completed\"?",
+      "range": {
+        "startLine": 34,
+        "startChar": 39,
+        "endLine": 34,
+        "endChar": 49
+      },
+      "revId": "8562f962a0f55ccc5145370b2d21faa4fa30bbda",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a3f45e8_5dd0e0c8",
+        "filename": "docs/release/release-notes/releasenotes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-04-23T10:19:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a3f45e8_fd80ccc1",
       "range": {
         "startLine": 34,
         "startChar": 39,
@@ -117,6 +189,54 @@
     },
     {
       "key": {
+        "uuid": "5a3f45e8_dde350a2",
+        "filename": "docs/release/release-notes/releasenotes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-04-23T10:19:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a3f45e8_bd1be4c8",
+      "range": {
+        "startLine": 35,
+        "startChar": 22,
+        "endLine": 35,
+        "endChar": 36
+      },
+      "revId": "8562f962a0f55ccc5145370b2d21faa4fa30bbda",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a3f45e8_3dd514b9",
+        "filename": "docs/release/release-notes/releasenotes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-04-23T10:19:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a3f45e8_1d7c98eb",
+      "range": {
+        "startLine": 35,
+        "startChar": 41,
+        "endLine": 35,
+        "endChar": 79
+      },
+      "revId": "8562f962a0f55ccc5145370b2d21faa4fa30bbda",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a3f45e8_5d82a0c8",
         "filename": "docs/release/release-notes/releasenotes.rst",
         "patchSetId": 2
@@ -128,6 +248,30 @@
       "writtenOn": "2018-04-23T09:38:15Z",
       "side": 1,
       "message": "supports",
+      "range": {
+        "startLine": 51,
+        "startChar": 13,
+        "endLine": 51,
+        "endChar": 20
+      },
+      "revId": "8562f962a0f55ccc5145370b2d21faa4fa30bbda",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a3f45e8_5de740ac",
+        "filename": "docs/release/release-notes/releasenotes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-04-23T10:19:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a3f45e8_5d82a0c8",
       "range": {
         "startLine": 51,
         "startChar": 13,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "5a3f45e8_bde00497",
+        "filename": "docs/release/release-notes/releasenotes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-04-23T10:19:07Z",
+      "side": 1,
+      "message": "Yes, I can remove from here, but cannot remove from table if we do not get that answer easily.",
+      "parentUuid": "5a3f45e8_3d87d4d8",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 5
+      },
+      "revId": "8562f962a0f55ccc5145370b2d21faa4fa30bbda",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a3f45e8_9d6f082b",
         "filename": "docs/release/release-notes/releasenotes.rst",
         "patchSetId": 2
@@ -174,6 +342,30 @@
       "writtenOn": "2018-04-23T09:38:15Z",
       "side": 1,
       "message": "Did you mean \"Some initial test case are available, however, ...\" ?",
+      "range": {
+        "startLine": 98,
+        "startChar": 52,
+        "endLine": 99,
+        "endChar": 23
+      },
+      "revId": "8562f962a0f55ccc5145370b2d21faa4fa30bbda",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a3f45e8_3decf48e",
+        "filename": "docs/release/release-notes/releasenotes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-04-23T10:19:07Z",
+      "side": 1,
+      "message": "Yes, it will not be all there. So rephrasing,",
+      "parentUuid": "5a3f45e8_9d6f082b",
       "range": {
         "startLine": 98,
         "startChar": 52,
