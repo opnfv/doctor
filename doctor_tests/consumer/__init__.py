@@ -21,7 +21,7 @@ OPTS = [
                help='the ip of consumer',
                required=True),
     cfg.IntOpt('port',
-               default='12346',
+               default=12346,
                help='the port of doctor consumer',
                required=True),
 ]
