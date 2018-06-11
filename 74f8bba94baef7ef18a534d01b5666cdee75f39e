@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da5c1566_22be2f00",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2018-06-11T07:48:35Z",
+      "side": 1,
+      "message": "whether",
+      "range": {
+        "startLine": 102,
+        "startChar": 56,
+        "endLine": 102,
+        "endChar": 62
+      },
+      "revId": "74f8bba94baef7ef18a534d01b5666cdee75f39e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da5c1566_423c0394",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2018-06-11T07:48:35Z",
+      "side": 1,
+      "message": "I think that parallel session can cause a confusion. If the application is notified about different affected instances in each session, it might switch the ACT-STBY in a wrong way.",
+      "range": {
+        "startLine": 106,
+        "startChar": 2,
+        "endLine": 107,
+        "endChar": 36
+      },
+      "revId": "74f8bba94baef7ef18a534d01b5666cdee75f39e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da5c1566_02520bdd",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2018-06-11T07:48:35Z",
+      "side": 1,
+      "message": "1. Does it have to be Aodh? in previous Doctor documentation a general \u0027Notifier\u0027 term was used. Will the application have to use the specific Aodh event? \n\n2. Aodh event alarm is set to \u0027alarm\u0027 state when the event arrives. If I understand correctly, you plan to raise different events as the maintenance progresses? do you plan to create different Aodh event alarms (one for each state), or to clear (how?) and re-raise the same alarm each time?",
+      "range": {
+        "startLine": 112,
+        "startChar": 17,
+        "endLine": 112,
+        "endChar": 27
+      },
+      "revId": "74f8bba94baef7ef18a534d01b5666cdee75f39e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da5c1566_c2c0137f",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2018-06-11T07:48:35Z",
+      "side": 1,
+      "message": "Isn\u0027t it the role of the inspector, to provide the list of instances (and optionally other resources as well)?",
+      "range": {
+        "startLine": 121,
+        "startChar": 6,
+        "endLine": 123,
+        "endChar": 63
+      },
+      "revId": "74f8bba94baef7ef18a534d01b5666cdee75f39e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da5c1566_02bb2b0f",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2018-06-11T07:48:35Z",
+      "side": 1,
+      "message": "What should this URL include? is it a specific API that the admin tool (any admin tool) defines and the application should call? I think that it should be detailed here.",
+      "range": {
+        "startLine": 124,
+        "startChar": 7,
+        "endLine": 124,
+        "endChar": 16
+      },
+      "revId": "74f8bba94baef7ef18a534d01b5666cdee75f39e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da5c1566_623787b1",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2018-06-11T07:48:35Z",
+      "side": 1,
+      "message": "How about renaming it to \u0027scheduled_maintenance_time\u0027?",
+      "range": {
+        "startLine": 127,
+        "startChar": 7,
+        "endLine": 127,
+        "endChar": 17
+      },
+      "revId": "74f8bba94baef7ef18a534d01b5666cdee75f39e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da5c1566_a2419f0d",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2018-06-11T07:48:35Z",
+      "side": 1,
+      "message": "Is it the responsibility of the admin tool to handle the instances? can\u0027t the application call Nova directly?",
+      "range": {
+        "startLine": 178,
+        "startChar": 6,
+        "endLine": 179,
+        "endChar": 93
+      },
+      "revId": "74f8bba94baef7ef18a534d01b5666cdee75f39e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da5c1566_82461b22",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2018-06-11T07:48:35Z",
+      "side": 1,
+      "message": "I think that this name is confusing, I would expect DONE after the entire maintenance is done",
+      "range": {
+        "startLine": 181,
+        "startChar": 18,
+        "endLine": 181,
+        "endChar": 35
+      },
+      "revId": "74f8bba94baef7ef18a534d01b5666cdee75f39e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da5c1566_e24a7726",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2018-06-11T07:48:35Z",
+      "side": 1,
+      "message": "Why is it needed as a separate event? I thought that the migration was already done.",
+      "range": {
+        "startLine": 198,
+        "startChar": 65,
+        "endLine": 203,
+        "endChar": 56
+      },
+      "revId": "74f8bba94baef7ef18a534d01b5666cdee75f39e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da5c1566_c247731c",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 4127
+      },
+      "writtenOn": "2018-06-11T07:48:35Z",
+      "side": 1,
+      "message": "According to the diagram, these events are sent to the inspector. But it is not mentioned in the documentation below.",
+      "range": {
+        "startLine": 230,
+        "startChar": 2,
+        "endLine": 230,
+        "endChar": 64
+      },
+      "revId": "74f8bba94baef7ef18a534d01b5666cdee75f39e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
