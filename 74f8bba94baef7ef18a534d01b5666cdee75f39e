@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "da5c1566_adb067f5",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-06-18T07:30:10Z",
+      "side": 1,
+      "message": "Thanks, fixing this",
+      "parentUuid": "da5c1566_22be2f00",
+      "range": {
+        "startLine": 102,
+        "startChar": 56,
+        "endLine": 102,
+        "endChar": 62
+      },
+      "revId": "74f8bba94baef7ef18a534d01b5666cdee75f39e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da5c1566_423c0394",
         "filename": "docs/development/design/maintenance-design-guideline.rst",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2018-06-11T07:48:35Z",
       "side": 1,
       "message": "I think that parallel session can cause a confusion. If the application is notified about different affected instances in each session, it might switch the ACT-STBY in a wrong way.",
+      "range": {
+        "startLine": 106,
+        "startChar": 2,
+        "endLine": 107,
+        "endChar": 36
+      },
+      "revId": "74f8bba94baef7ef18a534d01b5666cdee75f39e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da5c1566_ad5d07ec",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-06-18T07:30:10Z",
+      "side": 1,
+      "message": "I need to explain more here. Same type of HW should be maintained in a single session or something like HW belonging to same aggregate. This ensures moving VMs between computes will always succeed as the HW capabilities match. Parallel sessions is important surely in huge cloud where there might always be some session running. I will add some text to clarify.",
+      "parentUuid": "da5c1566_423c0394",
       "range": {
         "startLine": 106,
         "startChar": 2,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "da5c1566_8d05a3c4",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-06-18T07:30:10Z",
+      "side": 1,
+      "message": "If one does not want to use AODH, then one needs to catch the message by other means from message bus, or have some other alarming service. There is a single message even type that needs to be caught, so one need to subscribe only for that. There is state information separately in this event. Have the POC code, it works nicely like that the same way as in fault management case.",
+      "parentUuid": "da5c1566_02520bdd",
+      "range": {
+        "startLine": 112,
+        "startChar": 17,
+        "endLine": 112,
+        "endChar": 27
+      },
+      "revId": "74f8bba94baef7ef18a534d01b5666cdee75f39e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da5c1566_c2c0137f",
         "filename": "docs/development/design/maintenance-design-guideline.rst",
         "patchSetId": 7
@@ -82,6 +154,30 @@
       "writtenOn": "2018-06-11T07:48:35Z",
       "side": 1,
       "message": "Isn\u0027t it the role of the inspector, to provide the list of instances (and optionally other resources as well)?",
+      "range": {
+        "startLine": 121,
+        "startChar": 6,
+        "endLine": 123,
+        "endChar": 63
+      },
+      "revId": "74f8bba94baef7ef18a534d01b5666cdee75f39e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da5c1566_6d0acfd3",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-06-18T07:30:10Z",
+      "side": 1,
+      "message": "This is project specific message, so it is not meant for Inspector. There is separate host specific event for inspector.",
+      "parentUuid": "da5c1566_c2c0137f",
       "range": {
         "startLine": 121,
         "startChar": 6,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "da5c1566_ad14e7f5",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-06-18T07:30:10Z",
+      "side": 1,
+      "message": "Yes. At this point one cannot be more specific, but to tell this call back URL needs to be there. This document describes with the current understanding as much as it can.",
+      "parentUuid": "da5c1566_02bb2b0f",
+      "range": {
+        "startLine": 124,
+        "startChar": 7,
+        "endLine": 124,
+        "endChar": 16
+      },
+      "revId": "74f8bba94baef7ef18a534d01b5666cdee75f39e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da5c1566_623787b1",
         "filename": "docs/development/design/maintenance-design-guideline.rst",
         "patchSetId": 7
@@ -128,6 +248,30 @@
       "writtenOn": "2018-06-11T07:48:35Z",
       "side": 1,
       "message": "How about renaming it to \u0027scheduled_maintenance_time\u0027?",
+      "range": {
+        "startLine": 127,
+        "startChar": 7,
+        "endLine": 127,
+        "endChar": 17
+      },
+      "revId": "74f8bba94baef7ef18a534d01b5666cdee75f39e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da5c1566_0de7d313",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-06-18T07:30:10Z",
+      "side": 1,
+      "message": "Sure this can be named differently as may also some other attributes. I do not want to sate with this document what will be final naming as the real implementations are not there and it may differ a bit when that is done. Anyhow this attribute is common for different state of project specific maintenance events and thus the \u0027scheduled_maintenance_time\u0027 is not generic. Now just picked up some time related naming convention here, that follows something used for example in Nova and tries to tell when admin tool will proceed further with what ever it might be doing next.",
+      "parentUuid": "da5c1566_623787b1",
       "range": {
         "startLine": 127,
         "startChar": 7,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "da5c1566_8dbac3df",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-06-18T07:30:10Z",
+      "side": 1,
+      "message": "Application cannot do admin actions like migration. Admin owned tool can provide allowed actions to application that he is not normally allowed to do and if he pick up some of those, he will reply back with that action ad the admin tool does it as it has privileges to do it.",
+      "parentUuid": "da5c1566_a2419f0d",
+      "range": {
+        "startLine": 178,
+        "startChar": 6,
+        "endLine": 179,
+        "endChar": 93
+      },
+      "revId": "74f8bba94baef7ef18a534d01b5666cdee75f39e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da5c1566_82461b22",
         "filename": "docs/development/design/maintenance-design-guideline.rst",
         "patchSetId": 7
@@ -174,6 +342,30 @@
       "writtenOn": "2018-06-11T07:48:35Z",
       "side": 1,
       "message": "I think that this name is confusing, I would expect DONE after the entire maintenance is done",
+      "range": {
+        "startLine": 181,
+        "startChar": 18,
+        "endLine": 181,
+        "endChar": 35
+      },
+      "revId": "74f8bba94baef7ef18a534d01b5666cdee75f39e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da5c1566_edca5f6d",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-06-18T07:30:10Z",
+      "side": 1,
+      "message": "Admin action is usually some migration. This state information is for any instance (VM) to tell application that admin tool has successfully completed migration, so application should now be able to continue to use this instance and would know any downtime for that is now not expected anymore. This was on of the last updates and could indicate better something like \u0027INSTANCE_ACTION_DONE\u0027 as answer to application that asked admin tool to make some instance specific action.",
+      "parentUuid": "da5c1566_82461b22",
       "range": {
         "startLine": 181,
         "startChar": 18,
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "da5c1566_4dc8ab74",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-06-18T07:30:10Z",
+      "side": 1,
+      "message": "This is the state to indicate to project having instances on compute that now is the time when those instances will the way or the other going to be moved to compute that is already maintained / upgraded (re-instantiated by project or migrated by the admin tool). Previously you might have needed migration to make empty compute to be maintained first. That is separate state.",
+      "parentUuid": "da5c1566_e24a7726",
+      "range": {
+        "startLine": 198,
+        "startChar": 65,
+        "endLine": 203,
+        "endChar": 56
+      },
+      "revId": "74f8bba94baef7ef18a534d01b5666cdee75f39e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da5c1566_c247731c",
         "filename": "docs/development/design/maintenance-design-guideline.rst",
         "patchSetId": 7
@@ -220,6 +436,30 @@
       "writtenOn": "2018-06-11T07:48:35Z",
       "side": 1,
       "message": "According to the diagram, these events are sent to the inspector. But it is not mentioned in the documentation below.",
+      "range": {
+        "startLine": 230,
+        "startChar": 2,
+        "endLine": 230,
+        "endChar": 64
+      },
+      "revId": "74f8bba94baef7ef18a534d01b5666cdee75f39e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da5c1566_cdab1b88",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-06-18T07:30:10Z",
+      "side": 1,
+      "message": "Yes, this can be currently a bit confusing. lines 47-65 tells about two different event types for project and admin. In other words for instances and host. Have to look to have this better.",
+      "parentUuid": "da5c1566_c247731c",
       "range": {
         "startLine": 230,
         "startChar": 2,
