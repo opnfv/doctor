@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da5c1566_d6ca8c6d",
+        "filename": "doctor_tests/admin_tool/sample.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-06-19T09:34:25Z",
+      "side": 1,
+      "message": "We should have message to app manager when admin action like migration is done",
+      "range": {
+        "startLine": 300,
+        "startChar": 20,
+        "endLine": 300,
+        "endChar": 47
+      },
+      "revId": "e9ef6d48a06fb872b2ac309084159287157ad9af",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da5c1566_36c82874",
+        "filename": "doctor_tests/app_manager/sample.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-06-19T09:34:25Z",
+      "side": 1,
+      "message": "If admin tool would send admin action done, we could receive it here while in this test code we would not do anything with that information. Real world we would expect corresponding instance to be again usable when this information is received.",
+      "range": {
+        "startLine": 228,
+        "startChar": 55,
+        "endLine": 230,
+        "endChar": 12
+      },
+      "revId": "e9ef6d48a06fb872b2ac309084159287157ad9af",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
