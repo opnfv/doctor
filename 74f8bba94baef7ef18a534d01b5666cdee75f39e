@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "da5c1566_41c4f43f",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-06-20T04:06:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da5c1566_adb067f5",
+      "range": {
+        "startLine": 102,
+        "startChar": 56,
+        "endLine": 102,
+        "endChar": 62
+      },
+      "revId": "74f8bba94baef7ef18a534d01b5666cdee75f39e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da5c1566_423c0394",
         "filename": "docs/development/design/maintenance-design-guideline.rst",
         "patchSetId": 7
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "I need to explain more here. Same type of HW should be maintained in a single session or something like HW belonging to same aggregate. This ensures moving VMs between computes will always succeed as the HW capabilities match. Parallel sessions is important surely in huge cloud where there might always be some session running. I will add some text to clarify.",
       "parentUuid": "da5c1566_423c0394",
+      "range": {
+        "startLine": 106,
+        "startChar": 2,
+        "endLine": 107,
+        "endChar": 36
+      },
+      "revId": "74f8bba94baef7ef18a534d01b5666cdee75f39e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da5c1566_21c1002f",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-06-20T04:06:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da5c1566_ad5d07ec",
       "range": {
         "startLine": 106,
         "startChar": 2,
@@ -378,6 +426,30 @@
     },
     {
       "key": {
+        "uuid": "da5c1566_61e2d8d6",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-06-20T04:06:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da5c1566_edca5f6d",
+      "range": {
+        "startLine": 181,
+        "startChar": 18,
+        "endLine": 181,
+        "endChar": 35
+      },
+      "revId": "74f8bba94baef7ef18a534d01b5666cdee75f39e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da5c1566_e24a7726",
         "filename": "docs/development/design/maintenance-design-guideline.rst",
         "patchSetId": 7
@@ -460,6 +532,30 @@
       "side": 1,
       "message": "Yes, this can be currently a bit confusing. lines 47-65 tells about two different event types for project and admin. In other words for instances and host. Have to look to have this better.",
       "parentUuid": "da5c1566_c247731c",
+      "range": {
+        "startLine": 230,
+        "startChar": 2,
+        "endLine": 230,
+        "endChar": 64
+      },
+      "revId": "74f8bba94baef7ef18a534d01b5666cdee75f39e",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da5c1566_c1e764e3",
+        "filename": "docs/development/design/maintenance-design-guideline.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-06-20T04:06:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da5c1566_cdab1b88",
       "range": {
         "startLine": 230,
         "startChar": 2,
