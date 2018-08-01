@@ -24,6 +24,10 @@ OPTS = [
                default='root',
                help='the user name for login installer server',
                required=True),
+    cfg.StrOpt('key_file',
+               default=os.environ.get('SSH_KEY', None),
+               help='the key for user to login installer server',
+               required=False),
 ]
 
 

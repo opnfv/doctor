@@ -22,7 +22,8 @@ class McpInstaller(BaseInstaller):
         self.key_file = self.get_ssh_key_from_installer()
         self.client = SSHClient(self.conf.installer.ip,
                                 self.node_user_name,
-                                key_filename=self.key_file)
+                                key_filename=self.key_file,
+                                look_for_keys=True)
         self.controllers = list()
         self.controller_clients = list()
 
