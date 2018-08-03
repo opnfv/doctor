@@ -63,7 +63,7 @@ class BaseInstaller(object):
             cmd = ("ssh -o UserKnownHostsFile=/dev/null"
                    " -o StrictHostKeyChecking=no"
                    " -i %s %s@%s -R %s:localhost:%s"
-                   " sleep 600 > ssh_tunnel.%s.log"
+                   " sleep 600 > ssh_tunnel.%s"
                    " 2>&1 < /dev/null &"
                    % (self.key_file,
                       self.node_user_name,
