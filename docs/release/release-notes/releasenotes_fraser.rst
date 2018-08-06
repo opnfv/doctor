@@ -2,10 +2,10 @@
 .. http://creativecommons.org/licenses/by/4.0
 
 ===================================
-OPNFV Doctor release notes (Gambia)
+OPNFV Doctor release notes (Fraser)
 ===================================
 
-This document provides an overview of the Doctor project in the OPNFV Gambia
+This document provides an overview of the Doctor project in the OPNFV Fraser
 release, including new features, known issues and documentation updates.
 
 Version history
@@ -14,7 +14,9 @@ Version history
 +------------+----------+--------------+-------------+
 | **Date**   | **Ver.** | **Author**   | **Comment** |
 +============+==========+==============+=============+
-| 2018-08-06 | 7.0.0    | Tomi Juvonen |    draft    |
+| 2018-06-25 | 6.2.0    | Tomi Juvonen |             |
+| 2018-05-25 | 6.1.0    | Tomi Juvonen |             |
+| 2018-04-23 | 6.0.0    | Tomi Juvonen |             |
 +------------+----------+--------------+-------------+
 
 Important notes
@@ -27,21 +29,18 @@ upstream OSS projects. After those features were implemented, OPNFV installer
 projects integrated the features to the OPNFV platform and the OPNFV
 infra/testing projects verified the functionalities in the OPNFV Labs. After
 Euphrates release Doctor also graduated and became a mature project. This means
-it has completed the implementation of the fault management use case and is
-currently not working on it while might need to get back to it later to meet
-better the tough industry requirements.
+it has completed the implementation of the fault management use case. Based on
+this implementation, Doctor has now started to implement the second use case on
+maintenance.
 
-In Gambia release Doctor has been working with the second use case over 
-maintenance. Design guideline is now done and test case exist with sample
-maintenance workflow code implemented in Doctor. Work is also started to have
-the real implementation done in the OpenStack Fenix.
-
-Doctor testing has now moved to use tox instead of Functest.
+For Fraser release, the Doctor project completed re-factoring testing code by
+python, added support for installers and started working the maintenance use
+case. Doctor now supports Apex, Fuel, Joid, Compass and Daisy installer.
 
 New features
 ============
 
-Doctor now supports Vitrage as Inspector for Apex.
+Doctor now supports Vitrage as Inspector for local installer.
 
 Installer support and verification status
 =========================================
@@ -49,20 +48,22 @@ Installer support and verification status
 Integrated features
 -------------------
 
-- Maintenance use case as desing document and test case code under Doctor
-- Doctor now supports Vitrage as Inspector for Apex installer.
+- The enhancement work for Doctor testing code done by re-factoring in python is
+  now complete.
+- Lint support for the code changes was added.
+- Doctor now supports Vitrage as Inspector for local installer.
 
 OPNFV installer support matrix
 ------------------------------
 
 Doctor has already support for several installers for fault management testing.
-Here is latest additions [*]
+This work also continued in the Fraser release. Here is latest additions [*]
 
 +-----------+--------------+--------------+-----------------+--------------+--------------+
 | Installer | Aodh         | Nova: Force  | Nova: Get valid | Congress     | Vitrage      |
 |           | integration  | compute down | service status  | integration  | integration  |
 +===========+==============+==============+=================+==============+==============+
-| Apex      | Available    | Available    | Available       | Available    | Available*   |
+| Apex      | Available    | Available    | Available       | Available    | N/A          |
 +-----------+--------------+--------------+-----------------+--------------+--------------+
 | Fuel      | Available    | Available    | Available       | TBC          | N/A          |
 | (MCP)     |              |              |                 |              |              |
@@ -73,7 +74,7 @@ Here is latest additions [*]
 | Compass   | Available    | TBC          | TBC             | Available    | N/A          |
 |           | Not verified |              |                 | Not verified |              |
 +-----------+--------------+--------------+-----------------+--------------+--------------+
-| Daisy     | Available    | TBC          | TBC             | TBC          | N/A          |
+| Daisy*    | Available    | TBC          | TBC             | TBC          | N/A          |
 |           |              |              |                 |              |              |
 +-----------+--------------+--------------+-----------------+--------------+--------------+
 | Local     | Available    | TBC          | TBC             | Available    | Available*   |
@@ -85,20 +86,15 @@ Note: Local installer is devstack.
 Note: 'Not verified' means that we didn't verify the functionality by having
 our own test scenario running in OPNFV CI pipeline yet.
 
-The new maintenance use case is tested only with Apex installer as we only have
-environment to test it there. Maintenance testing should have at least three
-compute nodes to make sense, but otherwise it doesn't require anything special
-and should work with any OPNFV installer that support faul management case
-above. Only dependencies are that it uses AODH and Heat that one might not
-have always by default.
-
 Documentation updates
 =====================
 
-Planned Maintenance Design Guideline
+No major updates
 
 Known issues
 ============
 
 - Testing code for `port-data-plane-status` in Doctor repository was disabled
   in 5.0, as we have problem in neutron client load in CI job container.
+- Maintenance test case work was started in Fraser. Some initial test case code
+  is available, however it is yet not fully implemented in this release.
