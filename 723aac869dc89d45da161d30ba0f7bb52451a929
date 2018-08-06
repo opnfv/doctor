@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a561d44_950ac5d0",
+        "filename": "docs/release/release-notes/releasenotes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-08-06T04:00:44Z",
+      "side": 1,
+      "message": "Fixing this after other comments",
+      "range": {
+        "startLine": 34,
+        "startChar": 71,
+        "endLine": 34,
+        "endChar": 72
+      },
+      "revId": "723aac869dc89d45da161d30ba0f7bb52451a929",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
