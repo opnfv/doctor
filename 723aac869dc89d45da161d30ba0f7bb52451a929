@@ -22,6 +22,29 @@
       "revId": "723aac869dc89d45da161d30ba0f7bb52451a929",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_d52b9d2e",
+        "filename": "docs/release/release-notes/releasenotes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2018-08-06T06:21:25Z",
+      "side": 1,
+      "message": "This is not implemented yet.",
+      "range": {
+        "startLine": 44,
+        "startChar": 44,
+        "endLine": 44,
+        "endChar": 49
+      },
+      "revId": "723aac869dc89d45da161d30ba0f7bb52451a929",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
