@@ -88,6 +88,23 @@
     },
     {
       "key": {
+        "uuid": "9a561d44_9565a547",
+        "filename": "docs/release/release-notes/releasenotes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2018-08-06T09:08:59Z",
+      "side": 1,
+      "message": "Add here also that TOX was added for CI.",
+      "revId": "723aac869dc89d45da161d30ba0f7bb52451a929",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a561d44_d52b9d2e",
         "filename": "docs/release/release-notes/releasenotes.rst",
         "patchSetId": 1
