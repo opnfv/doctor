@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "9a561d44_55466dc0",
+        "filename": "docs/release/release-notes/releasenotes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2018-08-06T09:00:15Z",
+      "side": 1,
+      "message": "If time allows we could adapt to the latest release-notes template: https://gerrit.opnfv.org/gerrit/gitweb?p\u003dopnfvdocs.git;a\u003dblob;f\u003ddocs/templates/release/release-notes/release-notes.rst;h\u003dead095cc3ef969f3992f84b160db36145d05fbe3;hb\u003dHEAD\n\nSee proposed changes below in other comments.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 26
+      },
+      "revId": "723aac869dc89d45da161d30ba0f7bb52451a929",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a561d44_950ac5d0",
         "filename": "docs/release/release-notes/releasenotes.rst",
         "patchSetId": 1
@@ -18,6 +41,46 @@
         "startChar": 71,
         "endLine": 34,
         "endChar": 72
+      },
+      "revId": "723aac869dc89d45da161d30ba0f7bb52451a929",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_d511ddad",
+        "filename": "docs/release/release-notes/releasenotes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2018-08-06T09:00:15Z",
+      "side": 1,
+      "message": "Add a \"Summary\" section to \u003cSUMMARIZE THE RELEASE - THE CONTENT - AND OTHER IMPORTANT HIGH LEVEL PROPERTIES\u003e",
+      "revId": "723aac869dc89d45da161d30ba0f7bb52451a929",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_35265917",
+        "filename": "docs/release/release-notes/releasenotes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2018-08-06T09:00:15Z",
+      "side": 1,
+      "message": "97 Feature additions\n  98 ~~~~~~~~~~~~~~~~~~~~~~~\n  99 \u003cSTATE ADDED FEATURES BY REFERENCE TO JIRA\u003e\n 100 \n 101 \u003cEXAMPLE\u003e:\n 102 \n 103 **JIRA BACK-LOG:**\n 104 \n 105 +--------------------------------------+--------------------------------------+\n 106 | **JIRA REFERENCE**                   | **SLOGAN**                           |\n 107 |                                      |                                      |\n 108 +--------------------------------------+--------------------------------------+\n 109 | BGS-123                              | ADD OpenDaylight ml2 integration     |\n 110 |                                      |                                      |\n 111 +--------------------------------------+--------------------------------------+\n 112 | BGS-456                              | Add auto-deployment of Fuel@OPNFV    |\n 113 |                                      |                                      |\n 114 +--------------------------------------+--------------------------------------+\n 115 \n 116 Bug corrections\n 117 ~~~~~~~~~~~~~~~~~~~~~\n 118 \n 119 **JIRA TICKETS:**\n 120 \n 121 +--------------------------------------+--------------------------------------+\n 122 | **JIRA REFERENCE**                   | **SLOGAN**                           |\n 123 |                                      |                                      |\n 124 +--------------------------------------+--------------------------------------+\n 125 | BGS-888                              | Fuel doesn\u0027t deploy                  |\n 126 |                                      |                                      |\n 127 +--------------------------------------+--------------------------------------+\n 128 | BGS-999                              | Floating IP doesn\u0027t work             |\n 129 |                                      |                                      |\n 130 +--------------------------------------+--------------------------------------+",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 12
       },
       "revId": "723aac869dc89d45da161d30ba0f7bb52451a929",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
@@ -65,6 +128,190 @@
         "startChar": 44,
         "endLine": 44,
         "endChar": 49
+      },
+      "revId": "723aac869dc89d45da161d30ba0f7bb52451a929",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_153cf52e",
+        "filename": "docs/release/release-notes/releasenotes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2018-08-06T09:00:15Z",
+      "side": 1,
+      "message": "design",
+      "range": {
+        "startLine": 52,
+        "startChar": 26,
+        "endLine": 52,
+        "endChar": 32
+      },
+      "revId": "723aac869dc89d45da161d30ba0f7bb52451a929",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_356db933",
+        "filename": "docs/release/release-notes/releasenotes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2018-08-06T09:00:15Z",
+      "side": 1,
+      "message": "\"*\" should be removed as this was already available in last release?",
+      "range": {
+        "startLine": 79,
+        "startChar": 86,
+        "endLine": 79,
+        "endChar": 87
+      },
+      "revId": "723aac869dc89d45da161d30ba0f7bb52451a929",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_551dcdbc",
+        "filename": "docs/release/release-notes/releasenotes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2018-08-06T09:00:15Z",
+      "side": 1,
+      "message": "the fault",
+      "range": {
+        "startLine": 91,
+        "startChar": 54,
+        "endLine": 91,
+        "endChar": 58
+      },
+      "revId": "723aac869dc89d45da161d30ba0f7bb52451a929",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_b579c9fe",
+        "filename": "docs/release/release-notes/releasenotes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2018-08-06T09:00:15Z",
+      "side": 1,
+      "message": "use case",
+      "range": {
+        "startLine": 91,
+        "startChar": 70,
+        "endLine": 91,
+        "endChar": 74
+      },
+      "revId": "723aac869dc89d45da161d30ba0f7bb52451a929",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_7520d1f7",
+        "filename": "docs/release/release-notes/releasenotes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2018-08-06T09:00:15Z",
+      "side": 1,
+      "message": "supports",
+      "range": {
+        "startLine": 91,
+        "startChar": 46,
+        "endLine": 91,
+        "endChar": 53
+      },
+      "revId": "723aac869dc89d45da161d30ba0f7bb52451a929",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_f58341ca",
+        "filename": "docs/release/release-notes/releasenotes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2018-08-06T09:00:15Z",
+      "side": 1,
+      "message": "move up to feature additions and bug corrections.",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 21
+      },
+      "revId": "723aac869dc89d45da161d30ba0f7bb52451a929",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_957e45e3",
+        "filename": "docs/release/release-notes/releasenotes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2018-08-06T09:00:15Z",
+      "side": 1,
+      "message": "add a reference",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 36
+      },
+      "revId": "723aac869dc89d45da161d30ba0f7bb52451a929",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_d588bde9",
+        "filename": "docs/release/release-notes/releasenotes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2018-08-06T09:00:15Z",
+      "side": 1,
+      "message": "169 Known issues\n 170 ^^^^^^^^^^^^^^^\n 171 \u003cSTATE ALL KNOWN ISSUES WITH JIRA REFERENCE\u003e\n\n--\u003e Add a Jira reference",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 12
       },
       "revId": "723aac869dc89d45da161d30ba0f7bb52451a929",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
