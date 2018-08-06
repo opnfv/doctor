@@ -10,4 +10,4 @@ Doctor Release Notes
 .. toctree::
     :maxdepth: 2
 
-    releasenotes.rst
+    release-notes.rst
