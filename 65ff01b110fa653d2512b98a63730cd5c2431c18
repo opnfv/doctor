@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a561d44_8b4f4692",
+        "filename": "docs/release/release-notes/release-notes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2018-08-07T09:49:41Z",
+      "side": 1,
+      "message": "has",
+      "range": {
+        "startLine": 26,
+        "startChar": 54,
+        "endLine": 26,
+        "endChar": 56
+      },
+      "revId": "65ff01b110fa653d2512b98a63730cd5c2431c18",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_eb440276",
+        "filename": "docs/release/release-notes/release-notes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2018-08-07T09:49:41Z",
+      "side": 1,
+      "message": "Fenix project.",
+      "range": {
+        "startLine": 27,
+        "startChar": 46,
+        "endLine": 27,
+        "endChar": 51
+      },
+      "revId": "65ff01b110fa653d2512b98a63730cd5c2431c18",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_cb493e8d",
+        "filename": "docs/release/release-notes/release-notes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2018-08-07T09:49:41Z",
+      "side": 1,
+      "message": "requirements from edge, ...",
+      "range": {
+        "startLine": 33,
+        "startChar": 67,
+        "endLine": 33,
+        "endChar": 71
+      },
+      "revId": "65ff01b110fa653d2512b98a63730cd5c2431c18",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_0b5b3655",
+        "filename": "docs/release/release-notes/release-notes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2018-08-07T09:49:41Z",
+      "side": 1,
+      "message": "uses OpenStack Queens",
+      "range": {
+        "startLine": 40,
+        "startChar": 24,
+        "endLine": 40,
+        "endChar": 49
+      },
+      "revId": "65ff01b110fa653d2512b98a63730cd5c2431c18",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_4b552e1c",
+        "filename": "docs/release/release-notes/release-notes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2018-08-07T09:49:41Z",
+      "side": 1,
+      "message": "to the",
+      "range": {
+        "startLine": 41,
+        "startChar": 9,
+        "endLine": 41,
+        "endChar": 11
+      },
+      "revId": "65ff01b110fa653d2512b98a63730cd5c2431c18",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_8b362602",
+        "filename": "docs/release/release-notes/release-notes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2018-08-07T09:49:41Z",
+      "side": 1,
+      "message": "s/-/./",
+      "range": {
+        "startLine": 130,
+        "startChar": 30,
+        "endLine": 130,
+        "endChar": 31
+      },
+      "revId": "65ff01b110fa653d2512b98a63730cd5c2431c18",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_2b255ac2",
+        "filename": "docs/release/release-notes/release-notes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2018-08-07T09:49:41Z",
+      "side": 1,
+      "message": "Proposal to make it a heading: ^^^^^^^^^^^",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 77
+      },
+      "revId": "65ff01b110fa653d2512b98a63730cd5c2431c18",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_0b2216b9",
+        "filename": "docs/release/release-notes/release-notes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2018-08-07T09:49:41Z",
+      "side": 1,
+      "message": "heading",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 57
+      },
+      "revId": "65ff01b110fa653d2512b98a63730cd5c2431c18",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_eb3b62e9",
+        "filename": "docs/release/release-notes/release-notes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2018-08-07T09:49:41Z",
+      "side": 1,
+      "message": "s/Features/features",
+      "range": {
+        "startLine": 224,
+        "startChar": 49,
+        "endLine": 224,
+        "endChar": 57
+      },
+      "revId": "65ff01b110fa653d2512b98a63730cd5c2431c18",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_cb401e59",
+        "filename": "docs/release/release-notes/release-notes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2018-08-07T09:49:41Z",
+      "side": 1,
+      "message": "s/cases/test cases./",
+      "range": {
+        "startLine": 225,
+        "startChar": 8,
+        "endLine": 225,
+        "endChar": 13
+      },
+      "revId": "65ff01b110fa653d2512b98a63730cd5c2431c18",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_6b2f52a2",
+        "filename": "docs/release/release-notes/release-notes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2018-08-07T09:49:41Z",
+      "side": 1,
+      "message": "heading",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 46
+      },
+      "revId": "65ff01b110fa653d2512b98a63730cd5c2431c18",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_4b2c0eac",
+        "filename": "docs/release/release-notes/release-notes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 933
+      },
+      "writtenOn": "2018-08-07T09:49:41Z",
+      "side": 1,
+      "message": "heading",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 52
+      },
+      "revId": "65ff01b110fa653d2512b98a63730cd5c2431c18",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
