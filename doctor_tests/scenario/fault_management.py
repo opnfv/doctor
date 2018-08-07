@@ -32,7 +32,7 @@ dev=$(sudo ip a | awk '/ {compute_ip}\//{{print $NF}}')
 sleep 1
 sudo ip link set $dev down
 echo "doctor set link down at" $(date "+%s.%N")
-sleep 10
+sleep 30
 sudo ip link set $dev up
 sleep 1
 """

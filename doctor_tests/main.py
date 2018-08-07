@@ -67,7 +67,7 @@ class DoctorTest(object):
             # injecting host failure...
             # NOTE (umar) add INTERFACE_NAME logic to host injection
             self.fault_management.start()
-            time.sleep(10)
+            time.sleep(30)
 
             # verify the test results
             # NOTE (umar) copy remote monitor.log file when monitor=collectd
