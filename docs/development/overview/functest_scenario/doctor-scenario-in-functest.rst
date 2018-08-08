@@ -6,7 +6,7 @@
 Platform overview
 """""""""""""""""
 
-Doctor platform provides these features in `Danube Release <https://wiki.opnfv.org/display/SWREL/Danube>`_:
+Doctor platform provides these features since `Danube Release <https://wiki.opnfv.org/display/SWREL/Danube>`_:
 
 * Immediate Notification
 * Consistent resource state awareness for compute host down
@@ -15,6 +15,8 @@ Doctor platform provides these features in `Danube Release <https://wiki.opnfv.o
 These features enable high availability of Network Services on top of
 the virtualized infrastructure. Immediate notification allows VNF managers
 (VNFM) to process recovery actions promptly once a failure has occurred.
+Same framework can also be utilized to have VNFM awareness about
+infrastructure maintenance.
 
 Consistency of resource state is necessary to execute recovery actions
 properly in the VIM.
@@ -26,18 +28,20 @@ fault.
 The Doctor platform consists of the following components:
 
 * OpenStack Compute (Nova)
+* OpenStack Networking (Neutron)
 * OpenStack Telemetry (Ceilometer)
 * OpenStack Alarming (Aodh)
-* Doctor Inspector
-* Doctor Monitor
+* Doctor Sample Inspector, OpenStack Congress or OpenStack Vitrage
+* Doctor Sample Monitor or any monitor supported by Congress or Vitrage
 
 .. note::
-    Doctor Inspector and Monitor are sample implementations for reference.
+    Doctor Sample Monitor is used in Doctor testing. However in real
+    implementation like Vitrage, there is several other monitors supported.
 
 You can see an overview of the Doctor platform and how components interact in
 :numref:`figure-p1`.
 
-.. figure:: ./images/figure-p1.png
+.. figure:: ./images/Fault\ management\ design\ 2018.png
     :name: figure-p1
     :width: 100%
 
@@ -47,8 +51,18 @@ Detailed information on the Doctor architecture can be found in the Doctor
 requirements documentation:
 http://artifacts.opnfv.org/doctor/docs/requirements/05-implementation.html
 
-Use case
-""""""""
+Running test cases
+""""""""""""""""""
+
+Functest will call the "doctor_tests/main.py" in Doctor to run the test job.
+Doctor testing can also be triggered by tox.
+
+Currently, 'Apex', 'Joid', 'Compass', 'Daisy', 'Fuel' and 'local' installer are
+supported. 
+
+
+Fault management use case
+"""""""""""""""""""""""""
 
 * A consumer of the NFVI wants to receive immediate notifications about faults
   in the NFVI affecting the proper functioning of the virtual resources.
@@ -67,7 +81,8 @@ configuration.
 Detailed workflow information is as follows:
 
 * Consumer(VNFM): (step 0) creates resources (network, server/instance) and an
-  event alarm on state down notification of that server/instance
+  event alarm on state down notification of that server/instance or Neutron
+  port.
 
 * Monitor: (step 1) periodically checks nodes, such as ping from/to each
   dplane nic to/from gw of node, (step 2) once it fails to send out event
@@ -75,29 +90,26 @@ Detailed workflow information is as follows:
 
 * Inspector: when it receives an event, it will (step 3) mark the host down
   ("mark-host-down"), (step 4) map the PM to VM, and change the VM status to
-  down
+  down. In network failure case, also Neutron port is put down.
 
-* Controller: (step 5) sends out instance update event to Ceilometer
+* Controller: (step 5) sends out instance update event to Ceilometer. In network
+  failure case, also Neutron port is put down and corresponding event sent to
+  Ceilometer.
 
-* Notifier: (step 6) Ceilometer transforms and passes the event to Aodh,
-  (step 7) Aodh will evaluate event with the registered alarm definitions,
+* Notifier: (step 6) Ceilometer transforms and passes the events to Aodh,
+  (step 7) Aodh will evaluate events with the registered alarm definitions,
   then (step 8) it will fire the alarm to the "consumer" who owns the
   instance
 
 * Consumer(VNFM): (step 9) receives the event and (step 10) recreates a new
   instance
 
-Test case
-"""""""""
+Fault management test case
+""""""""""""""""""""""""""
 
-Functest will call the "run.sh" script in Doctor to run the test job.
+Functest will call the "doctor_tests/main.py" in Doctor to run the test job.
 
-Currently, only 'Apex' and 'local' installer are supported. The test also
-can run successfully in 'fuel' installer with the modification of some
-configurations of OpenStack in the script. But still need 'fuel' installer
-to support these configurations.
-
-The "run.sh" script will execute the following steps.
+The following steps are executed:
 
 Firstly, get the installer ip according to the installer type. Then ssh to
 the installer node to get the private key for accessing to the cloud. As
@@ -124,3 +136,117 @@ is calculated.
 
 According to the Doctor requirements, the Doctor test is successful if the
 notification time is below 1 second.
+
+Maintenance use case
+""""""""""""""""""""
+
+* A consumer of the NFVI wants to interact with NFVI maintenance, upgrade,
+  scaling and to have graceful retirement. Receiving notifications over these
+  NFVI events and responding to those within given time window, consumer can
+  guarantee zero downtime to his service.
+
+Maintenance Use case adds Doctor platform the `admin tool` and `app manager`
+components. Overview of maintenance components can be seen in
+:numref:`figure-p2`.
+
+.. figure:: ./images/Maintenance\ design\ 2018.png
+    :name: figure-p2
+    :width: 100%
+
+    Doctor platform components in maintenance use case
+
+In maintenance use case, `app manager` (VNFM) will subscribe to maintenance
+notification triggered project specific alarms trough ADOH. This is the way he
+gets to know different NFVI maintenance, upgrade and scaling operations that
+effects to his instances. He can do actions with `green color` or tell
+`admin tool` to do admin actions with `orange color`
+
+Any infrastructure component `like Inspector` can subscribe to maintenance notification
+triggered host specific alarms trough ADOH. These needs admin privileges and can
+tell when a host is out of us as in maintenance and when it is taken back to
+production.
+
+
+Maintenance test case
+"""""""""""""""""""""
+
+Maintenance test case is currently running in our Apex CI and executed by tox.
+This is because the special limitation mentioned below and also the fact we
+currently have only sample implementation as a proof of concept. Environmental
+variable TEST_CASE='maintenance' needs to be used when executing
+"doctor_tests/main.py". Test case workflow can be seen in :numref:`figure-p3`.
+
+.. figure:: ./images/Maintenance\ workflow\ 2018.png
+    :name: figure-p3
+    :width: 100%
+
+    Maintenance test case workflow
+
+In test case all compute capacity will be consumed with project (VNF) instances.
+For redundant services on instances and an empty compute needed for maintenance,
+test case will need at least 3 compute nodes in system. There will be 2
+instances on each compute, so minimum number of VCPUs is also 2. Depending how
+many compute nodes there is application will always have 2 redundant instances
+(ACT-STDBY) on different compute nodes and rest of the compute capacity will be
+filled with non redundant instances.
+
+For each project specific maintenance message there is a time window for
+`app manager` to make any needed action. This will guarantee zero
+down time for his service. All replies back are done by calling `admin tool` API
+given in message.
+
+The following steps are executed:
+
+Infrastructure admin will call `admin tool` API to trigger maintenance for
+compute hosts having instances belonging to a VNF.
+
+Project specific `MAINTENANCE` notification is triggered to tell `app manager`
+that his instances are going to hit by infrastructure maintenance at a specific
+point of time. `app manager` will call `admin tool` API to answer back
+`ACK_MAINTENANCE`.
+
+When the time comes to start the actual maintenance workflow in `admin tool`,
+a `DOWN_SCALE` notification is triggered as there is no empty compute node for
+maintenance (or compute upgrade). Project receives corresponding alarm and scales
+down instances and call `admin tool` API to answer back `ACK_DOWN_SCALE`.
+
+As it might happen instances are not scaled down (removed) from a single
+compute node, `admin tool` might need to figure out what compute node should be
+made empty first and send `PREPARE_MAINTENANCE` to project telling which instance
+needs to be migrated to have the needed empty compute. `app manager` makes sure
+he is ready to migrate instance and call `admin tool` API to answer back
+`ACK_PREPARE_MAINTENANCE`. `admin tool` will make the migration and answer
+`ADMIN_ACTION_DONE`, so `app manager` knows instance can be again used.
+
+:numref:`figure-p3` has next a light blue section of actions to be done for each
+compute. However as we now have one empty compute, we will maintain/upgrade that
+first. So on first round we can straight put compute in maintenance and send
+admin level host specific `IN_MAINTENANCE` message. This is caught by `Inspector`
+to know host is down for maintenance. `Inspector` can now disable any automatic
+fault management actions for the host as it can be down for a purpose. After
+`admin tool` has completed maintenance/upgrade `MAINTENANCE_COMPLETE` message
+is send to tell host is back in production.
+
+Next rounds we always have instances on compute, so we need to have
+`PLANNED_MAINTANANCE` message to tell that those instances are now going to hit
+by maintenance. When `app manager` now receives this message, he knows instances
+to be moved away from compute will now move to already maintained/upgraded host.
+In test case no upgrade is done on application side to upgrade instances
+according to new infrastructure capabilities, but this could be done here as
+this information is also passed in the message. This might be just upgrading some
+RPMs, but also totally re-instantiating instance with new flavor. Now if
+application runs a active side of a redundant instance on this compute, a switch
+over will be done. After `app manager` is ready he will call `admin tool` API to
+answer back `ACK_PREPARE_MAINTENANCE`. In test case the answer is `migrate`, so
+`admin tool` will migrate instances and reply `ADMIN_ACTION_DONE` and then
+`app manager` knows instances can be again used. Then we are ready to make the
+actual maintenance as previously trough `IN_MAINTENANCE` and
+`MAINTENANCE_COMPLETE` steps.
+
+After all computes are maintained, `admin tool` can send `MAINTENANCE_COMPLETE`
+to tell maintenance/upgrade is now complete. For `app manager` this means he
+can scale back to full capacity.
+
+This is current sample implementation and test case. Real life implementation
+is started in OpenStack Fenix project and there we should eventually address
+requirements more deeply and update the test case with Fenix implementation.
