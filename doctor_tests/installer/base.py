@@ -64,16 +64,15 @@ class BaseInstaller(object):
                    " -o StrictHostKeyChecking=no"
                    " -i %s %s@%s -R %s:localhost:%s"
                    " sleep 600 > ssh_tunnel.%s"
-                   " 2>&1 < /dev/null &"
+                   " 2>&1 < /dev/null "
                    % (self.key_file,
                       self.node_user_name,
                       node_ip,
                       self.conf.consumer.port,
                       self.conf.consumer.port,
                       node_ip))
-            server = subprocess.Popen(cmd, shell=True)
+            server = subprocess.Popen('exec ' + cmd, shell=True)
             self.servers.append(server)
-            server.communicate()
 
     def _get_ssh_key(self, client, key_path):
         self.log.info('Get SSH keys from %s installer......'
