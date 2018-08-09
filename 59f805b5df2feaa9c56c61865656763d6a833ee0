@@ -22,6 +22,30 @@
       "revId": "59f805b5df2feaa9c56c61865656763d6a833ee0",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a561d44_7cc1d6e3",
+        "filename": "doctor_tests/installer/base.py",
+        "patchSetId": 26
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-08-09T07:28:07Z",
+      "side": 1,
+      "message": "Thanks",
+      "parentUuid": "9a561d44_fcfe8637",
+      "range": {
+        "startLine": 77,
+        "startChar": 49,
+        "endLine": 77,
+        "endChar": 53
+      },
+      "revId": "59f805b5df2feaa9c56c61865656763d6a833ee0",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
