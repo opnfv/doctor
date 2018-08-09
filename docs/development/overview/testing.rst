@@ -29,6 +29,18 @@ OpenStack services.
 
 .. _OpenStackClient Configuration: https://docs.openstack.org/python-openstackclient/latest/configuration/index.html
 
+Doctor now supports different test cases and for that you might want to
+export TEST_CASE with different values:
+
+.. code-block:: bash
+
+    #Fault management (default)
+    export TEST_CASE='fault_management'
+    #Maintenance (requires 3 compute nodes)
+    export TEST_CASE='maintenance'
+    #Run both tests cases
+    export TEST_CASE='all'
+
 Run Python Test Script
 ~~~~~~~~~~~~~~~~~~~~~~
 
@@ -44,6 +56,18 @@ file `doctor.sample.conf`_. And you can also modify the file to meet your
 environment and then run the test.
 
 .. _doctor.sample.conf: https://git.opnfv.org/doctor/tree/etc/doctor.sample.conf
+
+In OPNFV Apex jumphost you can run Doctor testing as follows using tox:
+
+.. code-block:: bash
+
+    #Before Gambia: overcloudrc.v3
+    source overcloudrc
+    export INSTALLER_IP=${INSTALLER_IP}
+    export INSTALLER_TYPE=${INSTALLER_TYPE}
+    git clone https://gerrit.opnfv.org/gerrit/doctor
+    cd doctor
+    sudo -E tox
 
 Run Functest Suite
 ==================
