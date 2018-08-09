@@ -19,6 +19,7 @@ class ApexInstaller(BaseInstaller):
         super(ApexInstaller, self).__init__(conf, log)
         self.client = SSHClient(self.conf.installer.ip,
                                 self.conf.installer.username,
+                                key_filename=self.conf.installer.key_file,
                                 look_for_keys=True)
         self.key_file = None
         self.controllers = list()
