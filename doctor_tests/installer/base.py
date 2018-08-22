@@ -118,16 +118,18 @@ class BaseInstaller(object):
                       % (output, command, self.conf.installer.type))
         return output
 
-    def _run_apply_patches(self, client, restart_cmd, script_name):
+    def _run_apply_patches(self, client, restart_cmd, script_names):
         installer_dir = os.path.dirname(os.path.realpath(__file__))
-        script_abs_path = '{0}/{1}/{2}'.format(installer_dir,
-                                               'common', script_name)
 
-        client.scp(script_abs_path, script_name)
-        cmd = 'sudo python %s' % script_name
-        ret, output = client.ssh(cmd)
-        if ret:
-            raise Exception('Do the command in controller'
-                            ' node failed, ret=%s, cmd=%s, output=%s'
-                            % (ret, cmd, output))
-        client.ssh(restart_cmd)
+        if isinstance(script_names, list):
+            for script_name in script_names:
+                script_abs_path = '{0}/{1}/{2}'.format(installer_dir,
+                                                       'common', script_name)
+                client.scp(script_abs_path, script_name)
+                cmd = 'sudo python %s' % script_name
+                ret, output = client.ssh(cmd)
+                if ret:
+                    raise Exception('Do the command in controller'
+                                    ' node failed, ret=%s, cmd=%s, output=%s'
+                                    % (ret, cmd, output))
+            client.ssh(restart_cmd)
