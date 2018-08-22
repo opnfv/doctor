@@ -78,7 +78,7 @@ class McpInstaller(BaseInstaller):
             self.controller_clients.append(client)
             self._run_apply_patches(client,
                                     restart_cm_cmd,
-                                    self.cm_set_script)
+                                    [self.cm_set_script])
 
     def restore_apply_patches(self):
         self.log.info('restore apply patches start......')
@@ -87,4 +87,4 @@ class McpInstaller(BaseInstaller):
         for client in self.controller_clients:
             self._run_apply_patches(client,
                                     restart_cm_cmd,
-                                    self.cm_restore_script)
+                                    [self.cm_restore_script])
