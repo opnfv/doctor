@@ -9,6 +9,7 @@
 import re
 import time
 
+from doctor_tests.common.constants import Inspector
 from doctor_tests.common.utils import SSHClient
 from doctor_tests.installer.base import BaseInstaller
 
@@ -16,9 +17,11 @@ from doctor_tests.installer.base import BaseInstaller
 class ApexInstaller(BaseInstaller):
     node_user_name = 'heat-admin'
     cm_set_script = 'set_config.py'
-    cm_set_compute_script = 'set_compute_config.py'
+    nc_set_compute_script = 'set_compute_config.py'
+    cg_set_script = 'set_congress.py'
     cm_restore_script = 'restore_config.py'
-    cm_restore_compute_script = 'restore_compute_config.py'
+    nc_restore_compute_script = 'restore_compute_config.py'
+    cg_restore_script = 'restore_congress.py'
 
     def __init__(self, conf, log):
         super(ApexInstaller, self).__init__(conf, log)
@@ -92,30 +95,34 @@ class ApexInstaller(BaseInstaller):
     def set_apply_patches(self):
         self.log.info('Set apply patches start......')
 
-        restart_cm_cmd = 'sudo systemctl restart ' \
-                         'openstack-ceilometer-notification.service'
+        restart_cmd = 'sudo systemctl restart' \
+                      ' openstack-ceilometer-notification.service'
 
         if self.conf.test_case != 'fault_management':
-            restart_cm_cmd += ' openstack-nova-scheduler.service'
+            restart_cmd += ' openstack-nova-scheduler.service'
+
+        if self.conf.inspector.type == Inspector.CONGRESS:
+            restart_cmd += ' openstack-congress-server.service'
 
         for node_ip in self.controllers:
             client = SSHClient(node_ip, self.node_user_name,
                                key_filename=self.key_file)
             self.controller_clients.append(client)
             self._run_apply_patches(client,
-                                    restart_cm_cmd,
-                                    self.cm_set_script)
+                                    restart_cmd,
+                                    [self.cm_set_script,
+                                     self.cg_set_script])
 
         if self.conf.test_case != 'fault_management':
-            restart_cm_cmd = 'sudo systemctl restart ' \
-                             'openstack-nova-compute.service'
+            restart_cmd = 'sudo systemctl restart' \
+                          ' openstack-nova-compute.service'
             for node_ip in self.computes:
                 client = SSHClient(node_ip, self.node_user_name,
                                    key_filename=self.key_file)
                 self.compute_clients.append(client)
                 self._run_apply_patches(client,
-                                        restart_cm_cmd,
-                                        self.cm_set_compute_script)
+                                        restart_cmd,
+                                        [self.nc_set_compute_script])
 
         if self.conf.test_case != 'fault_management':
             time.sleep(10)
@@ -123,21 +130,25 @@ class ApexInstaller(BaseInstaller):
     def restore_apply_patches(self):
         self.log.info('restore apply patches start......')
 
-        restart_cm_cmd = 'sudo systemctl restart ' \
-                         'openstack-ceilometer-notification.service'
+        restart_cmd = 'sudo systemctl restart' \
+                      ' openstack-ceilometer-notification.service'
 
         if self.conf.test_case != 'fault_management':
-            restart_cm_cmd += ' openstack-nova-scheduler.service'
+            restart_cmd += ' openstack-nova-scheduler.service'
+
+        if self.conf.inspector.type == Inspector.CONGRESS:
+            restart_cmd += ' openstack-congress-server.service'
 
         for client in self.controller_clients:
             self._run_apply_patches(client,
-                                    restart_cm_cmd,
-                                    self.cm_restore_script)
+                                    restart_cmd,
+                                    [self.cm_restore_script,
+                                     self.cg_restore_script])
 
         if self.conf.test_case != 'fault_management':
-            restart_cm_cmd = 'sudo systemctl restart ' \
-                             'openstack-nova-compute.service'
+            restart_cmd = 'sudo systemctl restart' \
+                          ' openstack-nova-compute.service'
             for client in self.compute_clients:
                 self._run_apply_patches(client,
-                                        restart_cm_cmd,
-                                        self.cm_restore_compute_script)
+                                        restart_cmd,
+                                        [self.nc_restore_compute_script])
