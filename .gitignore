@@ -16,3 +16,4 @@
 
 #Build results
 .tox
+docs/_build/*
