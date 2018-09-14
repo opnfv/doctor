@@ -88,7 +88,8 @@ Functest container. You can run the Doctor test with the following steps:
 
 See `Functest Userguide`_ for more information.
 
-.. _Functest Userguide: http://docs.opnfv.org/en/latest/submodules/functest/docs/testing/user/userguide/index.html
+.. _Functest Userguide: :doc:`<functest:testing/user/userguide>`
+
 
 For testing with stable version, change DOCKER_TAG to 'stable' or other release
 tag identifier.
