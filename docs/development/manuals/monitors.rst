@@ -23,7 +23,8 @@ calculated by using the difference of time at which compute node sends notificat
 control node and the time at which consumer is notified. The time on control and compute
 node has to be synchronized for this reason. For further details on setting up collectd
 on the compute node, use the following link:
-http://docs.opnfv.org/en/stable-danube/submodules/barometer/docs/release/userguide/feature.userguide.html#id18
+:doc:`<barometer:release/userguide/feature.userguide>`
+
 
 Collectd monitors an interface managed by OVS. If the interface is not be assigned
 an IP, the user has to provide the name of interface to be monitored. The command to
