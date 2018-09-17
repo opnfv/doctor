@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a682502_03268c16",
+        "filename": "docs/development/overview/functest_scenario/doctor-scenario-in-functest.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 7409
+      },
+      "writtenOn": "2018-09-17T13:04:24Z",
+      "side": 1,
+      "message": "effect",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 7
+      },
+      "revId": "c6924dfdc54e82ddcc2092053e6b62cf9f4dcda7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a682502_a38878e8",
+        "filename": "docs/development/overview/functest_scenario/doctor-scenario-in-functest.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 7409
+      },
+      "writtenOn": "2018-09-17T13:04:24Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 1
+      },
+      "revId": "c6924dfdc54e82ddcc2092053e6b62cf9f4dcda7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a682502_0354cc52",
+        "filename": "docs/development/overview/functest_scenario/doctor-scenario-in-functest.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 7409
+      },
+      "writtenOn": "2018-09-17T13:04:24Z",
+      "side": 1,
+      "message": "In the test case,",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 12
+      },
+      "revId": "c6924dfdc54e82ddcc2092053e6b62cf9f4dcda7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a682502_234628c0",
+        "filename": "docs/development/overview/functest_scenario/doctor-scenario-in-functest.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 7409
+      },
+      "writtenOn": "2018-09-17T13:04:24Z",
+      "side": 1,
+      "message": "Depending on",
+      "range": {
+        "startLine": 189,
+        "startChar": 65,
+        "endLine": 189,
+        "endChar": 75
+      },
+      "revId": "c6924dfdc54e82ddcc2092053e6b62cf9f4dcda7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a682502_036dec32",
+        "filename": "docs/development/overview/functest_scenario/doctor-scenario-in-functest.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 7409
+      },
+      "writtenOn": "2018-09-17T13:04:24Z",
+      "side": 1,
+      "message": "non-redundant",
+      "range": {
+        "startLine": 192,
+        "startChar": 12,
+        "endLine": 192,
+        "endChar": 25
+      },
+      "revId": "c6924dfdc54e82ddcc2092053e6b62cf9f4dcda7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a682502_a35fd871",
+        "filename": "docs/development/overview/functest_scenario/doctor-scenario-in-functest.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 7409
+      },
+      "writtenOn": "2018-09-17T13:04:24Z",
+      "side": 1,
+      "message": "the message",
+      "range": {
+        "startLine": 197,
+        "startChar": 8,
+        "endLine": 197,
+        "endChar": 15
+      },
+      "revId": "c6924dfdc54e82ddcc2092053e6b62cf9f4dcda7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a682502_237468fc",
+        "filename": "docs/development/overview/functest_scenario/doctor-scenario-in-functest.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 7409
+      },
+      "writtenOn": "2018-09-17T13:04:24Z",
+      "side": 1,
+      "message": "in",
+      "range": {
+        "startLine": 206,
+        "startChar": 6,
+        "endLine": 206,
+        "endChar": 8
+      },
+      "revId": "c6924dfdc54e82ddcc2092053e6b62cf9f4dcda7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a682502_83c73c12",
+        "filename": "docs/development/overview/functest_scenario/doctor-scenario-in-functest.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 7409
+      },
+      "writtenOn": "2018-09-17T13:04:24Z",
+      "side": 1,
+      "message": "round,",
+      "range": {
+        "startLine": 224,
+        "startChar": 19,
+        "endLine": 224,
+        "endChar": 24
+      },
+      "revId": "c6924dfdc54e82ddcc2092053e6b62cf9f4dcda7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a682502_e350b060",
+        "filename": "docs/development/overview/functest_scenario/doctor-scenario-in-functest.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 7409
+      },
+      "writtenOn": "2018-09-17T13:04:24Z",
+      "side": 1,
+      "message": "sent",
+      "range": {
+        "startLine": 229,
+        "startChar": 3,
+        "endLine": 229,
+        "endChar": 7
+      },
+      "revId": "c6924dfdc54e82ddcc2092053e6b62cf9f4dcda7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a682502_63cca036",
+        "filename": "docs/development/overview/functest_scenario/doctor-scenario-in-functest.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 7409
+      },
+      "writtenOn": "2018-09-17T13:04:24Z",
+      "side": 1,
+      "message": "a new",
+      "range": {
+        "startLine": 238,
+        "startChar": 53,
+        "endLine": 238,
+        "endChar": 57
+      },
+      "revId": "c6924dfdc54e82ddcc2092053e6b62cf9f4dcda7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a682502_434ec4c2",
+        "filename": "docs/development/overview/functest_scenario/doctor-scenario-in-functest.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 7409
+      },
+      "writtenOn": "2018-09-17T13:04:24Z",
+      "side": 1,
+      "message": "an",
+      "range": {
+        "startLine": 239,
+        "startChar": 17,
+        "endLine": 239,
+        "endChar": 18
+      },
+      "revId": "c6924dfdc54e82ddcc2092053e6b62cf9f4dcda7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a682502_234bc8b1",
+        "filename": "docs/development/overview/functest_scenario/doctor-scenario-in-functest.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 7409
+      },
+      "writtenOn": "2018-09-17T13:04:24Z",
+      "side": 1,
+      "message": "the current",
+      "range": {
+        "startLine": 251,
+        "startChar": 8,
+        "endLine": 251,
+        "endChar": 15
+      },
+      "revId": "c6924dfdc54e82ddcc2092053e6b62cf9f4dcda7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
