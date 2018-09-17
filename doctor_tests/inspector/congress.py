@@ -35,6 +35,7 @@ class CongressInspector(BaseInspector):
         self.congress = congress_client(get_session(auth=self.auth))
         self._init_driver_and_ds()
         self.inspector_url = self.get_inspector_url()
+        self.is_create_doctor_datasource = False
 
     def _init_driver_and_ds(self):
         datasources = \
@@ -48,18 +49,20 @@ class CongressInspector(BaseInspector):
                             'version < nova_api_min_version(%s)'
                             % self.nova_api_min_version)
 
-        # create doctor datasource if it's not exist
-        if self.doctor_datasource not in datasources:
-            self.congress.create_datasource(
-                body={'driver': self.doctor_driver,
-                      'name': self.doctor_datasource})
-
         # check whether doctor driver exist
         drivers = \
             {driver['id']: driver for driver in
              self.congress.list_drivers()['results']}
         if self.doctor_driver not in drivers:
             raise Exception('Do not support doctor driver in congress')
+
+        # create doctor datasource if it's not exist
+        if self.doctor_datasource not in datasources:
+            response = self.congress.create_datasource(
+                body={'driver': self.doctor_driver,
+                      'name': self.doctor_datasource})
+            self.doctor_datasource_id = response['id']
+            self.is_create_doctor_datasource = True
 
         self.policy_rules = \
             {rule['name']: rule for rule in
@@ -85,6 +88,9 @@ class CongressInspector(BaseInspector):
 
         for rule_name in self.rules.keys():
             self._del_rule(rule_name)
+
+        if self.is_create_doctor_datasource:
+            self.congress.delete_datasource(self.doctor_datasource_id)
 
     def _add_rule(self, rule_name, rule):
         if rule_name not in self.policy_rules:
