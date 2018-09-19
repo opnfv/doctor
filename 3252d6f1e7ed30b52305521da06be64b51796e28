@@ -22,6 +22,30 @@
       "revId": "3252d6f1e7ed30b52305521da06be64b51796e28",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a682502_5265ec43",
+        "filename": "docs/conf.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 7409
+      },
+      "writtenOn": "2018-09-19T14:32:19Z",
+      "side": 1,
+      "message": "It\u0027s missing a license paragraph above it.",
+      "parentUuid": "5a682502_d8e1319c",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 28
+      },
+      "revId": "3252d6f1e7ed30b52305521da06be64b51796e28",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
     }
   ]
 }
