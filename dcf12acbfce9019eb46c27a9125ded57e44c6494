@@ -272,6 +272,30 @@
     },
     {
       "key": {
+        "uuid": "5a682502_9772d6e3",
+        "filename": "docs/release/release-notes/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 7409
+      },
+      "writtenOn": "2018-09-19T10:27:41Z",
+      "side": 1,
+      "message": "Ah sorry. Just add a comma befor the and :)",
+      "parentUuid": "5a682502_b75a7281",
+      "range": {
+        "startLine": 34,
+        "startChar": 21,
+        "endLine": 34,
+        "endChar": 25
+      },
+      "revId": "dcf12acbfce9019eb46c27a9125ded57e44c6494",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a682502_e6c6fe48",
         "filename": "docs/release/release-notes/release-notes.rst",
         "patchSetId": 4
