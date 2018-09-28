@@ -10,12 +10,16 @@ import os
 import shutil
 import yaml
 
-ep_file = '/etc/ceilometer/event_pipeline.yaml'
-ep_file_bak = '/etc/ceilometer/event_pipeline.yaml.bak'
-event_notifier_topic = 'notifier://?topic=alarm.all'
+
+cbase = "/var/lib/config-data/puppet-generated/ceilometer"
+if not os.path.isdir(cbase):
+    cbase = ""
 
 
 def set_notifier_topic():
+    ep_file = cbase + '/etc/ceilometer/event_pipeline.yaml'
+    ep_file_bak = cbase + '/etc/ceilometer/event_pipeline.yaml.bak'
+    event_notifier_topic = 'notifier://?topic=alarm.all'
     config_modified = False
 
     if not os.path.isfile(ep_file):
@@ -43,14 +47,20 @@ def set_notifier_topic():
 
 
 def set_maintenance_event_definitions():
-    ed_file = '/etc/ceilometer/event_definitions.yaml'
-    ed_file_bak = '/etc/ceilometer/event_definitions.bak'
-
+    ed_file = cbase + '/etc/ceilometer/event_definitions.yaml'
+    ed_file_bak = cbase + '/etc/ceilometer/event_definitions.bak'
+    orig_ed_file_exist = True
     if not os.path.isfile(ed_file):
-        raise Exception("File doesn't exist: %s." % ed_file)
-
-    with open(ed_file, 'r') as file:
-        config = yaml.safe_load(file)
+        # Deployment did not modify file, so it did not exist
+        src_file = '/etc/ceilometer/event_definitions.yaml'
+        if not os.path.isfile(src_file):
+            config = []
+            orig_ed_file_exist = False
+        else:
+            shutil.copyfile('/etc/ceilometer/event_definitions.yaml', ed_file)
+    if orig_ed_file_exist:
+        with open(ed_file, 'r') as file:
+            config = yaml.safe_load(file)
 
     et_list = [et['event_type'] for et in config]
 
@@ -94,46 +104,13 @@ def set_maintenance_event_definitions():
         config.append(mhost)
 
     if add_mscheduled or add_mhost:
-        shutil.copyfile(ed_file, ed_file_bak)
+        if orig_ed_file_exist:
+            shutil.copyfile(ed_file, ed_file_bak)
+        else:
+            with open(ed_file_bak, 'w+') as file:
+                file.close()
         with open(ed_file, 'w+') as file:
             file.write(yaml.safe_dump(config))
 
-
-def set_cpu_allocation_ratio():
-    nova_file = '/etc/nova/nova.conf'
-    nova_file_bak = '/etc/nova/nova.bak'
-
-    if not os.path.isfile(nova_file):
-        raise Exception("File doesn't exist: %s." % nova_file)
-    # TODO (tojuvone): Unfortunately ConfigParser did not produce working conf
-    fcheck = open(nova_file)
-    found_list = ([ca for ca in fcheck.readlines() if "cpu_allocation_ratio"
-                  in ca])
-    fcheck.close()
-    if found_list and len(found_list):
-        change = False
-        found = False
-        for car in found_list:
-            if car.startswith('#'):
-                continue
-            if car.startswith('cpu_allocation_ratio'):
-                found = True
-                if "1.0" not in car.split('=')[1]:
-                    change = True
-    if not found or change:
-        # need to add or change
-        shutil.copyfile(nova_file, nova_file_bak)
-        fin = open(nova_file_bak)
-        fout = open(nova_file, "wt")
-        for line in fin:
-            if change and line.startswith("cpu_allocation_ratio"):
-                line = "cpu_allocation_ratio=1.0"
-            if not found and line.startswith("[DEFAULT]"):
-                line += "cpu_allocation_ratio=1.0\n"
-            fout.write(line)
-        fin.close()
-        fout.close()
-
 set_notifier_topic()
 set_maintenance_event_definitions()
-set_cpu_allocation_ratio()
