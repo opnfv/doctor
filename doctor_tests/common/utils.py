@@ -67,7 +67,7 @@ class SSHClient(object):
     def __del__(self):
         self.client.close()
 
-    def ssh(self, command):
+    def ssh(self, command, raise_enabled=True):
         if self.log:
             self.log.info("Executing: %s" % command)
         stdin, stdout, stderr = self.client.exec_command(command)
@@ -75,7 +75,7 @@ class SSHClient(object):
         output = list()
         for line in stdout.read().splitlines():
             output.append(line.decode('utf-8'))
-        if ret:
+        if ret and raise_enabled:
             if self.log:
                 self.log.info("*** FAILED to run command %s (%s)"
                               % (command, ret))
