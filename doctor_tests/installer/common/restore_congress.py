@@ -11,8 +11,11 @@ import shutil
 
 
 def restore_drivers_config():
-    co_conf = "/etc/congress/congress.conf"
-    co_conf_bak = "/etc/congress/congress.conf.bak"
+    co_base = "/var/lib/config-data/puppet-generated/congress"
+    if not os.path.isdir(co_base):
+        co_base = ""
+    co_conf = co_base + "/etc/congress/congress.conf"
+    co_conf_bak = co_base + "/etc/congress/congress.conf.bak"
 
     if not os.path.isfile(co_conf_bak):
         print('Bak_file:%s does not exist.' % co_conf_bak)
