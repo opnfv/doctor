@@ -10,12 +10,16 @@ import os
 import shutil
 import yaml
 
-ep_file = '/etc/ceilometer/event_pipeline.yaml'
-ep_file_bak = '/etc/ceilometer/event_pipeline.yaml.bak'
-event_notifier_topic = 'notifier://?topic=alarm.all'
+
+cbase = "/var/lib/config-data/puppet-generated/ceilometer"
+if not os.path.isdir(cbase):
+    cbase = ""
 
 
 def set_notifier_topic():
+    ep_file = cbase + '/etc/ceilometer/event_pipeline.yaml'
+    ep_file_bak = cbase + '/etc/ceilometer/event_pipeline.yaml.bak'
+    event_notifier_topic = 'notifier://?topic=alarm.all'
     config_modified = False
 
     if not os.path.isfile(ep_file):
@@ -43,14 +47,61 @@ def set_notifier_topic():
 
 
 def set_maintenance_event_definitions():
-    ed_file = '/etc/ceilometer/event_definitions.yaml'
-    ed_file_bak = '/etc/ceilometer/event_definitions.bak'
-
+    ed_file = cbase + '/etc/ceilometer/event_definitions.yaml'
+    ed_file_bak = cbase + '/etc/ceilometer/event_definitions.bak'
+    orig_ed_file_exist = True
     if not os.path.isfile(ed_file):
-        raise Exception("File doesn't exist: %s." % ed_file)
-
-    with open(ed_file, 'r') as file:
-        config = yaml.safe_load(file)
+        # Deployment did not modify file, so it did not exist
+        src_file = '/etc/ceilometer/event_definitions.yaml'
+        if not os.path.isfile(src_file):
+            config = []
+            orig_ed_file_exist = False
+        else:
+            shutil.copyfile('/etc/ceilometer/event_definitions.yaml', ed_file)
+    if orig_ed_file_exist:
+        with open(ed_file, 'r') as file:
+            config = yaml.safe_load(file)
+    else:
+        instance_update = {
+            'event_type': 'compute.instance.update',
+            'traits': {
+                'deleted_at': {'fields': 'payload.deleted_at',
+                               'type': 'datetime'},
+                'disk_gb': {'fields': 'payload.disk_gb',
+                            'type': 'int'},
+                'display_name': {'fields': 'payload.display_name'},
+                'ephemeral_gb': {'fields': 'payload.ephemeral_gb',
+                                 'type': 'int'},
+                'host': {'fields': 'publisher_id.`split(., 1, 1)`'},
+                'instance_id': {'fields': 'payload.instance_id'},
+                'instance_type': {'fields': 'payload.instance_type'},
+                'instance_type_id': {'fields': 'payload.instance_type_id',
+                                     'type': 'int'},
+                'launched_at': {'fields': 'payload.launched_at',
+                                'type': 'datetime'},
+                'memory_mb': {'fields': 'payload.memory_mb',
+                              'type': 'int'},
+                'old_state': {'fields': 'payload.old_state'},
+                'os_architecture': {
+                    'fields':
+                    "payload.image_meta.'org.openstack__1__architecture'"},
+                'os_distro': {
+                    'fields':
+                    "payload.image_meta.'org.openstack__1__os_distro'"},
+                'os_version': {
+                    'fields':
+                    "payload.image_meta.'org.openstack__1__os_version'"},
+                'resource_id': {'fields': 'payload.instance_id'},
+                'root_gb': {'fields': 'payload.root_gb',
+                            'type': 'int'},
+                'service': {'fields': 'publisher_id.`split(., 0, -1)`'},
+                'state': {'fields': 'payload.state'},
+                'tenant_id': {'fields': 'payload.tenant_id'},
+                'user_id': {'fields': 'payload.user_id'},
+                'vcpus': {'fields': 'payload.vcpus', 'type': 'int'}
+                }
+            }
+        config.append(instance_update)
 
     et_list = [et['event_type'] for et in config]
 
@@ -72,8 +123,8 @@ def set_maintenance_event_definitions():
                 'session_id': {'fields': 'payload.session_id'},
                 'project_id': {'fields': 'payload.project_id'},
                 'metadata': {'fields': 'payload.metadata'}
+                }
             }
-        }
         config.append(mscheduled)
 
     if 'maintenance.host' in et_list:
@@ -89,51 +140,18 @@ def set_maintenance_event_definitions():
                 'project_id': {'fields': 'payload.project_id'},
                 'state': {'fields': 'payload.state'},
                 'session_id': {'fields': 'payload.session_id'}
+                }
             }
-        }
         config.append(mhost)
 
     if add_mscheduled or add_mhost:
-        shutil.copyfile(ed_file, ed_file_bak)
+        if orig_ed_file_exist:
+            shutil.copyfile(ed_file, ed_file_bak)
+        else:
+            with open(ed_file_bak, 'w+') as file:
+                file.close()
         with open(ed_file, 'w+') as file:
             file.write(yaml.safe_dump(config))
 
-
-def set_cpu_allocation_ratio():
-    nova_file = '/etc/nova/nova.conf'
-    nova_file_bak = '/etc/nova/nova.bak'
-
-    if not os.path.isfile(nova_file):
-        raise Exception("File doesn't exist: %s." % nova_file)
-    # TODO (tojuvone): Unfortunately ConfigParser did not produce working conf
-    fcheck = open(nova_file)
-    found_list = ([ca for ca in fcheck.readlines() if "cpu_allocation_ratio"
-                  in ca])
-    fcheck.close()
-    if found_list and len(found_list):
-        change = False
-        found = False
-        for car in found_list:
-            if car.startswith('#'):
-                continue
-            if car.startswith('cpu_allocation_ratio'):
-                found = True
-                if "1.0" not in car.split('=')[1]:
-                    change = True
-    if not found or change:
-        # need to add or change
-        shutil.copyfile(nova_file, nova_file_bak)
-        fin = open(nova_file_bak)
-        fout = open(nova_file, "wt")
-        for line in fin:
-            if change and line.startswith("cpu_allocation_ratio"):
-                line = "cpu_allocation_ratio=1.0"
-            if not found and line.startswith("[DEFAULT]"):
-                line += "cpu_allocation_ratio=1.0\n"
-            fout.write(line)
-        fin.close()
-        fout.close()
-
 set_notifier_topic()
 set_maintenance_event_definitions()
-set_cpu_allocation_ratio()

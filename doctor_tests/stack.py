@@ -44,7 +44,7 @@ class Stack(object):
         action_failed = '%s_FAILED' % action
 
         status = action_in_progress
-        stack_retries = 150
+        stack_retries = 160
         while status == action_in_progress and stack_retries > 0:
             time.sleep(2)
             try:
@@ -88,7 +88,19 @@ class Stack(object):
                                         template=template,
                                         parameters=parameters)
         self.stack_id = stack['stack']['id']
-        self.wait_stack_create()
+        try:
+            self.wait_stack_create()
+        except Exception:
+            # It might not always work at first
+            self.log.info('retry creating maintenance stack.......')
+            self.delete()
+            time.sleep(3)
+            stack = self.heat.stacks.create(stack_name=self.stack_name,
+                                            files=files,
+                                            template=template,
+                                            parameters=parameters)
+            self.stack_id = stack['stack']['id']
+            self.wait_stack_create()
 
     def update(self, stack_name, stack_id, template, parameters={}, files={}):
         self.heat.stacks.update(stack_name=stack_name,
