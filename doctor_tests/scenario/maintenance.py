@@ -168,9 +168,9 @@ class Maintenance(object):
         return ret.json()['state']
 
     def wait_maintenance_complete(self, session_id):
-        retries = 60
+        retries = 66
         state = None
-        time.sleep(600)
+        time.sleep(540)
         while state != 'MAINTENANCE_COMPLETE' and retries > 0:
             time.sleep(10)
             state = self.get_maintenance_state(session_id)

@@ -26,6 +26,7 @@ class BaseInstaller(object):
         self.conf = conf
         self.log = log
         self.servers = list()
+        self.use_containers = False
 
     @abc.abstractproperty
     def node_user_name(self):
@@ -118,7 +119,20 @@ class BaseInstaller(object):
                       % (output, command, self.conf.installer.type))
         return output
 
-    def _run_apply_patches(self, client, restart_cmd, script_names):
+    def _check_cmd_remote(self, client, command):
+        self.log.info('Check command=%s return in %s installer......'
+                      % (command, self.conf.installer.type))
+
+        ret, output = client.ssh(command, raise_enabled=False)
+        self.log.info('return %s' % ret)
+        if ret == 0:
+            ret = True
+        else:
+            ret = False
+        return ret
+
+    def _run_apply_patches(self, client, restart_cmd, script_names,
+                           python='python3'):
         installer_dir = os.path.dirname(os.path.realpath(__file__))
 
         if isinstance(script_names, list):
@@ -126,10 +140,10 @@ class BaseInstaller(object):
                 script_abs_path = '{0}/{1}/{2}'.format(installer_dir,
                                                        'common', script_name)
                 client.scp(script_abs_path, script_name)
-                cmd = 'sudo python3 %s' % script_name
+                cmd = 'sudo %s %s' % (python, script_name)
                 ret, output = client.ssh(cmd)
                 if ret:
-                    raise Exception('Do the command in controller'
+                    raise Exception('Do the command in remote'
                                     ' node failed, ret=%s, cmd=%s, output=%s'
                                     % (ret, cmd, output))
             client.ssh(restart_cmd)
