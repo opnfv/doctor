@@ -9,8 +9,11 @@
 import os
 
 
+vi_base = "/var/lib/config-data/puppet-generated/vitrage"
+if not os.path.isdir(vi_base):
+    vi_base = ""
 vitrage_template_file = \
-    '/etc/vitrage/templates/vitrage_host_down_scenarios.yaml'
+    vi_base + '/etc/vitrage/templates/vitrage_host_down_scenarios.yaml'
 
 template = """
 metadata:
