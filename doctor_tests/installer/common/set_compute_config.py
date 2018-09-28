@@ -10,9 +10,26 @@ import os
 import shutil
 
 
+def make_initial_config(service, dest):
+    for mk in ["", "/etc", "/%s" % service]:
+        dest += mk
+        os.mkdir(dest)
+    src = "/etc/%s/%s.conf" % (service, service)
+    dest += "/%s.conf" % service
+    shutil.copyfile(src, dest)
+
+
 def set_cpu_allocation_ratio():
-    nova_file = '/etc/nova/nova.conf'
-    nova_file_bak = '/etc/nova/nova.bak'
+    docker_conf_base_dir = "/var/lib/config-data/puppet-generated"
+    if not os.path.isdir(docker_conf_base_dir):
+        nova_base = ""
+    else:
+        nova_base = "%s/nova" % docker_conf_base_dir
+        if not os.path.isdir(nova_base):
+            # nova.conf to be used might not exist
+            make_initial_config("nova", nova_base)
+    nova_file = nova_base + '/etc/nova/nova.conf'
+    nova_file_bak = nova_base + '/etc/nova/nova.bak'
 
     if not os.path.isfile(nova_file):
         raise Exception("File doesn't exist: %s." % nova_file)
