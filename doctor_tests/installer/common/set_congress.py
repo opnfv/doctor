@@ -7,12 +7,16 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
 import configparser
+import os
 import shutil
 
 
 def set_drivers_config():
-    co_conf = "/etc/congress/congress.conf"
-    co_conf_bak = "/etc/congress/congress.conf.bak"
+    co_base = "/var/lib/config-data/puppet-generated/congress"
+    if not os.path.isdir(co_base):
+        co_base = ""
+    co_conf = co_base + "/etc/congress/congress.conf"
+    co_conf_bak = co_base + "/etc/congress/congress.conf.bak"
     doctor_driver = "congress.datasources.doctor_driver.DoctorDriver"
     config_modified = False
 
