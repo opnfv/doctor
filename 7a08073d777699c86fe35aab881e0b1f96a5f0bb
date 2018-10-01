@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a682502_28270f66",
+        "filename": "doctor_tests/common/utils.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 7409
+      },
+      "writtenOn": "2018-10-01T01:03:25Z",
+      "side": 1,
+      "message": "what is the purpose of this var?",
+      "range": {
+        "startLine": 70,
+        "startChar": 27,
+        "endLine": 70,
+        "endChar": 45
+      },
+      "revId": "7a08073d777699c86fe35aab881e0b1f96a5f0bb",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a682502_68f907c8",
+        "filename": "doctor_tests/installer/apex.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 7409
+      },
+      "writtenOn": "2018-10-01T01:03:25Z",
+      "side": 1,
+      "message": "remove the extra whitespace",
+      "range": {
+        "startLine": 108,
+        "startChar": 19,
+        "endLine": 108,
+        "endChar": 20
+      },
+      "revId": "7a08073d777699c86fe35aab881e0b1f96a5f0bb",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a682502_48f6cbd8",
+        "filename": "doctor_tests/installer/apex.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 7409
+      },
+      "writtenOn": "2018-10-01T01:03:25Z",
+      "side": 1,
+      "message": "Concatenating strings like this will most likely result in, for example:\n\nsudo systemctl restart openstack-ceilometer-notification.servicefor container in `sudo docker ps | grep nova-scheduler |  awk \u0027{print $1}\u0027`; do sudo docker restart $container; \\\n               done;\n\n\nBetter do it this way:\n\nrestart_cmd \u003d \"%s %s\" % (restart_cmd, self._set_docker_restart_cmd(\"nova-scheduler\"))\n\nOr I misunderstand your point.",
+      "range": {
+        "startLine": 127,
+        "startChar": 16,
+        "endLine": 127,
+        "endChar": 77
+      },
+      "revId": "7a08073d777699c86fe35aab881e0b1f96a5f0bb",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a682502_a8031fb7",
+        "filename": "doctor_tests/installer/apex.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 7409
+      },
+      "writtenOn": "2018-10-01T01:03:25Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 134,
+        "startChar": 15,
+        "endLine": 134,
+        "endChar": 78
+      },
+      "revId": "7a08073d777699c86fe35aab881e0b1f96a5f0bb",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a682502_8800e3ab",
+        "filename": "doctor_tests/installer/apex.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 7409
+      },
+      "writtenOn": "2018-10-01T01:03:25Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 149,
+        "startChar": 16,
+        "endLine": 149,
+        "endChar": 74
+      },
+      "revId": "7a08073d777699c86fe35aab881e0b1f96a5f0bb",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a682502_e82cf74c",
+        "filename": "doctor_tests/installer/apex.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 7409
+      },
+      "writtenOn": "2018-10-01T01:03:25Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 179,
+        "startChar": 16,
+        "endLine": 179,
+        "endChar": 77
+      },
+      "revId": "7a08073d777699c86fe35aab881e0b1f96a5f0bb",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a682502_c8313ba4",
+        "filename": "doctor_tests/installer/apex.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 7409
+      },
+      "writtenOn": "2018-10-01T01:03:25Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 186,
+        "startChar": 15,
+        "endLine": 186,
+        "endChar": 78
+      },
+      "revId": "7a08073d777699c86fe35aab881e0b1f96a5f0bb",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
