@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5a682502_6820e749",
+        "filename": "doctor_tests/common/utils.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-10-01T04:35:45Z",
+      "side": 1,
+      "message": "I needed to check remotely command return value to know we run deployment with or without containers. This ssh would not allow it. This was straightforward to go over it without handling all exceptions when calling ssh.",
+      "parentUuid": "5a682502_28270f66",
+      "range": {
+        "startLine": 70,
+        "startChar": 27,
+        "endLine": 70,
+        "endChar": 45
+      },
+      "revId": "7a08073d777699c86fe35aab881e0b1f96a5f0bb",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a682502_68f907c8",
         "filename": "doctor_tests/installer/apex.py",
         "patchSetId": 2
@@ -59,6 +83,30 @@
       "writtenOn": "2018-10-01T01:03:25Z",
       "side": 1,
       "message": "Concatenating strings like this will most likely result in, for example:\n\nsudo systemctl restart openstack-ceilometer-notification.servicefor container in `sudo docker ps | grep nova-scheduler |  awk \u0027{print $1}\u0027`; do sudo docker restart $container; \\\n               done;\n\n\nBetter do it this way:\n\nrestart_cmd \u003d \"%s %s\" % (restart_cmd, self._set_docker_restart_cmd(\"nova-scheduler\"))\n\nOr I misunderstand your point.",
+      "range": {
+        "startLine": 127,
+        "startChar": 16,
+        "endLine": 127,
+        "endChar": 77
+      },
+      "revId": "7a08073d777699c86fe35aab881e0b1f96a5f0bb",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a682502_a81aff14",
+        "filename": "doctor_tests/installer/apex.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-10-01T04:35:45Z",
+      "side": 1,
+      "message": "Thanks, that would be much better, only single \"docker restart\" and adding containers ids there instead of ugly loop would also be ideal. Anyhow the approach here is causing only single ssh like it is currently done and that is why it is used. Container names are not too predictive, so have to figure them out in target: 192.168.173.1:8787/tripleoqueens/centos-binary-nova-scheduler:current-tripleo-rdo. Another way would be to have a script in the target, but that is also different to what done before.",
+      "parentUuid": "5a682502_48f6cbd8",
       "range": {
         "startLine": 127,
         "startChar": 16,
