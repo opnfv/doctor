@@ -159,7 +159,7 @@ class ApexInstaller(BaseInstaller):
                                         [self.nc_set_compute_script])
 
         if self.conf.test_case != 'fault_management':
-            time.sleep(10)
+            time.sleep(5)
 
     def restore_apply_patches(self):
         self.log.info('restore apply patches start......')

@@ -8,16 +8,16 @@
 ##############################################################################
 from oslo_config import cfg
 from oslo_utils import importutils
-
+import os
 
 OPTS = [
     cfg.StrOpt('type',
-               default='sample',
-               choices=['sample'],
+               default=os.environ.get('ADMIN_TOOL_TYPE', 'sample'),
+               choices=['sample', 'fenix'],
                help='the component of doctor admin_tool',
                required=True),
     cfg.StrOpt('ip',
-               default='127.0.0.1',
+               default='0.0.0.0',
                help='the ip of admin_tool',
                required=True),
     cfg.IntOpt('port',
