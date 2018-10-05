@@ -221,4 +221,4 @@ class InspectorApp(Thread):
             func()
             return 'inspector app shutting down...'
 
-        app.run(host="0.0.0.0", port=self.port)
+        app.run(host="0.0.0.0", port=int(self.port))

@@ -34,7 +34,11 @@ class Maintenance(object):
         auth = get_identity_auth(project=self.conf.doctor_project)
         self.neutron = neutron_client(get_session(auth=auth))
         self.stack = Stack(self.conf, self.log)
-        self.admin_tool = get_admin_tool(trasport_url, self.conf, self.log)
+        if self.conf.admin_tool.type == 'sample':
+            self.admin_tool = get_admin_tool(trasport_url, self.conf, self.log)
+            self.endpoint = 'maintenance'
+        else:
+            self.endpoint = 'v1/maintenance'
         self.app_manager = get_app_manager(self.stack, self.conf, self.log)
         self.inspector = get_inspector(self.conf, self.log)
 
@@ -110,7 +114,11 @@ class Maintenance(object):
                           parameters=parameters,
                           files=files)
 
-        self.admin_tool.start()
+        if self.conf.admin_tool.type == 'sample':
+            self.admin_tool.start()
+        else:
+            # TBD Now we expect Fenix is running in self.conf.admin_tool.port
+            pass
         self.app_manager.start()
         self.inspector.start()
 
@@ -122,16 +130,21 @@ class Maintenance(object):
             hostname = hvisor.__getattr__('hypervisor_hostname')
             maintenance_hosts.append(hostname)
 
-        url = 'http://0.0.0.0:%s/maintenance' % self.conf.admin_tool.port
+        url = ('http://%s:%s/%s' %
+               (self.conf.admin_tool.ip,
+                self.conf.admin_tool.port,
+                self.endpoint))
+
         # let's start maintenance 20sec from now, so projects will have
         # time to ACK to it before that
         maintenance_at = (datetime.datetime.utcnow() +
-                          datetime.timedelta(seconds=20)
+                          datetime.timedelta(seconds=30)
                           ).strftime('%Y-%m-%d %H:%M:%S')
         data = {'hosts': maintenance_hosts,
                 'state': 'MAINTENANCE',
                 'maintenance_at': maintenance_at,
-                'metadata': {'openstack_version': 'Pike'}}
+                'metadata': {'openstack_version': 'Rocky'},
+                'workflow': 'default'}
         headers = {
             'Content-Type': 'application/json',
             'Accept': 'application/json'}
@@ -143,49 +156,56 @@ class Maintenance(object):
 
     def remove_maintenance_session(self, session_id):
         self.log.info('remove maintenance session %s.......' % session_id)
+        url = ('http://%s:%s/%s/%s' %
+               (self.conf.admin_tool.ip,
+                self.conf.admin_tool.port,
+                self.endpoint,
+                session_id))
 
-        url = 'http://0.0.0.0:%s/maintenance' % self.conf.admin_tool.port
-
-        data = {'state': 'REMOVE_MAINTENANCE_SESSION',
-                'session_id': session_id}
         headers = {
             'Content-Type': 'application/json',
             'Accept': 'application/json'}
 
-        ret = requests.post(url, data=json.dumps(data), headers=headers)
+        ret = requests.delete(url, data=None, headers=headers)
         if ret.status_code != 200:
             raise Exception(ret.text)
 
     def get_maintenance_state(self, session_id):
-        url = 'http://0.0.0.0:%s/maintenance' % self.conf.admin_tool.port
-        data = {'session_id': session_id}
+        url = ('http://%s:%s/%s/%s' %
+               (self.conf.admin_tool.ip,
+                self.conf.admin_tool.port,
+                self.endpoint,
+                session_id))
+
         headers = {
             'Content-Type': 'application/json',
             'Accept': 'application/json'}
-        ret = requests.get(url, data=json.dumps(data), headers=headers)
+        ret = requests.get(url, data=None, headers=headers)
         if ret.status_code != 200:
             raise Exception(ret.text)
         return ret.json()['state']
 
     def wait_maintenance_complete(self, session_id):
-        retries = 66
+        retries = 90
         state = None
-        time.sleep(540)
-        while state != 'MAINTENANCE_COMPLETE' and retries > 0:
+        time.sleep(300)
+        while (state not in ['MAINTENANCE_DONE', 'MAINTENANCE_FAILED'] and
+               retries > 0):
             time.sleep(10)
             state = self.get_maintenance_state(session_id)
             retries = retries - 1
-        if retries == 0 and state != 'MAINTENANCE_COMPLETE':
-            raise Exception('maintenance %s not completed within 20min, status'
-                            ' %s' % (session_id, state))
-        elif state == 'MAINTENANCE_COMPLETE':
-            self.log.info('maintenance %s %s' % (session_id, state))
-            self.remove_maintenance_session(session_id)
-        elif state == 'MAINTENANCE_FAILED':
+        self.remove_maintenance_session(session_id)
+        self.log.info('maintenance %s ended with state %s' %
+                      (session_id, state))
+        if state == 'MAINTENANCE_FAILED':
             raise Exception('maintenance %s failed' % session_id)
+        elif retries == 0:
+            raise Exception('maintenance %s not completed within 20min' %
+                            session_id)
 
     def cleanup_maintenance(self):
-        self.admin_tool.stop()
+        if self.conf.admin_tool.type == 'sample':
+            self.admin_tool.stop()
         self.app_manager.stop()
         self.inspector.stop()
         self.log.info('stack delete start.......')
