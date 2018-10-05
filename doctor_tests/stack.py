@@ -88,7 +88,18 @@ class Stack(object):
                                         template=template,
                                         parameters=parameters)
         self.stack_id = stack['stack']['id']
-        self.wait_stack_create()
+        try:
+            self.wait_stack_create()
+        except Exception:
+            # It might not always work at first
+            self.log.info('retry creating maintenance stack.......')
+            self.delete()
+            stack = self.heat.stacks.create(stack_name=self.stack_name,
+                                            files=files,
+                                            template=template,
+                                            parameters=parameters)
+            self.stack_id = stack['stack']['id']
+            self.wait_stack_create()
 
     def update(self, stack_name, stack_id, template, parameters={}, files={}):
         self.heat.stacks.update(stack_name=stack_name,
