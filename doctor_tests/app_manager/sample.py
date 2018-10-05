@@ -114,8 +114,7 @@ class AppManager(Thread):
                 for t in data['reason_data']['event']['traits']})
 
     def get_session_instance_ids(self, url, session_id):
-        data = {'session_id': session_id}
-        ret = requests.get(url, data=json.dumps(data), headers=self.headers)
+        ret = requests.get(url, data=None, headers=self.headers)
         if ret.status_code != 200:
             raise Exception(ret.text)
         self.log.info('get_instance_ids %s' % ret.json())
@@ -177,12 +176,12 @@ class AppManager(Thread):
                 reply['instance_ids'] = instance_ids
                 reply_state = 'ACK_MAINTENANCE'
 
-            elif state == 'DOWN_SCALE':
+            elif state == 'SCALE_IN':
                 # scale down 2 isntances that is VCPUS equaling to single
                 # compute node
                 self.scale_instances(-2)
                 reply['instance_ids'] = self.get_instance_ids()
-                reply_state = 'ACK_DOWN_SCALE'
+                reply_state = 'ACK_SCALE_IN'
 
             elif state == 'MAINTENANCE_COMPLETE':
                 # possibly need to upscale
