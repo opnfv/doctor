@@ -75,7 +75,7 @@ class BaseInstaller(object):
                 cmd = ("ssh -o UserKnownHostsFile=/dev/null"
                        " -o StrictHostKeyChecking=no"
                        " -i %s %s@%s -R %s:localhost:%s"
-                       " sleep %s > ssh_tunnel.%s"
+                       " sleep %s > ssh_tunnel.%s.%s"
                        " 2>&1 < /dev/null "
                        % (self.key_file,
                           self.node_user_name,
@@ -83,9 +83,28 @@ class BaseInstaller(object):
                           port,
                           port,
                           tunnel_uptime,
-                          node_ip))
+                          node_ip,
+                          port))
                 server = subprocess.Popen('exec ' + cmd, shell=True)
                 self.servers.append(server)
+        if self.conf.admin_tool.type == 'fenix':
+            port = self.conf.admin_tool.port
+            self.log.info('tunnel for port %s' % port)
+            cmd = ("ssh -o UserKnownHostsFile=/dev/null"
+                   " -o StrictHostKeyChecking=no"
+                   " -i %s %s@%s -L %s:localhost:%s"
+                   " sleep %s > ssh_tunnel.%s.%s"
+                   " 2>&1 < /dev/null "
+                   % (self.key_file,
+                      self.node_user_name,
+                      node_ip,
+                      port,
+                      port,
+                      tunnel_uptime,
+                      node_ip,
+                      port))
+            server = subprocess.Popen('exec ' + cmd, shell=True)
+            self.servers.append(server)
 
     def _get_ssh_key(self, client, key_path):
         self.log.info('Get SSH keys from %s installer......'
