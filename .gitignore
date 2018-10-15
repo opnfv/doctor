@@ -6,7 +6,6 @@
 /*.egg-info/
 .eggs/
 /build/
-/docs_build/
 /docs_output/
 /releng/
 /tests/*.img
@@ -16,3 +15,4 @@
 
 #Build results
 .tox
+docs/_build/*
