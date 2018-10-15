@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "5a682502_f61dec74",
+        "filename": "doctor_tests/installer/apex.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2018-10-15T09:32:01Z",
+      "side": 1,
+      "message": "you don\u0027t need line 129 even you have blank line in L128.",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 53
+      },
+      "revId": "9ac634f234cd5c9c54b5595e387642bd539a6c64",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a682502_e11d2468",
+        "filename": "doctor_tests/installer/base.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 253
+      },
+      "writtenOn": "2018-10-15T09:32:01Z",
+      "side": 1,
+      "message": "just, quick thought. normally, module would be imported and this could be like \u0027@util.run_async\u0027 .",
+      "range": {
+        "startLine": 155,
+        "startChar": 5,
+        "endLine": 155,
+        "endChar": 14
+      },
+      "revId": "9ac634f234cd5c9c54b5595e387642bd539a6c64",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a682502_a7d184fd",
         "filename": "doctor_tests/stack.py",
         "patchSetId": 7
