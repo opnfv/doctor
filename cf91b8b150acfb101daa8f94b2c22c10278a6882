@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a682502_a6b4d4d1",
+        "filename": "doctor_tests/installer/common/set_config.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2018-10-24T06:59:50Z",
+      "side": 1,
+      "message": "After I upgrade the ZTE Apex env, this file is not exist in the controller node.\nHere is the exception when I run the test manually:\nNOTE: event notifier is configuredin ceilometer as we needed\nTraceback (most recent call last):\n  File \"set_config.py\", line 108, in \u003cmodule\u003e\n    set_maintenance_event_definitions()\n  File \"set_config.py\", line 56, in set_maintenance_event_definitions\n    shutil.copyfile(\u0027/etc/ceilometer/event_definitions.yaml\u0027, ed_file)\n  File \"/usr/lib64/python2.7/shutil.py\", line 82, in copyfile\n    with open(src, \u0027rb\u0027) as fsrc:\nIOError: [Errno 2] No such file or directory: \u0027/etc/ceilometer/event_definitions.yaml\u0027",
+      "range": {
+        "startLine": 55,
+        "startChar": 24,
+        "endLine": 55,
+        "endChar": 64
+      },
+      "revId": "cf91b8b150acfb101daa8f94b2c22c10278a6882",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
