@@ -184,6 +184,9 @@ class FaultManagement(object):
             self.log.info('doctor fault management test successfully,'
                           'notification_time=%s' % notification_time)
         else:
+            self.log.error('doctor fault management test failed, '
+                           'notification_time=%s' % notification_time)
+
             if self.conf.profiler_type:
                 self.log.info('run doctor fault management profile.......')
                 self.run_profiler()

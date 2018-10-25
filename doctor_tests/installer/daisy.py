@@ -12,11 +12,12 @@ from doctor_tests.installer.base import BaseInstaller
 
 class DaisyInstaller(BaseInstaller):
     node_user_name = 'root'
+    installer_username = 'root'
 
     def __init__(self, conf, log):
         super(DaisyInstaller, self).__init__(conf, log)
         self.client = SSHClient(self.conf.installer.ip,
-                                self.conf.installer.username,
+                                self.installer_username,
                                 password='r00tme')
         self.key_file = None
         self.controllers = list()

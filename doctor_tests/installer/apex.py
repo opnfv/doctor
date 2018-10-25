@@ -16,6 +16,7 @@ from doctor_tests.installer.base import BaseInstaller
 
 class ApexInstaller(BaseInstaller):
     node_user_name = 'heat-admin'
+    installer_username = 'stack'
     cm_set_script = 'set_config.py'
     nc_set_compute_script = 'set_compute_config.py'
     cg_set_script = 'set_congress.py'
@@ -26,7 +27,7 @@ class ApexInstaller(BaseInstaller):
     def __init__(self, conf, log):
         super(ApexInstaller, self).__init__(conf, log)
         self.client = SSHClient(self.conf.installer.ip,
-                                self.conf.installer.username,
+                                self.installer_username,
                                 key_filename=self.conf.installer.key_file,
                                 look_for_keys=True)
         self.key_file = None
