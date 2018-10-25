@@ -180,9 +180,12 @@ class FaultManagement(object):
         notification_time = \
             self.consumer.notified_time - \
             self.monitor.detected_time
+
+        self.log.info('doctor fault management notification_time=%s'
+                      % notification_time)
+
         if notification_time < 1 and notification_time > 0:
-            self.log.info('doctor fault management test successfully,'
-                          'notification_time=%s' % notification_time)
+            self.log.info('doctor fault management test successfully')
         else:
             if self.conf.profiler_type:
                 self.log.info('run doctor fault management profile.......')
