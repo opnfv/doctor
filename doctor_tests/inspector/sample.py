@@ -97,8 +97,8 @@ class SampleInspector(BaseInspector):
             event_type = event['type']
             if event_type == self.event_type:
                 self.hostnames.append(hostname)
-                thr1 = self._disable_compute_host(hostname)
-                thr2 = self._vms_reset_state('error', hostname)
+                thr1 = self._vms_reset_state('error', hostname)
+                thr2 = self._disable_compute_host(hostname)
                 if self.conf.inspector.update_neutron_port_dp_status:
                     thr3 = self._set_ports_data_plane_status('DOWN', hostname)
                 thr1.join()
