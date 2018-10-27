@@ -6,7 +6,7 @@
 # which accompanies this distribution, and is available at
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
-import configparser
+from six.moves import configparser
 import os
 import shutil
 
@@ -22,13 +22,13 @@ def set_drivers_config():
 
     config = configparser.ConfigParser()
     config.read(co_conf)
-    drivers = config['DEFAULT']['drivers']
+    drivers = config.get('DEFAULT', 'drivers')
 
     if doctor_driver not in drivers:
         config_modified = True
         drivers += ',' + doctor_driver
 
-    config['DEFAULT']['drivers'] = drivers
+    config.set('DEFAULT', 'drivers', drivers)
 
     if config_modified:
         shutil.copyfile(co_conf, co_conf_bak)
