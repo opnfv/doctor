@@ -13,7 +13,11 @@ maintenance workflow code implemented in Doctor. Work has also started to have
 the real implementation done in the OpenStack Fenix project
 https://wiki.openstack.org/wiki/Fenix.
 
-Doctor CI testing has now moved to use tox instead of Functest.
+Doctor CI testing has now moved to use tox on jumphots instead of running test
+through features container. Also in Apex we use OpenStack services running in
+containers. Functest daily testing supports Doctor fault management test case
+for Apex, Daisy and Fuel installers. This testing is done through features
+container.
 
 In this release, Doctor has not been working with the fault management use case as
 the basic framework has been already done. However, we might need to get back to
@@ -35,6 +39,22 @@ Doctor changes
 
 +------------------------------------------+----------------------------------------------------------+
 | **commit-ID**                            | **Subject**                                              |
++------------------------------------------+----------------------------------------------------------+
+| 5b3f5937e7b861fca46b2a6b2d6708866b800f95 | fix building docs                                        |
++------------------------------------------+----------------------------------------------------------+
+| 2ca5924081ce4784f599437707bd32807aa155ce | Fix SSH client connection reset                          |
++------------------------------------------+----------------------------------------------------------+
+| baac6579556f8216b36db0d0f87f9c2d4f8b4ef5 | Support Apex with services in containers                 |
++------------------------------------------+----------------------------------------------------------+
+| 23bf63c4616040cb0d69cd26238af2a4a7c00a90 | fix the username to login undercloud in Apex             |
++------------------------------------------+----------------------------------------------------------+
+| 61eb3927ada784cc3dffb5ddd17f66e47871f708 | Local Documentation Builds                               |
++------------------------------------------+----------------------------------------------------------+
+| 0f1dd4314b9e0247d9af7af6df2410462423aeca | Updated from global requirements                         |
++------------------------------------------+----------------------------------------------------------+
+| 2d4a9f0c0a93797da6534583f6e74553a4b634be | Fix links to remove references to submodules             |
++------------------------------------------+----------------------------------------------------------+
+| 3ddc2392b0ed364eede49ff006d64df3ea456350 | Gambia release notes                                     |
 +------------------------------------------+----------------------------------------------------------+
 | 825a0a0dd5e8028129b782ed21c549586257b1c5 | delete doctor datasource in congress when cleanup        |
 +------------------------------------------+----------------------------------------------------------+
@@ -157,6 +177,9 @@ Feature additions
 +--------------------+--------------------------------------------------------+
 | DOCTOR-127         | Maintenance test POD                                   |
 +--------------------+--------------------------------------------------------+
+| DOCTOR-130         | Apex with containers                                   |
++--------------------+--------------------------------------------------------+
+
 
 
 Deliverables
