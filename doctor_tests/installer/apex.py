@@ -192,20 +192,39 @@ class ApexInstaller(BaseInstaller):
                 restart_cmd += ' openstack-congress-server.service'
             restore_scripts.append(self.cg_restore_script)
 
-        for client in self.controller_clients:
-            self._run_apply_patches(client,
-                                    restart_cmd,
-                                    restore_scripts,
-                                    python=self.python)
-
+        for client, node_ip in zip(self.controller_clients, self.controllers):
+            retry = 0
+            while retry < 2:
+                try:
+                    self._run_apply_patches(client,
+                                            restart_cmd,
+                                            restore_scripts,
+                                            python=self.python)
+                except Exception:
+                    if retry > 0:
+                        raise Exception("SSHClient to %s feiled" % node_ip)
+                    client = SSHClient(node_ip, self.node_user_name,
+                                       key_filename=self.key_file)
+                    retry += 1
+                break
         if self.conf.test_case != 'fault_management':
             if self.use_containers:
                 restart_cmd = self._set_docker_restart_cmd("nova-compute")
             else:
                 restart_cmd = 'sudo systemctl restart' \
                               ' openstack-nova-compute.service'
-            for client in self.compute_clients:
-                self._run_apply_patches(client,
-                                        restart_cmd,
-                                        [self.nc_restore_compute_script],
-                                        python=self.python)
+            for client, node_ip in zip(self.compute_clients, self.computes):
+                retry = 0
+                while retry < 2:
+                    try:
+                        self._run_apply_patches(
+                            client, restart_cmd,
+                            [self.nc_restore_compute_script],
+                            python=self.python)
+                    except Exception:
+                        if retry > 0:
+                            raise Exception("SSHClient to %s feiled" % node_ip)
+                        client = SSHClient(node_ip, self.node_user_name,
+                                           key_filename=self.key_file)
+                        retry += 1
+                    break
