@@ -125,6 +125,7 @@ def set_event_definitions():
                 'reply_url': {'fields': 'payload.reply_url'},
                 'actions_at': {'fields': 'payload.actions_at',
                                'type': 'datetime'},
+                'reply_at': {'fields': 'payload.reply_at', 'type': 'datetime'},
                 'state': {'fields': 'payload.state'},
                 'session_id': {'fields': 'payload.session_id'},
                 'project_id': {'fields': 'payload.project_id'},

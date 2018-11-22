@@ -94,7 +94,7 @@ class Stack(object):
             # It might not always work at first
             self.log.info('retry creating maintenance stack.......')
             self.delete()
-            time.sleep(3)
+            time.sleep(5)
             stack = self.heat.stacks.create(stack_name=self.stack_name,
                                             files=files,
                                             template=template,

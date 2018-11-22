@@ -14,8 +14,9 @@ import pwd
 import six
 import stat
 import subprocess
+import time
 
-from doctor_tests.common.utils import get_doctor_test_root_dir
+from doctor_tests.common import utils
 from doctor_tests.identity_auth import get_session
 from doctor_tests.os_clients import nova_client
 
@@ -75,7 +76,7 @@ class BaseInstaller(object):
                 cmd = ("ssh -o UserKnownHostsFile=/dev/null"
                        " -o StrictHostKeyChecking=no"
                        " -i %s %s@%s -R %s:localhost:%s"
-                       " sleep %s > ssh_tunnel.%s"
+                       " sleep %s > ssh_tunnel.%s.%s"
                        " 2>&1 < /dev/null "
                        % (self.key_file,
                           self.node_user_name,
@@ -83,9 +84,28 @@ class BaseInstaller(object):
                           port,
                           port,
                           tunnel_uptime,
-                          node_ip))
+                          node_ip,
+                          port))
                 server = subprocess.Popen('exec ' + cmd, shell=True)
                 self.servers.append(server)
+        if self.conf.admin_tool.type == 'fenix':
+            port = self.conf.admin_tool.port
+            self.log.info('tunnel for port %s' % port)
+            cmd = ("ssh -o UserKnownHostsFile=/dev/null"
+                   " -o StrictHostKeyChecking=no"
+                   " -i %s %s@%s -L %s:localhost:%s"
+                   " sleep %s > ssh_tunnel.%s.%s"
+                   " 2>&1 < /dev/null "
+                   % (self.key_file,
+                      self.node_user_name,
+                      node_ip,
+                      port,
+                      port,
+                      tunnel_uptime,
+                      node_ip,
+                      port))
+            server = subprocess.Popen('exec ' + cmd, shell=True)
+            self.servers.append(server)
 
     def _get_ssh_key(self, client, key_path):
         self.log.info('Get SSH keys from %s installer......'
@@ -96,7 +116,8 @@ class BaseInstaller(object):
                           % self.conf.installer.type)
             return self.key_file
 
-        ssh_key = '{0}/{1}'.format(get_doctor_test_root_dir(), 'instack_key')
+        ssh_key = '{0}/{1}'.format(utils.get_doctor_test_root_dir(),
+                                   'instack_key')
         client.scp(key_path, ssh_key, method='get')
         user = getpass.getuser()
         uid = pwd.getpwnam(user).pw_uid
@@ -131,6 +152,7 @@ class BaseInstaller(object):
             ret = False
         return ret
 
+    @utils.run_async
     def _run_apply_patches(self, client, restart_cmd, script_names,
                            python='python3'):
         installer_dir = os.path.dirname(os.path.realpath(__file__))
@@ -146,4 +168,7 @@ class BaseInstaller(object):
                     raise Exception('Do the command in remote'
                                     ' node failed, ret=%s, cmd=%s, output=%s'
                                     % (ret, cmd, output))
+            if 'nova-scheduler' in restart_cmd:
+                # Make sure scheduler has proper cpu_allocation_ratio
+                time.sleep(5)
             client.ssh(restart_cmd)
