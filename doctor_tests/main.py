@@ -53,9 +53,10 @@ class DoctorTest(object):
     def test_fault_management(self):
         try:
             LOG.info('doctor fault management test starting.......')
-
+            transport_url = self.installer.get_transport_url()
             self.fault_management = \
-                FaultManagement(self.conf, self.installer, self.user, LOG)
+                FaultManagement(self.conf, self.installer, self.user, LOG,
+                                transport_url)
 
             # prepare test env
             self.fault_management.setup()
@@ -79,6 +80,7 @@ class DoctorTest(object):
         except Exception as e:
             LOG.error('doctor fault management test failed, '
                       'Exception=%s' % e)
+            LOG.error(format_exc())
             sys.exit(1)
         finally:
             self.fault_management.cleanup()
@@ -143,6 +145,7 @@ class DoctorTest(object):
                                     % function)
         except Exception as e:
             LOG.error('doctor test failed, Exception=%s' % e)
+            LOG.error(format_exc())
             sys.exit(1)
         finally:
             self.cleanup()

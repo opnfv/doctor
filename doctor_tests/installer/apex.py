@@ -6,7 +6,6 @@
 # which accompanies this distribution, and is available at
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
-import re
 import time
 
 from doctor_tests.common.constants import Inspector
@@ -36,8 +35,6 @@ class ApexInstaller(BaseInstaller):
         self.key_file = None
         self.controllers = list()
         self.computes = list()
-        self.controller_clients = list()
-        self.compute_clients = list()
 
     def setup(self):
         self.log.info('Setup Apex installer start......')
@@ -83,26 +80,6 @@ class ApexInstaller(BaseInstaller):
         host_ips = self._run_cmd_remote(self.client, command)
         return host_ips[0]
 
-    def get_transport_url(self):
-        client = SSHClient(self.controllers[0], self.node_user_name,
-                           key_filename=self.key_file)
-        if self.use_containers:
-            ncbase = "/var/lib/config-data/puppet-generated/nova"
-        else:
-            ncbase = ""
-        command = 'sudo grep "^transport_url" %s/etc/nova/nova.conf' % ncbase
-
-        ret, url = client.ssh(command)
-        if ret:
-            raise Exception('Exec command to get host ip from controller(%s)'
-                            'in Apex installer failed, ret=%s, output=%s'
-                            % (self.controllers[0], ret, url))
-        # need to use ip instead of hostname
-        ret = (re.sub("@.*:", "@%s:" % self.controllers[0],
-               url[0].split("=", 1)[1]))
-        self.log.debug('get_transport_url %s' % ret)
-        return ret
-
     def _set_docker_restart_cmd(self, service):
         # There can be multiple instances running so need to restart all
         cmd = "for container in `sudo docker ps | grep "
@@ -113,22 +90,6 @@ class ApexInstaller(BaseInstaller):
 
     def set_apply_patches(self):
         self.log.info('Set apply patches start......')
-
-        if self.conf.test_case != 'fault_management':
-            if self.use_containers:
-                restart_cmd = self._set_docker_restart_cmd("nova-compute")
-            else:
-                restart_cmd = 'sudo systemctl restart' \
-                              ' openstack-nova-compute.service'
-            for node_ip in self.computes:
-                client = SSHClient(node_ip, self.node_user_name,
-                                   key_filename=self.key_file)
-                self.compute_clients.append(client)
-                self._run_apply_patches(client,
-                                        restart_cmd,
-                                        [self.nc_set_compute_script],
-                                        python=self.python)
-            time.sleep(10)
 
         set_scripts = [self.cm_set_script]
 
@@ -157,11 +118,28 @@ class ApexInstaller(BaseInstaller):
         for node_ip in self.controllers:
             client = SSHClient(node_ip, self.node_user_name,
                                key_filename=self.key_file)
-            self.controller_clients.append(client)
             self._run_apply_patches(client,
                                     restart_cmd,
                                     set_scripts,
                                     python=self.python)
+        time.sleep(5)
+
+        self.log.info('Set apply patches start......')
+
+        if self.conf.test_case != 'fault_management':
+            if self.use_containers:
+                restart_cmd = self._set_docker_restart_cmd("nova")
+            else:
+                restart_cmd = 'sudo systemctl restart' \
+                              ' openstack-nova-compute.service'
+            for node_ip in self.computes:
+                client = SSHClient(node_ip, self.node_user_name,
+                                   key_filename=self.key_file)
+                self._run_apply_patches(client,
+                                        restart_cmd,
+                                        [self.nc_set_compute_script],
+                                        python=self.python)
+            time.sleep(5)
 
     def restore_apply_patches(self):
         self.log.info('restore apply patches start......')
@@ -190,39 +168,22 @@ class ApexInstaller(BaseInstaller):
                 restart_cmd += ' openstack-congress-server.service'
             restore_scripts.append(self.cg_restore_script)
 
-        for client, node_ip in zip(self.controller_clients, self.controllers):
-            retry = 0
-            while retry < 2:
-                try:
-                    self._run_apply_patches(client,
-                                            restart_cmd,
-                                            restore_scripts,
-                                            python=self.python)
-                except Exception:
-                    if retry > 0:
-                        raise Exception("SSHClient to %s feiled" % node_ip)
-                    client = SSHClient(node_ip, self.node_user_name,
-                                       key_filename=self.key_file)
-                    retry += 1
-                break
+        for node_ip in self.controllers:
+            client = SSHClient(node_ip, self.node_user_name,
+                               key_filename=self.key_file)
+            self._run_apply_patches(client,
+                                    restart_cmd,
+                                    restore_scripts,
+                                    python=self.python)
+
         if self.conf.test_case != 'fault_management':
             if self.use_containers:
                 restart_cmd = self._set_docker_restart_cmd("nova-compute")
             else:
                 restart_cmd = 'sudo systemctl restart' \
                               ' openstack-nova-compute.service'
-            for client, node_ip in zip(self.compute_clients, self.computes):
-                retry = 0
-                while retry < 2:
-                    try:
-                        self._run_apply_patches(
-                            client, restart_cmd,
-                            [self.nc_restore_compute_script],
-                            python=self.python)
-                    except Exception:
-                        if retry > 0:
-                            raise Exception("SSHClient to %s feiled" % node_ip)
-                        client = SSHClient(node_ip, self.node_user_name,
-                                           key_filename=self.key_file)
-                        retry += 1
-                    break
+            for node_ip in self.computes:
+                self._run_apply_patches(
+                    client, restart_cmd,
+                    [self.nc_restore_compute_script],
+                    python=self.python)

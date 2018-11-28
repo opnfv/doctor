@@ -42,6 +42,10 @@ _inspector_name_class_mapping = {
 }
 
 
-def get_inspector(conf, log):
+def get_inspector(conf, log, transport_url=None):
     inspector_class = _inspector_name_class_mapping[conf.inspector.type]
-    return importutils.import_object(inspector_class, conf, log)
+    if conf.inspector.type == 'sample':
+        return importutils.import_object(inspector_class, conf, log,
+                                         transport_url)
+    else:
+        return importutils.import_object(inspector_class, conf, log)

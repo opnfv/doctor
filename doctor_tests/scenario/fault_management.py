@@ -40,7 +40,7 @@ sleep 1
 
 class FaultManagement(object):
 
-    def __init__(self, conf, installer, user, log):
+    def __init__(self, conf, installer, user, log, transport_url):
         self.conf = conf
         self.log = log
         self.user = user
@@ -55,7 +55,7 @@ class FaultManagement(object):
         self.network = Network(self.conf, log)
         self.instance = Instance(self.conf, log)
         self.alarm = Alarm(self.conf, log)
-        self.inspector = get_inspector(self.conf, log)
+        self.inspector = get_inspector(self.conf, log, transport_url)
         self.monitor = get_monitor(self.conf,
                                    self.inspector.get_inspector_url(),
                                    log)
