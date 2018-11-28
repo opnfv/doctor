@@ -11,18 +11,16 @@ import shutil
 
 
 def restore_cpu_allocation_ratio():
-    nova_base = "/var/lib/config-data/puppet-generated/nova"
-    if not os.path.isdir(nova_base):
-        nova_base = ""
-    nova_file = nova_base + '/etc/nova/nova.conf'
-    nova_file_bak = nova_base + '/etc/nova/nova.bak'
-
-    if not os.path.isfile(nova_file_bak):
-        print('Bak_file:%s does not exist.' % nova_file_bak)
-    else:
-        print('restore: %s' % nova_file)
-        shutil.copyfile(nova_file_bak, nova_file)
-        os.remove(nova_file_bak)
+    for nova_file_bak in ["/var/lib/config-data/puppet-generated/nova_libvirt/etc/nova/nova.bak",  # noqa
+                          "/var/lib/config-data/puppet-generated/nova/etc/nova/nova.bak",  # noqa
+                          "/etc/nova/nova.bak"]:
+        if os.path.isfile(nova_file_bak):
+            nova_file = nova_file_bak.replace(".bak", ".conf")
+            print('restoring nova.bak.')
+            shutil.copyfile(nova_file_bak, nova_file)
+            os.remove(nova_file_bak)
+            return
+    print('nova.bak does not exist.')
     return
 
 restore_cpu_allocation_ratio()

@@ -79,6 +79,7 @@ class DoctorTest(object):
         except Exception as e:
             LOG.error('doctor fault management test failed, '
                       'Exception=%s' % e)
+            LOG.error(format_exc())
             sys.exit(1)
         finally:
             self.fault_management.cleanup()
@@ -143,6 +144,7 @@ class DoctorTest(object):
                                     % function)
         except Exception as e:
             LOG.error('doctor test failed, Exception=%s' % e)
+            LOG.error(format_exc())
             sys.exit(1)
         finally:
             self.cleanup()
