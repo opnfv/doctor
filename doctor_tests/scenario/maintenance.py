@@ -40,7 +40,7 @@ class Maintenance(object):
         else:
             self.endpoint = 'v1/maintenance'
         self.app_manager = get_app_manager(self.stack, self.conf, self.log)
-        self.inspector = get_inspector(self.conf, self.log)
+        self.inspector = get_inspector(self.conf, self.log, trasport_url)
 
     def get_external_network(self):
         ext_net = None
@@ -68,8 +68,16 @@ class Maintenance(object):
                 raise Exception('not enough vcpus (%d) on %s' %
                                 (vcpus, hostname))
             if vcpus_used > 0:
-                raise Exception('%d vcpus used on %s'
-                                % (vcpus_used, hostname))
+                if self.conf.test_case == 'all':
+                    # VCPU might not yet be free after fault_management test
+                    self.log.info('%d vcpus used on %s, retry...'
+                                  % (vcpus_used, hostname))
+                    time.sleep(15)
+                    hvisor = self.nova.hypervisors.get(hvisor.id)
+                    vcpus_used = hvisor.__getattr__('vcpus_used')
+                if vcpus_used > 0:
+                    raise Exception('%d vcpus used on %s'
+                                    % (vcpus_used, hostname))
             if prev_vcpus != 0 and prev_vcpus != vcpus:
                 raise Exception('%d vcpus on %s does not match to'
                                 '%d on %s'
