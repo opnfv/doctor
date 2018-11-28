@@ -168,7 +168,7 @@ class BaseInstaller(object):
                     raise Exception('Do the command in remote'
                                     ' node failed, ret=%s, cmd=%s, output=%s'
                                     % (ret, cmd, output))
-            if 'nova-scheduler' in restart_cmd:
+            if 'nova' in restart_cmd:
                 # Make sure scheduler has proper cpu_allocation_ratio
                 time.sleep(5)
             client.ssh(restart_cmd)
