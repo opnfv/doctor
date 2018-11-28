@@ -114,22 +114,6 @@ class ApexInstaller(BaseInstaller):
     def set_apply_patches(self):
         self.log.info('Set apply patches start......')
 
-        if self.conf.test_case != 'fault_management':
-            if self.use_containers:
-                restart_cmd = self._set_docker_restart_cmd("nova-compute")
-            else:
-                restart_cmd = 'sudo systemctl restart' \
-                              ' openstack-nova-compute.service'
-            for node_ip in self.computes:
-                client = SSHClient(node_ip, self.node_user_name,
-                                   key_filename=self.key_file)
-                self.compute_clients.append(client)
-                self._run_apply_patches(client,
-                                        restart_cmd,
-                                        [self.nc_set_compute_script],
-                                        python=self.python)
-            time.sleep(10)
-
         set_scripts = [self.cm_set_script]
 
         if self.use_containers:
@@ -162,6 +146,25 @@ class ApexInstaller(BaseInstaller):
                                     restart_cmd,
                                     set_scripts,
                                     python=self.python)
+        time.sleep(5)
+
+        self.log.info('Set apply patches start......')
+
+        if self.conf.test_case != 'fault_management':
+            if self.use_containers:
+                restart_cmd = self._set_docker_restart_cmd("nova")
+            else:
+                restart_cmd = 'sudo systemctl restart' \
+                              ' openstack-nova-compute.service'
+            for node_ip in self.computes:
+                client = SSHClient(node_ip, self.node_user_name,
+                                   key_filename=self.key_file)
+                self.compute_clients.append(client)
+                self._run_apply_patches(client,
+                                        restart_cmd,
+                                        [self.nc_set_compute_script],
+                                        python=self.python)
+            time.sleep(5)
 
     def restore_apply_patches(self):
         self.log.info('restore apply patches start......')
