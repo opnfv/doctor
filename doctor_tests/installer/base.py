@@ -11,6 +11,7 @@ import getpass
 import grp
 import os
 import pwd
+import re
 import six
 import stat
 import subprocess
@@ -126,6 +127,43 @@ class BaseInstaller(object):
         os.chmod(ssh_key, stat.S_IREAD)
         return ssh_key
 
+    def get_transport_url(self):
+        client = utils.SSHClient(self.controllers[0], self.node_user_name,
+                                 key_filename=self.key_file)
+        if self.use_containers:
+            ncbase = "/var/lib/config-data/puppet-generated/nova"
+        else:
+            ncbase = ""
+        command = 'sudo grep "^transport_url" %s/etc/nova/nova.conf' % ncbase
+        ret, url = client.ssh(command)
+
+        if ret:
+            command = 'grep -i "^rabbit" %s/etc/nova/nova.conf' % ncbase
+            ret, lines = client.ssh(command)
+            if ret:
+                raise Exception('Exec command to get transport from '
+                                'controller(%s) in Apex installer failed, '
+                                'ret=%s, output=%s'
+                                % (self.controllers[0], ret, url))
+            else:
+                for line in lines.split('\n'):
+                    if line.startswith("rabbit_userid"):
+                        rabbit_userid = line.split("=")
+                    if line.startswith("rabbit_port"):
+                        rabbit_port = line.split("=")
+                    if line.startswith("rabbit_password"):
+                        rabbit_password = line.split("=")
+                ret = "rabbit://%s:%s@%s:%s/?ssl=0" % (rabbit_userid,
+                                                       rabbit_password,
+                                                       self.controllers[0],
+                                                       rabbit_port)
+        else:
+            # need to use ip instead of hostname
+            ret = (re.sub("@.*:", "@%s:" % self.controllers[0],
+                   url[0].split("=", 1)[1]))
+        self.log.debug('get_transport_url %s' % ret)
+        return ret
+
     def _run_cmd_remote(self, client, command):
         self.log.info('Run command=%s in %s installer......'
                       % (command, self.conf.installer.type))
@@ -161,14 +199,21 @@ class BaseInstaller(object):
             for script_name in script_names:
                 script_abs_path = '{0}/{1}/{2}'.format(installer_dir,
                                                        'common', script_name)
-                client.scp(script_abs_path, script_name)
-                cmd = 'sudo %s %s' % (python, script_name)
-                ret, output = client.ssh(cmd)
+                try:
+                    client.scp(script_abs_path, script_name)
+                except Exception:
+                    client.scp(script_abs_path, script_name)
+                try:
+                    cmd = 'sudo %s %s' % (python, script_name)
+                    ret, output = client.ssh(cmd)
+                except Exception:
+                    ret, output = client.ssh(cmd)
+
                 if ret:
                     raise Exception('Do the command in remote'
                                     ' node failed, ret=%s, cmd=%s, output=%s'
                                     % (ret, cmd, output))
-            if 'nova-scheduler' in restart_cmd:
+            if 'nova' in restart_cmd:
                 # Make sure scheduler has proper cpu_allocation_ratio
                 time.sleep(5)
             client.ssh(restart_cmd)

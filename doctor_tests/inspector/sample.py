@@ -10,6 +10,7 @@ import collections
 from flask import Flask
 from flask import request
 import json
+import oslo_messaging
 import time
 from threading import Thread
 import requests
@@ -26,7 +27,7 @@ from doctor_tests.inspector.base import BaseInspector
 class SampleInspector(BaseInspector):
     event_type = 'compute.host.down'
 
-    def __init__(self, conf, log):
+    def __init__(self, conf, log, trasport_url):
         super(SampleInspector, self).__init__(conf, log)
         self.inspector_url = self.get_inspector_url()
         self.novaclients = list()
@@ -43,6 +44,14 @@ class SampleInspector(BaseInspector):
         self.hostnames = list()
         self.app = None
 
+        transport = oslo_messaging.get_notification_transport(self.conf,
+                                                              trasport_url)
+        self.notif = oslo_messaging.Notifier(transport,
+                                             'compute.instance.update',
+                                             driver='messaging',
+                                             topics=['notifications'])
+        self.notif = self.notif.prepare(publisher_id='sample')
+
     def _init_novaclients(self):
         self.NUMBER_OF_CLIENTS = self.conf.instance_count
         auth = get_identity_auth(project=self.conf.doctor_project)
@@ -54,7 +63,7 @@ class SampleInspector(BaseInspector):
     def _init_servers_list(self):
         self.servers.clear()
         opts = {'all_tenants': True}
-        servers = self.nova.servers.list(search_opts=opts)
+        servers = self.nova.servers.list(detailed=True, search_opts=opts)
         for server in servers:
             try:
                 host = server.__dict__.get('OS-EXT-SRV-ATTR:host')
@@ -97,10 +106,12 @@ class SampleInspector(BaseInspector):
             event_type = event['type']
             if event_type == self.event_type:
                 self.hostnames.append(hostname)
+                thr0 = self._send_notif(hostname)
                 thr1 = self._disable_compute_host(hostname)
                 thr2 = self._vms_reset_state('error', hostname)
                 if self.conf.inspector.update_neutron_port_dp_status:
                     thr3 = self._set_ports_data_plane_status('DOWN', hostname)
+                thr0.join()
                 thr1.join()
                 thr2.join()
                 if self.conf.inspector.update_neutron_port_dp_status:
@@ -156,12 +167,32 @@ class SampleInspector(BaseInspector):
             nova.servers.reset_state(server, state)
             vmdown_time = time.time()
             self.vm_down_time = vmdown_time
-            self.log.info('doctor mark vm(%s) error at %s'
-                          % (server, vmdown_time))
+            self.log.info('doctor mark vm(%s) %s at %s'
+                          % (server, state, vmdown_time))
 
         thrs = []
         for nova, server in zip(self.novaclients, self.servers[hostname]):
             t = _vm_reset_state(nova, server, state)
+            thrs.append(t)
+        for t in thrs:
+            t.join()
+
+    @utils.run_async
+    def _send_notif(self, hostname):
+
+        @utils.run_async
+        def _send_notif(server):
+            payload = dict(tenant_id=server.tenant_id,
+                           instance_id=server.id,
+                           state="error")
+            self.notif.info({'some': 'context'}, 'compute.instance.update',
+                            payload)
+            self.log.info('doctor compute.instance.update vm(%s) error %s'
+                          % (server, time.time()))
+
+        thrs = []
+        for server in self.servers[hostname]:
+            t = _send_notif(server)
             thrs.append(t)
         for t in thrs:
             t.join()
