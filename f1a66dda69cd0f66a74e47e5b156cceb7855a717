@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1a622d24_4baa5b1a",
+        "filename": "doctor_tests/installer/base.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-11-29T07:24:58Z",
+      "side": 1,
+      "message": "We may modify Nova conf meant for nova-scheduler or nova-compute. As there was some problem to have those modifications to take effect in restart, \u0027nova\u0027 matches now to both of those to ensure config file is changed for sure before restart. So delay to restart services, if we have modified nova.conf. If there would be time to make this better, surely could.",
+      "parentUuid": "1a622d24_cb9f8b02",
+      "range": {
+        "startLine": 171,
+        "startChar": 16,
+        "endLine": 171,
+        "endChar": 20
+      },
+      "revId": "f1a66dda69cd0f66a74e47e5b156cceb7855a717",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a622d24_0b8983ca",
         "filename": "doctor_tests/installer/common/restore_compute_config.py",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1a622d24_eb7367e5",
+        "filename": "doctor_tests/installer/common/restore_compute_config.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-11-29T07:24:58Z",
+      "side": 1,
+      "message": "No, this works :) There is just discussion in mailinglist to have some config container, so maybe we will get rid of this mess later on. I was first trying to change this for the better, to change the conf in container and with SIGHUP to re-read it in a fly. This anyhow did not work and it had drawback that nova.conf is copied over from the underlying host when restarting container. So this is still done as earlier.",
+      "parentUuid": "1a622d24_0b8983ca",
+      "range": {
+        "startLine": 14,
+        "startChar": 26,
+        "endLine": 16,
+        "endChar": 46
+      },
+      "revId": "f1a66dda69cd0f66a74e47e5b156cceb7855a717",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a622d24_aba4cf57",
         "filename": "doctor_tests/installer/common/set_compute_config.py",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2018-11-29T06:28:43Z",
       "side": 1,
       "message": "Can the nova.conf exists in more than 2 places?",
+      "range": {
+        "startLine": 15,
+        "startChar": 21,
+        "endLine": 17,
+        "endChar": 42
+      },
+      "revId": "f1a66dda69cd0f66a74e47e5b156cceb7855a717",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a622d24_4b81bb8e",
+        "filename": "doctor_tests/installer/common/set_compute_config.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2018-11-29T07:24:58Z",
+      "side": 1,
+      "message": "no and if it does, this order is meaningfull. Meaning in this order if the file is found, it is also used from that location. First one is currently used in Apex/TripleO compute node. Second in Apex/TripleO controller node (and also Compute earlier in Queens). Last one is then always true for the rest and legacy.",
+      "parentUuid": "1a622d24_aba4cf57",
       "range": {
         "startLine": 15,
         "startChar": 21,
