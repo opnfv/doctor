@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a622d24_cb9f8b02",
+        "filename": "doctor_tests/installer/base.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 7409
+      },
+      "writtenOn": "2018-11-29T06:28:43Z",
+      "side": 1,
+      "message": "so now we have to wait for all nova* processes, don\u0027t we?",
+      "range": {
+        "startLine": 171,
+        "startChar": 16,
+        "endLine": 171,
+        "endChar": 20
+      },
+      "revId": "f1a66dda69cd0f66a74e47e5b156cceb7855a717",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a622d24_0b8983ca",
+        "filename": "doctor_tests/installer/common/restore_compute_config.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 7409
+      },
+      "writtenOn": "2018-11-29T06:28:43Z",
+      "side": 1,
+      "message": "Same as nova.conf Is there any possibility that the nova.bak exists in more than 2 places?",
+      "range": {
+        "startLine": 14,
+        "startChar": 26,
+        "endLine": 16,
+        "endChar": 46
+      },
+      "revId": "f1a66dda69cd0f66a74e47e5b156cceb7855a717",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a622d24_aba4cf57",
+        "filename": "doctor_tests/installer/common/set_compute_config.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7409
+      },
+      "writtenOn": "2018-11-29T06:28:43Z",
+      "side": 1,
+      "message": "Can the nova.conf exists in more than 2 places?",
+      "range": {
+        "startLine": 15,
+        "startChar": 21,
+        "endLine": 17,
+        "endChar": 42
+      },
+      "revId": "f1a66dda69cd0f66a74e47e5b156cceb7855a717",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
