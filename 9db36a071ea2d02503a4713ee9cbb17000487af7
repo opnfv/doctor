@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a622d24_19c1d92e",
+        "filename": "doctor_tests/installer/base.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2018-12-03T06:50:55Z",
+      "side": 1,
+      "message": "I think it can not be common. Different installer has different process.\nFor daisy installer, it use container, and the config files are located at /etc/kolla/$service_name/ (for nova, it\u0027s /etc/kolla/nova-api/nova.conf)  and mounted to the container in each controller node.\n\nBut maybe we can remove Daisy test as Daisy is not release in G and not participate in next release.",
+      "range": {
+        "startLine": 130,
+        "startChar": 8,
+        "endLine": 130,
+        "endChar": 25
+      },
+      "revId": "9db36a071ea2d02503a4713ee9cbb17000487af7",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
