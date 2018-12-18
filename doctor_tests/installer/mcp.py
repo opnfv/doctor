@@ -14,8 +14,6 @@ from doctor_tests.installer.base import BaseInstaller
 
 class McpInstaller(BaseInstaller):
     node_user_name = 'ubuntu'
-    cm_set_script = 'set_ceilometer.py'
-    cm_restore_script = 'restore_ceilometer.py'
 
     def __init__(self, conf, log):
         super(McpInstaller, self).__init__(conf, log)
@@ -71,20 +69,5 @@ class McpInstaller(BaseInstaller):
     def set_apply_patches(self):
         self.log.info('Set apply patches start......')
 
-        restart_cm_cmd = 'sudo service ceilometer-agent-notification restart'
-        for node_ip in self.controllers:
-            client = SSHClient(node_ip, self.node_user_name,
-                               key_filename=self.key_file)
-            self.controller_clients.append(client)
-            self._run_apply_patches(client,
-                                    restart_cm_cmd,
-                                    [self.cm_set_script])
-
     def restore_apply_patches(self):
         self.log.info('restore apply patches start......')
-
-        restart_cm_cmd = 'sudo service ceilometer-agent-notification restart'
-        for client in self.controller_clients:
-            self._run_apply_patches(client,
-                                    restart_cm_cmd,
-                                    [self.cm_restore_script])
