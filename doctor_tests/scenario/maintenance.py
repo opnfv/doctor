@@ -142,22 +142,34 @@ class Maintenance(object):
                (self.conf.admin_tool.ip,
                 self.conf.admin_tool.port,
                 self.endpoint))
-
-        # let's start maintenance 20sec from now, so projects will have
-        # time to ACK to it before that
-        maintenance_at = (datetime.datetime.utcnow() +
-                          datetime.timedelta(seconds=30)
-                          ).strftime('%Y-%m-%d %H:%M:%S')
-        data = {'hosts': maintenance_hosts,
-                'state': 'MAINTENANCE',
-                'maintenance_at': maintenance_at,
-                'metadata': {'openstack_version': 'Rocky'},
-                'workflow': 'default'}
         headers = {
             'Content-Type': 'application/json',
             'Accept': 'application/json'}
 
-        ret = requests.post(url, data=json.dumps(data), headers=headers)
+        retries = 12
+        while retries > 0:
+            # let's start maintenance 20sec from now, so projects will have
+            # time to ACK to it before that
+            maintenance_at = (datetime.datetime.utcnow() +
+                              datetime.timedelta(seconds=30)
+                              ).strftime('%Y-%m-%d %H:%M:%S')
+            data = {'hosts': maintenance_hosts,
+                    'state': 'MAINTENANCE',
+                    'maintenance_at': maintenance_at,
+                    'metadata': {'openstack_version': 'Rocky'},
+                    'workflow': 'default'}
+            try:
+                ret = requests.post(url, data=json.dumps(data),
+                                    headers=headers)
+            except:
+                if retries == 0:
+                    raise Exception('admin tool did not respond in 120s')
+                else:
+                    self.log.info('admin tool not ready, retry in 10s')
+                retries = retries - 1
+                time.sleep(10)
+                continue
+            break
         if ret.status_code != 200:
             raise Exception(ret.text)
         return ret.json()['session_id']
