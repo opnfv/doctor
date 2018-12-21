@@ -12,6 +12,10 @@ from collections import namedtuple
 Host = namedtuple('Host', ['name', 'ip'])
 
 
+def is_fenix(conf):
+    return conf.admin_tool.type == 'fenix'
+
+
 class Inspector(object):
     CONGRESS = 'congress'
     SAMPLE = 'sample'
