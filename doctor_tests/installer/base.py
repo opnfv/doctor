@@ -209,8 +209,13 @@ class BaseInstaller(object):
                 except:
                     client.scp(script_abs_path, script_name)
                 try:
-                    cmd = 'sudo %s %s' % (python, script_name)
+                    if ".py" in script_name:
+                        cmd = 'sudo %s %s' % (python, script_name)
+                    else:
+                        cmd = 'sudo chmod 700 %s;sudo ./%s' % (script_name,
+                                                               script_name)
                     ret, output = client.ssh(cmd)
+                    self.log.info('Command %s output %s' % (cmd, output))
                 except:
                     ret, output = client.ssh(cmd)
 

@@ -64,7 +64,7 @@ class DoctorTest(object):
             # wait for aodh alarms are updated in caches for event evaluator,
             # sleep time should be larger than event_alarm_cache_ttl
             # (default 60)
-            # (tojuvone) Fraser currently needs 120
+            # (tojuvone) Fraser currently needs 120if self.conf.installer.type != 'apex'
             time.sleep(120)
 
             # injecting host failure...
