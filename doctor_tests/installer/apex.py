@@ -9,6 +9,8 @@
 import time
 
 from doctor_tests.common.constants import Inspector
+from doctor_tests.common.constants import is_fenix
+from doctor_tests.common.utils import get_doctor_test_root_dir
 from doctor_tests.common.utils import SSHClient
 from doctor_tests.installer.base import BaseInstaller
 
@@ -19,6 +21,7 @@ class ApexInstaller(BaseInstaller):
     cm_set_script = 'set_config.py'
     nc_set_compute_script = 'set_compute_config.py'
     cg_set_script = 'set_congress.py'
+    fe_set_script = 'set_fenix.sh'
     cm_restore_script = 'restore_config.py'
     nc_restore_compute_script = 'restore_compute_config.py'
     cg_restore_script = 'restore_congress.py'
@@ -40,6 +43,8 @@ class ApexInstaller(BaseInstaller):
         self.log.info('Setup Apex installer start......')
         self.key_file = self.get_ssh_key_from_installer()
         self._get_overcloud_conf()
+        if is_fenix(self.conf):
+            self._copy_overcloudrc_to_controllers()
         self.create_flavor()
         self.set_apply_patches()
         self.setup_stunnel()
@@ -52,6 +57,11 @@ class ApexInstaller(BaseInstaller):
     def get_ssh_key_from_installer(self):
         key_path = '/home/stack/.ssh/id_rsa'
         return self._get_ssh_key(self.client, key_path)
+
+    def _copy_overcloudrc_to_controllers(self):
+        for ip in self.controllers:
+            cmd = "scp overcloudrc %s@%s:" % (self.node_user_name, ip)
+            self._run_cmd_remote(self.client, cmd)
 
     def _get_overcloud_conf(self):
         self.log.info('Get overcloud config details from Apex installer'
@@ -90,6 +100,7 @@ class ApexInstaller(BaseInstaller):
 
     def set_apply_patches(self):
         self.log.info('Set apply patches start......')
+        fenix_files = None
 
         set_scripts = [self.cm_set_script]
 
@@ -104,6 +115,10 @@ class ApexInstaller(BaseInstaller):
         if self.conf.test_case != 'fault_management':
             if self.use_containers:
                 restart_cmd += self._set_docker_restart_cmd("nova-scheduler")
+                if is_fenix(self.conf):
+                    set_scripts.append(self.fe_set_script)
+                    testdir = get_doctor_test_root_dir()
+                    fenix_files = ["Dockerfile", "run"]
             else:
                 restart_cmd += ' openstack-nova-scheduler.service'
             set_scripts.append(self.nc_set_compute_script)
@@ -118,6 +133,12 @@ class ApexInstaller(BaseInstaller):
         for node_ip in self.controllers:
             client = SSHClient(node_ip, self.node_user_name,
                                key_filename=self.key_file)
+            if fenix_files is not None:
+                for fenix_file in fenix_files:
+                    src_file = '{0}/{1}/{2}'.format(testdir,
+                                                    'admin_tool/fenix',
+                                                    fenix_file)
+                    client.scp(src_file, fenix_file)
             self._run_apply_patches(client,
                                     restart_cmd,
                                     set_scripts,
