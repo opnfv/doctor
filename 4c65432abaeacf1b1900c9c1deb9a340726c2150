@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a622d24_4b79a92e",
+        "filename": "doctor_tests/installer/apex.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2018-12-24T01:58:57Z",
+      "side": 1,
+      "message": "We can define this as a macro in the doctor_tests/common/constants.py.",
+      "range": {
+        "startLine": 45,
+        "startChar": 41,
+        "endLine": 45,
+        "endChar": 46
+      },
+      "revId": "4c65432abaeacf1b1900c9c1deb9a340726c2150",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a622d24_ab767d3c",
+        "filename": "doctor_tests/scenario/maintenance.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2018-12-24T01:58:57Z",
+      "side": 1,
+      "message": "The value will be always updated for every Release?",
+      "range": {
+        "startLine": 159,
+        "startChar": 54,
+        "endLine": 159,
+        "endChar": 61
+      },
+      "revId": "4c65432abaeacf1b1900c9c1deb9a340726c2150",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
