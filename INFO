@@ -11,11 +11,8 @@ IRC: Server:freenode.net Channel:#opnfv-doctor
 Repository: doctor
 
 Committers:
-Ashiq Khan (NTT DOCOMO, khan@nttdocomo.com)
 Dong Wenjuan (ZTE, dong.wenjuan@zte.com.cn)
-Gerald Kunzmann (NTT DOCOMO, kunzmann@docomolab-euro.com)
 Ryota Mibu (NEC, r-mibu@cq.jp.nec.com)
-Serge Manning (Sprint, Serge.Manning@sprint.com)
 Tomi Juvonen (Nokia, tomi.juvonen@nokia.com)
 
 Link to TSC approval of the project: http://meetbot.opnfv.org/meetings/opnfv-meeting/2014/opnfv-meeting.2014-12-02-14.58.html

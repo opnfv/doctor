@@ -34,18 +34,6 @@ repositories:
     - 'doctor'
 committers:
     - <<: *opnfv_doctor_ptl
-    - name: 'Ashiq Khan'
-      email: 'khan@nttdocomo.com'
-      company: 'NTT DOCOMO'
-      id: 'ashiq.khan'
-    - name: 'Serge Manning'
-      email: 'serge.manning@sprint.com'
-      company: 'Sprint'
-      id: 'sergem913'
-    - name: 'Gerald Kunzmann'
-      email: 'kunzmann@docomolab-euro.com'
-      company: 'DOCOMO Euro-Labs'
-      id: 'kunzmann'
     - name: 'wenjuan dong'
       email: 'dong.wenjuan@zte.com.cn'
       company: 'ZTE'
