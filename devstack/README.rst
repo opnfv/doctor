@@ -18,7 +18,9 @@ OPNFV Doctor in DevStack.
     enable_plugin osprofiler https://git.openstack.org/openstack/osprofiler
     enable_plugin doctor https://git.opnfv.org/doctor
 
-to the ``[[local|localrc]]`` section.
+to the ``[[local|localrc]]`` section. Or, you can copy the local.conf.sample::
+
+    cp /path/to/doctor/devstack/local.conf.sample ${DEVSTACK_DIR}/local.conf
 
 .. note:: The order of enabling plugins matters.
 
