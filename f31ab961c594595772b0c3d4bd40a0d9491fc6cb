@@ -1,0 +1,10 @@
+Verified+1: jenkins-ci <jenkins-opnfv-ci@opnfv.org>
+Code-Review+1: Trinh Nguyen <dangtrinhnt@edlab.xyz>
+Code-Review+2: Gerald Kunzmann <kunzmann@docomolab-euro.com>
+Code-Review+2: Tomi Juvonen <tomi.juvonen@nokia.com>
+Verified+1: Tomi Juvonen <tomi.juvonen@nokia.com>
+Submitted-by: Tomi Juvonen <tomi.juvonen@nokia.com>
+Submitted-at: Wed, 27 Feb 2019 13:33:57 +0000
+Reviewed-on: https://gerrit.opnfv.org/gerrit/67112
+Project: doctor
+Branch: refs/heads/master
