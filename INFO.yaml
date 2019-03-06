@@ -38,10 +38,6 @@ committers:
       email: 'dong.wenjuan@zte.com.cn'
       company: 'ZTE'
       id: 'dongwenjuan'
-    - name: 'Ryota Mibu'
-      email: 'r-mibu@cq.jp.nec.com'
-      company: 'NEC'
-      id: 'r-mibu'
 tsc:
     approval: 'http//meetbot.opnfv.org/meetings/opnfv-meeting/2014/opnfv-meeting.2014-12-02-14.58.html'
     changes:
