@@ -1,0 +1,9 @@
+Verified+1: jenkins-ci <jenkins-opnfv-ci@opnfv.org>
+Code-Review+1: Trinh Nguyen <dangtrinhnt@edlab.xyz>
+Code-Review+2: Gerald Kunzmann <kunzmann@docomolab-euro.com>
+Code-Review+2: wenjuan dong <dongwenjuan1122@gmail.com>
+Submitted-by: wenjuan dong <dongwenjuan1122@gmail.com>
+Submitted-at: Thu, 07 Mar 2019 02:15:39 +0000
+Reviewed-on: https://gerrit.opnfv.org/gerrit/67184
+Project: doctor
+Branch: refs/heads/master
