@@ -1,0 +1,7 @@
+Verified+1: jenkins-ci <jenkins-opnfv-ci@opnfv.org>
+Code-Review+2: Tomi Juvonen <tomi.juvonen@nokia.com>
+Submitted-by: Tomi Juvonen <tomi.juvonen@nokia.com>
+Submitted-at: Wed, 20 Mar 2019 04:51:49 +0000
+Reviewed-on: https://gerrit.opnfv.org/gerrit/67309
+Project: doctor
+Branch: refs/heads/master
