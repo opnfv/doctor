@@ -39,7 +39,7 @@ committers:
       company: 'ZTE'
       id: 'dongwenjuan'
 tsc:
-    # yamllint disable-line rule:line-length
+    # yamllint disable rule:line-length
     approval: 'http//meetbot.opnfv.org/meetings/opnfv-meeting/2014/opnfv-meeting.2014-12-02-14.58.html'
     changes:
         - type: 'removal'
