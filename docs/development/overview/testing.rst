@@ -38,6 +38,8 @@ export TEST_CASE with different values:
     export TEST_CASE='fault_management'
     #Maintenance (requires 3 compute nodes)
     export TEST_CASE='maintenance'
+    #Use Fenix in maintenance testing instead of sample admin_tool
+    export ADMIN_TOOL_TYPE='fenix'
     #Run both tests cases
     export TEST_CASE='all'
 
@@ -61,7 +63,6 @@ In OPNFV Apex jumphost you can run Doctor testing as follows using tox:
 
 .. code-block:: bash
 
-    #Before Gambia: overcloudrc.v3
     source overcloudrc
     export INSTALLER_IP=${INSTALLER_IP}
     export INSTALLER_TYPE=${INSTALLER_TYPE}

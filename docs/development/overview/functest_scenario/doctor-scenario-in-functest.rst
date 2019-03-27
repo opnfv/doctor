@@ -59,7 +59,7 @@ Doctor testing can also be triggered by tox on OPNFV installer jumphost. Tox
 is normally used for functional, module and coding style testing in Python
 project.
 
-Currently, 'Apex', 'Daisy', 'Fuel' and 'local' installer are supported.
+Currently, 'Apex', 'MCP' and 'local' installer are supported.
 
 
 Fault management use case
@@ -172,9 +172,11 @@ Maintenance test case
 
 Maintenance test case is currently running in our Apex CI and executed by tox.
 This is because the special limitation mentioned below and also the fact we
-currently have only sample implementation as a proof of concept. Environmental
-variable TEST_CASE='maintenance' needs to be used when executing
-"doctor_tests/main.py". Test case workflow can be seen in :numref:`figure-p3`.
+currently have only sample implementation as a proof of concept and we also
+support unofficial OpenStack project Fenix. Environment variable
+TEST_CASE='maintenance' needs to be used when executing "doctor_tests/main.py"
+and ADMIN_TOOL_TYPE='fenix' if want to test with Fenix instead of sample
+implementation. Test case workflow can be seen in :numref:`figure-p3`.
 
 .. figure:: ./images/Maintenance-workflow.png
     :name: figure-p3
