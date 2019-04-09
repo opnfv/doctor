@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "da01753e_2b260217",
+        "filename": "doctor_tests/scenario/fault_management.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2019-04-09T06:16:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da01753e_0bf5fe82",
+      "range": {
+        "startLine": 212,
+        "startChar": 8,
+        "endLine": 212,
+        "endChar": 90
+      },
+      "revId": "056812811645957ec158daf43a1e5ef4a27d4028",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da01753e_6bf2ca9b",
         "filename": "doctor_tests/scenario/fault_management.py",
         "patchSetId": 1
@@ -59,6 +83,30 @@
       "writtenOn": "2019-04-09T02:42:02Z",
       "side": 1,
       "message": "Shouldn\u0027t we raise some exception here?\n\nraise Exception(\u0027doctor run profiler failed\u0027) or something",
+      "range": {
+        "startLine": 213,
+        "startChar": 12,
+        "endLine": 214,
+        "endChar": 18
+      },
+      "revId": "056812811645957ec158daf43a1e5ef4a27d4028",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da01753e_0b233e06",
+        "filename": "doctor_tests/scenario/fault_management.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2019-04-09T06:16:04Z",
+      "side": 1,
+      "message": "yes, in some case, it need to raise Exception, but for the cases except sample inspector, we don\u0027t get vmdown\u0026hostdown time currently.Maybe need to add a JIRA task to trace it.",
+      "parentUuid": "da01753e_6bf2ca9b",
       "range": {
         "startLine": 213,
         "startChar": 12,
