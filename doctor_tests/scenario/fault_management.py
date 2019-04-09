@@ -209,6 +209,10 @@ class FaultManagement(object):
         detected = self.monitor.detected_time
         notified = self.consumer.notified_time
 
+        if (vmdown is None) | (hostdown is None) | (detected is None) | (notified is None):
+            self.log.info('one of the time for profiler is None, return')
+            return
+
         # TODO(yujunz) check the actual delay to verify time sync status
         # expected ~1s delay from $trigger to $linkdown
         relative_start = linkdown
