@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da01753e_0bf5fe82",
+        "filename": "doctor_tests/scenario/fault_management.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 7409
+      },
+      "writtenOn": "2019-04-09T02:42:02Z",
+      "side": 1,
+      "message": "if None in [vmdown, hostdown, detected, notified]:\n\nis much shorter IMO :)",
+      "range": {
+        "startLine": 212,
+        "startChar": 8,
+        "endLine": 212,
+        "endChar": 90
+      },
+      "revId": "056812811645957ec158daf43a1e5ef4a27d4028",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da01753e_6bf2ca9b",
+        "filename": "doctor_tests/scenario/fault_management.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 7409
+      },
+      "writtenOn": "2019-04-09T02:42:02Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we raise some exception here?\n\nraise Exception(\u0027doctor run profiler failed\u0027) or something",
+      "range": {
+        "startLine": 213,
+        "startChar": 12,
+        "endLine": 214,
+        "endChar": 18
+      },
+      "revId": "056812811645957ec158daf43a1e5ef4a27d4028",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": false
+    }
+  ]
+}
