@@ -37,6 +37,10 @@ Doctor changes
 +------------------------------------------+----------------------------------------------------------+
 | **commit-ID**                            | **Subject**                                              |
 +------------------------------------------+----------------------------------------------------------+
+| b19b69d731cfb5a87f7c928cc898ea04ec85cec6 | Fix tox to clean python cache                            | 
++------------------------------------------+----------------------------------------------------------+
+| 364d2c2344be5775a0eef6fe19fda125d2c8853d | Handle the exception for running the profiler            |
++------------------------------------------+----------------------------------------------------------+
 | e6c857ba931a03fb7bfb49746cc4a7eb5b6ce6e1 | Hunter release documentation                             |
 +------------------------------------------+----------------------------------------------------------+
 | 73605c5c34b97ab56306bfa9af0f5888f3c7e46d | Support Fenix as admin tool                              |
@@ -185,8 +189,7 @@ Doctor CI results with TEST_CASE='fault_management' and INSPECTOR_TYPE=congress
 +--------------------------------------+--------------+
 | INSTALLER_TYPE='Local'               | N/A          |
 +--------------------------------------+--------------+
-1) This needs to be worked to get fixed later
-
+1) Takes over one second because Nova reset server state error API is too slow
 
 Doctor Functest results with TEST_CASE='fault_management'
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
