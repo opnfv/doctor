@@ -185,8 +185,7 @@ Doctor CI results with TEST_CASE='fault_management' and INSPECTOR_TYPE=congress
 +--------------------------------------+--------------+
 | INSTALLER_TYPE='Local'               | N/A          |
 +--------------------------------------+--------------+
-1) This needs to be worked to get fixed later
-
+1) Takes over one second because Nova reset server state error API is too slow
 
 Doctor Functest results with TEST_CASE='fault_management'
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
