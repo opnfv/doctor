@@ -4,7 +4,7 @@
 Flask!=0.11 # BSD
 paramiko # LGPLv2.1+
 scp
-requests # Apache-2.0
+requests!=2.20.0 # Apache-2.0
 oslo.config!=4.3.0,!=4.4.0 # Apache-2.0
 python-openstackclient # Apache-2.0
 oslo.messaging # Apache-2.0
