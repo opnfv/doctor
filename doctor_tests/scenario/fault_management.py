@@ -111,7 +111,8 @@ class FaultManagement(object):
         server = servers.get(vm_name)
         if not server:
             raise Exception('Can not find instance: vm_name(%s)' % vm_name)
-        host_name = server.__dict__.get('OS-EXT-SRV-ATTR:hypervisor_hostname')
+        # use hostname without domain name which is mapped to the cell
+        host_name = server.__dict__.get('OS-EXT-SRV-ATTR:hypervisor_hostname').split('.')[0]
         host_ip = self.installer.get_host_ip_from_hostname(host_name)
 
         self.log.info('Get host info(name:%s, ip:%s) which vm(%s) launched at'
