@@ -72,7 +72,7 @@ class SampleInspector(BaseInspector):
                 host = server.__dict__.get('OS-EXT-SRV-ATTR:host')
                 self.servers[host].append(server)
                 self.log.debug('get hostname=%s from server=%s'
-                               % (host, server))
+                               % (host, str(server.name)))
             except Exception as e:
                 self.log.info('can not get hostname from server=%s, error=%s'
                               % (server, e))
