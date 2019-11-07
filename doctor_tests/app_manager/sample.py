@@ -17,6 +17,7 @@ import requests
 from doctor_tests.app_manager.base import BaseAppManager
 from doctor_tests.identity_auth import get_identity_auth
 from doctor_tests.identity_auth import get_session
+from doctor_tests.os_clients import neutron_client
 from doctor_tests.os_clients import nova_client
 
 
@@ -56,12 +57,16 @@ class AppManager(Thread):
         self.app_manager = app_manager
         self.log = log
         self.intance_ids = None
+        self.auth = get_identity_auth(project=self.conf.doctor_project)
+        self.session = get_session(auth=self.auth)
+        self.nova = nova_client(self.conf.nova_version,
+                                self.session)
+        self.neutron = neutron_client(session=self.session)
         self.headers = {
             'Content-Type': 'application/json',
             'Accept': 'application/json'}
-        self.auth = get_identity_auth(project=self.conf.doctor_project)
-        self.nova = nova_client(self.conf.nova_version,
-                                get_session(auth=self.auth))
+        if self.conf.admin_tool.type == 'fenix':
+            self.headers['X-Auth-Token'] = self.session.get_token()
         self.orig_number_of_instances = self.number_of_instances()
         self.ha_instances = self.get_ha_instances()
         self.floating_ip = None
@@ -85,7 +90,13 @@ class AppManager(Thread):
             if instance.id != self.active_instance_id:
                 self.log.info('Switch over to: %s %s' % (instance.name,
                                                          instance.id))
-                instance.add_floating_ip(self.floating_ip)
+                # Deprecated, need to use neutron instead
+                # instance.add_floating_ip(self.floating_ip)
+                port = self.neutron.list_ports(device_id=instance.id)['ports'][0]['id']  # noqa
+                floating_id = self.neutron.list_floatingips(floating_ip_address=self.floating_ip)['floatingips'][0]['id']  # noqa
+                self.neutron.update_floatingip(floating_id, {'floatingip': {'port_id': port}})  # noqa
+                # Have to update ha_instances as floating_ip changed
+                self.ha_instances = self.get_ha_instances()
                 self.active_instance_id = instance.id
                 break
 

@@ -1,5 +1,5 @@
 ##############################################################################
-# Copyright (c) 2017 ZTE Corporation and others.
+# Copyright (c) 2019 ZTE Corporation and others.
 #
 # All rights reserved. This program and the accompanying materials
 # are made available under the terms of the Apache License, Version 2.0
@@ -96,7 +96,7 @@ class DoctorTest(object):
             LOG.info('not enough compute nodes, skipping doctor '
                      'maintenance test')
             return
-        elif self.conf.installer.type != 'apex':
+        elif self.conf.installer.type not in ['apex', 'fuel']:
             LOG.info('not supported installer, skipping doctor '
                      'maintenance test')
             return
