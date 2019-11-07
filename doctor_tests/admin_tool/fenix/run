@@ -1,8 +1,8 @@
 #!/bin/sh
-. overcloudrc
+. keystonercv3
 
 # Start the first process
-nohup python /fenix/fenix/cmd/engine.py > /var/log/fenix-engine.log&
+nohup python3 /fenix/fenix/cmd/engine.py > /var/log/fenix-engine.log&
 status=$?
 if [ $status -ne 0 ]; then
   echo "Failed to start engine.py: $status"
@@ -10,7 +10,7 @@ if [ $status -ne 0 ]; then
 fi
 
 # Start the second process
-nohup python /fenix/fenix/cmd/api.py > /var/log/fenix-api.log&
+nohup python3 /fenix/fenix/cmd/api.py > /var/log/fenix-api.log&
 status=$?
 if [ $status -ne 0 ]; then
   echo "Failed to start api.py: $status"

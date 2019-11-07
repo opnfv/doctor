@@ -139,10 +139,10 @@ class BaseInstaller(object):
             ret, url = client.ssh(cmd)
             if ret:
                 raise Exception('Exec command to get transport from '
-                                'controller(%s) in Apex installer failed, '
+                                'controller(%s) failed, '
                                 'ret=%s, output=%s'
                                 % (self.controllers[0], ret, url))
-            else:
+            elif self.controllers[0] not in url:
                 # need to use ip instead of hostname
                 ret = (re.sub("@.*:", "@%s:" % self.controllers[0],
                        url[0].split("=", 1)[1]))
