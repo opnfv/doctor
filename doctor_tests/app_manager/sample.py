@@ -56,12 +56,15 @@ class AppManager(Thread):
         self.app_manager = app_manager
         self.log = log
         self.intance_ids = None
+        self.auth = get_identity_auth(project=self.conf.doctor_project)
+        self.session = get_session(auth=self.auth)
+        self.nova = nova_client(self.conf.nova_version,
+                                self.session)
         self.headers = {
             'Content-Type': 'application/json',
             'Accept': 'application/json'}
-        self.auth = get_identity_auth(project=self.conf.doctor_project)
-        self.nova = nova_client(self.conf.nova_version,
-                                get_session(auth=self.auth))
+        if self.conf.admin_tool.type == 'fenix':
+            self.headers['X-Auth-Token'] = self.session.get_token()
         self.orig_number_of_instances = self.number_of_instances()
         self.ha_instances = self.get_ha_instances()
         self.floating_ip = None
