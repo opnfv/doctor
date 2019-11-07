@@ -1,5 +1,5 @@
 ##############################################################################
-# Copyright (c) 2018 Nokia Corporation and others.
+# Copyright (c) 2019 Nokia Corporation and others.
 #
 # All rights reserved. This program and the accompanying materials
 # are made available under the terms of the Apache License, Version 2.0
@@ -28,6 +28,7 @@ class Maintenance(object):
     def __init__(self, trasport_url, conf, log):
         self.conf = conf
         self.log = log
+        self.admin_session = get_session()
         self.keystone = keystone_client(
             self.conf.keystone_version, get_session())
         self.nova = nova_client(conf.nova_version, get_session())
@@ -145,8 +146,11 @@ class Maintenance(object):
         headers = {
             'Content-Type': 'application/json',
             'Accept': 'application/json'}
-
+        if self.conf.admin_tool.type == 'fenix':
+            headers['X-Auth-Token'] = self.admin_session.get_token()
+        self.log.info('headers %s' % headers)
         retries = 12
+        ret = None
         while retries > 0:
             # let's start maintenance 20sec from now, so projects will have
             # time to ACK to it before that
@@ -175,6 +179,8 @@ class Maintenance(object):
                 time.sleep(10)
                 continue
             break
+        if not ret:
+            raise Exception("admin tool did not respond")
         if ret.status_code != 200:
             raise Exception(ret.text)
         return ret.json()['session_id']
@@ -191,6 +197,9 @@ class Maintenance(object):
             'Content-Type': 'application/json',
             'Accept': 'application/json'}
 
+        if self.conf.admin_tool.type == 'fenix':
+            headers['X-Auth-Token'] = self.admin_session.get_token()
+
         ret = requests.delete(url, data=None, headers=headers)
         if ret.status_code != 200:
             raise Exception(ret.text)
@@ -205,6 +214,10 @@ class Maintenance(object):
         headers = {
             'Content-Type': 'application/json',
             'Accept': 'application/json'}
+
+        if self.conf.admin_tool.type == 'fenix':
+            headers['X-Auth-Token'] = self.admin_session.get_token()
+
         ret = requests.get(url, data=None, headers=headers)
         if ret.status_code != 200:
             raise Exception(ret.text)
