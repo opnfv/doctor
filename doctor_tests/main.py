@@ -43,7 +43,6 @@ class DoctorTest(object):
     def setup(self):
         # prepare the cloud env
         self.installer.setup()
-
         # preparing VM image...
         self.image.create()
 
@@ -52,6 +51,7 @@ class DoctorTest(object):
 
     def test_fault_management(self):
         try:
+            self.fault_management = None
             LOG.info('doctor fault management test starting.......')
             transport_url = self.installer.get_transport_url()
             self.fault_management = \
@@ -83,7 +83,8 @@ class DoctorTest(object):
             LOG.error(format_exc())
             sys.exit(1)
         finally:
-            self.fault_management.cleanup()
+            if self.fault_management is not None:
+                self.fault_management.cleanup()
 
     def _amount_compute_nodes(self):
         services = self.nova.services.list(binary='nova-compute')
@@ -96,11 +97,12 @@ class DoctorTest(object):
             LOG.info('not enough compute nodes, skipping doctor '
                      'maintenance test')
             return
-        elif self.conf.installer.type not in ['apex', 'fuel']:
+        elif self.conf.installer.type not in ['apex', 'fuel', 'devstack']:
             LOG.info('not supported installer, skipping doctor '
                      'maintenance test')
             return
         try:
+            maintenance = None
             LOG.info('doctor maintenance test starting.......')
             trasport_url = self.installer.get_transport_url()
             maintenance = Maintenance(trasport_url, self.conf, LOG)
@@ -122,7 +124,8 @@ class DoctorTest(object):
             LOG.error(format_exc())
             sys.exit(1)
         finally:
-            maintenance.cleanup_maintenance()
+            if maintenance is not None:
+                maintenance.cleanup_maintenance()
 
     def run(self):
         """run doctor tests"""
