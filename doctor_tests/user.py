@@ -129,7 +129,6 @@ class User(object):
 
     def _add_user_role_in_project(self, is_admin=False):
         """add test user with test role in test project"""
-
         project = self.projects.get(self.conf.doctor_project)
 
         user_name = 'admin' if is_admin else self.conf.doctor_user
