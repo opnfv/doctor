@@ -127,47 +127,9 @@ class BaseInstaller(object):
         os.chmod(ssh_key, stat.S_IREAD)
         return ssh_key
 
+    @abc.abstractmethod
     def get_transport_url(self):
-        client = utils.SSHClient(self.controllers[0], self.node_user_name,
-                                 key_filename=self.key_file)
-        if self.use_containers:
-            ncbase = "/var/lib/config-data/puppet-generated/nova"
-        else:
-            ncbase = ""
-        try:
-            cmd = 'sudo grep "^transport_url" %s/etc/nova/nova.conf' % ncbase
-            ret, url = client.ssh(cmd)
-            if ret:
-                raise Exception('Exec command to get transport from '
-                                'controller(%s) failed, '
-                                'ret=%s, output=%s'
-                                % (self.controllers[0], ret, url))
-            elif self.controllers[0] not in url:
-                # need to use ip instead of hostname
-                ret = (re.sub("@.*:", "@%s:" % self.controllers[0],
-                       url[0].split("=", 1)[1]))
-        except:
-            cmd = 'grep -i "^rabbit" %s/etc/nova/nova.conf' % ncbase
-            ret, lines = client.ssh(cmd)
-            if ret:
-                raise Exception('Exec command to get transport from '
-                                'controller(%s) in Apex installer failed, '
-                                'ret=%s, output=%s'
-                                % (self.controllers[0], ret, url))
-            else:
-                for line in lines.split('\n'):
-                    if line.startswith("rabbit_userid"):
-                        rabbit_userid = line.split("=")
-                    if line.startswith("rabbit_port"):
-                        rabbit_port = line.split("=")
-                    if line.startswith("rabbit_password"):
-                        rabbit_password = line.split("=")
-                ret = "rabbit://%s:%s@%s:%s/?ssl=0" % (rabbit_userid,
-                                                       rabbit_password,
-                                                       self.controllers[0],
-                                                       rabbit_port)
-        self.log.debug('get_transport_url %s' % ret)
-        return ret
+        pass
 
     def _run_cmd_remote(self, client, command):
         self.log.info('Run command=%s in %s installer......'
@@ -199,14 +161,15 @@ class BaseInstaller(object):
     def _run_apply_patches(self, client, restart_cmd, script_names,
                            python='python3'):
         installer_dir = os.path.dirname(os.path.realpath(__file__))
-
         if isinstance(script_names, list):
             for script_name in script_names:
                 script_abs_path = '{0}/{1}/{2}'.format(installer_dir,
                                                        'common', script_name)
+                if self.conf.installer.type == "devstack":
+                    script_name = "/opt/stack/%s" % script_name
                 try:
                     client.scp(script_abs_path, script_name)
-                except:
+                except Exception:
                     client.scp(script_abs_path, script_name)
                 try:
                     if ".py" in script_name:
@@ -216,14 +179,14 @@ class BaseInstaller(object):
                                                                script_name)
                     ret, output = client.ssh(cmd)
                     self.log.info('Command %s output %s' % (cmd, output))
-                except:
+                except Exception:
                     ret, output = client.ssh(cmd)
-
+                    self.log.info('Command %s output %s' % (cmd, output))
                 if ret:
                     raise Exception('Do the command in remote'
                                     ' node failed, ret=%s, cmd=%s, output=%s'
                                     % (ret, cmd, output))
-            if 'nova' in restart_cmd:
+            if 'nova' in restart_cmd or 'devstack@n-' in restart_cmd:
                 # Make sure scheduler has proper cpu_allocation_ratio
                 time.sleep(5)
             client.ssh(restart_cmd)

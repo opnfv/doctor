@@ -43,7 +43,6 @@ class DoctorTest(object):
     def setup(self):
         # prepare the cloud env
         self.installer.setup()
-
         # preparing VM image...
         self.image.create()
 
@@ -51,39 +50,51 @@ class DoctorTest(object):
         self.user.create()
 
     def test_fault_management(self):
-        try:
-            LOG.info('doctor fault management test starting.......')
-            transport_url = self.installer.get_transport_url()
-            self.fault_management = \
-                FaultManagement(self.conf, self.installer, self.user, LOG,
-                                transport_url)
+        retry = 2
+        # Retry once if notified_time is None
+        while retry > 0:
+            try:
+                self.fault_management = None
+                LOG.info('doctor fault management test starting.......')
+                transport_url = self.installer.get_transport_url()
+                self.fault_management = \
+                    FaultManagement(self.conf, self.installer, self.user, LOG,
+                                    transport_url)
 
-            # prepare test env
-            self.fault_management.setup()
+                # prepare test env
+                self.fault_management.setup()
 
-            # wait for aodh alarms are updated in caches for event evaluator,
-            # sleep time should be larger than event_alarm_cache_ttl
-            # (default 60)
-            # (tojuvone) Fraser currently needs 120
-            time.sleep(120)
+                # wait for aodh alarms are updated in caches for event
+                # evaluator,
+                # sleep time should be larger than event_alarm_cache_ttl
+                # (default 60)
+                # (tojuvone) Fraser currently needs 120
+                time.sleep(120)
 
-            # injecting host failure...
-            # NOTE (umar) add INTERFACE_NAME logic to host injection
-            self.fault_management.start()
-            time.sleep(30)
+                # injecting host failure...
+                # NOTE (umar) add INTERFACE_NAME logic to host injection
+                self.fault_management.start()
+                time.sleep(30)
 
-            # verify the test results
-            # NOTE (umar) copy remote monitor.log file when monitor=collectd
-            self.fault_management.check_host_status('down')
-            self.fault_management.check_notification_time()
+                # verify the test results
+                # NOTE (umar) copy remote monitor.log file when
+                # monitor=collectd
+                self.fault_management.check_host_status('down')
+                self.fault_management.check_notification_time()
+                retry = 0
 
-        except Exception as e:
-            LOG.error('doctor fault management test failed, '
-                      'Exception=%s' % e)
-            LOG.error(format_exc())
-            sys.exit(1)
-        finally:
-            self.fault_management.cleanup()
+            except Exception as e:
+                if 'notified_time=None' in e:
+                    retry -= 1
+                else:
+                    retry = 0
+                LOG.error('doctor fault management test failed, '
+                          'Exception=%s' % e)
+                LOG.error(format_exc())
+                sys.exit(1)
+            finally:
+                if self.fault_management is not None:
+                    self.fault_management.cleanup()
 
     def _amount_compute_nodes(self):
         services = self.nova.services.list(binary='nova-compute')
@@ -96,11 +107,12 @@ class DoctorTest(object):
             LOG.info('not enough compute nodes, skipping doctor '
                      'maintenance test')
             return
-        elif self.conf.installer.type not in ['apex', 'fuel']:
+        elif self.conf.installer.type not in ['apex', 'fuel', 'devstack']:
             LOG.info('not supported installer, skipping doctor '
                      'maintenance test')
             return
         try:
+            maintenance = None
             LOG.info('doctor maintenance test starting.......')
             trasport_url = self.installer.get_transport_url()
             maintenance = Maintenance(trasport_url, self.conf, LOG)
@@ -122,7 +134,8 @@ class DoctorTest(object):
             LOG.error(format_exc())
             sys.exit(1)
         finally:
-            maintenance.cleanup_maintenance()
+            if maintenance is not None:
+                maintenance.cleanup_maintenance()
 
     def run(self):
         """run doctor tests"""
