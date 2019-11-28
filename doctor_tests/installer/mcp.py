@@ -7,6 +7,7 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 ##############################################################################
 from os.path import isfile
+import re
 import time
 
 from doctor_tests.common.constants import is_fenix
@@ -59,6 +60,45 @@ class McpInstaller(BaseInstaller):
         ssh_key = '/root/.ssh/id_rsa'
         mcp_key = '/var/lib/opnfv/mcp.rsa'
         return mcp_key if isfile(mcp_key) else ssh_key
+
+    def get_transport_url(self):
+        client = SSHClient(self.controllers[0], self.node_user_name,
+                           key_filename=self.key_file)
+        try:
+            cmd = 'sudo grep -m1 "^transport_url" /etc/nova/nova.conf'
+            ret, url = client.ssh(cmd)
+
+            if ret:
+                raise Exception('Exec command to get transport from '
+                                'controller(%s) in MCP installer failed, '
+                                'ret=%s, output=%s'
+                                % (self.controllers[0], ret, url))
+            elif self.controllers[0] not in url:
+                # need to use ip instead of hostname
+                url = (re.sub("@.*:", "@%s:" % self.controllers[0],
+                       url[0].split("=", 1)[1]))
+        except Exception:
+            cmd = 'grep -i "^rabbit" /etc/nova/nova.conf'
+            ret, lines = client.ssh(cmd)
+            if ret:
+                raise Exception('Exec command to get transport from '
+                                'controller(%s) in MCP installer failed, '
+                                'ret=%s, output=%s'
+                                % (self.controllers[0], ret, url))
+            else:
+                for line in lines.split('\n'):
+                    if line.startswith("rabbit_userid"):
+                        rabbit_userid = line.split("=")
+                    if line.startswith("rabbit_port"):
+                        rabbit_port = line.split("=")
+                    if line.startswith("rabbit_password"):
+                        rabbit_password = line.split("=")
+                url = "rabbit://%s:%s@%s:%s/?ssl=0" % (rabbit_userid,
+                                                       rabbit_password,
+                                                       self.controllers[0],
+                                                       rabbit_port)
+        self.log.info('get_transport_url %s' % url)
+        return url
 
     def _copy_overcloudrc_to_controllers(self):
         for ip in self.controllers:
