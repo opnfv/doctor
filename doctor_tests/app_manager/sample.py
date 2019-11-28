@@ -165,7 +165,7 @@ class AppManager(Thread):
             data = json.loads(request.data.decode('utf8'))
             try:
                 payload = self._alarm_traits_decoder(data)
-            except:
+            except Exception:
                 payload = ({t[0]: t[2] for t in
                            data['reason_data']['event']['traits']})
                 self.log.error('cannot parse alarm data: %s' % payload)

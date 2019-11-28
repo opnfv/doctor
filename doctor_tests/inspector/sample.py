@@ -52,7 +52,7 @@ class SampleInspector(BaseInspector):
                                                  driver='messaging',
                                                  topics=['notifications'])
             self.notif = self.notif.prepare(publisher_id='sample')
-        except:
+        except Exception:
             self.notif = None
 
     def _init_novaclients(self):
@@ -135,7 +135,7 @@ class SampleInspector(BaseInspector):
     def maintenance(self, data):
         try:
             payload = self._alarm_traits_decoder(data)
-        except:
+        except Exception:
             payload = ({t[0]: t[2] for t in
                        data['reason_data']['event']['traits']})
             self.log.error('cannot parse alarm data: %s' % payload)
