@@ -26,9 +26,9 @@ def set_cpu_allocation_ratio():
     found_list = ([ca for ca in fcheck.readlines() if "cpu_allocation_ratio"
                   in ca])
     fcheck.close()
+    change = False
+    found = False
     if found_list and len(found_list):
-        change = False
-        found = False
         for car in found_list:
             if car.startswith('#'):
                 continue

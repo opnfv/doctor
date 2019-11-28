@@ -35,11 +35,16 @@ class Maintenance(object):
         auth = get_identity_auth(project=self.conf.doctor_project)
         self.neutron = neutron_client(get_session(auth=auth))
         self.stack = Stack(self.conf, self.log)
+        if self.conf.installer.type == "devstack":
+            self.endpoint_ip = trasport_url.split("@", 1)[1].split(":", 1)[0]
+        else:
+            self.endpoint_ip = self.conf.admin_tool.ip
+        self.endpoint = "http://%s:12347/" % self.endpoint_ip
         if self.conf.admin_tool.type == 'sample':
             self.admin_tool = get_admin_tool(trasport_url, self.conf, self.log)
-            self.endpoint = 'maintenance'
+            self.endpoint += 'maintenance'
         else:
-            self.endpoint = 'v1/maintenance'
+            self.endpoint += 'v1/maintenance'
         self.app_manager = get_app_manager(self.stack, self.conf, self.log)
         self.inspector = get_inspector(self.conf, self.log, trasport_url)
 
@@ -128,8 +133,9 @@ class Maintenance(object):
         else:
             # TBD Now we expect Fenix is running in self.conf.admin_tool.port
             pass
-        self.app_manager.start()
+        # Inspector before app_manager, as floating ip might come late
         self.inspector.start()
+        self.app_manager.start()
 
     def start_maintenance(self):
         self.log.info('start maintenance.......')
@@ -138,17 +144,13 @@ class Maintenance(object):
         for hvisor in hvisors:
             hostname = hvisor.__getattr__('hypervisor_hostname')
             maintenance_hosts.append(hostname)
-
-        url = ('http://%s:%s/%s' %
-               (self.conf.admin_tool.ip,
-                self.conf.admin_tool.port,
-                self.endpoint))
+        url = self.endpoint
         headers = {
             'Content-Type': 'application/json',
             'Accept': 'application/json'}
         if self.conf.admin_tool.type == 'fenix':
             headers['X-Auth-Token'] = self.admin_session.get_token()
-        self.log.info('headers %s' % headers)
+        self.log.info('url %s headers %s' % (url, headers))
         retries = 12
         ret = None
         while retries > 0:
@@ -170,7 +172,7 @@ class Maintenance(object):
             try:
                 ret = requests.post(url, data=json.dumps(data),
                                     headers=headers)
-            except:
+            except Exception:
                 if retries == 0:
                     raise Exception('admin tool did not respond in 120s')
                 else:
@@ -187,11 +189,8 @@ class Maintenance(object):
 
     def remove_maintenance_session(self, session_id):
         self.log.info('remove maintenance session %s.......' % session_id)
-        url = ('http://%s:%s/%s/%s' %
-               (self.conf.admin_tool.ip,
-                self.conf.admin_tool.port,
-                self.endpoint,
-                session_id))
+
+        url = ('%s/%s' % (self.endpoint, session_id))
 
         headers = {
             'Content-Type': 'application/json',
@@ -205,11 +204,8 @@ class Maintenance(object):
             raise Exception(ret.text)
 
     def get_maintenance_state(self, session_id):
-        url = ('http://%s:%s/%s/%s' %
-               (self.conf.admin_tool.ip,
-                self.conf.admin_tool.port,
-                self.endpoint,
-                session_id))
+
+        url = ('%s/%s' % (self.endpoint, session_id))
 
         headers = {
             'Content-Type': 'application/json',

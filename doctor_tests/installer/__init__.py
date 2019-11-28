@@ -13,8 +13,8 @@ from oslo_utils import importutils
 
 OPTS = [
     cfg.StrOpt('type',
-               default=os.environ.get('INSTALLER_TYPE', 'local'),
-               choices=['local', 'apex', 'daisy', 'fuel'],
+               default=os.environ.get('INSTALLER_TYPE', 'devstack'),
+               choices=['apex', 'daisy', 'fuel', 'devstack'],
                help='the type of installer',
                required=True),
     cfg.StrOpt('ip',
@@ -28,10 +28,10 @@ OPTS = [
 
 
 _installer_name_class_mapping = {
-    'local': 'doctor_tests.installer.local.LocalInstaller',
     'apex': 'doctor_tests.installer.apex.ApexInstaller',
     'daisy': 'doctor_tests.installer.daisy.DaisyInstaller',
-    'fuel': 'doctor_tests.installer.mcp.McpInstaller'
+    'fuel': 'doctor_tests.installer.mcp.McpInstaller',
+    'devstack': 'doctor_tests.installer.devstack.DevstackInstaller'
 }
 
 

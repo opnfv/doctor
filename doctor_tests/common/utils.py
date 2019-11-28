@@ -10,6 +10,7 @@ import json
 import os
 import paramiko
 import re
+import subprocess
 
 
 def load_json_file(full_path):
@@ -95,6 +96,27 @@ class SSHClient(object):
         elif method == 'get':
             ftp.get(source, dest)
         ftp.close()
+
+
+class LocalSSH(object):
+
+    def __init__(self, log):
+        self.log = log
+        self.log.info('Init local ssh client')
+
+    def ssh(self, cmd):
+        ret = 0
+        output = "%s failed!!!" % cmd
+        try:
+            output = subprocess.check_output((cmd), shell=True,
+                                             universal_newlines=True)
+        except subprocess.CalledProcessError:
+            ret = 1
+        return ret, output
+
+    def scp(self, src_file, dst_file):
+        return subprocess.check_output("cp %s %s" % (src_file, dst_file),
+                                       shell=True)
 
 
 def run_async(func):
