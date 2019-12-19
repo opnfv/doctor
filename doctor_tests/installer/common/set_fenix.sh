@@ -75,6 +75,11 @@ echo "password = $OS_PASSWORD" >> fenix-api.conf
 echo "username = $OS_USERNAME" >> fenix-api.conf
 echo "cafile = /opt/stack/data/ca-bundle.pem" >> fenix-api.conf
 
+openstack service list | grep maintenance | {
+openstack service create --name fenix --enable maintenance
+openstack endpoint create --region $OS_REGION_NAME --enable fenix public http://localhost:12347/v1
+}
+
 # Mysql pw
 # MYSQLPW=`cat /var/lib/config-data/mysql/etc/puppet/hieradata/service_configs.json | grep mysql | grep root_password | awk -F": " '{print $2}' | awk -F"\"" '{print $2}'`
 MYSQLPW=root
