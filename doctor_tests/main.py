@@ -65,9 +65,8 @@ class DoctorTest(object):
                 self.fault_management.setup()
 
                 # wait for aodh alarms are updated in caches for event
-                # evaluator,
-                # sleep time should be larger than event_alarm_cache_ttl
-                # (default 60)
+                # evaluator,sleep time should be larger than
+                # event_alarm_cache_ttl (default 60)
                 # (tojuvone) Fraser currently needs 120
                 time.sleep(120)
 
