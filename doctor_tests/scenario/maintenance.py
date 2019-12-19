@@ -162,8 +162,12 @@ class Maintenance(object):
 
             data = {'state': 'MAINTENANCE',
                     'maintenance_at': maintenance_at,
-                    'metadata': {'openstack_version': 'Rocky'},
-                    'workflow': 'default'}
+                    'metadata': {'openstack_version': 'Train'}}
+                    
+            if self.conf.app_manager.type == 'vnfm':
+                data['workflow'] = 'vnf'
+            else:
+                data['workflow'] = 'default'
 
             if self.conf.admin_tool.type == 'sample':
                 data['hosts'] = maintenance_hosts
