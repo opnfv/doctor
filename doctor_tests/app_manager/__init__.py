@@ -8,12 +8,13 @@
 ##############################################################################
 from oslo_config import cfg
 from oslo_utils import importutils
+import os
 
 
 OPTS = [
     cfg.StrOpt('type',
-               default='sample',
-               choices=['sample'],
+               default=os.environ.get('APP_MANAGER_TYPE', 'sample'),
+               choices=['sample','vnfm'],
                help='the component of doctor app manager',
                required=True),
     cfg.StrOpt('ip',
@@ -28,7 +29,8 @@ OPTS = [
 
 
 _app_manager_name_class_mapping = {
-    'sample': 'doctor_tests.app_manager.sample.SampleAppManager'
+    'sample': 'doctor_tests.app_manager.sample.SampleAppManager',
+    'vnfm': 'doctor_tests.app_manager.vnfm.VNFM',
 }
 
 
