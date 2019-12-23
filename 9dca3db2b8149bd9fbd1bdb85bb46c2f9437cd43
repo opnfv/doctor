@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "facecd69_3ba8df49",
+        "filename": "doctor_tests/installer/base.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1475
+      },
+      "writtenOn": "2019-12-23T01:34:10Z",
+      "side": 1,
+      "message": "We can define this as `abstractmethod` and then implement it in each installer.",
+      "range": {
+        "startLine": 130,
+        "startChar": 8,
+        "endLine": 130,
+        "endChar": 25
+      },
+      "revId": "9dca3db2b8149bd9fbd1bdb85bb46c2f9437cd43",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": true
+    }
+  ]
+}
