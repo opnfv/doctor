@@ -22,6 +22,30 @@
       "revId": "d6573e6d65ec8e602abdedb302177c06b615820a",
       "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e18c67d7_209b49d5",
+        "filename": "doctor_tests/main.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 751
+      },
+      "writtenOn": "2020-01-08T10:17:12Z",
+      "side": 1,
+      "message": "Thanks, fixing this",
+      "parentUuid": "62098982_67a3e4bd",
+      "range": {
+        "startLine": 94,
+        "startChar": 16,
+        "endLine": 94,
+        "endChar": 27
+      },
+      "revId": "d6573e6d65ec8e602abdedb302177c06b615820a",
+      "serverId": "bbac25d2-bf60-4904-9ba8-a72fc000d6c5",
+      "unresolved": true
     }
   ]
 }
