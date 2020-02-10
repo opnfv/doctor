@@ -23,9 +23,10 @@ dpkg -r --force-depends golang-docker-credential-helpers
 }
 
 docker ps | grep fenix >/dev/null && {
-REMOTE=`docker exec -ti fenix git rev-parse origin/master`
+REMOTE=`git ls-remote  https://opendev.org/x/fenix HEAD | awk '{ print $1}'`
 LOCAL=`docker exec -ti fenix git rev-parse @`
-if [ $LOCAL = $REMOTE ]; then
+if [[ "$LOCAL" =~ "$REMOTE" ]]; then
+    # Difference in above string ending marks, so cannot compare equal
     echo "Fenix start: Already running latest"
     exit 0
 else
@@ -75,7 +76,7 @@ echo "password = $OS_PASSWORD" >> fenix-api.conf
 echo "username = $OS_USERNAME" >> fenix-api.conf
 echo "cafile = /opt/stack/data/ca-bundle.pem" >> fenix-api.conf
 
-openstack service list | grep maintenance | {
+openstack service list | grep -q maintenance || {
 openstack service create --name fenix --enable maintenance
 openstack endpoint create --region $OS_REGION_NAME --enable fenix public http://localhost:12347/v1
 }
