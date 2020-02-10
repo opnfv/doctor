@@ -109,7 +109,7 @@ class VNFManager(Thread):
                                if ep.service_id == maint_id and
                                ep.interface == 'public'][0]
         self.log.info('maintenance endpoint: %s' % self.maint_endpoint)
-
+        self.update_constraints_lock = False
         self.update_constraints()
 
     def delete_remote_instance_constraints(self, instance_id):
@@ -153,6 +153,10 @@ class VNFManager(Thread):
         self.delete_remote_group_constraints(self.ha_group)
 
     def update_constraints(self):
+        while self.update_constraints_lock:
+            self.log.info('Waiting update_constraints_lock...')
+            time.sleep(1)
+        self.update_constraints_lock = True
         self.log.info('Update constraints')
         if self.project_id is None:
             self.project_id = self.keystone.projects.list(
@@ -185,7 +189,7 @@ class VNFManager(Thread):
                 "recovery_time": 4,
                 "resource_mitigation": True}
             self.log.info('create doctor_ha_app_group constraints: %s'
-                          % self.nonha_group)
+                          % self.ha_group)
             self.update_remote_group_constraints(self.ha_group)
         instance_constraints = {}
         for ha_instance in self.ha_instances:
@@ -195,7 +199,7 @@ class VNFManager(Thread):
                 "group_id": self.ha_group["group_id"],
                 "instance_name": ha_instance.name,
                 "max_interruption_time": 120,
-                "migration_type": "MIGRATION",
+                "migration_type": "MIGRATE",
                 "resource_mitigation": True,
                 "lead_time": 40}
             self.log.info('create ha instance constraints: %s'
@@ -208,7 +212,7 @@ class VNFManager(Thread):
                 "group_id": self.nonha_group["group_id"],
                 "instance_name": nonha_instance.name,
                 "max_interruption_time": 120,
-                "migration_type": "MIGRATION",
+                "migration_type": "MIGRATE",
                 "resource_mitigation": True,
                 "lead_time": 40}
             self.log.info('create nonha instance constraints: %s'
@@ -234,11 +238,12 @@ class VNFManager(Thread):
             for instance_id in deleted:
                 self.delete_remote_instance_constraints(instance_id)
             updated = added + modified
-            for instance in [instance_constraints[i] in i in updated]:
+            for instance in [instance_constraints[i] for i in updated]:
                 self.update_remote_instance_constraints(instance)
             if updated or deleted:
                 # Some instance constraints have changed
                 self.instance_constraints = instance_constraints.copy()
+        self.update_constraints_lock = False
 
     def active_instance_id(self):
         # Need rertry as it takes time after heat template done before
@@ -358,14 +363,20 @@ class VNFManager(Thread):
                 instance_ids = (self.get_session_instance_ids(
                                 payload['instance_ids'],
                                 payload['session_id']))
-                reply['instance_ids'] = instance_ids
-                reply_state = 'ACK_MAINTENANCE'
+                my_instance_ids = self.get_instance_ids()
+                invalid_instances = (
+                    [instance_id for instance_id in instance_ids
+                     if instance_id not in my_instance_ids])
+                if invalid_instances:
+                    self.log.error('Invalid instances: %s' % invalid_instances)
+                    reply_state = 'NACK_MAINTENANCE'
+                else:
+                    reply_state = 'ACK_MAINTENANCE'
 
             elif state == 'SCALE_IN':
                 # scale down "self.scale" instances that is VCPUS equaling
                 # at least a single compute node
                 self.scale_instances(-self.scale)
-                reply['instance_ids'] = self.get_instance_ids()
                 reply_state = 'ACK_SCALE_IN'
 
             elif state == 'MAINTENANCE_COMPLETE':
@@ -411,7 +422,6 @@ class VNFManager(Thread):
             if reply_state:
                 if self.conf.admin_tool.type == 'fenix':
                     self.headers['X-Auth-Token'] = self.session.get_token()
-                reply['session_id'] = payload['session_id']
                 reply['state'] = reply_state
                 url = payload['reply_url']
                 self.log.info('VNFM reply: %s' % reply)
