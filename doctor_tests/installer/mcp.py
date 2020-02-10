@@ -129,8 +129,8 @@ class McpInstaller(BaseInstaller):
     def set_apply_patches(self):
         self.log.info('Set apply patches start......')
         fenix_files = None
-
         set_scripts = [self.cm_set_script]
+        thrs = []
 
         restart_cmd = 'sudo systemctl restart' \
                       ' ceilometer-agent-notification.service'
@@ -152,10 +152,10 @@ class McpInstaller(BaseInstaller):
                                                     'admin_tool/fenix',
                                                     fenix_file)
                     client.scp(src_file, fenix_file)
-            self._run_apply_patches(client,
-                                    restart_cmd,
-                                    set_scripts,
-                                    python=self.python)
+            thrs.append(self._run_apply_patches(client,
+                                                restart_cmd,
+                                                set_scripts,
+                                                python=self.python))
         time.sleep(5)
 
         self.log.info('Set apply patches start......')
@@ -165,11 +165,15 @@ class McpInstaller(BaseInstaller):
             for node_ip in self.computes:
                 client = SSHClient(node_ip, self.node_user_name,
                                    key_filename=self.key_file)
-                self._run_apply_patches(client,
-                                        restart_cmd,
-                                        [self.nc_set_compute_script],
-                                        python=self.python)
+                thrs.append(self._run_apply_patches(
+                    client,
+                    restart_cmd,
+                    [self.nc_set_compute_script],
+                    python=self.python))
             time.sleep(5)
+        # If Fenix container ir build, it needs to be ready before continue
+        for thr in thrs:
+            thr.join()
 
     def restore_apply_patches(self):
         self.log.info('restore apply patches start......')
