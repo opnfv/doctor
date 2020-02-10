@@ -21,7 +21,7 @@ RUN apk --no-cache add ca-certificates && \
     if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi && \
     if [[ ! -e /usr/bin/python ]]; then ln -sf /usr/bin/python3 /usr/bin/python; fi && \
     pip3 install --upgrade pip && \
-    pip3 install alembic aodhclient decorator flask Flask-RESTful eventlet \
+    pip3 install alembic aodhclient decorator flask Flask-RESTful eventlet jsonschema \
         keystoneauth1 keystonemiddleware python-novaclient oslo.config pecan \
         oslo.db oslo.log oslo.messaging oslo.serialization oslo.service oslo_policy \
         oslotest oslo.utils pbr pymysql six sqlalchemy -cupper-constraints.txt && \
