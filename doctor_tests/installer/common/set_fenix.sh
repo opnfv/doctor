@@ -22,14 +22,15 @@ apt-get install -y docker-ce docker-ce-cli containerd.io
 dpkg -r --force-depends golang-docker-credential-helpers
 }
 
-docker ps | grep fenix >/dev/null && {
-REMOTE=`docker exec -ti fenix git rev-parse origin/master`
-LOCAL=`docker exec -ti fenix git rev-parse @`
-if [ $LOCAL = $REMOTE ]; then
-    echo "Fenix start: Already running latest"
+docker ps | grep fenix -q && {
+REMOTE=`git ls-remote  https://opendev.org/x/fenix HEAD | awk '{ print $1}'`
+LOCAL=`docker exec -t fenix git rev-parse @`
+if [[ "$LOCAL" =~ "$REMOTE" ]]; then
+    # Difference in above string ending marks, so cannot compare equal
+    echo "Fenix start: Already running latest $LOCAL equals $REMOTE"
     exit 0
 else
-    echo "Fenix container needs to be recreated..."
+    echo "Fenix container needs to be recreated $LOCAL not $REMOTE"
     # Remove previous container
     for img in `docker image list | grep "^fenix" | awk '{print $1}'`; do
         for dock in `docker ps --all -f "ancestor=$img" | grep "$img" | awk '{print $1}'`; do
@@ -75,7 +76,7 @@ echo "password = $OS_PASSWORD" >> fenix-api.conf
 echo "username = $OS_USERNAME" >> fenix-api.conf
 echo "cafile = /opt/stack/data/ca-bundle.pem" >> fenix-api.conf
 
-openstack service list | grep maintenance | {
+openstack service list | grep -q maintenance || {
 openstack service create --name fenix --enable maintenance
 openstack endpoint create --region $OS_REGION_NAME --enable fenix public http://localhost:12347/v1
 }

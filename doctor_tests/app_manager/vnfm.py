@@ -195,7 +195,7 @@ class VNFManager(Thread):
                 "group_id": self.ha_group["group_id"],
                 "instance_name": ha_instance.name,
                 "max_interruption_time": 120,
-                "migration_type": "MIGRATION",
+                "migration_type": "MIGRATE",
                 "resource_mitigation": True,
                 "lead_time": 40}
             self.log.info('create ha instance constraints: %s'
@@ -208,7 +208,7 @@ class VNFManager(Thread):
                 "group_id": self.nonha_group["group_id"],
                 "instance_name": nonha_instance.name,
                 "max_interruption_time": 120,
-                "migration_type": "MIGRATION",
+                "migration_type": "MIGRATE",
                 "resource_mitigation": True,
                 "lead_time": 40}
             self.log.info('create nonha instance constraints: %s'
@@ -358,14 +358,20 @@ class VNFManager(Thread):
                 instance_ids = (self.get_session_instance_ids(
                                 payload['instance_ids'],
                                 payload['session_id']))
-                reply['instance_ids'] = instance_ids
-                reply_state = 'ACK_MAINTENANCE'
+                my_instance_ids = self.get_instance_ids()
+                invalid_instances = (
+                    [instance_id for instance_id in instance_ids
+                     if instance_id not in my_instance_ids])
+                if invalid_instances:
+                    self.log.error('Invalid instances: %s' % invalid_instances)
+                    reply_state = 'NACK_MAINTENANCE'
+                else:
+                    reply_state = 'ACK_MAINTENANCE'
 
             elif state == 'SCALE_IN':
                 # scale down "self.scale" instances that is VCPUS equaling
                 # at least a single compute node
                 self.scale_instances(-self.scale)
-                reply['instance_ids'] = self.get_instance_ids()
                 reply_state = 'ACK_SCALE_IN'
 
             elif state == 'MAINTENANCE_COMPLETE':
@@ -411,7 +417,6 @@ class VNFManager(Thread):
             if reply_state:
                 if self.conf.admin_tool.type == 'fenix':
                     self.headers['X-Auth-Token'] = self.session.get_token()
-                reply['session_id'] = payload['session_id']
                 reply['state'] = reply_state
                 url = payload['reply_url']
                 self.log.info('VNFM reply: %s' % reply)
