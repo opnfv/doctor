@@ -1,0 +1,9 @@
+Verified+1: jenkins-ci <jenkins-opnfv-ci@opnfv.org>
+Code-Review+2: wenjuan dong <dong.wenjuan@zte.com.cn>
+Code-Review+2: Tomi Juvonen <tomi.juvonen@nokia.com>
+Verified+1: Tomi Juvonen <tomi.juvonen@nokia.com>
+Submitted-by: Tomi Juvonen <tomi.juvonen@nokia.com>
+Submitted-at: Tue, 31 Mar 2020 08:55:36 +0000
+Reviewed-on: https://gerrit.opnfv.org/gerrit/c/doctor/+/69662
+Project: doctor
+Branch: refs/heads/master
