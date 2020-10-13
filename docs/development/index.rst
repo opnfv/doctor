@@ -2,18 +2,18 @@
 .. http://creativecommons.org/licenses/by/4.0
 .. (c) 2016 OPNFV.
 
+.. _development:
 
-======
-Doctor
-======
+===========
+Development
+===========
 
 .. toctree::
    :maxdepth: 2
 
-   ./design/index.rst
-   ./requirements/index.rst
-   ./manuals/index.rst
-   ./overview/functest_scenario/index.rst
+   ./design/index
+   ./overview/index
+   ./requirements/index
 
 Indices
 =======

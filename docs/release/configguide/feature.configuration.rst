@@ -159,3 +159,57 @@ You can configure the Sample Monitor as follows (Example for Apex deployment):
         "http://127.0.0.1:$INSPECTOR_PORT/events" > monitor.log 2>&1 &
 
 **Collectd Monitor**
+
+OpenStack components
+====================
+
+In OPNFV and with Doctor testing you can have all OpenStack components configured
+as needed. Here is sample of the needed configuration modifications.
+
+Ceilometer
+----------
+
+/etc/ceilometer/event_definitions.yaml:
+# Maintenance use case needs new alarm definitions to be added
+- event_type: maintenance.scheduled
+    traits:
+      actions_at:
+        fields: payload.maintenance_at
+        type: datetime
+      allowed_actions:
+        fields: payload.allowed_actions
+      host_id:
+        fields: payload.host_id
+      instances:
+        fields: payload.instances
+      metadata:
+        fields: payload.metadata
+      project_id:
+        fields: payload.project_id
+      reply_url:
+        fields: payload.reply_url
+      session_id:
+        fields: payload.session_id
+      state:
+        fields: payload.state
+- event_type: maintenance.host
+    traits:
+      host:
+        fields: payload.host
+      project_id:
+        fields: payload.project_id
+      session_id:
+        fields: payload.session_id
+      state:
+        fields: payload.state
+
+/etc/ceilometer/event_pipeline.yaml:
+# Maintenance and Fault management both needs these to be added
+    - notifier://
+    - notifier://?topic=alarm.all
+
+Nova
+----
+
+/etc/nova/nova.conf
+cpu_allocation_ratio=1.0
