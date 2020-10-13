@@ -3,9 +3,9 @@
 
 .. _doctor-configguide:
 
-*************************
-Doctor Installation Guide
-*************************
+**************************
+Doctor Configuration Guide
+**************************
 
 .. toctree::
     :maxdepth: 2

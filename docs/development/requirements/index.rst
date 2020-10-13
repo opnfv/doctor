@@ -3,9 +3,9 @@
 
 .. _doctor-requirements:
 
-****************************************
-Doctor: Fault Management and Maintenance
-****************************************
+**********************************************
+Requirements: Fault Management and Maintenance
+**********************************************
 
 :Project: Doctor, https://wiki.opnfv.org/doctor
 :Editors: Ashiq Khan (NTT DOCOMO), Gerald Kunzmann (NTT DOCOMO)

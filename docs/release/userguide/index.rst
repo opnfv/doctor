@@ -11,3 +11,6 @@ Doctor User Guide
     :maxdepth: 2
 
     feature.userguide.rst
+    get-valid-server-state.rst
+    mark-host-down_manual.rst
+    monitors.rst

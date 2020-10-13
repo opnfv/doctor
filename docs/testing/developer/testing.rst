@@ -38,10 +38,18 @@ export TEST_CASE with different values:
     export TEST_CASE='fault_management'
     #Maintenance (requires 3 compute nodes)
     export TEST_CASE='maintenance'
-    #Use Fenix in maintenance testing instead of sample admin_tool
-    export ADMIN_TOOL_TYPE='fenix'
     #Run both tests cases
     export TEST_CASE='all'
+
+    #Use Fenix in maintenance testing instead of sample admin_tool
+    #This is only for 'mainteanance' test case
+    export ADMIN_TOOL_TYPE='fenix'
+    export APP_MANAGER_TYPE='vnfm'
+
+    #Run in different installer jumphost 'fuel' or 'apex'
+    #In multinode DevStack you run Doctor in controller node
+    #with value export APP_MANAGER_TYPE=vnfm
+    export INSTALLER_TYPE='fuel'
 
 Run Python Test Script
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -59,7 +67,8 @@ environment and then run the test.
 
 .. _doctor.sample.conf: https://git.opnfv.org/doctor/tree/etc/doctor.sample.conf
 
-In OPNFV Apex jumphost you can run Doctor testing as follows using tox:
+In OPNFV testing environment jumphost you can run Doctor testing as follows
+using tox:
 
 .. code-block:: bash
 
@@ -69,31 +78,5 @@ In OPNFV Apex jumphost you can run Doctor testing as follows using tox:
     git clone https://gerrit.opnfv.org/gerrit/doctor
     cd doctor
     sudo -E tox
-
-Run Functest Suite
-==================
-
-Functest supports Doctor testing by triggering the test script above in a
-Functest container. You can run the Doctor test with the following steps:
-
-.. code-block:: bash
-
-    DOCKER_TAG=latest
-    docker pull docker.io/opnfv/functest-features:${DOCKER_TAG}
-    docker run --privileged=true -id \
-        -e INSTALLER_TYPE=${INSTALLER_TYPE} \
-        -e INSTALLER_IP=${INSTALLER_IP} \
-        -e INSPECTOR_TYPE=sample \
-        docker.io/opnfv/functest-features:${DOCKER_TAG} /bin/bash
-    docker exec <container_id> functest testcase run doctor-notification
-
-See `Functest Userguide`_ for more information.
-
-.. _Functest Userguide: :doc:`<functest:testing/user/userguide>`
-
-
-For testing with stable version, change DOCKER_TAG to 'stable' or other release
-tag identifier.
-
-Tips
-====
+    
+Note! In DevStack you run Doctor in controller node.

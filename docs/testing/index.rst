@@ -2,16 +2,14 @@
 .. SPDX-License-Identifier: CC-BY-4.0
 .. (c) Open Platform for NFV Project, Inc. and its contributors
 
-.. _doctor:
+.. _testing:
 
-=========================================
-Fault Management and Maintenance (Doctor)
-=========================================
+=======
+Testing
+=======
 
 .. toctree::
-   :numbered:
    :maxdepth: 2
 
-   development/index
-   release/index
-   testing/index
+   ./developer/index.rst
+   ./user/index.rst
